@@ -1,0 +1,23 @@
+{
+  "name": "@dash/print",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "HTML → print-ready PDF via paged.js + Playwright. Keeps the web canvas as single source of truth; pages fall out of CSS Paged Media.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "dash-print": "./src/cli.ts"
+  },
+  "scripts": {
+    "render": "bun run src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "pagedjs": "^0.4.3",
+    "playwright": "^1.48.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@dash/metrics",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "Font-level line-box math — capsize. Makes text actually land on the 8px baseline, not 'close to'.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./css": "./build/metrics.css"
+  },
+  "scripts": {
+    "extract": "bun run src/extract.ts",
+    "build": "bun run src/build-css.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@capsizecss/core": "^4.1.2",
+    "@capsizecss/metrics": "^3.4.0"
+  }
+}

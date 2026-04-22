@@ -1,0 +1,25 @@
+# Bun workspace config — design-infra
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Link all workspace packages (default true but explicit for clarity)
+linker = "isolated"
+
+# Exact versions — infra should not drift
+exact = true
+
+# Cache across projects on this machine
+globalDir = "~/.bun/install/global"
+cache.dir = "~/.bun/install/cache"
+
+[install.scopes]
+# Reserved for DASH scoped packages if we ever publish
+
+[test]
+# Coverage reports for package tests
+coverage = true
+coverageReporter = ["text", "lcov"]
+
+[run]
+# Silence bun's self-update nag in CI
+silent = false

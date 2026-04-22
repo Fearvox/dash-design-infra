@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+.pnp.*
+
+# Build outputs
+build
+dist
+*.tsbuildinfo
+!packages/tokens/build/
+!packages/tokens/build/**
+!packages/metrics/build/
+!packages/metrics/build/**
+
+# Bun
+bun.lockb.backup
+.bun-cache
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+bun-debug.log*
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Temp
+.tmp
+.cache
+coverage
+~

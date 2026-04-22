@@ -1,0 +1,23 @@
+{
+  "name": "@dash/measure",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "Canvas budget checker — asserts HTML content fits within fixed page dimensions before render. CI gate for our one-pagers.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "bin": {
+    "dash-measure": "./src/cli.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./cli": "./src/cli.ts"
+  },
+  "scripts": {
+    "check": "bun run src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

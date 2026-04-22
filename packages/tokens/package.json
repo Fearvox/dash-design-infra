@@ -1,0 +1,31 @@
+{
+  "name": "@dash/tokens",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "DASH design tokens — single source of truth. Colors, type scale, spacing, baseline.",
+  "type": "module",
+  "main": "./build/tokens.js",
+  "module": "./build/tokens.js",
+  "types": "./build/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/tokens.d.ts",
+      "import": "./build/tokens.js"
+    },
+    "./css": "./build/tokens.css",
+    "./source": "./src/tokens.json"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "scripts": {
+    "build": "style-dictionary build --config style-dictionary.config.mjs",
+    "watch": "style-dictionary build --config style-dictionary.config.mjs --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}
