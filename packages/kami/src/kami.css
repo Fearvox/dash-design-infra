@@ -1,0 +1,72 @@
+:root,
+[data-dash-aesthetic='kami'] {
+  --kami-color-canvas: #f5f4ed;
+  --kami-color-ivory: #faf9f5;
+  --kami-color-warm-sand: #e8e6dc;
+  --kami-color-deep-dark: #141413;
+  --kami-color-ink-blue: #1b365d;
+  --kami-color-ink-light: #2d5a8a;
+  --kami-color-dark-surface: #30302e;
+  --kami-color-error: #b53333;
+  --kami-color-near-black: #141413;
+  --kami-color-dark-warm: #3d3d3a;
+  --kami-color-olive: #504e49;
+  --kami-color-stone: #6b6a64;
+  --kami-color-tag-weak: #eef2f7;
+  --kami-color-tag-standard: #e4ecf5;
+  --kami-color-tag-strong: #d0dce9;
+  --kami-font-serif: Charter, TsangerJinKai02, YuMincho, serif;
+  --kami-font-mono: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
+  --kami-ring-warm: rgba(20, 20, 19, 0.12);
+  --kami-shadow-whisper: 0 4pt 24pt rgba(0, 0, 0, 0.05);
+}
+
+[data-dash-aesthetic='kami'],
+.dash-kami-page {
+  background: var(--kami-color-canvas);
+  color: var(--kami-color-near-black);
+  font-family: var(--kami-font-serif);
+  font-weight: 400;
+}
+
+.dash-kami-page {
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.dash-kami-surface {
+  background: var(--kami-color-ivory);
+  border: 0.5pt solid var(--kami-ring-warm);
+  border-radius: 8pt;
+}
+
+.dash-kami-accent {
+  color: var(--kami-color-ink-blue);
+}
+
+.dash-kami-rule {
+  border-left: 2pt solid var(--kami-color-ink-blue);
+  padding-left: 8pt;
+}
+
+.dash-kami-tag {
+  background: var(--kami-color-tag-standard);
+  border-radius: 4pt;
+  color: var(--kami-color-ink-blue);
+  display: inline-block;
+  line-height: 1.35;
+  padding: 2pt 5pt;
+}
+
+.dash-kami-code {
+  background: var(--kami-color-ivory);
+  border: 0.5pt solid var(--kami-ring-warm);
+  border-radius: 6pt;
+  font-family: var(--kami-font-mono);
+}
+
+.dash-kami-feature-card {
+  background: var(--kami-color-ivory);
+  border-radius: 16pt;
+  box-shadow: var(--kami-shadow-whisper);
+}

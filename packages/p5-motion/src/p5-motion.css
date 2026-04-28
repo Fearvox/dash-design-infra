@@ -1,0 +1,20 @@
+.dash-p5-stage {
+  background: var(--color-paper-base, #f5f4ed);
+  color: var(--color-ink-primary, #141413);
+  overflow: hidden;
+  position: relative;
+}
+
+.dash-p5-stage canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.dash-p5-stage[data-fit='contain'] canvas {
+  object-fit: contain;
+}
+
+.dash-p5-stage[data-fit='cover'] canvas {
+  object-fit: cover;
+}
