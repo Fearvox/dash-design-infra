@@ -1,51 +1,71 @@
-# dash-design-infra
+<div align="center" id="top">
+  <h1 align="center">DASH Design Infra</h1>
+  <p align="center">
+    给 agent 做页面、报告、海报和 PDF 用的一套设计基础设施。
+    <br />
+    <strong>Kami 文档审美、p5.js 动态语法、固定画布校验、HTML 到 PDF，走同一条 Bun 路径。</strong>
+  </p>
 
-基于 Bun 的固定画布编辑设计基础设施。
+  <p align="center">
+    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a>
+  </p>
 
-它把设计 token、字号比例、字形基线校正、Kami 风格文档预设、p5.js 动态视觉语法、溢出检测、约束布局和 HTML 到 PDF 输出串成一条完整工程链，适合单页、deck、研究型页面、动态视觉实验和需要稳定落版的打印表面。
+  <p align="center">
+    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0f172a.svg?style=for-the-badge" />
+    <img alt="Runtime: Bun" src="https://img.shields.io/badge/runtime-Bun-111827.svg?style=for-the-badge" />
+    <img alt="Language: TypeScript" src="https://img.shields.io/badge/language-TypeScript-2563eb.svg?style=for-the-badge" />
+    <img alt="Fixed canvas" src="https://img.shields.io/badge/layout-fixed_canvas-14532d.svg?style=for-the-badge" />
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Fearvox/dash-design-infra/ci.yml?branch=main&label=CI&style=for-the-badge" />
+  </p>
 
-[English](./README.md) · [中文](./README-zh.md)
+  <p align="center">
+    <a href="#快速开始">快速开始</a> ·
+    <a href="#这是什么">这是什么</a> ·
+    <a href="#能做什么">能做什么</a> ·
+    <a href="#架构">架构</a> ·
+    <a href="#包说明">包说明</a> ·
+    <a href="#hall-of-fame">Hall of Fame</a>
+  </p>
+</div>
 
-![License: MIT](https://img.shields.io/badge/license-MIT-0f172a.svg)
-![Bun](https://img.shields.io/badge/runtime-Bun-111827.svg)
-![TypeScript](https://img.shields.io/badge/language-TypeScript-2563eb.svg)
-![Fixed Canvas](https://img.shields.io/badge/layout-fixed--canvas-14532d.svg)
-![CI](https://img.shields.io/github/actions/workflow/status/Fearvox/dash-design-infra/ci.yml?branch=main&label=CI)
+---
 
-[快速开始](#快速开始) · [架构](#架构) · [包说明](#包说明) · [Kami-和-P5-带来了什么](#kami-和-p5-带来了什么) · [Hall of Fame](#hall-of-fame) · [贡献指南](./CONTRIBUTING.md)
+## 目录
+
+- [这是什么](#这是什么)
+- [能做什么](#能做什么)
+- [快速开始](#快速开始)
+- [架构](#架构)
+- [包说明](#包说明)
+- [Kami 和 P5 带来了什么](#kami-和-p5-带来了什么)
+- [公开示例](#公开示例)
+- [当前状态](#当前状态)
+- [Hall of Fame](#hall-of-fame)
 
 ---
 
 ## 这是什么
 
-`dash-design-infra` 是一个面向固定画布设计系统的 Bun workspace。
+`dash-design-infra` 解决的是一个很具体的问题：agent 生成的页面，不能只在聊天窗口里看起来还行；它要能在浏览器里量得准，导出 PDF 时也不崩。
 
-它不是“几份 CSS + 若干变量”，而是一套可验证的页面工程管线：
+所以这里不是一套漂亮 CSS，也不是 landing page 模板。它放的是做真实页面会反复用到的基础层：token、字号比例、字形基线、Kami 风格文档预设、p5.js 动态视觉 preset、溢出检测、约束布局、PDF 输出。
 
-| 层 | 负责什么 | 为什么存在 |
-|---|---|---|
-| `@dash/tokens` | 颜色、字号、间距、页面几何、动效 | 单一事实源 |
-| `@dash/scale` | 比例规则和行高规则 | 可重复生成版式尺度 |
-| `@dash/metrics` | 字体度量与 cap-line 对齐 | 真正落到基线 |
-| `@dash/kami` | 编辑型文档审美预设 | 温润、可打印、适合 agent 输出 |
-| `@dash/p5-motion` | p5.js 动态语法和 sketch helper | 从稳定设计数据生成动态原型 |
-| `@dash/measure` | 浏览器内溢出检测 | 在导出前抓住裁切问题 |
-| `@dash/layout` | 硬约束布局求解 | 表达 CSS 很难保证的规则 |
-| `@dash/print` | HTML 到 PDF 输出 | 保持 screen 与 print 同一路径 |
+这个仓库是公开蒸馏版。私有实验、原始素材和内部项目文本不进来；能进来的，都是已经可以命名、复用、测试、解释的东西。
 
-如果你的页面不能接受“差不多”，这个仓库就是为这种工作方式准备的。
+<p align="right"><a href="#top">回到顶部</a></p>
 
----
+## 能做什么
 
-## 为什么做这个仓库
+| 你想做 | 用什么 | 得到什么 | 从这里开始 |
+|---|---|---|---|
+| 一页纸 brief 或报告 | `@dash/tokens`, `@dash/kami`, `@dash/measure`, `@dash/print` | 看起来像认真排过版的 HTML，导出 PDF 不突然裁切 | [`examples/one-pager.html`](./examples/one-pager.html) |
+| 像 deck 一样的页面产物 | `@dash/kami`, `@dash/scale`, `@dash/print` | 安静、清楚、可打印的编辑型页面 | [`packages/kami`](./packages/kami) |
+| 动态海报 | `@dash/p5-motion` | 可复用的 p5.js motion grammar，不用每次从空白 canvas 重写 | [`usecases/p5js`](./usecases/p5js) |
+| 档案/证据视觉 | Electric Archive preset | 白色档案面和钴蓝信号面组成的扫描海报 | [`Electric Archive`](./usecases/p5js/electric-archive.md) |
+| 天气图式报告 | Memory Weather Report preset | 用气压、锋面、雷达纹理和 forecast card 表达复杂信号 | [`Weather Report`](./usecases/p5js/weather-report.md) |
+| 有硬约束的页面 | `@dash/layout`, `@dash/measure` | 先解布局规则，再到真实浏览器里检查是否溢出 | [`packages/layout`](./packages/layout) |
 
-- 只有 token 不够。固定画布场景还需要比例、字形基线、溢出校验和打印输出。
-- 真实浏览器才算真相。布局检测在 Playwright 里跑，而不是靠静态猜测。
-- 打印不该是第二宇宙。同一份 HTML 应该既能预览，也能导出 PDF。
-- 硬规则要有硬工具。复杂页面可以上约束求解，而不只是盯着 grid/flex 祈祷。
-- 动态和审美也需要边界。Kami 与 p5.js 进入公开仓时是被提炼后的 preset / grammar，不是把自用实验室原样搬进来。
-
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 快速开始
 
@@ -58,167 +78,145 @@ bun metrics:build
 bun typecheck
 ```
 
-几个核心流程：
+跑一下公开页面链路：
 
 ```bash
-# 生成字号与间距尺度
-bun scale:gen
-
-# 检查页面是否超出固定画布
-bun measure:check -- ./pages/page.html
-
-# 把 HTML 渲染成 PDF
-bun print:render -- ./pages/page.html ./out.pdf
+bun measure:check -- examples/one-pager.html
+bun print:render -- examples/one-pager.html /tmp/dash-one-pager.pdf --canvas=1684x1191
 ```
 
-试一下新的预设层：
+试一下动态视觉 helper：
 
 ```ts
-import { kamiPreset } from '@dash/kami';
-import { createTileGrid, layoutTileFrame } from '@dash/p5-motion';
+import { createTileGrid, layoutTileFrame, p5MotionPresets } from '@dash/p5-motion';
 
-const pageColor = kamiPreset.colors.canvas;
-const tiles = layoutTileFrame(createTileGrid(720, 960, 3, 3), 0.42);
+const tiles = createTileGrid(720, 960, 3, 3);
+const frame = layoutTileFrame(tiles, 0.42);
+
+console.log(p5MotionPresets.memoryWeatherReport.layers);
+console.log(frame[0]);
 ```
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 架构
 
-```text
-        ┌──────────────┐
-        │  @dash/scale │──┐
-        └──────────────┘  │
-                          ▼
-                  ┌──────────────┐
-                  │ @dash/tokens │
-                  └──────────────┘
-          ▲                ▲
-          │                │
-  ┌──────────────┐  ┌──────────────┐
-  │ @dash/metrics│  │  @dash/kami  │
-  │  (capsize)   │  │  (preset)    │
-  └──────────────┘  └──────────────┘
-          ▲                ▲
-          │                │
-  ┌──────────────┐  ┌──────────────┐
-  │@dash/measure │  │@dash/p5-motion│
-  │ (CI gate)    │  │ (sketch API) │
-  └──────────────┘  └──────────────┘
-          ▲                ▲
-          │                │
-  ┌──────────────┐  ┌──────────────┐
-  │ @dash/layout │  │ @dash/print  │
-  │  (kiwi.js)   │  │  (paged.js)  │
-  └──────────────┘  └──────────────┘
-```
+<p align="center">
+  <img src="./docs/assets/dash-design-infra-architecture.png" width="620" alt="DASH Design Infra architecture diagram" />
+</p>
 
-`@dash/tokens` 是事实源；`@dash/scale` 负责比例生成；`@dash/kami` 和 `@dash/p5-motion` 把审美与动态视觉变成可复用预设；其余包负责消费、验证或输出这套系统。
+<p align="center">
+  <sub>图源在 <a href="./docs/assets/dash-design-infra-architecture.svg">docs/assets/dash-design-infra-architecture.svg</a>，用 <a href="https://github.com/yizhiyanhua-ai/fireworks-tech-graph">fireworks-tech-graph</a> style 6 生成。</sub>
+</p>
 
----
+一句话版：README、示例和 usecase 先把意图讲清楚；tokens、scale、metrics 定义设计事实源；Kami 和 p5-motion 把它变成文档审美与动态语法；measure、layout、print 负责在真实路径上检查和输出。
+
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 包说明
 
-| 包 | 作用 | 核心依赖 |
+| 包 | 人话解释 | 核心依赖 |
 |---|---|---|
-| `@dash/tokens` | 从 DTCG token 生成 CSS vars、ESM 导出与平铺 JSON | `style-dictionary` |
-| `@dash/scale` | 生成固定画布下的字号和间距尺度 | `utopia-core` |
-| `@dash/metrics` | 生成 capsize 基线对齐辅助样式 | `@capsizecss/core` |
-| `@dash/kami` | 提供 Kami 启发的编辑型文档审美预设 | 无 |
-| `@dash/p5-motion` | 提供 p5.js 动态视觉契约和确定性 sketch helper | peer `p5` |
-| `@dash/measure` | 校验页面是否溢出或被裁切 | `playwright` |
-| `@dash/layout` | 用约束求解处理硬布局规则 | `@lume/kiwi` |
-| `@dash/print` | 用 paged media 支持把 HTML 导出为 PDF | `pagedjs`, `playwright` |
+| `@dash/tokens` | 统一管理颜色、字号、间距、页面尺寸和动效值 | `style-dictionary` |
+| `@dash/scale` | 生成字号和间距比例；需要写回时可以用 `--write` | `utopia-core` |
+| `@dash/metrics` | 让文字真的落在基线上，不只是“看起来差不多” | `@capsizecss/core` |
+| `@dash/kami` | 给报告、信件、简历、作品集和 deck 一个温润的编辑型默认审美 | 无 |
+| `@dash/p5-motion` | 把视觉参考提炼成 p5.js 动态 preset 和确定性 helper | peer `p5` |
+| `@dash/measure` | 打开真实 HTML，页面超出固定画布就失败 | `playwright` |
+| `@dash/layout` | 处理 CSS 很难单独表达的硬布局规则 | `@lume/kiwi` |
+| `@dash/print` | 沿着同一份 HTML 输出 PDF | `pagedjs`, `playwright` |
 
 每个包自己的说明都在 [`packages/`](./packages) 下面。
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## Kami 和 P5 带来了什么
 
-`@dash/kami` 给仓库增加了文档审美层。当 agent 要输出一页纸、长报告、正式信、简历、作品集或 slide deck 时，它提供一组稳定规则：羊皮纸底、墨蓝单一强调色、serif 层级、打印安全 tag、低阴影编辑型表面。它受 [@tw93](https://github.com/tw93) 的 [Kami](https://kami.tw93.fun/) 启发，但本仓库不 vendor Kami 代码或字体。
+`@dash/kami` 是文档审美层。agent 要写一页纸、长报告、正式信、简历、作品集或 deck 时，它给出一组不会乱飘的默认选择：温暖纸面、墨蓝强调色、serif 层级、打印安全 tag、低阴影编辑型表面。它受 [@tw93](https://github.com/tw93) 的 [Kami](https://kami.tw93.fun/) 启发，但本仓库不 vendor Kami 代码或字体。
 
-`@dash/p5-motion` 给仓库增加了浏览器动态层。它把自用 p5.js lab 提炼成公开安全的 primitive：tile grid、确定性漂移、重组循环、扫描场、天气图压力系统，以及 kinetic poster 的视觉语法。它适合先用 DASH token 和 spec 做动态原型，再决定某个视觉是否值得进入生产渲染器。
+`@dash/p5-motion` 是动态视觉层。它把我们的 p5.js lab 蒸馏成公开安全的 preset：tile grid、确定性漂移、重组循环、扫描场、档案海报、天气图式证据系统。它适合先把视觉做成可复用语法，再决定要不要进入生产渲染器。
 
-两者合在一起，让 DASH 在不改变事实源的前提下覆盖三类表面：
+两者合起来，让这个仓库可以覆盖三类输出，而且不用改事实源：
 
-| 表面 | 使用 | 结果 |
+| 输出 | 常用组合 | 结果 |
 |---|---|---|
-| 静态文档 | `@dash/kami` + `@dash/print` | polished PDF 或 deck-like HTML |
-| 浏览器动态实验 | `@dash/p5-motion` | 有可复用 motion grammar 的 p5.js sketch |
+| 静态文档 | `@dash/kami` + `@dash/print` | 完整 PDF 或 deck-like HTML |
+| 动态实验 | `@dash/p5-motion` | 有稳定 motion grammar 的 p5.js sketch |
 | 固定画布产物 | `@dash/tokens` + `@dash/measure` + `@dash/layout` | 不裁切、可验证的页面 |
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
-## 典型工作流
+## 公开示例
 
-1. 修改 `packages/tokens/src/tokens.json` 里的语义值。
-2. 运行 `bun tokens:build` 生成产物。
-3. 如果动了排版，运行 `bun metrics:build` 更新 capsize 样式。
-4. 用 `bun measure:check -- <html>` 在真实页面上做溢出校验。
-5. 用 `bun print:render -- <html> <pdf>` 输出 PDF。
+- [`examples/one-pager.html`](./examples/one-pager.html) 是 measurement 和 print 检查用的小页面。
+- [`usecases/p5js/electric-archive.md`](./usecases/p5js/electric-archive.md) 展示 Electric Archive 海报语法。
+- [`usecases/p5js/weather-report.md`](./usecases/p5js/weather-report.md) 展示 Memory Weather Report 语法。
 
-这套仓库的核心思路是：定义一次，在真实路径验证，然后沿着同一份 HTML 输出。
+示例是刻意脱敏过的。它们展示设计基础设施，不带私有项目文本、原始 lab 文件或内部路径。
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 目录结构
 
 ```text
 .
-├── .github/workflows/ci.yml
+├── docs/assets/
+├── examples/
 ├── packages/
-│   ├── layout/
 │   ├── kami/
+│   ├── layout/
 │   ├── measure/
 │   ├── metrics/
 │   ├── p5-motion/
 │   ├── print/
 │   ├── scale/
 │   └── tokens/
-├── CONTRIBUTING.md
+├── usecases/
+│   └── p5js/
 ├── README.md
 ├── README-zh.md
 └── package.json
 ```
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 当前状态
 
 已经可用：
+
 - token 构建链路
+- `@dash/scale` 生成与 `--write`
 - capsize CSS 生成
-- Kami 启发的编辑型文档预设
-- p5.js 动态视觉语法工具
+- Kami 启发的编辑型文档 preset
+- p5.js 动态 preset，包括 Electric Archive 和 Memory Weather Report
 - 浏览器内溢出校验
-- 约束求解骨架
+- 约束求解布局 helper
 - paged.js PDF 输出
-- 安装、构建、typecheck 的 CI
+- 公开 example 和 usecase 文档
+- 安装、token build、metrics build、typecheck 的 CI
 
-刻意保留为后续迭代：
-- `@dash/scale --write` 还没实现
-- 示例页面刻意保持最小且已脱敏
-- p5.js lab 源文件留在自用区，只有提炼后的稳定 API 进入公开仓
-- 打印相关 vendor 资源仍由使用方自己管理
+刻意留在仓库外：
 
----
+- 原始 p5.js lab 源码
+- 参考视频与抽帧素材
+- 私有项目写作和客户材料
+- 由使用方管理的打印 vendor 资源
+
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## Hall of Fame
 
-特别感谢 [@tw93](https://github.com/tw93)。[Kami](https://github.com/tw93/kami) 对这里的文档审美层影响很大；[Kaku](https://github.com/tw93/Kaku) 和 [Mole](https://github.com/tw93/Mole) 这类工具也实实在在参与了我们日常工作流，让这个 repo 的方向更清楚。
+特别感谢 [@tw93](https://github.com/tw93)。[Kami](https://github.com/tw93/kami) 对这里的文档审美层影响很大；[Kaku](https://github.com/tw93/Kaku) 和 [Mole](https://github.com/tw93/Mole) 这类工具也实实在在参与了我们的日常工作流，让这个 repo 的方向更清楚。
 
-这里是 attribution 和感谢，不代表上游作者对本仓库代码负责。
+这里是感谢与 attribution，不代表上游作者对本仓库代码负责。
 
----
+<p align="right"><a href="#top">回到顶部</a></p>
 
 ## 贡献
 
 见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
 一句话原则：改动尽量小，尽量可回退，尽量在真实页面路径上验证。
-
----
 
 ## 许可证
 
