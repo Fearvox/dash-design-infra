@@ -39,6 +39,38 @@ export interface P5MotionPreset {
 }
 
 export const p5MotionPresets = {
+  electricArchive: {
+    name: 'electric-archive',
+    source: 'usecases/p5js/electric-archive.md',
+    canvas: 'portrait',
+    layers: ['archive plane', 'cobalt signal field', 'evidence glyphs', 'scan exposure'],
+    does: [
+      'splits the poster into a pale archive surface and an electric blue signal surface',
+      'uses scan exposure, texture, and node drift to make memory retrieval feel alive',
+      'keeps proof text readable while motion carries the atmosphere',
+      'works as both a still poster and a controlled kinetic study',
+    ],
+    useWhen: [
+      'showing memory, retrieval, archive, or handoff evidence',
+      'making a technical report feel active without turning it into a dashboard',
+    ],
+  },
+  memoryWeatherReport: {
+    name: 'memory-weather-report',
+    source: 'usecases/p5js/weather-report.md',
+    canvas: 'portrait',
+    layers: ['paper map', 'weather mass', 'forecast cards', 'sharp glyphs', 'smoked radar accent'],
+    does: [
+      'treats memory and benchmark evidence as pressure systems',
+      'uses isobars, fronts, radar haze, and station glyphs as the visual grammar',
+      'keeps a light report base while adding atmospheric motion underneath',
+      'uses forecast cards to create hierarchy before the viewer reads dense detail',
+    ],
+    useWhen: [
+      'explaining risk, evidence density, system health, or handoff state',
+      'turning a table of signals into a readable weather-map report surface',
+    ],
+  },
   blueAppleCollageLoop: {
     name: 'blue-apple-collage-loop',
     source: 'references/xhs-blue-apple/ANALYSIS.md',

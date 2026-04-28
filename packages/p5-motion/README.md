@@ -1,21 +1,25 @@
 # @dash/p5-motion
 
-p5.js motion grammar and sketch utilities for DASH kinetic posters, animated diagrams, and generative visual references.
+p5.js motion grammar for DASH kinetic posters, animated reports, and generative visual references.
 
-This package does not import p5 at build time. It gives consumers deterministic geometry helpers, preset contracts, and a common language for turning visual references into repeatable sketches. The actual p5 runtime stays in the consuming app or lab.
+This package does not import p5 at build time. The consuming app owns the renderer and browser lifecycle. DASH owns the reusable motion language: named presets, deterministic geometry helpers, and the vocabulary that lets a sketch become something repeatable.
 
 ## What It Can Do
 
 - Turn a still editorial surface into a kinetic poster.
 - Split images into crop tiles and animate controlled reassembly loops.
-- Build scan bands, noise fields, and layered poster washes.
+- Build scan bands, noise fields, archive planes, weather maps, and layered poster washes.
 - Keep motion tied to DASH tokens instead of one-off canvas code.
-- Preserve reference analyses as reusable sketch presets instead of screenshots.
+- Preserve useful lab experiments as public-safe presets instead of private screenshots.
 
 ## Included Presets
 
-- `blueAppleCollageLoop` - image crop grid, anchored text, and calm reassembly motion.
-- `frontierPosterScan` - static poster plus noise, typography, and scan layers.
+| Preset | Source | Good for |
+|---|---|---|
+| `electricArchive` | [`Electric Archive`](../../usecases/p5js/electric-archive.md) | memory, retrieval, archive, handoff evidence, cobalt scan fields |
+| `memoryWeatherReport` | [`Memory Weather Report`](../../usecases/p5js/weather-report.md) | pressure systems, risk forecast, system health, evidence density |
+| `blueAppleCollageLoop` | `references/xhs-blue-apple/ANALYSIS.md` | image crop grids, anchored text, calm reassembly motion |
+| `frontierPosterScan` | `references/xhs-frontier-poster/ANALYSIS.md` | static poster hierarchy, noise fields, typography, scan layers |
 
 ## Use
 
@@ -31,10 +35,11 @@ const tiles = createTileGrid(720, 960, 3, 3);
 const progress = frameProgress(42, 180);
 const frame = layoutTileFrame(tiles, progress);
 
-console.log(p5MotionPresets.blueAppleCollageLoop.layers);
+console.log(p5MotionPresets.electricArchive.layers);
+console.log(p5MotionPresets.memoryWeatherReport.useWhen);
 console.log(frame[0]);
 ```
 
 ## Runtime Boundary
 
-`p5` is a peer dependency because the sketch host owns rendering, export, and browser lifecycle. DASH owns the repeatable motion grammar.
+`p5` is a peer dependency because the sketch host owns rendering, export, events, and browser state. This package stays small on purpose: it gives the host stable geometry and motion contracts, not a hidden runtime.
