@@ -30,11 +30,11 @@
   --color-rule-soft: oklch(0.22 0.02 60 / 0.10);
   --font-family-sans: Geist, system-ui, -apple-system, sans-serif;
   --font-family-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --font-size-display: 46px; /** h1 titles */
-  --font-size-deck: 22px; /** Primary findings, r-name */
+  --font-size-display: 47px; /** h1 titles */
+  --font-size-deck: 32px; /** Primary findings, r-name */
   --font-size-body: 14px; /** r-body, prompts */
   --font-size-meta: 11px; /** Kickers, labels, owner */
-  --font-size-micro: 9.5px; /** Run tags, tiny mono */
+  --font-size-micro: 9px; /** Run tags, tiny mono */
   --font-line-height-tight: 16px; /** 2 × baseline — micro/meta/body-meta */
   --font-line-height-base: 24px; /** 3 × baseline — body/ph */
   --font-line-height-loose: 32px; /** 4 × baseline — deck/headings */

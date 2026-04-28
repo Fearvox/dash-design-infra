@@ -21,9 +21,13 @@
  *
  * The cost is ~500ms of paginator time. Fine for CI/offline renders.
  */
-import { chromium, type Browser } from 'playwright';
-import { resolve } from 'node:path';
-import { writeFile } from 'node:fs/promises';
+import { chromium, type Browser, type Page } from 'playwright';
+import { createRequire } from 'node:module';
+import { dirname, resolve } from 'node:path';
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+
+const require = createRequire(import.meta.url);
 
 export interface RenderOptions {
   /** Absolute path to the source HTML file */
@@ -66,22 +70,36 @@ export async function renderToPDF(opts: RenderOptions): Promise<RenderResult> {
 
     // Load source HTML
     await page.goto(fileUrl, { waitUntil: 'networkidle' });
+    await inlineLocalStylesheets(page);
 
-    // Inject paged.js if not already present on the page
+    // Inject paged.js if not already present on the page.
+    // Use the local workspace dependency so CI and offline rendering do not
+    // depend on a CDN.
     const hasPaged = await page.evaluate(() => typeof (globalThis as any).PagedPolyfill !== 'undefined');
+    let pageCount = 0;
     if (!hasPaged) {
+      await page.evaluate(() => {
+        (globalThis as any).PagedConfig = { auto: false };
+      });
       await page.addScriptTag({
-        // CDN fallback — vendoring a copy into the package is a future improvement
-        url: 'https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js',
+        path: resolvePagedPolyfillPath(),
       });
     }
 
-    // Wait for paginator to finish. paged.js attaches to the window at runtime.
-    await page.waitForFunction(() => (window as any).PagedPolyfill?.pages?.length > 0, { timeout: 30_000 });
+    // Wait for paginator to finish. The polyfill's preview() returns a flow
+    // object; counting DOM pages is a fallback for older paged.js shapes.
+    pageCount = await page.evaluate(async () => {
+      const polyfill = (globalThis as any).PagedPolyfill;
+      if (!polyfill || typeof polyfill.preview !== 'function') {
+        throw new Error('PagedPolyfill.preview is unavailable after paged.js injection.');
+      }
+
+      const flow = await polyfill.preview();
+      return flow?.total ?? flow?.pages?.length ?? document.querySelectorAll('.pagedjs_page').length;
+    });
 
     if (opts.waitMs) await page.waitForTimeout(opts.waitMs);
-
-    const pageCount = await page.evaluate(() => (globalThis as any).PagedPolyfill?.pages?.length ?? 0);
+    if (!pageCount) throw new Error('paged.js rendered 0 pages.');
 
     // Export to PDF. paged.js has already laid content into fixed-size pages,
     // so we tell Chromium to use the same dimensions to avoid re-paginating.
@@ -114,6 +132,42 @@ export async function renderToPDF(opts: RenderOptions): Promise<RenderResult> {
     };
   } finally {
     if (browser) await browser.close();
+  }
+}
+
+function resolvePagedPolyfillPath(): string {
+  const pagedMain = require.resolve('pagedjs');
+  return resolve(dirname(pagedMain), '../dist/paged.polyfill.js');
+}
+
+async function inlineLocalStylesheets(page: Page): Promise<void> {
+  const links = await page.$$eval('link[rel="stylesheet"]', (nodes) => {
+    return nodes.map((node) => {
+      const link = node as HTMLLinkElement;
+      return {
+        href: link.href,
+        media: link.media,
+      };
+    });
+  });
+
+  for (const link of links) {
+    if (!link.href.startsWith('file://')) continue;
+    const css = await readFile(fileURLToPath(link.href), 'utf-8');
+    await page.evaluate(
+      ({ href, media, cssText }) => {
+        const link = Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'))
+          .find((candidate) => candidate.href === href);
+        if (!link) return;
+
+        const style = document.createElement('style');
+        style.textContent = cssText;
+        style.dataset.pagedjsInlined = 'true';
+        if (media) style.media = media;
+        link.replaceWith(style);
+      },
+      { href: link.href, media: link.media, cssText: css }
+    );
   }
 }
 
