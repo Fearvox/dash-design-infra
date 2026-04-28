@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DASH One-Pager Example</title>
+  <link rel="stylesheet" href="../packages/tokens/build/tokens.css">
+  <link rel="stylesheet" href="../packages/metrics/build/metrics.css">
+  <style>
+    @page {
+      size: 1684px 1191px;
+      margin: 0;
+    }
+
+    :root {
+      --page-width: 1684px;
+      --page-height: 1191px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-paper-grain);
+      color: var(--color-ink-primary);
+      font-family: var(--font-family-sans);
+    }
+
+    .page {
+      width: var(--page-width);
+      height: var(--page-height);
+      background: var(--color-paper-base);
+      color: var(--color-ink-primary);
+      padding: var(--page-padding);
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: var(--space-8);
+    }
+
+    .kicker {
+      margin: 0 0 var(--space-4);
+      color: var(--color-accent-palm-shadow);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-meta);
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 980px;
+      font-weight: 500;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin-top: var(--space-7);
+      color: var(--color-ink-secondary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--page-grid-gap);
+      align-self: end;
+    }
+
+    .panel {
+      min-height: 240px;
+      padding: var(--space-7);
+      border: 1px solid var(--color-rule-soft);
+      border-radius: var(--radius-lg);
+      background: var(--color-paper-card);
+    }
+
+    .panel h2 {
+      margin-bottom: var(--space-5);
+      font-weight: 500;
+    }
+
+    .panel p {
+      color: var(--color-ink-secondary);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-rule-soft);
+      padding-top: var(--space-5);
+      color: var(--color-ink-muted);
+      font-family: var(--font-family-mono);
+    }
+
+    @media screen {
+      body {
+        padding: 40px;
+      }
+
+      .page {
+        margin: 0 auto;
+        box-shadow: 0 24px 80px oklch(0.22 0.02 60 / 0.18);
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--color-paper-base);
+      }
+
+      .page {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">DASH / fixed canvas / public example</p>
+      <h1 class="capsize-display">Fixed Canvas Editorial Demo</h1>
+      <p class="lede capsize-body">A small, sanitized page that pulls from @dash/tokens, uses capsize metrics, passes the measure gate, and renders through the print pipeline.</p>
+    </header>
+
+    <main class="grid">
+      <section class="panel">
+        <h2 class="capsize-deck">Tokens</h2>
+        <p class="capsize-body">Color, typography, space, radius, and motion values come from the shared token build.</p>
+      </section>
+      <section class="panel">
+        <h2 class="capsize-deck">Measure</h2>
+        <p class="capsize-body">The page is checked against a 1684 x 1191 canvas before it is allowed into print output.</p>
+      </section>
+      <section class="panel">
+        <h2 class="capsize-deck">Print</h2>
+        <p class="capsize-body">The same HTML source can be rendered into a PDF with CSS paged-media constraints.</p>
+      </section>
+    </main>
+
+    <footer class="footer capsize-meta">
+      <span>dash-design-infra</span>
+      <span>Baseline 8px</span>
+    </footer>
+  </div>
+</body>
+</html>

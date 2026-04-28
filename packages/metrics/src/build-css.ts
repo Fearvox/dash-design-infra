@@ -17,14 +17,14 @@ import { geistMetrics, geistMonoMetrics } from './metrics-data.js';
 // These must stay in sync with @dash/tokens font.size and font.lineHeight.
 // TODO: import from @dash/tokens once the workspace symlink is verified.
 const STEPS = [
-  { key: 'display', font: geistMetrics, fontSize: 46, leading: 48 },
-  { key: 'deck',    font: geistMetrics, fontSize: 22, leading: 32 },
+  { key: 'display', font: geistMetrics, fontSize: 47, leading: 48 },
+  { key: 'deck',    font: geistMetrics, fontSize: 32, leading: 32 },
   { key: 'body',    font: geistMetrics, fontSize: 14, leading: 24 },
   { key: 'meta',    font: geistMetrics, fontSize: 11, leading: 16 },
-  { key: 'micro',   font: geistMetrics, fontSize: 10, leading: 16 }, // 9.5 rounded to integer
+  { key: 'micro',   font: geistMetrics, fontSize: 9, leading: 16 },
   { key: 'mono-body',  font: geistMonoMetrics, fontSize: 14, leading: 24 },
   { key: 'mono-meta',  font: geistMonoMetrics, fontSize: 11, leading: 16 },
-  { key: 'mono-micro', font: geistMonoMetrics, fontSize: 10, leading: 16 },
+  { key: 'mono-micro', font: geistMonoMetrics, fontSize: 9, leading: 16 },
 ] as const;
 
 function build() {

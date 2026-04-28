@@ -528,13 +528,13 @@ export default {
       $description:
         "5-step type scale — ratio ≈ φ between adjacent. Seeded from the original fixed-canvas reference CSS. @dash/scale can replace these with generated values in a later pass.",
       display: {
-        $value: "46px",
+        $value: "47px",
         $type: "dimension",
         $description: "h1 titles",
         filePath: "src/tokens.json",
         isSource: true,
         original: {
-          $value: "46px",
+          $value: "47px",
           $type: "dimension",
           $description: "h1 titles",
         },
@@ -547,13 +547,13 @@ export default {
         path: ["font", "size", "display"],
       },
       deck: {
-        $value: "22px",
+        $value: "32px",
         $type: "dimension",
         $description: "Primary findings, r-name",
         filePath: "src/tokens.json",
         isSource: true,
         original: {
-          $value: "22px",
+          $value: "32px",
           $type: "dimension",
           $description: "Primary findings, r-name",
         },
@@ -604,13 +604,13 @@ export default {
         path: ["font", "size", "meta"],
       },
       micro: {
-        $value: "9.5px",
+        $value: "9px",
         $type: "dimension",
         $description: "Run tags, tiny mono",
         filePath: "src/tokens.json",
         isSource: true,
         original: {
-          $value: "9.5px",
+          $value: "9px",
           $type: "dimension",
           $description: "Run tags, tiny mono",
         },

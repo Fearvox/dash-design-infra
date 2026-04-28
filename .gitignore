@@ -39,3 +39,8 @@ bun-debug.log*
 .cache
 coverage
 ~
+
+# Local agent / planning artifacts
+.evensong/
+GSD-PLAN.md
+SHARED_TASK_NOTES.md

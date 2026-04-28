@@ -9,10 +9,11 @@
  * Usage:
  *   bun run src/gen.ts             # prints all three scales to stdout
  *   bun run src/gen.ts --compare   # side-by-side: pure-φ vs split-ratio vs hand-tuned
- *   bun run src/gen.ts --write     # writes back to @dash/tokens (NOT YET — see TODO)
+ *   bun run src/gen.ts --write     # writes the tuned scale back to @dash/tokens
  */
 
 import { calculateSpaceScale } from 'utopia-core';
+import { fileURLToPath } from 'node:url';
 import {
   typeScale,
   typeScaleV1Pure,
@@ -34,6 +35,8 @@ export interface TypeStep {
   lineHeight: number; // snapped to baseline (8)
   css: string;       // clamp() emission — fixed canvas so collapses
 }
+
+type TokenSizeName = 'micro' | 'meta' | 'body' | 'deck' | 'display';
 
 /**
  * Compute a type-scale step list from split ratios.
@@ -192,19 +195,93 @@ if (import.meta.main) {
     console.log(' - Positive side: 21/32/47 matches hand-tuned 22/—/46 and ADDS a');
     console.log('   real deck tier at 32 (hand-tuned had collapsed it).');
     console.log('\nPick a winner and wire into @dash/tokens:');
-    console.log('  bun run src/gen.ts --write  (NOT YET implemented — merge strategy pending)');
+    console.log('  bun run src/gen.ts --write');
   } else if (write) {
-    console.error('--write not yet implemented — needs merge strategy review (see TODO)');
-    process.exit(1);
+    await writeToTokens();
+    console.log('\nSuccessfully wrote V4 tuned scale to @dash/tokens/src/tokens.json');
+    console.log('Running tokens:build...');
+    const repoRoot = fileURLToPath(new URL('../../../', import.meta.url));
+    const buildResult = Bun.spawnSync(['bun', 'run', '--filter=@dash/tokens', 'build'], { cwd: repoRoot });
+    if (buildResult.exitCode === 0) {
+      console.log('Tokens rebuilt successfully. New scale is now live.');
+    } else {
+      console.error('Build failed:', buildResult.stderr.toString());
+      process.exit(1);
+    }
+    process.exit(0);
   } else {
     const space = generateSpaceScale();
     const output = {
       baseline: BASELINE,
-      type: { v1_pure_phi: v1, v2_split: v2, hand_tuned: HAND_TUNED },
+      type: { v1_pure_phi: v1, v2_split: v2, hand_tuned: HAND_TUNED, v4_tuned: generateTypeScale() },
       space,
     };
     console.log(JSON.stringify(output, null, 2));
     console.log('\n--- dry run ---');
     console.log('Re-run with --compare for side-by-side tables');
+    console.log('Re-run with --write to update tokens.json (now implemented)');
   }
+}
+
+async function writeToTokens(): Promise<void> {
+  const tokensPath = fileURLToPath(new URL('../../tokens/src/tokens.json', import.meta.url));
+  const source = await Bun.file(tokensPath).text();
+  const sizeUpdates = generatedTypeValues(generateTypeScale());
+  const updated = updateFontSizeValues(source, sizeUpdates);
+
+  await Bun.write(tokensPath, updated);
+
+  console.log('Updated font sizes to V4:');
+  console.log('  micro: ' + sizeUpdates.micro);
+  console.log('  meta: ' + sizeUpdates.meta);
+  console.log('  body: ' + sizeUpdates.body);
+  console.log('  deck: ' + sizeUpdates.deck + ' (new distinct tier)');
+  console.log('  display: ' + sizeUpdates.display);
+  console.log('\nSpace ladder unchanged (already matches scale).');
+}
+
+function generatedTypeValues(scale: TypeStep[]): Record<TokenSizeName, string> {
+  return {
+    micro: `${requireStep(scale, 'micro').px}px`,
+    meta: `${requireStep(scale, 'meta').px}px`,
+    body: `${requireStep(scale, 'body').px}px`,
+    deck: `${requireStep(scale, 'deck').px}px`,
+    display: `${requireStep(scale, 'display').px}px`,
+  };
+}
+
+function requireStep(scale: TypeStep[], label: TokenSizeName): TypeStep {
+  const step = scale.find((item) => item.label === label);
+  if (!step) throw new Error(`@dash/scale: generated scale is missing "${label}".`);
+  return step;
+}
+
+function updateFontSizeValues(source: string, updates: Record<TokenSizeName, string>): string {
+  const sizeSectionPattern = /("size"\s*:\s*\{[\s\S]*?\n\s*\},\s*\n\s*"lineHeight")/m;
+  const match = source.match(sizeSectionPattern);
+  if (!match) {
+    throw new Error('@dash/scale: could not find font.size section in @dash/tokens/src/tokens.json.');
+  }
+
+  let section = match[1]!;
+  for (const [key, value] of Object.entries(updates) as [TokenSizeName, string][]) {
+    const valuePattern = new RegExp(`("${key}"\\s*:\\s*\\{[\\s\\S]*?"\\$value"\\s*:\\s*)"[^"]+"`);
+    if (!valuePattern.test(section)) {
+      throw new Error(`@dash/scale: could not find font.size.${key}.$value in tokens.json.`);
+    }
+    section = section.replace(valuePattern, (_full, prefix: string) => `${prefix}"${value}"`);
+  }
+
+  const updated = source.replace(match[1]!, section);
+  const parsed = JSON.parse(updated) as {
+    font?: { size?: Record<string, { $value?: string }> };
+  };
+
+  for (const [key, value] of Object.entries(updates)) {
+    if (parsed.font?.size?.[key]?.$value !== value) {
+      throw new Error(`@dash/scale: failed to verify written font.size.${key} value.`);
+    }
+  }
+
+  return updated;
 }

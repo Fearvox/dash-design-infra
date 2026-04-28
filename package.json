@@ -43,8 +43,8 @@
     "scale:gen": "bun run --filter=@dash/scale gen",
     "metrics:build": "bun run --filter=@dash/metrics build",
     "metrics:extract": "bun run --filter=@dash/metrics extract",
-    "measure:check": "bun run --filter=@dash/measure check",
-    "print:render": "bun run --filter=@dash/print render"
+    "measure:check": "bun packages/measure/src/cli.ts",
+    "print:render": "bun packages/print/src/cli.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.3",

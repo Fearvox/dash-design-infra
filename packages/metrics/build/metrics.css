@@ -5,37 +5,37 @@
 
 
 .capsize-display {
-  font-size: 46px;
+  font-size: 47px;
   line-height: 48px;
 }
 
 .capsize-display::before {
   content: "";
-  margin-bottom: -0.2142em;
+  margin-bottom: -0.2031em;
   display: table;
 }
 
 .capsize-display::after {
   content: "";
-  margin-top: -0.1292em;
+  margin-top: -0.1181em;
   display: table;
 }
 
 
 .capsize-deck {
-  font-size: 22px;
+  font-size: 32px;
   line-height: 32px;
 }
 
 .capsize-deck::before {
   content: "";
-  margin-bottom: -0.4198em;
+  margin-bottom: -0.1925em;
   display: table;
 }
 
 .capsize-deck::after {
   content: "";
-  margin-top: -0.3348em;
+  margin-top: -0.1075em;
   display: table;
 }
 
@@ -77,19 +77,19 @@
 
 
 .capsize-micro {
-  font-size: 10px;
+  font-size: 9px;
   line-height: 16px;
 }
 
 .capsize-micro::before {
   content: "";
-  margin-bottom: -0.4925em;
+  margin-bottom: -0.5814em;
   display: table;
 }
 
 .capsize-micro::after {
   content: "";
-  margin-top: -0.4075em;
+  margin-top: -0.4964em;
   display: table;
 }
 
@@ -131,18 +131,18 @@
 
 
 .capsize-mono-micro {
-  font-size: 10px;
+  font-size: 9px;
   line-height: 16px;
 }
 
 .capsize-mono-micro::before {
   content: "";
-  margin-bottom: -0.4925em;
+  margin-bottom: -0.5814em;
   display: table;
 }
 
 .capsize-mono-micro::after {
   content: "";
-  margin-top: -0.4075em;
+  margin-top: -0.4964em;
   display: table;
 }
