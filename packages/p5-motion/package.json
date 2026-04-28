@@ -1,0 +1,18 @@
+{
+  "name": "@dash/p5-motion",
+  "version": "0.0.1",
+  "private": true,
+  "description": "p5.js motion grammar and sketch utilities for DASH kinetic posters, animated diagrams, and generative visual references.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./css": "./src/p5-motion.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "p5": "^2.2.3"
+  }
+}
