@@ -25,6 +25,7 @@ This package does not import p5 at build time. The consuming app owns the render
 
 ```ts
 import {
+  createMotionTimeline,
   createTileGrid,
   frameProgress,
   layoutTileFrame,
@@ -34,11 +35,28 @@ import {
 const tiles = createTileGrid(720, 960, 3, 3);
 const progress = frameProgress(42, 180);
 const frame = layoutTileFrame(tiles, progress);
+const timeline = createMotionTimeline(p5MotionPresets.electricArchive.timeline);
+const state = timeline.atFrame(42);
 
 console.log(p5MotionPresets.electricArchive.layers);
 console.log(p5MotionPresets.memoryWeatherReport.useWhen);
 console.log(frame[0]);
+console.log(state.phases.scanExposure.eased);
 ```
+
+## Timeline Grammar
+
+`createMotionTimeline()` turns preset phase metadata into deterministic frame state without owning the p5 runtime. The timeline stays a plain object contract: the sketch host decides how to render, while `@dash/p5-motion` translates named phases into repeatable progress and easing values.
+
+```ts
+const timeline = createMotionTimeline(p5MotionPresets.electricArchive.timeline);
+const state = timeline.atFrame(42);
+
+console.log(state.phases.scanExposure.active);
+console.log(state.phases.scanExposure.eased);
+```
+
+Use `atFrame()` when you want looping exports with deterministic frame wrap. Use `atProgress()` when you want direct scrubbing that clamps to `0..1` instead of wrapping.
 
 ## Runtime Boundary
 

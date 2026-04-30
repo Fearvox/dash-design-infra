@@ -29,6 +29,49 @@ export interface TileFrame extends MotionTile {
   alpha: number;
 }
 
+export type MotionEasingName = 'linear' | 'easeInOutCubic' | 'pingPong';
+
+export interface MotionPhaseDefinition<Name extends string = string> {
+  name: Name;
+  start: number;
+  end: number;
+  easing?: MotionEasingName;
+}
+
+export interface MotionTimelineDefinition<Name extends string = string> {
+  totalFrames: number;
+  phases: readonly MotionPhaseDefinition<Name>[];
+}
+
+export interface MotionTimelinePhase<Name extends string = string> {
+  name: Name;
+  start: number;
+  end: number;
+  easing: MotionEasingName;
+}
+
+export interface MotionPhaseState {
+  active: boolean;
+  progress: number;
+  eased: number;
+  start: number;
+  end: number;
+  easing: MotionEasingName;
+}
+
+export interface MotionTimelineState<Name extends string = string> {
+  frame: number;
+  progress: number;
+  phases: Record<Name, MotionPhaseState>;
+}
+
+export interface MotionTimeline<Name extends string = string> {
+  totalFrames: number;
+  phases: readonly MotionTimelinePhase<Name>[];
+  atFrame(frame: number): MotionTimelineState<Name>;
+  atProgress(progress: number): MotionTimelineState<Name>;
+}
+
 export interface P5MotionPreset {
   name: string;
   source: string;
@@ -36,6 +79,7 @@ export interface P5MotionPreset {
   layers: readonly string[];
   does: readonly string[];
   useWhen: readonly string[];
+  timeline?: MotionTimelineDefinition;
 }
 
 export const p5MotionPresets = {
@@ -54,6 +98,14 @@ export const p5MotionPresets = {
       'showing memory, retrieval, archive, or handoff evidence',
       'making a technical report feel active without turning it into a dashboard',
     ],
+    timeline: {
+      totalFrames: 240,
+      phases: [
+        { name: 'archiveReveal', start: 0, end: 0.28, easing: 'easeInOutCubic' },
+        { name: 'signalDrift', start: 0, end: 1, easing: 'linear' },
+        { name: 'scanExposure', start: 0.18, end: 0.86, easing: 'pingPong' },
+      ],
+    },
   },
   memoryWeatherReport: {
     name: 'memory-weather-report',
@@ -70,6 +122,14 @@ export const p5MotionPresets = {
       'explaining risk, evidence density, system health, or handoff state',
       'turning a table of signals into a readable weather-map report surface',
     ],
+    timeline: {
+      totalFrames: 300,
+      phases: [
+        { name: 'cloudDrift', start: 0, end: 1, easing: 'linear' },
+        { name: 'pressurePulse', start: 0.1, end: 0.9, easing: 'pingPong' },
+        { name: 'forecastCardReveal', start: 0, end: 0.36, easing: 'easeInOutCubic' },
+      ],
+    },
   },
   blueAppleCollageLoop: {
     name: 'blue-apple-collage-loop',
@@ -86,6 +146,14 @@ export const p5MotionPresets = {
       'turning a still image into a calm kinetic poster',
       'creating motion studies for social, deck, or one-pager surfaces',
     ],
+    timeline: {
+      totalFrames: 180,
+      phases: [
+        { name: 'scatter', start: 0, end: 0.32, easing: 'easeInOutCubic' },
+        { name: 'hold', start: 0.32, end: 0.58, easing: 'linear' },
+        { name: 'reassemble', start: 0.58, end: 1, easing: 'easeInOutCubic' },
+      ],
+    },
   },
   frontierPosterScan: {
     name: 'frontier-poster-scan',
@@ -102,6 +170,14 @@ export const p5MotionPresets = {
       'stress-testing poster hierarchy under motion',
       'building electric archive or frontier-complexity visuals',
     ],
+    timeline: {
+      totalFrames: 210,
+      phases: [
+        { name: 'posterHold', start: 0, end: 0.2, easing: 'linear' },
+        { name: 'noiseBloom', start: 0.15, end: 0.65, easing: 'pingPong' },
+        { name: 'scanWash', start: 0.25, end: 1, easing: 'easeInOutCubic' },
+      ],
+    },
   },
 } as const satisfies Record<string, P5MotionPreset>;
 
@@ -146,6 +222,53 @@ export function frameProgress(frame: number, totalFrames: number): number {
   return wrapped / totalFrames;
 }
 
+export function createMotionTimeline<const Name extends string>(
+  definition: MotionTimelineDefinition<Name>,
+): MotionTimeline<Name> {
+  assertInteger(definition.totalFrames, 'totalFrames');
+
+  if (definition.phases.length === 0) {
+    throw new Error('@dash/p5-motion: phases must not be empty.');
+  }
+
+  const seenNames = new Set<string>();
+  const phases = Object.freeze(
+    definition.phases.map((phase) => {
+      assertUnitInterval(phase.start, `${phase.name}.start`);
+      assertUnitInterval(phase.end, `${phase.name}.end`);
+
+      if (phase.end <= phase.start) {
+        throw new Error(`@dash/p5-motion: ${phase.name}.end must be greater than ${phase.name}.start.`);
+      }
+
+      if (seenNames.has(phase.name)) {
+        throw new Error(`@dash/p5-motion: phase names must be unique. Duplicate "${phase.name}" found.`);
+      }
+
+      seenNames.add(phase.name);
+      return Object.freeze({
+        name: phase.name,
+        start: phase.start,
+        end: phase.end,
+        easing: phase.easing ?? 'linear',
+      });
+    }),
+  ) as readonly MotionTimelinePhase<Name>[];
+
+  const totalFrames = definition.totalFrames;
+
+  return {
+    totalFrames,
+    phases,
+    atFrame(frame) {
+      return createMotionTimelineState(frameProgress(frame, totalFrames), frame, phases);
+    },
+    atProgress(progress) {
+      return createMotionTimelineState(clamp01(progress), Math.round(clamp01(progress) * totalFrames), phases);
+    },
+  };
+}
+
 export function pingPong(t: number): number {
   const n = wrap01(t);
   return n < 0.5 ? n * 2 : (1 - n) * 2;
@@ -186,6 +309,43 @@ export function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
+function createMotionTimelineState<Name extends string>(
+  timelineProgress: number,
+  frame: number,
+  phases: readonly MotionTimelinePhase<Name>[],
+): MotionTimelineState<Name> {
+  const phaseStates = {} as Record<Name, MotionPhaseState>;
+
+  for (const phase of phases) {
+    const progress = clamp01((timelineProgress - phase.start) / (phase.end - phase.start));
+    phaseStates[phase.name] = {
+      active: timelineProgress >= phase.start && timelineProgress <= phase.end,
+      progress,
+      eased: applyMotionEasing(phase.easing, progress),
+      start: phase.start,
+      end: phase.end,
+      easing: phase.easing,
+    };
+  }
+
+  return {
+    frame,
+    progress: timelineProgress,
+    phases: phaseStates,
+  };
+}
+
+function applyMotionEasing(easing: MotionEasingName, t: number): number {
+  switch (easing) {
+    case 'linear':
+      return clamp01(t);
+    case 'easeInOutCubic':
+      return easeInOutCubic(t);
+    case 'pingPong':
+      return pingPong(t);
+  }
+}
+
 function seededUnit(seed: number): number {
   const x = Math.sin(seed * 12.9898) * 43758.5453;
   return x - Math.floor(x);
@@ -200,5 +360,11 @@ function assertPositive(value: number, name: string): void {
 function assertInteger(value: number, name: string): void {
   if (!Number.isInteger(value) || value <= 0) {
     throw new Error(`@dash/p5-motion: ${name} must be a positive integer.`);
+  }
+}
+
+function assertUnitInterval(value: number, name: string): void {
+  if (!Number.isFinite(value) || value < 0 || value > 1) {
+    throw new Error(`@dash/p5-motion: ${name} must be a finite number between 0 and 1.`);
   }
 }

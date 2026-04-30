@@ -88,13 +88,16 @@ bun print:render -- examples/one-pager.html /tmp/dash-one-pager.pdf --canvas=168
 Try the motion helpers:
 
 ```ts
-import { createTileGrid, layoutTileFrame, p5MotionPresets } from '@dash/p5-motion';
+import { createMotionTimeline, createTileGrid, layoutTileFrame, p5MotionPresets } from '@dash/p5-motion';
 
 const tiles = createTileGrid(720, 960, 3, 3);
 const frame = layoutTileFrame(tiles, 0.42);
+const timeline = createMotionTimeline(p5MotionPresets.electricArchive.timeline);
+const state = timeline.atFrame(42);
 
 console.log(p5MotionPresets.memoryWeatherReport.layers);
 console.log(frame[0]);
+console.log(state.phases.scanExposure.eased);
 ```
 
 <p align="right"><a href="#top">back to top</a></p>
