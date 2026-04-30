@@ -234,6 +234,7 @@ export function createMotionTimeline<const Name extends string>(
   const seenNames = new Set<string>();
   const phases = Object.freeze(
     definition.phases.map((phase) => {
+      assertSafePhaseName(phase.name);
       assertUnitInterval(phase.start, `${phase.name}.start`);
       assertUnitInterval(phase.end, `${phase.name}.end`);
 
@@ -243,6 +244,10 @@ export function createMotionTimeline<const Name extends string>(
 
       if (seenNames.has(phase.name)) {
         throw new Error(`@dash/p5-motion: phase names must be unique. Duplicate "${phase.name}" found.`);
+      }
+
+      if (phase.easing !== undefined) {
+        assertMotionEasingName(phase.easing, phase.name);
       }
 
       seenNames.add(phase.name);
@@ -264,7 +269,9 @@ export function createMotionTimeline<const Name extends string>(
       return createMotionTimelineState(frameProgress(frame, totalFrames), frame, phases);
     },
     atProgress(progress) {
-      return createMotionTimelineState(clamp01(progress), Math.round(clamp01(progress) * totalFrames), phases);
+      const clampedProgress = clamp01(progress);
+      const frame = Math.min(Math.floor(clampedProgress * totalFrames), totalFrames - 1);
+      return createMotionTimelineState(clampedProgress, frame, phases);
     },
   };
 }
@@ -314,7 +321,7 @@ function createMotionTimelineState<Name extends string>(
   frame: number,
   phases: readonly MotionTimelinePhase<Name>[],
 ): MotionTimelineState<Name> {
-  const phaseStates = {} as Record<Name, MotionPhaseState>;
+  const phaseStates = Object.create(null) as Record<Name, MotionPhaseState>;
 
   for (const phase of phases) {
     const progress = clamp01((timelineProgress - phase.start) / (phase.end - phase.start));
@@ -343,6 +350,8 @@ function applyMotionEasing(easing: MotionEasingName, t: number): number {
       return easeInOutCubic(t);
     case 'pingPong':
       return pingPong(t);
+    default:
+      throw new Error(`@dash/p5-motion: unsupported easing "${String(easing)}".`);
   }
 }
 
@@ -366,5 +375,19 @@ function assertInteger(value: number, name: string): void {
 function assertUnitInterval(value: number, name: string): void {
   if (!Number.isFinite(value) || value < 0 || value > 1) {
     throw new Error(`@dash/p5-motion: ${name} must be a finite number between 0 and 1.`);
+  }
+}
+
+function assertMotionEasingName(value: string, phaseName: string): asserts value is MotionEasingName {
+  if (value !== 'linear' && value !== 'easeInOutCubic' && value !== 'pingPong') {
+    throw new Error(
+      `@dash/p5-motion: ${phaseName}.easing must be one of "linear", "easeInOutCubic", or "pingPong".`,
+    );
+  }
+}
+
+function assertSafePhaseName(name: string): void {
+  if (name === '__proto__' || name === 'prototype' || name === 'constructor') {
+    throw new Error(`@dash/p5-motion: phase name "${name}" is reserved and cannot be used.`);
   }
 }
