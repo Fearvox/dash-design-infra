@@ -47,7 +47,7 @@ Not in scope:
 | Public-boundary scan | PASS | `bun security:scan` returned clean |
 | Hackathon score gate | PASS | `bun hackathon:score` returned max score |
 | Type safety | PASS | `bun typecheck` passed across all packages |
-| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score |
+| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, creator gates, docs link check, public-boundary scan, and hackathon score |
 | Public security reporting path | PASS | SECURITY.md added |
 | Agent contribution boundary | PASS | AGENTS.md states public boundary and verification commands |
 | Workflow index | PASS | `docs/WORKFLOW_INDEX.md` maps artifact jobs to entry file, package layer, command path, QA gate, and public boundary |
@@ -94,6 +94,7 @@ Run before public-facing PRs:
 
 ```bash
 bun typecheck
+bun creator:prompt-dna-check
 bun docs:links
 bun audit --audit-level high
 bun security:scan
