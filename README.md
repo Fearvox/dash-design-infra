@@ -25,6 +25,7 @@
     <a href="#why-this-exists">Why</a> ·
     <a href="#use-cases">Use Cases</a> ·
     <a href="#packages">Packages</a> ·
+    <a href="#optimization-loop">Loop</a> ·
     <a href="#public-trust-boundary">Trust Boundary</a>
   </p>
   <br />
@@ -60,7 +61,9 @@ bun x playwright install chromium
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun docs:links
 bun security:scan
+bun hackathon:score
 ```
 
 Check the public fixed-canvas path:
@@ -136,6 +139,20 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 <p align="right"><a href="#top">back to top</a></p>
 
+## Optimization Loop
+
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md).
+
+The local scoreboard proxy is:
+
+```bash
+bun hackathon:score
+```
+
+It is blunt on purpose: if a loop cannot improve public clarity, verification, installability, or boundary safety, it should not consume the next 30 minutes.
+
+<p align="right"><a href="#top">back to top</a></p>
+
 ## Public Trust Boundary
 
 This repo is public-facing, so the boundary is explicit.
@@ -148,7 +165,9 @@ This repo is public-facing, so the boundary is explicit.
 | Secrets and env files | ignored, scanned, not committed |
 | Generated media | excluded unless deliberately small public preview |
 | Dependency audit | `bun audit --audit-level high`, currently clean |
+| Markdown link check | `bun docs:links`, currently clean |
 | Public-boundary scan | `bun security:scan`, currently clean |
+| Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 
 Read the current public-facing security posture in [`docs/PUBLIC_CSO_AUDIT.md`](./docs/PUBLIC_CSO_AUDIT.md). Report security issues through [`SECURITY.md`](./SECURITY.md).
@@ -212,7 +231,7 @@ Ready now:
 - constraint-solver layout helpers;
 - paged.js PDF export;
 - public example and usecase docs;
-- CI for install, token build, metrics build, typecheck, dependency audit, and public-boundary scan.
+- CI for install, token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score.
 
 Still intentionally private or external:
 

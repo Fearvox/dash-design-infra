@@ -25,6 +25,7 @@
     <a href="#为什么存在">为什么存在</a> ·
     <a href="#能做什么">能做什么</a> ·
     <a href="#包说明">包说明</a> ·
+    <a href="#优化循环">Loop</a> ·
     <a href="#公开信任边界">信任边界</a>
   </p>
   <br />
@@ -60,7 +61,9 @@ bun x playwright install chromium
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun docs:links
 bun security:scan
+bun hackathon:score
 ```
 
 检查公开固定画布路径：
@@ -136,6 +139,20 @@ Tokens / scale / metrics
 
 <p align="right"><a href="#top">回到顶部</a></p>
 
+## 优化循环
+
+Hackathon loop 现在写成明确操作模型：review 一个 surface，apply 一个窄修复，score 证明变强，CI 复验，green 才 merge，然后下一轮。模型见 [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md)，ClawSweeper 参考映射见 [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md)。
+
+本地 scoreboard proxy：
+
+```bash
+bun hackathon:score
+```
+
+它故意很直：如果一个 loop 不能提升公开清晰度、验证、可安装性或边界安全，就不值得吃掉下一个 30 分钟。
+
+<p align="right"><a href="#top">回到顶部</a></p>
+
 ## 公开信任边界
 
 这个 repo 是 public-facing，所以边界必须写死。
@@ -148,7 +165,9 @@ Tokens / scale / metrics
 | secrets / env 文件 | ignore + scan，不提交 |
 | 生成媒体 | 除非是刻意准备的小型公开 preview，否则不提交 |
 | 依赖审计 | `bun audit --audit-level high`，当前 clean |
+| Markdown link check | `bun docs:links`，当前 clean |
 | 公开边界扫描 | `bun security:scan`，当前 clean |
+| Hackathon score | `bun hackathon:score`，当前 maxed |
 | 类型安全 | `bun typecheck`，当前 green |
 
 公开安全姿态见 [`docs/PUBLIC_CSO_AUDIT.md`](./docs/PUBLIC_CSO_AUDIT.md)。安全问题报告见 [`SECURITY.md`](./SECURITY.md)。
@@ -212,7 +231,7 @@ Hackathon 目标在 [`docs/HACKATHON_GOAL.md`](./docs/HACKATHON_GOAL.md)。
 - 约束求解布局 helper；
 - paged.js PDF 输出；
 - 公开 example 和 usecase 文档；
-- 安装、token build、metrics build、typecheck、dependency audit、public-boundary scan 的 CI。
+- 安装、token build、metrics build、typecheck、dependency audit、docs link check、public-boundary scan、hackathon score 的 CI。
 
 刻意留在仓库外：
 

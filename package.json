@@ -45,7 +45,9 @@
     "metrics:extract": "bun run --filter=@dash/metrics extract",
     "measure:check": "bun packages/measure/src/cli.ts",
     "print:render": "bun packages/print/src/cli.ts",
-    "security:scan": "bun scripts/public-boundary-scan.ts"
+    "docs:links": "bun scripts/markdown-link-check.ts",
+    "security:scan": "bun scripts/public-boundary-scan.ts",
+    "hackathon:score": "bun scripts/hackathon-score.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.3",

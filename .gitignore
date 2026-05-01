@@ -37,6 +37,7 @@ bun-debug.log*
 # Temp
 .tmp
 .cache
+.artifacts
 coverage
 ~
 
