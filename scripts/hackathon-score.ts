@@ -72,11 +72,14 @@ const checks: Check[] = [
   },
   {
     id: 'workflow-library',
-    label: 'Usecase library covers document, p5, visual research, and video workflows',
+    label: 'Usecase library covers creator, document, p5, visual research, and video workflows',
     points: 8,
     pass:
       existsSync('examples/one-pager.html') &&
+      existsSync('examples/creator-frontier-capsule.html') &&
+      existsSync('examples/creator-evolution-loop.json') &&
       existsSync('examples/refero-research-board.html') &&
+      existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
       existsSync('usecases/p5js/weather-report.md') &&
       existsSync('usecases/visual-research/refero-visual-research.md') &&
@@ -100,7 +103,7 @@ const checks: Check[] = [
   },
   {
     id: 'workflow-index-coverage',
-    label: 'Workflow index covers document, fixed-canvas, p5, video, hardening, and SDD loop routes',
+    label: 'Workflow index covers creator, document, fixed-canvas, p5, video, hardening, and SDD loop routes',
     points: 10,
     pass: has('docs/WORKFLOW_INDEX.md', [
       'One-page brief / report',
@@ -108,6 +111,8 @@ const checks: Check[] = [
       'Kinetic poster',
       'Evidence weather map',
       'Dense generative video',
+      'Creator frontier capsule',
+      'Creator evolution engine',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -145,6 +150,43 @@ const checks: Check[] = [
     evidence: 'Darwin skill ratchet workflow + example board',
   },
   {
+    id: 'creator-frontier-capsule',
+    label: 'Creator capsule workflow is minimal, public-safe, machine-checked, and measurable',
+    points: 12,
+    pass:
+      scripts['creator:capsule-check'] === 'bun scripts/creator-capsule-check.ts' &&
+      commandPass('bun', ['creator:capsule-check']) &&
+      existsSync('docs/CREATOR_OS.md') &&
+      existsSync('examples/creator-frontier-capsule.json') &&
+      existsSync('examples/creator-frontier-capsule.html') &&
+      has('usecases/creator/creator-frontier-capsule.md', [
+        'Capsule schema',
+        'Tool adapter rules',
+        'Public boundary',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator frontier capsule', 'creator-frontier-capsule.html']),
+    evidence: 'Creator OS + capsule JSON + workflow + board',
+  },
+  {
+    id: 'creator-evolution-engine',
+    label: 'Creator evolution engine encodes Darwin-style self-evolution, not dashboard theater',
+    points: 12,
+    pass:
+      scripts['creator:evolution-check'] === 'bun scripts/creator-evolution-check.ts' &&
+      commandPass('bun', ['creator:evolution-check']) &&
+      existsSync('docs/CREATOR_EVOLUTION_ENGINE.md') &&
+      existsSync('examples/creator-evolution-loop.json') &&
+      has('docs/CREATOR_EVOLUTION_ENGINE.md', [
+        'Anti-dashboard rule',
+        '30-day self-evolution plan',
+        'Fitness rubric',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator evolution engine', 'creator:evolution-check']),
+    evidence: 'Creator evolution doctrine + JSON runbook + machine check',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,
@@ -160,13 +202,15 @@ const checks: Check[] = [
   },
   {
     id: 'ci-gates',
-    label: 'CI gates build, typecheck, audit, link check, boundary scan, and hackathon score',
+    label: 'CI gates build, typecheck, audit, capsule check, link check, boundary scan, and hackathon score',
     points: 12,
     pass: has('.github/workflows/ci.yml', [
       'bun tokens:build',
       'bun metrics:build',
       'bun typecheck',
       'bun audit --audit-level high',
+      'bun creator:capsule-check',
+      'bun creator:evolution-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -175,10 +219,13 @@ const checks: Check[] = [
   },
   {
     id: 'package-scripts',
-    label: 'Package scripts expose the SDD score loop',
+    label: 'Package scripts expose the creator capsule and SDD score loop',
     points: 8,
-    pass: scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.hackathon:score',
+    pass:
+      scripts['creator:capsule-check'] === 'bun scripts/creator-capsule-check.ts' &&
+      scripts['creator:evolution-check'] === 'bun scripts/creator-evolution-check.ts' &&
+      scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.hackathon:score',
   },
 ];
 

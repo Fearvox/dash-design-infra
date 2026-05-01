@@ -32,6 +32,12 @@ jobs:
       - name: Dependency Audit
         run: bun audit --audit-level high
 
+      - name: Creator Capsule Check
+        run: bun creator:capsule-check
+
+      - name: Creator Evolution Check
+        run: bun creator:evolution-check
+
       - name: Markdown Link Check
         run: bun docs:links
 

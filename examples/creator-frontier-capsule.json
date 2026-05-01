@@ -1,0 +1,46 @@
+{
+  "creator": "independent creator building a launch visual system",
+  "intent": "turn a fuzzy visual idea into a reusable, publishable artifact without losing the seed",
+  "memory": [
+    "the piece should feel calm, precise, and future-facing",
+    "the output must explain the idea to a collaborator in under 20 seconds",
+    "the visual grammar should survive as poster, deck, short, and browser board"
+  ],
+  "surface": "fixed-canvas creator board",
+  "grammar": {
+    "layout": "minimal command table wrapped by one expressive hero field",
+    "type": "quiet editorial headline plus compact technical labels",
+    "color": "warm monochrome base with one electric frontier accent per tool family",
+    "motion": "still artifact now; future remix may animate capsule lanes left-to-right"
+  },
+  "inputs": {
+    "allowed": [
+      "synthetic copy",
+      "public tool names",
+      "sanitized creator intent",
+      "DASH tokens and layout primitives"
+    ],
+    "blocked": [
+      "private client text",
+      "local absolute source paths",
+      "raw creator media",
+      "API keys, cookies, account screenshots"
+    ]
+  },
+  "tool_path": [
+    "write capsule json",
+    "render fixed-canvas html board",
+    "measure browser overflow",
+    "render pdf proof",
+    "scan public boundary",
+    "route future remix to p5/remotion/manim/touchdesigner/image-video adapter"
+  ],
+  "proof": [
+    "bun creator:capsule-check",
+    "bun measure:check -- examples/creator-frontier-capsule.html",
+    "bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-frontier-capsule.pdf --canvas=1684x1191",
+    "bun security:scan",
+    "browser visual QA"
+  ],
+  "remix_rule": "Change surface, palette accent, and tool adapter freely; preserve creator intent, memory, blocked inputs, and proof path."
+}

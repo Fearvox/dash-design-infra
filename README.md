@@ -24,6 +24,8 @@
     <a href="#quick-start">Quick Start</a> ·
     <a href="#why-this-exists">Why</a> ·
     <a href="#use-cases">Use Cases</a> ·
+    <a href="./docs/CREATOR_OS.md">Creator OS</a> ·
+    <a href="./docs/CREATOR_EVOLUTION_ENGINE.md">Evolution Engine</a> ·
     <a href="#packages">Packages</a> ·
     <a href="#optimization-loop">Loop</a> ·
     <a href="#public-trust-boundary">Trust Boundary</a>
@@ -98,6 +100,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 
 | You need to make | Start with | What survives |
 |---|---|---|
+| Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |
 | Kinetic poster | [`@dash/p5-motion`](./packages/p5-motion) | Named p5.js motion grammar instead of one-off sketch soup |
@@ -145,7 +148,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 ## Optimization Loop
 
-The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements.
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea → capsule → artifact → proof → remix trail. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe → mutate → render → evaluate → select → retain → regress. This is self-evolution machinery, not a dashboard.
 
 The local scoreboard proxy is:
 
@@ -171,6 +174,8 @@ This repo is public-facing, so the boundary is explicit.
 | Dependency audit | `bun audit --audit-level high`, currently clean |
 | Markdown link check | `bun docs:links`, currently clean |
 | Public-boundary scan | `bun security:scan`, currently clean |
+| Creator capsule check | `bun creator:capsule-check`, currently clean |
+| Creator evolution check | `bun creator:evolution-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 
