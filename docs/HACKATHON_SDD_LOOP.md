@@ -105,8 +105,19 @@ Bad slices:
 - public-boundary scan;
 - CI gate coverage;
 - package scripts.
+- retained creator motion storyboard route before raw media or renderer work.
 
 The score is intentionally blunt. It is not a beauty contest; it is a guardrail against fake progress.
+
+Current retained creator slice:
+
+```bash
+bun creator:motion-storyboard-check
+bun measure:check -- examples/creator-motion-storyboard.html
+bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191
+```
+
+This route is the allowed bridge from capsule memory to future video/contact-sheet work. Do not commit raw generated video, private prompts, local source paths, account screenshots, or client copy.
 
 ## Review-fitting without overfitting
 

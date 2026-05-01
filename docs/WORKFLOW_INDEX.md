@@ -28,6 +28,7 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Creator evolution engine | [`docs/CREATOR_EVOLUTION_ENGINE.md`](./CREATOR_EVOLUTION_ENGINE.md) | docs + scripts until repeated winners justify packages | `bun creator:evolution-check && bun creator:mutation-check && bun creator:capsule-check && bun hackathon:score` | Darwin loop + candidate ledger + existing regression gates | No dashboard-only output; retain only creator-useful mutations with public-safe proof |
 | Creator mutation ledger | [`usecases/creator/creator-mutation-candidates.md`](../usecases/creator/creator-mutation-candidates.md) | examples + scripts only | `bun creator:mutation-check` | 3-5 single-axis candidates, exactly one selected winner, regression commands named | Public-safe observations only; no private source material or raw generated media |
 | Creator poster surface | [`usecases/creator/creator-poster-surface.md`](../usecases/creator/creator-poster-surface.md) | `@dash/measure`, `@dash/print`, examples + scripts | `bun creator:poster-check` then `bun measure:check -- examples/creator-poster-surface.html` and `bun print:render -- examples/creator-poster-surface.html /tmp/dash-creator-poster-surface.pdf --canvas=1684x1191` | Poster contract + browser measure + PDF render + public-boundary scan | Synthetic capsule copy only; no private source media, raw generated media, local paths, or account screenshots |
+| Creator motion storyboard | [`usecases/creator/creator-motion-storyboard.md`](../usecases/creator/creator-motion-storyboard.md) | examples + scripts; future video/contact-sheet remains adapter edge | `bun creator:motion-storyboard-check` then `bun measure:check -- examples/creator-motion-storyboard.html` and `bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191` | Six-frame storyboard contract + browser measure + public-boundary scan | No raw generated video, private prompts, local paths, account screenshots, or client copy |
 | Creator prompt DNA adapter | [`usecases/creator/creator-prompt-dna-adapter.md`](../usecases/creator/creator-prompt-dna-adapter.md) | examples + scripts; frontier models remain external adapters | `bun creator:prompt-dna-check` then `bun measure:check -- examples/creator-prompt-dna-adapter.html` and `bun print:render -- examples/creator-prompt-dna-adapter.html /tmp/dash-creator-prompt-dna-adapter.pdf --canvas=1684x1191` | Prompt DNA contract + proof card + public-boundary scan | No private prompts, raw generated media, client copy, local paths, or account screenshots |
 | Public repo hardening | [`docs/PUBLIC_CSO_AUDIT.md`](./PUBLIC_CSO_AUDIT.md) | repo scripts | `bun docs:links && bun security:scan && bun hackathon:score` | All gates green locally and in CI | No secrets, private paths, raw media, or private project text |
 | Hackathon SDD loop | [`docs/HACKATHON_SDD_LOOP.md`](./HACKATHON_SDD_LOOP.md) | repo scripts + CI | review → apply → score → PR → CI → merge | `bun hackathon:score` returns `MAXXED` | Score must prove public usefulness, not just activity |
@@ -94,7 +95,7 @@ bun measure:check -- examples/creator-frontier-capsule.html
 bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-frontier-capsule.pdf --canvas=1684x1191
 ```
 
-The useful unit is `idea -> capsule -> artifact -> proof -> remix trail`. If the target surface is a poster, use `bun creator:poster-check` and `examples/creator-poster-surface.html` before inventing a new renderer. If the target path is an image/video model, use `bun creator:prompt-dna-check` and `examples/creator-prompt-dna-adapter.html` before saving any generated media. Keep the core minimal and put frontier tools at the adapter edge.
+The useful unit is `idea -> capsule -> artifact -> proof -> remix trail`. If the target surface is a poster, use `bun creator:poster-check` and `examples/creator-poster-surface.html` before inventing a new renderer. If the target path is an image/video model, use `bun creator:prompt-dna-check` and `examples/creator-prompt-dna-adapter.html` before saving any generated media. If the target is motion/video direction, use `bun creator:motion-storyboard-check` and `examples/creator-motion-storyboard.html` before any renderer or contact sheet. Keep the core minimal and put frontier tools at the adapter edge.
 
 ### If the user asks for Darwin-style self-evolution
 
@@ -132,7 +133,7 @@ These are intentionally unshipped until they have commands and public boundaries
 | TouchDesigner / twozero MCP workflow | running local TD contract, exported public `.tox` or screenshot path, port/security note |
 | Browser demo / Vercel surface | deploy command, public URL, screenshot QA, rollback path |
 | Skills.sh / Hermes skill package | `SKILL.md`, install path, trigger description, example task, verification gate; use the Darwin ratchet before publishing |
-| Visual contact-sheet QA | script that samples frames and writes an ignored artifact |
+| Visual contact-sheet QA | script that samples frames and writes an ignored artifact; starts from creator-motion-storyboard route |
 
 ## 中文摘要
 

@@ -81,6 +81,7 @@ const checks: Check[] = [
       existsSync('examples/creator-mutation-candidates.json') &&
       existsSync('examples/creator-poster-surface.html') &&
       existsSync('examples/creator-prompt-dna-adapter.json') &&
+      existsSync('examples/creator-motion-storyboard.html') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
@@ -119,6 +120,7 @@ const checks: Check[] = [
       'Creator mutation ledger',
       'Creator poster surface',
       'Creator prompt DNA adapter',
+      'Creator motion storyboard',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -245,6 +247,29 @@ const checks: Check[] = [
       has('docs/WORKFLOW_INDEX.md', ['Creator prompt DNA adapter', 'creator-prompt-dna-adapter.html']),
     evidence: 'Creator prompt DNA adapter contract + proof card + machine check',
   },
+
+  {
+    id: 'creator-motion-storyboard',
+    label: 'Creator motion storyboard bridges capsule memory to video direction without raw media',
+    points: 12,
+    pass:
+      scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
+      commandPass('bun', ['creator:motion-storyboard-check']) &&
+      existsSync('examples/creator-motion-storyboard.json') &&
+      existsSync('examples/creator-motion-storyboard.html') &&
+      has('README.md', ['Creator Motion Storyboard', 'creator:motion-storyboard-check']) &&
+      has('examples/README.md', ['Creator Storyboard', 'creator-motion-storyboard.html']) &&
+      has('docs/HACKATHON_SDD_LOOP.md', ['creator:motion-storyboard-check', 'creator-motion-storyboard.html']) &&
+      has('usecases/creator/creator-motion-storyboard.md', [
+        'Mutation selected',
+        'Public boundary',
+        'Remix rule',
+        'Contact-sheet bridge',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator motion storyboard', 'creator-motion-storyboard.html']),
+    evidence: 'Creator motion storyboard contract + fixed-canvas artifact + machine check',
+  },
   {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
@@ -273,6 +298,8 @@ const checks: Check[] = [
       'bun creator:mutation-check',
       'bun creator:poster-check',
       'bun creator:prompt-dna-check',
+      '- name: Creator Motion Storyboard Check',
+      'bun creator:motion-storyboard-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -289,8 +316,9 @@ const checks: Check[] = [
       scripts['creator:mutation-check'] === 'bun scripts/creator-mutation-check.ts' &&
       scripts['creator:poster-check'] === 'bun scripts/creator-poster-check.ts' &&
       scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
+      scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.hackathon:score',
   },
 ];
 

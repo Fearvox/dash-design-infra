@@ -95,6 +95,7 @@ Run before public-facing PRs:
 ```bash
 bun typecheck
 bun creator:prompt-dna-check
+bun creator:motion-storyboard-check
 bun docs:links
 bun audit --audit-level high
 bun security:scan

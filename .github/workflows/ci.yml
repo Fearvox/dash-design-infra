@@ -47,6 +47,9 @@ jobs:
       - name: Creator Prompt DNA Check
         run: bun creator:prompt-dna-check
 
+      - name: Creator Motion Storyboard Check
+        run: bun creator:motion-storyboard-check
+
       - name: Markdown Link Check
         run: bun docs:links
 

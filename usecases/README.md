@@ -16,6 +16,7 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 - [Creator Mutation Candidate Ledger](./creator/creator-mutation-candidates.md) - machine-checked candidate comparison before retaining a Darwin winner.
 - [Creator Poster Surface Route](./creator/creator-poster-surface.md) - first retained surface mutation: capsule to publishable poster proof.
 - [Creator Prompt DNA Adapter Route](./creator/creator-prompt-dna-adapter.md) - frontier image/video model adapter that preserves public-safe prompt DNA without raw media.
+- [Creator Motion Storyboard Route](./creator/creator-motion-storyboard.md) - fixed-canvas six-frame motion brief before any renderer, contact sheet, or generated video.
 
 ## Video Render Workflows
 
@@ -37,6 +38,7 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 - [Creator Mutation Candidate Ledger](./creator/creator-mutation-candidates.md)：在保留 Darwin winner 前，先机器检查候选 mutation、评分和 regression。
 - [Creator Poster Surface Route](./creator/creator-poster-surface.md)：第一个实际 surface mutation，把 capsule 变成可测量/可 PDF proof 的 poster。
 - [Creator Prompt DNA Adapter Route](./creator/creator-prompt-dna-adapter.md)：frontier image/video model 的 adapter，保留公开安全 prompt DNA，不提交 raw generated media。
+- [Creator Motion Storyboard Route](./creator/creator-motion-storyboard.md)：固定画布六帧 motion brief，先证明方向，再进入 renderer、contact sheet 或 generated video。
 - [Windburn Render Workflow](./video/windburn-render-workflow.md)：生成式视频的分块渲染、抽帧 QA 和微信压缩工作流。
 - [Refero Visual Research Workflow](./visual-research/refero-visual-research.md)：先研究真实界面，再抽象成公开安全视觉语法和 proofshot QA。
 - [Darwin Skill Ratchet Workflow](./visual-research/darwin-skill-ratchet.md)：外部 skill 先 vet，再用棘轮方式只保留可证明的改进。

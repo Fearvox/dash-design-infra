@@ -83,6 +83,7 @@ Everything else is optional until the loop proves it deserves more structure. Th
 
 - [`poster-surface-route`](../usecases/creator/creator-poster-surface.md): first actual creator surface mutation; converts the creator capsule into a measured/printable poster proof while preserving intent, memory, boundary, proof, and remix rule.
 - [`adapter-prompt-dna-route`](../usecases/creator/creator-prompt-dna-adapter.md): first frontier model adapter mutation; preserves prompt DNA and preview policy without committing raw generated media.
+- [`creator-motion-storyboard-route`](../usecases/creator/creator-motion-storyboard.md): bridge from capsule memory to video direction; keeps motion as a six-frame fixed-canvas contract until contact-sheet QA exists.
 
 ## Candidate ledger
 

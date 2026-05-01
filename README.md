@@ -63,6 +63,7 @@ bun x playwright install chromium
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun creator:motion-storyboard-check
 bun docs:links
 bun security:scan
 bun hackathon:score
@@ -102,6 +103,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 |---|---|---|
 | Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
 | Prompt DNA for image/video models | [`Creator Prompt DNA Adapter`](./usecases/creator/creator-prompt-dna-adapter.md) | Public-safe prompt genetics, preview recipe, blocked outputs, and proof gate without raw generated media |
+| Motion / video direction | [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md) and [`examples/creator-motion-storyboard.html`](./examples/creator-motion-storyboard.html) | Six-frame fixed-canvas storyboard, timing, boundary, remix handles, and contact-sheet bridge before any raw media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |
 | Kinetic poster | [`@dash/p5-motion`](./packages/p5-motion) | Named p5.js motion grammar instead of one-off sketch soup |
@@ -149,7 +151,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 ## Optimization Loop
 
-The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea → capsule → artifact → proof → remix trail. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe → mutate → render → evaluate → select → retain → regress. This is self-evolution machinery, not a dashboard.
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea -> capsule -> artifact -> proof -> remix trail. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe -> mutate -> render -> evaluate -> select -> retain -> regress. The current retained bridge from static artifact to video direction is the [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md), which must pass `bun creator:motion-storyboard-check` before any renderer or contact sheet. This is self-evolution machinery, not a dashboard.
 
 The local scoreboard proxy is:
 
@@ -180,6 +182,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator mutation check | `bun creator:mutation-check`, currently clean |
 | Creator poster check | `bun creator:poster-check`, currently clean |
 | Creator prompt DNA check | `bun creator:prompt-dna-check`, currently clean |
+| Creator motion storyboard check | `bun creator:motion-storyboard-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 
@@ -222,6 +225,7 @@ The hackathon operating target lives in [`docs/HACKATHON_GOAL.md`](./docs/HACKAT
 │   └── tokens/
 ├── usecases/
 │   ├── p5js/
+│   ├── creator/
 │   └── video/
 ├── README.md
 ├── README-zh.md
@@ -244,6 +248,7 @@ Ready now:
 - constraint-solver layout helpers;
 - paged.js PDF export;
 - public example and usecase docs;
+- creator capsule, poster, prompt DNA, and motion storyboard checks;
 - CI for install, token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score.
 
 Still intentionally private or external:
