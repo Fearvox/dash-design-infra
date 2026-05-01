@@ -49,6 +49,7 @@ jobs:
 
       - name: Creator Motion Storyboard Check
         run: bun creator:motion-storyboard-check
+          bun creator:contact-sheet-check
 
       - name: Markdown Link Check
         run: bun docs:links

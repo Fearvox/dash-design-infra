@@ -17,6 +17,7 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 - [Creator Poster Surface Route](./creator/creator-poster-surface.md) - first retained surface mutation: capsule to publishable poster proof.
 - [Creator Prompt DNA Adapter Route](./creator/creator-prompt-dna-adapter.md) - frontier image/video model adapter that preserves public-safe prompt DNA without raw media.
 - [Creator Motion Storyboard Route](./creator/creator-motion-storyboard.md) - fixed-canvas six-frame motion brief before any renderer, contact sheet, or generated video.
+- [Creator Contact-sheet QA Gate](./creator/creator-contact-sheet-qa.md) - regenerates ignored contact-sheet proof from the motion storyboard.
 
 ## Video Render Workflows
 
