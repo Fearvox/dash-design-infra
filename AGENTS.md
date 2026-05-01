@@ -23,6 +23,8 @@ bun install
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun audit --audit-level high
+bun security:scan
 ```
 
 For fixed-canvas HTML checks:
@@ -71,5 +73,7 @@ That means:
 - no examples that only work on one private machine;
 - no default-looking visual systems;
 - no claims without verification output.
+
+For public-facing changes, also update or check [`docs/PUBLIC_CSO_AUDIT.md`](./docs/PUBLIC_CSO_AUDIT.md) and [`SECURITY.md`](./SECURITY.md).
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

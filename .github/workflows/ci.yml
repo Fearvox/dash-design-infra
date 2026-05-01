@@ -28,3 +28,9 @@ jobs:
 
       - name: Typecheck
         run: bun typecheck
+
+      - name: Dependency Audit
+        run: bun audit --audit-level high
+
+      - name: Public Boundary Scan
+        run: bun security:scan
