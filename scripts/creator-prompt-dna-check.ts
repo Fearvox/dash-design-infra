@@ -47,9 +47,9 @@ try {
 }
 
 const ledger = JSON.parse(read(ledgerPath)) as { winner?: string; candidates?: Array<{ id?: string; selection?: string }> };
-const selected = ledger.candidates?.find((candidate) => candidate.selection === 'selected');
-if (ledger.winner !== adapterId || selected?.id !== adapterId) {
-  fail(`${ledgerPath} must select ${adapterId} before retaining this adapter route`);
+const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === adapterId);
+if (!ledgerEntry || !['selected', 'retained'].includes(ledgerEntry.selection ?? '')) {
+  fail(`${ledgerPath} must keep ${adapterId} selected or retained before using this adapter route`);
 }
 
 if (adapter.source_capsule !== 'examples/creator-frontier-capsule.json') fail('source_capsule must point to creator capsule');

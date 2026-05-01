@@ -31,7 +31,7 @@
         "minimal_core": 10
       },
       "risk": "Could invite raw model output unless the preview artifact stays synthetic and the gate blocks generated media.",
-      "selection": "selected"
+      "selection": "retained"
     },
     {
       "id": "candidate-ledger-gate",
@@ -47,14 +47,30 @@
       },
       "risk": "A ledger can become bureaucracy if it is not tied to one retained winner.",
       "selection": "retained-gate"
+    },
+    {
+      "id": "creator-motion-storyboard-route",
+      "axis": "surface",
+      "mutation": "Route the capsule into a six-frame motion storyboard before any video renderer or model output is allowed.",
+      "phenotype": "JSON motion contract plus fixed-canvas six-frame storyboard proof and machine gate",
+      "fitness": {
+        "creator_utility": 9,
+        "memory_retention": 9,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 10
+      },
+      "risk": "Could become a fake video workflow if it does not explicitly stop before raw media and contact-sheet QA.",
+      "selection": "selected"
     }
   ],
-  "winner": "adapter-prompt-dna-route",
-  "retention": "Retain adapter-prompt-dna-route as a public-safe adapter contract, synthetic preview artifact, and script gate. Keep poster-surface-route retained as the first surface win. Do not promote a package primitive until repeated adapter or surface wins prove it.",
+  "winner": "creator-motion-storyboard-route",
+  "retention": "Retain creator-motion-storyboard-route as the public-safe bridge from capsule memory to future video/contact-sheet work. Keep poster and prompt DNA retained; do not add renderer packages until contact-sheet QA is proven.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
+    "bun creator:motion-storyboard-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
     "bun docs:links",

@@ -1,0 +1,76 @@
+{
+  "route": "creator-motion-storyboard-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "purpose": "Turn a creator capsule into a public-safe motion storyboard before any video renderer, model, or private media path is allowed to run.",
+  "canvas": {
+    "width": 1684,
+    "height": 1191,
+    "frames": 6,
+    "delivery": "single fixed-canvas storyboard proof plus future contact-sheet bridge"
+  },
+  "timeline": [
+    {
+      "frame": "00 / memory ignition",
+      "time": "00:00",
+      "composition": "quiet paper field, capsule intent enters as a small blue proof mark",
+      "motion": "single-line reveal from left edge; no footage"
+    },
+    {
+      "frame": "01 / grammar lock",
+      "time": "00:02",
+      "composition": "typographic grammar tiles pin to a strict editorial grid",
+      "motion": "tiles snap with one-beat delay; amber memory rail wakes"
+    },
+    {
+      "frame": "02 / artifact pressure",
+      "time": "00:04",
+      "composition": "poster route, prompt DNA route, and storyboard route compete as three proof lanes",
+      "motion": "lanes compress until retained lanes stay bright"
+    },
+    {
+      "frame": "03 / public boundary",
+      "time": "00:06",
+      "composition": "black boundary card blocks raw media, local paths, client copy, account UI",
+      "motion": "redacted strips sweep across prohibited inputs"
+    },
+    {
+      "frame": "04 / remix handles",
+      "time": "00:08",
+      "composition": "seed, aspect ratio, duration, surface target, model family appear as handles",
+      "motion": "handles orbit the proof object without changing capsule memory"
+    },
+    {
+      "frame": "05 / retained motion brief",
+      "time": "00:10",
+      "composition": "final frame names the storyboard, commands, and publishable proof path",
+      "motion": "proof stamp lands; future renderer stays external"
+    }
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic capsule memory",
+      "motion grammar",
+      "frame timing",
+      "public-safe storyboard copy",
+      "verification commands"
+    ],
+    "blocked": [
+      "raw generated video",
+      "private prompts",
+      "local absolute source paths",
+      "API keys, cookies, account screenshots",
+      "client copy or unreleased brand assets",
+      "model output committed to git"
+    ]
+  },
+  "proof": [
+    "bun creator:motion-storyboard-check",
+    "bun measure:check -- examples/creator-motion-storyboard.html",
+    "bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191",
+    "browser DOM overflow check",
+    "browser visual QA",
+    "bun security:scan",
+    "bun hackathon:score"
+  ],
+  "retention": "Retain this route as the bridge between static creator artifacts and future video/contact-sheet QA. It is not a renderer; it is the public-safe storyboard contract that prevents raw media leakage before render work begins."
+}

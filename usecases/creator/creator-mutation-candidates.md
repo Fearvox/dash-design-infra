@@ -46,9 +46,9 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`adapter-prompt-dna-route` wins the current adapter slice because it preserves creator prompt DNA for frontier image/video models without committing raw generated media or adding package code.
+`creator-motion-storyboard-route` wins the current slice because it bridges capsule memory into motion/video direction without committing raw generated media or adding package code.
 
-The earlier `poster-surface-route` remains retained as the first surface mutation selected through the ledger. The earlier `candidate-ledger-gate` also remains retained as the validation layer that made these selections explicit.
+The earlier `poster-surface-route` remains retained as the first surface mutation, and `adapter-prompt-dna-route` remains retained as the frontier model adapter. The earlier `candidate-ledger-gate` also remains retained as the validation layer that made these selections explicit.
 
 Current retained sequence:
 
