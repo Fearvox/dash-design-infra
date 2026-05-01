@@ -77,7 +77,11 @@ docs/CREATOR_EVOLUTION_ENGINE.md
   the operating model
 ```
 
-Everything else is optional until the loop proves it deserves more structure.
+Everything else is optional until the loop proves it deserves more structure. The first retained operational layer is the mutation candidate ledger: `examples/creator-mutation-candidates.json` plus `bun creator:mutation-check`.
+
+## Candidate ledger
+
+Before retaining a Darwin slice, use [`examples/creator-mutation-candidates.json`](../examples/creator-mutation-candidates.json) as the public-safe candidate ledger. It forces the run to name the observation, population, selection pressure, 3-5 single-axis candidates, one selected winner, retention level, and regression commands. Validate it with `bun creator:mutation-check`.
 
 ## Fitness rubric
 

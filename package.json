@@ -49,6 +49,7 @@
     "security:scan": "bun scripts/public-boundary-scan.ts",
     "creator:capsule-check": "bun scripts/creator-capsule-check.ts",
     "creator:evolution-check": "bun scripts/creator-evolution-check.ts",
+    "creator:mutation-check": "bun scripts/creator-mutation-check.ts",
     "hackathon:score": "bun scripts/hackathon-score.ts"
   },
   "devDependencies": {
