@@ -46,9 +46,17 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`poster-surface-route` wins the current surface slice because it converts an existing creator capsule into a measured, printable artifact without adding a new renderer or package primitive.
+`adapter-prompt-dna-route` wins the current adapter slice because it preserves creator prompt DNA for frontier image/video models without committing raw generated media or adding package code.
 
-The earlier `candidate-ledger-gate` remains retained as the validation layer that made this selection explicit. The poster route is the first surface mutation selected through that ledger.
+The earlier `poster-surface-route` remains retained as the first surface mutation selected through the ledger. The earlier `candidate-ledger-gate` also remains retained as the validation layer that made these selections explicit.
+
+Current retained sequence:
+
+| Route | Status | Why it stays |
+|---|---|---|
+| `candidate-ledger-gate` | retained gate | forces candidate comparison before claims of evolution |
+| `poster-surface-route` | retained surface | converts a capsule into a measured, printable artifact |
+| `adapter-prompt-dna-route` | selected adapter | preserves model-ready prompt DNA with a synthetic preview artifact |
 
 ## 中文摘要
 

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creator Prompt DNA Adapter</title>
+    <style>
+      :root {
+        --paper: #f2eadb;
+        --panel: #fff9ed;
+        --ink: #15120e;
+        --muted: #625a50;
+        --line: rgba(21, 18, 14, 0.18);
+        --blue: #1d4ed8;
+        --amber: #b86b17;
+        --green: #2f6f4e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @page {
+        size: 1684px 1191px;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 1684px;
+          height: 1191px;
+          margin: 0;
+          overflow: hidden;
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .page {
+        width: 1684px;
+        height: 1191px;
+        margin: 0 auto;
+        padding: 56px;
+        overflow: hidden;
+        position: relative;
+        background:
+          linear-gradient(90deg, rgba(21, 18, 14, 0.06) 1px, transparent 1px),
+          linear-gradient(rgba(21, 18, 14, 0.05) 1px, transparent 1px),
+          var(--paper);
+        background-size: 56px 56px;
+      }
+
+      .shell {
+        height: 100%;
+        border: 1px solid var(--line);
+        background: rgba(255, 249, 237, 0.72);
+        padding: 44px;
+        display: grid;
+        grid-template-rows: 96px 1fr 56px;
+        gap: 30px;
+      }
+
+      .topline,
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .route {
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .main {
+        display: grid;
+        grid-template-columns: 1fr 540px;
+        gap: 42px;
+        min-height: 0;
+      }
+
+      .hero {
+        border-right: 1px solid var(--line);
+        padding-right: 42px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .eyebrow {
+        color: var(--amber);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 880px;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-size: 104px;
+        line-height: 0.94;
+        letter-spacing: 0;
+        font-weight: 500;
+      }
+
+      h1 em {
+        color: var(--blue);
+        font-style: italic;
+      }
+
+      .summary {
+        max-width: 790px;
+        margin: 32px 0 0;
+        color: var(--muted);
+        font-size: 25px;
+        line-height: 1.38;
+      }
+
+      .proof-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .proof {
+        min-height: 142px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 20px;
+      }
+
+      .proof b {
+        display: block;
+        color: var(--blue);
+        font-size: 12px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+
+      .proof p {
+        margin: 0;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 25px;
+        line-height: 1.12;
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 14px;
+        min-height: 0;
+      }
+
+      .tile {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf6;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 144px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .tile.dark {
+        background: var(--ink);
+        color: #f8ecd5;
+      }
+
+      .tile strong {
+        color: var(--blue);
+        font-size: 12px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .tile.dark strong {
+        color: #f4be68;
+      }
+
+      .tile p {
+        margin: 0;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 29px;
+        line-height: 1.12;
+      }
+
+      .tile small {
+        display: block;
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .tile.dark small {
+        color: #cfc6b6;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+
+      .footer strong {
+        color: var(--green);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="shell">
+        <header class="topline">
+          <span class="route">adapter-prompt-dna-route</span>
+          <span>Creator Prompt DNA Adapter</span>
+          <span>no raw generated media</span>
+        </header>
+
+        <section class="main">
+          <article class="hero">
+            <div>
+              <div class="eyebrow">capsule to model-ready contract</div>
+              <h1>Keep the prompt DNA. Let models mutate the <em>surface.</em></h1>
+              <p class="summary">
+                A public-safe adapter that stores intent, visual grammar, composition, blocked outputs,
+                preview recipe, and remix handles before any image or video model run.
+              </p>
+            </div>
+
+            <section class="proof-strip" aria-label="adapter proof">
+              <div class="proof">
+                <b>contract</b>
+                <p>JSON DNA, not private prompts.</p>
+              </div>
+              <div class="proof">
+                <b>preview</b>
+                <p>Synthetic HTML card before model media.</p>
+              </div>
+              <div class="proof">
+                <b>gate</b>
+                <p>Measure, print, scan, score.</p>
+              </div>
+            </section>
+          </article>
+
+          <aside class="matrix" aria-label="prompt DNA fields">
+            <div class="tile">
+              <strong>visual grammar</strong>
+              <div>
+                <p>Warm paper, carbon type, electric proof mark.</p>
+                <small>Model-independent style DNA survives across poster, deck, short video, and browser board.</small>
+              </div>
+            </div>
+            <div class="tile dark">
+              <strong>blocked outputs</strong>
+              <div>
+                <p>No dashboard screenshots, raw account UI, or unreviewed logos.</p>
+                <small>Private prompts, raw creator media, and generated media stay out of git.</small>
+              </div>
+            </div>
+            <div class="tile">
+              <strong>preview recipe</strong>
+              <div>
+                <p>Render a proof card first; contact sheets come before committed media.</p>
+                <small>The visible artifact is synthetic HTML, not model output.</small>
+              </div>
+            </div>
+            <div class="tile">
+              <strong>remix handles</strong>
+              <div>
+                <p>Surface target, model family, seed, aspect ratio, accent.</p>
+                <small>Change the handle, preserve intent, boundary, and proof path.</small>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <footer class="footer">
+          <span>DASH Creator OS · capsule to prompt DNA to preview to proof</span>
+          <strong>examples/creator-prompt-dna-adapter.json</strong>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

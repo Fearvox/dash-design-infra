@@ -99,6 +99,7 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 | 你要做 | 从这里开始 | 最后能保住什么 |
 |---|---|---|
 | 面向 creator 的 frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | 一个可复用的创意记忆单元：意图、视觉语法、输出表面、验证和 remix 规则 |
+| image/video model 的 prompt DNA | [`Creator Prompt DNA Adapter`](./usecases/creator/creator-prompt-dna-adapter.md) | 公开安全的 prompt genetics、preview recipe、blocked outputs 和 proof gate，不提交 raw generated media |
 | 一页纸 brief 或报告 | [`examples/one-pager.html`](./examples/one-pager.html) | 能测量、能导出、不突然裁切的 HTML |
 | 编辑型 deck / 页面产物 | [`@dash/kami`](./packages/kami) | 温润页面默认值、稳定层级、打印安全 tag |
 | 动态海报 | [`@dash/p5-motion`](./packages/p5-motion) | 可复用 p5.js motion grammar，不是一坨一次性 sketch |
@@ -176,6 +177,7 @@ bun hackathon:score
 | Creator evolution check | `bun creator:evolution-check`，当前 clean |
 | Creator mutation check | `bun creator:mutation-check`，当前 clean |
 | Creator poster check | `bun creator:poster-check`，当前 clean |
+| Creator prompt DNA check | `bun creator:prompt-dna-check`，当前 clean |
 | Hackathon score | `bun hackathon:score`，当前 maxed |
 | 类型安全 | `bun typecheck`，当前 green |
 

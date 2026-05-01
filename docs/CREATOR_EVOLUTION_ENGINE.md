@@ -79,9 +79,10 @@ docs/CREATOR_EVOLUTION_ENGINE.md
 
 Everything else is optional until the loop proves it deserves more structure. The first retained operational layer is the mutation candidate ledger: `examples/creator-mutation-candidates.json` plus `bun creator:mutation-check`.
 
-## Retained surface mutations
+## Retained mutations
 
 - [`poster-surface-route`](../usecases/creator/creator-poster-surface.md): first actual creator surface mutation; converts the creator capsule into a measured/printable poster proof while preserving intent, memory, boundary, proof, and remix rule.
+- [`adapter-prompt-dna-route`](../usecases/creator/creator-prompt-dna-adapter.md): first frontier model adapter mutation; preserves prompt DNA and preview policy without committing raw generated media.
 
 ## Candidate ledger
 

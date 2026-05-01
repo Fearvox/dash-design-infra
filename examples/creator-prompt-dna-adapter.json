@@ -1,0 +1,101 @@
+{
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "adapter": {
+    "id": "adapter-prompt-dna-route",
+    "kind": "frontier image/video model prompt DNA adapter",
+    "job": "turn creator capsule memory into prompt DNA for model experiments while blocking raw generated media from the public repo",
+    "surface_targets": [
+      "poster",
+      "deck",
+      "short video",
+      "browser board"
+    ]
+  },
+  "input_contract": {
+    "required": [
+      "capsule.intent",
+      "capsule.memory",
+      "capsule.grammar",
+      "surface_target",
+      "model_family",
+      "public_boundary"
+    ],
+    "optional": [
+      "seed",
+      "aspect_ratio",
+      "duration",
+      "delivery_channel",
+      "known_failure_modes"
+    ]
+  },
+  "prompt_dna": {
+    "core_intent": "Remember the idea before tools mutate the surface; the output should explain the artifact direction quickly without hiding proof requirements.",
+    "visual_grammar": [
+      "warm paper field",
+      "carbon editorial type",
+      "electric blue proof accent",
+      "minimal command-table structure"
+    ],
+    "composition": "one strong hero statement, one proof object, one memory rail, and no stock dashboard grid",
+    "palette": [
+      "warm paper base",
+      "carbon ink",
+      "electric blue proof mark",
+      "restrained amber memory accent"
+    ],
+    "motion_memory": "still preview now; future video variants may scan the memory rail left to right before the proof stamp lands",
+    "remix_handles": [
+      "surface target",
+      "aspect ratio",
+      "model family",
+      "seed when available",
+      "accent color"
+    ],
+    "negative_space": "leave a quiet field around the headline and proof object so generated variants have room for captions, overlays, or print marks",
+    "blocked_outputs": [
+      "dashboard screenshot",
+      "generic SaaS gradient",
+      "private client material",
+      "raw account UI",
+      "unreviewed logos",
+      "raw generated media committed to git"
+    ]
+  },
+  "preview": {
+    "kind": "synthetic html prompt DNA card",
+    "deliverables": [
+      "examples/creator-prompt-dna-adapter.html",
+      "/tmp/dash-creator-prompt-dna-adapter.pdf"
+    ],
+    "prohibited_media": [
+      "raw generated media",
+      "model output image",
+      "video render",
+      "private source frame"
+    ]
+  },
+  "proof": [
+    "bun creator:prompt-dna-check",
+    "bun measure:check -- examples/creator-prompt-dna-adapter.html",
+    "bun print:render -- examples/creator-prompt-dna-adapter.html /tmp/dash-creator-prompt-dna-adapter.pdf --canvas=1684x1191",
+    "bun security:scan",
+    "browser visual QA"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic creator intent",
+      "public-safe prompt DNA",
+      "DASH layout/tokens language",
+      "model-independent adapter notes"
+    ],
+    "blocked": [
+      "private prompts",
+      "raw creator media",
+      "raw generated media",
+      "local absolute source paths",
+      "API keys, cookies, account screenshots",
+      "client copy or unreleased brand assets"
+    ]
+  },
+  "retention": "retain as adapter edge contract plus synthetic preview gate; do not promote a package primitive or commit generated media until repeated adapters prove the shape"
+}

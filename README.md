@@ -101,6 +101,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | You need to make | Start with | What survives |
 |---|---|---|
 | Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
+| Prompt DNA for image/video models | [`Creator Prompt DNA Adapter`](./usecases/creator/creator-prompt-dna-adapter.md) | Public-safe prompt genetics, preview recipe, blocked outputs, and proof gate without raw generated media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |
 | Kinetic poster | [`@dash/p5-motion`](./packages/p5-motion) | Named p5.js motion grammar instead of one-off sketch soup |
@@ -178,6 +179,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator evolution check | `bun creator:evolution-check`, currently clean |
 | Creator mutation check | `bun creator:mutation-check`, currently clean |
 | Creator poster check | `bun creator:poster-check`, currently clean |
+| Creator prompt DNA check | `bun creator:prompt-dna-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 
