@@ -1,0 +1,43 @@
+{
+  "purpose": "self-evolve creator workflows through Darwin-style mutation, evaluation, selection, and retention",
+  "anti_goal": "do not stop at dashboards, static boards, or vanity scorecards",
+  "cycle": [
+    "observe creator friction",
+    "propose single-axis mutations",
+    "render runnable or visible phenotypes",
+    "evaluate creator usefulness",
+    "select smallest useful winner",
+    "retain repeated winners as examples, scripts, packages, or skills",
+    "run regression gates across existing workflows"
+  ],
+  "mutation_axes": [
+    "surface",
+    "visual grammar",
+    "tool adapter",
+    "proof method",
+    "capsule schema",
+    "agent routing rule"
+  ],
+  "fitness": {
+    "creator_utility": "helps a creator make, verify, or remix a real artifact",
+    "memory_retention": "preserves intent, grammar, seed, proof path, and remix constraints",
+    "artifact_proof": "produces an artifact or runnable workflow, not just commentary",
+    "boundary_safety": "blocks private media, local paths, secrets, account screenshots, and raw client text",
+    "minimal_core": "keeps frontier tools as adapters unless repeated wins justify promotion"
+  },
+  "selection_rule": "keep the smallest mutation that improves creator utility without weakening proof or public boundary",
+  "retention_ladder": [
+    "one win -> example/usecase",
+    "repeated wins -> script",
+    "cross-surface repeated wins -> package primitive",
+    "repeated agent move -> skill/runbook",
+    "regression failures -> revert or quarantine the mutation"
+  ],
+  "proof": [
+    "bun creator:evolution-check",
+    "bun creator:capsule-check",
+    "bun docs:links",
+    "bun security:scan",
+    "bun hackathon:score"
+  ]
+}

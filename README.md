@@ -25,6 +25,7 @@
     <a href="#why-this-exists">Why</a> ·
     <a href="#use-cases">Use Cases</a> ·
     <a href="./docs/CREATOR_OS.md">Creator OS</a> ·
+    <a href="./docs/CREATOR_EVOLUTION_ENGINE.md">Evolution Engine</a> ·
     <a href="#packages">Packages</a> ·
     <a href="#optimization-loop">Loop</a> ·
     <a href="#public-trust-boundary">Trust Boundary</a>
@@ -147,7 +148,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 ## Optimization Loop
 
-The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea → capsule → artifact → proof → remix trail.
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea → capsule → artifact → proof → remix trail. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe → mutate → render → evaluate → select → retain → regress. This is self-evolution machinery, not a dashboard.
 
 The local scoreboard proxy is:
 
@@ -174,6 +175,7 @@ This repo is public-facing, so the boundary is explicit.
 | Markdown link check | `bun docs:links`, currently clean |
 | Public-boundary scan | `bun security:scan`, currently clean |
 | Creator capsule check | `bun creator:capsule-check`, currently clean |
+| Creator evolution check | `bun creator:evolution-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 

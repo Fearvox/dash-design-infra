@@ -25,6 +25,7 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Visual research board | [`usecases/visual-research/refero-visual-research.md`](../usecases/visual-research/refero-visual-research.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun measure:check -- examples/refero-research-board.html` then `bun print:render -- examples/refero-research-board.html /tmp/dash-refero-board.pdf --canvas=1684x1191` | Browser proofshot + fixed-canvas overflow check | Public observations and synthetic cards only; no copied reference screenshots |
 | Skill ratchet board | [`usecases/visual-research/darwin-skill-ratchet.md`](../usecases/visual-research/darwin-skill-ratchet.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun measure:check -- examples/darwin-ratchet-board.html` then `bun print:render -- examples/darwin-ratchet-board.html /tmp/dash-darwin-ratchet-board.pdf --canvas=1684x1191` | Source vetting + browser measure + PDF render + public-boundary scan | MIT attribution and synthetic cards only; no copied skill assets, private prompts, or local paths |
 | Creator frontier capsule | [`usecases/creator/creator-frontier-capsule.md`](../usecases/creator/creator-frontier-capsule.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun creator:capsule-check` then `bun measure:check -- examples/creator-frontier-capsule.html` and `bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-frontier-capsule.pdf --canvas=1684x1191` | Capsule schema check + browser measure + PDF render + public-boundary scan | Synthetic creator memory only; no private source media, client copy, local paths, or account screenshots |
+| Creator evolution engine | [`docs/CREATOR_EVOLUTION_ENGINE.md`](./CREATOR_EVOLUTION_ENGINE.md) | docs + scripts until repeated winners justify packages | `bun creator:evolution-check && bun creator:capsule-check && bun hackathon:score` | Darwin loop check + existing regression gates | No dashboard-only output; retain only creator-useful mutations with public-safe proof |
 | Public repo hardening | [`docs/PUBLIC_CSO_AUDIT.md`](./PUBLIC_CSO_AUDIT.md) | repo scripts | `bun docs:links && bun security:scan && bun hackathon:score` | All gates green locally and in CI | No secrets, private paths, raw media, or private project text |
 | Hackathon SDD loop | [`docs/HACKATHON_SDD_LOOP.md`](./HACKATHON_SDD_LOOP.md) | repo scripts + CI | review → apply → score → PR → CI → merge | `bun hackathon:score` returns `MAXXED` | Score must prove public usefulness, not just activity |
 
@@ -92,6 +93,20 @@ bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-fro
 
 The useful unit is `idea -> capsule -> artifact -> proof -> remix trail`. Keep the core minimal and put frontier tools at the adapter edge.
 
+### If the user asks for Darwin-style self-evolution
+
+Use the creator evolution path:
+
+```bash
+bun creator:evolution-check
+bun creator:capsule-check
+bun docs:links
+bun security:scan
+bun hackathon:score
+```
+
+This means mutation, evaluation, selection, retention, and regression. Do not reduce it to a dashboard. A dashboard is valid only when it controls the next creative mutation.
+
 ### If the user asks to “make the repo better”
 
 Use the hackathon SDD loop:
@@ -117,4 +132,4 @@ These are intentionally unshipped until they have commands and public boundaries
 
 ## 中文摘要
 
-这里是 agent 的路线图：先判断要做 creator capsule、document、fixed-canvas、p5 motion、video、外部 skill 棘轮，还是 repo hardening；每条路都必须有入口文件、包层、命令、QA 和公开边界。没有这五项，就不要假装 workflow 已经完成。
+这里是 agent 的路线图：先判断要做 creator capsule、自进化 Darwin loop、document、fixed-canvas、p5 motion、video、外部 skill 棘轮，还是 repo hardening；每条路都必须有入口文件、包层、命令、QA 和公开边界。Darwin loop 指 mutation/evaluation/selection/retention/regression，不是 dashboard。没有这些，就不要假装 workflow 已经完成。

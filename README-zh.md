@@ -146,7 +146,7 @@ Tokens / scale / metrics
 
 ## 优化循环
 
-Hackathon loop 现在写成明确操作模型：review 一个 surface，apply 一个窄修复，score 证明变强，CI 复验，green 才 merge，然后下一轮。模型见 [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md)，ClawSweeper 参考映射见 [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md)。外部 skill / prompt 想法走 [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md)：先 vet，抽象成自己的公开安全模式，渲染 synthetic board，测量，通过才保留。Creator-facing 工作先看 [`Creator OS`](./docs/CREATOR_OS.md)，再走 [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md)：idea → capsule → artifact → proof → remix trail。
+Hackathon loop 现在写成明确操作模型：review 一个 surface，apply 一个窄修复，score 证明变强，CI 复验，green 才 merge，然后下一轮。模型见 [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md)，ClawSweeper 参考映射见 [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md)。外部 skill / prompt 想法走 [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md)：先 vet，抽象成自己的公开安全模式，渲染 synthetic board，测量，通过才保留。Creator-facing 工作先看 [`Creator OS`](./docs/CREATOR_OS.md)，再走 [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md)：idea → capsule → artifact → proof → remix trail。Darwin-style 工作走 [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md)：observe → mutate → render → evaluate → select → retain → regress。这里是自进化机制，不是 dashboard。
 
 本地 scoreboard proxy：
 
@@ -173,6 +173,7 @@ bun hackathon:score
 | Markdown link check | `bun docs:links`，当前 clean |
 | 公开边界扫描 | `bun security:scan`，当前 clean |
 | Creator capsule check | `bun creator:capsule-check`，当前 clean |
+| Creator evolution check | `bun creator:evolution-check`，当前 clean |
 | Hackathon score | `bun hackathon:score`，当前 maxed |
 | 类型安全 | `bun typecheck`，当前 green |
 
