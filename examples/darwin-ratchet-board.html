@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DASH Darwin Skill Ratchet Board</title>
+    <style>
+      :root {
+        --bg: #090806;
+        --ink: #fff8eb;
+        --muted: #a99f90;
+        --dim: #665f55;
+        --panel: rgba(255, 248, 235, 0.06);
+        --panel-strong: rgba(255, 248, 235, 0.105);
+        --line: rgba(255, 248, 235, 0.14);
+        --amber: #f4b95f;
+        --copper: #d56a3b;
+        --green: #95e6a7;
+        --blue: #8bc7ff;
+        --violet: #b99cff;
+        --red: #ff7b6e;
+        --paper: #f4ead7;
+        --paper-ink: #17120d;
+        --radius: 34px;
+      }
+
+      * { box-sizing: border-box; }
+
+      @page {
+        size: 1684px 1191px;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 1684px;
+          height: 1191px;
+          margin: 0;
+          overflow: hidden;
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 14% 16%, rgba(244, 185, 95, 0.16), transparent 26%),
+          radial-gradient(circle at 84% 18%, rgba(139, 199, 255, 0.13), transparent 22%),
+          radial-gradient(circle at 64% 78%, rgba(213, 106, 59, 0.18), transparent 30%),
+          linear-gradient(135deg, #060504 0%, #0b0908 50%, #130d0a 100%);
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.075;
+        background-image:
+          linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+        background-size: 54px 54px;
+        mask-image: radial-gradient(circle at 50% 48%, black, transparent 78%);
+      }
+
+      .page {
+        width: 1684px;
+        height: 1191px;
+        margin: 0 auto;
+        padding: 52px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 38px;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .seal {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #170e08;
+        font-weight: 900;
+        background: conic-gradient(from 210deg, var(--amber), var(--green), var(--blue), var(--copper), var(--amber));
+        box-shadow: 0 0 40px rgba(244, 185, 95, 0.26);
+      }
+
+      .pillrow {
+        display: flex;
+        gap: 10px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 18px;
+        color: var(--muted);
+        background: rgba(255,255,255,.045);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 0.96fr 1.04fr;
+        gap: 42px;
+        align-items: stretch;
+      }
+
+      .headline {
+        padding: 28px 0 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(244,185,95,.28);
+        color: var(--amber);
+        background: rgba(244,185,95,.08);
+        border-radius: 999px;
+        padding: 10px 14px;
+        font: 700 12px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 690px;
+        font-size: 94px;
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+        font-weight: 500;
+      }
+
+      h1 span {
+        color: var(--amber);
+        font-style: italic;
+      }
+
+      .intro {
+        margin: 28px 0 0;
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 24px;
+        line-height: 1.42;
+      }
+
+      .vetcard {
+        margin-top: 42px;
+        padding: 8px;
+        border-radius: var(--radius);
+        background: rgba(255,255,255,.045);
+        border: 1px solid var(--line);
+      }
+
+      .vetinner {
+        border-radius: calc(var(--radius) - 8px);
+        background: var(--paper);
+        color: var(--paper-ink);
+        padding: 26px 30px;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 22px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+      }
+
+      .scorebig {
+        font: 900 68px/0.9 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: -0.07em;
+      }
+
+      .scorebig small {
+        display: block;
+        margin-top: 7px;
+        font-size: 17px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #7b6a56;
+      }
+
+      .vetcopy b {
+        display: block;
+        font: 800 15px/1 ui-sans-serif, system-ui, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+        color: #8b4a20;
+        margin-bottom: 10px;
+      }
+
+      .vetcopy p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.42;
+      }
+
+      .ratchet-panel {
+        padding: 10px;
+        border-radius: 40px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.04);
+        box-shadow: 0 30px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.08);
+      }
+
+      .ratchet-inner {
+        min-height: 610px;
+        border-radius: 30px;
+        padding: 34px;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.035)),
+          #0e0d0b;
+        border: 1px solid rgba(255,255,255,.08);
+      }
+
+      .panel-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .panel-title h2 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: -0.04em;
+      }
+
+      .panel-title span {
+        color: var(--green);
+        font-size: 13px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+
+      .loop {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+
+      .step {
+        min-height: 122px;
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.1);
+        background: rgba(255,255,255,.055);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .step::after {
+        content: "";
+        position: absolute;
+        right: -26px;
+        top: -28px;
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        background: rgba(244,185,95,.08);
+      }
+
+      .num {
+        color: var(--amber);
+        font: 800 12px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .14em;
+        margin-bottom: 16px;
+      }
+
+      .step b {
+        display: block;
+        font: 800 17px/1.08 ui-sans-serif, system-ui, sans-serif;
+        margin-bottom: 9px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font: 14px/1.32 ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .rubric {
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap: 18px;
+      }
+
+      .lanes {
+        display: grid;
+        gap: 10px;
+      }
+
+      .lane {
+        display: grid;
+        grid-template-columns: 120px 1fr 44px;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 12px;
+        border-radius: 18px;
+        background: rgba(0,0,0,.19);
+        border: 1px solid rgba(255,255,255,.075);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .lane-name {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.08);
+        overflow: hidden;
+      }
+
+      .fill {
+        height: 100%;
+        width: var(--w);
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--copper), var(--amber), var(--green));
+      }
+
+      .lane-score {
+        color: var(--ink);
+        font-size: 13px;
+        text-align: right;
+      }
+
+      .decision {
+        border-radius: 28px;
+        padding: 24px;
+        background: rgba(149,230,167,.08);
+        border: 1px solid rgba(149,230,167,.22);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .decision h3 {
+        margin: 0 0 18px;
+        color: var(--green);
+        font-size: 16px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .rule {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        margin: 15px 0;
+        color: #dcebdd;
+        font-size: 15px;
+        line-height: 1.35;
+      }
+
+      .check {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(149,230,167,.18);
+        color: var(--green);
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .tile {
+        min-height: 154px;
+        border-radius: 30px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        padding: 20px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+      }
+
+      .tile:nth-child(2) { transform: translateY(8px); }
+      .tile:nth-child(3) { transform: translateY(-8px); }
+      .tile:nth-child(4) { transform: translateY(4px); }
+
+      .tile .label {
+        font: 800 12px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .15em;
+        color: var(--dim);
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+
+      .tile b {
+        display: block;
+        text-decoration: none;
+        font-size: 26px;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        margin-bottom: 16px;
+      }
+
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        font: 15px/1.38 ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .footer {
+        position: absolute;
+        left: 52px;
+        right: 52px;
+        bottom: 24px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 248, 235, 0.1);
+        display: flex;
+        justify-content: space-between;
+        color: var(--dim);
+        font: 13px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="topbar">
+        <div class="brand"><div class="seal">D</div><span>DASH / Darwin Ratchet</span></div>
+        <div class="pillrow">
+          <div class="pill">public-safe reference</div>
+          <div class="pill">measure + print gated</div>
+          <div class="pill">no copied assets</div>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="headline">
+          <div class="eyebrow">External skill → local operating pattern</div>
+          <h1>Keep only the visual changes that <span>survive proof.</span></h1>
+          <p class="intro">Darwin's lesson is not a template. It is a ratchet: baseline, one patch, independent evaluation, keep or revert. DASH turns that into a fixed-canvas workflow for visual agents.</p>
+
+          <div class="vetcard">
+            <div class="vetinner">
+              <div class="scorebig">OK<small>/vet</small></div>
+              <div class="vetcopy">
+                <b>Source reviewed before use</b>
+                <p>GitHub reference inspected at commit <code>2056abf</code>. Conceptual mapping only. No assets copied, no install step added, hard-coded local screenshot path rejected as non-portable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ratchet-panel">
+          <div class="ratchet-inner">
+            <div class="panel-title">
+              <h2>The ratchet loop</h2>
+              <span>score can only move forward</span>
+            </div>
+
+            <div class="loop">
+              <div class="step"><div class="num">01</div><b>Baseline</b><p>Read the current workflow, artifact, and proof path.</p></div>
+              <div class="step"><div class="num">02</div><b>Patch one lane</b><p>Change exactly one weak dimension so attribution stays clean.</p></div>
+              <div class="step"><div class="num">03</div><b>Render proof</b><p>Use browser geometry, PDF render, or prompt tests as evidence.</p></div>
+              <div class="step"><div class="num">04</div><b>Score</b><p>Run gates that cannot be charmed by nice language.</p></div>
+              <div class="step"><div class="num">05</div><b>Keep / revert</b><p>Commit improvements. Revert regressions without drama.</p></div>
+            </div>
+
+            <div class="rubric">
+              <div class="lanes">
+                <div class="lane"><span class="lane-name">Intent</span><div class="bar"><div class="fill" style="--w:92%"></div></div><span class="lane-score">9.2</span></div>
+                <div class="lane"><span class="lane-name">Boundary</span><div class="bar"><div class="fill" style="--w:96%"></div></div><span class="lane-score">9.6</span></div>
+                <div class="lane"><span class="lane-name">Prompt set</span><div class="bar"><div class="fill" style="--w:78%"></div></div><span class="lane-score">7.8</span></div>
+                <div class="lane"><span class="lane-name">Grammar</span><div class="bar"><div class="fill" style="--w:89%"></div></div><span class="lane-score">8.9</span></div>
+                <div class="lane"><span class="lane-name">Artifact</span><div class="bar"><div class="fill" style="--w:94%"></div></div><span class="lane-score">9.4</span></div>
+                <div class="lane"><span class="lane-name">Proofshot</span><div class="bar"><div class="fill" style="--w:91%"></div></div><span class="lane-score">9.1</span></div>
+                <div class="lane"><span class="lane-name">Score</span><div class="bar"><div class="fill" style="--w:88%"></div></div><span class="lane-score">8.8</span></div>
+                <div class="lane"><span class="lane-name">Rollback</span><div class="bar"><div class="fill" style="--w:93%"></div></div><span class="lane-score">9.3</span></div>
+              </div>
+
+              <div class="decision">
+                <h3>Decision rule</h3>
+                <div class="rule"><div class="check">✓</div><div>New score must be strictly higher than the baseline.</div></div>
+                <div class="rule"><div class="check">✓</div><div>Visual claims need rendered evidence, not chat confidence.</div></div>
+                <div class="rule"><div class="check">✓</div><div>Public references become grammar, never copied screenshots.</div></div>
+                <div class="rule"><div class="check">✓</div><div>Failed experiments leave a clean revert trail.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="matrix">
+        <div class="tile"><div class="label">01 / VET</div><b>Review before install</b><p>Unknown skills are references until every file and source→sink path is inspected.</p></div>
+        <div class="tile"><div class="label">02 / EXTRACT</div><b>Keep the pattern, not the asset</b><p>Darwin contributes the evaluation loop. DASH supplies its own layout, tokens, and proof path.</p></div>
+        <div class="tile"><div class="label">03 / PROVE</div><b>Browser truth beats intent</b><p>Measure the HTML, render the PDF, scan the public boundary, then claim quality.</p></div>
+        <div class="tile"><div class="label">04 / RATchet</div><b>One slice per loop</b><p>Small commits, strict gates, PR, CI, merge. No broad heroic rewrites.</p></div>
+      </section>
+
+      <div class="footer">
+        <span>Inspired by alchaincyf/darwin-skill · MIT · conceptual adaptation</span>
+        <span>examples/darwin-ratchet-board.html</span>
+      </div>
+    </main>
+  </body>
+</html>

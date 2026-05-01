@@ -105,6 +105,7 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 | 天气图式证据报告 | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | 气压、锋面、雷达纹理和 forecast card |
 | 高密度生成式视频 | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | 分块渲染、contact-sheet QA、微信码率压缩 |
 | 视觉研究板 | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | 把真实界面研究转成公开安全、可测量的 pattern board |
+| Skill / prompt 优化循环 | [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md) | 外部 skill 想法先 vet，再抽象、测量、证明变强才保留 |
 | 有硬约束的页面 | [`@dash/layout`](./packages/layout) + [`@dash/measure`](./packages/measure) | 先解布局规则，再用真实浏览器验收 |
 
 <p align="right"><a href="#top">回到顶部</a></p>
@@ -144,7 +145,7 @@ Tokens / scale / metrics
 
 ## 优化循环
 
-Hackathon loop 现在写成明确操作模型：review 一个 surface，apply 一个窄修复，score 证明变强，CI 复验，green 才 merge，然后下一轮。模型见 [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md)，ClawSweeper 参考映射见 [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md)。
+Hackathon loop 现在写成明确操作模型：review 一个 surface，apply 一个窄修复，score 证明变强，CI 复验，green 才 merge，然后下一轮。模型见 [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md)，ClawSweeper 参考映射见 [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md)。外部 skill / prompt 想法走 [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md)：先 vet，抽象成自己的公开安全模式，渲染 synthetic board，测量，通过才保留。
 
 本地 scoreboard proxy：
 

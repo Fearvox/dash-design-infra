@@ -81,4 +81,6 @@ For public-facing changes, also update or check [`docs/PUBLIC_CSO_AUDIT.md`](./d
 
 For hackathon loop work, follow [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md). ClawSweeper-derived operating patterns are mapped in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). For artifact routing, start with [`docs/WORKFLOW_INDEX.md`](./docs/WORKFLOW_INDEX.md).
 
+For external skill/prompt references, use [`usecases/visual-research/darwin-skill-ratchet.md`](./usecases/visual-research/darwin-skill-ratchet.md): vet the source first, extract reusable grammar, create synthetic public artifacts, measure them, and keep only verified improvements.
+
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.
