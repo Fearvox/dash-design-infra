@@ -44,6 +44,9 @@ jobs:
       - name: Creator Poster Check
         run: bun creator:poster-check
 
+      - name: Creator Prompt DNA Check
+        run: bun creator:prompt-dna-check
+
       - name: Markdown Link Check
         run: bun docs:links
 

@@ -51,6 +51,7 @@
     "creator:evolution-check": "bun scripts/creator-evolution-check.ts",
     "creator:mutation-check": "bun scripts/creator-mutation-check.ts",
     "creator:poster-check": "bun scripts/creator-poster-check.ts",
+    "creator:prompt-dna-check": "bun scripts/creator-prompt-dna-check.ts",
     "hackathon:score": "bun scripts/hackathon-score.ts"
   },
   "devDependencies": {

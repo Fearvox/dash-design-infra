@@ -51,9 +51,9 @@ function parseJson<T>(path: string): T {
 }
 
 const ledger = parseJson<Ledger>(ledgerPath);
-const selected = ledger.candidates?.find((candidate) => candidate.selection === 'selected');
-if (ledger.winner !== selectedCandidate || selected?.id !== selectedCandidate) {
-  fail(`${ledgerPath} must select ${selectedCandidate} before retaining this poster surface`);
+const posterCandidate = ledger.candidates?.find((candidate) => candidate.id === selectedCandidate);
+if (posterCandidate?.selection !== 'selected' && posterCandidate?.selection !== 'retained') {
+  fail(`${ledgerPath} must keep ${selectedCandidate} selected or retained before validating this poster surface`);
 }
 
 const poster = parseJson<Poster>(posterPath);

@@ -80,6 +80,7 @@ const checks: Check[] = [
       existsSync('examples/creator-evolution-loop.json') &&
       existsSync('examples/creator-mutation-candidates.json') &&
       existsSync('examples/creator-poster-surface.html') &&
+      existsSync('examples/creator-prompt-dna-adapter.json') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
@@ -117,6 +118,7 @@ const checks: Check[] = [
       'Creator evolution engine',
       'Creator mutation ledger',
       'Creator poster surface',
+      'Creator prompt DNA adapter',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -226,6 +228,24 @@ const checks: Check[] = [
     evidence: 'Creator poster surface contract + HTML artifact + machine check',
   },
   {
+    id: 'creator-prompt-dna-adapter',
+    label: 'Creator prompt DNA adapter preserves model-ready creative genetics without raw media',
+    points: 12,
+    pass:
+      scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
+      commandPass('bun', ['creator:prompt-dna-check']) &&
+      existsSync('examples/creator-prompt-dna-adapter.json') &&
+      existsSync('examples/creator-prompt-dna-adapter.html') &&
+      has('usecases/creator/creator-prompt-dna-adapter.md', [
+        'Mutation selected',
+        'Public boundary',
+        'Remix rule',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator prompt DNA adapter', 'creator-prompt-dna-adapter.html']),
+    evidence: 'Creator prompt DNA adapter contract + proof card + machine check',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,
@@ -252,6 +272,7 @@ const checks: Check[] = [
       'bun creator:evolution-check',
       'bun creator:mutation-check',
       'bun creator:poster-check',
+      'bun creator:prompt-dna-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -267,8 +288,9 @@ const checks: Check[] = [
       scripts['creator:evolution-check'] === 'bun scripts/creator-evolution-check.ts' &&
       scripts['creator:mutation-check'] === 'bun scripts/creator-mutation-check.ts' &&
       scripts['creator:poster-check'] === 'bun scripts/creator-poster-check.ts' &&
+      scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.hackathon:score',
   },
 ];
 

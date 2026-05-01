@@ -16,22 +16,22 @@
         "minimal_core": 10
       },
       "risk": "May duplicate one-pager work if it does not preserve capsule fields.",
-      "selection": "selected"
+      "selection": "retained"
     },
     {
       "id": "adapter-prompt-dna-route",
       "axis": "tool adapter",
-      "mutation": "Add a prompt-DNA adapter contract for image/video model experiments without committing raw generated media.",
-      "phenotype": "JSON prompt DNA card plus public-safe preview instructions",
+      "mutation": "Add a prompt DNA adapter contract for image/video model experiments without committing raw generated media.",
+      "phenotype": "JSON prompt DNA contract plus synthetic fixed-canvas preview card and proof gate",
       "fitness": {
         "creator_utility": 9,
         "memory_retention": 10,
-        "artifact_proof": 6,
+        "artifact_proof": 8,
         "boundary_safety": 9,
         "minimal_core": 10
       },
-      "risk": "Could stay abstract unless paired with a preview sheet in a later slice.",
-      "selection": "candidate"
+      "risk": "Could invite raw model output unless the preview artifact stays synthetic and the gate blocks generated media.",
+      "selection": "selected"
     },
     {
       "id": "candidate-ledger-gate",
@@ -49,11 +49,12 @@
       "selection": "retained-gate"
     }
   ],
-  "winner": "poster-surface-route",
-  "retention": "Retain poster-surface-route as a public-safe HTML/JSON poster workflow plus script gate. Do not promote a package primitive until repeated surface wins prove it.",
+  "winner": "adapter-prompt-dna-route",
+  "retention": "Retain adapter-prompt-dna-route as a public-safe adapter contract, synthetic preview artifact, and script gate. Keep poster-surface-route retained as the first surface win. Do not promote a package primitive until repeated adapter or surface wins prove it.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
+    "bun creator:prompt-dna-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
     "bun docs:links",
