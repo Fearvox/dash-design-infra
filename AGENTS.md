@@ -23,8 +23,10 @@ bun install
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun docs:links
 bun audit --audit-level high
 bun security:scan
+bun hackathon:score
 ```
 
 For fixed-canvas HTML checks:
@@ -75,5 +77,7 @@ That means:
 - no claims without verification output.
 
 For public-facing changes, also update or check [`docs/PUBLIC_CSO_AUDIT.md`](./docs/PUBLIC_CSO_AUDIT.md) and [`SECURITY.md`](./SECURITY.md).
+
+For hackathon loop work, follow [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md). ClawSweeper-derived operating patterns are mapped in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md).
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

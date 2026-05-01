@@ -32,5 +32,11 @@ jobs:
       - name: Dependency Audit
         run: bun audit --audit-level high
 
+      - name: Markdown Link Check
+        run: bun docs:links
+
       - name: Public Boundary Scan
         run: bun security:scan
+
+      - name: Hackathon Score
+        run: bun hackathon:score

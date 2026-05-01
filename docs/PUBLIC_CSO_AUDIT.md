@@ -24,6 +24,7 @@ Reviewed surfaces:
 - .gitignore
 - dependency audit output
 - CI/typecheck path
+- ClawSweeper-derived SDD loop docs
 
 Not in scope:
 
@@ -41,9 +42,11 @@ Not in scope:
 | Env files ignored | PASS | `.env`, `.env.local`, `.env.*.local` in `.gitignore` |
 | Raw media excluded by policy | PASS | AGENTS.md and README trust boundary explicitly block raw video/audio and internal lab dumps |
 | Dependency high-severity audit | PASS | `bun audit --audit-level high` returned no vulnerabilities |
+| Markdown link check | PASS | `bun docs:links` returned clean |
 | Public-boundary scan | PASS | `bun security:scan` returned clean |
+| Hackathon score gate | PASS | `bun hackathon:score` returned max score |
 | Type safety | PASS | `bun typecheck` passed across all packages |
-| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, and public-boundary scan |
+| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score |
 | Public security reporting path | PASS | SECURITY.md added |
 | Agent contribution boundary | PASS | AGENTS.md states public boundary and verification commands |
 | Claims backed by commands | PASS | README points to concrete commands and workflow docs |
@@ -90,8 +93,10 @@ Run before public-facing PRs:
 
 ```bash
 bun typecheck
+bun docs:links
 bun audit --audit-level high
 bun security:scan
+bun hackathon:score
 ```
 
 The public-boundary scan is first-class and lives at [`scripts/public-boundary-scan.ts`](../scripts/public-boundary-scan.ts). It checks tracked and unignored files for private local paths, private lab names, private media names, secret-shaped assignments, and env-style secret values. It skips binary media and fenced educational examples to avoid false positives from intentionally fake snippets.
@@ -100,4 +105,4 @@ The public-boundary scan is first-class and lives at [`scripts/public-boundary-s
 
 Approved for public presentation with current controls.
 
-Next hardening step: turn the boundary scan into a first-class repo script and CI job, so future public-facing changes cannot accidentally ship private paths or secret-shaped material.
+Next hardening step: add a workflow index and package-level examples so the score gate measures deeper adoption surfaces, not only repo entrypoint quality.
