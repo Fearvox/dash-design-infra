@@ -9,7 +9,7 @@
   </p>
 
   <p align="center">
-    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a> · <a href="./AGENTS.md">Agent Guide</a> · <a href="./docs/PUBLIC_CSO_AUDIT.md">CSO Audit</a>
+    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a> · <a href="./AGENTS.md">Agent Guide</a> · <a href="./docs/WORKFLOW_INDEX.md">Workflow Index</a> · <a href="./docs/PUBLIC_CSO_AUDIT.md">CSO Audit</a>
   </p>
 
   <p align="center">
@@ -93,6 +93,8 @@ Agents should start with [`AGENTS.md`](./AGENTS.md). Humans can start here.
 <p align="right"><a href="#top">back to top</a></p>
 
 ## Use Cases
+
+If you are an agent deciding which path to run, start with the [`Workflow Index`](./docs/WORKFLOW_INDEX.md). It maps each artifact job to an entry file, package layer, command path, QA gate, and public boundary.
 
 | You need to make | Start with | What survives |
 |---|---|---|

@@ -9,7 +9,7 @@
   </p>
 
   <p align="center">
-    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a> · <a href="./AGENTS.md">Agent Guide</a> · <a href="./docs/PUBLIC_CSO_AUDIT.md">CSO Audit</a>
+    <a href="./README.md">English</a> · <a href="./README-zh.md">中文</a> · <a href="./AGENTS.md">Agent Guide</a> · <a href="./docs/WORKFLOW_INDEX.md">Workflow Index</a> · <a href="./docs/PUBLIC_CSO_AUDIT.md">CSO Audit</a>
   </p>
 
   <p align="center">
@@ -93,6 +93,8 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 <p align="right"><a href="#top">回到顶部</a></p>
 
 ## 能做什么
+
+如果你是 agent，在判断该走哪条路径，先看 [`Workflow Index`](./docs/WORKFLOW_INDEX.md)。它把每类产物对应到入口文件、包层、命令、QA gate 和公开边界。
 
 | 你要做 | 从这里开始 | 最后能保住什么 |
 |---|---|---|

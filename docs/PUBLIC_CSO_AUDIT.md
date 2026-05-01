@@ -18,6 +18,7 @@ Reviewed surfaces:
 - AGENTS.md
 - SECURITY.md
 - docs/
+- docs/WORKFLOW_INDEX.md
 - examples/
 - usecases/
 - package metadata
@@ -49,7 +50,7 @@ Not in scope:
 | CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score |
 | Public security reporting path | PASS | SECURITY.md added |
 | Agent contribution boundary | PASS | AGENTS.md states public boundary and verification commands |
-| Claims backed by commands | PASS | README points to concrete commands and workflow docs |
+| Workflow index | PASS | `docs/WORKFLOW_INDEX.md` maps artifact jobs to entry file, package layer, command path, QA gate, and public boundary |
 
 ## Findings
 
