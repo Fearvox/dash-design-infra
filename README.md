@@ -64,6 +64,7 @@ bun tokens:build
 bun metrics:build
 bun typecheck
 bun creator:motion-storyboard-check
+bun creator:contact-sheet-check
 bun docs:links
 bun security:scan
 bun hackathon:score
@@ -103,6 +104,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 |---|---|---|
 | Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
 | Prompt DNA for image/video models | [`Creator Prompt DNA Adapter`](./usecases/creator/creator-prompt-dna-adapter.md) | Public-safe prompt genetics, preview recipe, blocked outputs, and proof gate without raw generated media |
+| Contact-sheet QA for motion | [`Creator Contact-sheet QA`](./usecases/creator/creator-contact-sheet-qa.md) | Regenerated ignored `.artifacts` proof before raw video or renderer work |
 | Motion / video direction | [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md) and [`examples/creator-motion-storyboard.html`](./examples/creator-motion-storyboard.html) | Six-frame fixed-canvas storyboard, timing, boundary, remix handles, and contact-sheet bridge before any raw media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |

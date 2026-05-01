@@ -82,6 +82,7 @@ const checks: Check[] = [
       existsSync('examples/creator-poster-surface.html') &&
       existsSync('examples/creator-prompt-dna-adapter.json') &&
       existsSync('examples/creator-motion-storyboard.html') &&
+      existsSync('usecases/creator/creator-contact-sheet-qa.md') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
@@ -121,6 +122,7 @@ const checks: Check[] = [
       'Creator poster surface',
       'Creator prompt DNA adapter',
       'Creator motion storyboard',
+      'Creator contact-sheet QA',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -257,6 +259,7 @@ const checks: Check[] = [
       commandPass('bun', ['creator:motion-storyboard-check']) &&
       existsSync('examples/creator-motion-storyboard.json') &&
       existsSync('examples/creator-motion-storyboard.html') &&
+      existsSync('usecases/creator/creator-contact-sheet-qa.md') &&
       has('README.md', ['Creator Motion Storyboard', 'creator:motion-storyboard-check']) &&
       has('examples/README.md', ['Creator Storyboard', 'creator-motion-storyboard.html']) &&
       has('docs/HACKATHON_SDD_LOOP.md', ['creator:motion-storyboard-check', 'creator-motion-storyboard.html']) &&
@@ -269,6 +272,20 @@ const checks: Check[] = [
       ]) &&
       has('docs/WORKFLOW_INDEX.md', ['Creator motion storyboard', 'creator-motion-storyboard.html']),
     evidence: 'Creator motion storyboard contract + fixed-canvas artifact + machine check',
+  },
+
+  {
+    id: 'creator-contact-sheet-qa',
+    label: 'Creator contact-sheet QA regenerates ignored proof artifacts before video work',
+    points: 10,
+    pass:
+      scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
+      commandPass('bun', ['creator:contact-sheet-check']) &&
+      existsSync('scripts/creator-contact-sheet-check.ts') &&
+      existsSync('usecases/creator/creator-contact-sheet-qa.md') &&
+      has('.gitignore', ['.artifacts']) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator contact-sheet QA', 'creator-motion-contact-sheet.html']),
+    evidence: 'Creator contact-sheet QA script + ignored artifact contract',
   },
   {
     id: 'docs-links',
@@ -300,6 +317,7 @@ const checks: Check[] = [
       'bun creator:prompt-dna-check',
       '- name: Creator Motion Storyboard Check',
       'bun creator:motion-storyboard-check',
+      'bun creator:contact-sheet-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -317,8 +335,9 @@ const checks: Check[] = [
       scripts['creator:poster-check'] === 'bun scripts/creator-poster-check.ts' &&
       scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
       scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
+      scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.hackathon:score',
   },
 ];
 

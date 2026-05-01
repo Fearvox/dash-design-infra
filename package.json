@@ -53,7 +53,8 @@
     "creator:poster-check": "bun scripts/creator-poster-check.ts",
     "creator:prompt-dna-check": "bun scripts/creator-prompt-dna-check.ts",
     "hackathon:score": "bun scripts/hackathon-score.ts",
-    "creator:motion-storyboard-check": "bun scripts/creator-motion-storyboard-check.ts"
+    "creator:motion-storyboard-check": "bun scripts/creator-motion-storyboard-check.ts",
+    "creator:contact-sheet-check": "bun scripts/creator-contact-sheet-check.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
