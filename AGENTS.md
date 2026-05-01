@@ -15,6 +15,7 @@ Start here before editing.
 - `@dash/layout`: constraint layout helpers.
 - `@dash/print`: HTML-to-PDF rendering path.
 - `usecases/`: public-safe workflow notes and motion grammar docs.
+- `docs/WORKFLOW_INDEX.md`: routing table for document, p5, video, hardening, and hackathon-loop workflows.
 
 ## Default Commands
 
@@ -78,6 +79,6 @@ That means:
 
 For public-facing changes, also update or check [`docs/PUBLIC_CSO_AUDIT.md`](./docs/PUBLIC_CSO_AUDIT.md) and [`SECURITY.md`](./SECURITY.md).
 
-For hackathon loop work, follow [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md). ClawSweeper-derived operating patterns are mapped in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md).
+For hackathon loop work, follow [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md). ClawSweeper-derived operating patterns are mapped in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). For artifact routing, start with [`docs/WORKFLOW_INDEX.md`](./docs/WORKFLOW_INDEX.md).
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

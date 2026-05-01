@@ -81,6 +81,36 @@ const checks: Check[] = [
       existsSync('usecases/video/windburn-render-workflow.md'),
     evidence: 'examples/ + usecases/',
   },
+
+  {
+    id: 'workflow-index-contract',
+    label: 'Workflow index routes artifact jobs through entry, layer, command, QA, and boundary',
+    points: 10,
+    pass: has('docs/WORKFLOW_INDEX.md', [
+      'entry file',
+      'package layer',
+      'command path',
+      'QA gate',
+      'public boundary',
+      'Workflow Matrix',
+    ]),
+    evidence: 'docs/WORKFLOW_INDEX.md contract',
+  },
+  {
+    id: 'workflow-index-coverage',
+    label: 'Workflow index covers document, fixed-canvas, p5, video, hardening, and SDD loop routes',
+    points: 10,
+    pass: has('docs/WORKFLOW_INDEX.md', [
+      'One-page brief / report',
+      'Fixed-canvas HTML',
+      'Kinetic poster',
+      'Evidence weather map',
+      'Dense generative video',
+      'Public repo hardening',
+      'Hackathon SDD loop',
+    ]),
+    evidence: 'docs/WORKFLOW_INDEX.md workflow matrix',
+  },
   {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',

@@ -89,7 +89,7 @@ A loop that only plans is a failed loop unless the plan itself is the shipped ar
 
 1. Add a public agent entrypoint, likely `AGENTS.md` or `SKILL.md`, without pretending the repo is already published to skills.sh.
 2. Add docs link checking so markdown drift fails locally and in CI. DONE: `bun docs:links`.
-3. Add a public workflow index that groups document, p5, video, and future TouchDesigner/MCP workflows.
+3. Add a public workflow index that groups document, p5, video, and future TouchDesigner/MCP workflows. DONE: `docs/WORKFLOW_INDEX.md`.
 4. Check whether packages expose enough examples for an external agent to use them without reading source.
 5. Research `skills.sh` publish expectations and map the repo to that format.
 6. Keep the ClawSweeper-style SDD loop green: `bun hackathon:score` should pass before a PR claims progress.
