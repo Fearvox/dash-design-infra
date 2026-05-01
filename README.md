@@ -101,6 +101,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | You need to make | Start with | What survives |
 |---|---|---|
 | Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
+| Creator poster surface | [`Creator Poster Surface Route`](./usecases/creator/creator-poster-surface.md) | A capsule routed into a measured fixed-canvas poster with PDF proof path |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |
 | Kinetic poster | [`@dash/p5-motion`](./packages/p5-motion) | Named p5.js motion grammar instead of one-off sketch soup |

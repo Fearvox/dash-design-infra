@@ -1,5 +1,5 @@
 {
-  "observation": "Creator capsule exists, but the evolution loop needs an explicit candidate ledger so agents compare mutations before retaining a winner.",
+  "observation": "Creator capsule and candidate ledger exist; the next Darwin slice must retain one real creator surface artifact instead of another abstract control layer.",
   "population": "creator capsule surface mutations",
   "selection_pressure": "help a creator turn one capsule into a publishable artifact faster without growing the core package layer",
   "candidates": [
@@ -7,11 +7,11 @@
       "id": "poster-surface-route",
       "axis": "surface",
       "mutation": "Route the existing capsule into a single fixed-canvas poster proof.",
-      "phenotype": "HTML poster or PDF proof using existing @dash/measure and @dash/print gates",
+      "phenotype": "examples/creator-poster-surface.html plus PDF proof path using existing @dash/measure and @dash/print gates",
       "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 7,
-        "artifact_proof": 9,
+        "creator_utility": 9,
+        "memory_retention": 8,
+        "artifact_proof": 10,
         "boundary_safety": 9,
         "minimal_core": 10
       },
@@ -50,12 +50,14 @@
     }
   ],
   "winner": "poster-surface-route",
-  "retention": "Retain poster-surface-route as a public-safe HTML/JSON poster workflow plus script gate. Do not promote a package primitive until repeated surface wins prove it.",
+  "retention": "Retain the poster surface as example JSON, fixed-canvas HTML artifact, workflow doc, and script gate. Do not promote a package primitive yet.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
+    "bun measure:check -- examples/creator-poster-surface.html",
+    "bun print:render -- examples/creator-poster-surface.html /tmp/dash-creator-poster-surface.pdf --canvas=1684x1191",
     "bun docs:links",
     "bun security:scan",
     "bun hackathon:score"

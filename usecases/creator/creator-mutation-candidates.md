@@ -1,8 +1,8 @@
 # Creator Mutation Candidate Ledger
 
-This is the first operational Darwin slice after the Creator Evolution Engine.
+This is the operational Darwin ledger after the Creator Evolution Engine.
 
-The observed gap: the repo had a self-evolution doctrine, but no small machine-checked way for an agent to compare mutations before retaining a winner. Without that ledger, “Darwin” can collapse back into taste, dashboards, or one-off artifacts.
+The observed gap: the repo had a self-evolution doctrine and a capsule, but agents still needed a machine-checked way to compare mutations before retaining a real creator surface. Without that ledger, "Darwin" can collapse back into taste, dashboards, or one-off artifacts.
 
 ## Output
 
@@ -52,4 +52,4 @@ The earlier `candidate-ledger-gate` remains retained as the validation layer tha
 
 ## 中文摘要
 
-这不是 dashboard。它是 Darwin loop 的候选账本：先观察 creator 摩擦，再列出 3-5 个单轴 mutation，给每个候选打 creator usefulness / memory / proof / boundary / minimal-core 分，选择一个最小赢家，并用 regression gates 保证没有破坏已有 workflow。
+这不是 dashboard。它是 Darwin loop 的候选账本：先观察 creator 摩擦，再列出 3-5 个单轴 mutation，给每个候选打 creator usefulness / memory / proof / boundary / minimal-core 分，选择一个最小赢家。本轮赢家是 `poster-surface-route`，因为它把 capsule 变成了可测量、可 PDF proof 的真实 poster surface。

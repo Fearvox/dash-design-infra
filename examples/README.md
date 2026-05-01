@@ -12,6 +12,18 @@ bun print:render -- examples/one-pager.html /tmp/dash-one-pager.pdf --canvas=168
 The page is intentionally sanitized: it demonstrates tokens, capsize metrics,
 fixed-canvas measurement, and PDF rendering without private project content.
 
+## Creator Poster Surface
+
+```bash
+bun creator:poster-check
+bun measure:check -- examples/creator-poster-surface.html
+bun print:render -- examples/creator-poster-surface.html /tmp/dash-creator-poster-surface.pdf --canvas=1684x1191
+```
+
+The poster route turns the public creator capsule into a single fixed-canvas
+artifact while preserving intent, memory, proof path, public boundary, and remix
+rule.
+
 ## Motion Usecases
 
 p5.js visual examples live in [`../usecases/p5js`](../usecases/p5js). They are

@@ -99,6 +99,7 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 | 你要做 | 从这里开始 | 最后能保住什么 |
 |---|---|---|
 | 面向 creator 的 frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | 一个可复用的创意记忆单元：意图、视觉语法、输出表面、验证和 remix 规则 |
+| Creator poster surface | [`Creator Poster Surface Route`](./usecases/creator/creator-poster-surface.md) | 把 capsule 路由成可测量、可 PDF proof 的 fixed-canvas poster |
 | 一页纸 brief 或报告 | [`examples/one-pager.html`](./examples/one-pager.html) | 能测量、能导出、不突然裁切的 HTML |
 | 编辑型 deck / 页面产物 | [`@dash/kami`](./packages/kami) | 温润页面默认值、稳定层级、打印安全 tag |
 | 动态海报 | [`@dash/p5-motion`](./packages/p5-motion) | 可复用 p5.js motion grammar，不是一坨一次性 sketch |
