@@ -13,6 +13,10 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 
 - [Windburn Render Workflow](./video/windburn-render-workflow.md) - chunked generative render, contact-sheet QA, and bitrate-controlled WeChat delivery.
 
+## Visual Research
+
+- [Refero Visual Research Workflow](./visual-research/refero-visual-research.md) - research-before-generation, taxonomy extraction, proofshot QA, and public-safe visual board creation.
+
 ## 中文
 
 这里放公开安全的使用场景，不放私有实验室原始材料。
@@ -20,3 +24,4 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 - [Electric Archive](./p5js/electric-archive.md)：档案面 + 信号面的动态海报。
 - [Memory Weather Report](./p5js/weather-report.md)：用天气图语法表达复杂证据和风险。
 - [Windburn Render Workflow](./video/windburn-render-workflow.md)：生成式视频的分块渲染、抽帧 QA 和微信压缩工作流。
+- [Refero Visual Research Workflow](./visual-research/refero-visual-research.md)：先研究真实界面，再抽象成公开安全视觉语法和 proofshot QA。

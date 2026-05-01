@@ -104,6 +104,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | Archive/evidence visual | [`Electric Archive`](./usecases/p5js/electric-archive.md) | Split archive/signal surface for memory, retrieval, and handoff stories |
 | Weather-style evidence report | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | Pressure maps, fronts, radar texture, and forecast cards for complex signals |
 | Dense rendered motion piece | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | Chunked render, contact-sheet QA, bitrate-controlled WeChat delivery |
+| Visual research board | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | Real-interface study converted into a synthetic, measurable pattern board |
 | Hard-constrained page | [`@dash/layout`](./packages/layout) + [`@dash/measure`](./packages/measure) | Layout rules that can be solved, then checked in a real browser |
 
 <p align="right"><a href="#top">back to top</a></p>

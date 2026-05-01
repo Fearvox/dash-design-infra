@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DASH Refero Research Board</title>
+    <style>
+      :root {
+        --bg: #050507;
+        --ink: #f8f3ea;
+        --muted: #9aa3b2;
+        --panel: #101115;
+        --panel-2: #171a20;
+        --line: rgba(255, 255, 255, 0.1);
+        --cream: #f3eadc;
+        --mint: #b7f7d1;
+        --coral: #ff7e67;
+        --violet: #a68cff;
+        --cyan: #72d5ff;
+        --gold: #f4c86a;
+        --radius: 28px;
+      }
+
+      * { box-sizing: border-box; }
+
+      @page {
+        size: 1684px 1191px;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 1684px;
+          height: 1191px;
+          margin: 0;
+          overflow: hidden;
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(166, 140, 255, 0.18), transparent 28%),
+          radial-gradient(circle at 86% 16%, rgba(114, 213, 255, 0.12), transparent 24%),
+          radial-gradient(circle at 68% 78%, rgba(255, 126, 103, 0.13), transparent 30%),
+          var(--bg);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.055;
+        background-image:
+          linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: radial-gradient(circle at center, black, transparent 78%);
+      }
+
+      .canvas {
+        width: 1684px;
+        height: 1191px;
+        margin: 0 auto;
+        padding: 54px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 56px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 14px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #0b0c0f;
+        background: conic-gradient(from 180deg, var(--mint), var(--cyan), var(--violet), var(--coral), var(--mint));
+        font-weight: 800;
+      }
+
+      .search {
+        flex: 1;
+        max-width: 640px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.055);
+        border-radius: 999px;
+        padding: 14px 20px;
+        color: #d7dde8;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      }
+
+      .segment {
+        display: flex;
+        gap: 6px;
+        padding: 5px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,.045);
+      }
+
+      .segment span {
+        padding: 10px 18px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .segment span:first-child {
+        background: var(--cream);
+        color: #111318;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.08fr .92fr;
+        gap: 46px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border: 1px solid rgba(183,247,209,.28);
+        color: var(--mint);
+        background: rgba(183,247,209,.08);
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: .16em;
+        font-size: 11px;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 92px;
+        line-height: .91;
+        letter-spacing: -0.065em;
+        max-width: 820px;
+      }
+
+      .lead {
+        max-width: 660px;
+        color: #c3c9d5;
+        font-size: 21px;
+        line-height: 1.55;
+        margin: 30px 0 0;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .button {
+        border-radius: 999px;
+        padding: 16px 22px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.06);
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .button.primary {
+        color: #0d0e11;
+        background: var(--cream);
+      }
+
+      .board {
+        border-radius: 42px;
+        padding: 8px;
+        border: 1px solid rgba(255,255,255,.14);
+        background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.025));
+        box-shadow: 0 34px 120px rgba(0,0,0,.5);
+      }
+
+      .board-inner {
+        border-radius: 34px;
+        padding: 24px;
+        background: rgba(10, 11, 15, .88);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #dbe1ea;
+        font-size: 12px;
+        background: rgba(255,255,255,.055);
+      }
+
+      .chip.hot {
+        background: var(--cream);
+        color: #101115;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 156px;
+        border-radius: 26px;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(135deg, rgba(255,255,255,.1), transparent),
+          var(--panel);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card.tall { min-height: 330px; }
+      .card.warm { background: linear-gradient(145deg, rgba(255,126,103,.22), rgba(16,17,21,.95)); }
+      .card.cool { background: linear-gradient(145deg, rgba(114,213,255,.2), rgba(16,17,21,.95)); }
+      .card.violet { background: linear-gradient(145deg, rgba(166,140,255,.22), rgba(16,17,21,.95)); }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .card h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 39px;
+        line-height: .96;
+        letter-spacing: -.04em;
+        margin: 58px 0 0;
+      }
+
+      .card p {
+        color: #ccd2de;
+        line-height: 1.5;
+        max-width: 320px;
+      }
+
+      .skeleton {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.13);
+        margin-top: 12px;
+      }
+
+      .skeleton.short { width: 54%; }
+      .skeleton.long { width: 82%; }
+
+      .taxonomy {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 52px;
+      }
+
+      .taxonomy-card {
+        border-radius: 30px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.045);
+        padding: 24px;
+        min-height: 224px;
+      }
+
+      .taxonomy-card strong {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .taxonomy-card ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        color: #b7bfcc;
+        line-height: 1.9;
+        font-size: 14px;
+      }
+
+      .qa-strip {
+        position: absolute;
+        left: 54px;
+        right: 54px;
+        bottom: 42px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+
+      .qa {
+        padding: 18px 20px;
+        border-radius: 24px;
+        background: rgba(243,234,220,.92);
+        color: #111318;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas page">
+      <nav class="nav">
+        <div class="brand"><div class="mark">D</div> DASH Visual Research</div>
+        <div class="search"><span>Search by pattern: onboarding, pricing, dashboard, card, modal</span><span>⌘K</span></div>
+        <div class="segment"><span>Web</span><span>iOS</span><span>Print</span></div>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Refero-inspired · public-safe · agent-ready</div>
+          <h1>Study real interfaces before you generate.</h1>
+          <p class="lead">A dark research-library board for agents: taxonomy chips, preview cards, evidence gates, and taste notes. It captures the reusable Refero pattern without copying product screens.</p>
+          <div class="cta-row">
+            <div class="button primary">Run the workflow →</div>
+            <div class="button">Open pattern index</div>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="board-inner">
+            <div class="chips">
+              <span class="chip hot">Dashboard</span>
+              <span class="chip">Onboarding</span>
+              <span class="chip">Pricing</span>
+              <span class="chip">Cards</span>
+              <span class="chip">Modal</span>
+              <span class="chip">Table</span>
+              <span class="chip">Serif × UI</span>
+            </div>
+            <div class="grid">
+              <article class="card tall warm">
+                <div class="meta"><span>Pattern 01</span><span>Hero / Archive</span></div>
+                <h2>Editorial sell, database browse.</h2>
+                <p>Use serif scale for the promise, compact UI for the proof.</p>
+              </article>
+              <div>
+                <article class="card cool">
+                  <div class="meta"><span>Pattern 02</span><span>Chips</span></div>
+                  <div class="skeleton long"></div><div class="skeleton short"></div>
+                </article>
+                <article class="card violet" style="margin-top:16px">
+                  <div class="meta"><span>Pattern 03</span><span>Proofshot</span></div>
+                  <div class="skeleton long"></div><div class="skeleton short"></div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="taxonomy">
+        <div class="taxonomy-card"><strong>Page Types</strong><ul><li>Dashboard</li><li>Landing</li><li>Paywall</li><li>Account</li><li>Developer page</li></ul></div>
+        <div class="taxonomy-card"><strong>Flows</strong><ul><li>Signing up</li><li>Subscribing</li><li>Uploading</li><li>Editing</li><li>Resetting password</li></ul></div>
+        <div class="taxonomy-card"><strong>UX Patterns</strong><ul><li>Stats</li><li>Search</li><li>Billing</li><li>Dark mode</li><li>Activity feed</li></ul></div>
+        <div class="taxonomy-card"><strong>QA Gates</strong><ul><li>Browser proofshot</li><li>Text fit</li><li>Responsive state</li><li>Console clean</li><li>Public boundary</li></ul></div>
+      </section>
+
+      <section class="qa-strip">
+        <div class="qa">01 · collect references, not private screenshots</div>
+        <div class="qa">02 · extract pattern grammar before layout</div>
+        <div class="qa">03 · verify in browser before claiming taste</div>
+      </section>
+    </main>
+  </body>
+</html>
