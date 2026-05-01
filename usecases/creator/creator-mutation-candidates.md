@@ -46,7 +46,9 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`candidate-ledger-gate` wins this slice because it converts the Darwin doctrine into an executable habit without adding a new package or renderer. It makes the next creator adapter slice cheaper and safer.
+`poster-surface-route` wins the current surface slice because it converts an existing creator capsule into a measured, printable artifact without adding a new renderer or package primitive.
+
+The earlier `candidate-ledger-gate` remains retained as the validation layer that made this selection explicit. The poster route is the first surface mutation selected through that ledger.
 
 ## 中文摘要
 

@@ -92,7 +92,7 @@ const selected = candidates.find((candidate) => candidate.selection === 'selecte
 if (selected?.id !== ledger.winner) fail('winner must be the selected candidate');
 
 const regression = ledger.regression ?? [];
-for (const command of ['creator:mutation-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
+for (const command of ['creator:mutation-check', 'creator:poster-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
   if (!regression.some((item) => item.includes(command))) fail(`regression must include ${command}`);
 }
 

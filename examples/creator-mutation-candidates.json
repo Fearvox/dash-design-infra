@@ -16,7 +16,7 @@
         "minimal_core": 10
       },
       "risk": "May duplicate one-pager work if it does not preserve capsule fields.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "adapter-prompt-dna-route",
@@ -46,13 +46,14 @@
         "minimal_core": 10
       },
       "risk": "A ledger can become bureaucracy if it is not tied to one retained winner.",
-      "selection": "selected"
+      "selection": "retained-gate"
     }
   ],
-  "winner": "candidate-ledger-gate",
-  "retention": "Retain as an example JSON plus script gate. Do not promote a package primitive yet.",
+  "winner": "poster-surface-route",
+  "retention": "Retain poster-surface-route as a public-safe HTML/JSON poster workflow plus script gate. Do not promote a package primitive until repeated surface wins prove it.",
   "regression": [
     "bun creator:mutation-check",
+    "bun creator:poster-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
     "bun docs:links",
