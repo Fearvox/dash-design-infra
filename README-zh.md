@@ -63,6 +63,7 @@
 | 动态海报 | `@dash/p5-motion` | 可复用的 p5.js motion grammar，不用每次从空白 canvas 重写 | [`usecases/p5js`](./usecases/p5js) |
 | 档案/证据视觉 | Electric Archive preset | 白色档案面和钴蓝信号面组成的扫描海报 | [`Electric Archive`](./usecases/p5js/electric-archive.md) |
 | 天气图式报告 | Memory Weather Report preset | 用气压、锋面、雷达纹理和 forecast card 表达复杂信号 | [`Weather Report`](./usecases/p5js/weather-report.md) |
+| 生成式动态视频 | Windburn workflow | 分块渲染、contact sheet QA、微信体积压缩 | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) |
 | 有硬约束的页面 | `@dash/layout`, `@dash/measure` | 先解布局规则，再到真实浏览器里检查是否溢出 | [`packages/layout`](./packages/layout) |
 
 <p align="right"><a href="#top">回到顶部</a></p>
@@ -154,6 +155,7 @@ console.log(state.phases.scanExposure.eased);
 - [`examples/one-pager.html`](./examples/one-pager.html) 是 measurement 和 print 检查用的小页面。
 - [`usecases/p5js/electric-archive.md`](./usecases/p5js/electric-archive.md) 展示 Electric Archive 海报语法。
 - [`usecases/p5js/weather-report.md`](./usecases/p5js/weather-report.md) 展示 Memory Weather Report 语法。
+- [`usecases/video/windburn-render-workflow.md`](./usecases/video/windburn-render-workflow.md) 展示高密度生成式视频的渲染、校验和压缩工作流。
 
 示例是刻意脱敏过的。它们展示设计基础设施，不带私有项目文本、原始 lab 文件或内部路径。
 
@@ -175,7 +177,8 @@ console.log(state.phases.scanExposure.eased);
 │   ├── scale/
 │   └── tokens/
 ├── usecases/
-│   └── p5js/
+│   ├── p5js/
+│   └── video/
 ├── README.md
 ├── README-zh.md
 └── package.json
@@ -192,6 +195,7 @@ console.log(state.phases.scanExposure.eased);
 - capsize CSS 生成
 - Kami 启发的编辑型文档 preset
 - p5.js 动态 preset，包括 Electric Archive 和 Memory Weather Report
+- 视频工作流说明，包括分块渲染 QA 和交付压缩
 - 浏览器内溢出校验
 - 约束求解布局 helper
 - paged.js PDF 输出

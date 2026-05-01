@@ -63,6 +63,7 @@ The repo is public because these pieces are useful outside our own work. The pri
 | A kinetic poster | `@dash/p5-motion` | p5.js motion grammar that can be reused instead of rewritten per sketch | [`usecases/p5js`](./usecases/p5js) |
 | An archive/evidence visual | Electric Archive preset | A split white/cobalt scan surface for memory, retrieval, and handoff stories | [`Electric Archive`](./usecases/p5js/electric-archive.md) |
 | A weather-style evidence report | Memory Weather Report preset | Pressure maps, fronts, radar texture, and forecast cards for complex signals | [`Weather Report`](./usecases/p5js/weather-report.md) |
+| A rendered motion piece | Windburn workflow | Chunked generative render, contact-sheet QA, and bitrate-controlled WeChat delivery | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) |
 | A page with hard constraints | `@dash/layout`, `@dash/measure` | Layout rules that can be solved and then checked in a real browser | [`packages/layout`](./packages/layout) |
 
 <p align="right"><a href="#top">back to top</a></p>
@@ -154,6 +155,7 @@ Together they let the repo cover three different outputs without changing the so
 - [`examples/one-pager.html`](./examples/one-pager.html) is the small HTML page used for measurement and print checks.
 - [`usecases/p5js/electric-archive.md`](./usecases/p5js/electric-archive.md) shows the Electric Archive poster grammar.
 - [`usecases/p5js/weather-report.md`](./usecases/p5js/weather-report.md) shows the Memory Weather Report grammar.
+- [`usecases/video/windburn-render-workflow.md`](./usecases/video/windburn-render-workflow.md) shows the render, QA, and compression workflow for dense generative motion pieces.
 
 The examples are intentionally sanitized. They show the design infrastructure without shipping private client text, raw lab files, or internal paths.
 
@@ -175,7 +177,8 @@ The examples are intentionally sanitized. They show the design infrastructure wi
 │   ├── scale/
 │   └── tokens/
 ├── usecases/
-│   └── p5js/
+│   ├── p5js/
+│   └── video/
 ├── README.md
 ├── README-zh.md
 └── package.json
@@ -192,6 +195,7 @@ Ready now:
 - capsize CSS generation
 - Kami-inspired editorial preset
 - p5.js motion presets, including Electric Archive and Memory Weather Report
+- video workflow notes for chunked render QA and delivery compression
 - browser overflow checks
 - constraint-solver layout helpers
 - paged.js PDF export
