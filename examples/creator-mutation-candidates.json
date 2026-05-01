@@ -1,0 +1,62 @@
+{
+  "observation": "Creator capsule exists, but the evolution loop needs an explicit candidate ledger so agents compare mutations before retaining a winner.",
+  "population": "creator capsule surface mutations",
+  "selection_pressure": "help a creator turn one capsule into a publishable artifact faster without growing the core package layer",
+  "candidates": [
+    {
+      "id": "poster-surface-route",
+      "axis": "surface",
+      "mutation": "Route the existing capsule into a single fixed-canvas poster proof.",
+      "phenotype": "HTML poster or PDF proof using existing @dash/measure and @dash/print gates",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 7,
+        "artifact_proof": 9,
+        "boundary_safety": 9,
+        "minimal_core": 10
+      },
+      "risk": "May duplicate one-pager work if it does not preserve capsule fields.",
+      "selection": "candidate"
+    },
+    {
+      "id": "adapter-prompt-dna-route",
+      "axis": "tool adapter",
+      "mutation": "Add a prompt-DNA adapter contract for image/video model experiments without committing raw generated media.",
+      "phenotype": "JSON prompt DNA card plus public-safe preview instructions",
+      "fitness": {
+        "creator_utility": 9,
+        "memory_retention": 10,
+        "artifact_proof": 6,
+        "boundary_safety": 9,
+        "minimal_core": 10
+      },
+      "risk": "Could stay abstract unless paired with a preview sheet in a later slice.",
+      "selection": "candidate"
+    },
+    {
+      "id": "candidate-ledger-gate",
+      "axis": "proof method",
+      "mutation": "Add a machine-checked candidate ledger so every Darwin slice names observation, population, candidates, fitness, and selected winner before retention.",
+      "phenotype": "creator:mutation-check validates this candidate population and blocks dashboard-only evolution work",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 9,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 10
+      },
+      "risk": "A ledger can become bureaucracy if it is not tied to one retained winner.",
+      "selection": "selected"
+    }
+  ],
+  "winner": "candidate-ledger-gate",
+  "retention": "Retain as an example JSON plus script gate. Do not promote a package primitive yet.",
+  "regression": [
+    "bun creator:mutation-check",
+    "bun creator:evolution-check",
+    "bun creator:capsule-check",
+    "bun docs:links",
+    "bun security:scan",
+    "bun hackathon:score"
+  ]
+}

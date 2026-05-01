@@ -38,6 +38,9 @@ jobs:
       - name: Creator Evolution Check
         run: bun creator:evolution-check
 
+      - name: Creator Mutation Check
+        run: bun creator:mutation-check
+
       - name: Markdown Link Check
         run: bun docs:links
 

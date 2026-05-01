@@ -13,6 +13,7 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 
 - [Creator Frontier Capsule](./creator/creator-frontier-capsule.md) - a minimal creator memory unit that routes intent, grammar, proof, and remix rules across frontier visual tools.
 - [Creator Evolution Engine](../docs/CREATOR_EVOLUTION_ENGINE.md) - Darwin-style self-evolution loop for mutating, evaluating, selecting, and retaining creator-useful workflows.
+- [Creator Mutation Candidate Ledger](./creator/creator-mutation-candidates.md) - machine-checked candidate comparison before retaining a Darwin winner.
 
 ## Video Render Workflows
 
@@ -31,6 +32,7 @@ These are not private lab dumps. Each usecase keeps the part that is useful to r
 - [Memory Weather Report](./p5js/weather-report.md)：用天气图语法表达复杂证据和风险。
 - [Creator Frontier Capsule](./creator/creator-frontier-capsule.md)：把 creator 的创意保存成可验证、可 remix 的最小 capsule。
 - [Creator Evolution Engine](../docs/CREATOR_EVOLUTION_ENGINE.md)：Darwin-style 自进化，不是 dashboard；用 mutation/evaluation/selection/retention 推进 creator workflow。
+- [Creator Mutation Candidate Ledger](./creator/creator-mutation-candidates.md)：在保留 Darwin winner 前，先机器检查候选 mutation、评分和 regression。
 - [Windburn Render Workflow](./video/windburn-render-workflow.md)：生成式视频的分块渲染、抽帧 QA 和微信压缩工作流。
 - [Refero Visual Research Workflow](./visual-research/refero-visual-research.md)：先研究真实界面，再抽象成公开安全视觉语法和 proofshot QA。
 - [Darwin Skill Ratchet Workflow](./visual-research/darwin-skill-ratchet.md)：外部 skill 先 vet，再用棘轮方式只保留可证明的改进。

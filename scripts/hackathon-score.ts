@@ -78,6 +78,7 @@ const checks: Check[] = [
       existsSync('examples/one-pager.html') &&
       existsSync('examples/creator-frontier-capsule.html') &&
       existsSync('examples/creator-evolution-loop.json') &&
+      existsSync('examples/creator-mutation-candidates.json') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
@@ -113,6 +114,7 @@ const checks: Check[] = [
       'Dense generative video',
       'Creator frontier capsule',
       'Creator evolution engine',
+      'Creator mutation ledger',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -187,6 +189,23 @@ const checks: Check[] = [
     evidence: 'Creator evolution doctrine + JSON runbook + machine check',
   },
   {
+    id: 'creator-mutation-ledger',
+    label: 'Creator mutation ledger compares candidates before retaining Darwin winners',
+    points: 10,
+    pass:
+      scripts['creator:mutation-check'] === 'bun scripts/creator-mutation-check.ts' &&
+      commandPass('bun', ['creator:mutation-check']) &&
+      existsSync('examples/creator-mutation-candidates.json') &&
+      has('usecases/creator/creator-mutation-candidates.md', [
+        'Anti-dashboard pressure',
+        'Current retained winner',
+        'Selection rule',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator mutation ledger', 'creator:mutation-check']),
+    evidence: 'Creator mutation candidate ledger + machine check',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,
@@ -211,6 +230,7 @@ const checks: Check[] = [
       'bun audit --audit-level high',
       'bun creator:capsule-check',
       'bun creator:evolution-check',
+      'bun creator:mutation-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -224,8 +244,9 @@ const checks: Check[] = [
     pass:
       scripts['creator:capsule-check'] === 'bun scripts/creator-capsule-check.ts' &&
       scripts['creator:evolution-check'] === 'bun scripts/creator-evolution-check.ts' &&
+      scripts['creator:mutation-check'] === 'bun scripts/creator-mutation-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.hackathon:score',
   },
 ];
 
