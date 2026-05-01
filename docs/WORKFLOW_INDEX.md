@@ -27,6 +27,7 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Creator frontier capsule | [`usecases/creator/creator-frontier-capsule.md`](../usecases/creator/creator-frontier-capsule.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun creator:capsule-check` then `bun measure:check -- examples/creator-frontier-capsule.html` and `bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-frontier-capsule.pdf --canvas=1684x1191` | Capsule schema check + browser measure + PDF render + public-boundary scan | Synthetic creator memory only; no private source media, client copy, local paths, or account screenshots |
 | Creator evolution engine | [`docs/CREATOR_EVOLUTION_ENGINE.md`](./CREATOR_EVOLUTION_ENGINE.md) | docs + scripts until repeated winners justify packages | `bun creator:evolution-check && bun creator:mutation-check && bun creator:capsule-check && bun hackathon:score` | Darwin loop + candidate ledger + existing regression gates | No dashboard-only output; retain only creator-useful mutations with public-safe proof |
 | Creator mutation ledger | [`usecases/creator/creator-mutation-candidates.md`](../usecases/creator/creator-mutation-candidates.md) | examples + scripts only | `bun creator:mutation-check` | 3-5 single-axis candidates, exactly one selected winner, regression commands named | Public-safe observations only; no private source material or raw generated media |
+| Creator poster surface | [`usecases/creator/creator-poster-surface.md`](../usecases/creator/creator-poster-surface.md) | `@dash/measure`, `@dash/print`, examples + scripts | `bun creator:poster-check` then `bun measure:check -- examples/creator-poster-surface.html` and `bun print:render -- examples/creator-poster-surface.html /tmp/dash-creator-poster-surface.pdf --canvas=1684x1191` | Poster contract + browser measure + PDF render + public-boundary scan | Synthetic capsule copy only; no private source media, raw generated media, local paths, or account screenshots |
 | Public repo hardening | [`docs/PUBLIC_CSO_AUDIT.md`](./PUBLIC_CSO_AUDIT.md) | repo scripts | `bun docs:links && bun security:scan && bun hackathon:score` | All gates green locally and in CI | No secrets, private paths, raw media, or private project text |
 | Hackathon SDD loop | [`docs/HACKATHON_SDD_LOOP.md`](./HACKATHON_SDD_LOOP.md) | repo scripts + CI | review → apply → score → PR → CI → merge | `bun hackathon:score` returns `MAXXED` | Score must prove public usefulness, not just activity |
 
@@ -92,7 +93,7 @@ bun measure:check -- examples/creator-frontier-capsule.html
 bun print:render -- examples/creator-frontier-capsule.html /tmp/dash-creator-frontier-capsule.pdf --canvas=1684x1191
 ```
 
-The useful unit is `idea -> capsule -> artifact -> proof -> remix trail`. Keep the core minimal and put frontier tools at the adapter edge.
+The useful unit is `idea -> capsule -> artifact -> proof -> remix trail`. If the target surface is a poster, use `bun creator:poster-check` and `examples/creator-poster-surface.html` before inventing a new renderer. Keep the core minimal and put frontier tools at the adapter edge.
 
 ### If the user asks for Darwin-style self-evolution
 

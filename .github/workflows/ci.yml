@@ -41,6 +41,9 @@ jobs:
       - name: Creator Mutation Check
         run: bun creator:mutation-check
 
+      - name: Creator Poster Check
+        run: bun creator:poster-check
+
       - name: Markdown Link Check
         run: bun docs:links
 

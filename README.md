@@ -177,6 +177,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator capsule check | `bun creator:capsule-check`, currently clean |
 | Creator evolution check | `bun creator:evolution-check`, currently clean |
 | Creator mutation check | `bun creator:mutation-check`, currently clean |
+| Creator poster check | `bun creator:poster-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 

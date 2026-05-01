@@ -79,6 +79,7 @@ const checks: Check[] = [
       existsSync('examples/creator-frontier-capsule.html') &&
       existsSync('examples/creator-evolution-loop.json') &&
       existsSync('examples/creator-mutation-candidates.json') &&
+      existsSync('examples/creator-poster-surface.html') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
       existsSync('usecases/p5js/electric-archive.md') &&
@@ -115,6 +116,7 @@ const checks: Check[] = [
       'Creator frontier capsule',
       'Creator evolution engine',
       'Creator mutation ledger',
+      'Creator poster surface',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -206,6 +208,24 @@ const checks: Check[] = [
     evidence: 'Creator mutation candidate ledger + machine check',
   },
   {
+    id: 'creator-poster-surface',
+    label: 'Creator poster surface turns capsule memory into a measured publishable artifact',
+    points: 12,
+    pass:
+      scripts['creator:poster-check'] === 'bun scripts/creator-poster-check.ts' &&
+      commandPass('bun', ['creator:poster-check']) &&
+      existsSync('examples/creator-poster-surface.json') &&
+      existsSync('examples/creator-poster-surface.html') &&
+      has('usecases/creator/creator-poster-surface.md', [
+        'Mutation selected',
+        'Public boundary',
+        'Remix rule',
+        '中文摘要',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator poster surface', 'creator-poster-surface.html']),
+    evidence: 'Creator poster surface contract + HTML artifact + machine check',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,
@@ -231,6 +251,7 @@ const checks: Check[] = [
       'bun creator:capsule-check',
       'bun creator:evolution-check',
       'bun creator:mutation-check',
+      'bun creator:poster-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -245,8 +266,9 @@ const checks: Check[] = [
       scripts['creator:capsule-check'] === 'bun scripts/creator-capsule-check.ts' &&
       scripts['creator:evolution-check'] === 'bun scripts/creator-evolution-check.ts' &&
       scripts['creator:mutation-check'] === 'bun scripts/creator-mutation-check.ts' &&
+      scripts['creator:poster-check'] === 'bun scripts/creator-poster-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.hackathon:score',
   },
 ];
 
