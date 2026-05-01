@@ -39,6 +39,7 @@
 - [包说明](#包说明)
 - [Kami 和 P5 带来了什么](#kami-和-p5-带来了什么)
 - [公开示例](#公开示例)
+- [Agent 入口](#agent-入口)
 - [当前状态](#当前状态)
 - [Hall of Fame](#hall-of-fame)
 
@@ -161,6 +162,14 @@ console.log(state.phases.scanExposure.eased);
 
 <p align="right"><a href="#top">回到顶部</a></p>
 
+## Agent 入口
+
+Agent 应该先读 [`AGENTS.md`](./AGENTS.md)。里面写清楚了仓库契约、默认验证命令、公开边界，以及一个合格 workflow 文档应该长什么样。
+
+这一周的 hackathon 推进目标记录在 [`docs/HACKATHON_GOAL.md`](./docs/HACKATHON_GOAL.md)：公开可安装、workflow 覆盖更深、验证链路更硬、可以进入 skills.sh / Hermes Agent 生态。
+
+<p align="right"><a href="#top">回到顶部</a></p>
+
 ## 目录结构
 
 ```text
@@ -181,6 +190,7 @@ console.log(state.phases.scanExposure.eased);
 │   └── video/
 ├── README.md
 ├── README-zh.md
+├── AGENTS.md
 └── package.json
 ```
 

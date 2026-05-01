@@ -39,6 +39,7 @@
 - [Packages](#packages)
 - [What Kami And P5 Add](#what-kami-and-p5-add)
 - [Public Examples](#public-examples)
+- [Agent Entry Point](#agent-entry-point)
 - [Status](#status)
 - [Hall of Fame](#hall-of-fame)
 
@@ -161,6 +162,14 @@ The examples are intentionally sanitized. They show the design infrastructure wi
 
 <p align="right"><a href="#top">back to top</a></p>
 
+## Agent Entry Point
+
+Agents should start with [`AGENTS.md`](./AGENTS.md). It states the repo contract, default verification commands, public boundary, and the shape of a good workflow doc.
+
+For the week-long hackathon push, [`docs/HACKATHON_GOAL.md`](./docs/HACKATHON_GOAL.md) tracks the operating target: public installability, stronger workflow coverage, verification harnesses, and skill-ready packaging.
+
+<p align="right"><a href="#top">back to top</a></p>
+
 ## Directory Layout
 
 ```text
@@ -181,6 +190,7 @@ The examples are intentionally sanitized. They show the design infrastructure wi
 │   └── video/
 ├── README.md
 ├── README-zh.md
+├── AGENTS.md
 └── package.json
 ```
 
