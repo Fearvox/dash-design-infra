@@ -1,0 +1,49 @@
+{
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "fixed-canvas launch poster",
+  "job": "turn a creator capsule into a single publishable poster proof without losing intent, memory, public boundary, or remix rule",
+  "format": {
+    "canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-poster-surface.html",
+      "/tmp/dash-creator-poster-surface.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "proof",
+    "remix_rule"
+  ],
+  "poster_grammar": {
+    "layout": "one commanding editorial sentence, one capsule memory rail, one proof stamp, and one remix note",
+    "type": "large serif display type with compact mono proof labels",
+    "color": "warm paper field, carbon ink, electric blue proof mark, restrained amber memory accent",
+    "motion": "still poster now; future motion variant may reveal memory rail as a left-to-right scan"
+  },
+  "proof": [
+    "bun creator:poster-check",
+    "bun measure:check -- examples/creator-poster-surface.html",
+    "bun print:render -- examples/creator-poster-surface.html /tmp/dash-creator-poster-surface.pdf --canvas=1684x1191",
+    "bun security:scan",
+    "browser visual QA"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic creator intent",
+      "public-safe capsule fields",
+      "DASH layout/tokens language"
+    ],
+    "blocked": [
+      "private client text",
+      "raw creator media",
+      "local absolute source paths",
+      "API keys, cookies, account screenshots"
+    ]
+  },
+  "retention": "one selected surface mutation retained as example + machine gate; do not promote package primitive until another surface wins"
+}

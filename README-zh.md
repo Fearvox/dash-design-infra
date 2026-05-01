@@ -175,6 +175,7 @@ bun hackathon:score
 | Creator capsule check | `bun creator:capsule-check`，当前 clean |
 | Creator evolution check | `bun creator:evolution-check`，当前 clean |
 | Creator mutation check | `bun creator:mutation-check`，当前 clean |
+| Creator poster check | `bun creator:poster-check`，当前 clean |
 | Hackathon score | `bun hackathon:score`，当前 maxed |
 | 类型安全 | `bun typecheck`，当前 green |
 

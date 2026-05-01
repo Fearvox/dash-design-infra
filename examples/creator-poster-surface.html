@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creator Poster Surface</title>
+    <style>
+      :root {
+        --paper: #f1eadc;
+        --paper-2: #fff8eb;
+        --ink: #15120e;
+        --muted: #6f675b;
+        --line: rgba(21, 18, 14, .16);
+        --blue: #1d4ed8;
+        --amber: #c47a1f;
+        --soft-blue: rgba(29, 78, 216, .10);
+        --soft-amber: rgba(196, 122, 31, .14);
+      }
+
+      * { box-sizing: border-box; }
+
+      @page { size: 1684px 1191px; margin: 0; }
+      @media print {
+        html, body { width: 1684px; height: 1191px; margin: 0; overflow: hidden; }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 18% 16%, rgba(29,78,216,.16), transparent 26%),
+          radial-gradient(circle at 86% 84%, rgba(196,122,31,.18), transparent 24%),
+          linear-gradient(135deg, #f8f0e2 0%, #ece0cd 55%, #ddd1bf 100%);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: .24;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(21,18,14,.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(21,18,14,.08) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: radial-gradient(circle at 50% 48%, black 0%, black 62%, transparent 94%);
+      }
+
+      .page {
+        width: 1684px;
+        height: 1191px;
+        margin: 0 auto;
+        padding: 58px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .poster-frame {
+        height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 44px;
+        background: rgba(255, 248, 235, .56);
+        box-shadow: 0 40px 110px rgba(45, 36, 25, .18), inset 0 1px 0 rgba(255,255,255,.7);
+        padding: 44px;
+        position: relative;
+      }
+
+      .topline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        margin-bottom: 78px;
+      }
+
+      .seal {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--ink);
+        color: #f8ecd5;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 38px;
+        box-shadow: 0 18px 40px rgba(21,18,14,.20);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 412px;
+        gap: 64px;
+        align-items: end;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-size: 132px;
+        line-height: .88;
+        letter-spacing: -.075em;
+        font-weight: 500;
+        max-width: 1040px;
+      }
+
+      h1 em {
+        color: var(--blue);
+        font-style: italic;
+      }
+
+      .proof-card {
+        border-radius: 34px;
+        background: var(--ink);
+        color: #f8ecd5;
+        padding: 30px;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .proof-card b {
+        color: #f4be68;
+        display: block;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+
+      .proof-card p {
+        margin: 0;
+        color: #d9cfbf;
+        font-size: 22px;
+        line-height: 1.34;
+      }
+
+      .proof-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .proof-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border-top: 1px solid rgba(255,255,255,.12);
+        padding-top: 10px;
+        font-size: 13px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .proof-item span:last-child { color: #8eb6ff; }
+
+      .memory-rail {
+        position: absolute;
+        left: 44px;
+        right: 44px;
+        bottom: 112px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .memory {
+        min-height: 174px;
+        border-radius: 30px;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(255,255,255,.44), rgba(255,255,255,.18));
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .memory::after {
+        content: "";
+        position: absolute;
+        right: -32px;
+        top: -36px;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: var(--tone, var(--soft-blue));
+      }
+
+      .memory .k {
+        position: relative;
+        z-index: 1;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .memory p {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 27px;
+        line-height: 1.08;
+        letter-spacing: -.035em;
+      }
+
+      .footer {
+        position: absolute;
+        left: 44px;
+        right: 44px;
+        bottom: 40px;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+
+      .remix {
+        color: var(--ink);
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="poster-frame">
+        <div class="topline">
+          <span>Creator Poster Surface · from creator-frontier-capsule.json</span>
+          <div class="seal">C</div>
+          <span>proof before publish</span>
+        </div>
+
+        <section class="hero">
+          <h1>Remember the idea. Ship the <em>surface.</em></h1>
+          <aside class="proof-card">
+            <div>
+              <b>Capsule → Poster</b>
+              <p>A single publishable surface that preserves creator intent, blocked inputs, proof path, and remix rule.</p>
+            </div>
+            <div class="proof-list">
+              <div class="proof-item"><span>measure</span><span>required</span></div>
+              <div class="proof-item"><span>print</span><span>required</span></div>
+              <div class="proof-item"><span>boundary</span><span>clean</span></div>
+              <div class="proof-item"><span>remix</span><span>portable</span></div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="memory-rail">
+          <div class="memory" style="--tone: rgba(29,78,216,.10)"><div class="k">memory 01</div><p>Calm, precise, future-facing.</p></div>
+          <div class="memory" style="--tone: rgba(196,122,31,.15)"><div class="k">memory 02</div><p>Explain the idea in under twenty seconds.</p></div>
+          <div class="memory" style="--tone: rgba(101,163,13,.12)"><div class="k">memory 03</div><p>Survive as poster, deck, short, and browser board.</p></div>
+        </section>
+
+        <div class="footer">
+          <span>DASH Creator OS · idea → capsule → poster → proof → remix</span>
+          <span class="remix">Change surface; preserve intent, boundary, proof.</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
