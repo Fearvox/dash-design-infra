@@ -130,6 +130,21 @@ const checks: Check[] = [
     evidence: 'Refero visual research workflow + example board',
   },
   {
+    id: 'darwin-skill-ratchet',
+    label: 'Darwin-inspired skill ratchet workflow is vetted, synthetic, and measurable',
+    points: 12,
+    pass:
+      existsSync('examples/darwin-ratchet-board.html') &&
+      has('usecases/visual-research/darwin-skill-ratchet.md', [
+        'Source Vetting Summary',
+        'Pattern Extracted',
+        'Rubric For Visual Skill Loops',
+        'Public Boundary',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Skill ratchet board', 'darwin-ratchet-board.html']),
+    evidence: 'Darwin skill ratchet workflow + example board',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,

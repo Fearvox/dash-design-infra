@@ -105,6 +105,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | Weather-style evidence report | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | Pressure maps, fronts, radar texture, and forecast cards for complex signals |
 | Dense rendered motion piece | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | Chunked render, contact-sheet QA, bitrate-controlled WeChat delivery |
 | Visual research board | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | Real-interface study converted into a synthetic, measurable pattern board |
+| Skill / prompt optimization loop | [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md) | External skill ideas vetted, abstracted, measured, and kept only if they improve the public workflow |
 | Hard-constrained page | [`@dash/layout`](./packages/layout) + [`@dash/measure`](./packages/measure) | Layout rules that can be solved, then checked in a real browser |
 
 <p align="right"><a href="#top">back to top</a></p>
@@ -144,7 +145,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 ## Optimization Loop
 
-The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md).
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements.
 
 The local scoreboard proxy is:
 
