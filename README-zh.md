@@ -104,6 +104,7 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 | 档案/证据视觉 | [`Electric Archive`](./usecases/p5js/electric-archive.md) | 档案面 + 信号面的 memory / retrieval / handoff 叙事 |
 | 天气图式证据报告 | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | 气压、锋面、雷达纹理和 forecast card |
 | 高密度生成式视频 | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | 分块渲染、contact-sheet QA、微信码率压缩 |
+| 视觉研究板 | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | 把真实界面研究转成公开安全、可测量的 pattern board |
 | 有硬约束的页面 | [`@dash/layout`](./packages/layout) + [`@dash/measure`](./packages/measure) | 先解布局规则，再用真实浏览器验收 |
 
 <p align="right"><a href="#top">回到顶部</a></p>

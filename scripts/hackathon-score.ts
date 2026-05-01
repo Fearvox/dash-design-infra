@@ -72,12 +72,14 @@ const checks: Check[] = [
   },
   {
     id: 'workflow-library',
-    label: 'Usecase library covers document, p5, and video workflows',
+    label: 'Usecase library covers document, p5, visual research, and video workflows',
     points: 8,
     pass:
       existsSync('examples/one-pager.html') &&
+      existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/p5js/electric-archive.md') &&
       existsSync('usecases/p5js/weather-report.md') &&
+      existsSync('usecases/visual-research/refero-visual-research.md') &&
       existsSync('usecases/video/windburn-render-workflow.md'),
     evidence: 'examples/ + usecases/',
   },
@@ -110,6 +112,22 @@ const checks: Check[] = [
       'Hackathon SDD loop',
     ]),
     evidence: 'docs/WORKFLOW_INDEX.md workflow matrix',
+  },
+
+  {
+    id: 'visual-research-board',
+    label: 'Refero-inspired visual research board is documented, synthetic, and measurable',
+    points: 12,
+    pass:
+      existsSync('examples/refero-research-board.html') &&
+      has('usecases/visual-research/refero-visual-research.md', [
+        'Refero patterns extracted',
+        'Multica workbench patterns imported',
+        'Browser proofshot QA',
+        'Public boundary',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Visual research board', 'refero-research-board.html']),
+    evidence: 'Refero visual research workflow + example board',
   },
   {
     id: 'docs-links',

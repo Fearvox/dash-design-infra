@@ -83,6 +83,7 @@ A loop that only plans is a failed loop unless the plan itself is the shipped ar
 - `@dash/layout`
 - `@dash/print`
 - p5.js usecases: Electric Archive, Memory Weather Report
+- visual research usecase: Refero Visual Research Workflow
 - video workflow usecase: Windburn Render Workflow
 
 ## First Audit Targets
