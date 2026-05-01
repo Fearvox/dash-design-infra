@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creator Frontier Capsule</title>
+    <style>
+      :root {
+        --bg: #f3efe7;
+        --ink: #161411;
+        --muted: #746d63;
+        --line: rgba(22, 20, 17, 0.14);
+        --soft: rgba(22, 20, 17, 0.06);
+        --panel: #fffaf0;
+        --panel-2: #e8dfd0;
+        --accent: #1d4ed8;
+        --cyan: #0ea5e9;
+        --lime: #65a30d;
+        --violet: #7c3aed;
+        --orange: #ea580c;
+        --red: #dc2626;
+        --radius: 30px;
+      }
+
+      * { box-sizing: border-box; }
+
+      @page {
+        size: 1684px 1191px;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          width: 1684px;
+          height: 1191px;
+          margin: 0;
+          overflow: hidden;
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 14%, rgba(29, 78, 216, 0.16), transparent 26%),
+          radial-gradient(circle at 82% 18%, rgba(234, 88, 12, 0.11), transparent 24%),
+          linear-gradient(135deg, #f8f3ea 0%, #efe6d8 54%, #e6ddcf 100%);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: .22;
+        background-image: radial-gradient(rgba(22,20,17,.18) .75px, transparent .75px);
+        background-size: 18px 18px;
+        mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      }
+
+      .page {
+        width: 1684px;
+        height: 1191px;
+        margin: 0 auto;
+        padding: 52px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 42px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 13px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #f8f3ea;
+        background: conic-gradient(from 180deg, var(--accent), var(--cyan), var(--lime), var(--orange), var(--accent));
+        font-weight: 900;
+      }
+
+      .chips { display: flex; gap: 10px; }
+      .chip {
+        padding: 11px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,.42);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: .92fr 1.08fr;
+        gap: 40px;
+        align-items: stretch;
+      }
+
+      .left {
+        padding-top: 16px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        border: 1px solid rgba(29,78,216,.25);
+        background: rgba(29,78,216,.07);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 9px 13px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        margin-bottom: 26px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 700px;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-size: 92px;
+        line-height: .92;
+        letter-spacing: -.066em;
+        font-weight: 500;
+      }
+
+      h1 em {
+        color: var(--accent);
+        font-style: italic;
+      }
+
+      .intro {
+        margin: 28px 0 0;
+        max-width: 630px;
+        color: var(--muted);
+        font-size: 23px;
+        line-height: 1.42;
+      }
+
+      .contract-card {
+        margin-top: 36px;
+        padding: 8px;
+        border: 1px solid var(--line);
+        border-radius: 34px;
+        background: rgba(255,255,255,.36);
+      }
+
+      .contract-inner {
+        border-radius: 26px;
+        background: var(--ink);
+        color: #f7efe0;
+        padding: 28px;
+        display: grid;
+        grid-template-columns: 154px 1fr;
+        gap: 24px;
+      }
+
+      .capsule-icon {
+        width: 138px;
+        height: 138px;
+        border-radius: 34px;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.03)),
+          #1f1d19;
+        border: 1px solid rgba(255,255,255,.13);
+        font-family: ui-serif, Georgia, serif;
+        font-size: 54px;
+        color: #f5c46a;
+      }
+
+      .contract-copy b {
+        display: block;
+        color: #f5c46a;
+        font-size: 13px;
+        letter-spacing: .17em;
+        text-transform: uppercase;
+        margin-bottom: 13px;
+      }
+
+      .contract-copy p {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.44;
+        color: #d8d0c1;
+      }
+
+      .board {
+        padding: 10px;
+        border-radius: 40px;
+        background: rgba(255,255,255,.5);
+        border: 1px solid var(--line);
+        box-shadow: 0 30px 80px rgba(45, 38, 28, .16), inset 0 1px 0 rgba(255,255,255,.8);
+      }
+
+      .board-inner {
+        min-height: 608px;
+        border-radius: 30px;
+        background: var(--panel);
+        border: 1px solid rgba(22,20,17,.1);
+        padding: 30px;
+      }
+
+      .board-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+        margin-bottom: 26px;
+      }
+
+      .board-head h2 {
+        margin: 0;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 35px;
+        line-height: 1;
+        letter-spacing: -.05em;
+      }
+
+      .json-ref {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        padding-top: 8px;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .schema {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .field {
+        min-height: 118px;
+        border: 1px solid rgba(22,20,17,.11);
+        border-radius: 24px;
+        background: #fbf5e9;
+        padding: 17px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .field::after {
+        content: "";
+        position: absolute;
+        right: -24px;
+        top: -28px;
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        background: var(--tone, rgba(29,78,216,.08));
+      }
+
+      .field .label {
+        position: relative;
+        z-index: 1;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .field b {
+        position: relative;
+        z-index: 1;
+        display: block;
+        font-size: 18px;
+        line-height: 1.08;
+        letter-spacing: -.03em;
+        margin-bottom: 9px;
+      }
+
+      .field p {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        color: var(--muted);
+        font-size: 13.5px;
+        line-height: 1.28;
+      }
+
+      .routes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .route-card {
+        border-radius: 28px;
+        border: 1px solid rgba(22,20,17,.12);
+        background: #181612;
+        color: #f6ead7;
+        padding: 22px;
+        min-height: 168px;
+      }
+
+      .route-card.light {
+        background: #e8dfd0;
+        color: var(--ink);
+      }
+
+      .route-card h3 {
+        margin: 0 0 18px;
+        font-size: 15px;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .route-card.light h3 { color: #8a4b12; }
+
+      .route-line {
+        display: grid;
+        grid-template-columns: 104px 1fr;
+        gap: 12px;
+        padding: 8px 0;
+        border-top: 1px solid rgba(255,255,255,.11);
+        font-size: 14px;
+        line-height: 1.24;
+      }
+
+      .light .route-line { border-top-color: rgba(22,20,17,.12); }
+      .route-line span:first-child { color: #9ea7b7; font-weight: 800; }
+      .light .route-line span:first-child { color: #8b6f4b; }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .tile {
+        min-height: 166px;
+        border-radius: 28px;
+        padding: 21px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.42);
+      }
+
+      .tile:nth-child(2) { transform: translateY(8px); }
+      .tile:nth-child(3) { transform: translateY(-7px); }
+      .tile:nth-child(4) { transform: translateY(5px); }
+
+      .tile .num {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .tile b {
+        display: block;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 25px;
+        line-height: 1.03;
+        letter-spacing: -.04em;
+        margin-bottom: 13px;
+      }
+
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.34;
+      }
+
+      .footer {
+        position: absolute;
+        left: 52px;
+        right: 52px;
+        bottom: 30px;
+        padding-top: 13px;
+        border-top: 1px solid rgba(22,20,17,.13);
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="topbar">
+        <div class="brand"><div class="mark">C</div><span>Creator Frontier Capsule</span></div>
+        <div class="chips">
+          <div class="chip">minimal core</div>
+          <div class="chip">frontier adapters</div>
+          <div class="chip">proof before publish</div>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="left">
+          <div class="eyebrow">for creators, not infra theater</div>
+          <h1>Remember the idea before the tools <em>mutate it.</em></h1>
+          <p class="intro">A capsule stores intent, memory, surface, grammar, inputs, tool path, proof, and remix rule. Any frontier visual tool can plug in if it respects that boundary.</p>
+
+          <div class="contract-card">
+            <div class="contract-inner">
+              <div class="capsule-icon">◈</div>
+              <div class="contract-copy">
+                <b>Minimal useful unit</b>
+                <p>Not a CMS, not a gallery, not another prompt dump. One compact creative memory card that can become a poster, board, deck, short, PDF, TouchDesigner patch, or skill.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="board-inner">
+            <div class="board-head">
+              <h2>Capsule contract</h2>
+              <div class="json-ref">creator-frontier-capsule.json</div>
+            </div>
+
+            <div class="schema">
+              <div class="field" style="--tone: rgba(29,78,216,.09)"><div class="label">creator</div><b>Who this helps</b><p>Founder, artist, researcher, content creator, or agent builder.</p></div>
+              <div class="field" style="--tone: rgba(234,88,12,.10)"><div class="label">intent</div><b>What it must do</b><p>Explain the job of the artifact before picking any renderer.</p></div>
+              <div class="field" style="--tone: rgba(101,163,13,.10)"><div class="label">memory</div><b>What survives</b><p>Seed, feeling, proof path, and decisions that future remixes inherit.</p></div>
+              <div class="field" style="--tone: rgba(14,165,233,.10)"><div class="label">surface</div><b>Where it lands</b><p>Poster, board, deck, short, PDF, web demo, tox, or skill.</p></div>
+              <div class="field" style="--tone: rgba(124,58,237,.10)"><div class="label">grammar</div><b>How it feels</b><p>Layout, type, color, motion — reusable language, not copied assets.</p></div>
+              <div class="field" style="--tone: rgba(220,38,38,.10)"><div class="label">public boundary</div><b>What stays out</b><p>Private copy, raw media, local paths, cookies, keys, screenshots.</p></div>
+            </div>
+
+            <div class="routes">
+              <div class="route-card">
+                <h3>Tool path</h3>
+                <div class="route-line"><span>HTML</span><span>board, one-pager, PDF, web proof</span></div>
+                <div class="route-line"><span>Motion</span><span>p5, Remotion, Manim, TouchDesigner adapters</span></div>
+                <div class="route-line"><span>Models</span><span>image/video prompt DNA and preview sheet</span></div>
+              </div>
+              <div class="route-card light">
+                <h3>remix rule</h3>
+                <div class="route-line"><span>Change</span><span>surface, accent, tool adapter, scene sequence</span></div>
+                <div class="route-line"><span>Preserve</span><span>creator intent, blocked inputs, proof path</span></div>
+                <div class="route-line"><span>Verify</span><span>measure, print, browser, contact sheet, score</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom">
+        <div class="tile"><div class="num">01 / Brief</div><b>Start from creator memory</b><p>Capture the reason, feeling, audience, and output target before choosing a frontier model.</p></div>
+        <div class="tile"><div class="num">02 / Render</div><b>Choose the smallest path</b><p>Use HTML if stillness works, p5 if motion grammar matters, video tools only when time is essential.</p></div>
+        <div class="tile"><div class="num">03 / Proof</div><b>Reality beats taste</b><p>Measure layout, render export, scan public boundary, and inspect the actual browser artifact.</p></div>
+        <div class="tile"><div class="num">04 / Remix</div><b>Keep the seed portable</b><p>Future tools may mutate the surface, but the capsule preserves identity and constraints.</p></div>
+      </section>
+
+      <div class="footer">
+        <span>DASH Creator OS · idea → capsule → artifact → proof → remix trail</span>
+        <span>examples/creator-frontier-capsule.html</span>
+      </div>
+    </main>
+  </body>
+</html>

@@ -83,4 +83,6 @@ For hackathon loop work, follow [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_
 
 For external skill/prompt references, use [`usecases/visual-research/darwin-skill-ratchet.md`](./usecases/visual-research/darwin-skill-ratchet.md): vet the source first, extract reusable grammar, create synthetic public artifacts, measure them, and keep only verified improvements.
 
+For creator-facing visual work, start with [`docs/CREATOR_OS.md`](./docs/CREATOR_OS.md) and [`usecases/creator/creator-frontier-capsule.md`](./usecases/creator/creator-frontier-capsule.md). The default unit is `idea -> capsule -> artifact -> proof -> remix trail`; keep frontier tools as adapters around a minimal core.
+
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

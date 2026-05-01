@@ -47,6 +47,7 @@
     "print:render": "bun packages/print/src/cli.ts",
     "docs:links": "bun scripts/markdown-link-check.ts",
     "security:scan": "bun scripts/public-boundary-scan.ts",
+    "creator:capsule-check": "bun scripts/creator-capsule-check.ts",
     "hackathon:score": "bun scripts/hackathon-score.ts"
   },
   "devDependencies": {
