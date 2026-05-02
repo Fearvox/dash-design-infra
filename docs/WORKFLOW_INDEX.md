@@ -31,6 +31,7 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Creator motion storyboard | [`usecases/creator/creator-motion-storyboard.md`](../usecases/creator/creator-motion-storyboard.md) | examples + scripts; future video/contact-sheet remains adapter edge | `bun creator:motion-storyboard-check` then `bun measure:check -- examples/creator-motion-storyboard.html` and `bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191` | Six-frame storyboard contract + browser measure + public-boundary scan | No raw generated video, private prompts, local paths, account screenshots, or client copy |
 | Creator prompt DNA adapter | [`usecases/creator/creator-prompt-dna-adapter.md`](../usecases/creator/creator-prompt-dna-adapter.md) | examples + scripts; frontier models remain external adapters | `bun creator:prompt-dna-check` then `bun measure:check -- examples/creator-prompt-dna-adapter.html` and `bun print:render -- examples/creator-prompt-dna-adapter.html /tmp/dash-creator-prompt-dna-adapter.pdf --canvas=1684x1191` | Prompt DNA contract + proof card + public-boundary scan | No private prompts, raw generated media, client copy, local paths, or account screenshots |
 | Creator contact-sheet QA | [`usecases/creator/creator-contact-sheet-qa.md`](../usecases/creator/creator-contact-sheet-qa.md) | scripts + ignored `.artifacts` output | `bun creator:contact-sheet-check` then `bun measure:check -- .artifacts/creator-motion-contact-sheet.html` | Regenerated contact sheet fits fixed canvas and embeds no raw media | `.artifacts` ignored; no raw generated video, private prompts, local paths, or client copy |
+| Creator skill package | [`skill-packages/creator-workflow/SKILL.md`](../skill-packages/creator-workflow/SKILL.md) and [`usecases/creator/creator-skill-package.md`](../usecases/creator/creator-skill-package.md) | repo-local skill artifact + existing creator scripts | `bun creator:skill-package-check` then `bun docs:links` and `bun security:scan` | SKILL.md frontmatter, trigger, install boundary, example task, CI hook, and public boundary are checked | no external publish; no live sync; no raw media, private prompts, local paths, or credentials |
 | Public repo hardening | [`docs/PUBLIC_CSO_AUDIT.md`](./PUBLIC_CSO_AUDIT.md) | repo scripts | `bun docs:links && bun security:scan && bun hackathon:score` | All gates green locally and in CI | No secrets, private paths, raw media, or private project text |
 | Hackathon SDD loop | [`docs/HACKATHON_SDD_LOOP.md`](./HACKATHON_SDD_LOOP.md) | repo scripts + CI | review → apply → score → PR → CI → merge | `bun hackathon:score` returns `MAXXED` | Score must prove public usefulness, not just activity |
 
@@ -113,6 +114,18 @@ bun hackathon:score
 
 This means mutation, evaluation, selection, retention, and regression. Use the candidate ledger when comparing mutations. Do not reduce it to a dashboard. A dashboard is valid only when it controls the next creative mutation.
 
+### If the user asks for a creator skill package
+
+Use the repo-local package route:
+
+```bash
+bun creator:skill-package-check
+bun docs:links
+bun security:scan
+```
+
+The package artifact is [`skill-packages/creator-workflow/SKILL.md`](../skill-packages/creator-workflow/SKILL.md). It may be inspected or copied into a local skill loader for review, but it is not a public release and must not be synced to live agents without a separate reviewed release issue.
+
 ### If the user asks to “make the repo better”
 
 Use the hackathon SDD loop:
@@ -133,7 +146,7 @@ These are intentionally unshipped until they have commands and public boundaries
 |---|---|
 | TouchDesigner / twozero MCP workflow | running local TD contract, exported public `.tox` or screenshot path, port/security note |
 | Browser demo / Vercel surface | deploy command, public URL, screenshot QA, rollback path |
-| Skills.sh / Hermes skill package | `SKILL.md`, install path, trigger description, example task, verification gate; use the Darwin ratchet before publishing |
+| External skill publish/release | review-approved registry target, live install smoke, versioning, rollback, and public release note |
 | Visual contact-sheet QA | shipped as `bun creator:contact-sheet-check`; writes ignored `.artifacts/creator-motion-contact-sheet.html` |
 
 ## 中文摘要
