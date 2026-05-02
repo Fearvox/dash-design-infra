@@ -288,6 +288,30 @@ const checks: Check[] = [
     evidence: 'Creator contact-sheet QA script + ignored artifact contract',
   },
   {
+    id: 'creator-skill-package',
+    label: 'Creator skill package is repo-local, SKILL.md-style, and machine checked',
+    points: 10,
+    pass:
+      scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
+      commandPass('bun', ['creator:skill-package-check']) &&
+      existsSync('skill-packages/creator-workflow/SKILL.md') &&
+      existsSync('usecases/creator/creator-skill-package.md') &&
+      has('skill-packages/creator-workflow/SKILL.md', [
+        'name: dash-creator-workflow',
+        'Verification Gate',
+        'Install Boundary',
+        'Public Boundary',
+      ]) &&
+      has('usecases/creator/creator-skill-package.md', [
+        'Repo-local install boundary',
+        'Trigger description',
+        'Verification',
+      ]) &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator skill package', 'creator:skill-package-check']) &&
+      has('README.md', ['Creator Skill Package', 'creator:skill-package-check']),
+    evidence: 'Repo-local Creator SKILL.md artifact + docs + machine check',
+  },
+  {
     id: 'docs-links',
     label: 'Markdown relative links are machine-checked',
     points: 8,
@@ -317,7 +341,10 @@ const checks: Check[] = [
       'bun creator:prompt-dna-check',
       '- name: Creator Motion Storyboard Check',
       'bun creator:motion-storyboard-check',
+      '- name: Creator Contact Sheet Check',
       'bun creator:contact-sheet-check',
+      '- name: Creator Skill Package Check',
+      'bun creator:skill-package-check',
       'bun docs:links',
       'bun security:scan',
       'bun hackathon:score',
@@ -336,8 +363,9 @@ const checks: Check[] = [
       scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
       scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
       scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
+      scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 

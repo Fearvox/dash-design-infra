@@ -28,6 +28,7 @@ bun docs:links
 bun audit --audit-level high
 bun security:scan
 bun creator:prompt-dna-check
+bun creator:skill-package-check
 bun hackathon:score
 ```
 
@@ -87,5 +88,7 @@ For external skill/prompt references, use [`usecases/visual-research/darwin-skil
 For creator-facing visual work, start with [`docs/CREATOR_OS.md`](./docs/CREATOR_OS.md) and [`usecases/creator/creator-frontier-capsule.md`](./usecases/creator/creator-frontier-capsule.md). The default unit is `idea -> capsule -> artifact -> proof -> remix trail`; keep frontier tools as adapters around a minimal core.
 
 For Darwin-style requests, use [`docs/CREATOR_EVOLUTION_ENGINE.md`](./docs/CREATOR_EVOLUTION_ENGINE.md). Darwin means self-evolution: observe, mutate, render, evaluate, select, retain, regress. Use `bun creator:mutation-check` when comparing candidate mutations. For the retained poster surface route, use `bun creator:poster-check` and `examples/creator-poster-surface.html`. For prompt DNA model adapters, use `bun creator:prompt-dna-check` and `examples/creator-prompt-dna-adapter.html`; keep raw generated media out of git. It does not mean "make a dashboard" unless the dashboard directly controls the next mutation.
+
+For repo-local creator skill packaging, use [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and `bun creator:skill-package-check`. Do not publish or sync the skill package externally unless a separate reviewed release issue authorizes that path.
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

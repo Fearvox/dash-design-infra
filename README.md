@@ -65,6 +65,7 @@ bun metrics:build
 bun typecheck
 bun creator:motion-storyboard-check
 bun creator:contact-sheet-check
+bun creator:skill-package-check
 bun docs:links
 bun security:scan
 bun hackathon:score
@@ -105,6 +106,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | Creator-facing frontier visual | [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md) | A compact creative memory unit: intent, grammar, surface, proof, and remix rule |
 | Prompt DNA for image/video models | [`Creator Prompt DNA Adapter`](./usecases/creator/creator-prompt-dna-adapter.md) | Public-safe prompt genetics, preview recipe, blocked outputs, and proof gate without raw generated media |
 | Contact-sheet QA for motion | [`Creator Contact-sheet QA`](./usecases/creator/creator-contact-sheet-qa.md) | Regenerated ignored `.artifacts` proof before raw video or renderer work |
+| Creator Skill Package | [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and [`Creator Skill Package Route`](./usecases/creator/creator-skill-package.md) | A repo-local skill package with trigger, install boundary, example task, and `creator:skill-package-check` |
 | Motion / video direction | [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md) and [`examples/creator-motion-storyboard.html`](./examples/creator-motion-storyboard.html) | Six-frame fixed-canvas storyboard, timing, boundary, remix handles, and contact-sheet bridge before any raw media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
 | Editorial deck-like artifact | [`@dash/kami`](./packages/kami) | Warm page defaults, stable hierarchy, print-safe tags |
@@ -153,7 +155,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 ## Optimization Loop
 
-The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea -> capsule -> artifact -> proof -> remix trail. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe -> mutate -> render -> evaluate -> select -> retain -> regress. The current retained bridge from static artifact to video direction is the [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md), which must pass `bun creator:motion-storyboard-check` before any renderer or contact sheet. This is self-evolution machinery, not a dashboard.
+The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea -> capsule -> artifact -> proof -> remix trail. The retained creator route can also be consumed as a repo-local skill package via [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) after `bun creator:skill-package-check`; this is not an external release. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe -> mutate -> render -> evaluate -> select -> retain -> regress. The current retained bridge from static artifact to video direction is the [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md), which must pass `bun creator:motion-storyboard-check` before any renderer or contact sheet. This is self-evolution machinery, not a dashboard.
 
 The local scoreboard proxy is:
 
@@ -185,6 +187,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator poster check | `bun creator:poster-check`, currently clean |
 | Creator prompt DNA check | `bun creator:prompt-dna-check`, currently clean |
 | Creator motion storyboard check | `bun creator:motion-storyboard-check`, currently clean |
+| Creator skill package check | `bun creator:skill-package-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 

@@ -53,6 +53,9 @@ jobs:
       - name: Creator Contact Sheet Check
         run: bun creator:contact-sheet-check
 
+      - name: Creator Skill Package Check
+        run: bun creator:skill-package-check
+
       - name: Markdown Link Check
         run: bun docs:links
 
