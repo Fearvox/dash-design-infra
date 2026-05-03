@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1684, initial-scale=1.0">
+<title>DASH Design Infra</title>
+<style>
+  :root {
+    /* @dash/tokens — paper/ink/accent palette */
+    --paper-base: oklch(0.96 0.01 85);
+    --paper-card: oklch(0.94 0.012 83);
+    --ink-primary: oklch(0.22 0.02 60);
+    --ink-secondary: oklch(0.45 0.02 65);
+    --accent-palm: oklch(0.35 0.08 160);
+    --accent-gold: oklch(0.82 0.12 85);
+
+    /* @dash/kami — warm editorial preset */
+    --kami-canvas: #F5F4ED;
+    --kami-ink-blue: #1B365D;
+    --kami-ink-light: #2D5A8A;
+    --kami-olive: #504E49;
+    --kami-stone: #6B6A64;
+
+    /* @dash/metrics — baseline grid */
+    --baseline: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Charter, TsangerJinKai02, 'Noto Serif SC', Georgia, serif;
+    background: var(--paper-base);
+    color: var(--ink-primary);
+    display: flex;
+    justify-content: center;
+    padding: calc(var(--baseline) * 6) 0;
+  }
+
+  .page {
+    width: 1552px;
+    min-height: 1077px;
+    background: var(--kami-canvas);
+    border: 1px solid oklch(0.88 0.02 75);
+    border-radius: 4px;
+    padding: calc(var(--baseline) * 6);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--baseline) * 6);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: calc(var(--baseline) * 3);
+    border-bottom: 1px solid oklch(0.88 0.02 75);
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--kami-ink-blue);
+    letter-spacing: -0.02em;
+  }
+
+  header .badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-palm);
+    background: oklch(0.35 0.08 160 / 0.08);
+    padding: 4px 12px;
+    border-radius: 16px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--baseline) * 6);
+    align-items: start;
+  }
+
+  .hero-left h2 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink-primary);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-left h2 span {
+    color: var(--accent-palm);
+  }
+
+  .hero-left p {
+    margin-top: calc(var(--baseline) * 3);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .hero-right {
+    background: var(--paper-card);
+    border-radius: 8px;
+    padding: calc(var(--baseline) * 4);
+    font-family: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .hero-right .prompt { color: var(--accent-palm); }
+  .hero-right .key { color: var(--kami-ink-blue); }
+  .hero-right .val { color: var(--ink-primary); }
+
+  .packages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(var(--baseline) * 2);
+  }
+
+  .package-card {
+    background: var(--paper-card);
+    border-radius: 6px;
+    padding: calc(var(--baseline) * 3);
+    border-left: 2px solid var(--accent-palm);
+  }
+
+  .package-card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--kami-ink-blue);
+    margin-bottom: calc(var(--baseline));
+  }
+
+  .package-card p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  .pipeline {
+    display: flex;
+    gap: calc(var(--baseline) * 2);
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--baseline) * 4);
+    background: var(--paper-card);
+    border-radius: 8px;
+  }
+
+  .pipeline-node {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-secondary);
+  }
+
+  .pipeline-node .icon {
+    display: block;
+    font-size: 20px;
+    margin-bottom: calc(var(--baseline));
+  }
+
+  .pipeline-arrow {
+    color: oklch(0.62 0.015 70);
+    font-size: 16px;
+  }
+
+  footer {
+    margin-top: auto;
+    padding-top: calc(var(--baseline) * 3);
+    border-top: 1px solid oklch(0.88 0.02 75);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--ink-secondary);
+  }
+
+  footer a {
+    color: var(--accent-palm);
+    text-decoration: none;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { border: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>dash-design-infra</h1>
+    <span class="badge">v0.0.1 &middot; Bun</span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h2>Fixed-canvas <span>editorial design</span> for agents that ship</h2>
+      <p>
+        Design tokens, type scales, baseline metrics, constraint layout, p5.js motion grammar,
+        and print-grade PDF export — all on a single Bun stack. No browser UI overhead; just
+        the boring machinery that makes designed output survive contact with reality.
+      </p>
+    </div>
+    <div class="hero-right">
+<code>
+<span class="prompt">$</span> bun run measure:check -- page.html<br>
+<span class="key">✓</span> <span class="val">Fits. 1684×1191</span><br>
+<br>
+<span class="prompt">$</span> bun run print:render -- page.html out.pdf<br>
+<span class="key">✓</span> <span class="val">7 pages. out.pdf</span><br>
+<br>
+<span class="prompt">$</span> bun run hackathon:score<br>
+<span class="key">MAXXED</span> <span class="val">234/234</span><br>
+<br>
+<span class="prompt">$</span> bun daemon:start<br>
+<span class="val">listening on 127.0.0.1:3845</span>
+</code>
+    </div>
+  </section>
+
+  <section class="packages">
+    <div class="package-card">
+      <h3>@dash/tokens</h3>
+      <p>Color, typography, spacing, page geometry, motion — single-source design truth.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/scale</h3>
+      <p>Type &amp; spacing scales via utopia-core with φ split-ratio computation.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/metrics</h3>
+      <p>Baseline-safe text metrics via capsize CSS. No magic numbers.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/kami</h3>
+      <p>Warm editorial preset: paper canvas, ink-blue accent, serif hierarchy.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/measure</h3>
+      <p>Playwright overflow checks. CI gate for fixed-canvas pages.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/layout</h3>
+      <p>Cassowary constraint solver. Hard rules like "footer never clips."</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/print</h3>
+      <p>HTML→PDF via paged.js + Chromium. Screen preview = print output.</p>
+    </div>
+    <div class="package-card">
+      <h3>@dash/p5-motion</h3>
+      <p>Reusable p5.js motion presets: Electric Archive, Weather Report.</p>
+    </div>
+  </section>
+
+  <div class="pipeline">
+    <div class="pipeline-node">
+      <span class="icon">🎨</span>
+      tokens → scale
+    </div>
+    <span class="pipeline-arrow">→</span>
+    <div class="pipeline-node">
+      <span class="icon">📐</span>
+      kami → layout
+    </div>
+    <span class="pipeline-arrow">→</span>
+    <div class="pipeline-node">
+      <span class="icon">🔍</span>
+      measure
+    </div>
+    <span class="pipeline-arrow">→</span>
+    <div class="pipeline-node">
+      <span class="icon">🖨️</span>
+      print → PDF
+    </div>
+    <span class="pipeline-arrow">→</span>
+    <div class="pipeline-node">
+      <span class="icon">🔁</span>
+      CI gate
+    </div>
+  </div>
+
+  <footer>
+    <span>MIT &middot; <a href="https://github.com/Fearvox/dash-design-infra">github.com/Fearvox/dash-design-infra</a></span>
+    <span>Built for agents. Verified on Chromium.</span>
+  </footer>
+
+</div>
+</body>
+</html>

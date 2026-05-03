@@ -1,0 +1,6 @@
+{
+  "buildCommand": "mkdir -p .vercel/output/static && cp apps/demo/index.html .vercel/output/static/index.html",
+  "outputDirectory": ".vercel/output/static",
+  "framework": null,
+  "installCommand": "echo 'static site, no install needed'"
+}

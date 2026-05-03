@@ -1,0 +1,11 @@
+{
+  "name": "@dash/demo",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "Public demo/landing page for DASH Design Infra — deployed to Vercel",
+  "scripts": {
+    "dev": "bun serve index.html",
+    "typecheck": "echo 'no ts' && exit 0"
+  }
+}
