@@ -1,0 +1,26 @@
+{
+  "name": "@dash/daemon",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "Local daemon for DASH Design Infra — HTTP API, agent CLI detection/spawn, SQLite state, print & measure endpoints",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@dash/measure": "workspace:*",
+    "@dash/print": "workspace:*",
+    "@dash/tokens": "workspace:*",
+    "@dash/kami": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
