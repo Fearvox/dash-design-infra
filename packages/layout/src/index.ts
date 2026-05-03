@@ -27,6 +27,9 @@
  * solvers live in src/solvers/<layout-name>.ts.
  */
 
+export { solveCanvasEditorial } from './solvers/canvas-editorial.js';
+export type { EditorialConfig, EditorialSection, EditorialResult, SolvedBox } from './solvers/canvas-editorial.js';
+
 import * as kiwi from '@lume/kiwi';
 
 export const { Variable, Expression, Constraint, Operator, Solver, Strength } = kiwi;
