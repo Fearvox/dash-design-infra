@@ -46,17 +46,19 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`creator-motion-storyboard-route` wins the current slice because it bridges capsule memory into motion/video direction without committing raw generated media or adding package code.
+`creator-p5-sketch-route` wins the current slice because it bridges capsule memory into a deterministic p5 creative-coding contract without importing a p5 runtime into the core repo or committing raw rendered media.
 
-The earlier `poster-surface-route` remains retained as the first surface mutation, and `adapter-prompt-dna-route` remains retained as the frontier model adapter. The earlier `candidate-ledger-gate` also remains retained as the validation layer that made these selections explicit.
+The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, and `creator-social-card-route` remain retained. The ledger gate remains the validation layer that makes these selections explicit even when it is not one of the five active candidates.
 
 Current retained sequence:
 
 | Route | Status | Why it stays |
 |---|---|---|
-| `candidate-ledger-gate` | retained gate | forces candidate comparison before claims of evolution |
 | `poster-surface-route` | retained surface | converts a capsule into a measured, printable artifact |
-| `adapter-prompt-dna-route` | selected adapter | preserves model-ready prompt DNA with a synthetic preview artifact |
+| `adapter-prompt-dna-route` | retained adapter | preserves model-ready prompt DNA with a synthetic preview artifact |
+| `creator-motion-storyboard-route` | retained surface | bridges capsule memory into motion/video direction before raw media |
+| `creator-social-card-route` | retained surface | creates a crop-safe post preview before platform upload |
+| `creator-p5-sketch-route` | selected adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
 
 ## 中文摘要
 

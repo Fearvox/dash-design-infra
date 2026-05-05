@@ -36,6 +36,19 @@ bun measure:check -- examples/creator-social-card.html --canvas=1200x630
 bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630
 ```
 
+## Creator P5 Sketch
+
+`creator-p5-sketch.{json,html}` turns the creator capsule into a deterministic
+`dash-flow-field` p5 sketch adapter. The check generates ignored frame-probe JSON
+before any external p5 runtime or rendered media is used.
+
+```bash
+bun creator:p5-sketch-check
+bun p5:motion-check
+bun measure:check -- examples/creator-p5-sketch.html
+bun print:render -- examples/creator-p5-sketch.html /tmp/dash-creator-p5-sketch.pdf --canvas=1684x1191
+```
+
 ## Motion Usecases
 
 p5.js visual examples live in [`../usecases/p5js`](../usecases/p5js). They are
@@ -55,3 +68,4 @@ p5.js 视觉用例在 [`../usecases/p5js`](../usecases/p5js)。
 
 Creator motion storyboard 示例用固定画布表达视频前的 motion brief，不提交 raw video 或私有素材。
 Creator Social Card 示例用于 1200x630 社交预览图，先证明 crop-safe 和 public boundary，再发布。
+Creator P5 Sketch 示例把 capsule 接到 `dash-flow-field` p5 contract，先生成 frame probes，再交给外部 runtime。

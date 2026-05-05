@@ -85,6 +85,7 @@ Everything else is optional until the loop proves it deserves more structure. Th
 - [`adapter-prompt-dna-route`](../usecases/creator/creator-prompt-dna-adapter.md): first frontier model adapter mutation; preserves prompt DNA and preview policy without committing raw generated media.
 - [`creator-motion-storyboard-route`](../usecases/creator/creator-motion-storyboard.md): bridge from capsule memory to video direction; keeps motion as a six-frame fixed-canvas contract until contact-sheet QA exists.
 - [`creator-social-card-route`](../usecases/creator/creator-social-card.md): post-ready social/export mutation; turns capsule memory into a crop-safe 1200x630 card with measure, print, browser QA, and no raw media.
+- [`creator-p5-sketch-route`](../usecases/creator/creator-p5-sketch.md): creative-coding adapter mutation; turns capsule memory into deterministic `dash-flow-field` frame probes and a fixed preview before any p5 runtime or raw rendered media.
 
 ## Candidate ledger
 

@@ -1,7 +1,7 @@
 {
-  "observation": "Creator capsule routes now cover poster, prompt DNA, motion storyboard, contact-sheet QA, and skill packaging, but creators still need a post-ready social image that survives platform crops before publish.",
-  "population": "creator capsule surface mutations for publishable creator artifacts",
-  "selection_pressure": "help a creator turn one capsule into a crop-safe publishable artifact faster without adding renderer packages or committing raw media",
+  "observation": "Creator capsule routes now cover poster, prompt DNA, motion storyboard, contact-sheet QA, social card, and skill packaging, but creators still need a reproducible creative-coding bridge from capsule memory into a p5 sketch before raw renderer output exists.",
+  "population": "creator capsule frontier-adapter mutations for public-safe visual generation workflows",
+  "selection_pressure": "help a creator turn one capsule into a deterministic, remixable generative sketch faster without adding renderer packages or committing raw media",
   "candidates": [
     {
       "id": "poster-surface-route",
@@ -34,21 +34,6 @@
       "selection": "retained"
     },
     {
-      "id": "candidate-ledger-gate",
-      "axis": "proof method",
-      "mutation": "Add a machine-checked candidate ledger so every Darwin slice names observation, population, candidates, fitness, and selected winner before retention.",
-      "phenotype": "creator:mutation-check validates this candidate population and blocks dashboard-only evolution work",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 9,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "A ledger can become bureaucracy if it is not tied to one retained winner.",
-      "selection": "retained-gate"
-    },
-    {
       "id": "creator-motion-storyboard-route",
       "axis": "surface",
       "mutation": "Route the capsule into a six-frame motion storyboard before any video renderer or model output is allowed.",
@@ -76,16 +61,32 @@
         "minimal_core": 10
       },
       "risk": "Could become a generic quote card if the hook, proof stamp, crop zone, and capsule memory are not machine-checked.",
+      "selection": "retained"
+    },
+    {
+      "id": "creator-p5-sketch-route",
+      "axis": "tool adapter",
+      "mutation": "Route the capsule into a deterministic p5 flow-field sketch contract before opening an external p5 runtime or saving rendered media.",
+      "phenotype": "JSON p5 adapter contract plus fixed-canvas preview board and generated frame-probe JSON from @dash/p5-motion helpers",
+      "fitness": {
+        "creator_utility": 10,
+        "memory_retention": 10,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 10
+      },
+      "risk": "Could become a fake creative-coding workflow if it only shows a board and does not generate deterministic frame probes from the p5 motion package.",
       "selection": "selected"
     }
   ],
-  "winner": "creator-social-card-route",
-  "retention": "Retain creator-social-card-route as the public-safe bridge from capsule memory to post-ready social preview. Keep poster, prompt DNA, motion storyboard, contact-sheet QA, and skill package routes retained; do not add package primitives until multiple social/export surfaces prove the same crop-safe contract.",
+  "winner": "creator-p5-sketch-route",
+  "retention": "Retain creator-p5-sketch-route as the public-safe bridge from capsule memory to deterministic p5 sketch contracts. Keep poster, prompt DNA, motion storyboard, and social card routes retained; do not add new package primitives until at least two creator adapters prove the same seed-to-proof workflow.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
     "bun creator:motion-storyboard-check",
+    "bun creator:p5-sketch-check",
     "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
