@@ -1,7 +1,7 @@
 {
-  "observation": "Creator capsule exists, but the evolution loop needs an explicit candidate ledger so agents compare mutations before retaining a winner.",
-  "population": "creator capsule surface mutations",
-  "selection_pressure": "help a creator turn one capsule into a publishable artifact faster without growing the core package layer",
+  "observation": "Creator capsule routes now cover poster, prompt DNA, motion storyboard, contact-sheet QA, and skill packaging, but creators still need a post-ready social image that survives platform crops before publish.",
+  "population": "creator capsule surface mutations for publishable creator artifacts",
+  "selection_pressure": "help a creator turn one capsule into a crop-safe publishable artifact faster without adding renderer packages or committing raw media",
   "candidates": [
     {
       "id": "poster-surface-route",
@@ -61,16 +61,32 @@
         "minimal_core": 10
       },
       "risk": "Could become a fake video workflow if it does not explicitly stop before raw media and contact-sheet QA.",
+      "selection": "retained"
+    },
+    {
+      "id": "creator-social-card-route",
+      "axis": "surface",
+      "mutation": "Route the capsule into a crop-safe 1200x630 social card for post, newsletter, and launch-thread previews.",
+      "phenotype": "JSON social surface contract plus fixed-canvas HTML card measured at 1200x630 and exported through the print path",
+      "fitness": {
+        "creator_utility": 10,
+        "memory_retention": 8,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 10
+      },
+      "risk": "Could become a generic quote card if the hook, proof stamp, crop zone, and capsule memory are not machine-checked.",
       "selection": "selected"
     }
   ],
-  "winner": "creator-motion-storyboard-route",
-  "retention": "Retain creator-motion-storyboard-route as the public-safe bridge from capsule memory to future video/contact-sheet work. Keep poster and prompt DNA retained; do not add renderer packages until contact-sheet QA is proven.",
+  "winner": "creator-social-card-route",
+  "retention": "Retain creator-social-card-route as the public-safe bridge from capsule memory to post-ready social preview. Keep poster, prompt DNA, motion storyboard, contact-sheet QA, and skill package routes retained; do not add package primitives until multiple social/export surfaces prove the same crop-safe contract.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
     "bun creator:motion-storyboard-check",
+    "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
     "bun docs:links",

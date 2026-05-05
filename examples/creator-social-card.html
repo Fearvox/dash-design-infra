@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creator Social Card</title>
+    <style>
+      :root {
+        --paper: #f3eadb;
+        --paper-hot: #fff8ea;
+        --ink: #15120e;
+        --muted: #6f6659;
+        --line: rgba(21, 18, 14, 0.18);
+        --blue: #1d4ed8;
+        --green: #2f6f4e;
+        --amber: #c57a1d;
+      }
+
+      * { box-sizing: border-box; }
+
+      @page { size: 1200px 630px; margin: 0; }
+      @media print {
+        html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 86% 8%, rgba(29, 78, 216, 0.24), transparent 24%),
+          radial-gradient(circle at 4% 100%, rgba(197, 122, 29, 0.22), transparent 28%),
+          #ded3c1;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .page {
+        width: 1200px;
+        height: 630px;
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(21, 18, 14, 0.055) 1px, transparent 1px),
+          linear-gradient(rgba(21, 18, 14, 0.045) 1px, transparent 1px),
+          linear-gradient(135deg, #fff6e7 0%, var(--paper) 56%, #e6dac8 100%);
+        background-size: 44px 44px, 44px 44px, auto;
+        box-shadow: 0 28px 80px rgba(21, 18, 14, 0.22);
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 44px 80px;
+        border: 1px dashed rgba(29, 78, 216, 0.24);
+        border-radius: 32px;
+        pointer-events: none;
+      }
+
+      .orb {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        right: 36px;
+        top: 28px;
+        background: conic-gradient(from 140deg, rgba(29,78,216,.92), rgba(47,111,78,.78), rgba(197,122,29,.72), rgba(29,78,216,.92));
+        opacity: .16;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 44px 54px;
+        display: grid;
+        grid-template-columns: 168px 1fr;
+        gap: 38px;
+      }
+
+      .proof-rail {
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: rgba(255, 248, 234, .72);
+        padding: 22px 18px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 0;
+      }
+
+      .route {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        justify-self: center;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+
+      .stamp {
+        align-self: center;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        margin: 0 auto;
+        background: var(--ink);
+        color: #f8ecd5;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 18px;
+        line-height: .95;
+        box-shadow: 0 18px 44px rgba(21,18,14,.22);
+      }
+
+      .stamp span {
+        display: block;
+        color: #8db4ff;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 10px;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .crop-note {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .content {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-width: 0;
+      }
+
+      .topline, .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .topline strong { color: var(--green); }
+
+      .hero {
+        display: grid;
+        align-content: center;
+        max-width: 860px;
+      }
+
+      .eyebrow {
+        color: var(--amber);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-size: 78px;
+        line-height: .9;
+        letter-spacing: -.045em;
+        font-weight: 520;
+        max-width: 830px;
+      }
+
+      h1 em {
+        color: var(--blue);
+        font-style: italic;
+      }
+
+      .dek {
+        max-width: 760px;
+        margin: 24px 0 0;
+        color: #554c41;
+        font-size: 24px;
+        line-height: 1.24;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .proof {
+        min-height: 86px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 248, 234, .66);
+        padding: 16px;
+      }
+
+      .proof b {
+        display: block;
+        color: var(--blue);
+        font-size: 11px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .proof span {
+        display: block;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 20px;
+        line-height: 1.02;
+      }
+
+      .barcode {
+        display: inline-grid;
+        grid-template-columns: repeat(14, 4px);
+        gap: 4px;
+        align-items: end;
+        height: 38px;
+      }
+
+      .barcode i {
+        display: block;
+        width: 4px;
+        height: var(--h);
+        background: var(--ink);
+        opacity: .72;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .footer strong {
+        color: var(--blue);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" aria-label="Creator Social Card 1200x630">
+      <div class="orb" aria-hidden="true"></div>
+      <section class="shell">
+        <aside class="proof-rail" aria-label="proof before post">
+          <div class="route">CREATOR-SOCIAL-CARD-ROUTE</div>
+          <div class="stamp"><span>proof</span>before<br />post</div>
+          <div class="crop-note">1200x630 · center-safe hook · no raw generated media</div>
+        </aside>
+
+        <section class="content">
+          <header class="topline">
+            <span>Creator Social Card</span>
+            <strong>publish-safe preview</strong>
+            <span>from creator-frontier-capsule.json</span>
+          </header>
+
+          <article class="hero">
+            <div class="eyebrow">capsule → social image → proof → remix</div>
+            <h1>Make the idea <em>portable</em> before it gets posted.</h1>
+            <p class="dek">
+              A crop-safe 1200x630 proof card for launch threads, newsletters, and link previews.
+              It keeps the hook, memory, boundary, and remix handles visible before any platform upload.
+            </p>
+            <section class="proof-grid" aria-label="social proof grid">
+              <div class="proof"><b>hook</b><span>One sentence survives the crop.</span></div>
+              <div class="proof"><b>memory</b><span>Intent stays attached.</span></div>
+              <div class="proof"><b>boundary</b><span>No private media.</span></div>
+              <div class="proof"><b>remix</b><span>Change accent, keep proof.</span></div>
+            </section>
+          </article>
+
+          <footer class="footer">
+            <span>proof before post · measure + print + browser visual QA</span>
+            <span class="barcode" aria-hidden="true">
+              <i style="--h:16px"></i><i style="--h:34px"></i><i style="--h:22px"></i><i style="--h:30px"></i><i style="--h:12px"></i><i style="--h:36px"></i><i style="--h:20px"></i><i style="--h:28px"></i><i style="--h:18px"></i><i style="--h:34px"></i><i style="--h:14px"></i><i style="--h:26px"></i><i style="--h:36px"></i><i style="--h:18px"></i>
+            </span>
+            <strong>examples/creator-social-card.json</strong>
+          </footer>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

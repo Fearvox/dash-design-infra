@@ -106,18 +106,23 @@ Bad slices:
 - CI gate coverage;
 - package scripts.
 - retained creator motion storyboard route before raw media or renderer work.
+- crop-safe creator social card route before platform posting.
 
 The score is intentionally blunt. It is not a beauty contest; it is a guardrail against fake progress.
 
 Current retained creator slice:
 
 ```bash
+bun creator:social-card-check
+bun measure:check -- examples/creator-social-card.html --canvas=1200x630
+bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630
+
 bun creator:motion-storyboard-check
 bun measure:check -- examples/creator-motion-storyboard.html
 bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191
 ```
 
-This route is the allowed bridge from capsule memory to future video/contact-sheet work. Do not commit raw generated video, private prompts, local source paths, account screenshots, or client copy.
+The social card route is the allowed bridge from capsule memory to platform-ready preview. The motion route is the allowed bridge to future video/contact-sheet work. Do not commit raw generated video, private prompts, local source paths, account screenshots, client analytics, or client copy.
 
 ## Review-fitting without overfitting
 

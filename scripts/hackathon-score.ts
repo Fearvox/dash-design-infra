@@ -309,6 +309,22 @@ const checks: Check[] = [
     evidence: 'Creator contact-sheet QA script + ignored artifact contract',
   },
   {
+    id: 'creator-social-card',
+    label: 'Creator social card routes capsules into crop-safe post-ready previews',
+    points: 10,
+    pass:
+      scripts['creator:social-card-check'] === 'bun scripts/creator-social-card-check.ts' &&
+      commandPass('bun', ['creator:social-card-check']) &&
+      existsSync('scripts/creator-social-card-check.ts') &&
+      existsSync('examples/creator-social-card.json') &&
+      existsSync('examples/creator-social-card.html') &&
+      existsSync('usecases/creator/creator-social-card.md') &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator social card', 'creator-social-card.html', 'creator:social-card-check', '1200x630']) &&
+      has('README.md', ['Creator Social Card', 'creator-social-card.html', 'creator:social-card-check']) &&
+      has('examples/README.md', ['Creator Social Card', 'creator-social-card.html', '1200x630']),
+    evidence: 'Creator social card contract + crop-safe fixed-canvas artifact + machine check',
+  },
+  {
     id: 'creator-skill-package',
     label: 'Creator skill package is repo-local, SKILL.md-style, and machine checked',
     points: 10,
@@ -364,6 +380,8 @@ const checks: Check[] = [
       'bun creator:motion-storyboard-check',
       '- name: Creator Contact Sheet Check',
       'bun creator:contact-sheet-check',
+      '- name: Creator Social Card Check',
+      'bun creator:social-card-check',
       '- name: Creator Skill Package Check',
       'bun creator:skill-package-check',
       'bun docs:links',
@@ -384,9 +402,10 @@ const checks: Check[] = [
       scripts['creator:prompt-dna-check'] === 'bun scripts/creator-prompt-dna-check.ts' &&
       scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
       scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
+      scripts['creator:social-card-check'] === 'bun scripts/creator-social-card-check.ts' &&
       scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:skill-package-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 
