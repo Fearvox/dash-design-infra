@@ -21,6 +21,10 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Fixed-canvas HTML | [`packages/measure`](../packages/measure) | `@dash/measure`, `@dash/layout`, `@dash/tokens` | `bun measure:check -- <file.html>` | Fails on overflow against real Chromium geometry | Do not depend on one private screen or local absolute paths |
 | Kinetic poster | [`usecases/p5js/electric-archive.md`](../usecases/p5js/electric-archive.md) | `@dash/p5-motion` | Use `createTileGrid`, `layoutTileFrame`, `createMotionTimeline` | Deterministic timeline state + public preview | Cropped previews only; raw lab sketches stay out |
 | Evidence weather map | [`usecases/p5js/weather-report.md`](../usecases/p5js/weather-report.md) | `@dash/p5-motion`, `@dash/tokens` | Build pressure/front/radar layers from the preset grammar | Layer list and frame contract are named | No real private benchmark or customer evidence |
+| Flow-field visual texture | [`docs/preset-spec-dash-flow-field.md`](./preset-spec-dash-flow-field.md) and [`packages/p5-motion/demo`](../packages/p5-motion/demo) | `@dash/p5-motion` v2 contract | `bun p5:motion-check` then adapt `generateFlowField`, `traceFlowLine`, and `flowColorForVelocity` | Flow-field contract validates and deterministic helpers typecheck | Public generated texture only; no private reference videos or raw lab dumps |
+| Kinetic type grammar | [`docs/preset-spec-dash-kinetic-type.md`](./preset-spec-dash-kinetic-type.md) | `@dash/p5-motion` v2 contract | `bun p5:motion-check` then use `layoutKineticType` and `animateKineticGlyphs` | Motion budget and glyph layout contract validate | Synthetic/public text only; no client copy |
+| Data weather adapter | [`docs/preset-spec-dash-data-weather.md`](./preset-spec-dash-data-weather.md) | `@dash/p5-motion` v2 contract | `bun p5:motion-check` then use `validateWeatherData` and `weatherToVisualParams` | Data fallback states and color mapping validate | Public or synthetic weather-like data only; no private benchmark evidence |
+| Layer composer | [`docs/p5js-frontier-research.md`](./p5js-frontier-research.md) | `@dash/p5-motion/composer` | `bun p5:motion-check` then compose `compositeSpecs` | Blend mode, z-order, and preset references validate | Composition metadata only; renderer/source media stays external |
 | Dense generative video | [`usecases/video/windburn-render-workflow.md`](../usecases/video/windburn-render-workflow.md) | workflow docs + external renderer | Chunk render, contact-sheet review, bitrate-controlled compression | Contact sheet + target delivery size | No source video/audio, local render paths, or final private media |
 | Visual research board | [`usecases/visual-research/refero-visual-research.md`](../usecases/visual-research/refero-visual-research.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun measure:check -- examples/refero-research-board.html` then `bun print:render -- examples/refero-research-board.html /tmp/dash-refero-board.pdf --canvas=1684x1191` | Browser proofshot + fixed-canvas overflow check | Public observations and synthetic cards only; no copied reference screenshots |
 | Skill ratchet board | [`usecases/visual-research/darwin-skill-ratchet.md`](../usecases/visual-research/darwin-skill-ratchet.md) | `@dash/tokens`, `@dash/measure`, `@dash/print` | `bun measure:check -- examples/darwin-ratchet-board.html` then `bun print:render -- examples/darwin-ratchet-board.html /tmp/dash-darwin-ratchet-board.pdf --canvas=1684x1191` | Source vetting + browser measure + PDF render + public-boundary scan | MIT attribution and synthetic cards only; no copied skill assets, private prompts, or local paths |
@@ -56,6 +60,10 @@ Use `@dash/p5-motion` first. Do not start from raw private sketches. Pick a gram
 
 - Electric Archive for memory, retrieval, signal, handoff, blue-field archive stories.
 - Memory Weather Report for risk, benchmark pressure, evidence density, trend/forecast stories.
+- Flow Field for organic DASH-branded visual texture.
+- Kinetic Type for editorial title cards and typography as motion material.
+- Data Weather for live/synthetic data mapped into visual parameters.
+- Layer Composer when multiple presets need blend modes, z-ordering, and phase offsets.
 
 A good motion workflow names:
 
@@ -64,6 +72,12 @@ A good motion workflow names:
 - deterministic seed or timeline phase;
 - frame QA method;
 - public preview boundary.
+
+For v2 preset work, also run:
+
+```bash
+bun p5:motion-check
+```
 
 ### If the user asks for video
 

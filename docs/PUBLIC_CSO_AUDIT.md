@@ -45,9 +45,10 @@ Not in scope:
 | Dependency high-severity audit | PASS | `bun audit --audit-level high` returned no vulnerabilities |
 | Markdown link check | PASS | `bun docs:links` returned clean |
 | Public-boundary scan | PASS | `bun security:scan` returned clean |
+| P5 motion contract check | PASS | `bun p5:motion-check` validates timeline, v2 presets, flow field, kinetic type, data-weather, and layer composition contracts |
 | Hackathon score gate | PASS | `bun hackathon:score` returned max score |
 | Type safety | PASS | `bun typecheck` passed across all packages |
-| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, dependency audit, creator gates, docs link check, public-boundary scan, and hackathon score |
+| CI enforcement | PASS | `.github/workflows/ci.yml` now runs token build, metrics build, typecheck, p5 motion contract check, dependency audit, creator gates, docs link check, public-boundary scan, and hackathon score |
 | Public security reporting path | PASS | SECURITY.md added |
 | Agent contribution boundary | PASS | AGENTS.md states public boundary and verification commands |
 | Workflow index | PASS | `docs/WORKFLOW_INDEX.md` maps artifact jobs to entry file, package layer, command path, QA gate, and public boundary |
@@ -94,6 +95,7 @@ Run before public-facing PRs:
 
 ```bash
 bun typecheck
+bun p5:motion-check
 bun creator:prompt-dna-check
 bun creator:motion-storyboard-check
 bun docs:links

@@ -63,6 +63,7 @@ bun x playwright install chromium
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun p5:motion-check
 bun creator:motion-storyboard-check
 bun creator:contact-sheet-check
 bun creator:skill-package-check
@@ -113,6 +114,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | Kinetic poster | [`@dash/p5-motion`](./packages/p5-motion) | Named p5.js motion grammar instead of one-off sketch soup |
 | Archive/evidence visual | [`Electric Archive`](./usecases/p5js/electric-archive.md) | Split archive/signal surface for memory, retrieval, and handoff stories |
 | Weather-style evidence report | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | Pressure maps, fronts, radar texture, and forecast cards for complex signals |
+| Flow-field / kinetic type / data-weather preset | [`P5 Motion v2 Spec`](./docs/p5-motion-preset-spec-template.md) and [`Frontier Research`](./docs/p5js-frontier-research.md) | Flow fields, kinetic typography, data-weather mapping, and layer composition validated by `bun p5:motion-check` |
 | Dense rendered motion piece | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | Chunked render, contact-sheet QA, bitrate-controlled WeChat delivery |
 | Visual research board | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | Real-interface study converted into a synthetic, measurable pattern board |
 | Skill / prompt optimization loop | [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md) | External skill ideas vetted, abstracted, measured, and kept only if they improve the public workflow |
@@ -188,6 +190,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator prompt DNA check | `bun creator:prompt-dna-check`, currently clean |
 | Creator motion storyboard check | `bun creator:motion-storyboard-check`, currently clean |
 | Creator skill package check | `bun creator:skill-package-check`, currently clean |
+| P5 motion v2 contract check | `bun p5:motion-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
 | Type safety | `bun typecheck`, currently green |
 
@@ -248,6 +251,7 @@ Ready now:
 - capsize CSS generation;
 - Kami-inspired editorial preset;
 - p5.js motion presets, including Electric Archive and Memory Weather Report;
+- p5.js v2 preset contracts for flow fields, kinetic type, data-weather mapping, and layer composition;
 - video workflow notes for chunked render QA and delivery compression;
 - browser overflow checks;
 - constraint-solver layout helpers;

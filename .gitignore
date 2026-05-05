@@ -42,7 +42,9 @@ coverage
 ~
 
 # Local agent / planning artifacts
+.capy/
 .evensong/
+.hermes/
 GSD-PLAN.md
 SHARED_TASK_NOTES.md
 .vercel

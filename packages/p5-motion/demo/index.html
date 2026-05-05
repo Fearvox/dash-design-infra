@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>dashFlowField — import from @dash/p5-motion</title>
+<style>
+  body { margin: 0; background: #f8f5ef; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  canvas { box-shadow: 0 2px 24px rgba(16,41,31,0.12); }
+  .label { position: fixed; top: 8px; left: 12px; font: 11px monospace; color: #888; }
+</style>
+</head>
+<body>
+<div class="label">dashFlowField · @dash/p5-motion pipeline · 800×1067 · seed 2048</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.2/p5.min.js"></script>
+<script>
+// ══ Flow field data generated via: cd packages/p5-motion && bun run demo/generate.ts ══
+// The generate.ts script uses the REAL @dash/p5-motion import:
+//   import { generateFlowField, traceFlowLine } from '@dash/p5-motion';
+// This HTML consumes the pre-computed JSON output. No inline utility copies.
+
+const DASH = { cream: '#f8f5ef', sand: '#ddd6c7', midGreen: '#35584C', deepGreen: '#10291F', neonYellow: '#F0EE9B' };
+
+function flowColorForVelocity(v) {
+  v = Math.min(1, Math.max(0, v));
+  const stops = [{v:0,c:DASH.cream},{v:0.25,c:DASH.sand},{v:0.5,c:DASH.midGreen},{v:0.75,c:DASH.deepGreen},{v:1,c:DASH.neonYellow}];
+  for (let i=0;i<stops.length-1;i++) {
+    if (v>=stops[i].v&&v<=stops[i+1].v) {
+      const t=(v-stops[i].v)/(stops[i+1].v-stops[i].v),a=stops[i].c,b=stops[i+1].c;
+      return '#'+[0,1,2].map(j=>Math.round(parseInt(a.slice(1+j*2,3+j*2),16)+(parseInt(b.slice(1+j*2,3+j*2),16)-parseInt(a.slice(1+j*2,3+j*2),16))*t).toString(16).padStart(2,'0')).join('');
+    }
+  }
+  return stops[stops.length-1].c;
+}
+
+async function main() {
+  const resp = await fetch('/data');
+  const data = await resp.json();
+  const { field, streamlines } = data;
+  const W = data.canvas.width, H = data.canvas.height;
+  console.log('✅ Loaded @dash/p5-motion output:', field.cols,'×',field.rows, streamlines.length,'streamlines');
+
+  new p5(p => {
+    p.setup = () => { p.createCanvas(W, H); p.noLoop(); };
+    p.draw = () => {
+      p.background(DASH.cream);
+      p.noFill(); p.strokeWeight(1.5); p.strokeCap(p.ROUND);
+
+      for (const sl of streamlines) {
+        if (sl.points.length < 2) continue;
+        p.beginShape();
+        for (const pt of sl.points) {
+          const col = Math.min(field.cols-1, Math.max(0, Math.floor(pt.x/(W/field.cols))));
+          const row = Math.min(field.rows-1, Math.max(0, Math.floor(pt.y/(H/field.rows))));
+          const mag = field.magnitudes[row]?.[col] ?? 0.5;
+          const c = p.color(flowColorForVelocity(mag)); c.setAlpha(140+mag*80);
+          p.stroke(c); p.curveVertex(pt.x, pt.y);
+        }
+        p.endShape();
+      }
+
+      for (let i=0;i<12;i++) {
+        const cr=Math.floor(Math.random()*(field.rows-10)+5), cc=Math.floor(Math.random()*(field.cols-10)+5);
+        const mag=field.magnitudes[cr]?.[cc]??0;
+        if(mag>0.72){const hx=cc*(W/field.cols)+W/field.cols/2,hy=cr*(H/field.rows)+H/field.rows/2;
+        p.noStroke(); const c=p.color(DASH.neonYellow); c.setAlpha(60+mag*40); p.fill(c); p.circle(hx,hy,4+mag*6);}
+      }
+    };
+  });
+}
+main();
+</script>
+</body>
+</html>

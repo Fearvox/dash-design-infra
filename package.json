@@ -46,6 +46,7 @@
     "metrics:extract": "bun run --filter=@dash/metrics extract",
     "measure:check": "bun packages/measure/src/cli.ts",
     "print:render": "bun packages/print/src/cli.ts",
+    "p5:motion-check": "bun scripts/p5-motion-check.ts",
     "docs:links": "bun scripts/markdown-link-check.ts",
     "security:scan": "bun scripts/public-boundary-scan.ts",
     "creator:capsule-check": "bun scripts/creator-capsule-check.ts",

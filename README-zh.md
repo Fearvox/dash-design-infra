@@ -61,6 +61,7 @@ bun x playwright install chromium
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun p5:motion-check
 bun docs:links
 bun security:scan
 bun hackathon:score
@@ -105,6 +106,7 @@ Agent 先读 [`AGENTS.md`](./AGENTS.md)。人类从这里开始就够。
 | 动态海报 | [`@dash/p5-motion`](./packages/p5-motion) | 可复用 p5.js motion grammar，不是一坨一次性 sketch |
 | 档案/证据视觉 | [`Electric Archive`](./usecases/p5js/electric-archive.md) | 档案面 + 信号面的 memory / retrieval / handoff 叙事 |
 | 天气图式证据报告 | [`Memory Weather Report`](./usecases/p5js/weather-report.md) | 气压、锋面、雷达纹理和 forecast card |
+| Flow-field / kinetic type / data-weather preset | [`P5 Motion v2 Spec`](./docs/p5-motion-preset-spec-template.md) 和 [`Frontier Research`](./docs/p5js-frontier-research.md) | flow field、动态字体、data-weather mapping、layer composition，由 `bun p5:motion-check` 验证 |
 | 高密度生成式视频 | [`Windburn Render Workflow`](./usecases/video/windburn-render-workflow.md) | 分块渲染、contact-sheet QA、微信码率压缩 |
 | 视觉研究板 | [`Refero Visual Research`](./usecases/visual-research/refero-visual-research.md) | 把真实界面研究转成公开安全、可测量的 pattern board |
 | Skill / prompt 优化循环 | [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md) | 外部 skill 想法先 vet，再抽象、测量、证明变强才保留 |
@@ -178,6 +180,7 @@ bun hackathon:score
 | Creator mutation check | `bun creator:mutation-check`，当前 clean |
 | Creator poster check | `bun creator:poster-check`，当前 clean |
 | Creator prompt DNA check | `bun creator:prompt-dna-check`，当前 clean |
+| P5 motion v2 contract check | `bun p5:motion-check`，当前 clean |
 | Hackathon score | `bun hackathon:score`，当前 maxed |
 | 类型安全 | `bun typecheck`，当前 green |
 
@@ -237,6 +240,7 @@ Hackathon 目标在 [`docs/HACKATHON_GOAL.md`](./docs/HACKATHON_GOAL.md)。
 - capsize CSS 生成；
 - Kami 启发的编辑型文档 preset；
 - p5.js 动态 preset，包括 Electric Archive 和 Memory Weather Report；
+- p5.js v2 preset contract，包括 flow field、kinetic type、data-weather mapping 和 layer composition；
 - 视频工作流说明，包括分块渲染 QA 和交付压缩；
 - 浏览器内溢出校验；
 - 约束求解布局 helper；

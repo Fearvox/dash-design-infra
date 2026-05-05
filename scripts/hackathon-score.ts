@@ -91,6 +91,27 @@ const checks: Check[] = [
       existsSync('usecases/video/windburn-render-workflow.md'),
     evidence: 'examples/ + usecases/',
   },
+  {
+    id: 'p5-motion-v2-contract',
+    label: 'P5 motion v2 contract carries source design-infra flow, type, data, and composition capabilities',
+    points: 12,
+    pass:
+      scripts['p5:motion-check'] === 'bun scripts/p5-motion-check.ts' &&
+      commandPass('bun', ['p5:motion-check']) &&
+      existsSync('docs/p5-motion-preset-spec-template.md') &&
+      existsSync('docs/p5js-frontier-research.md') &&
+      existsSync('docs/preset-spec-dash-flow-field.md') &&
+      existsSync('docs/preset-spec-dash-kinetic-type.md') &&
+      existsSync('docs/preset-spec-dash-data-weather.md') &&
+      existsSync('packages/p5-motion/src/composer.ts') &&
+      has('docs/WORKFLOW_INDEX.md', [
+        'Flow-field visual texture',
+        'Kinetic type grammar',
+        'Data weather adapter',
+        'Layer composer',
+      ]),
+    evidence: 'P5 v2 docs + package contract + machine check',
+  },
 
   {
     id: 'workflow-index-contract',

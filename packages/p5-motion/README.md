@@ -21,6 +21,19 @@ This package does not import p5 at build time. The consuming app owns the render
 | `blueAppleCollageLoop` | `references/xhs-blue-apple/ANALYSIS.md` | image crop grids, anchored text, calm reassembly motion |
 | `frontierPosterScan` | `references/xhs-frontier-poster/ANALYSIS.md` | static poster hierarchy, noise fields, typography, scan layers |
 
+## V2 Preset Contracts
+
+The v2 contract adds public-safe generative building blocks distilled from the original local `design-infra` lab:
+
+| Contract | Entry | Good for |
+|---|---|---|
+| `flowFieldPresets.dashFlowField` | [`docs/preset-spec-dash-flow-field.md`](../../docs/preset-spec-dash-flow-field.md) | organic DASH texture, flow lines, velocity color ramps |
+| `kineticTypePresets.dashKineticType` | [`docs/preset-spec-dash-kinetic-type.md`](../../docs/preset-spec-dash-kinetic-type.md) | editorial type layout, glyph drift, baseline accents |
+| `dataWeatherPresets.dashDataWeather` | [`docs/preset-spec-dash-data-weather.md`](../../docs/preset-spec-dash-data-weather.md) | JSON weather-like data mapped into visual parameters |
+| `compositeSpecs` | [`docs/p5js-frontier-research.md`](../../docs/p5js-frontier-research.md) | blend modes, z-order, phase offsets, multi-preset compositions |
+
+Run `bun p5:motion-check` after changing preset contracts, data mapping, or composer metadata.
+
 ## Use
 
 ```ts

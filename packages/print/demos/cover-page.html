@@ -1,0 +1,372 @@
+<!doctype html>
+<!--
+  DASH cover page — type scale stress test (NOT Synergy Map layout)
+  ─────────────────────────────────────────────────────────────────
+  Grid: 8-unit (MB p.72, "density insufficient for 20") · 2 rows × 4 cols
+  Format reverse-beat: canvas 1684×1191 (horizontal) → type block tends vertical
+  Anchor: body=14. Scale under test: V4 (Perfect Fifth ↑ / Major Third ↓)
+  ref: dash-grid-spec v0.3 § 1.4, § 8.3, § 4
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DASH — Research Vault cover</title>
+<style>
+/* ── tokens (from @dash/tokens + scale/V4) ─────────────────────────── */
+:root {
+  /* type — V4 Perfect Fifth ↑ / Major Third ↓ */
+  --size-micro:   9px;   /* caption / footnote */
+  --size-meta:   11px;   /* kicker, meta, th-caps */
+  --size-body:   14px;   /* body */
+  --size-lead:   21px;   /* lead / section head */
+  --size-deck:   32px;   /* deck — NEW tier vs hand-tuned */
+  --size-display:47px;   /* display / hero */
+
+  /* line-height (snapped to 8) */
+  --lh-micro:   16px;
+  --lh-meta:    16px;
+  --lh-body:    24px;
+  --lh-lead:    32px;
+  --lh-deck:    40px;
+  --lh-display: 56px;
+
+  /* space */
+  --space-1:  4px;   --space-2:  8px;   --space-3: 12px;   --space-4: 16px;
+  --space-5: 20px;   --space-6: 24px;   --space-7: 32px;   --space-8: 48px;
+  --space-9: 64px;   --space-10:80px;
+
+  /* color — botanical (logo / dark chrome) + paper accents */
+  --paper-base:    oklch(0.96 0.01 85);
+  --paper-shadow:  oklch(0.88 0.02 75);
+  --ink-primary:   oklch(0.22 0.02 60);
+  --ink-secondary: oklch(0.45 0.02 65);
+  --ink-muted:     oklch(0.62 0.015 70);
+  --palm-shadow:   oklch(0.35 0.08 160);   /* forest #213F37 */
+  --sun-gold:      oklch(0.82 0.12 85);    /* gold #A48D5B */
+
+  /* canvas */
+  --canvas-w: 1684px;
+  --canvas-h: 1191px;
+  --pad-x: 96px;        /* 12 × BASELINE */
+  --pad-y: 80px;        /* 10 × BASELINE */
+
+  /* font */
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #333; }
+body {
+  font-family: var(--font-sans);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+/* canvas */
+.page {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  margin: 40px auto;
+  background: var(--paper-base);
+  position: relative;
+  padding: var(--pad-y) var(--pad-x);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 24px;
+  row-gap: 0;
+}
+
+/* top-left meta strip */
+.kicker {
+  grid-column: 1 / span 8;
+  grid-row: 1;
+  align-self: start;
+  font-size: var(--size-meta);
+  line-height: var(--lh-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--paper-shadow);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-7);
+}
+.kicker .run-id {
+  font-family: var(--font-mono);
+  color: var(--palm-shadow);
+}
+
+/* Display block — 4 cols left, vertical type block (reverse-beat).
+   Ruder tri-beat: hero(1-4) / panopticon(5-6) / sidebar(7-8). */
+.hero {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin-top: var(--space-10);
+  max-width: 720px;
+}
+.hero .eyebrow {
+  font-size: var(--size-meta);
+  line-height: var(--lh-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--palm-shadow);
+  margin-bottom: var(--space-5);
+}
+.hero .display {
+  font-size: var(--size-display);
+  line-height: var(--lh-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  margin: 0 0 var(--space-6) 0;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+.hero .deck {
+  font-size: var(--size-deck);
+  line-height: var(--lh-deck);
+  font-weight: 400;
+  color: var(--ink-secondary);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-7) 0;
+  max-width: 30ch;
+  text-wrap: pretty;
+}
+/* Gold underline — only on verifiable claims */
+.u {
+  position: relative;
+  color: var(--palm-shadow);
+  text-decoration: none;
+}
+.u::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 3px;
+  background: var(--sun-gold);
+  opacity: 0.75;
+}
+
+/* lead + body column on right — deep body column (reverse-beat vs horizontal canvas) */
+.sidebar {
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.sidebar .lead {
+  font-size: var(--size-lead);
+  line-height: var(--lh-lead);
+  font-weight: 500;
+  color: var(--ink-primary);
+  margin: 0;
+}
+.sidebar .body {
+  font-size: var(--size-body);
+  line-height: var(--lh-body);
+  color: var(--ink-secondary);
+  margin: 0;
+  max-width: 32ch;
+}
+.sidebar .meta-list {
+  font-size: var(--size-meta);
+  line-height: var(--lh-meta);
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--paper-shadow);
+  padding-top: var(--space-4);
+}
+.sidebar .meta-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid oklch(0.88 0.02 75 / 0.4);
+}
+.sidebar .meta-list li:last-child { border-bottom: 0; }
+.sidebar .meta-list .v { color: var(--ink-primary); }
+
+/* footer micro strip */
+.foot {
+  position: absolute;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: var(--space-7);
+  font-size: var(--size-micro);
+  line-height: var(--lh-micro);
+  color: var(--ink-muted);
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.foot .mono { font-family: var(--font-mono); text-transform: none; }
+
+/* Panopticon — geometric anchor (spec § 4).
+   Placed as a grid cell so it can't escape its region. cols 5-6, both rows,
+   centered within the cell. Size intrinsic to its SVG viewBox — locked by
+   aspect-ratio + max-width so it always fits the 2-col cell. */
+.pano {
+  grid-column: 5 / span 2;
+  grid-row: 1 / span 2;
+  place-self: center;
+  width: min(260px, 100%);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* DASH logo — inlined in the kicker strip. Spec:
+   "Document header · Full logo · 14px · Top-left, aligned to margin" */
+.logo {
+  height: 14px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* grid overlay — press G to toggle */
+.grid-overlay {
+  position: absolute;
+  inset: var(--pad-y) var(--pad-x);
+  background:
+    repeating-linear-gradient(to right,
+      transparent 0, transparent calc((100%/8) - 24px),
+      oklch(0.5 0.08 160 / 0.12) calc((100%/8) - 24px),
+      oklch(0.5 0.08 160 / 0.12) calc(100%/8));
+  pointer-events: none;
+  display: none;
+}
+.grid-overlay.on { display: block; }
+
+/* Show type-scale ladder in corner when ?scale=1 */
+.ladder {
+  position: absolute;
+  top: var(--pad-y);
+  right: var(--pad-x);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  color: var(--ink-muted);
+  line-height: 1.5;
+  text-align: right;
+  display: none;
+}
+.ladder.on { display: block; }
+.ladder .row { white-space: nowrap; }
+.ladder .px  { color: var(--palm-shadow); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="kicker">
+    <!-- DASH full logo (light-bg variant, per DASH-Brand/DASH-Design-Spec § 2) -->
+    <svg class="logo" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DASH">
+      <g transform="translate(0, 10)">
+        <line x1="1" y1="10" x2="31" y2="10" stroke="#35584C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="11" y1="18" x2="21" y2="2" stroke="#35584C" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <text x="38" y="29" font-family="'Plus Jakarta Sans', 'Geist', sans-serif" font-weight="800" font-size="28" letter-spacing="-0.06em" fill="#10291F">DASH</text>
+    </svg>
+    <span>Research Vault · cover page · type-scale test</span>
+    <span>v0.1 · <span class="run-id">R-COVER-001</span></span>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">Panopticon · Three-tier vault</div>
+    <h1 class="display">
+      Research is <span class="u">structurally honest</span><br>
+      or it isn't research.
+    </h1>
+    <p class="deck">
+      A cover page stress-test for the V4 type scale — Perfect Fifth up,
+      Major Third down — against an 8-column, reverse-beat layout that
+      answers Ruder's first-beat canvas.
+    </p>
+  </section>
+
+  <aside class="sidebar">
+    <p class="lead">
+      Unlike Synergy Map, this page tests the scale's extremes
+      (display 47 &nbsp;· micro 9) in one composition.
+    </p>
+    <p class="body">
+      Body copy sits at the anchor (14px / 24px line-height).
+      Every larger size is the anchor × Perfect Fifth^n; every smaller
+      size is anchor / Major Third^n. One ratio per direction.
+    </p>
+    <ul class="meta-list">
+      <li><span>canvas</span> <span class="v">1684 × 1191</span></li>
+      <li><span>grid</span> <span class="v">8-col · 24gap</span></li>
+      <li><span>baseline</span> <span class="v">8 px</span></li>
+      <li><span>scale</span> <span class="v">V4 · P5 / MT</span></li>
+      <li><span>ladder</span> <span class="v">9/11/14/21/32/47</span></li>
+    </ul>
+  </aside>
+
+  <svg class="pano" viewBox="-50 -50 100 100">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="var(--palm-shadow)" stroke-width="0.6" opacity="0.25"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="var(--palm-shadow)" stroke-width="0.6" opacity="0.45"/>
+    <circle cx="0" cy="0" r="15" fill="var(--palm-shadow)" opacity="0.95"/>
+    <g stroke="var(--palm-shadow)" stroke-width="0.4" opacity="0.6">
+      <!-- five spokes at 72° -->
+      <line x1="0" y1="0" x2="0"     y2="-45"/>
+      <line x1="0" y1="0" x2="42.8"  y2="-13.9"/>
+      <line x1="0" y1="0" x2="26.5"  y2="36.4"/>
+      <line x1="0" y1="0" x2="-26.5" y2="36.4"/>
+      <line x1="0" y1="0" x2="-42.8" y2="-13.9"/>
+    </g>
+    <g fill="var(--sun-gold)">
+      <circle cx="0"     cy="-45"  r="1.6"/>
+      <circle cx="42.8"  cy="-13.9" r="1.6"/>
+      <circle cx="26.5"  cy="36.4" r="1.6"/>
+      <circle cx="-26.5" cy="36.4" r="1.6"/>
+      <circle cx="-42.8" cy="-13.9" r="1.6"/>
+    </g>
+  </svg>
+
+  <div class="foot">
+    <span>DASH / Research Vault · cover · Ruder reverse-beat</span>
+    <span class="mono">scale · V4 (P5↑/MT↓) · lh snap 8</span>
+  </div>
+
+  <div class="grid-overlay"></div>
+
+  <div class="ladder">
+    <div class="row">display · <span class="px">47</span>/56</div>
+    <div class="row">deck ···· <span class="px">32</span>/40</div>
+    <div class="row">lead ···· <span class="px">21</span>/32</div>
+    <div class="row">body ···· <span class="px">14</span>/24</div>
+    <div class="row">meta ···· <span class="px">11</span>/16</div>
+    <div class="row">micro ··· <span class="px">9</span>/16</div>
+  </div>
+
+</div>
+
+<script>
+// G = toggle grid overlay, L = toggle ladder
+document.addEventListener('keydown', e => {
+  if (e.key === 'g' || e.key === 'G') {
+    document.querySelector('.grid-overlay').classList.toggle('on');
+  }
+  if (e.key === 'l' || e.key === 'L') {
+    document.querySelector('.ladder').classList.toggle('on');
+  }
+});
+// Show ladder if ?scale=1
+if (new URLSearchParams(location.search).get('scale') === '1') {
+  document.querySelector('.ladder').classList.add('on');
+}
+</script>
+</body>
+</html>

@@ -23,6 +23,10 @@
         "@types/bun": "latest",
       },
     },
+    "apps/demo": {
+      "name": "@dash/demo",
+      "version": "0.0.1",
+    },
     "packages/kami": {
       "name": "@dash/kami",
       "version": "0.0.1",
@@ -101,6 +105,8 @@
     "@capsizecss/metrics": ["@capsizecss/metrics@3.7.0", "", {}, "sha512-NHdEMrl/zd2XgiSv2xHRF/FxGc2OTBKjhPzr9SgbHzqmoTVn8BbRK88Dtq0m65idX/RMD7ptyVdbGHFcvlErSw=="],
 
     "@dash/daemon": ["@dash/daemon@workspace:apps/daemon"],
+
+    "@dash/demo": ["@dash/demo@workspace:apps/demo"],
 
     "@dash/kami": ["@dash/kami@workspace:packages/kami"],
 

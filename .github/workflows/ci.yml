@@ -29,6 +29,9 @@ jobs:
       - name: Typecheck
         run: bun typecheck
 
+      - name: P5 Motion Check
+        run: bun p5:motion-check
+
       - name: Dependency Audit
         run: bun audit --audit-level high
 

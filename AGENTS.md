@@ -24,6 +24,7 @@ bun install
 bun tokens:build
 bun metrics:build
 bun typecheck
+bun p5:motion-check
 bun docs:links
 bun audit --audit-level high
 bun security:scan
@@ -90,5 +91,7 @@ For creator-facing visual work, start with [`docs/CREATOR_OS.md`](./docs/CREATOR
 For Darwin-style requests, use [`docs/CREATOR_EVOLUTION_ENGINE.md`](./docs/CREATOR_EVOLUTION_ENGINE.md). Darwin means self-evolution: observe, mutate, render, evaluate, select, retain, regress. Use `bun creator:mutation-check` when comparing candidate mutations. For the retained poster surface route, use `bun creator:poster-check` and `examples/creator-poster-surface.html`. For prompt DNA model adapters, use `bun creator:prompt-dna-check` and `examples/creator-prompt-dna-adapter.html`; keep raw generated media out of git. It does not mean "make a dashboard" unless the dashboard directly controls the next mutation.
 
 For repo-local creator skill packaging, use [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and `bun creator:skill-package-check`. Do not publish or sync the skill package externally unless a separate reviewed release issue authorizes that path.
+
+For p5.js generative work, use [`docs/p5-motion-preset-spec-template.md`](./docs/p5-motion-preset-spec-template.md), [`docs/p5js-frontier-research.md`](./docs/p5js-frontier-research.md), and `bun p5:motion-check`. The public contract now covers timeline grammar, flow fields, kinetic type, data-weather mapping, and layer composition; raw reference media still stays out of git.
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.
