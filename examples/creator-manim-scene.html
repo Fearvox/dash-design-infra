@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creator Manim Scene Adapter</title>
+    <style>
+      :root {
+        --night: #0f172a;
+        --night-soft: #172033;
+        --paper: #f8f1df;
+        --paper-dim: #e7dbc4;
+        --ink: #111827;
+        --muted: #8b9ab1;
+        --line: rgba(248, 241, 223, 0.2);
+        --blue: #8db4ff;
+        --amber: #d4a373;
+        --green: #9bd6ad;
+      }
+
+      * { box-sizing: border-box; }
+      @page{size:1684px 1191px;margin:0}
+      @media print { html, body { width: 1684px; height: 1191px; margin: 0; overflow: hidden; } }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        color: var(--paper);
+        background:
+          radial-gradient(circle at 20% 8%, rgba(141, 180, 255, .22), transparent 28%),
+          radial-gradient(circle at 88% 92%, rgba(212, 163, 115, .18), transparent 30%),
+          #080d18;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .page{width:1684px;height:1191px;position:relative;overflow:hidden;background:
+        linear-gradient(90deg, rgba(248,241,223,.045) 1px, transparent 1px),
+        linear-gradient(rgba(248,241,223,.04) 1px, transparent 1px),
+        linear-gradient(135deg, #111827 0%, #0f172a 48%, #172033 100%);
+        background-size: 48px 48px, 48px 48px, auto;
+        box-shadow: 0 40px 100px rgba(0,0,0,.42);
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 46px;
+        border: 1px solid rgba(248, 241, 223, .18);
+        border-radius: 38px;
+        pointer-events: none;
+      }
+
+      .halo {
+        position: absolute;
+        width: 620px;
+        height: 620px;
+        border-radius: 50%;
+        right: 0;
+        top: 0;
+        background: conic-gradient(from 20deg, rgba(141,180,255,.7), rgba(155,214,173,.45), rgba(212,163,115,.55), rgba(141,180,255,.7));
+        filter: blur(8px);
+        opacity: .22;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 74px 82px 70px;
+        display: grid;
+        grid-template-rows: 180px 1fr 154px;
+        gap: 34px;
+      }
+
+      .mast {
+        display: grid;
+        grid-template-columns: 1fr 392px;
+        gap: 54px;
+        align-items: start;
+      }
+
+      .eyebrow {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 940px;
+        margin: 16px 0 0;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-size: 88px;
+        line-height: .89;
+        letter-spacing: -.055em;
+        font-weight: 520;
+      }
+
+      h1 em { color: var(--amber); font-style: italic; }
+
+      .runtime {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(8, 13, 24, .46);
+        padding: 24px;
+        min-height: 156px;
+      }
+
+      .runtime strong {
+        display: block;
+        color: var(--amber);
+        font-size: 12px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .runtime code {
+        display: block;
+        color: var(--paper);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 18px;
+        line-height: 1.35;
+        word-break: break-word;
+      }
+
+      .runtime span {
+        display: block;
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .board {
+        display: grid;
+        grid-template-columns: 430px 1fr;
+        gap: 34px;
+        min-height: 0;
+      }
+
+      .ticket {
+        border: 1px solid var(--line);
+        border-radius: 34px;
+        padding: 30px;
+        background: rgba(248, 241, 223, .92);
+        color: var(--ink);
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        min-height: 0;
+      }
+
+      .route {
+        color: #1d4ed8;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+
+      .badge {
+        width: 164px;
+        height: 164px;
+        margin: 38px auto 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: var(--paper);
+        background: var(--night);
+        font-family: ui-serif, Georgia, serif;
+        font-size: 24px;
+        line-height: .98;
+        box-shadow: 0 24px 64px rgba(15, 23, 42, .28);
+      }
+
+      .badge span {
+        display: block;
+        color: var(--blue);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 11px;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        margin-bottom: 9px;
+      }
+
+      .ticket h2 {
+        margin: 0 0 18px;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 40px;
+        line-height: 1;
+        letter-spacing: -.035em;
+      }
+
+      .ticket p {
+        margin: 0;
+        color: #4b5563;
+        font-size: 18px;
+        line-height: 1.42;
+      }
+
+      .proof {
+        border-top: 1px solid rgba(17, 24, 39, .16);
+        padding-top: 20px;
+        color: #334155;
+        font-size: 12px;
+        line-height: 1.5;
+        letter-spacing: .11em;
+        text-transform: uppercase;
+      }
+
+      .beats {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+        min-height: 0;
+      }
+
+      .beat {
+        min-height: 0;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 22px 20px;
+        background: rgba(8, 13, 24, .42);
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 14px;
+      }
+
+      .time {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .beat h3 {
+        margin: 0;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 29px;
+        line-height: 1;
+        letter-spacing: -.035em;
+      }
+
+      .beat p {
+        margin: 0;
+        color: #c5d0df;
+        font-size: 15px;
+        line-height: 1.42;
+      }
+
+      .motion {
+        color: var(--amber);
+        font-size: 12px;
+        line-height: 1.35;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .footer-card {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 22px;
+        background: rgba(248, 241, 223, .08);
+      }
+
+      .footer-card b {
+        display: block;
+        color: var(--blue);
+        font-size: 12px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .footer-card span {
+        display: block;
+        color: #dbe5f3;
+        font-family: ui-serif, Georgia, serif;
+        font-size: 23px;
+        line-height: 1.04;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" aria-label="Creator Manim Scene Adapter proof card">
+      <div class="halo" aria-hidden="true"></div>
+      <section class="shell">
+        <header class="mast">
+          <div>
+            <div class="eyebrow">Creator Manim Scene Adapter · proof before render</div>
+            <h1>Capsule memory becomes a <em>scene class</em>, not a video dump.</h1>
+          </div>
+          <aside class="runtime" aria-label="Manim external runtime">
+            <strong>MANIM EXTERNAL RUNTIME · no renderer dependency in core</strong>
+            <code>manim -ql .artifacts/creator-manim-scene.py CreatorCapsuleScene</code>
+            <span>Generated stub stays ignored until a creator renders it in their own Manim workspace.</span>
+          </aside>
+        </header>
+
+        <section class="board" aria-label="scene contract board">
+          <aside class="ticket">
+            <div class="route">creator-manim-scene-route</div>
+            <div class="badge"><span>scene class</span>Creator<br />Capsule<br />Scene</div>
+            <h2>Manim adapter contract</h2>
+            <p>Preserve creator intent, grammar, blocked inputs, proof, and remix handles while emitting a copyable Python scene stub.</p>
+            <div class="proof">No raw MP4 · no private paths · no provider logs · browser measure + print proof required</div>
+          </aside>
+
+          <div class="beats">
+            <article class="beat">
+              <div class="time">00:00-00:06</div>
+              <h3>Capsule seed</h3>
+              <p>Warm memory card names intent, creator, and target surface before any renderer work starts.</p>
+              <div class="motion">Fade in · blue frame pulse</div>
+            </article>
+            <article class="beat">
+              <div class="time">00:06-00:15</div>
+              <h3>Grammar lock</h3>
+              <p>Palette, geometry, and motion rails turn taste into constraints future remixes can keep.</p>
+              <div class="motion">Rails slide · dots trace</div>
+            </article>
+            <article class="beat">
+              <div class="time">00:15-00:29</div>
+              <h3>Scene build</h3>
+              <p>Capsule fields compile into title, proof stamp, beat cards, and a Manim scene class badge.</p>
+              <div class="motion">Nodes connect · badge lands</div>
+            </article>
+            <article class="beat">
+              <div class="time">00:29-00:38</div>
+              <h3>Proof gate</h3>
+              <p>Raw media, account screenshots, secrets, and local absolute paths are crossed out first.</p>
+              <div class="motion">Checklist blocks · command reveals</div>
+            </article>
+            <article class="beat">
+              <div class="time">00:38-00:45</div>
+              <h3>Handoff</h3>
+              <p>The render command and remix handles leave the creator with a safe external Manim next step.</p>
+              <div class="motion">Type on · orbit handles</div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="footer" aria-label="adapter proof summary">
+          <div class="footer-card"><b>Output</b><span>JSON contract + generated Python stub + fixed-canvas proof card.</span></div>
+          <div class="footer-card"><b>Boundary</b><span>Renderer and MP4 stay outside git; DASH keeps the public-safe handoff.</span></div>
+          <div class="footer-card"><b>Regression</b><span>creator:manim-scene-check, measure, print, security, score, browser visual QA.</span></div>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

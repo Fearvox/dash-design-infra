@@ -59,6 +59,7 @@
     "creator:contact-sheet-check": "bun scripts/creator-contact-sheet-check.ts",
     "creator:social-card-check": "bun scripts/creator-social-card-check.ts",
     "creator:p5-sketch-check": "bun scripts/creator-p5-sketch-check.ts",
+    "creator:manim-scene-check": "bun scripts/creator-manim-scene-check.ts",
     "creator:skill-package-check": "bun scripts/creator-skill-package-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"

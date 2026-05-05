@@ -46,9 +46,11 @@ try {
   fail(`${jsonPath} invalid JSON: ${(error as Error).message}`);
 }
 
-const ledger = JSON.parse(read(ledgerPath)) as { winner?: string; candidates?: Array<{ id?: string; selection?: string }> };
-const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === adapterId);
-if (!ledgerEntry || !['selected', 'retained'].includes(ledgerEntry.selection ?? '')) {
+const ledger = JSON.parse(read(ledgerPath)) as { winner?: string; candidates?: Array<{ id?: string; selection?: string }>; retained_routes?: Array<{ id?: string; selection?: string }> };
+const ledgerSelection =
+  ledger.candidates?.find((candidate) => candidate.id === adapterId)?.selection ??
+  ledger.retained_routes?.find((candidate) => candidate.id === adapterId)?.selection;
+if (!['selected', 'retained'].includes(ledgerSelection ?? '')) {
   fail(`${ledgerPath} must keep ${adapterId} selected or retained before using this adapter route`);
 }
 

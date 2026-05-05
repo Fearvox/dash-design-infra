@@ -82,6 +82,7 @@ const checks: Check[] = [
       existsSync('examples/creator-poster-surface.html') &&
       existsSync('examples/creator-prompt-dna-adapter.json') &&
       existsSync('examples/creator-motion-storyboard.html') &&
+      existsSync('examples/creator-manim-scene.html') &&
       existsSync('usecases/creator/creator-contact-sheet-qa.md') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
@@ -144,6 +145,7 @@ const checks: Check[] = [
       'Creator prompt DNA adapter',
       'Creator motion storyboard',
       'Creator contact-sheet QA',
+      'Creator Manim scene',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -341,6 +343,22 @@ const checks: Check[] = [
     evidence: 'Creator p5 sketch contract + deterministic frame probes + machine check',
   },
   {
+    id: 'creator-manim-scene',
+    label: 'Creator Manim scene routes capsules into an external explainer-scene handoff',
+    points: 10,
+    pass:
+      scripts['creator:manim-scene-check'] === 'bun scripts/creator-manim-scene-check.ts' &&
+      commandPass('bun', ['creator:manim-scene-check']) &&
+      existsSync('scripts/creator-manim-scene-check.ts') &&
+      existsSync('examples/creator-manim-scene.json') &&
+      existsSync('examples/creator-manim-scene.html') &&
+      existsSync('usecases/creator/creator-manim-scene.md') &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator Manim scene', 'creator-manim-scene.html', 'creator:manim-scene-check', 'Manim Community Edition']) &&
+      has('README.md', ['Creator Manim Scene', 'creator-manim-scene.html', 'creator:manim-scene-check']) &&
+      has('examples/README.md', ['Creator Manim Scene', 'creator-manim-scene.html', 'creator:manim-scene-check']),
+    evidence: 'Creator Manim scene contract + generated Python stub + machine check',
+  },
+  {
     id: 'creator-skill-package',
     label: 'Creator skill package is repo-local, SKILL.md-style, and machine checked',
     points: 10,
@@ -400,6 +418,8 @@ const checks: Check[] = [
       'bun creator:social-card-check',
       '- name: Creator P5 Sketch Check',
       'bun creator:p5-sketch-check',
+      '- name: Creator Manim Scene Check',
+      'bun creator:manim-scene-check',
       '- name: Creator Skill Package Check',
       'bun creator:skill-package-check',
       'bun docs:links',
@@ -422,9 +442,10 @@ const checks: Check[] = [
       scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
       scripts['creator:social-card-check'] === 'bun scripts/creator-social-card-check.ts' &&
       scripts['creator:p5-sketch-check'] === 'bun scripts/creator-p5-sketch-check.ts' &&
+      scripts['creator:manim-scene-check'] === 'bun scripts/creator-manim-scene-check.ts' &&
       scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:skill-package-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:manim-scene-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 

@@ -62,6 +62,9 @@ jobs:
       - name: Creator P5 Sketch Check
         run: bun creator:p5-sketch-check
 
+      - name: Creator Manim Scene Check
+        run: bun creator:manim-scene-check
+
       - name: Creator Skill Package Check
         run: bun creator:skill-package-check
 

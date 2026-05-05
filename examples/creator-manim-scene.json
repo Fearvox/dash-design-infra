@@ -1,0 +1,130 @@
+{
+  "route": "creator-manim-scene-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "Manim explainer scene adapter",
+  "job": "Turn one creator capsule into a checked Manim scene blueprint and generated Python scene stub so an explainer can move from memory card to renderer without adding Manim to the DASH core or committing raw video.",
+  "format": {
+    "canvas": "1920x1080",
+    "preview_canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-manim-scene.html",
+      ".artifacts/creator-manim-scene.py",
+      ".artifacts/creator-manim-scene-summary.json",
+      "/tmp/dash-creator-manim-scene.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "tool_path",
+    "proof",
+    "remix_rule"
+  ],
+  "manim_adapter": {
+    "scene_class": "CreatorCapsuleScene",
+    "runtime_boundary": "Manim Community Edition remains an external renderer. This repo emits a checked scene contract, a generated Python stub in ignored .artifacts, and a fixed-canvas proof card; it does not add renderer dependencies or store video output.",
+    "render_command": "manim -ql .artifacts/creator-manim-scene.py CreatorCapsuleScene",
+    "dependencies": [
+      "external Manim Community Edition install in the creator workspace",
+      "DASH core keeps only JSON, HTML proof, and the Bun validation script",
+      "rendered MP4 files stay outside git unless separately reviewed as tiny public previews"
+    ],
+    "style_tokens": {
+      "background": "#0f172a",
+      "paper": "#f8f1df",
+      "accent": "#8db4ff",
+      "warning": "#d4a373",
+      "line": "#334155"
+    }
+  },
+  "scene_contract": {
+    "duration_seconds": 45,
+    "resolution": "1920x1080",
+    "beats": [
+      {
+        "id": "seed",
+        "time": "00:00-00:06",
+        "title": "Capsule seed",
+        "visual": "A warm memory card enters over a dark grid and names intent, creator, and surface.",
+        "motion": "Fade in card, draw a thin blue frame, then pulse the intent line once.",
+        "narration_intent": "Tell the creator this scene starts from the capsule, not from a blank renderer."
+      },
+      {
+        "id": "grammar",
+        "time": "00:06-00:15",
+        "title": "Grammar lock",
+        "visual": "Three labeled rails show palette, geometry, and motion grammar as reusable constraints.",
+        "motion": "Rails slide in left to right while small dots trace a safe remix path.",
+        "narration_intent": "Show which visual rules survive the first render and future remixes."
+      },
+      {
+        "id": "scene-build",
+        "time": "00:15-00:29",
+        "title": "Scene build",
+        "visual": "A simple node chain turns capsule fields into title, proof stamp, and beat cards.",
+        "motion": "Nodes connect with animated lines, then collapse into one Manim scene class badge.",
+        "narration_intent": "Make the adapter feel executable: the output is a scene class, not a mood board."
+      },
+      {
+        "id": "proof",
+        "time": "00:29-00:38",
+        "title": "Proof gate",
+        "visual": "A checklist blocks raw media, private paths, provider logs, and account screenshots.",
+        "motion": "Each blocked input is crossed out before the render command is revealed.",
+        "narration_intent": "Normalize proof before render so creators do not leak private material."
+      },
+      {
+        "id": "handoff",
+        "time": "00:38-00:45",
+        "title": "Renderer handoff",
+        "visual": "The generated command appears beside a small scene-class ticket and remix handles.",
+        "motion": "Command types on, ticket stamps external runtime, then handles orbit the scene badge.",
+        "narration_intent": "Leave the creator with a copyable external Manim handoff and clear remix handles."
+      }
+    ],
+    "remix_handles": [
+      "scene beat order",
+      "title and narration intent",
+      "palette token mapping",
+      "motion timing per beat",
+      "render quality flag outside the repo",
+      "proof checklist before exporting video"
+    ],
+    "blocked_moves": [
+      "adding Manim as a core dependency from a single adapter win",
+      "committing rendered MP4 output or raw source media",
+      "using private prompts, client copy, provider logs, account screenshots, cookies, or secrets",
+      "skipping browser measure and print proof for the fixed-canvas scene card"
+    ]
+  },
+  "proof": [
+    "bun creator:manim-scene-check",
+    "bun measure:check -- examples/creator-manim-scene.html",
+    "bun print:render -- examples/creator-manim-scene.html /tmp/dash-creator-manim-scene.pdf --canvas=1684x1191",
+    "browser visual QA on examples/creator-manim-scene.html",
+    "bun security:scan",
+    "bun hackathon:score",
+    "bun typecheck"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic capsule fields",
+      "repo-relative .artifacts Python scene stub",
+      "public-safe visual grammar",
+      "copyable external render command",
+      "fixed-canvas HTML proof card"
+    ],
+    "blocked": [
+      "private prompts or private client copy",
+      "raw generated video, raw source media, and renderer caches",
+      "local absolute paths and provider execution logs",
+      "API keys, cookies, tokens, secrets, and account screenshots",
+      "unreviewed third-party assets or proprietary fonts"
+    ]
+  },
+  "retention": "Retain creator-manim-scene-route as an edge adapter: JSON contract, generated ignored Python stub, fixed-canvas proof card, and validation script. Do not promote a package primitive until another renderer adapter repeats the same capsule-to-code handoff pattern."
+}

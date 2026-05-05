@@ -19,6 +19,10 @@ type Ledger = {
     id?: string;
     selection?: string;
   }>;
+  retained_routes?: Array<{
+    id?: string;
+    selection?: string;
+  }>;
 };
 
 const ledgerPath = 'examples/creator-mutation-candidates.json';
@@ -51,8 +55,10 @@ function parseJson<T>(path: string): T {
 }
 
 const ledger = parseJson<Ledger>(ledgerPath);
-const posterCandidate = ledger.candidates?.find((candidate) => candidate.id === selectedCandidate);
-if (posterCandidate?.selection !== 'selected' && posterCandidate?.selection !== 'retained') {
+const posterSelection =
+  ledger.candidates?.find((candidate) => candidate.id === selectedCandidate)?.selection ??
+  ledger.retained_routes?.find((candidate) => candidate.id === selectedCandidate)?.selection;
+if (posterSelection !== 'selected' && posterSelection !== 'retained') {
   fail(`${ledgerPath} must keep ${selectedCandidate} selected or retained before validating this poster surface`);
 }
 

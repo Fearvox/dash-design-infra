@@ -18,7 +18,8 @@ Every autonomous Darwin slice should be able to name:
 | `observation` | the creator friction or repo gap being addressed |
 | `population` | the family of candidates being compared |
 | `selection_pressure` | why this matters to creators |
-| `candidates[]` | 3-5 single-axis mutations |
+| `candidates[]` | 3-5 active single-axis mutations for the current slice |
+| `retained_routes[]` | previously selected winners that must stay regression-visible even when they are not active candidates |
 | `axis` | exactly one dimension changed: surface, adapter, proof, schema, command, routing |
 | `phenotype` | the visible or executable expression of the candidate |
 | `fitness` | creator utility, memory retention, artifact proof, boundary safety, minimal core |
@@ -46,9 +47,9 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`creator-p5-sketch-route` wins the current slice because it bridges capsule memory into a deterministic p5 creative-coding contract without importing a p5 runtime into the core repo or committing raw rendered media.
+`creator-manim-scene-route` wins the current slice because it bridges capsule memory into a generated Manim `Scene` stub without importing Manim into the core repo or committing MP4 output. It gives creators a concrete explainer-scene handoff, not another static board.
 
-The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, and `creator-social-card-route` remain retained. The ledger gate remains the validation layer that makes these selections explicit even when it is not one of the five active candidates.
+Earlier winners now live in `retained_routes[]`. That keeps the active candidate set at 3-5 mutations while preserving regression coverage for every retained route.
 
 Current retained sequence:
 
@@ -58,8 +59,9 @@ Current retained sequence:
 | `adapter-prompt-dna-route` | retained adapter | preserves model-ready prompt DNA with a synthetic preview artifact |
 | `creator-motion-storyboard-route` | retained surface | bridges capsule memory into motion/video direction before raw media |
 | `creator-social-card-route` | retained surface | creates a crop-safe post preview before platform upload |
-| `creator-p5-sketch-route` | selected adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
+| `creator-p5-sketch-route` | retained adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
+| `creator-manim-scene-route` | selected adapter | generates an ignored Python Manim scene stub and fixed proof card before external render work |
 
 ## 中文摘要
 
-这不是 dashboard。它是 Darwin loop 的候选账本：先观察 creator 摩擦，再列出 3-5 个单轴 mutation，给每个候选打 creator usefulness / memory / proof / boundary / minimal-core 分，选择一个最小赢家，并用 regression gates 保证没有破坏已有 workflow。
+这不是 dashboard。它是 Darwin loop 的候选账本：先观察 creator 摩擦，再列出 3-5 个当前单轴 mutation，同时把历史赢家保存在 `retained_routes[]`，给每个候选打 creator usefulness / memory / proof / boundary / minimal-core 分，选择一个最小赢家，并用 regression gates 保证没有破坏已有 workflow。

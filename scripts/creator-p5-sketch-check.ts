@@ -34,7 +34,7 @@ type CreatorP5Sketch = {
   retention?: string;
 };
 
-type Ledger = { winner?: string; candidates?: Array<{ id?: string; selection?: string }> };
+type Ledger = { winner?: string; candidates?: Array<{ id?: string; selection?: string }>; retained_routes?: Array<{ id?: string; selection?: string }> };
 
 const routeId = 'creator-p5-sketch-route';
 const jsonPath = 'examples/creator-p5-sketch.json';
@@ -96,8 +96,8 @@ function localNoise(seed: string) {
 }
 
 const ledger = parseJson<Ledger>(ledgerPath);
-const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === routeId);
-if (!['selected', 'retained'].includes(ledgerEntry?.selection ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
+const ledgerSelection = ledger.candidates?.find((candidate) => candidate.id === routeId)?.selection ?? ledger.retained_routes?.find((candidate) => candidate.id === routeId)?.selection;
+if (!['selected', 'retained'].includes(ledgerSelection ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
 
 const packageJson = parseJson<{ scripts?: Record<string, string> }>(packagePath);
 if (packageJson.scripts?.['creator:p5-sketch-check'] !== 'bun scripts/creator-p5-sketch-check.ts') fail(`${packagePath} must expose creator:p5-sketch-check`);

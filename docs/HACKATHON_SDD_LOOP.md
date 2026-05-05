@@ -107,6 +107,7 @@ Bad slices:
 - package scripts.
 - retained creator motion storyboard route before raw media or renderer work.
 - crop-safe creator social card route before platform posting.
+- generated Manim scene adapter before renderer dependency or MP4 output.
 
 The score is intentionally blunt. It is not a beauty contest; it is a guardrail against fake progress.
 
@@ -120,9 +121,13 @@ bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-c
 bun creator:motion-storyboard-check
 bun measure:check -- examples/creator-motion-storyboard.html
 bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191
+
+bun creator:manim-scene-check
+bun measure:check -- examples/creator-manim-scene.html
+bun print:render -- examples/creator-manim-scene.html /tmp/dash-creator-manim-scene.pdf --canvas=1684x1191
 ```
 
-The social card route is the allowed bridge from capsule memory to platform-ready preview. The motion route is the allowed bridge to future video/contact-sheet work. Do not commit raw generated video, private prompts, local source paths, account screenshots, client analytics, or client copy.
+The social card route is the allowed bridge from capsule memory to platform-ready preview. The motion route is the allowed bridge to future video/contact-sheet work. The Manim scene route is the allowed bridge to external explainer-scene rendering before any renderer dependency or MP4 output enters the repo. Do not commit raw generated video, private prompts, local source paths, account screenshots, client analytics, or client copy.
 
 ## Review-fitting without overfitting
 
