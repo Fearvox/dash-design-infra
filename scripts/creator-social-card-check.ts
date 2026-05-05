@@ -64,7 +64,7 @@ function list(value: unknown, field: string, min = 3): string[] {
 
 const ledger = parseJson<Ledger>(ledgerPath);
 const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === routeId);
-if (ledger.winner !== routeId || ledgerEntry?.selection !== 'selected') fail(`${ledgerPath} must select ${routeId}`);
+if (!['selected', 'retained'].includes(ledgerEntry?.selection ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
 
 const packageJson = parseJson<{ scripts?: Record<string, string> }>(packagePath);
 if (packageJson.scripts?.['creator:social-card-check'] !== 'bun scripts/creator-social-card-check.ts') fail(`${packagePath} must expose creator:social-card-check`);

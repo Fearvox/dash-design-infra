@@ -1,0 +1,103 @@
+{
+  "route": "creator-p5-sketch-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "deterministic p5 motion sketch adapter",
+  "job": "turn a creator capsule into a reproducible p5.js motion sketch contract with a fixed preview board, frame probes, public input boundary, and remix handles before any raw renderer output is saved",
+  "format": {
+    "canvas": "1684x1191",
+    "sketch_canvas": "800x1067",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-p5-sketch.html",
+      ".artifacts/creator-p5-sketch-frame.json",
+      "/tmp/dash-creator-p5-sketch.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "tool_path",
+    "proof",
+    "remix_rule"
+  ],
+  "p5_adapter": {
+    "preset": "dash-flow-field",
+    "seed": "capsule-signal-024",
+    "imports": [
+      "flowFieldPresets.dashFlowField",
+      "generateFlowField",
+      "traceFlowLine",
+      "flowColorForVelocity",
+      "createMotionTimeline",
+      "validateMotionBudget"
+    ],
+    "runtime_boundary": "DASH owns deterministic motion contracts and frame probes; the consuming creator project owns the p5 runtime, canvas loop, export codec, and any final rendered media."
+  },
+  "sketch_contract": {
+    "layers": [
+      "L0 warm paper ground",
+      "L1 capsule memory streamlines",
+      "L2 proof pulse wash",
+      "L3 remix handle markers"
+    ],
+    "motion_budget": "reuse dash-flow-field motion budget; exactly one layer may breathe or flow strongly so the sketch stays editorial instead of becoming a screensaver",
+    "data_policy": "synthetic seed only; no image, audio, video, API stream, private benchmark, local path, or account screenshot enters the sketch",
+    "render_steps": [
+      "read the creator capsule fields",
+      "select the dash-flow-field preset",
+      "generate deterministic flow vectors from the public seed",
+      "trace frame probes for the selected timeline phases",
+      "inspect the fixed preview board before any external p5 render"
+    ],
+    "remix_handles": [
+      "seed",
+      "streamline density",
+      "timeline phase timing",
+      "accent color ramp",
+      "caption memory line"
+    ],
+    "timeline": {
+      "totalFrames": 180,
+      "phases": [
+        { "name": "fieldBirth", "start": 0, "end": 0.22, "easing": "easeInOutCubic" },
+        { "name": "memoryDrift", "start": 0.12, "end": 1, "easing": "linear" },
+        { "name": "proofPulse", "start": 0.48, "end": 0.82, "easing": "pingPong" }
+      ]
+    }
+  },
+  "frame_probes": [
+    { "frame": 0, "label": "seed lock", "expected_phase": "fieldBirth" },
+    { "frame": 72, "label": "memory drift", "expected_phase": "memoryDrift" },
+    { "frame": 108, "label": "proof pulse", "expected_phase": "proofPulse" },
+    { "frame": 168, "label": "remix tail", "expected_phase": "memoryDrift" }
+  ],
+  "proof": [
+    "bun creator:p5-sketch-check",
+    "bun p5:motion-check",
+    "bun measure:check -- examples/creator-p5-sketch.html",
+    "bun print:render -- examples/creator-p5-sketch.html /tmp/dash-creator-p5-sketch.pdf --canvas=1684x1191",
+    "browser visual QA",
+    "bun security:scan",
+    "bun hackathon:score"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic p5 seed",
+      "public-safe capsule fields",
+      "DASH flow-field preset names",
+      "generated HTML/CSS/SVG preview board",
+      "ignored frame-probe JSON in .artifacts"
+    ],
+    "blocked": [
+      "private creator source media",
+      "raw generated image, video, or audio output",
+      "local absolute source paths",
+      "API keys, cookies, tokens, passwords, or provider logs",
+      "account screenshots, client analytics, or private benchmark evidence"
+    ]
+  },
+  "retention": "selected p5 frontier-adapter mutation retained as example plus script and CI gate; do not promote more p5 package primitives until at least two creator capsule adapters prove the same seed-to-proof contract"
+}

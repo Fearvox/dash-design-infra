@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1684, initial-scale=1" />
+<title>Creator P5 Sketch Adapter</title>
+<style>
+@page{size:1684px 1191px;margin:0}
+:root{--paper:#f6f0e5;--ink:#171713;--muted:#6f6a5f;--green:#10291f;--cobalt:#0018ff;--signal:#f0ee9b;--sand:#ddd6c7;--line:#35584c}
+*{box-sizing:border-box}html,body{margin:0;background:#221f18;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.page{width:1684px;height:1191px;position:relative;overflow:hidden;background:radial-gradient(circle at 18% 12%,rgba(240,238,155,.32),transparent 24%),linear-gradient(135deg,#fbf7ee 0%,#ece2d1 52%,#d6cbb8 100%);padding:64px}.grain{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(23,23,19,.04) 1px,transparent 1px),linear-gradient(0deg,rgba(23,23,19,.035) 1px,transparent 1px);background-size:24px 24px;mix-blend-mode:multiply;opacity:.45}.route{position:relative;z-index:2;display:grid;grid-template-columns:392px 812px 316px;gap:34px;height:100%}.panel{border:1px solid rgba(23,23,19,.2);background:rgba(255,252,244,.62);box-shadow:0 28px 80px rgba(16,41,31,.14);backdrop-filter:blur(8px)}.left{padding:34px 30px;display:flex;flex-direction:column;justify-content:space-between}.eyebrow{font:700 13px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}h1{font-family:Georgia,"Times New Roman",serif;font-size:78px;line-height:.9;margin:28px 0 22px;letter-spacing:-.065em}.sub{font-size:22px;line-height:1.24;color:#3d392f;margin:0}.capsule{border-top:2px solid var(--ink);padding-top:22px}.capsule h2,.right h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.capsule p{font-size:17px;line-height:1.36;margin:0 0 14px;color:#39362f}.pillrow{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid rgba(16,41,31,.32);border-radius:999px;padding:7px 10px;font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green);background:rgba(240,238,155,.42)}.stage{position:relative;border:2px solid var(--ink);background:var(--green);overflow:hidden}.stage-header{position:absolute;top:24px;left:24px;right:24px;z-index:4;display:flex;justify-content:space-between;align-items:flex-start;color:#fff8e7}.stage-title{font:800 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}.stage-note{max-width:312px;text-align:right;font-size:15px;line-height:1.25;color:#fff8e7;background:rgba(16,41,31,.74);border:1px solid rgba(255,248,231,.28);padding:10px 12px}.sketch{position:absolute;left:50%;top:53%;width:760px;height:1014px;transform:translate(-50%,-50%);background:linear-gradient(180deg,#f8f5ef 0%,#ded5c5 100%);box-shadow:inset 0 0 0 1px rgba(23,23,19,.25),0 38px 90px rgba(0,0,0,.28)}svg{position:absolute;inset:0}.flow path{fill:none;stroke:var(--line);stroke-width:2.6;stroke-linecap:round;opacity:.45}.flow path:nth-child(3n){stroke:var(--cobalt);opacity:.22}.flow path:nth-child(4n){stroke:var(--signal);opacity:.5}.wash{position:absolute;inset:0;background:radial-gradient(circle at 42% 48%,rgba(0,24,255,.18),transparent 28%),radial-gradient(circle at 72% 26%,rgba(240,238,155,.42),transparent 19%);mix-blend-mode:multiply}.scan{position:absolute;left:0;right:0;top:48%;height:106px;background:linear-gradient(180deg,transparent,rgba(240,238,155,.46),transparent);transform:skewY(-8deg)}.frame-tags{position:absolute;left:24px;bottom:54px;right:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.frame{border:1px solid rgba(255,248,231,.54);padding:10px 12px;color:#fff8e7;background:rgba(16,41,31,.62)}.frame b{display:block;font:800 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}.frame span{font-size:14px;color:#eee2c8}.right{padding:30px 26px;display:flex;flex-direction:column;gap:18px}.contract{border-left:4px solid var(--cobalt);padding-left:16px}.contract p{font-size:16px;line-height:1.32;margin:0;color:#373229}.checklist{display:grid;gap:10px}.check{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.22;color:#302b23}.dot{width:18px;height:18px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(16,41,31,.12)}.danger{margin-top:auto;border:1px solid rgba(23,23,19,.2);background:#171713;color:#f8f5ef;padding:18px}.danger strong{display:block;color:var(--signal);font:800 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase;margin-bottom:9px}.danger p{font-size:14px;line-height:1.28;margin:0;color:#e7decb}.barcode{position:absolute;right:62px;bottom:70px;display:flex;gap:5px;height:72px;align-items:end}.barcode i{display:block;width:7px;background:var(--ink)}.barcode i:nth-child(odd){height:42px}.barcode i:nth-child(even){height:72px}.stamp{position:absolute;left:64px;bottom:72px;font:800 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+</style>
+</head>
+<body>
+<main class="page" data-route="creator-p5-sketch-route" aria-label="Creator P5 Sketch Adapter fixed-canvas proof">
+  <div class="grain"></div>
+  <section class="route">
+    <aside class="panel left">
+      <div>
+        <div class="eyebrow">CREATOR-P5-SKETCH-ROUTE · proof before render</div>
+        <h1>Make the motion seed portable.</h1>
+        <p class="sub">Creator P5 Sketch Adapter turns one capsule into a deterministic frame contract, then hands the final p5 runtime to the creator project.</p>
+      </div>
+      <div class="capsule">
+        <h2>source capsule</h2>
+        <p><strong>creator-frontier-capsule.json</strong> keeps intent, memory, grammar, blocked inputs, proof, and remix rule visible before the sketch moves to a renderer.</p>
+        <div class="pillrow" aria-label="preserved capsule fields">
+          <span class="pill">intent</span><span class="pill">memory</span><span class="pill">grammar</span><span class="pill">tool_path</span><span class="pill">proof</span><span class="pill">remix</span>
+        </div>
+      </div>
+    </aside>
+
+    <section class="stage" aria-label="deterministic dash-flow-field sketch preview">
+      <div class="stage-header">
+        <div class="stage-title">dash-flow-field · no p5 runtime import</div>
+        <div class="stage-note">DASH validates the seed, vectors, phases, and public boundary. The consumer owns p5 draw loop and export.</div>
+      </div>
+      <div class="sketch">
+        <div class="wash"></div>
+        <svg class="flow" viewBox="0 0 800 1067" role="img" aria-label="Synthetic streamline preview for deterministic frame contract">
+          <path d="M57 116 C158 86 209 154 296 132 S452 76 548 132 676 210 748 154" />
+          <path d="M74 212 C160 198 204 267 302 252 S461 183 540 226 660 312 744 266" />
+          <path d="M62 326 C142 278 232 330 306 358 S444 408 526 342 668 302 750 354" />
+          <path d="M86 438 C170 402 230 458 312 488 S478 526 570 462 668 432 744 500" />
+          <path d="M52 562 C158 524 210 612 326 596 S472 516 576 574 666 668 748 626" />
+          <path d="M66 696 C150 634 238 704 318 746 S486 802 562 724 666 678 746 748" />
+          <path d="M82 828 C164 780 244 848 338 870 S502 888 584 826 676 804 742 878" />
+          <path d="M68 960 C154 910 234 972 330 984 S488 944 574 966 686 1032 744 994" />
+          <path d="M148 86 C196 180 170 258 224 340 S330 438 288 526 220 660 292 740 382 848 350 1006" />
+          <path d="M368 76 C426 154 388 272 432 356 S542 488 492 570 410 682 474 778 566 850 548 1014" />
+          <path d="M620 82 C700 170 646 274 680 372 S766 498 690 594 604 690 650 806 740 906 704 1018" />
+        </svg>
+        <div class="scan"></div>
+      </div>
+      <div class="frame-tags" aria-label="frame probes">
+        <div class="frame"><b>F000</b><span>birth phase</span></div>
+        <div class="frame"><b>F072</b><span>memoryDrift</span></div>
+        <div class="frame"><b>F108</b><span>proofPulse</span></div>
+        <div class="frame"><b>F168</b><span>remix tail</span></div>
+      </div>
+    </section>
+
+    <aside class="panel right">
+      <div class="contract">
+        <h2>deterministic frame contract</h2>
+        <p>Seed <strong>capsule-signal-024</strong> generates flow vectors, streamlines, velocity color, and four timeline probes through <strong>@dash/p5-motion</strong>.</p>
+      </div>
+      <div class="checklist">
+        <div class="check"><i class="dot"></i><span><strong>Adapter edge:</strong> no p5 runtime import in the core repo; only contract helpers run here.</span></div>
+        <div class="check"><i class="dot"></i><span><strong>Proof:</strong> creator:p5-sketch-check writes ignored frame JSON before browser/PDF checks.</span></div>
+        <div class="check"><i class="dot"></i><span><strong>remix handles:</strong> seed, density, phase timing, accent ramp, and caption line can change.</span></div>
+        <div class="check"><i class="dot"></i><span><strong>Boundary:</strong> no raw generated media, private prompts, provider logs, or local source paths.</span></div>
+      </div>
+      <div class="danger">
+        <strong>public boundary</strong>
+        <p>This preview is synthetic HTML/CSS/SVG. It carries motion grammar and proof notes only; final rendered media stays outside git until a separate public-safe export path exists.</p>
+      </div>
+    </aside>
+  </section>
+  <div class="stamp">Creator P5 Sketch Adapter · 1684x1191</div>
+  <div class="barcode" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</main>
+</body>
+</html>
