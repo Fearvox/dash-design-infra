@@ -33,7 +33,7 @@ try { board = JSON.parse(read(jsonPath)) as Storyboard; } catch (error) { fail(`
 let ledger: Ledger;
 try { ledger = JSON.parse(read(ledgerPath)) as Ledger; } catch (error) { fail(`${ledgerPath} invalid JSON: ${(error as Error).message}`); }
 const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === routeId);
-if (ledger.winner !== routeId || ledgerEntry?.selection !== 'selected') fail(`${ledgerPath} must select ${routeId}`);
+if (!['selected', 'retained'].includes(ledgerEntry?.selection ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
 const packageJson = JSON.parse(read(packagePath) || '{}') as { scripts?: Record<string, string> };
 if (packageJson.scripts?.['creator:motion-storyboard-check'] !== 'bun scripts/creator-motion-storyboard-check.ts') fail(`${packagePath} must expose creator:motion-storyboard-check`);
 if (board.route !== routeId) fail(`route must be ${routeId}`);

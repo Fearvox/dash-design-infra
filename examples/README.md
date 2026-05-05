@@ -24,6 +24,18 @@ bun measure:check -- examples/creator-motion-storyboard.html
 bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191
 ```
 
+## Creator Social Card
+
+`creator-social-card.{json,html}` turns the same creator capsule into a crop-safe
+1200x630 social/link-preview image. It is a public-safe posting surface, not raw
+generated media or a platform screenshot.
+
+```bash
+bun creator:social-card-check
+bun measure:check -- examples/creator-social-card.html --canvas=1200x630
+bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630
+```
+
 ## Motion Usecases
 
 p5.js visual examples live in [`../usecases/p5js`](../usecases/p5js). They are
@@ -42,3 +54,4 @@ bun print:render -- examples/one-pager.html /tmp/dash-one-pager.pdf --canvas=168
 p5.js 视觉用例在 [`../usecases/p5js`](../usecases/p5js)。
 
 Creator motion storyboard 示例用固定画布表达视频前的 motion brief，不提交 raw video 或私有素材。
+Creator Social Card 示例用于 1200x630 社交预览图，先证明 crop-safe 和 public boundary，再发布。

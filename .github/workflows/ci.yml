@@ -56,6 +56,9 @@ jobs:
       - name: Creator Contact Sheet Check
         run: bun creator:contact-sheet-check
 
+      - name: Creator Social Card Check
+        run: bun creator:social-card-check
+
       - name: Creator Skill Package Check
         run: bun creator:skill-package-check
 

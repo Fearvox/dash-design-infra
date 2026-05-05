@@ -1,0 +1,69 @@
+{
+  "route": "creator-social-card-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "1200x630 social preview card",
+  "job": "turn a creator capsule into a publishable social image proof that keeps the hook, memory, crop safety, public boundary, and remix handles intact before posting",
+  "format": {
+    "canvas": "1200x630",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-social-card.html",
+      "/tmp/dash-creator-social-card.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "proof",
+    "remix_rule"
+  ],
+  "social_contract": {
+    "platform_targets": [
+      "X / Twitter link preview",
+      "LinkedIn post image",
+      "newsletter hero image",
+      "launch thread cover"
+    ],
+    "message_hierarchy": [
+      "one clear hook",
+      "one capsule memory line",
+      "one proof stamp",
+      "one remix handle"
+    ],
+    "safe_crop": "keep the hook and proof stamp inside a centered 1040x500 safe zone so platform thumbnails can crop edges without losing the idea",
+    "alt_text": "A warm editorial social card saying Make the idea portable before it gets posted, with proof and remix labels."
+  },
+  "social_grammar": {
+    "layout": "wide editorial card with a left proof rail, oversized hook, center-safe crop, and small remix barcode",
+    "type": "serif display hook, compact mono route labels, clear sans supporting line",
+    "color": "warm paper, carbon ink, electric blue proof mark, green publish-safe stamp, amber signal texture",
+    "motion": "still social card now; future animation may sweep the proof rail without changing the hook safe zone"
+  },
+  "proof": [
+    "bun creator:social-card-check",
+    "bun measure:check -- examples/creator-social-card.html --canvas=1200x630",
+    "bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630",
+    "browser visual QA",
+    "bun security:scan",
+    "bun hackathon:score"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic creator hook",
+      "public-safe capsule fields",
+      "DASH typography and crop-safe layout grammar",
+      "generated HTML/CSS artifact"
+    ],
+    "blocked": [
+      "private client text",
+      "raw creator media",
+      "local absolute source paths",
+      "API keys, cookies, tokens, passwords",
+      "account screenshots or client analytics"
+    ]
+  },
+  "retention": "selected social-surface mutation retained as example plus script and CI gate; do not promote a package primitive until at least two social/export surfaces prove the same crop-safe contract"
+}

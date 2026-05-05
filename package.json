@@ -57,6 +57,7 @@
     "hackathon:score": "bun scripts/hackathon-score.ts",
     "creator:motion-storyboard-check": "bun scripts/creator-motion-storyboard-check.ts",
     "creator:contact-sheet-check": "bun scripts/creator-contact-sheet-check.ts",
+    "creator:social-card-check": "bun scripts/creator-social-card-check.ts",
     "creator:skill-package-check": "bun scripts/creator-skill-package-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"
