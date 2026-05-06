@@ -168,11 +168,26 @@ Then fix the highest-scoring gap. Do not start a broad rewrite.
 
 These are intentionally unshipped until they have commands and public boundaries:
 
-| Slot | Required before shipping |
-|---|---|
+|| Slot | Required before shipping |
+|---|----|
 | Browser demo external deploy / Vercel surface | deploy command, public URL, screenshot QA, rollback path; start from the shipped local browser demo route first |
 | External skill publish/release | review-approved registry target, live install smoke, versioning, rollback, and public release note |
 | Visual contact-sheet QA | shipped as `bun creator:contact-sheet-check`; writes ignored `.artifacts/creator-motion-contact-sheet.html` |
+
+**Fixed-Canvas Browser QA Enforcement (browser-qa Darwin mutation)**
+
+Default browser automation viewports often hide right-side or bottom controls on 1684×1191 or 1200×630 canvases, leading to false-positive "working" interaction reports. 
+
+Mutation selected: Add explicit exact-viewport contract to all fixed-canvas routes.
+
+- Always enforce `setViewportSize({ width: 1684, height: 1191 })` (or matching social canvas) in browser smoke.
+- Verify: `innerWidth === canvasWidth`, no horizontal overflow, every `data-step` button receives click and updates `data-active-step` + `aria-pressed`.
+- Capture: console errors, network (must be 0 external), CDP metrics, screenshot path.
+- This prevents the mobile-crop and offscreen-control pitfalls noted in browser-qa skill.
+
+Update all creator/*-check.ts and measure commands to include this when browser tools are used. Phenotype survives in updated WORKFLOW_INDEX and browser-demo HTML meta/viewport handling.
+
+This advances week-3 fitness-evaluator mutation without growing core.
 
 ## 中文摘要
 
