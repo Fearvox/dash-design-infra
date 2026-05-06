@@ -1,13 +1,13 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, and p5 creative-coding probes, but creators still need a safe timeline-code handoff for Remotion-style video compositions before any renderer dependency or rendered media enters the repo.",
+  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, and Remotion timeline code. Creators still need a safe explainer-scene handoff for Manim-style educational motion before any renderer dependency or rendered MP4 enters the repo.",
   "population": "creator capsule frontier-adapter mutations for externally-rendered visual workflows",
   "selection_pressure": "help a creator turn one capsule into an executable renderer handoff faster while preserving memory, proof, public boundary, and minimal DASH core size",
   "candidates": [
     {
-      "id": "creator-remotion-scene-route",
+      "id": "creator-manim-scene-route",
       "axis": "tool adapter",
-      "mutation": "Route the capsule into a checked Remotion composition contract and generated ignored TSX stub before external rendering.",
-      "phenotype": "JSON Remotion adapter contract plus fixed-canvas proof card and generated .artifacts/creator-remotion-scene.tsx stub",
+      "mutation": "Route the capsule into a checked Manim scene contract and generated ignored Python Scene stub before external rendering.",
+      "phenotype": "JSON Manim adapter contract plus fixed-canvas proof card and generated .artifacts/creator-manim-scene.py stub",
       "fitness": {
         "creator_utility": 10,
         "memory_retention": 10,
@@ -15,23 +15,8 @@
         "boundary_safety": 10,
         "minimal_core": 10
       },
-      "risk": "Could become a fake renderer workflow if it only shows a board and does not generate a real sequence-based TSX stub, or could bloat the core if Remotion/React rendering is added as a dependency.",
+      "risk": "Could become a fake explainer workflow if it only shows a board and does not generate a real Python Scene stub, or could bloat the core if Manim is added as a dependency.",
       "selection": "selected"
-    },
-    {
-      "id": "creator-manim-scene-route",
-      "axis": "tool adapter",
-      "mutation": "Route the capsule into a Manim scene contract and generated Python Scene stub before external rendering.",
-      "phenotype": "JSON Manim adapter contract plus fixed-canvas proof card and generated ignored Python scene stub",
-      "fitness": {
-        "creator_utility": 9,
-        "memory_retention": 9,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "Needs its own checked scene stub and external-runtime boundary before it can be retained without dragging Manim into the core.",
-      "selection": "candidate"
     },
     {
       "id": "creator-touchdesigner-tox-route",
@@ -79,7 +64,7 @@
       "selection": "candidate"
     }
   ],
-  "winner": "creator-remotion-scene-route",
+  "winner": "creator-manim-scene-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -110,9 +95,15 @@
       "selection": "retained",
       "retained_as": "deterministic p5 creative-coding adapter",
       "proof": ["bun creator:p5-sketch-check", "bun p5:motion-check"]
+    },
+    {
+      "id": "creator-remotion-scene-route",
+      "selection": "retained",
+      "retained_as": "generated Remotion timeline-code adapter",
+      "proof": ["bun creator:remotion-scene-check", "bun measure:check -- examples/creator-remotion-scene.html"]
     }
   ],
-  "retention": "Retain creator-remotion-scene-route as the public-safe bridge from capsule memory to an external Remotion composition handoff: JSON contract, generated ignored TSX stub, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on 3-5 current mutations without losing regression coverage.",
+  "retention": "Retain creator-manim-scene-route as the public-safe bridge from capsule memory to an external Manim explainer handoff: JSON contract, generated ignored Python Scene stub, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on 3-5 current mutations without losing regression coverage.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -120,6 +111,7 @@
     "bun creator:motion-storyboard-check",
     "bun creator:p5-sketch-check",
     "bun creator:remotion-scene-check",
+    "bun creator:manim-scene-check",
     "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
