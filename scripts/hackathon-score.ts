@@ -379,6 +379,22 @@ const checks: Check[] = [
     evidence: 'Creator Manim scene contract + generated Python stub + machine check',
   },
   {
+    id: 'creator-touchdesigner-tox',
+    label: 'Creator TouchDesigner TOX routes capsules into local-operator network handoffs',
+    points: 10,
+    pass:
+      scripts['creator:touchdesigner-tox-check'] === 'bun scripts/creator-touchdesigner-tox-check.ts' &&
+      commandPass('bun', ['creator:touchdesigner-tox-check']) &&
+      existsSync('scripts/creator-touchdesigner-tox-check.ts') &&
+      existsSync('examples/creator-touchdesigner-tox.json') &&
+      existsSync('examples/creator-touchdesigner-tox.html') &&
+      existsSync('usecases/creator/creator-touchdesigner-tox.md') &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator TouchDesigner TOX', 'creator-touchdesigner-tox.html', 'creator:touchdesigner-tox-check', 'twozero MCP']) &&
+      has('README.md', ['Creator TouchDesigner TOX', 'creator-touchdesigner-tox.html', 'creator:touchdesigner-tox-check']) &&
+      has('examples/README.md', ['Creator TouchDesigner TOX', 'creator-touchdesigner-tox.html', 'creator:touchdesigner-tox-check']),
+    evidence: 'Creator TouchDesigner TOX contract + generated topology/safety artifacts + machine check',
+  },
+  {
     id: 'creator-skill-package',
     label: 'Creator skill package is repo-local, SKILL.md-style, and machine checked',
     points: 10,
@@ -442,6 +458,8 @@ const checks: Check[] = [
       'bun creator:remotion-scene-check',
       '- name: Creator Manim Scene Check',
       'bun creator:manim-scene-check',
+      '- name: Creator TouchDesigner TOX Check',
+      'bun creator:touchdesigner-tox-check',
       '- name: Creator Skill Package Check',
       'bun creator:skill-package-check',
       'bun docs:links',
@@ -466,9 +484,10 @@ const checks: Check[] = [
       scripts['creator:p5-sketch-check'] === 'bun scripts/creator-p5-sketch-check.ts' &&
       scripts['creator:remotion-scene-check'] === 'bun scripts/creator-remotion-scene-check.ts' &&
       scripts['creator:manim-scene-check'] === 'bun scripts/creator-manim-scene-check.ts' &&
+      scripts['creator:touchdesigner-tox-check'] === 'bun scripts/creator-touchdesigner-tox-check.ts' &&
       scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:skill-package-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:touchdesigner-tox-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 

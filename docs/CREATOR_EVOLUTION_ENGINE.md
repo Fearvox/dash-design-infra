@@ -88,6 +88,7 @@ Everything else is optional until the loop proves it deserves more structure. Th
 - [`creator-p5-sketch-route`](../usecases/creator/creator-p5-sketch.md): creative-coding adapter mutation; turns capsule memory into deterministic `dash-flow-field` frame probes and a fixed preview before any p5 runtime or raw rendered media.
 - [`creator-remotion-scene-route`](../usecases/creator/creator-remotion-scene.md): timeline-code adapter mutation; turns capsule memory into a generated ignored Remotion TSX composition stub plus fixed-canvas proof before any Remotion runtime or rendered video.
 - [`creator-manim-scene-route`](../usecases/creator/creator-manim-scene.md): explainer-scene adapter mutation; turns capsule memory into a generated ignored Manim Python scene stub plus fixed-canvas proof before any renderer dependency or MP4 output.
+- [`creator-touchdesigner-tox-route`](../usecases/creator/creator-touchdesigner-tox.md): live-visual-network adapter mutation; turns capsule memory into generated ignored TouchDesigner topology/twozero safety artifacts plus fixed-canvas proof before any local port, screenshot, `.tox/.toe`, raw media, or live TD connection.
 
 ## Candidate ledger
 
