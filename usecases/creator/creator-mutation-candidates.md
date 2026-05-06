@@ -47,9 +47,9 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`creator-remotion-scene-route` wins the current slice because it bridges capsule memory into a generated Remotion TSX composition contract without importing Remotion or React rendering into the core repo or committing rendered media.
+`creator-browser-demo-route` wins the current slice because it bridges capsule memory into a self-contained clickable browser phenotype without importing a frontend framework, backend, analytics, hosting config, screenshots, or public deploy automation into the core repo.
 
-The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, `creator-social-card-route`, and `creator-p5-sketch-route` remain retained. The ledger gate keeps them in `retained_routes[]` so the active candidate list stays focused on 3-5 current mutations without losing regression memory.
+The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, `creator-social-card-route`, `creator-p5-sketch-route`, `creator-remotion-scene-route`, `creator-manim-scene-route`, and `creator-touchdesigner-tox-route` remain retained. The ledger gate keeps them in `retained_routes[]` so the active candidate list stays focused on 3-5 current mutations without losing regression memory.
 
 Current retained sequence:
 
@@ -60,7 +60,10 @@ Current retained sequence:
 | `creator-motion-storyboard-route` | retained surface | bridges capsule memory into motion/video direction before raw media |
 | `creator-social-card-route` | retained surface | creates a crop-safe post preview before platform upload |
 | `creator-p5-sketch-route` | retained adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
-| `creator-remotion-scene-route` | selected adapter | generates an ignored TSX composition stub before external Remotion runtime work |
+| `creator-remotion-scene-route` | retained adapter | generates an ignored TSX composition stub before external Remotion runtime work |
+| `creator-manim-scene-route` | retained adapter | generates an ignored Python Scene stub before external Manim runtime work |
+| `creator-touchdesigner-tox-route` | retained adapter | generates ignored topology/safety artifacts before local TouchDesigner/twozero work |
+| `creator-browser-demo-route` | selected surface | creates a local interactive browser demo before backend, hosting, or deploy work |
 
 ## 中文摘要
 

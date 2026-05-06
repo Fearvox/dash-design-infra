@@ -71,6 +71,9 @@ jobs:
       - name: Creator TouchDesigner TOX Check
         run: bun creator:touchdesigner-tox-check
 
+      - name: Creator Browser Demo Check
+        run: bun creator:browser-demo-check
+
       - name: Creator Skill Package Check
         run: bun creator:skill-package-check
 

@@ -1,37 +1,22 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, and Manim explainer stubs. Creators still need a safe live-visual-network handoff for TouchDesigner/twozero before any local port, screenshot, .tox/.toe export, raw media, or live TD connection enters the repo.",
-  "population": "creator capsule frontier-adapter mutations for externally-rendered visual workflows",
-  "selection_pressure": "help a creator turn one capsule into an executable renderer or live-tool handoff faster while preserving memory, proof, public boundary, and minimal DASH core size",
+  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, Manim explainer stubs, and TouchDesigner/twozero local-network handoffs. Creators still need a safe browser-demo route that produces a clickable local phenotype before any backend, hosting config, analytics, screenshot, or public deploy enters the workflow.",
+  "population": "creator capsule frontier-adapter mutations for externally-rendered and browser-native visual workflows",
+  "selection_pressure": "help a creator turn one capsule into a runnable or clickable artifact faster while preserving memory, proof, public boundary, rollback discipline, and minimal DASH core size",
   "candidates": [
-    {
-      "id": "creator-touchdesigner-tox-route",
-      "axis": "tool adapter",
-      "mutation": "Route the capsule into a TouchDesigner/twozero topology handoff with local-operator safety checks and generated ignored proof artifacts.",
-      "phenotype": "JSON TouchDesigner adapter contract plus fixed-canvas proof card and generated .artifacts topology/safety files",
-      "fitness": {
-        "creator_utility": 9,
-        "memory_retention": 9,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "Could become unsafe automation if the check opens ports, connects to an unverified TD process, captures screenshots, or commits .tox/.toe exports instead of retaining only a public-safe handoff.",
-      "selection": "selected"
-    },
     {
       "id": "creator-browser-demo-route",
       "axis": "surface",
-      "mutation": "Route the capsule into a browser demo surface with screenshot QA and rollback notes.",
-      "phenotype": "Single HTML demo plus browser proof and deploy checklist",
+      "mutation": "Route the capsule into a self-contained browser demo surface with local interaction smoke, browser proof, and deploy rollback boundary.",
+      "phenotype": "JSON browser adapter contract plus fixed-canvas clickable HTML proof card and generated .artifacts smoke/QA notes",
       "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 7,
+        "creator_utility": 9,
+        "memory_retention": 8,
         "artifact_proof": 9,
-        "boundary_safety": 9,
-        "minimal_core": 9
+        "boundary_safety": 10,
+        "minimal_core": 10
       },
-      "risk": "Can become another static board unless it has a real deploy or interaction path.",
-      "selection": "candidate"
+      "risk": "Can become another static dashboard unless the HTML has a real local interaction path and the route blocks premature deploy, backend, analytics, screenshots, and network calls.",
+      "selection": "selected"
     },
     {
       "id": "creator-pdf-zine-route",
@@ -45,7 +30,7 @@
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "May duplicate the poster and one-pager paths unless a distinct remix job is proven.",
+      "risk": "May duplicate the poster and one-pager paths unless a distinct remix need is proven.",
       "selection": "candidate"
     },
     {
@@ -64,7 +49,7 @@
       "selection": "candidate"
     }
   ],
-  "winner": "creator-touchdesigner-tox-route",
+  "winner": "creator-browser-demo-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -107,9 +92,15 @@
       "selection": "retained",
       "retained_as": "generated Manim explainer-scene adapter",
       "proof": ["bun creator:manim-scene-check", "bun measure:check -- examples/creator-manim-scene.html"]
+    },
+    {
+      "id": "creator-touchdesigner-tox-route",
+      "selection": "retained",
+      "retained_as": "generated TouchDesigner/twozero topology and safety handoff",
+      "proof": ["bun creator:touchdesigner-tox-check", "bun measure:check -- examples/creator-touchdesigner-tox.html"]
     }
   ],
-  "retention": "Retain creator-touchdesigner-tox-route as the public-safe bridge from capsule memory to an external TouchDesigner/twozero live-network handoff: JSON contract, generated ignored topology/safety artifacts, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on 3-5 current mutations without losing regression coverage.",
+  "retention": "Retain creator-browser-demo-route as the public-safe bridge from capsule memory to a clickable local browser phenotype: JSON contract, self-contained HTML, generated ignored smoke/QA artifacts, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on current mutations without losing regression coverage.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -119,6 +110,7 @@
     "bun creator:remotion-scene-check",
     "bun creator:manim-scene-check",
     "bun creator:touchdesigner-tox-check",
+    "bun creator:browser-demo-check",
     "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",

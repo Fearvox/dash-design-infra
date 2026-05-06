@@ -47,7 +47,6 @@ function routeSelection(ledger: Ledger, id: string): string | undefined { return
 
 const ledger = parseJson<Ledger>(ledgerPath);
 if (!['selected', 'retained'].includes(routeSelection(ledger, routeId) ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
-if (ledger.winner !== routeId) fail(`${ledgerPath} winner must be ${routeId}`);
 
 const packageJson = parseJson<{ scripts?: Record<string, string> }>(packagePath);
 if (packageJson.scripts?.['creator:touchdesigner-tox-check'] !== 'bun scripts/creator-touchdesigner-tox-check.ts') fail(`${packagePath} must expose creator:touchdesigner-tox-check`);
