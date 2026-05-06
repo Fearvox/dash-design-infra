@@ -12,7 +12,7 @@ type Storyboard = {
   proof?: string[];
   retention?: string;
 };
-type Ledger = { winner?: string; candidates?: Array<{ id?: string; selection?: string }> };
+type Ledger = { winner?: string; candidates?: Array<{ id?: string; selection?: string }>; retained_routes?: Array<{ id?: string; selection?: string }> };
 
 const jsonPath = 'examples/creator-motion-storyboard.json';
 const htmlPath = 'examples/creator-motion-storyboard.html';
@@ -32,7 +32,7 @@ let board: Storyboard;
 try { board = JSON.parse(read(jsonPath)) as Storyboard; } catch (error) { fail(`${jsonPath} invalid JSON: ${(error as Error).message}`); }
 let ledger: Ledger;
 try { ledger = JSON.parse(read(ledgerPath)) as Ledger; } catch (error) { fail(`${ledgerPath} invalid JSON: ${(error as Error).message}`); }
-const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === routeId);
+const ledgerEntry = ledger.candidates?.find((candidate) => candidate.id === routeId) ?? ledger.retained_routes?.find((candidate) => candidate.id === routeId);
 if (!['selected', 'retained'].includes(ledgerEntry?.selection ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
 const packageJson = JSON.parse(read(packagePath) || '{}') as { scripts?: Record<string, string> };
 if (packageJson.scripts?.['creator:motion-storyboard-check'] !== 'bun scripts/creator-motion-storyboard-check.ts') fail(`${packagePath} must expose creator:motion-storyboard-check`);

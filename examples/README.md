@@ -49,6 +49,18 @@ bun measure:check -- examples/creator-p5-sketch.html
 bun print:render -- examples/creator-p5-sketch.html /tmp/dash-creator-p5-sketch.pdf --canvas=1684x1191
 ```
 
+## Creator Remotion Scene
+
+`creator-remotion-scene.{json,html}` turns the creator capsule into a checked
+Remotion composition handoff. The check generates an ignored TSX stub before any
+external Remotion runtime or rendered video is used.
+
+```bash
+bun creator:remotion-scene-check
+bun measure:check -- examples/creator-remotion-scene.html
+bun print:render -- examples/creator-remotion-scene.html /tmp/dash-creator-remotion-scene.pdf --canvas=1684x1191
+```
+
 ## Motion Usecases
 
 p5.js visual examples live in [`../usecases/p5js`](../usecases/p5js). They are
@@ -69,3 +81,4 @@ p5.js 视觉用例在 [`../usecases/p5js`](../usecases/p5js)。
 Creator motion storyboard 示例用固定画布表达视频前的 motion brief，不提交 raw video 或私有素材。
 Creator Social Card 示例用于 1200x630 社交预览图，先证明 crop-safe 和 public boundary，再发布。
 Creator P5 Sketch 示例把 capsule 接到 `dash-flow-field` p5 contract，先生成 frame probes，再交给外部 runtime。
+Creator Remotion Scene 示例把 capsule 接到 Remotion composition contract，先生成 `.artifacts` TSX stub，再交给外部 runtime。

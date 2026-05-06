@@ -19,6 +19,7 @@ Every autonomous Darwin slice should be able to name:
 | `population` | the family of candidates being compared |
 | `selection_pressure` | why this matters to creators |
 | `candidates[]` | 3-5 single-axis mutations |
+| `retained_routes[]` | older winners kept out of the active candidate population |
 | `axis` | exactly one dimension changed: surface, adapter, proof, schema, command, routing |
 | `phenotype` | the visible or executable expression of the candidate |
 | `fitness` | creator utility, memory retention, artifact proof, boundary safety, minimal core |
@@ -46,9 +47,9 @@ If a future board or dashboard cannot do those things, reject it.
 
 ## Current retained winner
 
-`creator-p5-sketch-route` wins the current slice because it bridges capsule memory into a deterministic p5 creative-coding contract without importing a p5 runtime into the core repo or committing raw rendered media.
+`creator-remotion-scene-route` wins the current slice because it bridges capsule memory into a generated Remotion TSX composition contract without importing Remotion or React rendering into the core repo or committing rendered media.
 
-The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, and `creator-social-card-route` remain retained. The ledger gate remains the validation layer that makes these selections explicit even when it is not one of the five active candidates.
+The earlier `poster-surface-route`, `adapter-prompt-dna-route`, `creator-motion-storyboard-route`, `creator-social-card-route`, and `creator-p5-sketch-route` remain retained. The ledger gate keeps them in `retained_routes[]` so the active candidate list stays focused on 3-5 current mutations without losing regression memory.
 
 Current retained sequence:
 
@@ -58,7 +59,8 @@ Current retained sequence:
 | `adapter-prompt-dna-route` | retained adapter | preserves model-ready prompt DNA with a synthetic preview artifact |
 | `creator-motion-storyboard-route` | retained surface | bridges capsule memory into motion/video direction before raw media |
 | `creator-social-card-route` | retained surface | creates a crop-safe post preview before platform upload |
-| `creator-p5-sketch-route` | selected adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
+| `creator-p5-sketch-route` | retained adapter | generates deterministic `dash-flow-field` frame probes before p5 runtime work |
+| `creator-remotion-scene-route` | selected adapter | generates an ignored TSX composition stub before external Remotion runtime work |
 
 ## 中文摘要
 
