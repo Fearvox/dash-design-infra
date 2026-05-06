@@ -86,6 +86,9 @@ const checks: Check[] = [
       existsSync('usecases/creator/creator-remotion-scene.md') &&
       existsSync('examples/creator-manim-scene.html') &&
       existsSync('usecases/creator/creator-manim-scene.md') &&
+      existsSync('examples/creator-browser-demo.html') &&
+      existsSync('examples/creator-browser-demo.json') &&
+      existsSync('usecases/creator/creator-browser-demo.md') &&
       existsSync('usecases/creator/creator-contact-sheet-qa.md') &&
       existsSync('examples/refero-research-board.html') &&
       existsSync('usecases/creator/creator-frontier-capsule.md') &&
@@ -150,6 +153,8 @@ const checks: Check[] = [
       'Creator contact-sheet QA',
       'Creator Remotion scene',
       'Creator Manim scene',
+      'Creator TouchDesigner TOX',
+      'Creator browser demo',
       'Public repo hardening',
       'Hackathon SDD loop',
     ]),
@@ -395,6 +400,22 @@ const checks: Check[] = [
     evidence: 'Creator TouchDesigner TOX contract + generated topology/safety artifacts + machine check',
   },
   {
+    id: 'creator-browser-demo',
+    label: 'Creator browser demo routes capsules into clickable local browser phenotypes',
+    points: 10,
+    pass:
+      scripts['creator:browser-demo-check'] === 'bun scripts/creator-browser-demo-check.ts' &&
+      commandPass('bun', ['creator:browser-demo-check']) &&
+      existsSync('scripts/creator-browser-demo-check.ts') &&
+      existsSync('examples/creator-browser-demo.json') &&
+      existsSync('examples/creator-browser-demo.html') &&
+      existsSync('usecases/creator/creator-browser-demo.md') &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator browser demo', 'creator-browser-demo.html', 'creator:browser-demo-check', 'browser interaction smoke']) &&
+      has('README.md', ['Creator Browser Demo', 'creator-browser-demo.html', 'creator:browser-demo-check']) &&
+      has('examples/README.md', ['Creator Browser Demo', 'creator-browser-demo.html', 'creator:browser-demo-check']),
+    evidence: 'Creator browser demo contract + clickable fixed-canvas phenotype + machine check',
+  },
+  {
     id: 'creator-skill-package',
     label: 'Creator skill package is repo-local, SKILL.md-style, and machine checked',
     points: 10,
@@ -460,6 +481,8 @@ const checks: Check[] = [
       'bun creator:manim-scene-check',
       '- name: Creator TouchDesigner TOX Check',
       'bun creator:touchdesigner-tox-check',
+      '- name: Creator Browser Demo Check',
+      'bun creator:browser-demo-check',
       '- name: Creator Skill Package Check',
       'bun creator:skill-package-check',
       'bun docs:links',
@@ -485,9 +508,10 @@ const checks: Check[] = [
       scripts['creator:remotion-scene-check'] === 'bun scripts/creator-remotion-scene-check.ts' &&
       scripts['creator:manim-scene-check'] === 'bun scripts/creator-manim-scene-check.ts' &&
       scripts['creator:touchdesigner-tox-check'] === 'bun scripts/creator-touchdesigner-tox-check.ts' &&
+      scripts['creator:browser-demo-check'] === 'bun scripts/creator-browser-demo-check.ts' &&
       scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:touchdesigner-tox-check + scripts.creator:skill-package-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:touchdesigner-tox-check + scripts.creator:browser-demo-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 

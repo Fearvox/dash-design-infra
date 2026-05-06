@@ -1,0 +1,110 @@
+{
+  "route": "creator-browser-demo-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "self-contained browser demo surface",
+  "job": "Turn one creator capsule into a checked browser prototype that can be opened locally, clicked through, screen-checked, and then copied to an external static host only after proof. The route gives creators an interactive artifact path without adding an app framework, backend, analytics, deploy automation, or private source material to the DASH core.",
+  "format": {
+    "canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-browser-demo.html",
+      ".artifacts/creator-browser-demo-smoke.json",
+      ".artifacts/creator-browser-demo-qa.md",
+      "/tmp/dash-creator-browser-demo.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "tool_path",
+    "proof",
+    "remix_rule"
+  ],
+  "browser_adapter": {
+    "demo_id": "CreatorCapsuleBrowserDemo",
+    "runtime_boundary": "The browser demo is a self-contained HTML phenotype with local JavaScript state only. It uses no backend, no network calls, no external CDN, no analytics, and no automatic deployment. A creator may copy it to an external static host only after browser interaction smoke, measure, print, security, and rollback notes pass.",
+    "open_command": "open examples/creator-browser-demo.html",
+    "optional_deploy_boundary": "External static deploys are operator-owned and out of scope for CI. Do not create Vercel projects, mutate hosting config, upload screenshots, or publish a URL from this repo slice; keep a rollback note before any later deploy.",
+    "style_tokens": {
+      "background": "#0b1114",
+      "paper": "#f4ead6",
+      "signal": "#7ef0c1",
+      "accent": "#ff9f6e",
+      "line": "#294148",
+      "ink": "#111318"
+    }
+  },
+  "interaction_contract": {
+    "initial_state": "capsule",
+    "controls": ["capsule", "artifact", "proof", "remix"],
+    "states": [
+      {
+        "id": "capsule",
+        "button_label": "Capsule",
+        "headline": "Start from memory, not a blank browser canvas.",
+        "mutation": "Load creator, intent, grammar, blocked inputs, proof, and remix rule into a visible local demo shell.",
+        "proof": "Initial state must be readable without JavaScript-generated network data."
+      },
+      {
+        "id": "artifact",
+        "button_label": "Artifact",
+        "headline": "Turn the capsule into an interactive browser phenotype.",
+        "mutation": "Stage one hero, one proof rail, one state machine, and one copyable handoff note inside the fixed canvas.",
+        "proof": "Clicking the control updates data-active-step, active copy, and aria-pressed state."
+      },
+      {
+        "id": "proof",
+        "button_label": "Proof",
+        "headline": "Browser smoke happens before any external host.",
+        "mutation": "Force local interaction smoke, measure, print, security scan, docs links, score, and typecheck before sharing.",
+        "proof": "The route lists browser visual QA and browser interaction smoke as required proof, not optional garnish."
+      },
+      {
+        "id": "remix",
+        "button_label": "Remix",
+        "headline": "Remix the demo without losing capsule genetics.",
+        "mutation": "Allow copy, palette, step order, and interaction labels to change while preserving blocked inputs and rollback notes.",
+        "proof": "The generated smoke summary records the exact controls and boundary text for future remix runs."
+      }
+    ],
+    "blocked_moves": [
+      "treating the proof card as a static dashboard with no clickable interaction path",
+      "adding a backend, database, websocket, event stream, analytics tracker, or framework dependency from this single route",
+      "auto-deploying to a public host, changing hosting config, or publishing a URL from CI",
+      "embedding private prompts, private client copy, account screenshots, raw generated media, or local absolute paths",
+      "using API credentials, cookies, tokens, secrets, provider logs, or unreviewed third-party assets",
+      "skipping browser measure, print proof, visual QA, or interaction smoke before remixing"
+    ]
+  },
+  "proof": [
+    "bun creator:browser-demo-check",
+    "bun measure:check -- examples/creator-browser-demo.html",
+    "bun print:render -- examples/creator-browser-demo.html /tmp/dash-creator-browser-demo.pdf --canvas=1684x1191",
+    "browser visual QA on examples/creator-browser-demo.html",
+    "browser interaction smoke on the four controls",
+    "bun docs:links",
+    "bun security:scan",
+    "bun hackathon:score",
+    "bun typecheck"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic capsule fields",
+      "self-contained browser HTML and CSS",
+      "local JavaScript state machine without network calls",
+      "repo-relative .artifacts smoke summary",
+      "fixed-canvas HTML proof card and PDF proof"
+    ],
+    "blocked": [
+      "private prompts, private client copy, and private source material",
+      "raw generated images, video, audio, account screenshots, and rendered media dumps",
+      "local absolute paths, provider execution logs, cookies, tokens, secrets, and credentials",
+      "external network calls, analytics, backend bridges, databases, websockets, event streams, and CDNs",
+      "automatic public deploys or hosting config mutations from this repo slice"
+    ]
+  },
+  "retention": "Retain creator-browser-demo-route as the first capsule-to-interactive-browser phenotype: JSON contract, self-contained HTML demo, generated ignored smoke summary, fixed-canvas proof card, and validation script. It is useful because creators can click through a local artifact and prove the interaction before any external deploy, while DASH avoids app-framework bloat and dashboard-only drift."
+}
