@@ -69,6 +69,7 @@ bun creator:contact-sheet-check
 bun creator:social-card-check
 bun creator:p5-sketch-check
 bun creator:remotion-scene-check
+bun creator:manim-scene-check
 bun creator:skill-package-check
 bun docs:links
 bun security:scan
@@ -113,6 +114,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | Social post / link-preview image | [`Creator Social Card`](./usecases/creator/creator-social-card.md) and [`examples/creator-social-card.html`](./examples/creator-social-card.html) | Crop-safe 1200x630 card with hook, proof stamp, public boundary, and `creator:social-card-check` |
 | p5.js creative-coding sketch | [`Creator P5 Sketch`](./usecases/creator/creator-p5-sketch.md) and [`examples/creator-p5-sketch.html`](./examples/creator-p5-sketch.html) | Deterministic `dash-flow-field` frame probes, fixed preview board, public boundary, and `creator:p5-sketch-check` |
 | Remotion sequence/composition | [`Creator Remotion Scene`](./usecases/creator/creator-remotion-scene.md) and [`examples/creator-remotion-scene.html`](./examples/creator-remotion-scene.html) | Generated ignored TSX composition stub, fixed-canvas proof card, public boundary, and `creator:remotion-scene-check` |
+| Manim explainer scene | [`Creator Manim Scene`](./usecases/creator/creator-manim-scene.md) and [`examples/creator-manim-scene.html`](./examples/creator-manim-scene.html) | Generated ignored Python scene stub, fixed-canvas proof card, public boundary, and `creator:manim-scene-check` |
 | Creator Skill Package | [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and [`Creator Skill Package Route`](./usecases/creator/creator-skill-package.md) | A repo-local skill package with trigger, install boundary, example task, and `creator:skill-package-check` |
 | Motion / video direction | [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md) and [`examples/creator-motion-storyboard.html`](./examples/creator-motion-storyboard.html) | Six-frame fixed-canvas storyboard, timing, boundary, remix handles, and contact-sheet bridge before any raw media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |
@@ -165,7 +167,7 @@ The public docs and usecases explain the work. The packages provide the reusable
 
 The hackathon loop is now explicit: review one surface, apply one narrow fix, score it, push it through CI, merge only when green, then repeat. The operating model is documented in [`docs/HACKATHON_SDD_LOOP.md`](./docs/HACKATHON_SDD_LOOP.md), with the ClawSweeper reference map in [`docs/CLAW_SWEEPER_REFERENCE.md`](./docs/CLAW_SWEEPER_REFERENCE.md). External skill ideas now use the [`Darwin Skill Ratchet`](./usecases/visual-research/darwin-skill-ratchet.md): vet first, extract the pattern, render a synthetic board, measure it, and keep only score-backed improvements. Creator-facing work starts with [`Creator OS`](./docs/CREATOR_OS.md) and a [`Creator Frontier Capsule`](./usecases/creator/creator-frontier-capsule.md): idea -> capsule -> artifact -> proof -> remix trail. The retained creator route can also be consumed as a repo-local skill package via [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) after `bun creator:skill-package-check`; this is not an external release. Darwin-style work uses the [`Creator Evolution Engine`](./docs/CREATOR_EVOLUTION_ENGINE.md): observe -> mutate -> render -> evaluate -> select -> retain -> regress. The current retained bridge from static artifact to video direction is the [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md), which must pass `bun creator:motion-storyboard-check` before any renderer or contact sheet. This is self-evolution machinery, not a dashboard.
 
-The current retained social/export slice is the [`Creator Social Card`](./usecases/creator/creator-social-card.md), which turns capsule memory into a crop-safe 1200x630 proof before platform posting. The current retained creative-coding adapter is the [`Creator P5 Sketch`](./usecases/creator/creator-p5-sketch.md), which turns capsule memory into deterministic `dash-flow-field` frame probes before any p5 runtime or rendered media enters the workflow. The current retained timeline-code adapter is the [`Creator Remotion Scene`](./usecases/creator/creator-remotion-scene.md), which emits a checked TSX composition stub before any external Remotion runtime or rendered video enters the workflow. The motion storyboard remains the retained bridge from static artifact to video direction. These are self-evolution machinery, not dashboards.
+The current retained social/export slice is the [`Creator Social Card`](./usecases/creator/creator-social-card.md), which turns capsule memory into a crop-safe 1200x630 proof before platform posting. The current retained creative-coding adapter is the [`Creator P5 Sketch`](./usecases/creator/creator-p5-sketch.md), which turns capsule memory into deterministic `dash-flow-field` frame probes before any p5 runtime or rendered media enters the workflow. The current retained timeline-code adapter is the [`Creator Remotion Scene`](./usecases/creator/creator-remotion-scene.md), which emits a checked TSX composition stub before any external Remotion runtime or rendered video enters the workflow. The current retained explainer-scene adapter is the [`Creator Manim Scene`](./usecases/creator/creator-manim-scene.md), which emits a checked Python Scene stub before any external Manim runtime or rendered MP4 enters the workflow. The motion storyboard remains the retained bridge from static artifact to video direction. These are self-evolution machinery, not dashboards.
 
 The local scoreboard proxy is:
 
@@ -200,6 +202,7 @@ This repo is public-facing, so the boundary is explicit.
 | Creator social card check | `bun creator:social-card-check`, currently clean |
 | Creator p5 sketch check | `bun creator:p5-sketch-check`, currently clean |
 | Creator Remotion scene check | `bun creator:remotion-scene-check`, currently clean |
+| Creator Manim scene check | `bun creator:manim-scene-check`, currently clean |
 | Creator skill package check | `bun creator:skill-package-check`, currently clean |
 | P5 motion v2 contract check | `bun p5:motion-check`, currently clean |
 | Hackathon score | `bun hackathon:score`, currently maxed |
@@ -268,7 +271,7 @@ Ready now:
 - constraint-solver layout helpers;
 - paged.js PDF export;
 - public example and usecase docs;
-- creator capsule, poster, prompt DNA, motion storyboard, social card, p5 sketch, Remotion scene, and skill package checks;
+- creator capsule, poster, prompt DNA, motion storyboard, social card, p5 sketch, Remotion scene, Manim scene, and skill package checks;
 - CI for install, token build, metrics build, typecheck, dependency audit, docs link check, public-boundary scan, and hackathon score.
 
 Still intentionally private or external:

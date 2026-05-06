@@ -65,6 +65,9 @@ jobs:
       - name: Creator Remotion Scene Check
         run: bun creator:remotion-scene-check
 
+      - name: Creator Manim Scene Check
+        run: bun creator:manim-scene-check
+
       - name: Creator Skill Package Check
         run: bun creator:skill-package-check
 

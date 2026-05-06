@@ -61,6 +61,18 @@ bun measure:check -- examples/creator-remotion-scene.html
 bun print:render -- examples/creator-remotion-scene.html /tmp/dash-creator-remotion-scene.pdf --canvas=1684x1191
 ```
 
+## Creator Manim Scene
+
+`creator-manim-scene.{json,html}` turns the creator capsule into a checked
+Manim explainer-scene handoff. The check generates an ignored Python Scene stub
+before any external Manim runtime or rendered MP4 is used.
+
+```bash
+bun creator:manim-scene-check
+bun measure:check -- examples/creator-manim-scene.html
+bun print:render -- examples/creator-manim-scene.html /tmp/dash-creator-manim-scene.pdf --canvas=1684x1191
+```
+
 ## Motion Usecases
 
 p5.js visual examples live in [`../usecases/p5js`](../usecases/p5js). They are
@@ -82,3 +94,4 @@ Creator motion storyboard 示例用固定画布表达视频前的 motion brief�
 Creator Social Card 示例用于 1200x630 社交预览图，先证明 crop-safe 和 public boundary，再发布。
 Creator P5 Sketch 示例把 capsule 接到 `dash-flow-field` p5 contract，先生成 frame probes，再交给外部 runtime。
 Creator Remotion Scene 示例把 capsule 接到 Remotion composition contract，先生成 `.artifacts` TSX stub，再交给外部 runtime。
+Creator Manim Scene 示例把 capsule 接到 Manim explainer scene contract，先生成 `.artifacts` Python Scene stub，再交给外部 runtime。

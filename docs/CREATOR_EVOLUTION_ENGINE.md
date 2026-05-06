@@ -87,6 +87,7 @@ Everything else is optional until the loop proves it deserves more structure. Th
 - [`creator-social-card-route`](../usecases/creator/creator-social-card.md): post-ready social/export mutation; turns capsule memory into a crop-safe 1200x630 card with measure, print, browser QA, and no raw media.
 - [`creator-p5-sketch-route`](../usecases/creator/creator-p5-sketch.md): creative-coding adapter mutation; turns capsule memory into deterministic `dash-flow-field` frame probes and a fixed preview before any p5 runtime or raw rendered media.
 - [`creator-remotion-scene-route`](../usecases/creator/creator-remotion-scene.md): timeline-code adapter mutation; turns capsule memory into a generated ignored Remotion TSX composition stub plus fixed-canvas proof before any Remotion runtime or rendered video.
+- [`creator-manim-scene-route`](../usecases/creator/creator-manim-scene.md): explainer-scene adapter mutation; turns capsule memory into a generated ignored Manim Python scene stub plus fixed-canvas proof before any renderer dependency or MP4 output.
 
 ## Candidate ledger
 
