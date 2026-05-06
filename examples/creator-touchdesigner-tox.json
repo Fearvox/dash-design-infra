@@ -1,0 +1,131 @@
+{
+  "route": "creator-touchdesigner-tox-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "TouchDesigner/twozero network handoff adapter",
+  "job": "Turn one creator capsule into a checked TouchDesigner network handoff: operator list, tox/topology note, twozero MCP safety boundary, generated ignored network spec, and fixed-canvas proof card before any live TouchDesigner session, local port, screenshot, or proprietary .tox export enters the repo.",
+  "format": {
+    "canvas": "1920x1080",
+    "preview_canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-touchdesigner-tox.html",
+      ".artifacts/creator-touchdesigner-network.md",
+      ".artifacts/creator-touchdesigner-twozero-contract.json",
+      "/tmp/dash-creator-touchdesigner-tox.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "tool_path",
+    "proof",
+    "remix_rule"
+  ],
+  "touchdesigner_adapter": {
+    "project_name": "CreatorCapsuleNetwork",
+    "runtime_boundary": "TouchDesigner and twozero MCP remain local external operator tools. DASH emits a checked network topology note, safety contract, and fixed-canvas proof card; it does not open ports, connect to a live TD process, commit proprietary .tox/.toe exports, or store screenshots from an account workspace.",
+    "operator_contract": [
+      "noiseField_TOP: synthetic capsule-memory texture only, no imported footage",
+      "palette_COMP: DASH token colors mapped into TD constants",
+      "pulse_CHOP: deterministic beat clock seeded from capsule remix id",
+      "proof_TEXT: visible stamp naming external runtime, no raw media, no private paths",
+      "out1_TOP: preview-only output for an operator-owned local workspace"
+    ],
+    "twozero_mcp_boundary": {
+      "allowed": [
+        "list local TD connection status after an operator starts it",
+        "create nodes from the generated topology note in an operator-owned workspace",
+        "export a reviewed public-safe tox only outside git unless separately approved"
+      ],
+      "blocked": [
+        "auto-opening a local port from this repo check",
+        "connecting to an unverified TouchDesigner process",
+        "capturing account screenshots or private operator UI",
+        "committing .tox, .toe, screenshots, caches, absolute paths, API keys, cookies, tokens, or secrets"
+      ],
+      "smoke_command": "twozero status --expect-local-operator --no-capture"
+    },
+    "style_tokens": {
+      "background": "#08111f",
+      "paper": "#f8f1df",
+      "accent": "#66e3ff",
+      "warning": "#ffb86b",
+      "line": "#24425f"
+    }
+  },
+  "network_contract": {
+    "duration_seconds": 20,
+    "resolution": "1920x1080",
+    "nodes": [
+      {
+        "id": "noiseField_TOP",
+        "family": "TOP",
+        "purpose": "Generate a synthetic animated field from capsule memory; never import raw footage or reference screenshots."
+      },
+      {
+        "id": "palette_COMP",
+        "family": "COMP",
+        "purpose": "Hold DASH-derived color constants and make palette remixes explicit."
+      },
+      {
+        "id": "pulse_CHOP",
+        "family": "CHOP",
+        "purpose": "Drive repeatable motion pulses from a deterministic capsule beat seed."
+      },
+      {
+        "id": "proof_TEXT",
+        "family": "TEXT/TOP",
+        "purpose": "Stamp the network with external-runtime and public-boundary warnings before any export."
+      },
+      {
+        "id": "out1_TOP",
+        "family": "TOP",
+        "purpose": "Expose a preview-only output for the local operator to review outside git."
+      }
+    ],
+    "remix_handles": [
+      "noise seed and scale",
+      "palette token mapping",
+      "pulse rate and phase",
+      "proof stamp copy",
+      "preview resolution outside repo",
+      "operator-owned export quality"
+    ],
+    "blocked_moves": [
+      "adding TouchDesigner or twozero as a core dependency from a single adapter win",
+      "opening ports or connecting to a live local TD process during CI",
+      "committing .tox, .toe, screenshots, caches, raw media, or generated renders",
+      "using private prompts, client copy, local absolute paths, provider logs, account screenshots, cookies, tokens, or secrets",
+      "skipping browser measure and print proof for the fixed-canvas handoff card"
+    ]
+  },
+  "proof": [
+    "bun creator:touchdesigner-tox-check",
+    "bun measure:check -- examples/creator-touchdesigner-tox.html",
+    "bun print:render -- examples/creator-touchdesigner-tox.html /tmp/dash-creator-touchdesigner-tox.pdf --canvas=1684x1191",
+    "browser visual QA on examples/creator-touchdesigner-tox.html",
+    "bun security:scan",
+    "bun hackathon:score",
+    "bun typecheck"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic capsule fields",
+      "repo-relative .artifacts topology note",
+      "public-safe node names and visual grammar",
+      "copyable local-operator smoke command",
+      "fixed-canvas HTML proof card"
+    ],
+    "blocked": [
+      "private prompts or private client copy",
+      "raw generated video, raw source media, screenshots, tox/toe exports, and renderer caches",
+      "local absolute paths and provider execution logs",
+      "API keys, cookies, tokens, secrets, account screenshots, and unverified local ports",
+      "unreviewed third-party assets or proprietary fonts"
+    ]
+  },
+  "retention": "Retain creator-touchdesigner-tox-route as an edge adapter: JSON contract, generated ignored topology/safety artifacts, fixed-canvas proof card, and validation script. Do not promote a package primitive or live twozero execution until a second local operator smoke proves the same boundary without leaking screenshots, ports, private paths, or raw media."
+}

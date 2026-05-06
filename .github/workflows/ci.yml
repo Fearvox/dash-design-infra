@@ -68,6 +68,9 @@ jobs:
       - name: Creator Manim Scene Check
         run: bun creator:manim-scene-check
 
+      - name: Creator TouchDesigner TOX Check
+        run: bun creator:touchdesigner-tox-check
+
       - name: Creator Skill Package Check
         run: bun creator:skill-package-check
 

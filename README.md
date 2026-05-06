@@ -70,6 +70,7 @@ bun creator:social-card-check
 bun creator:p5-sketch-check
 bun creator:remotion-scene-check
 bun creator:manim-scene-check
+bun creator:touchdesigner-tox-check
 bun creator:skill-package-check
 bun docs:links
 bun security:scan
@@ -115,6 +116,7 @@ If you are an agent deciding which path to run, start with the [`Workflow Index`
 | p5.js creative-coding sketch | [`Creator P5 Sketch`](./usecases/creator/creator-p5-sketch.md) and [`examples/creator-p5-sketch.html`](./examples/creator-p5-sketch.html) | Deterministic `dash-flow-field` frame probes, fixed preview board, public boundary, and `creator:p5-sketch-check` |
 | Remotion sequence/composition | [`Creator Remotion Scene`](./usecases/creator/creator-remotion-scene.md) and [`examples/creator-remotion-scene.html`](./examples/creator-remotion-scene.html) | Generated ignored TSX composition stub, fixed-canvas proof card, public boundary, and `creator:remotion-scene-check` |
 | Manim explainer scene | [`Creator Manim Scene`](./usecases/creator/creator-manim-scene.md) and [`examples/creator-manim-scene.html`](./examples/creator-manim-scene.html) | Generated ignored Python scene stub, fixed-canvas proof card, public boundary, and `creator:manim-scene-check` |
+| TouchDesigner/twozero network | [`Creator TouchDesigner TOX`](./usecases/creator/creator-touchdesigner-tox.md) and [`examples/creator-touchdesigner-tox.html`](./examples/creator-touchdesigner-tox.html) | Generated ignored topology/safety artifacts, fixed-canvas proof card, local-operator boundary, and `creator:touchdesigner-tox-check` |
 | Creator Skill Package | [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and [`Creator Skill Package Route`](./usecases/creator/creator-skill-package.md) | A repo-local skill package with trigger, install boundary, example task, and `creator:skill-package-check` |
 | Motion / video direction | [`Creator Motion Storyboard`](./usecases/creator/creator-motion-storyboard.md) and [`examples/creator-motion-storyboard.html`](./examples/creator-motion-storyboard.html) | Six-frame fixed-canvas storyboard, timing, boundary, remix handles, and contact-sheet bridge before any raw media |
 | One-page brief or report | [`examples/one-pager.html`](./examples/one-pager.html) | HTML that measures correctly and exports without surprise clipping |

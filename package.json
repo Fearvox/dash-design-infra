@@ -61,6 +61,7 @@
     "creator:p5-sketch-check": "bun scripts/creator-p5-sketch-check.ts",
     "creator:remotion-scene-check": "bun scripts/creator-remotion-scene-check.ts",
     "creator:manim-scene-check": "bun scripts/creator-manim-scene-check.ts",
+    "creator:touchdesigner-tox-check": "bun scripts/creator-touchdesigner-tox-check.ts",
     "creator:skill-package-check": "bun scripts/creator-skill-package-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"

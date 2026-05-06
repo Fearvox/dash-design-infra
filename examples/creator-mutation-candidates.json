@@ -1,37 +1,22 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, and Remotion timeline code. Creators still need a safe explainer-scene handoff for Manim-style educational motion before any renderer dependency or rendered MP4 enters the repo.",
+  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, and Manim explainer stubs. Creators still need a safe live-visual-network handoff for TouchDesigner/twozero before any local port, screenshot, .tox/.toe export, raw media, or live TD connection enters the repo.",
   "population": "creator capsule frontier-adapter mutations for externally-rendered visual workflows",
-  "selection_pressure": "help a creator turn one capsule into an executable renderer handoff faster while preserving memory, proof, public boundary, and minimal DASH core size",
+  "selection_pressure": "help a creator turn one capsule into an executable renderer or live-tool handoff faster while preserving memory, proof, public boundary, and minimal DASH core size",
   "candidates": [
-    {
-      "id": "creator-manim-scene-route",
-      "axis": "tool adapter",
-      "mutation": "Route the capsule into a checked Manim scene contract and generated ignored Python Scene stub before external rendering.",
-      "phenotype": "JSON Manim adapter contract plus fixed-canvas proof card and generated .artifacts/creator-manim-scene.py stub",
-      "fitness": {
-        "creator_utility": 10,
-        "memory_retention": 10,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "Could become a fake explainer workflow if it only shows a board and does not generate a real Python Scene stub, or could bloat the core if Manim is added as a dependency.",
-      "selection": "selected"
-    },
     {
       "id": "creator-touchdesigner-tox-route",
       "axis": "tool adapter",
-      "mutation": "Route the capsule into a TouchDesigner/twozero tox handoff note with port and local-operator safety checks.",
-      "phenotype": "Adapter note and fixed proof card, pending a live local TouchDesigner contract",
+      "mutation": "Route the capsule into a TouchDesigner/twozero topology handoff with local-operator safety checks and generated ignored proof artifacts.",
+      "phenotype": "JSON TouchDesigner adapter contract plus fixed-canvas proof card and generated .artifacts topology/safety files",
       "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 8,
-        "artifact_proof": 6,
-        "boundary_safety": 7,
-        "minimal_core": 9
+        "creator_utility": 9,
+        "memory_retention": 9,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 10
       },
-      "risk": "Without a live TD smoke contract, it can only document a future bridge and may overstate execution.",
-      "selection": "candidate"
+      "risk": "Could become unsafe automation if the check opens ports, connects to an unverified TD process, captures screenshots, or commits .tox/.toe exports instead of retaining only a public-safe handoff.",
+      "selection": "selected"
     },
     {
       "id": "creator-browser-demo-route",
@@ -62,9 +47,24 @@
       },
       "risk": "May duplicate the poster and one-pager paths unless a distinct remix job is proven.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-skill-release-route",
+      "axis": "agent routing rule",
+      "mutation": "Route the repo-local creator skill package into a reviewed external release checklist with install smoke, versioning, and rollback.",
+      "phenotype": "Release contract and smoke script pending a reviewed registry target",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 8,
+        "artifact_proof": 7,
+        "boundary_safety": 8,
+        "minimal_core": 9
+      },
+      "risk": "Could accidentally sync an unreviewed skill into live agents or publish private workflow assumptions.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-manim-scene-route",
+  "winner": "creator-touchdesigner-tox-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -101,9 +101,15 @@
       "selection": "retained",
       "retained_as": "generated Remotion timeline-code adapter",
       "proof": ["bun creator:remotion-scene-check", "bun measure:check -- examples/creator-remotion-scene.html"]
+    },
+    {
+      "id": "creator-manim-scene-route",
+      "selection": "retained",
+      "retained_as": "generated Manim explainer-scene adapter",
+      "proof": ["bun creator:manim-scene-check", "bun measure:check -- examples/creator-manim-scene.html"]
     }
   ],
-  "retention": "Retain creator-manim-scene-route as the public-safe bridge from capsule memory to an external Manim explainer handoff: JSON contract, generated ignored Python Scene stub, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on 3-5 current mutations without losing regression coverage.",
+  "retention": "Retain creator-touchdesigner-tox-route as the public-safe bridge from capsule memory to an external TouchDesigner/twozero live-network handoff: JSON contract, generated ignored topology/safety artifacts, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on 3-5 current mutations without losing regression coverage.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -112,6 +118,7 @@
     "bun creator:p5-sketch-check",
     "bun creator:remotion-scene-check",
     "bun creator:manim-scene-check",
+    "bun creator:touchdesigner-tox-check",
     "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",

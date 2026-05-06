@@ -11,6 +11,7 @@ Start here before editing.
 - `@dash/metrics`: baseline-safe text metrics.
 - `@dash/kami`: warm editorial document defaults.
 - `@dash/p5-motion`: reusable p5.js motion grammar.
+- `bun creator:touchdesigner-tox-check` validates Creator TouchDesigner TOX handoffs without opening local ports.
 - `@dash/measure`: browser-based overflow checks.
 - `@dash/layout`: constraint layout helpers.
 - `@dash/print`: HTML-to-PDF rendering path.
@@ -33,6 +34,7 @@ bun creator:social-card-check
 bun creator:p5-sketch-check
 bun creator:remotion-scene-check
 bun creator:manim-scene-check
+bun creator:touchdesigner-tox-check
 bun creator:skill-package-check
 bun hackathon:score
 ```
@@ -96,6 +98,6 @@ For Darwin-style requests, use [`docs/CREATOR_EVOLUTION_ENGINE.md`](./docs/CREAT
 
 For repo-local creator skill packaging, use [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and `bun creator:skill-package-check`. Do not publish or sync the skill package externally unless a separate reviewed release issue authorizes that path.
 
-For p5.js generative work, use [`docs/p5-motion-preset-spec-template.md`](./docs/p5-motion-preset-spec-template.md), [`docs/p5js-frontier-research.md`](./docs/p5js-frontier-research.md), and `bun p5:motion-check`. The public contract now covers timeline grammar, flow fields, kinetic type, data-weather mapping, and layer composition; raw reference media still stays out of git. For creator capsule → p5 sketch adapters, start with [`usecases/creator/creator-p5-sketch.md`](./usecases/creator/creator-p5-sketch.md) and `bun creator:p5-sketch-check`; keep the p5 runtime and rendered media outside the core repo until a public-safe export path is separately reviewed. For Creator Remotion Scene adapters, start with [`usecases/creator/creator-remotion-scene.md`](./usecases/creator/creator-remotion-scene.md), `examples/creator-remotion-scene.html`, and `bun creator:remotion-scene-check`; keep Remotion/React rendering, codecs, and rendered video outside the core repo. For Creator Manim Scene adapters, start with [`usecases/creator/creator-manim-scene.md`](./usecases/creator/creator-manim-scene.md), `examples/creator-manim-scene.html`, and `bun creator:manim-scene-check`; keep Manim Community Edition, renderer caches, and rendered MP4 output outside the core repo.
+For p5.js generative work, use [`docs/p5-motion-preset-spec-template.md`](./docs/p5-motion-preset-spec-template.md), [`docs/p5js-frontier-research.md`](./docs/p5js-frontier-research.md), and `bun p5:motion-check`. The public contract now covers timeline grammar, flow fields, kinetic type, data-weather mapping, and layer composition; raw reference media still stays out of git. For creator capsule → p5 sketch adapters, start with [`usecases/creator/creator-p5-sketch.md`](./usecases/creator/creator-p5-sketch.md) and `bun creator:p5-sketch-check`; keep the p5 runtime and rendered media outside the core repo until a public-safe export path is separately reviewed. For Creator Remotion Scene adapters, start with [`usecases/creator/creator-remotion-scene.md`](./usecases/creator/creator-remotion-scene.md), `examples/creator-remotion-scene.html`, and `bun creator:remotion-scene-check`; keep Remotion/React rendering, codecs, and rendered video outside the core repo. For Creator Manim Scene adapters, start with [`usecases/creator/creator-manim-scene.md`](./usecases/creator/creator-manim-scene.md), `examples/creator-manim-scene.html`, and `bun creator:manim-scene-check`; keep Manim Community Edition, renderer caches, and rendered MP4 output outside the core repo. For Creator TouchDesigner TOX adapters, start with [`usecases/creator/creator-touchdesigner-tox.md`](./usecases/creator/creator-touchdesigner-tox.md), `examples/creator-touchdesigner-tox.html`, and `bun creator:touchdesigner-tox-check`; keep TouchDesigner/twozero execution local-operator-only, do not open ports in CI, and keep `.tox/.toe`, screenshots, raw media, and local paths out of git.
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.
