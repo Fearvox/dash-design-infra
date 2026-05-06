@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1684, initial-scale=1" />
+<title>Creator Remotion Scene Adapter</title>
+<style>
+@page{size:1684px 1191px;margin:0}
+:root{--bg:#111318;--panel:#f5eddc;--ink:#111318;--muted:#7a7164;--line:#394150;--signal:#8cb8ff;--accent:#ffb86b;--mint:#9fe5c2;--danger:#ee6f57}
+*{box-sizing:border-box}html,body{margin:0;background:#08090c;color:var(--panel);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.page{width:1684px;height:1191px;position:relative;overflow:hidden;background:radial-gradient(circle at 14% 10%,rgba(140,184,255,.28),transparent 26%),radial-gradient(circle at 88% 86%,rgba(255,184,107,.22),transparent 30%),linear-gradient(135deg,#111318 0%,#151923 54%,#0b0c10 100%);padding:62px}.grid{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(245,237,220,.055) 1px,transparent 1px),linear-gradient(0deg,rgba(245,237,220,.045) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(circle at 50% 50%,#000 0,transparent 78%);opacity:.9}.shell{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:438px 1fr;grid-template-rows:234px 1fr 150px;gap:28px}.mast{grid-column:1/3;display:grid;grid-template-columns:1fr 418px;gap:42px;align-items:start}.eyebrow{font:850 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.19em;text-transform:uppercase;color:var(--signal)}h1{margin:20px 0 0;max-width:1040px;font-family:Georgia,"Times New Roman",serif;font-size:84px;line-height:.9;letter-spacing:-.065em;font-weight:520}h1 em{color:var(--accent);font-style:italic}.runtime{border:1px solid rgba(245,237,220,.18);border-radius:30px;background:rgba(245,237,220,.08);padding:24px 24px 22px;box-shadow:0 28px 80px rgba(0,0,0,.24)}.runtime strong{display:block;color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}.runtime code{display:block;color:var(--panel);font:700 19px/1.32 ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-word}.runtime span{display:block;margin-top:14px;color:#bcc7da;font-size:13px;line-height:1.45}.capsule{border:1px solid rgba(245,237,220,.18);border-radius:34px;background:rgba(245,237,220,.92);color:var(--ink);padding:30px;display:grid;grid-template-rows:auto auto 1fr auto;min-height:0}.route{font:900 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:#2550b8}.badge{width:170px;height:170px;border-radius:40px;background:var(--bg);margin:36px auto 28px;display:grid;place-items:center;text-align:center;color:var(--panel);box-shadow:0 24px 60px rgba(17,19,24,.25);transform:rotate(-4deg)}.badge b{display:block;color:var(--signal);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}.badge span{font-family:Georgia,serif;font-size:27px;line-height:.95}.capsule h2,.proof h2{margin:0 0 16px;font-family:Georgia,serif;font-size:39px;line-height:1;letter-spacing:-.04em}.capsule p{margin:0;color:#51483c;font-size:18px;line-height:1.39}.stamp{border-top:1px solid rgba(17,19,24,.18);padding-top:18px;color:#394150;font:800 12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.11em;text-transform:uppercase}.timeline{position:relative;border:1px solid rgba(245,237,220,.18);border-radius:34px;background:rgba(8,9,12,.46);padding:28px;overflow:hidden}.timeline::before{content:"";position:absolute;inset:30px;border:1px solid rgba(140,184,255,.22);border-radius:26px;pointer-events:none}.timeline-head{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:26px}.timeline-title{font:900 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--mint)}.composition{font:800 14px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#d9e5ff;text-align:right}.rail{position:relative;z-index:2;height:442px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.seq{position:relative;min-width:0;border:1px solid rgba(245,237,220,.17);border-radius:24px;background:linear-gradient(180deg,rgba(245,237,220,.1),rgba(245,237,220,.035));padding:20px 18px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;overflow:hidden}.seq::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--signal)}.seq:nth-child(2)::before,.seq:nth-child(5)::before{background:var(--accent)}.seq:nth-child(4)::before{background:var(--mint)}.frame{color:var(--signal);font:900 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.seq h3{margin:0;font-family:Georgia,serif;font-size:29px;line-height:.98;letter-spacing:-.045em}.seq p{margin:0;color:#d5ddeb;font-size:14px;line-height:1.36}.motion{color:var(--accent);font:800 11px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase}.playhead{position:absolute;z-index:3;left:28px;right:28px;bottom:48px;height:74px;border-radius:22px;background:rgba(245,237,220,.08);border:1px solid rgba(245,237,220,.15);display:grid;grid-template-columns:56px 1fr 56px;align-items:center;padding:0 20px}.playhead i{height:2px;background:linear-gradient(90deg,var(--signal),var(--accent),var(--mint));box-shadow:0 0 28px rgba(140,184,255,.38)}.playhead b{font:900 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#d9e5ff;text-align:center}.proof{grid-column:1/3;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px}.proof-card{border:1px solid rgba(245,237,220,.18);border-radius:26px;padding:23px 24px;background:rgba(245,237,220,.075)}.proof-card b{display:block;color:var(--signal);font:900 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}.proof-card span{display:block;color:#e4ddcf;font-family:Georgia,serif;font-size:24px;line-height:1.06}.corner{position:absolute;right:62px;bottom:38px;color:rgba(245,237,220,.35);font:900 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<main class="page" data-route="creator-remotion-scene-route" aria-label="Creator Remotion Scene Adapter fixed-canvas proof">
+  <div class="grid" aria-hidden="true"></div>
+  <section class="shell">
+    <header class="mast">
+      <div>
+        <div class="eyebrow">Creator Remotion Scene Adapter · proof before render</div>
+        <h1>Capsule memory becomes a <em>composition</em>, not a render dump.</h1>
+      </div>
+      <aside class="runtime" aria-label="Remotion external runtime">
+        <strong>REMOTION EXTERNAL RUNTIME · no renderer dependency in core</strong>
+        <code>npx remotion render .artifacts/creator-remotion-scene.tsx CreatorCapsuleComposition</code>
+        <span>Generated TSX stays ignored until a creator copies it into an external Remotion project.</span>
+      </aside>
+    </header>
+
+    <aside class="capsule" aria-label="capsule to composition ticket">
+      <div class="route">creator-remotion-scene-route</div>
+      <div class="badge"><div><b>composition id</b><span>Creator<br />Capsule<br />Composition</span></div></div>
+      <div>
+        <h2>Remotion adapter contract</h2>
+        <p><strong>creator-frontier-capsule.json</strong> preserves intent, grammar, blocked inputs, proof, and remix handles before React timeline work starts.</p>
+      </div>
+      <div class="stamp">No raw media · no local paths · sequence contract + browser measure + print proof required</div>
+    </aside>
+
+    <section class="timeline" aria-label="Remotion sequence contract">
+      <div class="timeline-head">
+        <div class="timeline-title">sequence contract · 180 frames · 30 fps · 1920x1080</div>
+        <div class="composition">component<br />CreatorCapsuleFilm</div>
+      </div>
+      <div class="rail">
+        <article class="seq"><div class="frame">F000-F029</div><h3>Start with the capsule</h3><p>Memory card locks intent, creator, surface, and proof before the timeline exists.</p><div class="motion">slide up · proof stamp</div></article>
+        <article class="seq"><div class="frame">F030-F059</div><h3>Memory survives</h3><p>Intent, grammar, blocked inputs, and remix handles split into sequence lanes.</p><div class="motion">stagger lanes · pulse</div></article>
+        <article class="seq"><div class="frame">F060-F089</div><h3>Timeline explicit</h3><p>The playhead names starts, durations, and probes instead of improvising edits.</p><div class="motion">sweep rail · light beat</div></article>
+        <article class="seq"><div class="frame">F090-F119</div><h3>Tokens, no captures</h3><p>Palette, type, and motion rules replace imported media or account captures.</p><div class="motion">snap grid · reject raw</div></article>
+        <article class="seq"><div class="frame">F120-F149</div><h3>Proof gate</h3><p>creator:remotion-scene-check, measure, print, security, docs, and CI come first.</p><div class="motion">checks on · command dim</div></article>
+        <article class="seq"><div class="frame">F150-F179</div><h3>Renderer handoff</h3><p>The TSX stub, composition id, and remix handles leave a copyable next step.</p><div class="motion">ticket stamp · handles orbit</div></article>
+      </div>
+      <div class="playhead" aria-label="frame probe rail"><b>F000</b><i></i><b>F180</b></div>
+    </section>
+
+    <footer class="proof" aria-label="adapter proof summary">
+      <div class="proof-card"><b>Output</b><span>JSON contract + generated TSX stub + fixed-canvas proof card.</span></div>
+      <div class="proof-card"><b>Boundary</b><span>Remotion runtime and rendered video stay outside git.</span></div>
+      <div class="proof-card"><b>Regression</b><span>creator:remotion-scene-check, measure, print, browser visual QA, security, score.</span></div>
+    </footer>
+  </section>
+  <div class="corner">Creator Remotion Scene · 1684x1191</div>
+</main>
+</body>
+</html>

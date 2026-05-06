@@ -19,11 +19,19 @@ type Candidate = {
   selection?: string;
 };
 
+type RetainedRoute = {
+  id?: string;
+  selection?: string;
+  retained_as?: string;
+  proof?: string[];
+};
+
 type Ledger = {
   observation?: string;
   population?: string;
   selection_pressure?: string;
   candidates?: Candidate[];
+  retained_routes?: RetainedRoute[];
   winner?: string;
   retention?: string;
   regression?: string[];
@@ -91,8 +99,23 @@ if (!ledger.winner || !ids.has(ledger.winner)) fail('winner must match a candida
 const selected = candidates.find((candidate) => candidate.selection === 'selected');
 if (selected?.id !== ledger.winner) fail('winner must be the selected candidate');
 
+const retainedRoutes = ledger.retained_routes ?? [];
+if (retainedRoutes.length < 4) fail('retained_routes must preserve earlier Darwin winners outside the active candidate list');
+const retainedIds = new Set<string>();
+for (let index = 0; index < retainedRoutes.length; index += 1) {
+  const route = retainedRoutes[index];
+  const id = usefulText(route.id, `retained_routes[${index}].id`);
+  if (ids.has(id)) fail(`retained route ${id} must not also be an active candidate`);
+  if (retainedIds.has(id)) fail(`duplicate retained route id ${id}`);
+  retainedIds.add(id);
+  if (route.selection !== 'retained') fail(`retained route ${id} selection must be retained`);
+  usefulText(route.retained_as, `retained_routes[${index}].retained_as`);
+  const proof = route.proof ?? [];
+  if (proof.length < 2 || proof.some((item) => typeof item !== 'string' || item.trim().length < 8)) fail(`retained route ${id} proof must include 2+ useful commands`);
+}
+
 const regression = ledger.regression ?? [];
-for (const command of ['creator:mutation-check', 'creator:poster-check', 'creator:prompt-dna-check', 'creator:motion-storyboard-check', 'creator:p5-sketch-check', 'creator:social-card-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
+for (const command of ['creator:mutation-check', 'creator:poster-check', 'creator:prompt-dna-check', 'creator:motion-storyboard-check', 'creator:p5-sketch-check', 'creator:remotion-scene-check', 'creator:social-card-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
   if (!regression.some((item) => item.includes(command))) fail(`regression must include ${command}`);
 }
 

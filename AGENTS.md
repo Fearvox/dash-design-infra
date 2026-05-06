@@ -31,6 +31,7 @@ bun security:scan
 bun creator:prompt-dna-check
 bun creator:social-card-check
 bun creator:p5-sketch-check
+bun creator:remotion-scene-check
 bun creator:skill-package-check
 bun hackathon:score
 ```
@@ -94,6 +95,6 @@ For Darwin-style requests, use [`docs/CREATOR_EVOLUTION_ENGINE.md`](./docs/CREAT
 
 For repo-local creator skill packaging, use [`skill-packages/creator-workflow/SKILL.md`](./skill-packages/creator-workflow/SKILL.md) and `bun creator:skill-package-check`. Do not publish or sync the skill package externally unless a separate reviewed release issue authorizes that path.
 
-For p5.js generative work, use [`docs/p5-motion-preset-spec-template.md`](./docs/p5-motion-preset-spec-template.md), [`docs/p5js-frontier-research.md`](./docs/p5js-frontier-research.md), and `bun p5:motion-check`. The public contract now covers timeline grammar, flow fields, kinetic type, data-weather mapping, and layer composition; raw reference media still stays out of git. For creator capsule → p5 sketch adapters, start with [`usecases/creator/creator-p5-sketch.md`](./usecases/creator/creator-p5-sketch.md) and `bun creator:p5-sketch-check`; keep the p5 runtime and rendered media outside the core repo until a public-safe export path is separately reviewed.
+For p5.js generative work, use [`docs/p5-motion-preset-spec-template.md`](./docs/p5-motion-preset-spec-template.md), [`docs/p5js-frontier-research.md`](./docs/p5js-frontier-research.md), and `bun p5:motion-check`. The public contract now covers timeline grammar, flow fields, kinetic type, data-weather mapping, and layer composition; raw reference media still stays out of git. For creator capsule → p5 sketch adapters, start with [`usecases/creator/creator-p5-sketch.md`](./usecases/creator/creator-p5-sketch.md) and `bun creator:p5-sketch-check`; keep the p5 runtime and rendered media outside the core repo until a public-safe export path is separately reviewed. For Creator Remotion Scene adapters, start with [`usecases/creator/creator-remotion-scene.md`](./usecases/creator/creator-remotion-scene.md), `examples/creator-remotion-scene.html`, and `bun creator:remotion-scene-check`; keep Remotion/React rendering, codecs, and rendered video outside the core repo.
 
 If you change code, run typecheck. If you change docs, inspect links and paths. If you add a workflow, include QA.

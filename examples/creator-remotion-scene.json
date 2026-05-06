@@ -1,0 +1,155 @@
+{
+  "route": "creator-remotion-scene-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "Remotion composition adapter",
+  "job": "Turn one creator capsule into a checked Remotion composition contract and generated React/Remotion stub so a creator can move from memory card to timeline-based video without adding Remotion to the DASH core or committing rendered media.",
+  "format": {
+    "canvas": "1920x1080",
+    "preview_canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-remotion-scene.html",
+      ".artifacts/creator-remotion-scene.tsx",
+      ".artifacts/creator-remotion-scene-summary.json",
+      "/tmp/dash-creator-remotion-scene.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "tool_path",
+    "proof",
+    "remix_rule"
+  ],
+  "remotion_adapter": {
+    "composition_id": "CreatorCapsuleComposition",
+    "component_name": "CreatorCapsuleFilm",
+    "runtime_boundary": "Remotion, React rendering, codecs, and final export live in an external creator project. DASH emits only a checked JSON contract, fixed-canvas proof card, and ignored .artifacts TSX handoff so the core stays small and no rendered video enters git.",
+    "render_command": "npx remotion render .artifacts/creator-remotion-scene.tsx CreatorCapsuleComposition out/creator-capsule-remotion.mp4",
+    "dependencies": [
+      "external Remotion and React install in the creator workspace",
+      "DASH core keeps only JSON, HTML proof, and the Bun validation script",
+      "rendered video files stay outside git unless separately reviewed as tiny public previews"
+    ],
+    "style_tokens": {
+      "background": "#111318",
+      "paper": "#f5eddc",
+      "accent": "#ffb86b",
+      "signal": "#8cb8ff",
+      "line": "#394150"
+    }
+  },
+  "scene_contract": {
+    "duration_frames": 180,
+    "fps": 30,
+    "resolution": "1920x1080",
+    "sequences": [
+      {
+        "id": "hook",
+        "start_frame": 0,
+        "duration_frames": 30,
+        "title": "Start with the capsule",
+        "visual": "A compact memory card enters on a dark editorial stage and locks intent, creator, surface, and proof into view.",
+        "animation": "Card slides up over twelve frames, the proof stamp fades in, and a signal line traces the capsule edge.",
+        "voiceover_intent": "Tell the creator this composition starts from stored intent, not from a blank timeline."
+      },
+      {
+        "id": "capsule-memory",
+        "start_frame": 30,
+        "duration_frames": 30,
+        "title": "Memory survives the cut",
+        "visual": "Four capsule fields split into timeline lanes: intent, grammar, blocked inputs, and remix handles.",
+        "animation": "Lanes stagger in by six frames, then settle into a clean editorial rhythm with one accent pulse.",
+        "voiceover_intent": "Show which parts of the creative brief must survive every future edit."
+      },
+      {
+        "id": "sequence-map",
+        "start_frame": 60,
+        "duration_frames": 30,
+        "title": "Timeline becomes explicit",
+        "visual": "The Remotion sequence rail appears with six labeled beats and deterministic frame numbers.",
+        "animation": "A playhead sweeps from frame 0 to 180 while each beat lights only inside its own frame range.",
+        "voiceover_intent": "Make the handoff feel executable by naming exact sequence starts, durations, and frame probes."
+      },
+      {
+        "id": "visual-system",
+        "start_frame": 90,
+        "duration_frames": 30,
+        "title": "Style tokens, not screenshots",
+        "visual": "Palette chips, type scale notes, and motion rules replace any imported media or account screenshot.",
+        "animation": "Chips snap to a baseline grid and a warning chip rejects raw image, audio, video, and private paths.",
+        "voiceover_intent": "Normalize public-safe visual grammar instead of copying private assets into a video project."
+      },
+      {
+        "id": "proof-gate",
+        "start_frame": 120,
+        "duration_frames": 30,
+        "title": "Proof before render",
+        "visual": "A gate lists creator:remotion-scene-check, browser measure, print proof, security scan, and CI before export.",
+        "animation": "Each gate item checks on; the final render command stays dim until all proof notes are visible.",
+        "voiceover_intent": "Make the creator wait for proof before opening the external renderer or exporting video."
+      },
+      {
+        "id": "handoff",
+        "start_frame": 150,
+        "duration_frames": 30,
+        "title": "External renderer handoff",
+        "visual": "The generated TSX stub ticket, composition id, and render command sit beside remix handles for the next creator pass.",
+        "animation": "Ticket stamps external runtime, remix handles orbit once, and the timeline fades to a copyable handoff card.",
+        "voiceover_intent": "Leave the creator with a real Remotion stub and a safe next step without bloating DASH."
+      }
+    ],
+    "frame_probes": [
+      { "frame": 0, "expected_sequence": "hook", "label": "capsule lock" },
+      { "frame": 36, "expected_sequence": "capsule-memory", "label": "memory lanes" },
+      { "frame": 72, "expected_sequence": "sequence-map", "label": "playhead proof" },
+      { "frame": 108, "expected_sequence": "visual-system", "label": "token grammar" },
+      { "frame": 132, "expected_sequence": "proof-gate", "label": "proof gate" },
+      { "frame": 168, "expected_sequence": "handoff", "label": "handoff ticket" }
+    ],
+    "remix_handles": [
+      "sequence order",
+      "duration frames per sequence",
+      "composition id",
+      "type and palette tokens",
+      "voiceover intent per beat",
+      "external render quality and codec"
+    ],
+    "blocked_moves": [
+      "adding Remotion or React as a DASH core dependency from a single adapter win",
+      "committing rendered MP4 output, codec caches, or raw source media",
+      "using private prompts, client copy, provider logs, account screenshots, cookies, or secrets",
+      "skipping browser measure and print proof for the fixed-canvas proof card"
+    ]
+  },
+  "proof": [
+    "bun creator:remotion-scene-check",
+    "bun measure:check -- examples/creator-remotion-scene.html",
+    "bun print:render -- examples/creator-remotion-scene.html /tmp/dash-creator-remotion-scene.pdf --canvas=1684x1191",
+    "browser visual QA on examples/creator-remotion-scene.html",
+    "bun docs:links",
+    "bun security:scan",
+    "bun hackathon:score",
+    "bun typecheck"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic capsule fields",
+      "repo-relative .artifacts TSX composition stub",
+      "public-safe visual and motion grammar",
+      "copyable external Remotion render command",
+      "fixed-canvas HTML proof card"
+    ],
+    "blocked": [
+      "private prompts or private client copy",
+      "raw generated image, video, audio, rendered exports, and renderer caches",
+      "local absolute paths and provider execution logs",
+      "API keys, cookies, tokens, secrets, and account screenshots",
+      "unreviewed third-party assets or proprietary fonts"
+    ]
+  },
+  "retention": "Retain creator-remotion-scene-route as an edge adapter: JSON contract, generated ignored TSX composition stub, fixed-canvas proof card, and validation script. This is the second capsule-to-code renderer handoff after p5, but still not enough to promote a shared package primitive."
+}
