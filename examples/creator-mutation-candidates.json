@@ -1,37 +1,22 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, Manim explainer stubs, and TouchDesigner/twozero local-network handoffs. Creators still need a safe browser-demo route that produces a clickable local phenotype before any backend, hosting config, analytics, screenshot, or public deploy enters the workflow.",
-  "population": "creator capsule frontier-adapter mutations for externally-rendered and browser-native visual workflows",
-  "selection_pressure": "help a creator turn one capsule into a runnable or clickable artifact faster while preserving memory, proof, public boundary, rollback discipline, and minimal DASH core size",
+  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, Manim explainer stubs, TouchDesigner/twozero local-network handoffs, browser-native demos, and repo-local skill packages. Creators still need a printable process surface that keeps capsule memory, proof, public boundary, and remix rules portable when collaborators are away from the browser.",
+  "population": "creator capsule print/export surface mutations for portable process handoffs and externally-rendered creator workflows",
+  "selection_pressure": "help a creator turn one capsule into a printable or handoff-ready artifact faster while preserving memory, proof, public boundary, remix discipline, and minimal DASH core size",
   "candidates": [
     {
-      "id": "creator-browser-demo-route",
+      "id": "creator-pdf-zine-route",
       "axis": "surface",
-      "mutation": "Route the capsule into a self-contained browser demo surface with local interaction smoke, browser proof, and deploy rollback boundary.",
-      "phenotype": "JSON browser adapter contract plus fixed-canvas clickable HTML proof card and generated .artifacts smoke/QA notes",
+      "mutation": "Route the capsule into a one-sheet printable PDF zine for process notes, collaborator handoff, and workshop annotation.",
+      "phenotype": "JSON zine contract plus 1684x1191 fixed-canvas six-panel HTML sheet and PDF proof path",
       "fitness": {
         "creator_utility": 9,
-        "memory_retention": 8,
+        "memory_retention": 9,
         "artifact_proof": 9,
         "boundary_safety": 10,
         "minimal_core": 10
       },
-      "risk": "Can become another static dashboard unless the HTML has a real local interaction path and the route blocks premature deploy, backend, analytics, screenshots, and network calls.",
+      "risk": "Can duplicate the poster route unless the sheet keeps process memory, fold/annotation use, and six-panel proof structure distinct from a decorative poster.",
       "selection": "selected"
-    },
-    {
-      "id": "creator-pdf-zine-route",
-      "axis": "surface",
-      "mutation": "Route the capsule into a small printable PDF zine for creator process notes.",
-      "phenotype": "Multi-panel HTML/PDF proof using existing print path",
-      "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 8,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "May duplicate the poster and one-pager paths unless a distinct remix need is proven.",
-      "selection": "candidate"
     },
     {
       "id": "creator-skill-release-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Could accidentally sync an unreviewed skill into live agents or publish private workflow assumptions.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-colorway-remix-route",
+      "axis": "proof method",
+      "mutation": "Route the capsule into three public-safe colorway proofs so a creator can choose a remix direction before regenerating the final artifact.",
+      "phenotype": "Deterministic colorway JSON plus fixed-canvas comparison sheet, deferred until two surfaces need the same palette proof",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-browser-demo-route",
+  "winner": "creator-pdf-zine-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -98,9 +98,15 @@
       "selection": "retained",
       "retained_as": "generated TouchDesigner/twozero topology and safety handoff",
       "proof": ["bun creator:touchdesigner-tox-check", "bun measure:check -- examples/creator-touchdesigner-tox.html"]
+    },
+    {
+      "id": "creator-browser-demo-route",
+      "selection": "retained",
+      "retained_as": "self-contained clickable local browser phenotype",
+      "proof": ["bun creator:browser-demo-check", "bun measure:check -- examples/creator-browser-demo.html"]
     }
   ],
-  "retention": "Retain creator-browser-demo-route as the public-safe bridge from capsule memory to a clickable local browser phenotype: JSON contract, self-contained HTML, generated ignored smoke/QA artifacts, fixed-canvas proof card, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on current mutations without losing regression coverage.",
+  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact: JSON contract, one-sheet six-panel HTML, fixed-canvas measure proof, PDF render proof, browser visual QA, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on current mutations without losing regression coverage.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -111,6 +117,7 @@
     "bun creator:manim-scene-check",
     "bun creator:touchdesigner-tox-check",
     "bun creator:browser-demo-check",
+    "bun creator:pdf-zine-check",
     "bun creator:social-card-check",
     "bun creator:evolution-check",
     "bun creator:capsule-check",

@@ -86,7 +86,6 @@ function routeSelection(ledger: Ledger, id: string): string | undefined {
 
 const ledger = parseJson<Ledger>(ledgerPath);
 if (!['selected', 'retained'].includes(routeSelection(ledger, routeId) ?? '')) fail(`${ledgerPath} must keep ${routeId} selected or retained`);
-if (ledger.winner !== routeId) fail(`${ledgerPath} winner must be ${routeId}`);
 
 const packageJson = parseJson<{ scripts?: Record<string, string> }>(packagePath);
 if (packageJson.scripts?.['creator:browser-demo-check'] !== 'bun scripts/creator-browser-demo-check.ts') fail(`${packagePath} must expose creator:browser-demo-check`);

@@ -115,7 +115,7 @@ for (let index = 0; index < retainedRoutes.length; index += 1) {
 }
 
 const regression = ledger.regression ?? [];
-for (const command of ['creator:mutation-check', 'creator:poster-check', 'creator:prompt-dna-check', 'creator:motion-storyboard-check', 'creator:p5-sketch-check', 'creator:remotion-scene-check', 'creator:social-card-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
+for (const command of ['creator:mutation-check', 'creator:poster-check', 'creator:prompt-dna-check', 'creator:motion-storyboard-check', 'creator:p5-sketch-check', 'creator:remotion-scene-check', 'creator:social-card-check', 'creator:pdf-zine-check', 'creator:evolution-check', 'creator:capsule-check', 'docs:links', 'security:scan', 'hackathon:score']) {
   if (!regression.some((item) => item.includes(command))) fail(`regression must include ${command}`);
 }
 

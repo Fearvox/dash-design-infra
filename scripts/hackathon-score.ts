@@ -336,6 +336,22 @@ const checks: Check[] = [
     evidence: 'Creator social card contract + crop-safe fixed-canvas artifact + machine check',
   },
   {
+    id: 'creator-pdf-zine',
+    label: 'Creator PDF zine routes capsules into printable process handoffs',
+    points: 10,
+    pass:
+      scripts['creator:pdf-zine-check'] === 'bun scripts/creator-pdf-zine-check.ts' &&
+      commandPass('bun', ['creator:pdf-zine-check']) &&
+      existsSync('scripts/creator-pdf-zine-check.ts') &&
+      existsSync('examples/creator-pdf-zine.json') &&
+      existsSync('examples/creator-pdf-zine.html') &&
+      existsSync('usecases/creator/creator-pdf-zine.md') &&
+      has('docs/WORKFLOW_INDEX.md', ['Creator PDF zine', 'creator-pdf-zine.html', 'creator:pdf-zine-check', 'single-sheet PDF']) &&
+      has('README.md', ['Creator PDF Zine', 'creator-pdf-zine.html', 'creator:pdf-zine-check']) &&
+      has('examples/README.md', ['Creator PDF Zine', 'creator-pdf-zine.html', '1684x1191']),
+    evidence: 'Creator PDF zine contract + printable one-sheet artifact + machine check',
+  },
+  {
     id: 'creator-p5-sketch',
     label: 'Creator p5 sketch routes capsules into deterministic creative-coding frame probes',
     points: 10,
@@ -473,6 +489,8 @@ const checks: Check[] = [
       'bun creator:contact-sheet-check',
       '- name: Creator Social Card Check',
       'bun creator:social-card-check',
+      '- name: Creator PDF Zine Check',
+      'bun creator:pdf-zine-check',
       '- name: Creator P5 Sketch Check',
       'bun creator:p5-sketch-check',
       '- name: Creator Remotion Scene Check',
@@ -504,6 +522,7 @@ const checks: Check[] = [
       scripts['creator:motion-storyboard-check'] === 'bun scripts/creator-motion-storyboard-check.ts' &&
       scripts['creator:contact-sheet-check'] === 'bun scripts/creator-contact-sheet-check.ts' &&
       scripts['creator:social-card-check'] === 'bun scripts/creator-social-card-check.ts' &&
+      scripts['creator:pdf-zine-check'] === 'bun scripts/creator-pdf-zine-check.ts' &&
       scripts['creator:p5-sketch-check'] === 'bun scripts/creator-p5-sketch-check.ts' &&
       scripts['creator:remotion-scene-check'] === 'bun scripts/creator-remotion-scene-check.ts' &&
       scripts['creator:manim-scene-check'] === 'bun scripts/creator-manim-scene-check.ts' &&
@@ -511,7 +530,7 @@ const checks: Check[] = [
       scripts['creator:browser-demo-check'] === 'bun scripts/creator-browser-demo-check.ts' &&
       scripts['creator:skill-package-check'] === 'bun scripts/creator-skill-package-check.ts' &&
       scripts['hackathon:score'] === 'bun scripts/hackathon-score.ts',
-    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:touchdesigner-tox-check + scripts.creator:browser-demo-check + scripts.creator:skill-package-check + scripts.hackathon:score',
+    evidence: 'package.json scripts.creator:capsule-check + scripts.creator:evolution-check + scripts.creator:mutation-check + scripts.creator:poster-check + scripts.creator:prompt-dna-check + scripts.creator:motion-storyboard-check + scripts.creator:contact-sheet-check + scripts.creator:social-card-check + scripts.creator:pdf-zine-check + scripts.creator:p5-sketch-check + scripts.creator:remotion-scene-check + scripts.creator:manim-scene-check + scripts.creator:touchdesigner-tox-check + scripts.creator:browser-demo-check + scripts.creator:skill-package-check + scripts.hackathon:score',
   },
 ];
 
