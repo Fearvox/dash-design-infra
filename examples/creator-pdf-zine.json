@@ -1,0 +1,69 @@
+{
+  "route": "creator-pdf-zine-route",
+  "source_capsule": "examples/creator-frontier-capsule.json",
+  "surface": "one-sheet printable PDF zine",
+  "job": "turn a creator capsule into a compact process zine that can be printed, folded, annotated, and handed to collaborators while keeping intent, proof, blocked inputs, and remix rules visible",
+  "format": {
+    "canvas": "1684x1191",
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-pdf-zine.html",
+      "/tmp/dash-creator-pdf-zine.pdf"
+    ]
+  },
+  "preserved_capsule_fields": [
+    "creator",
+    "intent",
+    "memory",
+    "grammar",
+    "inputs.blocked",
+    "proof",
+    "remix_rule"
+  ],
+  "zine_contract": {
+    "page_model": "one 1684x1191 fixed-canvas sheet with six numbered panels; print/export stays in the existing DASH print path before any booklet tooling enters the repo",
+    "panel_sequence": [
+      "idea: one sentence that names the artifact job",
+      "capsule: source memory and visual grammar",
+      "proof: commands that must run before handoff",
+      "boundary: blocked private/raw inputs",
+      "remix: safe mutations that keep proof intact",
+      "handoff: collaborator notes and next artifact route"
+    ],
+    "fold_rule": "fold as a lightweight desk zine or use flat as a process worksheet; panel order keeps idea, proof, boundary, and remix visible without needing a new app shell",
+    "print_rule": "render with bun print:render at 1684x1191 and inspect the single PDF sheet before sharing",
+    "accessibility_note": "large panel numbers, high-contrast ink, and plain text labels make the zine usable as a readable handoff sheet, not just decoration"
+  },
+  "zine_grammar": {
+    "layout": "six asymmetrical editorial panels on a warm paper sheet, with fold rules, proof rail, and remix stamps",
+    "type": "oversized serif panel numbers, compact mono route labels, and readable sans process notes",
+    "color": "warm paper, carbon ink, blue proof marks, green remix annotations, and amber fold guides",
+    "motion": "static print-first artifact now; future motion may reveal panels in order but must preserve the one-sheet proof contract"
+  },
+  "proof": [
+    "bun creator:pdf-zine-check",
+    "bun measure:check -- examples/creator-pdf-zine.html --canvas=1684x1191",
+    "bun print:render -- examples/creator-pdf-zine.html /tmp/dash-creator-pdf-zine.pdf --canvas=1684x1191",
+    "browser visual QA",
+    "bun docs:links",
+    "bun security:scan",
+    "bun hackathon:score"
+  ],
+  "public_boundary": {
+    "allowed": [
+      "synthetic creator process notes",
+      "public-safe capsule fields",
+      "DASH print and fixed-canvas layout grammar",
+      "generated HTML/CSS zine artifact",
+      "single-sheet PDF proof path"
+    ],
+    "blocked": [
+      "private client text",
+      "raw creator media or generated media",
+      "local absolute source paths",
+      "API keys, cookies, tokens, passwords, secrets",
+      "account screenshots, provider logs, or client analytics"
+    ]
+  },
+  "retention": "selected PDF/process-surface mutation retained as example plus script and CI gate; do not promote a booklet or zine package primitive until at least two printable remix surfaces prove the same panel contract"
+}

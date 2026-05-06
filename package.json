@@ -58,6 +58,7 @@
     "creator:motion-storyboard-check": "bun scripts/creator-motion-storyboard-check.ts",
     "creator:contact-sheet-check": "bun scripts/creator-contact-sheet-check.ts",
     "creator:social-card-check": "bun scripts/creator-social-card-check.ts",
+    "creator:pdf-zine-check": "bun scripts/creator-pdf-zine-check.ts",
     "creator:p5-sketch-check": "bun scripts/creator-p5-sketch-check.ts",
     "creator:remotion-scene-check": "bun scripts/creator-remotion-scene-check.ts",
     "creator:manim-scene-check": "bun scripts/creator-manim-scene-check.ts",

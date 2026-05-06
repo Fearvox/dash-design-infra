@@ -36,6 +36,18 @@ bun measure:check -- examples/creator-social-card.html --canvas=1200x630
 bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630
 ```
 
+## Creator PDF Zine
+
+`creator-pdf-zine.{json,html}` turns the creator capsule into a six-panel,
+one-sheet 1684x1191 process zine. It is a printable handoff surface, not a
+booklet engine, private workshop note, or raw generated media.
+
+```bash
+bun creator:pdf-zine-check
+bun measure:check -- examples/creator-pdf-zine.html --canvas=1684x1191
+bun print:render -- examples/creator-pdf-zine.html /tmp/dash-creator-pdf-zine.pdf --canvas=1684x1191
+```
+
 ## Creator P5 Sketch
 
 `creator-p5-sketch.{json,html}` turns the creator capsule into a deterministic
@@ -116,6 +128,7 @@ p5.js 视觉用例在 [`../usecases/p5js`](../usecases/p5js)。
 
 Creator motion storyboard 示例用固定画布表达视频前的 motion brief，不提交 raw video 或私有素材。
 Creator Social Card 示例用于 1200x630 社交预览图，先证明 crop-safe 和 public boundary，再发布。
+Creator PDF Zine 示例把 capsule 接到一张 1684x1191 六面板 process zine，先测量和导出 PDF，再考虑更重的印刷工具。
 Creator P5 Sketch 示例把 capsule 接到 `dash-flow-field` p5 contract，先生成 frame probes，再交给外部 runtime。
 Creator Remotion Scene 示例把 capsule 接到 Remotion composition contract，先生成 `.artifacts` TSX stub，再交给外部 runtime。
 Creator Manim Scene 示例把 capsule 接到 Manim explainer scene contract，先生成 `.artifacts` Python Scene stub，再交给外部 runtime。
