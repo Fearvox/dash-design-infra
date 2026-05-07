@@ -8,7 +8,9 @@
     "selector": ".page",
     "deliverables": [
       "examples/creator-pdf-zine.html",
-      "/tmp/dash-creator-pdf-zine.pdf"
+      "/tmp/dash-creator-pdf-zine.pdf",
+      ".artifacts/creator-pdf-zine-smoke.json",
+      ".artifacts/creator-pdf-zine-qa.md"
     ]
   },
   "preserved_capsule_fields": [
@@ -45,6 +47,8 @@
     "bun measure:check -- examples/creator-pdf-zine.html --canvas=1684x1191",
     "bun print:render -- examples/creator-pdf-zine.html /tmp/dash-creator-pdf-zine.pdf --canvas=1684x1191",
     "browser visual QA",
+    "standardized vision QA",
+    "real browser_vision evidence",
     "bun docs:links",
     "bun security:scan",
     "bun hackathon:score"
@@ -65,5 +69,5 @@
       "account screenshots, provider logs, or client analytics"
     ]
   },
-  "retention": "selected PDF/process-surface mutation retained as example plus script and CI gate; do not promote a booklet or zine package primitive until at least two printable remix surfaces prove the same panel contract"
+  "retention": "selected PDF/process-surface mutation retained as example plus script and CI gate; do not promote a booklet or zine package primitive until at least two printable remix surfaces prove the same panel contract. Now includes standardized vision QA template for reproducible autonomous proof."
 }
