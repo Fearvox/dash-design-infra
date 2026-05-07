@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 type PdfZine = {
   route?: string;
@@ -34,6 +34,10 @@ const readmePath = 'README.md';
 const examplesReadmePath = 'examples/README.md';
 const agentsPath = 'AGENTS.md';
 const ciPath = '.github/workflows/ci.yml';
+const smokePath = '.artifacts/creator-pdf-zine-smoke.json';
+const qaPath = '.artifacts/creator-pdf-zine-qa.md';
+
+const VISION_QUESTION_TEMPLATE = `Analyze this Creator PDF Zine page for: 1. Industrial-brutalist/editorial UI fit (warm paper texture, carbon ink, oversized panel numbers, proof rail, fold guides, asymmetrical layout). 2. All 6 panels clearly visible/readable with correct sequence (idea, capsule, proof, boundary, remix, handoff) and synthetic content matching capsule. 3. Fixed 1684x1191 canvas compliance, print CSS (@page size/margin:0), no overflow or clipping. 4. No raw media embeds, images, network requests, or console errors. 5. Readability for print/handoff/annotation (contrast, type scale). 6. Overall creator usefulness as portable process surface from capsule before any booklet tooling. Include screenshot_path note. Be specific about layout, textures, any visual effects or proof elements observed.`;
 
 function fail(message: string): never {
   console.error(`creator-pdf-zine-check: FAIL ${message}`);
