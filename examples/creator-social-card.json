@@ -42,11 +42,13 @@
     "color": "warm paper, carbon ink, electric blue proof mark, green publish-safe stamp, amber signal texture",
     "motion": "still social card now; future animation may sweep the proof rail without changing the hook safe zone"
   },
-  "proof": [
+    "proof": [
     "bun creator:social-card-check",
     "bun measure:check -- examples/creator-social-card.html --canvas=1200x630",
     "bun print:render -- examples/creator-social-card.html /tmp/dash-creator-social-card.pdf --canvas=1200x630",
     "browser visual QA",
+    "standardized vision QA",
+    "real browser_vision evidence",
     "bun security:scan",
     "bun hackathon:score"
   ],
@@ -65,5 +67,5 @@
       "account screenshots or client analytics"
     ]
   },
-  "retention": "selected social-surface mutation retained as example plus script and CI gate; do not promote a package primitive until at least two social/export surfaces prove the same crop-safe contract"
+  "retention": "selected social-surface mutation retained as example plus script and CI gate; do not promote a package primitive until at least two social/export surfaces prove the same crop-safe contract. Now includes standardized vision QA template + real browser_vision evidence for reproducible autonomous verification per hermes-gsd-evolution (extends pattern from browser-demo/pdf-zine/poster to prevent QA drift)."
 }
