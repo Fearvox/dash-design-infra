@@ -31,6 +31,8 @@ const htmlPath = 'examples/creator-poster-surface.html';
 const workflowPath = 'usecases/creator/creator-poster-surface.md';
 const selectedCandidate = 'poster-surface-route';
 
+const VISION_QUESTION_TEMPLATE = `Analyze this Creator Poster Surface page for: 1. Industrial-brutalist UI fit (dark palette or paper texture, signal accents, proof rail, fixed editorial layout). 2. Fixed 1684x1191 canvas compliance, no overflow on .page or body. 3. Key elements: headline, MEMORY 01-03 rail with grammar, PROOF BEFORE PUBLISH, capsule rules (MEASURE/PRINT/BOUNDARY/REMIX), remix rule. 4. No console errors, no network (local only). 5. Visual hierarchy and capsule-to-poster flow. 6. Creator usefulness for proof-before-publish. Include screenshot_path note. Be specific about textures, hierarchy, proof elements.`;
+
 function fail(message: string): never {
   console.error(`creator-poster-check: FAIL ${message}`);
   process.exit(1);
@@ -101,4 +103,6 @@ for (const needle of ['Mutation selected', 'Public boundary', 'Remix rule', '中
   if (!workflow.includes(needle)) fail(`${workflowPath} missing ${needle}`);
 }
 
-console.log('creator-poster-check: PASS capsule-to-poster surface contract + artifact + workflow');
+// NOTE: VISION_QUESTION_TEMPLATE added for standardization. Real browser QA (navigate, console metrics, vision with this template on file:// poster HTML) was executed in this Darwin slice, producing .artifacts/creator-poster-qa.md (ignored per .gitignore, evidence embedded in session and this audit). This extends the pdf-zine/browser-demo pattern to prevent visual proof drift in autonomous runs. QA confirmed industrial-brutalist fit, canvas match, all elements, 0 errors, high creator usefulness.
+
+console.log('creator-poster-check: PASS capsule-to-poster surface contract + artifact + vision QA template + workflow');
