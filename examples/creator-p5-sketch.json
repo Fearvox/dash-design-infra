@@ -10,6 +10,7 @@
     "deliverables": [
       "examples/creator-p5-sketch.html",
       ".artifacts/creator-p5-sketch-frame.json",
+      ".artifacts/creator-p5-sketch-qa.md",
       "/tmp/dash-creator-p5-sketch.pdf"
     ]
   },
@@ -80,6 +81,8 @@
     "bun measure:check -- examples/creator-p5-sketch.html",
     "bun print:render -- examples/creator-p5-sketch.html /tmp/dash-creator-p5-sketch.pdf --canvas=1684x1191",
     "browser visual QA",
+    "standardized vision QA",
+    "real browser_console evidence",
     "bun security:scan",
     "bun hackathon:score"
   ],
