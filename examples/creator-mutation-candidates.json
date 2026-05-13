@@ -1,28 +1,13 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, Manim explainer stubs, TouchDesigner/twozero local-network handoffs, browser-native demos, and repo-local skill packages. Creators still need a printable process surface that keeps capsule memory, proof, public boundary, and remix rules portable when collaborators are away from the browser.",
-  "population": "creator capsule print/export surface mutations for portable process handoffs and externally-rendered creator workflows",
-  "selection_pressure": "help a creator turn one capsule into a printable or handoff-ready artifact faster while preserving memory, proof, public boundary, remix discipline, and minimal DASH core size",
+  "observation": "Creator capsule routes now cover 10 retained surfaces with standardized vision QA, a unified regression orchestrator, and autonomous cron Darwin loop support. After the multi-surface-proof addition, the remaining gap is keeping WORKFLOW_INDEX.md, mutation-candidates.json, and examples/*.html in sync across all surfaces — docs/surface parity drift is a recurring failure mode in autonomous runs.",
+  "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency",
+  "selection_pressure": "help a creator verify all surfaces in one pass and keep docs, examples, and checks in sync without manual inspection",
   "candidates": [
-    {
-      "id": "creator-colorway-remix-route",
-      "axis": "proof method",
-      "mutation": "Route the capsule into three public-safe colorway proofs so a creator can choose a remix direction before regenerating the final artifact.",
-      "phenotype": "Deterministic colorway JSON plus fixed-canvas comparison sheet, deferred until two surfaces need the same palette proof",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 8,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs.",
-      "selection": "selected"
-    },
     {
       "id": "creator-multi-surface-proof-route",
       "axis": "proof method",
-      "mutation": "Add a machine check (bun creator:multi-surface-proof) that validates every retained surface HTML artifact against measure:check + print:render in one pass, using the existing fixed-canvas contracts. This is the artifact-companion to the regression orchestrator.",
-      "phenotype": "scripts/creator-multi-surface-proof.ts that iterates over all retained surface HTML files, runs measure:check and print:render for each, and reports overflow/render completeness",
+      "mutation": "Add a machine check (bun creator:multi-surface-proof) that validates every retained surface HTML artifact against measure:check + print:render in one pass, using the existing fixed-canvas contracts. This is the artifact-measurement companion to the regression orchestrator.",
+      "phenotype": "scripts/creator-multi-surface-proof.ts that iterates over all 11 retained surface HTML files, runs measure:check and print:render for each, and reports overflow/render completeness with per-surface PASS/FAIL and timing",
       "fitness": {
         "creator_utility": 7,
         "memory_retention": 9,
@@ -30,8 +15,8 @@
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "Must stay in sync with WORKFLOW_INDEX surface entries; must not hardcode paths that change.",
-      "selection": "candidate"
+      "risk": "Must stay in sync with WORKFLOW_INDEX surface entries; must not hardcode paths that change. Canvas sizes must match per-surface contracts (1684x1191 default, 1200x630 for social-card).",
+      "selection": "selected"
     },
     {
       "id": "creator-darwin-autonomy-route",
@@ -47,9 +32,24 @@
       },
       "risk": "MCP test may fail transiently on some providers; must treat MCP unavailability as a warning, not a hard block.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-docs-surface-parity-route",
+      "axis": "proof method",
+      "mutation": "Add a parity check (bun creator:docs-surface-parity) that validates WORKFLOW_INDEX.md surface entries, mutation-candidates.json retained_routes, and examples/*.html files are in sync — catching the recurring docs/surface drift failure mode.",
+      "phenotype": "scripts/creator-docs-surface-parity.ts that cross-references WORKFLOW_INDEX.md table entries, retained_routes in the candidate ledger, and actual examples/*.html files for creator surfaces, reporting any missing/mismatched entries",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 9,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Must parse WORKFLOW_INDEX.md markdown table reliably; must handle new surface additions gracefully.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-colorway-remix-route",
+  "winner": "creator-multi-surface-proof-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -124,7 +124,7 @@
       "proof": ["bun creator:regression", "regression: all 15 checks pass in <2s"]
     }
   ],
-  "retention": "Retain creator-regression-orchestrator-route (PR #44) as the unified regression gateway: single-pass 15-surface check aggregator (bun creator:regression) with per-surface PASS/FAIL, timing, and aggregate verdict. Replaces creator-skill-release-route as the active winner (blocked by external publish boundary). New winner: creator-colorway-remix-route (palette proof for remix safety). Added creator-multi-surface-proof-route and creator-darwin-autonomy-route as fresh candidates.",
+  "retention": "Retain creator-multi-surface-proof-route as the unified artifact-measurement gateway: single-pass 11-surface measure:check + print:render with per-surface PASS/FAIL and timing. Removed creator-colorway-remix-route from candidates (blocked: deferred until two surfaces need the same palette proof). Added creator-docs-surface-parity-route as fresh candidate (catches WORKFLOW_INDEX ↔ retained_routes ↔ examples/*.html parity drift).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -137,6 +137,7 @@
     "bun creator:browser-demo-check",
     "bun creator:pdf-zine-check",
     "bun creator:social-card-check",
+    "bun creator:multi-surface-proof",
     "bun creator:regression",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
