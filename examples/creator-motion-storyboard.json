@@ -8,6 +8,14 @@
     "frames": 6,
     "delivery": "single fixed-canvas storyboard proof plus future contact-sheet bridge"
   },
+  "format": {
+    "selector": ".page",
+    "deliverables": [
+      "examples/creator-motion-storyboard.html",
+      "/tmp/dash-creator-motion-storyboard.pdf",
+      ".artifacts/creator-motion-storyboard-qa.md"
+    ]
+  },
   "timeline": [
     {
       "frame": "00 / memory ignition",
@@ -69,8 +77,12 @@
     "bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-creator-motion-storyboard.pdf --canvas=1684x1191",
     "browser DOM overflow check",
     "browser visual QA",
+    "standardized vision QA",
+    "real browser_console DOM",
     "bun security:scan",
-    "bun hackathon:score"
+    "bun hackathon:score",
+    "bun docs:links",
+    "bun typecheck"
   ],
   "retention": "Retain this route as the bridge between static creator artifacts and future video/contact-sheet QA. It is not a renderer; it is the public-safe storyboard contract that prevents raw media leakage before render work begins."
 }
