@@ -11,6 +11,7 @@
       "examples/creator-remotion-scene.html",
       ".artifacts/creator-remotion-scene.tsx",
       ".artifacts/creator-remotion-scene-summary.json",
+      ".artifacts/creator-remotion-scene-qa.md",
       "/tmp/dash-creator-remotion-scene.pdf"
     ]
   },
@@ -130,6 +131,7 @@
     "bun measure:check -- examples/creator-remotion-scene.html",
     "bun print:render -- examples/creator-remotion-scene.html /tmp/dash-creator-remotion-scene.pdf --canvas=1684x1191",
     "browser visual QA on examples/creator-remotion-scene.html",
+    "standardized vision QA with real browser_console DOM verification",
     "bun docs:links",
     "bun security:scan",
     "bun hackathon:score",
