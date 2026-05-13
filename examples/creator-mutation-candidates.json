@@ -34,18 +34,18 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-touchdesigner-vision-qa-route",
+      "id": "creator-regression-orchestrator-route",
       "axis": "proof method",
-      "mutation": "Extend the retained touchdesigner-tox route with standardized browser DOM/vision QA evidence (provider-fallback pattern) for autonomous Darwin runs, matching the pattern proven on p5, remotion, manim, and motion-storyboard surfaces.",
-      "phenotype": "DOM verification via browser_console on file:// examples/creator-touchdesigner-tox.html with needle-aligned .artifacts/creator-touchdesigner-tox-qa.md, plus check.ts generator update to produce real browser evidence",
+      "mutation": "Add a unified regression orchestration command (bun creator:regression) that runs all 10 surface checks + mutation-check + hackathon:score in one pass, producing a single creator-useful regression report for Darwin loop evaluation.",
+      "phenotype": "scripts/creator-regression-check.ts that calls each surface check sequentially, aggregates PASS/FAIL into a single report with timing and surface coverage, and gates on all surfaces passing",
       "fitness": {
-        "creator_utility": 7,
+        "creator_utility": 8,
         "memory_retention": 9,
         "artifact_proof": 8,
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "TouchDesigner/twozero are local-operator-only tools — browser DOM-only proof must still serve as creator-useful evidence without live TD connection. Could produce false confidence if the generated TOX artifact drifts from what gets checked.",
+      "risk": "Must stay compatible as new surfaces are added; must not hide individual surface failures behind aggregate PASS. Should emit per-surface results before the aggregate verdict.",
       "selection": "candidate"
     }
   ],
@@ -100,6 +100,12 @@
       "proof": ["bun creator:touchdesigner-tox-check", "bun measure:check -- examples/creator-touchdesigner-tox.html"]
     },
     {
+      "id": "creator-touchdesigner-vision-qa-route",
+      "selection": "retained",
+      "retained_as": "standardized browser DOM/vision QA evidence for TouchDesigner surface (provider-fallback pattern, real browser_console DOM verification, needle-aligned QA)",
+      "proof": ["bun creator:touchdesigner-tox-check (includes vision QA gate)", "regression: all 10 routes covered"]
+    },
+    {
       "id": "creator-browser-demo-route",
       "selection": "retained",
       "retained_as": "self-contained clickable local browser phenotype",
@@ -112,7 +118,7 @@
       "proof": ["bun creator:pdf-zine-check", "bun measure:check -- examples/creator-pdf-zine.html"]
     }
   ],
-  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact. Promoted from active candidate to retained_routes after winning selection across PRs #32-#36 with standardized vision QA, DOM verification, and creator-usefulness proof. Current selected winner is creator-skill-release-route: external skill release checklist with install smoke, versioning, and rollback.",
+  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact. Promoted from active candidate to retained_routes after winning selection across PRs #32-#36 with standardized vision QA, DOM verification, and creator-usefulness proof. Retain creator-touchdesigner-vision-qa-route (PR #42) as the completion of standardized vision QA coverage across all 10 creator surfaces. Current selected winner is creator-skill-release-route: external skill release checklist with install smoke, versioning, and rollback.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
