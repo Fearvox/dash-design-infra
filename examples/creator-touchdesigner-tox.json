@@ -11,6 +11,7 @@
       "examples/creator-touchdesigner-tox.html",
       ".artifacts/creator-touchdesigner-network.md",
       ".artifacts/creator-touchdesigner-twozero-contract.json",
+      ".artifacts/creator-touchdesigner-tox-qa.md",
       "/tmp/dash-creator-touchdesigner-tox.pdf"
     ]
   },
@@ -107,6 +108,7 @@
     "bun measure:check -- examples/creator-touchdesigner-tox.html",
     "bun print:render -- examples/creator-touchdesigner-tox.html /tmp/dash-creator-touchdesigner-tox.pdf --canvas=1684x1191",
     "browser visual QA on examples/creator-touchdesigner-tox.html",
+    "standardized vision QA template + real browser_console DOM verification + generated .artifacts/creator-touchdesigner-tox-qa.md (robust needle alignment per hermes-gsd-evolution)",
     "bun security:scan",
     "bun hackathon:score",
     "bun typecheck"
