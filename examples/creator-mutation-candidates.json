@@ -1,23 +1,8 @@
 {
-  "observation": "Creator capsule routes now cover static surfaces, prompt DNA, motion storyboard, contact-sheet QA, social card, p5 creative-coding probes, Remotion timeline code, Manim explainer stubs, TouchDesigner/twozero local-network handoffs, browser-native demos, and repo-local skill packages. Creators still need a printable process surface that keeps capsule memory, proof, public boundary, and remix rules portable when collaborators are away from the browser.",
-  "population": "creator capsule print/export surface mutations for portable process handoffs and externally-rendered creator workflows",
-  "selection_pressure": "help a creator turn one capsule into a printable or handoff-ready artifact faster while preserving memory, proof, public boundary, remix discipline, and minimal DASH core size",
+  "observation": "Creator capsule routes now cover 10 surfaces + 1 retained zine: poster, prompt DNA, motion storyboard, social card, p5 sketch, Remotion scene, Manim scene, TouchDesigner TOX, browser demo, and PDF zine. All retain real browser QA evidence. The next evolution pressure should mutate proof methods: giving creators a way to compare remix directions before final artifact generation.",
+  "population": "creator proof method mutations: colorway previews, contact sheets, comparison surfaces that help creators select remix directions faster",
+  "selection_pressure": "help a creator preview multiple remix directions from one capsule before committing to a final artifact — while preserving memory, proof, public boundary, and minimal DASH core size",
   "candidates": [
-    {
-      "id": "creator-pdf-zine-route",
-      "axis": "surface",
-      "mutation": "Route the capsule into a one-sheet printable PDF zine for process notes, collaborator handoff, and workshop annotation.",
-      "phenotype": "JSON zine contract plus 1684x1191 fixed-canvas six-panel HTML sheet and PDF proof path",
-      "fitness": {
-        "creator_utility": 9,
-        "memory_retention": 9,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "Can duplicate the poster route unless the sheet keeps process memory, fold/annotation use, and six-panel proof structure distinct from a decorative poster.",
-      "selection": "selected"
-    },
     {
       "id": "creator-skill-release-route",
       "axis": "agent routing rule",
@@ -45,11 +30,26 @@
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs.",
+      "selection": "selected",
+      "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs."
+    },
+    {
+      "id": "creator-comparison-proof-route",
+      "axis": "proof method",
+      "mutation": "Route one capsule into a side-by-side fixed-canvas comparison sheet showing 2-3 surface outputs so a creator can validate cross-surface consistency before publication.",
+      "phenotype": "Fixed-canvas HTML comparison board plus measure/print proof and machine gate, deferred until at least two surfaces produce compatible proof cards",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 8,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Can degrade into a gallery unless it directly helps creators spot cross-surface inconsistencies and reject bad mutations.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-pdf-zine-route",
+  "winner": "creator-colorway-remix-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -104,9 +104,15 @@
       "selection": "retained",
       "retained_as": "self-contained clickable local browser phenotype",
       "proof": ["bun creator:browser-demo-check", "bun measure:check -- examples/creator-browser-demo.html"]
+    },
+    {
+      "id": "creator-pdf-zine-route",
+      "selection": "retained",
+      "retained_as": "printable six-panel one-sheet PDF zine surface",
+      "proof": ["bun creator:pdf-zine-check", "bun measure:check -- examples/creator-pdf-zine.html --canvas=1684x1191"]
     }
   ],
-  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact: JSON contract, one-sheet six-panel HTML, fixed-canvas measure proof, PDF render proof, browser visual QA, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on current mutations without losing regression coverage.",
+  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact. Next active candidate: creator-colorway-remix-route — a proof method mutation for three public-safe colorway proofs to help creators choose remix directions before final artifact generation. Keep all retained winners for regression coverage.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
