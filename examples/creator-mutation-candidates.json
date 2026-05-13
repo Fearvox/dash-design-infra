@@ -4,21 +4,6 @@
   "selection_pressure": "help a creator turn one capsule into a printable or handoff-ready artifact faster while preserving memory, proof, public boundary, remix discipline, and minimal DASH core size",
   "candidates": [
     {
-      "id": "creator-pdf-zine-route",
-      "axis": "surface",
-      "mutation": "Route the capsule into a one-sheet printable PDF zine for process notes, collaborator handoff, and workshop annotation.",
-      "phenotype": "JSON zine contract plus 1684x1191 fixed-canvas six-panel HTML sheet and PDF proof path",
-      "fitness": {
-        "creator_utility": 9,
-        "memory_retention": 9,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 10
-      },
-      "risk": "Can duplicate the poster route unless the sheet keeps process memory, fold/annotation use, and six-panel proof structure distinct from a decorative poster.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-skill-release-route",
       "axis": "agent routing rule",
       "mutation": "Route the repo-local creator skill package into a reviewed external release checklist with install smoke, versioning, and rollback.",
@@ -31,7 +16,7 @@
         "minimal_core": 9
       },
       "risk": "Could accidentally sync an unreviewed skill into live agents or publish private workflow assumptions.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-colorway-remix-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-touchdesigner-vision-qa-route",
+      "axis": "proof method",
+      "mutation": "Extend the retained touchdesigner-tox route with standardized browser DOM/vision QA evidence (provider-fallback pattern) for autonomous Darwin runs, matching the pattern proven on p5, remotion, manim, and motion-storyboard surfaces.",
+      "phenotype": "DOM verification via browser_console on file:// examples/creator-touchdesigner-tox.html with needle-aligned .artifacts/creator-touchdesigner-tox-qa.md, plus check.ts generator update to produce real browser evidence",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 9,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "TouchDesigner/twozero are local-operator-only tools — browser DOM-only proof must still serve as creator-useful evidence without live TD connection. Could produce false confidence if the generated TOX artifact drifts from what gets checked.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-pdf-zine-route",
+  "winner": "creator-skill-release-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -104,9 +104,15 @@
       "selection": "retained",
       "retained_as": "self-contained clickable local browser phenotype",
       "proof": ["bun creator:browser-demo-check", "bun measure:check -- examples/creator-browser-demo.html"]
+    },
+    {
+      "id": "creator-pdf-zine-route",
+      "selection": "retained",
+      "retained_as": "six-panel printable PDF zine surface",
+      "proof": ["bun creator:pdf-zine-check", "bun measure:check -- examples/creator-pdf-zine.html"]
     }
   ],
-  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact: JSON contract, one-sheet six-panel HTML, fixed-canvas measure proof, PDF render proof, browser visual QA, and machine gate. Keep older winners in retained_routes so the active candidate list stays focused on current mutations without losing regression coverage.",
+  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact. Promoted from active candidate to retained_routes after winning selection across PRs #32-#36 with standardized vision QA, DOM verification, and creator-usefulness proof. Current selected winner is creator-skill-release-route: external skill release checklist with install smoke, versioning, and rollback.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
