@@ -4,21 +4,6 @@
   "selection_pressure": "help a creator turn one capsule into a printable or handoff-ready artifact faster while preserving memory, proof, public boundary, remix discipline, and minimal DASH core size",
   "candidates": [
     {
-      "id": "creator-skill-release-route",
-      "axis": "agent routing rule",
-      "mutation": "Route the repo-local creator skill package into a reviewed external release checklist with install smoke, versioning, and rollback.",
-      "phenotype": "Release contract and smoke script pending a reviewed registry target",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 8,
-        "artifact_proof": 7,
-        "boundary_safety": 8,
-        "minimal_core": 9
-      },
-      "risk": "Could accidentally sync an unreviewed skill into live agents or publish private workflow assumptions.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-colorway-remix-route",
       "axis": "proof method",
       "mutation": "Route the capsule into three public-safe colorway proofs so a creator can choose a remix direction before regenerating the final artifact.",
@@ -31,25 +16,40 @@
         "minimal_core": 9
       },
       "risk": "Can become a palette dashboard unless it directly selects the next artifact mutation and blocks unsafe/raw reference inputs.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
-      "id": "creator-regression-orchestrator-route",
+      "id": "creator-multi-surface-proof-route",
       "axis": "proof method",
-      "mutation": "Add a unified regression orchestration command (bun creator:regression) that runs all 10 surface checks + mutation-check + hackathon:score in one pass, producing a single creator-useful regression report for Darwin loop evaluation.",
-      "phenotype": "scripts/creator-regression-check.ts that calls each surface check sequentially, aggregates PASS/FAIL into a single report with timing and surface coverage, and gates on all surfaces passing",
+      "mutation": "Add a machine check (bun creator:multi-surface-proof) that validates every retained surface HTML artifact against measure:check + print:render in one pass, using the existing fixed-canvas contracts. This is the artifact-companion to the regression orchestrator.",
+      "phenotype": "scripts/creator-multi-surface-proof.ts that iterates over all retained surface HTML files, runs measure:check and print:render for each, and reports overflow/render completeness",
       "fitness": {
-        "creator_utility": 8,
+        "creator_utility": 7,
         "memory_retention": 9,
         "artifact_proof": 8,
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "Must stay compatible as new surfaces are added; must not hide individual surface failures behind aggregate PASS. Should emit per-surface results before the aggregate verdict.",
+      "risk": "Must stay in sync with WORKFLOW_INDEX surface entries; must not hardcode paths that change.",
+      "selection": "candidate"
+    },
+    {
+      "id": "creator-darwin-autonomy-route",
+      "axis": "proof method",
+      "mutation": "Add a Darwin autonomy pre-flight check (bun creator:darwin-autonomy-check) that validates repo anchor, dirty-worktree safety, MCP connectivity, and baseline gates before an autonomous cron slice begins execution.",
+      "phenotype": "scripts/creator-darwin-autonomy-check.ts that runs repo-anchor validation, git status safety, MCP test, and baseline creator:mutation-check as a single gate before autonomous execution",
+      "fitness": {
+        "creator_utility": 8,
+        "memory_retention": 9,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "MCP test may fail transiently on some providers; must treat MCP unavailability as a warning, not a hard block.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-skill-release-route",
+  "winner": "creator-colorway-remix-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -116,9 +116,15 @@
       "selection": "retained",
       "retained_as": "six-panel printable PDF zine surface",
       "proof": ["bun creator:pdf-zine-check", "bun measure:check -- examples/creator-pdf-zine.html"]
+    },
+    {
+      "id": "creator-regression-orchestrator-route",
+      "selection": "retained",
+      "retained_as": "unified regression orchestrator (15-surface check + hackathon:score in one pass)",
+      "proof": ["bun creator:regression", "regression: all 15 checks pass in <2s"]
     }
   ],
-  "retention": "Retain creator-pdf-zine-route as the public-safe bridge from capsule memory to a printable process artifact. Promoted from active candidate to retained_routes after winning selection across PRs #32-#36 with standardized vision QA, DOM verification, and creator-usefulness proof. Retain creator-touchdesigner-vision-qa-route (PR #42) as the completion of standardized vision QA coverage across all 10 creator surfaces. Current selected winner is creator-skill-release-route: external skill release checklist with install smoke, versioning, and rollback.",
+  "retention": "Retain creator-regression-orchestrator-route (PR #44) as the unified regression gateway: single-pass 15-surface check aggregator (bun creator:regression) with per-surface PASS/FAIL, timing, and aggregate verdict. Replaces creator-skill-release-route as the active winner (blocked by external publish boundary). New winner: creator-colorway-remix-route (palette proof for remix safety). Added creator-multi-surface-proof-route and creator-darwin-autonomy-route as fresh candidates.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:poster-check",
@@ -131,6 +137,7 @@
     "bun creator:browser-demo-check",
     "bun creator:pdf-zine-check",
     "bun creator:social-card-check",
+    "bun creator:regression",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
     "bun docs:links",

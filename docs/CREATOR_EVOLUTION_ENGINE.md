@@ -92,6 +92,7 @@ Everything else is optional until the loop proves it deserves more structure. Th
 - [`creator-browser-demo-route`](../usecases/creator/creator-browser-demo.md): browser-native prototype mutation; turns capsule memory into a self-contained clickable local HTML phenotype with interaction smoke, fixed-canvas proof, and deploy rollback boundary before any backend, analytics, screenshot, hosting config, or public URL.
 - [`creator-pdf-zine-route`](../usecases/creator/creator-pdf-zine.md): printable process-surface mutation; turns capsule memory into a six-panel one-sheet HTML/PDF zine with measure, print, browser QA, and no raw media or private workshop notes.
 - [`creator-vision-qa-standardization`](../scripts/creator-touchdesigner-tox-check.ts): cross-surface proof mutation (PRs #30-#42); extends every retained creator route with standardized browser DOM/vision QA evidence (provider-fallback pattern, needle-aligned .artifacts QA, real browser_console DOM verification) so autonomous Darwin runs produce verifiable visual proof across all 10 surfaces without requiring multimodal vision API support.
+- [`creator-regression-orchestrator-route`](../scripts/creator-regression-check.ts): unified regression gateway mutation (PR #44); adds `bun creator:regression` that runs all 15 surface + mutation + capsule + evolution + hackathon checks in one pass with per-surface PASS/FAIL, timing, and aggregate verdict — making autonomous Darwin loop evaluation faster and more reliable.
 
 ## Candidate ledger
 
