@@ -11,6 +11,7 @@
       "examples/creator-manim-scene.html",
       ".artifacts/creator-manim-scene.py",
       ".artifacts/creator-manim-scene-summary.json",
+      ".artifacts/creator-manim-scene-qa.md",
       "/tmp/dash-creator-manim-scene.pdf"
     ]
   },
@@ -106,6 +107,7 @@
     "bun measure:check -- examples/creator-manim-scene.html",
     "bun print:render -- examples/creator-manim-scene.html /tmp/dash-creator-manim-scene.pdf --canvas=1684x1191",
     "browser visual QA on examples/creator-manim-scene.html",
+    "standardized vision QA with real browser_console DOM verification on examples/creator-manim-scene.html",
     "bun security:scan",
     "bun hackathon:score",
     "bun typecheck"
