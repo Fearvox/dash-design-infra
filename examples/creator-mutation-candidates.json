@@ -1,7 +1,7 @@
 {
-  "observation": "Creator capsule routes now cover 10 retained surfaces with standardized vision QA, a unified regression orchestrator, and autonomous cron Darwin loop support. After the multi-surface-proof addition, the remaining gap is keeping WORKFLOW_INDEX.md, mutation-candidates.json, and examples/*.html in sync across all surfaces — docs/surface parity drift is a recurring failure mode in autonomous runs.",
-  "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency",
-  "selection_pressure": "help a creator verify all surfaces in one pass and keep docs, examples, and checks in sync without manual inspection",
+  "observation": "Creator capsule routes now cover 10 retained surfaces with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, and multi-surface proof infrastructure. The Darwin autonomy pre-flight catches wrong-repo anchor, dirty worktree, and MCP gaps before autonomous cron slices execute — directly addressing the recurring failure modes documented in hermes-gsd-evolution pitfalls. Remaining gap: surface parity drift between WORKFLOW_INDEX, retained_routes, and examples/*.html.",
+  "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
+  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, and keep docs, examples, and checks in sync without manual inspection",
   "candidates": [
     {
       "id": "creator-multi-surface-proof-route",
@@ -15,23 +15,8 @@
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "Must stay in sync with WORKFLOW_INDEX surface entries; must not hardcode paths that change. Canvas sizes must match per-surface contracts (1684x1191 default, 1200x630 for social-card).",
+      "risk": "Depends on Playwright Chromium being installed for measure:check and print:render. Must stay in sync with WORKFLOW_INDEX surface entries; must not hardcode paths that change. Canvas sizes must match per-surface contracts (1684x1191 default, 1200x630 for social-card).",
       "selection": "selected"
-    },
-    {
-      "id": "creator-darwin-autonomy-route",
-      "axis": "proof method",
-      "mutation": "Add a Darwin autonomy pre-flight check (bun creator:darwin-autonomy-check) that validates repo anchor, dirty-worktree safety, MCP connectivity, and baseline gates before an autonomous cron slice begins execution.",
-      "phenotype": "scripts/creator-darwin-autonomy-check.ts that runs repo-anchor validation, git status safety, MCP test, and baseline creator:mutation-check as a single gate before autonomous execution",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 9,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "MCP test may fail transiently on some providers; must treat MCP unavailability as a warning, not a hard block.",
-      "selection": "candidate"
     },
     {
       "id": "creator-docs-surface-parity-route",
@@ -46,6 +31,21 @@
         "minimal_core": 8
       },
       "risk": "Must parse WORKFLOW_INDEX.md markdown table reliably; must handle new surface additions gracefully.",
+      "selection": "candidate"
+    },
+    {
+      "id": "creator-cron-slice-health-route",
+      "axis": "proof method",
+      "mutation": "Add a slice health check (bun creator:cron-slice-health) that validates the most recent autonomous Darwin cron slice completed cleanly — verifies PR state, branch SHA, CI status, and merge evidence for the last Darwin PR on the repo.",
+      "phenotype": "scripts/creator-cron-slice-health.ts that queries GitHub API for recent Darwin PRs, checks CI/merge state on the most recent, and reports slice completion evidence (branch, SHA, PR URL, merge status, CI verdict)",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 9,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Requires GitHub API access (gh or GITHUB_TOKEN). Must handle no-Darwin-PR-yet gracefully (first-run state). Must not leak private repo details in output.",
       "selection": "candidate"
     }
   ],
@@ -120,13 +120,20 @@
     {
       "id": "creator-regression-orchestrator-route",
       "selection": "retained",
-      "retained_as": "unified regression orchestrator (15-surface check + hackathon:score in one pass)",
-      "proof": ["bun creator:regression", "regression: all 15 checks pass in <2s"]
+      "retained_as": "unified regression orchestrator (16-check surface + autonomy + hackathon:score in one pass)",
+      "proof": ["bun creator:regression", "regression: all 16 checks pass"]
+    },
+    {
+      "id": "creator-darwin-autonomy-route",
+      "selection": "retained",
+      "retained_as": "Darwin autonomy pre-flight check (repo anchor, git cleanliness, MCP connectivity, baseline gates)",
+      "proof": ["bun creator:darwin-autonomy-check", "bun creator:regression (includes autonomy check)"]
     }
   ],
-  "retention": "Retain creator-multi-surface-proof-route as the unified artifact-measurement gateway: single-pass 11-surface measure:check + print:render with per-surface PASS/FAIL and timing. Removed creator-colorway-remix-route from candidates (blocked: deferred until two surfaces need the same palette proof). Added creator-docs-surface-parity-route as fresh candidate (catches WORKFLOW_INDEX ↔ retained_routes ↔ examples/*.html parity drift).",
+  "retention": "Retain creator-darwin-autonomy-route as the Darwin autonomy pre-flight gate: validates repo anchor (correct repo + remote), git cleanliness (reports uncommitted changes), MCP connectivity (research_vault), and baseline gates (creator:mutation-check) before autonomous cron slices execute. Promoted from active candidate to retained route. Replaced in candidates[] by creator-cron-slice-health-route (validates prior Darwin slice completion).",
   "regression": [
     "bun creator:mutation-check",
+    "bun creator:darwin-autonomy-check",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
     "bun creator:motion-storyboard-check",
