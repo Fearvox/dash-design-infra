@@ -1,27 +1,12 @@
 {
-  "observation": "Creator capsule routes now cover 18 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight, a docs-surface parity check, a cron slice health check, an agent context health check, and a per-surface health check (shipped in this run — dynamically discovers all creator-*.html surfaces, maps to check scripts, runs each gate, reports per-surface PASS/FAIL with timing; 11/11 surfaces healthy). Remaining gap: script health validation — ensuring every creator:* script in package.json has an existing, valid source file to catch stale entries.",
+  "observation": "Creator script health route shipped: 23/23 creator:* package.json scripts validated with existing source files. Now 20 retained routes. Remaining gap: regression output noise from bun-types pre-existing lint errors obscures real failures in autonomous Darwin runs. Also: stale creator:* script files without package.json entries create orphan scripts that waste agent attention.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
-  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, and keep docs, examples, and checks in sync without manual inspection",
+  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, and reduce noise in regression output",
   "candidates": [
-    {
-      "id": "creator-script-health-route",
-      "axis": "proof method",
-      "mutation": "Add a script health check (bun creator:script-health) that validates every creator:* script in package.json has a corresponding source file that exists and is valid — catching stale script entries pointing to deleted or renamed files before they cause silent failures in autonomous Darwin runs.",
-      "phenotype": "scripts/creator-script-health.ts that reads package.json scripts, filters for creator:* entries, verifies each referenced source file exists, and reports PASS/FAIL per entry",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 8,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "Must handle scripts that invoke other scripts (e.g., 'bun run creator:foo' or 'bun scripts/foo.ts'). Must not require TypeScript compilation — source file existence is sufficient.",
-      "selection": "selected"
-    },
     {
       "id": "creator-regression-noise-route",
       "axis": "proof method",
-      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing lint noise in regression output, producing a clean PASS/FAIL surface report without bun-types false positives — improving autonomous Darwin signal-to-noise ratio.",
+      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing bun-types lint noise in regression output, producing a clean PASS/FAIL surface report — improving autonomous Darwin signal-to-noise ratio.",
       "phenotype": "scripts/creator-regression-filter.ts that wraps the regression orchestrator, filters out known pre-existing bun-types lint errors from output, and reports only actionable failures",
       "fitness": {
         "creator_utility": 4,
@@ -31,7 +16,7 @@
         "minimal_core": 8
       },
       "risk": "Must not suppress real errors. Filter criteria must be precise and documented. May mask newly introduced type errors if filter is too broad.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-workflow-index-gate-health-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Must handle gates referenced as descriptive text (not just code-fenced commands). Some gates may be referenced as 'run bun creator:foo-check' rather than as literal script entries. False positives on gates that are described but not executable (e.g., 'visual QA' as a manual step).",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-orphan-script-route",
+      "axis": "proof method",
+      "mutation": "Add an orphan script check (bun creator:orphan-script-check) that discovers all scripts/creator-*.ts files, cross-references against package.json creator:* entries, and reports scripts without package.json entries — catching orphan source files that waste agent attention and may harbor stale/abandoned work.",
+      "phenotype": "scripts/creator-orphan-script-check.ts that reads scripts/ directory, finds all creator-*.ts files, verifies each has a corresponding package.json entry, and reports PASS/FAIL per orphan",
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 6,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "Must handle scripts that are intentionally not in package.json (helper scripts imported by other scripts). Boundary between 'creator check' and 'internal helper' must be clearly defined to avoid false positives.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-script-health-route",
+  "winner": "creator-regression-noise-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -102,7 +102,7 @@
     {
       "id": "creator-touchdesigner-vision-qa-route",
       "selection": "retained",
-      "retained_as": "standardized browser DOM/vision QA evidence for TouchDesigner surface (provider-fallback pattern, real browser_console DOM verification, needle-aligned QA)",
+      "retained_as": "standardized browser DOM/vision QA evidence for TouchDesigner surface",
       "proof": ["bun creator:touchdesigner-tox-check (includes vision QA gate)", "regression: all 10 routes covered"]
     },
     {
@@ -120,59 +120,66 @@
     {
       "id": "creator-regression-orchestrator-route",
       "selection": "retained",
-      "retained_as": "unified regression orchestrator (21-check surface + autonomy + hackathon:score in one pass)",
-      "proof": ["bun creator:regression", "regression: all 21 checks pass"]
+      "retained_as": "unified regression orchestrator (22-check surface + autonomy + hackathon:score in one pass)",
+      "proof": ["bun creator:regression", "regression: all 22 checks pass"]
     },
     {
       "id": "creator-darwin-autonomy-route",
       "selection": "retained",
-      "retained_as": "Darwin autonomy pre-flight check (repo anchor, git cleanliness, MCP connectivity, baseline gates)",
+      "retained_as": "Darwin autonomy pre-flight check",
       "proof": ["bun creator:darwin-autonomy-check", "bun creator:regression (includes autonomy check)"]
     },
     {
       "id": "creator-multi-surface-proof-route",
       "selection": "retained",
-      "retained_as": "unified artifact-measurement gateway (all 11 retained surface HTML artifacts validated against measure:check + print:render in one pass)",
+      "retained_as": "unified artifact-measurement gateway (all 11 retained surface HTML artifacts)",
       "proof": ["bun creator:multi-surface-proof", "bun creator:regression (includes multi-surface-proof)"]
     },
     {
       "id": "creator-playwright-health-route",
       "selection": "retained",
-      "retained_as": "Playwright Chromium binary health pre-flight (validates cache-dir, chromium-dir, binary, and measure:check smoke test to prevent silent 0/11 failures from binary version drift in autonomous Darwin cron runs)",
+      "retained_as": "Playwright Chromium binary health pre-flight",
       "proof": ["bun creator:playwright-health-check", "bun creator:regression (wired as first check)"]
     },
     {
       "id": "creator-docs-surface-parity-route",
       "selection": "retained",
-      "retained_as": "Creator docs-surface parity check (10-way cross-reference of WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, examples/*.html, multi-surface-proof SURFACES, and package.json scripts — catches doc/ledger/filesystem drift in one pass)",
+      "retained_as": "Creator docs-surface parity check (10-way cross-reference)",
       "proof": ["bun creator:docs-surface-parity", "bun creator:regression (validates 0-issue parity)"]
     },
     {
       "id": "creator-cron-slice-health-route",
       "selection": "retained",
-      "retained_as": "Creator cron slice health check (queries GitHub for most recent merged Darwin PR, verifies CI status on merge commit, reports slice completion evidence — validates autonomous cron slice health in one pass)",
+      "retained_as": "Creator cron slice health check",
       "proof": ["bun creator:cron-slice-health", "bun creator:regression (wired after autonomy check)"]
     },
     {
       "id": "creator-agent-context-route",
       "selection": "retained",
-      "retained_as": "Agent context health check (validates AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, and mutation-candidates.json are present, parseable, and structurally sound — all local-only, no network or secrets required)",
+      "retained_as": "Agent context health check",
       "proof": ["bun creator:agent-context-health", "bun creator:regression (wired after docs-surface-parity)"]
     },
     {
       "id": "creator-surface-health-route",
       "selection": "retained",
-      "retained_as": "Per-surface health check (dynamically discovers all creator-*.html surfaces in examples/, maps to check scripts, runs each individual surface gate, reports per-surface PASS/FAIL with timing — catches broken individual surfaces, missing check scripts for new surfaces, and surfaces absent from the regression orchestrator)",
+      "retained_as": "Per-surface health check (dynamically discovers all creator-*.html surfaces)",
       "proof": ["bun creator:surface-health", "bun creator:regression (wired after agent-context-health)"]
+    },
+    {
+      "id": "creator-script-health-route",
+      "selection": "retained",
+      "retained_as": "Script source file health check (validates every creator:* package.json script has an existing source file — 23/23 healthy)",
+      "proof": ["bun creator:script-health", "bun creator:regression (wired after surface-health)"]
     }
   ],
-  "retention": "Promote creator-surface-health-route to retained_routes (shipped in this run — dynamically discovers 11 creator-*.html surfaces, maps to check scripts, 11/11 PASS in 216ms; catches missing check scripts via SURFACE_CHECK_MAP). Promote creator-script-health-route as the new selected winner: validates every creator:* package.json script entry has an existing source file to catch stale entries. Add creator-workflow-index-gate-health-route as new active candidate: cross-references WORKFLOW_INDEX.md gates against package.json scripts.",
+  "retention": "Shipped creator-script-health-route in this run: validates every creator:* package.json script entry has an existing source file (23/23 PASS). Wired into regression orchestrator after surface-health. Promoted to retained_routes. Next selected winner: creator-regression-noise-route (filter bun-types lint noise from regression). Added creator-orphan-script-route as new active candidate (inverse check: orphan script files without package.json entries).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
     "bun creator:darwin-autonomy-check",
     "bun creator:agent-context-health",
     "bun creator:surface-health",
+    "bun creator:script-health",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
