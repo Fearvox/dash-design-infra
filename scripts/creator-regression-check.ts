@@ -15,6 +15,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:cron-slice-health', command: 'bun', args: ['run', 'creator:cron-slice-health'] },
   { name: 'creator:docs-surface-parity', command: 'bun', args: ['run', 'creator:docs-surface-parity'] },
   { name: 'creator:agent-context-health', command: 'bun', args: ['run', 'creator:agent-context-health'] },
+  { name: 'creator:surface-health', command: 'bun', args: ['run', 'creator:surface-health'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },
