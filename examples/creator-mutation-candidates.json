@@ -1,23 +1,8 @@
 {
-  "observation": "Creator capsule routes now cover 14 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight (catches binary version drift before silent 0/11 failures), and a docs-surface parity check. The docs-surface parity check catches drift between WORKFLOW_INDEX, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, and filesystem before it accumulates across autonomous Darwin runs. Remaining gap: individual surface health validation — running each creator:*check per surface before multi-surface-proof aggregates, catching broken individual surfaces earlier.",
+  "observation": "Creator capsule routes now cover 15 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight (catches binary version drift before silent 0/11 failures), and a docs-surface parity check. The docs-surface parity check (PR #49, promoted to retained) catches drift between WORKFLOW_INDEX, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, and filesystem before it accumulates. Remaining gap: autonomous agent context validation — ensuring AGENTS.md, WORKFLOW_INDEX.md, and ledgers are present and parseable before any autonomous Darwin run starts.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, and keep docs, examples, and checks in sync without manual inspection",
   "candidates": [
-    {
-      "id": "creator-docs-surface-parity-route",
-      "axis": "proof method",
-      "mutation": "Add a parity check (bun creator:docs-surface-parity) that validates WORKFLOW_INDEX.md surface entries, mutation-candidates.json retained_routes, CREATOR_EVOLUTION_ENGINE.md retained mutations, examples/*.html files, multi-surface-proof SURFACES list, and package.json script entries are in sync — catching the recurring docs/surface drift failure mode.",
-      "phenotype": "scripts/creator-docs-surface-parity.ts that cross-references WORKFLOW_INDEX.md table entries, retained_routes in the candidate ledger, CREATOR_EVOLUTION_ENGINE.md retained mutations, actual examples/*.html files for creator surfaces, multi-surface-proof SURFACES, and package.json script entries — reporting any missing/mismatched entries",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 9,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Must parse WORKFLOW_INDEX.md markdown table reliably; must handle new surface additions gracefully. Known mapping between doc (creator-vision-qa-standardization) and JSON (creator-touchdesigner-vision-qa-route).",
-      "selection": "selected"
-    },
     {
       "id": "creator-cron-slice-health-route",
       "axis": "proof method",
@@ -31,7 +16,7 @@
         "minimal_core": 8
       },
       "risk": "Requires GitHub API access (gh or GITHUB_TOKEN). Must handle no-Darwin-PR-yet gracefully (first-run state). Must not leak private repo details in output.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-surface-health-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Requires all surface check scripts to be individually executable. Must handle surface HTML files without a dedicated *check script gracefully. Timing may be slow if some checks involve browser automation.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-agent-context-route",
+      "axis": "proof method",
+      "mutation": "Add an agent context health check (bun creator:agent-context-health) that validates AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, and creator-mutation-candidates.json are present, parseable, and structurally sound — ensuring any autonomous agent can start work without missing or corrupted docs.",
+      "phenotype": "scripts/creator-agent-context-health.ts that reads and validates the four core agent-facing docs for presence, parseability, and structural soundness (required sections present, JSON valid, links resolvable)",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 9,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "Must handle evolving doc structures gracefully (not brittle to new sections). Must work without network access (local-only). Must not require secrets or expose paths.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-docs-surface-parity-route",
+  "winner": "creator-cron-slice-health-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -140,9 +140,15 @@
       "selection": "retained",
       "retained_as": "Playwright Chromium binary health pre-flight (validates cache-dir, chromium-dir, binary, and measure:check smoke test to prevent silent 0/11 failures from binary version drift in autonomous Darwin cron runs)",
       "proof": ["bun creator:playwright-health-check", "bun creator:regression (wired as first check)"]
+    },
+    {
+      "id": "creator-docs-surface-parity-route",
+      "selection": "retained",
+      "retained_as": "Creator docs-surface parity check (10-way cross-reference of WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, examples/*.html, multi-surface-proof SURFACES, and package.json scripts — catches doc/ledger/filesystem drift in one pass)",
+      "proof": ["bun creator:docs-surface-parity", "bun creator:regression (validates 0-issue parity)"]
     }
   ],
-  "retention": "Promote creator-playwright-health-route to retained_routes (shipped in PR #48, was in CREATOR_EVOLUTION_ENGINE.md retained mutations but absent from JSON retained_routes — now unified). Promote creator-docs-surface-parity-route as the selected winner: catches drift between WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, examples/*.html, multi-surface-proof SURFACES list, and package.json in one pass. Add creator-surface-health-route as new active candidate to catch broken individual surfaces before multi-surface-proof aggregates.",
+  "retention": "Promote creator-docs-surface-parity-route to retained_routes (shipped in PR #49, was the selected winner but absent from retained_routes — now unified). Promote creator-cron-slice-health-route as the new selected winner: queries GitHub API for recent Darwin PR state, CI status, and merge evidence to validate autonomous cron slice health. Add creator-agent-context-route as new active candidate to validate core agent-facing docs are present and parseable before any autonomous Darwin run starts.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
