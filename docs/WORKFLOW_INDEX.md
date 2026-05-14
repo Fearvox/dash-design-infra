@@ -47,6 +47,7 @@ If a workflow cannot name those five things, it is not ready to ship.
 | Creator Darwin autonomy | [`scripts/creator-darwin-autonomy-check.ts`](../scripts/creator-darwin-autonomy-check.ts) | scripts only | `bun creator:darwin-autonomy-check` | Validates repo anchor (correct repo + remote), git cleanliness (reports uncommitted changes), MCP connectivity (research_vault), and baseline gates (creator:mutation-check) before autonomous Darwin cron slices execute | Public-safe script; no secrets, local paths, or private repo details |
 || Creator multi-surface proof | [`scripts/creator-multi-surface-proof.ts`](../scripts/creator-multi-surface-proof.ts) | scripts only | `bun creator:multi-surface-proof` | All 11 retained surface HTML artifacts pass measure:check + print:render in a single pass with per-surface PASS/FAIL and timing | Public-safe script; no new surface artifacts |
 || Creator Playwright health | [`scripts/creator-playwright-health-check.ts`](../scripts/creator-playwright-health-check.ts) | scripts only | `bun creator:playwright-health-check` | Validates Playwright Chromium binary health (cache-dir, chromium-dir, binary, measure:check smoke); prevents silent 0/11 failures from binary version drift in autonomous Darwin cron runs | Public-safe script; no new surface artifacts |
+|| Creator docs-surface parity | [`scripts/creator-docs-surface-parity.ts`](../scripts/creator-docs-surface-parity.ts) | scripts only | `bun creator:docs-surface-parity` | Cross-references WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, examples/*.html, multi-surface-proof SURFACES, and package.json scripts — catches drift across all surfaces in one pass | Public-safe script; no new surface artifacts |
 || Public repo hardening | [`docs/PUBLIC_CSO_AUDIT.md`](./PUBLIC_CSO_AUDIT.md) | repo scripts | `bun docs:links && bun security:scan && bun hackathon:score` | All gates green locally and in CI | No secrets, private paths, raw media, or private project text |
 | Hackathon SDD loop | [`docs/HACKATHON_SDD_LOOP.md`](./HACKATHON_SDD_LOOP.md) | repo scripts + CI | review → apply → score → PR → CI → merge | `bun hackathon:score` returns `MAXXED` | Score must prove public usefulness, not just activity |
 
@@ -133,6 +134,7 @@ bun creator:playwright-health-check
 bun creator:evolution-check
 bun creator:mutation-check
 bun creator:capsule-check
+bun creator:docs-surface-parity
 bun creator:remotion-scene-check
 bun creator:manim-scene-check
 bun creator:touchdesigner-tox-check
