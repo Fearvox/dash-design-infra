@@ -66,6 +66,7 @@
     "creator:browser-demo-check": "bun scripts/creator-browser-demo-check.ts",
     "creator:skill-package-check": "bun scripts/creator-skill-package-check.ts",
     "creator:multi-surface-proof": "bun scripts/creator-multi-surface-proof.ts",
+    "creator:darwin-autonomy-check": "bun scripts/creator-darwin-autonomy-check.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"

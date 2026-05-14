@@ -9,6 +9,7 @@
  */
 
 const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
+  { name: 'creator:darwin-autonomy-check', command: 'bun', args: ['run', 'creator:darwin-autonomy-check'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },
