@@ -1,28 +1,13 @@
 {
-  "observation": "Creator capsule routes now cover 10 retained surfaces with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, and multi-surface proof infrastructure. Playwright binary drift causes silent 0/11 measure+print failures across all creator surfaces — a recurring environmental failure mode that needs machine detection. Next: add a Playwright health pre-flight to catch missing chromium binary before autonomous Darwin cron runs waste cycles on 11 doomed surfaces.",
+  "observation": "Creator capsule routes now cover 14 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight (catches binary version drift before silent 0/11 failures), and a docs-surface parity check. The docs-surface parity check catches drift between WORKFLOW_INDEX, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, and filesystem before it accumulates across autonomous Darwin runs. Remaining gap: individual surface health validation — running each creator:*check per surface before multi-surface-proof aggregates, catching broken individual surfaces earlier.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, and keep docs, examples, and checks in sync without manual inspection",
   "candidates": [
     {
-      "id": "creator-playwright-health-route",
-      "axis": "proof method",
-      "mutation": "Add a Playwright Chromium binary health check (bun creator:playwright-health-check) that validates the ms-playwright cache directory, chromium_headless_shell binary, and a real measure:check smoke test before any autonomous Darwin slice runs. Catches the recurring binary version drift failure mode that causes silent 0/11 measure+print failures across all 11 retained surfaces.",
-      "phenotype": "scripts/creator-playwright-health-check.ts with 4-phase check (cache-dir, chromium-dir, binary, smoke via measure:check) wired into the regression orchestrator as the first check",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 9,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "Depends on @dash/measure for the smoke test (transitive dependency on playwright). Must handle macOS-specific paths and arch detection (arm64 vs x64). Smoke test uses examples/creator-poster-surface.html which must remain a valid fixed-canvas surface.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-docs-surface-parity-route",
       "axis": "proof method",
-      "mutation": "Add a parity check (bun creator:docs-surface-parity) that validates WORKFLOW_INDEX.md surface entries, mutation-candidates.json retained_routes, and examples/*.html files are in sync — catching the recurring docs/surface drift failure mode.",
-      "phenotype": "scripts/creator-docs-surface-parity.ts that cross-references WORKFLOW_INDEX.md table entries, retained_routes in the candidate ledger, and actual examples/*.html files for creator surfaces, reporting any missing/mismatched entries",
+      "mutation": "Add a parity check (bun creator:docs-surface-parity) that validates WORKFLOW_INDEX.md surface entries, mutation-candidates.json retained_routes, CREATOR_EVOLUTION_ENGINE.md retained mutations, examples/*.html files, multi-surface-proof SURFACES list, and package.json script entries are in sync — catching the recurring docs/surface drift failure mode.",
+      "phenotype": "scripts/creator-docs-surface-parity.ts that cross-references WORKFLOW_INDEX.md table entries, retained_routes in the candidate ledger, CREATOR_EVOLUTION_ENGINE.md retained mutations, actual examples/*.html files for creator surfaces, multi-surface-proof SURFACES, and package.json script entries — reporting any missing/mismatched entries",
       "fitness": {
         "creator_utility": 6,
         "memory_retention": 9,
@@ -30,8 +15,8 @@
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Must parse WORKFLOW_INDEX.md markdown table reliably; must handle new surface additions gracefully.",
-      "selection": "candidate"
+      "risk": "Must parse WORKFLOW_INDEX.md markdown table reliably; must handle new surface additions gracefully. Known mapping between doc (creator-vision-qa-standardization) and JSON (creator-touchdesigner-vision-qa-route).",
+      "selection": "selected"
     },
     {
       "id": "creator-cron-slice-health-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Requires GitHub API access (gh or GITHUB_TOKEN). Must handle no-Darwin-PR-yet gracefully (first-run state). Must not leak private repo details in output.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-surface-health-route",
+      "axis": "proof method",
+      "mutation": "Add a per-surface health check (bun creator:surface-health) that runs each individual creator:*check gate for every examples/creator-*.html surface, reporting per-surface PASS/FAIL status — catching broken individual surfaces before multi-surface-proof aggregates them.",
+      "phenotype": "scripts/creator-surface-health.ts that iterates all surface HTML files, runs the corresponding creator:*check (poster-check, social-card-check, etc.), and produces a per-surface PASS/FAIL table with timing",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "Requires all surface check scripts to be individually executable. Must handle surface HTML files without a dedicated *check script gracefully. Timing may be slow if some checks involve browser automation.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-playwright-health-route",
+  "winner": "creator-docs-surface-parity-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -132,11 +132,17 @@
     {
       "id": "creator-multi-surface-proof-route",
       "selection": "retained",
-      "retained_as": "unified artifact-measurement gateway (11-surface measure:check + print:render in one pass)",
-      "proof": ["bun creator:multi-surface-proof", "bun creator:regression"]
+      "retained_as": "unified artifact-measurement gateway (all 11 retained surface HTML artifacts validated against measure:check + print:render in one pass)",
+      "proof": ["bun creator:multi-surface-proof", "bun creator:regression (includes multi-surface-proof)"]
+    },
+    {
+      "id": "creator-playwright-health-route",
+      "selection": "retained",
+      "retained_as": "Playwright Chromium binary health pre-flight (validates cache-dir, chromium-dir, binary, and measure:check smoke test to prevent silent 0/11 failures from binary version drift in autonomous Darwin cron runs)",
+      "proof": ["bun creator:playwright-health-check", "bun creator:regression (wired as first check)"]
     }
   ],
-  "retention": "Promote creator-multi-surface-proof-route to retained_routes (shipped in PR #45, already in CREATOR_EVOLUTION_ENGINE.md). Retain creator-playwright-health-route as the Playwright Chromium binary health pre-flight: validates cache-dir, chromium-dir, binary, and smoke via measure:check to prevent silent 0/11 failures from binary version drift in autonomous Darwin cron runs. Wiring: first check in the regression orchestrator, listed in WORKFLOW_INDEX, retained in candidate ledger.",
+  "retention": "Promote creator-playwright-health-route to retained_routes (shipped in PR #48, was in CREATOR_EVOLUTION_ENGINE.md retained mutations but absent from JSON retained_routes — now unified). Promote creator-docs-surface-parity-route as the selected winner: catches drift between WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json, examples/*.html, multi-surface-proof SURFACES list, and package.json in one pass. Add creator-surface-health-route as new active candidate to catch broken individual surfaces before multi-surface-proof aggregates.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -152,6 +158,7 @@
     "bun creator:pdf-zine-check",
     "bun creator:social-card-check",
     "bun creator:multi-surface-proof",
+    "bun creator:docs-surface-parity",
     "bun creator:regression",
     "bun creator:evolution-check",
     "bun creator:capsule-check",
