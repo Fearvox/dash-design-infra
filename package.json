@@ -70,6 +70,7 @@
     "creator:playwright-health-check": "bun scripts/creator-playwright-health-check.ts",
     "creator:docs-surface-parity": "bun scripts/creator-docs-surface-parity.ts",
     "creator:cron-slice-health": "bun scripts/creator-cron-slice-health.ts",
+    "creator:agent-context-health": "bun scripts/creator-agent-context-health.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"

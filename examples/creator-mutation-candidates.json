@@ -1,23 +1,8 @@
 {
-  "observation": "Creator capsule routes now cover 16 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight, a docs-surface parity check, and a cron slice health check. The cron slice health check (shipped in this run) validates the most recent autonomous Darwin cron slice completed cleanly by querying GitHub for recent merged Darwin PRs, checking CI status, and reporting merge evidence. Remaining gap: autonomous agent context validation — ensuring AGENTS.md, WORKFLOW_INDEX.md, and ledgers are present and parseable before any autonomous Darwin run starts.",
+  "observation": "Creator capsule routes now cover 17 retained routes with standardized vision QA, a unified regression orchestrator, a Darwin autonomy pre-flight check, multi-surface proof infrastructure, a Playwright chromium health pre-flight, a docs-surface parity check, a cron slice health check, and an agent context health check. The agent context health check (shipped in this run) validates AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, and creator-mutation-candidates.json are present, parseable, and structurally sound — all local-only, no network or secrets required. Remaining gap: script health validation — ensuring every creator:* script in package.json has an existing, valid source file to catch stale entries.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, and keep docs, examples, and checks in sync without manual inspection",
   "candidates": [
-    {
-      "id": "creator-agent-context-route",
-      "axis": "proof method",
-      "mutation": "Add an agent context health check (bun creator:agent-context-health) that validates AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, and creator-mutation-candidates.json are present, parseable, and structurally sound — ensuring any autonomous agent can start work without missing or corrupted docs.",
-      "phenotype": "scripts/creator-agent-context-health.ts that reads and validates the four core agent-facing docs for presence, parseability, and structural soundness (required sections present, JSON valid, links resolvable)",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 9,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "Must handle evolving doc structures gracefully (not brittle to new sections). Must work without network access (local-only). Must not require secrets or expose paths.",
-      "selection": "selected"
-    },
     {
       "id": "creator-surface-health-route",
       "axis": "proof method",
@@ -31,7 +16,7 @@
         "minimal_core": 7
       },
       "risk": "Requires all surface check scripts to be individually executable. Must handle surface HTML files without a dedicated *check script gracefully. Timing may be slow if some checks involve browser automation.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-regression-noise-route",
@@ -47,9 +32,24 @@
       },
       "risk": "Must not suppress real errors. Filter criteria must be precise and documented. May mask newly introduced type errors if filter is too broad.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-script-health-route",
+      "axis": "proof method",
+      "mutation": "Add a script health check (bun creator:script-health) that validates every creator:* script in package.json has a corresponding source file that exists and is valid — catching stale script entries pointing to deleted or renamed files before they cause silent failures in autonomous Darwin runs.",
+      "phenotype": "scripts/creator-script-health.ts that reads package.json scripts, filters for creator:* entries, verifies each referenced source file exists, and reports PASS/FAIL per entry",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 8,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "Must handle scripts that invoke other scripts (e.g., 'bun run creator:foo' or 'bun scripts/foo.ts'). Must not require TypeScript compilation — source file existence is sufficient.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-agent-context-route",
+  "winner": "creator-surface-health-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -120,7 +120,7 @@
     {
       "id": "creator-regression-orchestrator-route",
       "selection": "retained",
-      "retained_as": "unified regression orchestrator (16-check surface + autonomy + hackathon:score in one pass)",
+      "retained_as": "unified regression orchestrator (18-check surface + autonomy + hackathon:score in one pass)",
       "proof": ["bun creator:regression", "regression: all 16 checks pass"]
     },
     {
@@ -152,13 +152,20 @@
       "selection": "retained",
       "retained_as": "Creator cron slice health check (queries GitHub for most recent merged Darwin PR, verifies CI status on merge commit, reports slice completion evidence — validates autonomous cron slice health in one pass)",
       "proof": ["bun creator:cron-slice-health", "bun creator:regression (wired after autonomy check)"]
+    },
+    {
+      "id": "creator-agent-context-route",
+      "selection": "retained",
+      "retained_as": "Agent context health check (validates AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, and mutation-candidates.json are present, parseable, and structurally sound — all local-only, no network or secrets required)",
+      "proof": ["bun creator:agent-context-health", "bun creator:regression (wired after docs-surface-parity)"]
     }
   ],
-  "retention": "Promote creator-cron-slice-health-route to retained_routes (shipped in this run — queries GitHub for most recent merged Darwin PR, verifies CI status on merge commit, reports slice completion evidence). Promote creator-agent-context-route as the new selected winner: validates core agent-facing docs (AGENTS.md, WORKFLOW_INDEX.md, CREATOR_EVOLUTION_ENGINE.md, mutation-candidates.json) are present and parseable before any autonomous Darwin run starts. Add creator-regression-noise-route as new active candidate to filter pre-existing lint noise from regression output.",
+  "retention": "Promote creator-agent-context-route to retained_routes (shipped in this run — validates core agent-facing docs are present, parseable, and structurally sound; all local-only, 11/11 checks pass). Promote creator-surface-health-route as the new selected winner: iterates all surface HTML files, runs the corresponding creator:*check, and produces a per-surface PASS/FAIL table with timing. Add creator-script-health-route as new active candidate to validate every creator:* script entry has an existing source file.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
     "bun creator:darwin-autonomy-check",
+    "bun creator:agent-context-health",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
