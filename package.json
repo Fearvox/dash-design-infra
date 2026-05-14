@@ -63,6 +63,7 @@
     "creator:remotion-scene-check": "bun scripts/creator-remotion-scene-check.ts",
     "creator:manim-scene-check": "bun scripts/creator-manim-scene-check.ts",
     "creator:touchdesigner-tox-check": "bun scripts/creator-touchdesigner-tox-check.ts",
+    "creator:workflow-gate-health": "bun scripts/creator-workflow-gate-health.ts",
     "creator:browser-demo-check": "bun scripts/creator-browser-demo-check.ts",
     "creator:skill-package-check": "bun scripts/creator-skill-package-check.ts",
     "creator:multi-surface-proof": "bun scripts/creator-multi-surface-proof.ts",
