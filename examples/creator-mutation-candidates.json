@@ -1,7 +1,7 @@
 {
-  "observation": "Shipped creator-post-check-coverage-route: QA evidence coverage audit (bun creator:post-check-coverage). Discovers all 11 examples/creator-*.html surfaces, maps to expected .artifacts/creator-*-qa.md evidence files (with known mapping for non-standard naming: poster drops 'surface', capsule excluded), verifies QA files exist and contain real browser evidence markers. Found 1 gap: creator-prompt-dna-adapter has no QA evidence (reported as non-fatal WARN). Wired into regression orchestrator after example-check-coverage. Updated example-check-coverage infraSkip to include post-check-coverage. Promoted to retained_routes (now 23 retained routes). Selected creator-regression-duration-route as next winner. Added creator-prompt-dna-qa-route as fresh candidate (directly addresses the gap found by this check). All baseline gates pass.",
+  "observation": "Shipped creator-regression-duration-route: regression duration tracker (bun creator:regression-duration). Reads timing manifest written by the regression orchestrator after each run, compares per-check timings against stored baselines, and flags any check that exceeds 2x baseline. First run creates baseline (never fails). Orchestrator now writes examples/creator-regression-timing.json after each run. Wired into regression orchestrator after post-check-coverage (27 checks total). Promoted to retained_routes (now 24 retained routes). Selected creator-prompt-dna-qa-route as next winner. Added creator-surface-dark-mode-route as fresh candidate (creator-facing surface improvement).",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
-  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, and performance regressions",
+  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, performance regressions, and dark mode accessibility",
   "candidates": [
     {
       "id": "creator-regression-noise-route",
@@ -19,21 +19,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-regression-duration-route",
-      "axis": "proof method",
-      "mutation": "Add a regression duration tracker (bun creator:regression-duration) that records per-check timing baselines from the regression orchestrator output, compares against stored baselines, and flags any check that regresses beyond a threshold (e.g., 2x baseline) — catching slow performance regressions in Darwin checks before they accumulate.",
-      "phenotype": "scripts/creator-regression-duration.ts that parses the regression orchestrator's per-check timing output, stores baselines in examples/creator-regression-duration-baseline.json, and reports PASS/REGRESSION per check",
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 6,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Baseline file must be committed to track history. First run always creates baseline (never fails). Timing variance from CI/OS makes thresholds tricky — may need running-average approach. Check count changes (new checks added) require baseline reset — auto-detect and warn.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-prompt-dna-qa-route",
       "axis": "proof method",
       "mutation": "Generate QA evidence for the prompt DNA adapter surface (creator-prompt-dna-adapter.html). Currently the only retained surface without a .artifacts/creator-prompt-dna-adapter-qa.md file — exposed by the new creator:post-check-coverage audit. Generate real browser DOM evidence matching the standardized vision QA template pattern used across all other surfaces.",
@@ -46,10 +31,25 @@
         "minimal_core": 8
       },
       "risk": "Prompt DNA adapter is an image/video model adapter — visual phenotypes are prompt strings, not rendered media. QA evidence must document the adapter contract, canvas compliance, and boundary safety rather than visual output. Provider vision API may be unavailable (DOM fallback). Must not commit raw generated media.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-surface-dark-mode-route",
+      "axis": "surface",
+      "mutation": "Add a dark mode toggle to all creator surfaces (CSS custom properties + data-theme attribute switch). Industrial-brutalist aesthetic should support a dark variant with inverted paper texture, dimmed matrix scanline, and adjusted signal accent colors — preserving the aesthetic while improving creator comfort during late-night sessions.",
+      "phenotype": "Global dark mode CSS + toggle button on each creator surface. All 11 surfaces support data-theme='dark' without breaking measure:check or print:render. Machine check validates dark mode CSS custom properties are present and no overflow occurs in dark mode.",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 4,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Must not break measure:check or print:render in dark mode. Complex surface touch — needs per-surface verification. Industrial-brutalist dark palette requires taste-verified color choices.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-regression-duration-route",
+  "winner": "creator-prompt-dna-qa-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -194,9 +194,15 @@
       "selection": "retained",
       "retained_as": "Post-check QA evidence coverage audit (10/10 expected surfaces with QA, 1 known gap: prompt-dna-adapter)",
       "proof": ["bun creator:post-check-coverage", "bun creator:regression (wired after example-check-coverage)"]
+    },
+    {
+      "id": "creator-regression-duration-route",
+      "selection": "retained",
+      "retained_as": "Regression duration tracker (compares per-check timing vs baseline, flags >2x regressions)",
+      "proof": ["bun creator:regression-duration", "bun creator:regression (wired after post-check-coverage)"]
     }
   ],
-  "retention": "Promoted creator-post-check-coverage-route from candidates[] selected winner to retained_routes[] (shipped: 10/11 surfaces audited, 9/10 expected QA files present, 1 known gap: prompt-dna-adapter). Wired into regression orchestrator after example-check-coverage. Updated example-check-coverage infraSkip set to prevent false orphan. Selected creator-regression-duration-route as next winner. Added creator-prompt-dna-qa-route as fresh candidate (directly addresses the gap found).",
+  "retention": "Promoted creator-regression-duration-route from candidates[] selected winner to retained_routes[] (shipped: 27-check regression timing tracker with baseline comparison, 2x threshold, running-average baselines, first-run auto-baseline). Orchestrator now writes examples/creator-regression-timing.json after each run. Wired into regression orchestrator after post-check-coverage. Selected creator-prompt-dna-qa-route as next winner. Added creator-surface-dark-mode-route as fresh candidate (creator-facing dark mode toggle).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -208,6 +214,7 @@
     "bun creator:workflow-gate-health",
     "bun creator:example-check-coverage",
     "bun creator:post-check-coverage",
+    "bun creator:regression-duration",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
