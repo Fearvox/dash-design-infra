@@ -1,12 +1,12 @@
 {
-  "observation": "Shipped creator-prompt-dna-qa-route: standardized browser DOM QA evidence for prompt DNA adapter surface. Closes post-check-coverage gap (11/11 surfaces covered). 26 retained routes. Selected creator-surface-dark-mode-route. Added creator-measure-print-cache-route.",
+  "observation": "Deselected creator-surface-dark-mode-route: all 11 surfaces already use dark industrial-brutalist palette. Shipped creator-measure-print-cache-route: SHA-256 content-hash caching for measure:check + print:render across all 11 surfaces (26.6s fresh → 4ms cached, 6600x speedup). Selected creator-cache-integrity-route. Added creator-surface-dark-mode-is-dark check.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, performance regressions, and dark mode accessibility",
   "candidates": [
     {
       "id": "creator-regression-noise-route",
       "axis": "proof method",
-      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing bun-types lint noise in regression output, producing a clean PASS/FAIL surface report \u2014 improving autonomous Darwin signal-to-noise ratio.",
+      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing bun-types lint noise in regression output, producing a clean PASS/FAIL surface report — improving autonomous Darwin signal-to-noise ratio.",
       "phenotype": "scripts/creator-regression-filter.ts that wraps the regression orchestrator, filters out known pre-existing bun-types lint errors from output, and reports only actionable failures",
       "fitness": {
         "creator_utility": 4,
@@ -21,7 +21,7 @@
     {
       "id": "creator-surface-dark-mode-route",
       "axis": "surface",
-      "mutation": "Add a dark mode toggle to all creator surfaces (CSS custom properties + data-theme attribute switch). Industrial-brutalist aesthetic should support a dark variant with inverted paper texture, dimmed matrix scanline, and adjusted signal accent colors \u2014 preserving the aesthetic while improving creator comfort during late-night sessions.",
+      "mutation": "Add a dark mode toggle to all creator surfaces (CSS custom properties + data-theme attribute switch). Industrial-brutalist aesthetic should support a dark variant with inverted paper texture, dimmed matrix scanline, and adjusted signal accent colors — preserving the aesthetic while improving creator comfort during late-night sessions.",
       "phenotype": "Global dark mode CSS + toggle button on each creator surface. All 11 surfaces support data-theme='dark' without breaking measure:check or print:render. Machine check validates dark mode CSS custom properties are present and no overflow occurs in dark mode.",
       "fitness": {
         "creator_utility": 6,
@@ -30,26 +30,26 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Must not break measure:check or print:render in dark mode. Complex surface touch \u2014 needs per-surface verification. Industrial-brutalist dark palette requires taste-verified color choices.",
-      "selection": "selected"
+      "risk": "Deselected 2026-05-16: all 11 surfaces already use dark industrial-brutalist palette (--bg:#0b1114, cream text on dark). A dark-mode toggle on already-dark surfaces would be cosmetic noise. Candidate needs re-scoping to be creator-useful (e.g. 'ultra-dark' ambient variant, or light-mode for print/reading). Must not break measure:check or print:render.",
+      "selection": "candidate"
     },
     {
-      "id": "creator-measure-print-cache-route",
+      "id": "creator-cache-integrity-route",
       "axis": "proof method",
-      "mutation": "Add SHA-256 content-hash caching to measure:check and print:render to skip redundant browser launches for unchanged HTML files.",
-      "phenotype": "scripts/creator-measure-print-cache.ts wrapping measure/print with cache keyed by SHA-256 of source HTML, --no-cache force flag.",
+      "mutation": "Add cache integrity validation that cross-checks every cached measure-print entry's SHA-256 against current file content — catching stale cache entries when surfaces are modified but cache wasn't invalidated.",
+      "phenotype": "scripts/creator-cache-integrity.ts that reads all cache entries, recomputes SHA-256 of source files, and flags mismatches — ensuring cache never lies.",
       "fitness": {
-        "creator_utility": 4,
+        "creator_utility": 5,
         "memory_retention": 6,
         "artifact_proof": 5,
         "boundary_safety": 10,
-        "minimal_core": 8
+        "minimal_core": 7
       },
-      "risk": "Must not break measure/print output format. Cache files gitignored. SHA-256 guard prevents stale results.",
-      "selection": "candidate"
+      "risk": "Depends on cache directory structure from creator-measure-print-cache. Must handle missing cache directory gracefully (exit 2 for no-cache-yet).",
+      "selection": "selected"
     }
   ],
-  "winner": "creator-surface-dark-mode-route",
+  "winner": "creator-cache-integrity-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -284,9 +284,19 @@
         "bun creator:prompt-dna-check (includes vision QA gate)",
         "bun creator:post-check-coverage (gap closed)"
       ]
+    },
+    {
+      "id": "creator-measure-print-cache-route",
+      "selection": "retained",
+      "retained_as": "SHA-256 content-hash measure+print cache (26.6s fresh → 4ms cached, 6600x speedup)",
+      "proof": [
+        "bun creator:measure-print-cache (11/11 cached PASS)",
+        "bun creator:measure-print-cache -- --no-cache (11/11 fresh PASS)",
+        "bun creator:regression (wired after regression-duration)"
+      ]
     }
   ],
-  "retention": "Promoted creator-prompt-dna-qa-route to retained_routes. Selected dark-mode. Added measure-print-cache candidate.",
+  "retention": "Promoted creator-measure-print-cache-route to retained_routes. Deselected dark-mode (surfaces already dark). Selected cache-integrity. Added 4th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -299,6 +309,7 @@
     "bun creator:example-check-coverage",
     "bun creator:post-check-coverage",
     "bun creator:regression-duration",
+    "bun creator:measure-print-cache",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
