@@ -1,12 +1,12 @@
 {
-  "observation": "Shipped creator-regression-duration-route: regression duration tracker (bun creator:regression-duration). Reads timing manifest written by the regression orchestrator after each run, compares per-check timings against stored baselines, and flags any check that exceeds 2x baseline. First run creates baseline (never fails). Orchestrator now writes examples/creator-regression-timing.json after each run. Wired into regression orchestrator after post-check-coverage (27 checks total). Promoted to retained_routes (now 24 retained routes). Selected creator-prompt-dna-qa-route as next winner. Added creator-surface-dark-mode-route as fresh candidate (creator-facing surface improvement).",
+  "observation": "Shipped creator-prompt-dna-qa-route: standardized browser DOM QA evidence for prompt DNA adapter surface. Closes post-check-coverage gap (11/11 surfaces covered). 26 retained routes. Selected creator-surface-dark-mode-route. Added creator-measure-print-cache-route.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, performance regressions, and dark mode accessibility",
   "candidates": [
     {
       "id": "creator-regression-noise-route",
       "axis": "proof method",
-      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing bun-types lint noise in regression output, producing a clean PASS/FAIL surface report — improving autonomous Darwin signal-to-noise ratio.",
+      "mutation": "Add regression noise filtering (bun creator:regression-filter) that suppresses known pre-existing bun-types lint noise in regression output, producing a clean PASS/FAIL surface report \u2014 improving autonomous Darwin signal-to-noise ratio.",
       "phenotype": "scripts/creator-regression-filter.ts that wraps the regression orchestrator, filters out known pre-existing bun-types lint errors from output, and reports only actionable failures",
       "fitness": {
         "creator_utility": 4,
@@ -19,24 +19,9 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-prompt-dna-qa-route",
-      "axis": "proof method",
-      "mutation": "Generate QA evidence for the prompt DNA adapter surface (creator-prompt-dna-adapter.html). Currently the only retained surface without a .artifacts/creator-prompt-dna-adapter-qa.md file — exposed by the new creator:post-check-coverage audit. Generate real browser DOM evidence matching the standardized vision QA template pattern used across all other surfaces.",
-      "phenotype": ".artifacts/creator-prompt-dna-adapter-qa.md with real browser_console DOM evidence, creator:prompt-dna-check updated to generate QA artifact, post-check-coverage gap closed.",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 7,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Prompt DNA adapter is an image/video model adapter — visual phenotypes are prompt strings, not rendered media. QA evidence must document the adapter contract, canvas compliance, and boundary safety rather than visual output. Provider vision API may be unavailable (DOM fallback). Must not commit raw generated media.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-surface-dark-mode-route",
       "axis": "surface",
-      "mutation": "Add a dark mode toggle to all creator surfaces (CSS custom properties + data-theme attribute switch). Industrial-brutalist aesthetic should support a dark variant with inverted paper texture, dimmed matrix scanline, and adjusted signal accent colors — preserving the aesthetic while improving creator comfort during late-night sessions.",
+      "mutation": "Add a dark mode toggle to all creator surfaces (CSS custom properties + data-theme attribute switch). Industrial-brutalist aesthetic should support a dark variant with inverted paper texture, dimmed matrix scanline, and adjusted signal accent colors \u2014 preserving the aesthetic while improving creator comfort during late-night sessions.",
       "phenotype": "Global dark mode CSS + toggle button on each creator surface. All 11 surfaces support data-theme='dark' without breaking measure:check or print:render. Machine check validates dark mode CSS custom properties are present and no overflow occurs in dark mode.",
       "fitness": {
         "creator_utility": 6,
@@ -45,164 +30,263 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Must not break measure:check or print:render in dark mode. Complex surface touch — needs per-surface verification. Industrial-brutalist dark palette requires taste-verified color choices.",
+      "risk": "Must not break measure:check or print:render in dark mode. Complex surface touch \u2014 needs per-surface verification. Industrial-brutalist dark palette requires taste-verified color choices.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-measure-print-cache-route",
+      "axis": "proof method",
+      "mutation": "Add SHA-256 content-hash caching to measure:check and print:render to skip redundant browser launches for unchanged HTML files.",
+      "phenotype": "scripts/creator-measure-print-cache.ts wrapping measure/print with cache keyed by SHA-256 of source HTML, --no-cache force flag.",
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 6,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Must not break measure/print output format. Cache files gitignored. SHA-256 guard prevents stale results.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-prompt-dna-qa-route",
+  "winner": "creator-surface-dark-mode-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
       "selection": "retained",
       "retained_as": "fixed-canvas poster surface",
-      "proof": ["bun creator:poster-check", "bun measure:check -- examples/creator-poster-surface.html"]
+      "proof": [
+        "bun creator:poster-check",
+        "bun measure:check -- examples/creator-poster-surface.html"
+      ]
     },
     {
       "id": "adapter-prompt-dna-route",
       "selection": "retained",
       "retained_as": "image/video model prompt DNA adapter",
-      "proof": ["bun creator:prompt-dna-check", "bun measure:check -- examples/creator-prompt-dna-adapter.html"]
+      "proof": [
+        "bun creator:prompt-dna-check",
+        "bun measure:check -- examples/creator-prompt-dna-adapter.html"
+      ]
     },
     {
       "id": "creator-motion-storyboard-route",
       "selection": "retained",
       "retained_as": "six-frame motion storyboard surface",
-      "proof": ["bun creator:motion-storyboard-check", "bun measure:check -- examples/creator-motion-storyboard.html"]
+      "proof": [
+        "bun creator:motion-storyboard-check",
+        "bun measure:check -- examples/creator-motion-storyboard.html"
+      ]
     },
     {
       "id": "creator-social-card-route",
       "selection": "retained",
       "retained_as": "crop-safe social card surface",
-      "proof": ["bun creator:social-card-check", "bun measure:check -- examples/creator-social-card.html --canvas=1200x630"]
+      "proof": [
+        "bun creator:social-card-check",
+        "bun measure:check -- examples/creator-social-card.html --canvas=1200x630"
+      ]
     },
     {
       "id": "creator-p5-sketch-route",
       "selection": "retained",
       "retained_as": "deterministic p5 creative-coding adapter",
-      "proof": ["bun creator:p5-sketch-check", "bun p5:motion-check"]
+      "proof": [
+        "bun creator:p5-sketch-check",
+        "bun p5:motion-check"
+      ]
     },
     {
       "id": "creator-remotion-scene-route",
       "selection": "retained",
       "retained_as": "generated Remotion timeline-code adapter",
-      "proof": ["bun creator:remotion-scene-check", "bun measure:check -- examples/creator-remotion-scene.html"]
+      "proof": [
+        "bun creator:remotion-scene-check",
+        "bun measure:check -- examples/creator-remotion-scene.html"
+      ]
     },
     {
       "id": "creator-manim-scene-route",
       "selection": "retained",
       "retained_as": "generated Manim explainer-scene adapter",
-      "proof": ["bun creator:manim-scene-check", "bun measure:check -- examples/creator-manim-scene.html"]
+      "proof": [
+        "bun creator:manim-scene-check",
+        "bun measure:check -- examples/creator-manim-scene.html"
+      ]
     },
     {
       "id": "creator-touchdesigner-tox-route",
       "selection": "retained",
       "retained_as": "generated TouchDesigner/twozero topology and safety handoff",
-      "proof": ["bun creator:touchdesigner-tox-check", "bun measure:check -- examples/creator-touchdesigner-tox.html"]
+      "proof": [
+        "bun creator:touchdesigner-tox-check",
+        "bun measure:check -- examples/creator-touchdesigner-tox.html"
+      ]
     },
     {
       "id": "creator-touchdesigner-vision-qa-route",
       "selection": "retained",
       "retained_as": "standardized browser DOM/vision QA evidence for TouchDesigner surface",
-      "proof": ["bun creator:touchdesigner-tox-check (includes vision QA gate)", "regression: all 10 routes covered"]
+      "proof": [
+        "bun creator:touchdesigner-tox-check (includes vision QA gate)",
+        "regression: all 10 routes covered"
+      ]
     },
     {
       "id": "creator-browser-demo-route",
       "selection": "retained",
       "retained_as": "self-contained clickable local browser phenotype",
-      "proof": ["bun creator:browser-demo-check", "bun measure:check -- examples/creator-browser-demo.html"]
+      "proof": [
+        "bun creator:browser-demo-check",
+        "bun measure:check -- examples/creator-browser-demo.html"
+      ]
     },
     {
       "id": "creator-pdf-zine-route",
       "selection": "retained",
       "retained_as": "six-panel printable PDF zine surface",
-      "proof": ["bun creator:pdf-zine-check", "bun measure:check -- examples/creator-pdf-zine.html"]
+      "proof": [
+        "bun creator:pdf-zine-check",
+        "bun measure:check -- examples/creator-pdf-zine.html"
+      ]
     },
     {
       "id": "creator-regression-orchestrator-route",
       "selection": "retained",
-      "retained_as": "unified regression orchestrator (24-check surface + autonomy + hackathon:score in one pass)",
-      "proof": ["bun creator:regression", "regression: all 24 checks pass"]
+      "retained_as": "unified regression orchestrator (27-check in one pass)",
+      "proof": [
+        "bun creator:regression",
+        "regression: all 24 checks pass"
+      ]
     },
     {
       "id": "creator-darwin-autonomy-route",
       "selection": "retained",
       "retained_as": "Darwin autonomy pre-flight check",
-      "proof": ["bun creator:darwin-autonomy-check", "bun creator:regression (includes autonomy check)"]
+      "proof": [
+        "bun creator:darwin-autonomy-check",
+        "bun creator:regression (includes autonomy check)"
+      ]
     },
     {
       "id": "creator-multi-surface-proof-route",
       "selection": "retained",
       "retained_as": "unified artifact-measurement gateway (all 11 retained surface HTML artifacts)",
-      "proof": ["bun creator:multi-surface-proof", "bun creator:regression (includes multi-surface-proof)"]
+      "proof": [
+        "bun creator:multi-surface-proof",
+        "bun creator:regression (includes multi-surface-proof)"
+      ]
     },
     {
       "id": "creator-playwright-health-route",
       "selection": "retained",
       "retained_as": "Playwright Chromium binary health pre-flight",
-      "proof": ["bun creator:playwright-health-check", "bun creator:regression (wired as first check)"]
+      "proof": [
+        "bun creator:playwright-health-check",
+        "bun creator:regression (wired as first check)"
+      ]
     },
     {
       "id": "creator-docs-surface-parity-route",
       "selection": "retained",
       "retained_as": "Creator docs-surface parity check (10-way cross-reference)",
-      "proof": ["bun creator:docs-surface-parity", "bun creator:regression (validates 0-issue parity)"]
+      "proof": [
+        "bun creator:docs-surface-parity",
+        "bun creator:regression (validates 0-issue parity)"
+      ]
     },
     {
       "id": "creator-cron-slice-health-route",
       "selection": "retained",
       "retained_as": "Creator cron slice health check",
-      "proof": ["bun creator:cron-slice-health", "bun creator:regression (wired after autonomy check)"]
+      "proof": [
+        "bun creator:cron-slice-health",
+        "bun creator:regression (wired after autonomy check)"
+      ]
     },
     {
       "id": "creator-agent-context-route",
       "selection": "retained",
       "retained_as": "Agent context health check",
-      "proof": ["bun creator:agent-context-health", "bun creator:regression (wired after docs-surface-parity)"]
+      "proof": [
+        "bun creator:agent-context-health",
+        "bun creator:regression (wired after docs-surface-parity)"
+      ]
     },
     {
       "id": "creator-surface-health-route",
       "selection": "retained",
       "retained_as": "Per-surface health check (dynamically discovers all creator-*.html surfaces)",
-      "proof": ["bun creator:surface-health", "bun creator:regression (wired after agent-context-health)"]
+      "proof": [
+        "bun creator:surface-health",
+        "bun creator:regression (wired after agent-context-health)"
+      ]
     },
     {
       "id": "creator-script-health-route",
       "selection": "retained",
       "retained_as": "Script source file health check (validates every creator:* package.json script has an existing source file)",
-      "proof": ["bun creator:script-health", "bun creator:regression (wired after surface-health)"]
+      "proof": [
+        "bun creator:script-health",
+        "bun creator:regression (wired after surface-health)"
+      ]
     },
     {
       "id": "creator-orphan-script-route",
       "selection": "retained",
-      "retained_as": "Orphan script detection (discovers scripts/creator-*.ts files without package.json entries — 26/26 matched, 0 orphans)",
-      "proof": ["bun creator:orphan-script", "bun creator:regression (wired after script-health)"]
+      "retained_as": "Orphan script detection (discovers scripts/creator-*.ts files without package.json entries \u2014 26/26 matched, 0 orphans)",
+      "proof": [
+        "bun creator:orphan-script",
+        "bun creator:regression (wired after script-health)"
+      ]
     },
     {
       "id": "creator-workflow-gate-health-route",
       "selection": "retained",
-      "retained_as": "WORKFLOW_INDEX gate health check (cross-references all 32 gates against package.json scripts, validates existence and execution — 32/32 PASS)",
-      "proof": ["bun creator:workflow-gate-health", "bun creator:regression (wired after script-health)"]
+      "retained_as": "WORKFLOW_INDEX gate health check (cross-references all 32 gates against package.json scripts, validates existence and execution \u2014 32/32 PASS)",
+      "proof": [
+        "bun creator:workflow-gate-health",
+        "bun creator:regression (wired after script-health)"
+      ]
     },
     {
       "id": "creator-example-check-coverage-route",
       "selection": "retained",
-      "retained_as": "Example surface check coverage audit (discovers all examples/creator-*.html surfaces, maps to expected check scripts, validates existence in package.json — 11/11 surfaces covered, 0 orphans)",
-      "proof": ["bun creator:example-check-coverage", "bun creator:regression (wired after workflow-gate-health)"]
+      "retained_as": "Example surface check coverage audit (discovers all examples/creator-*.html surfaces, maps to expected check scripts, validates existence in package.json \u2014 11/11 surfaces covered, 0 orphans)",
+      "proof": [
+        "bun creator:example-check-coverage",
+        "bun creator:regression (wired after workflow-gate-health)"
+      ]
     },
     {
       "id": "creator-post-check-coverage-route",
       "selection": "retained",
-      "retained_as": "Post-check QA evidence coverage audit (10/10 expected surfaces with QA, 1 known gap: prompt-dna-adapter)",
-      "proof": ["bun creator:post-check-coverage", "bun creator:regression (wired after example-check-coverage)"]
+      "retained_as": "Post-check QA evidence coverage audit (11/11 surfaces with QA, 0 gaps)",
+      "proof": [
+        "bun creator:post-check-coverage",
+        "bun creator:regression (wired after example-check-coverage)"
+      ]
     },
     {
       "id": "creator-regression-duration-route",
       "selection": "retained",
       "retained_as": "Regression duration tracker (compares per-check timing vs baseline, flags >2x regressions)",
-      "proof": ["bun creator:regression-duration", "bun creator:regression (wired after post-check-coverage)"]
+      "proof": [
+        "bun creator:regression-duration",
+        "bun creator:regression (wired after post-check-coverage)"
+      ]
+    },
+    {
+      "id": "creator-prompt-dna-qa-route",
+      "selection": "retained",
+      "retained_as": "standardized browser DOM/vision QA evidence for prompt DNA adapter surface",
+      "proof": [
+        "bun creator:prompt-dna-check (includes vision QA gate)",
+        "bun creator:post-check-coverage (gap closed)"
+      ]
     }
   ],
-  "retention": "Promoted creator-regression-duration-route from candidates[] selected winner to retained_routes[] (shipped: 27-check regression timing tracker with baseline comparison, 2x threshold, running-average baselines, first-run auto-baseline). Orchestrator now writes examples/creator-regression-timing.json after each run. Wired into regression orchestrator after post-check-coverage. Selected creator-prompt-dna-qa-route as next winner. Added creator-surface-dark-mode-route as fresh candidate (creator-facing dark mode toggle).",
+  "retention": "Promoted creator-prompt-dna-qa-route to retained_routes. Selected dark-mode. Added measure-print-cache candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
