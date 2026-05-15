@@ -3,11 +3,19 @@
  * Creator Regression Orchestrator
  *
  * Runs every surface check + mutation-check + capsule-check +
- * evolution-check + hackathon:score in one pass. Now 22 checks
+ * evolution-check + hackathon:score in one pass. Now 27 checks
  * including pre-flight gate chain.
  * Reports per-surface PASS/FAIL with timing.
  * Aggregate verdict: all surfaces must pass.
+ * Writes timing manifest to examples/creator-regression-timing.json
+ * for the regression-duration check.
  */
+
+import { writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const CWD = process.cwd();
+const TIMING_PATH = join(CWD, 'examples', 'creator-regression-timing.json');
 
 const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:playwright-health-check', command: 'bun', args: ['run', 'creator:playwright-health-check'] },
@@ -21,6 +29,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:workflow-gate-health', command: 'bun', args: ['run', 'creator:workflow-gate-health'] },
   { name: 'creator:example-check-coverage', command: 'bun', args: ['run', 'creator:example-check-coverage'] },
   { name: 'creator:post-check-coverage', command: 'bun', args: ['run', 'creator:post-check-coverage'] },
+  { name: 'creator:regression-duration', command: 'bun', args: ['run', 'creator:regression-duration'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },
@@ -101,6 +110,17 @@ async function main() {
   }
 
   console.log(`\ncreator-regression: ${allPassed ? 'PASS all surfaces verified' : 'FAIL one or more surfaces failed'}`);
+
+  // Write timing manifest for regression-duration check
+  const timingManifest = {
+    timestamp: new Date().toISOString(),
+    totalMs,
+    passed,
+    failed,
+    checks: results.map((r) => ({ name: r.name, durationMs: r.durationMs })),
+  };
+  writeFileSync(TIMING_PATH, JSON.stringify(timingManifest, null, 2) + '\n');
+
   process.exit(allPassed ? 0 : 1);
 }
 
