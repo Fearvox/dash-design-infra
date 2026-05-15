@@ -78,6 +78,7 @@
     "creator:example-check-coverage": "bun scripts/creator-example-check-coverage.ts",
     "creator:post-check-coverage": "bun scripts/creator-post-check-coverage.ts",
     "creator:regression-duration": "bun scripts/creator-regression-duration.ts",
+    "creator:measure-print-cache": "bun scripts/creator-measure-print-cache.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"
