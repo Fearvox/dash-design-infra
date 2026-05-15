@@ -74,6 +74,7 @@
     "creator:agent-context-health": "bun scripts/creator-agent-context-health.ts",
     "creator:surface-health": "bun scripts/creator-surface-health.ts",
     "creator:script-health": "bun scripts/creator-script-health.ts",
+    "creator:orphan-script": "bun scripts/creator-orphan-script.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"
