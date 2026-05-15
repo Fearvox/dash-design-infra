@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Creator Family DNA — DASH Visual Grammar Reference</title>
+<style>
+@page { size: 1684px 1191px; margin: 0; }
+@media print {
+  html, body { width: 1684px; height: 1191px; margin: 0; overflow: hidden; }
+}
+
+:root {
+  --night: #070b0d;
+  --night-soft: #0d1418;
+  --paper: #f2eadb;
+  --ink: #15120e;
+  --muted: #6f6659;
+  --line: rgba(244, 234, 214, 0.12);
+  --signal: #7ef0c1;
+  --accent: #ffb86b;
+  --blue: #1d4ed8;
+  --amber: #c47a1f;
+  --green: #2f6f4e;
+  --panel: rgba(244, 234, 214, 0.06);
+  --panel-hot: rgba(244, 234, 214, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(126, 240, 193, 0.12), transparent 30%),
+    radial-gradient(circle at 6% 94%, rgba(255, 184, 107, 0.10), transparent 36%),
+    var(--night);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page {
+  width: 1684px;
+  height: 1191px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(244, 234, 214, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(244, 234, 214, 0.025) 1px, transparent 1px),
+    linear-gradient(135deg, var(--night-soft) 0%, var(--night) 52%, #06090c 100%);
+  background-size: 44px 44px, 44px 44px, auto;
+  padding: 44px 52px 32px;
+  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.48);
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  font: 850 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 6px;
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 520;
+  color: var(--paper);
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.4;
+  max-width: 680px;
+}
+
+.meta {
+  text-align: right;
+  font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: var(--panel);
+}
+
+.meta span {
+  display: block;
+  color: var(--signal);
+}
+
+/* Family grid: 3 columns */
+.families {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.family-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  background: var(--panel);
+}
+
+.family-card h2 {
+  margin: 0 0 2px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 520;
+  color: var(--paper);
+}
+
+.family-card .count {
+  font: 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.family-card .desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.family-card .role-tag {
+  display: inline-block;
+  font: 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+
+.tag-light { background: rgba(242, 234, 219, 0.12); color: #f2eadb; }
+.tag-ink { background: rgba(21, 18, 14, 0.50); color: #e4dac8; }
+.tag-signal { background: rgba(126, 240, 193, 0.16); color: #7ef0c1; }
+.tag-accent { background: rgba(255, 184, 107, 0.16); color: #ffb86b; }
+
+.swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.swatch {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.swatch .hex {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  font: 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.swatch .name {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font: 8px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: rgba(255,255,255,0.7);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Token table for families */
+.token-table {
+  width: 100%;
+  margin-top: 14px;
+  border-collapse: collapse;
+  font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.token-table th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+}
+
+.token-table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid rgba(244, 234, 214, 0.06);
+  color: var(--paper);
+}
+
+.token-table .val {
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.token-table .hex-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.token-table .mini-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(244, 234, 214, 0.2);
+  flex-shrink: 0;
+}
+
+  /* Grammar card — compact */
+.grammar {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px 24px;
+  background: var(--panel);
+}
+
+.grammar h2 {
+  margin: 0 0 2px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 520;
+  color: var(--signal);
+}
+
+.grammar .lead {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-bottom: 12px;
+  max-width: 1100px;
+}
+
+.grammar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.principle {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--panel-hot);
+}
+
+.principle h3 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--paper);
+}
+
+.principle p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.principle .do {
+  color: var(--signal);
+  font-weight: 600;
+}
+
+.principle .dont {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* Inline consistency callout */
+.consistency-callout {
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 184, 107, 0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.consistency-callout strong {
+  color: var(--accent);
+}
+.proof-rail {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  background: rgba(7, 11, 13, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0;
+  z-index: 2;
+}
+
+.proof-tile {
+  flex: 1;
+  padding: 12px 16px;
+  border-right: 1px solid var(--line);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.proof-tile:last-child { border-right: none; }
+
+.proof-tile b {
+  display: block;
+  font: 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 3px;
+}
+
+.proof-tile span {
+  color: var(--muted);
+}
+
+/* Consistency callout */
+.consistency-callout {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 184, 107, 0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.consistency-callout strong {
+  color: var(--accent);
+}
+
+/* Machine-readable data attributes */
+[data-family] { }
+[data-token-name] { }
+[data-token-value] { }
+</style>
+</head>
+<body>
+<main class="page" data-route="creator-family-dna-route" aria-label="DASH Visual Grammar Family DNA Reference">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="eyebrow">Creator Visual Grammar · Family DNA Reference</div>
+      <h1>DASH <em>editorial warmth</em> meets<br />industrial-brutalist <em>constraint</em></h1>
+      <p class="subtitle">A machine-readable visual reference for the 3 creator families and their CSS token grammar.
+      Not a gallery — a contract that surfaces can measure convergence against.</p>
+    </div>
+    <aside class="meta" aria-label="Reference metadata">
+      <span>11 surfaces · 3 families</span>
+      0 shared tokens · 12 diverged<br />
+      20 unique · 1 no-token-layer<br />
+      Consensus: warm-paper majority
+    </aside>
+  </div>
+
+  <!-- Families -->
+  <div class="families">
+
+    <!-- Warm Paper Family -->
+    <div class="family-card" data-family="warm-paper">
+      <h2>warm-paper</h2>
+      <div class="count">6 surfaces · editorial default</div>
+      <p class="desc">Warm off-white paper ground, deep near-black ink, muted earth undertones, restrained blue/amber/green signals. The DASH editorial default — zine-like economy meets book-design warmth.</p>
+
+      <div class="swatch-row">
+        <div class="swatch" style="background:#f2eadb;" data-token-name="--paper" data-token-value="#f2eadb"><span class="name">paper</span><span class="hex">#f2eadb</span></div>
+        <div class="swatch" style="background:#15120e;" data-token-name="--ink" data-token-value="#15120e"><span class="name">ink</span><span class="hex">#15120e</span></div>
+        <div class="swatch" style="background:#6f6659;" data-token-name="--muted" data-token-value="#6f6659"><span class="name">muted</span><span class="hex">#6f6659</span></div>
+        <div class="swatch" style="background:rgba(21,18,14,0.18);" data-token-name="--line" data-token-value="rgba(21,18,14,0.18)"><span class="name">line</span><span class="hex">rgba(...)</span></div>
+        <div class="swatch" style="background:#1d4ed8;" data-token-name="--blue" data-token-value="#1d4ed8"><span class="name">blue</span><span class="hex">#1d4ed8</span></div>
+        <div class="swatch" style="background:#c47a1f;" data-token-name="--amber" data-token-value="#c47a1f"><span class="name">amber</span><span class="hex">#c47a1f</span></div>
+        <div class="swatch" style="background:#2f6f4e;" data-token-name="--green" data-token-value="#2f6f4e"><span class="name">green</span><span class="hex">#2f6f4e</span></div>
+      </div>
+
+      <table class="token-table" aria-label="Warm-paper family token reference">
+        <tr><th>token</th><th>consensus</th><th>surfaces</th></tr>
+        <tr><td>--paper</td><td class="val">#f2eadb</td><td>motion-storyboard, prompt-dna, social-card (majority); pdf-zine, poster-surface, p5-sketch (drifted)</td></tr>
+        <tr><td>--ink</td><td class="val">#15120e</td><td>motion-storyboard, poster-surface, prompt-dna, social-card (4/6)</td></tr>
+        <tr><td>--muted</td><td class="val">#6f6659</td><td>motion-storyboard, social-card (2/6, diverse drift)</td></tr>
+        <tr><td>--line</td><td class="val">rgba(21,18,14,0.18)</td><td>motion-storyboard, prompt-dna, social-card (3/6)</td></tr>
+        <tr><td>--blue</td><td class="val">#1d4ed8</td><td>4 surfaces (pdf-zine drifted to #1f55d4)</td></tr>
+        <tr><td>--amber</td><td class="val">#c47a1f</td><td>motion-storyboard, poster-surface; others nearby</td></tr>
+        <tr><td>--green</td><td class="val">#2f6f4e</td><td>4 surfaces (p5-sketch diverges to #10291f intentionally)</td></tr>
+      </table>
+    </div>
+
+    <!-- Dark Industrial Family -->
+    <div class="family-card" data-family="dark-industrial">
+      <h2>dark-industrial</h2>
+      <div class="count">2 surfaces · deep monitoring</div>
+      <p class="desc">Near-black grounds, signal-green accents, cream paper text on dark panels. For living monitoring surfaces, browser demos, and TOX handoffs — the industrial-brutalist core of DASH.</p>
+
+      <div class="swatch-row">
+        <div class="swatch" style="background:#0b1114;" data-token-name="--bg" data-token-value="#0b1114"><span class="name">bg</span><span class="hex">#0b1114</span></div>
+        <div class="swatch" style="background:#f4ead6;" data-token-name="--paper" data-token-value="#f4ead6"><span class="name">paper</span><span class="hex">#f4ead6</span></div>
+        <div class="swatch" style="background:#7ef0c1;" data-token-name="--signal" data-token-value="#7ef0c1"><span class="name">signal</span><span class="hex">#7ef0c1</span></div>
+        <div class="swatch" style="background:#ff9f6e;" data-token-name="--accent" data-token-value="#ff9f6e"><span class="name">accent</span><span class="hex">#ff9f6e</span></div>
+        <div class="swatch" style="background:#294148;" data-token-name="--line" data-token-value="#294148"><span class="name">line</span><span class="hex">#294148</span></div>
+        <div class="swatch" style="background:#94a69f;" data-token-name="--muted" data-token-value="#94a69f"><span class="name">muted</span><span class="hex">#94a69f</span></div>
+        <div class="swatch" style="background:#111318;" data-token-name="--ink" data-token-value="#111318"><span class="name">ink</span><span class="hex">#111318</span></div>
+      </div>
+
+      <table class="token-table" aria-label="Dark-industrial family token reference">
+        <tr><th>token</th><th>exemplar</th><th>surfaces</th></tr>
+        <tr><td>--bg</td><td class="val">#0b1114</td><td>browser-demo; remotion-scene uses #111318</td></tr>
+        <tr><td>--paper</td><td class="val">#f4ead6</td><td>browser-demo only; remotion has no --paper</td></tr>
+        <tr><td>--signal</td><td class="val">#7ef0c1</td><td>browser-demo; remotion uses #8cb8ff</td></tr>
+        <tr><td>--accent</td><td class="val">#ff9f6e</td><td>browser-demo; remotion uses #ffb86b</td></tr>
+        <tr><td>--line</td><td class="val">#294148</td><td>browser-demo; remotion uses #394150</td></tr>
+        <tr><td>--muted</td><td class="val">#94a69f</td><td>browser-demo; remotion uses #7a7164</td></tr>
+        <tr><td>--ink</td><td class="val">#111318</td><td>both surfaces agree</td></tr>
+      </table>
+    </div>
+
+    <!-- Creative Hybrid Family -->
+    <div class="family-card" data-family="creative-hybrid">
+      <h2>creative-hybrid</h2>
+      <div class="count">1 surface · explainer dark</div>
+      <p class="desc">Dark blue-black ground, cream paper text, science-blue signals, warm amber secondary, muted blue-grey linework. For explainer scenes, TOX topology, and creative-coding surfaces that blend dark-industrial structure with warm-paper legibility.</p>
+
+      <div class="swatch-row">
+        <div class="swatch" style="background:#0f172a;" data-token-name="--night" data-token-value="#0f172a"><span class="name">night</span><span class="hex">#0f172a</span></div>
+        <div class="swatch" style="background:#172033;" data-token-name="--night-soft" data-token-value="#172033"><span class="name">night-soft</span><span class="hex">#172033</span></div>
+        <div class="swatch" style="background:#f8f1df;" data-token-name="--paper" data-token-value="#f8f1df"><span class="name">paper</span><span class="hex">#f8f1df</span></div>
+        <div class="swatch" style="background:#111827;" data-token-name="--ink" data-token-value="#111827"><span class="name">ink</span><span class="hex">#111827</span></div>
+        <div class="swatch" style="background:#8db4ff;" data-token-name="--blue" data-token-value="#8db4ff"><span class="name">blue</span><span class="hex">#8db4ff</span></div>
+        <div class="swatch" style="background:#d4a373;" data-token-name="--amber" data-token-value="#d4a373"><span class="name">amber</span><span class="hex">#d4a373</span></div>
+        <div class="swatch" style="background:#9bd6ad;" data-token-name="--green" data-token-value="#9bd6ad"><span class="name">green</span><span class="hex">#9bd6ad</span></div>
+      </div>
+
+      <table class="token-table" aria-label="Creative-hybrid family token reference">
+        <tr><th>token</th><th>value</th><th>role</th></tr>
+        <tr><td>--night</td><td class="val">#0f172a</td><td>deep page ground</td></tr>
+        <tr><td>--night-soft</td><td class="val">#172033</td><td>panel/card ground</td></tr>
+        <tr><td>--paper</td><td class="val">#f8f1df</td><td>text on dark</td></tr>
+        <tr><td>--ink</td><td class="val">#111827</td><td>text on paper (rare on this surface)</td></tr>
+        <tr><td>--muted</td><td class="val">#8b9ab1</td><td>secondary text</td></tr>
+        <tr><td>--line</td><td class="val">rgba(248,241,223,0.2)</td><td>dividers on dark</td></tr>
+        <tr><td>--blue</td><td class="val">#8db4ff</td><td>primary signal (pastel-science)</td></tr>
+        <tr><td>--amber</td><td class="val">#d4a373</td><td>warm secondary</td></tr>
+        <tr><td>--green</td><td class="val">#9bd6ad</td><td>success/positive</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Grammar Card -->
+  <div class="grammar" aria-label="Capsule grammar card: DASH visual DNA principles">
+    <h2>capsule grammar card</h2>
+    <p class="lead">The DASH visual DNA is not a single palette — it is a <strong>contract of constraints</strong>. Every surface must choose a family and declare its tokens in <code>:root</code>. The grammar is: dark-industrial for monitoring, warm-paper for editorial, creative-hybrid for explainers. Drift is allowed for creative role; nameless hardcoded values are not.</p>
+
+    <div class="grammar-grid">
+      <div class="principle">
+        <h3>1. Every surface has a <code>:root</code></h3>
+        <p>No hardcoded colors in selectors. Every color must pass through a CSS custom property declared in <code>:root</code> and referenced via <code>var()</code>.</p>
+        <p class="dont">✗ touchdesigner-tox: zero CSS custom properties — 12 hardcoded values.</p>
+      </div>
+
+      <div class="principle">
+        <h3>2. Choose a family, declare its tokens</h3>
+        <p>Pick <span style="color:var(--signal);">warm-paper</span>, <span style="color:var(--signal);">dark-industrial</span>, or <span style="color:var(--signal);">creative-hybrid</span>. Declare the family's token set in <code>:root</code>. Converge to consensus unless creative divergence is intentional.</p>
+        <p class="do">✓ --blue→#1d4ed8 in warm-paper; --blue→#8db4ff in creative-hybrid.</p>
+      </div>
+
+      <div class="principle">
+        <h3>3. Naming is part of grammar</h3>
+        <p>Same concept, same name. Don't use <code>--bg</code> in one surface and <code>--night</code> in another for the same role. Don't interchange <code>--signal</code>/<code>--accent</code>/<code>--blue</code>.</p>
+        <p class="dont">✗ 6 names for "background", 3 for "primary accent", 3 for "error".</p>
+      </div>
+
+      <div class="principle">
+        <h3>4. Machine-checkable convergence</h3>
+        <p><code>bun creator:surface-consistency</code> audits every surface's <code>:root</code>. This card defines the consensus target it measures drift <em>against</em>.</p>
+        <p class="do">✓ Consensus → warm-paper majority. Consensus pill: paper #f2eadb · ink #15120e · muted #6f6659 · blue #1d4ed8 · amber #c47a1f · green #2f6f4e · line rgba(21,18,14,0.18).</p>
+      </div>
+    </div>
+
+    <!-- Inline consistency callout -->
+    <div class="consistency-callout">
+      <strong>NorthStar:</strong> creator-surface-consistency-route — aesthetic coherence, not mechanical uniformity. Each alignment slice moves one drifted token toward family consensus without homogenizing the surface's unique creative role. p5-sketch's <code>--green: #10291f</code> is intentionally creative-hybrid; poster-surface's <code>--muted: #6f675b</code> is accidental drift.
+    </div>
+  </div>
+
+  <!-- Proof rail -->
+  <div class="proof-rail" aria-label="DASH family DNA proof rail">
+    <div class="proof-tile"><b>Measure</b><span>Fixed canvas 1684×1191 via <code>bun measure:check</code> with <code>.page</code> selector.</span></div>
+    <div class="proof-tile"><b>Print</b><span>PDF proof via <code>bun print:render</code> at 1684×1191. Print CSS preserves all swatches and token tables.</span></div>
+    <div class="proof-tile"><b>Check</b><span><code>bun creator:family-dna-check</code> validates: 3 family sections present, consensus values parseable, grammar card complete, no hardcoded colors in body.</span></div>
+    <div class="proof-tile"><b>Convergence</b><span><code>bun creator:surface-consistency</code> measures drift against consensus values. This card is the human-readable target.</span></div>
+    <div class="proof-tile"><b>Retention</b><span>Promote after gates pass + 1 surface aligns to consensus using this card as reference.</span></div>
+    <div class="proof-tile"><b>Boundary</b><span>No private source, raw media, screenshots, external deps. Public-safe CSS token reference only.</span></div>
+  </div>
+
+</main>
+</body>
+</html>
