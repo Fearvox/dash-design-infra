@@ -19,6 +19,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:script-health', command: 'bun', args: ['run', 'creator:script-health'] },
   { name: 'creator:orphan-script', command: 'bun', args: ['run', 'creator:orphan-script'] },
   { name: 'creator:workflow-gate-health', command: 'bun', args: ['run', 'creator:workflow-gate-health'] },
+  { name: 'creator:example-check-coverage', command: 'bun', args: ['run', 'creator:example-check-coverage'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },
