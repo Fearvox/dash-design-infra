@@ -109,7 +109,7 @@ const infraSkip = new Set([
   'creator:orphan-script', 'creator:multi-surface-proof',
   'creator:playwright-health-check', 'creator:agent-context-health',
   'creator:contact-sheet-check', 'creator:skill-package-check',
-  'creator:example-check-coverage',
+  'creator:example-check-coverage', 'creator:post-check-coverage',
 ]);
 
 const expectedScripts = new Set(mappings.map((m) => m.expectedScript));
