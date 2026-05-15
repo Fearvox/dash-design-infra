@@ -31,6 +31,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:post-check-coverage', command: 'bun', args: ['run', 'creator:post-check-coverage'] },
   { name: 'creator:regression-duration', command: 'bun', args: ['run', 'creator:regression-duration'] },
   { name: 'creator:measure-print-cache', command: 'bun', args: ['run', 'creator:measure-print-cache'] },
+  { name: 'creator:cache-integrity', command: 'bun', args: ['run', 'creator:cache-integrity'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },

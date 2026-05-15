@@ -1,5 +1,5 @@
 {
-  "observation": "Deselected creator-surface-dark-mode-route: all 11 surfaces already use dark industrial-brutalist palette. Shipped creator-measure-print-cache-route: SHA-256 content-hash caching for measure:check + print:render across all 11 surfaces (26.6s fresh → 4ms cached, 6600x speedup). Selected creator-cache-integrity-route. Added creator-surface-dark-mode-is-dark check.",
+  "observation": "Shipped creator-cache-integrity-route: SHA-256 cross-check of all 11 cached measure-print entries against current source content (11/11 valid). Deselected cache-integrity from candidates. Selected creator-surface-consistency-route. Added surface-consistency as 4th candidate.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, performance regressions, and dark mode accessibility",
   "candidates": [
@@ -34,22 +34,22 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-cache-integrity-route",
-      "axis": "proof method",
-      "mutation": "Add cache integrity validation that cross-checks every cached measure-print entry's SHA-256 against current file content — catching stale cache entries when surfaces are modified but cache wasn't invalidated.",
-      "phenotype": "scripts/creator-cache-integrity.ts that reads all cache entries, recomputes SHA-256 of source files, and flags mismatches — ensuring cache never lies.",
+      "id": "creator-surface-consistency-route",
+      "axis": "surface",
+      "mutation": "Cross-check all 11 creator surfaces for consistent CSS custom property usage (core palette, typography, spacing). Catches drift where one surface inadvertently diverges from shared design tokens — ensuring the industrial-brutalist aesthetic stays uniform across the capsule-to-artifact pipeline.",
+      "phenotype": "scripts/creator-surface-consistency.ts that extracts CSS custom properties from each surface, identifies outliers, and reports per-property consistency. Exits 0 when all surfaces share the same core palette and spacing tokens.",
       "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 5,
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 4,
         "boundary_safety": 10,
-        "minimal_core": 7
+        "minimal_core": 6
       },
-      "risk": "Depends on cache directory structure from creator-measure-print-cache. Must handle missing cache directory gracefully (exit 2 for no-cache-yet).",
+      "risk": "Surfaces are self-contained HTML files — they may define minor surface-specific CSS vars that differ legitimately. Must use a tolerant comparison (allow surface IDs, surface-specific accent colors) while flagging drift in shared tokens (--bg, --text, --accent, --paper, grid). May need a known-mapping for surface-specific overrides.",
       "selection": "selected"
     }
   ],
-  "winner": "creator-cache-integrity-route",
+  "winner": "creator-surface-consistency-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -294,9 +294,18 @@
         "bun creator:measure-print-cache -- --no-cache (11/11 fresh PASS)",
         "bun creator:regression (wired after regression-duration)"
       ]
+    },
+    {
+      "id": "creator-cache-integrity-route",
+      "selection": "retained",
+      "retained_as": "SHA-256 cache integrity cross-check (validates every cached entry against current source content — catches stale cache)",
+      "proof": [
+        "bun creator:cache-integrity (11/11 valid — all hashes match)",
+        "bun creator:regression (wired after measure-print-cache)"
+      ]
     }
   ],
-  "retention": "Promoted creator-measure-print-cache-route to retained_routes. Deselected dark-mode (surfaces already dark). Selected cache-integrity. Added 4th candidate.",
+  "retention": "Promoted creator-cache-integrity-route to retained_routes. Deselected cache-integrity from candidates. Selected surface-consistency. Added surface-consistency as 4th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
