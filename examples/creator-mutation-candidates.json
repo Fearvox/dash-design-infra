@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-surface-consistency-route: CSS custom property audit across all 11 creator surfaces. 0 shared tokens (same name + same value), 12 diverged tokens, 20 unique tokens, 1 surface with no token layer (touchdesigner-tox). 3 visual families identified: warm-paper (6), dark-industrial (2), creative-hybrid (2). Promoted to retained_routes. Selected creator-token-alignment-route. Added family-dna-artifact as replacement 4th candidate.",
+  "observation": "Shipped creator-token-alignment-route (PR #64): aligned 7 CSS custom properties on creator-motion-storyboard.html to warm-paper family consensus (--paper, --ink, --muted, --line, --blue, --amber, --green). All gates MAXXED (316/316 hackathon, 11/11 measure+print, typecheck, security, docs). Promoted token-alignment to retained_routes. Selected creator-family-dna-artifact-route. Added creator-surface-convergence-route as replacement 4th candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -34,21 +34,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-token-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align one warm-paper family surface's CSS tokens to a shared reference (pick the most-common value per diverged token). Verify measure:check + print:render still pass after realignment. This is the first actual aesthetic coherence mutation — moving from diagnostic to repair.",
-      "phenotype": "One surface (e.g., creator-motion-storyboard.html or creator-poster-surface.html) with aligned --paper, --ink, --muted, --line, --blue, --amber, --green tokens to match the warm-paper family consensus. Measure + print verification pass. creator:surface-consistency audit shows reduced divergence count.",
-      "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 6,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "Aligned tokens must not break per-surface visual identity. Measure + print gate required. Token changes must be conservative — align drift, don't force uniformity. Some divergence is intentional (p5-sketch has distinct creative palette from editorials).",
-      "selection": "selected"
-    },
-    {
       "id": "creator-family-dna-artifact-route",
       "axis": "capsule schema",
       "mutation": "Create a public-safe visual reference (contact sheet or family DNA card) that documents what DASH industrial-brutalist + editorial warmth + zine-like economy means in concrete CSS token terms, usable by both human creators and agent checks as a shared visual grammar reference.",
@@ -61,10 +46,25 @@
         "minimal_core": 5
       },
       "risk": "Must not become a static gallery — it must be queryable by subsequent machine checks. The family DNA reference should be the target that creator:surface-consistency measures drift against.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-surface-convergence-route",
+      "axis": "proof method",
+      "mutation": "Extend creator:surface-consistency to report value-level convergence metrics per diverged token (distinct value count, convergence delta since last run) so autonomous Darwin runs can track whether each alignment slice reduces drift or stalls.",
+      "phenotype": "scripts/creator-surface-consistency.ts with value-convergence reporting — per-token distinct value count, convergence trend, and surface-alignment delta. Updated regression gate.",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 7,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "Must not inflate the consistency check runtime. Value-level metrics should be additive to existing token-name divergence report, not a replacement.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-token-alignment-route",
+  "winner": "creator-family-dna-artifact-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -327,9 +327,19 @@
         "bun creator:surface-consistency (0 shared, 12 diverged, 1 no-token-layer)",
         "bun creator:regression (wired after cache-integrity)"
       ]
+    },
+    {
+      "id": "creator-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "CSS token alignment: motion-storyboard 7 tokens → warm-paper family consensus (PR #64)",
+      "proof": [
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun creator:multi-surface-proof (11/11 measure + 11/11 print PASS)",
+        "bun hackathon:score (316/316 MAXXED)"
+      ]
     }
   ],
-  "retention": "Promoted creator-surface-consistency-route to retained_routes. Deselected surface-consistency from candidates. Selected token-alignment. Added family-dna-artifact as replacement 4th candidate.",
+  "retention": "Promoted creator-token-alignment-route to retained_routes (PR #64). Deselected token-alignment from candidates. Selected family-dna-artifact. Added surface-convergence as replacement 4th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
