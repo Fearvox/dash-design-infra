@@ -1,23 +1,8 @@
 {
-  "observation": "Ledger drift fixed: promoted creator-workflow-gate-health-route from candidates[] selected winner to retained_routes[] (shipped 32/32 gate health in prior run). Now 21 retained routes. Selected creator-orphan-script-route as next winner. Added creator-example-check-coverage-route as fresh candidate (3 active: orphan-script, regression-noise, example-check-coverage). All baseline gates pass: 23/23 regression, 0/0 parity drift, 4/4 autonomy. Remaining gap: ~5 orphan script files without package.json entries, and surfaces in examples/ that lack corresponding check scripts.",
+  "observation": "Shipped creator-orphan-script-route: 26/26 creator-*.ts files matched, 0 orphans. Check detects orphan source files (scripts without package.json entries) — inverse of creator-script-health. Promoted to retained_routes (now 22 retained routes). Selected creator-example-check-coverage-route as next winner. Added creator-post-check-coverage-route as fresh candidate (maintaining 3 active mutations). All baseline gates pass: 24/24 regression, 0/0 parity drift, 4/4 autonomy.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
-  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, and catch WORKFLOW_INDEX doc drift against executable scripts",
+  "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, and catch orphan files and uncovered check gaps",
   "candidates": [
-    {
-      "id": "creator-orphan-script-route",
-      "axis": "proof method",
-      "mutation": "Add an orphan script check (bun creator:orphan-script-check) that discovers all scripts/creator-*.ts files in scripts/, cross-references against package.json creator:* entries, and reports scripts without package.json entries — catching orphan source files that waste agent attention and may harbor stale/abandoned work.",
-      "phenotype": "scripts/creator-orphan-script-check.ts that reads scripts/ directory, finds all creator-*.ts files, verifies each has a corresponding package.json entry (handling direct paths, through-run paths, and helper imports), and reports PASS/FAIL per orphan",
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 9
-      },
-      "risk": "Must handle scripts that are intentionally not in package.json (helper scripts imported by other scripts). Boundary between 'creator check' and 'internal helper' must be clearly defined to avoid false positives.",
-      "selection": "selected"
-    },
     {
       "id": "creator-regression-noise-route",
       "axis": "proof method",
@@ -30,7 +15,7 @@
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Blocked: regression is currently clean (23/23 PASS), no noise to filter. May become relevant if bun-types updates introduce new pre-existing lint noise into TypeScript compilation output during bun run.",
+      "risk": "Blocked: regression is currently clean (24/24 PASS), no noise to filter. May become relevant if bun-types updates introduce new pre-existing lint noise into TypeScript compilation output during bun run.",
       "selection": "candidate"
     },
     {
@@ -45,11 +30,26 @@
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Surface naming conventions may not always map 1:1 to check script names (e.g., creator-prompt-dna-adapter.html maps to creator:prompt-dna-check). Must maintain a known mapping table similar to docs-surface-parity pattern.",
+      "risk": "Surface naming conventions may not always map 1:1 to check script names (e.g., creator-prompt-dna-adapter.html maps to creator:prompt-dna-check, not creator:prompt-dna-adapter-check). Must maintain a known mapping table similar to docs-surface-parity pattern. Additionally, some creator scripts (contact-sheet-check) generate artifacts rather than validating static HTML surfaces.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-post-check-coverage-route",
+      "axis": "proof method",
+      "mutation": "Add a post-check coverage audit (bun creator:post-check-coverage) that verifies every examples/creator-*.html surface has a corresponding .artifacts/creator-*-qa.md evidence file, confirming that QA evidence generation (vision/DOM) is complete for all retained surfaces — catching surfaces where QA drift leaves stale or missing evidence files.",
+      "phenotype": "scripts/creator-post-check-coverage.ts that reads examples/ directory, maps each surface to its expected .artifacts QA path, verifies file exists and contains required evidence markers (vision/DOM summary, browser_console metrics, boundary notes), and reports PASS/MISSING per surface",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "QA files are .gitignored, may not exist if never generated. Some surfaces (contact-sheet) generate QA via different paths. Must handle surfaces with alternative QA artifact locations (motion-storyboard.json vs contact-sheet.html). Surface-to-QA mapping may require a known table.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-orphan-script-route",
+  "winner": "creator-example-check-coverage-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -120,8 +120,8 @@
     {
       "id": "creator-regression-orchestrator-route",
       "selection": "retained",
-      "retained_as": "unified regression orchestrator (22-check surface + autonomy + hackathon:score in one pass)",
-      "proof": ["bun creator:regression", "regression: all 22 checks pass"]
+      "retained_as": "unified regression orchestrator (24-check surface + autonomy + hackathon:score in one pass)",
+      "proof": ["bun creator:regression", "regression: all 24 checks pass"]
     },
     {
       "id": "creator-darwin-autonomy-route",
@@ -168,8 +168,14 @@
     {
       "id": "creator-script-health-route",
       "selection": "retained",
-      "retained_as": "Script source file health check (validates every creator:* package.json script has an existing source file — 23/23 healthy)",
+      "retained_as": "Script source file health check (validates every creator:* package.json script has an existing source file)",
       "proof": ["bun creator:script-health", "bun creator:regression (wired after surface-health)"]
+    },
+    {
+      "id": "creator-orphan-script-route",
+      "selection": "retained",
+      "retained_as": "Orphan script detection (discovers scripts/creator-*.ts files without package.json entries — 26/26 matched, 0 orphans)",
+      "proof": ["bun creator:orphan-script", "bun creator:regression (wired after script-health)"]
     },
     {
       "id": "creator-workflow-gate-health-route",
@@ -178,7 +184,7 @@
       "proof": ["bun creator:workflow-gate-health", "bun creator:regression (wired after script-health)"]
     }
   ],
-  "retention": "Promoted creator-workflow-gate-health-route from candidates[] selected winner to retained_routes[] (shipped in prior run: 32/32 gates cross-referenced against package.json scripts, all exist and pass). Selected creator-orphan-script-route as next winner. Added creator-example-check-coverage-route as fresh candidate (maintaining 3 active mutations). Fixed docs-surface-parity gap where doc listed workflow-gate-health as retained but JSON ledger still had it as selected winner.",
+  "retention": "Promoted creator-orphan-script-route from candidates[] selected winner to retained_routes[] (shipped: 26/26 files matched, 0 orphans, wired into regression orchestrator after script-health). Selected creator-example-check-coverage-route as next winner. Added creator-post-check-coverage-route as fresh candidate (maintaining 3 active mutations: regression-noise, example-check-coverage, post-check-coverage).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -186,6 +192,7 @@
     "bun creator:agent-context-health",
     "bun creator:surface-health",
     "bun creator:script-health",
+    "bun creator:orphan-script",
     "bun creator:workflow-gate-health",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
