@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-example-check-coverage-route: 11/11 creator-*.html surfaces verified with corresponding creator:*check scripts in package.json. Uses known mapping table for 3 non-standard surface→check naming exceptions, with auto-derivation for standard surfaces. Catches surfaces added to examples/ without check scripts and orphan check scripts without surfaces. Wired into regression orchestrator after workflow-gate-health. Promoted to retained_routes (now 22 retained routes). Selected creator-post-check-coverage-route as next winner. Added creator-regression-duration-route as fresh candidate (maintaining 3 active mutations). All baseline gates pass.",
+  "observation": "Shipped creator-post-check-coverage-route: QA evidence coverage audit (bun creator:post-check-coverage). Discovers all 11 examples/creator-*.html surfaces, maps to expected .artifacts/creator-*-qa.md evidence files (with known mapping for non-standard naming: poster drops 'surface', capsule excluded), verifies QA files exist and contain real browser evidence markers. Found 1 gap: creator-prompt-dna-adapter has no QA evidence (reported as non-fatal WARN). Wired into regression orchestrator after example-check-coverage. Updated example-check-coverage infraSkip to include post-check-coverage. Promoted to retained_routes (now 23 retained routes). Selected creator-regression-duration-route as next winner. Added creator-prompt-dna-qa-route as fresh candidate (directly addresses the gap found by this check). All baseline gates pass.",
   "population": "creator capsule proof/check surface mutations for catching drift and maintaining cross-repo consistency across autonomous Darwin runs",
   "selection_pressure": "help a creator verify all surfaces in one pass, pre-flight the execution environment, keep scripts and docs in sync, reduce noise in regression output, catch orphan files, uncovered check gaps, missing QA evidence, and performance regressions",
   "candidates": [
@@ -19,21 +19,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-post-check-coverage-route",
-      "axis": "proof method",
-      "mutation": "Add a post-check coverage audit (bun creator:post-check-coverage) that verifies every examples/creator-*.html surface has a corresponding .artifacts/creator-*-qa.md evidence file, confirming that QA evidence generation (vision/DOM) is complete for all retained surfaces — catching surfaces where QA drift leaves stale or missing evidence files.",
-      "phenotype": "scripts/creator-post-check-coverage.ts that reads examples/ directory, maps each surface to its expected .artifacts QA path, verifies file exists and contains required evidence markers (vision/DOM summary, browser_console metrics, boundary notes), and reports PASS/MISSING per surface",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "QA files are .gitignored, may not exist if never generated. Some surfaces (contact-sheet) generate QA via different paths. Must handle surfaces with alternative QA artifact locations (motion-storyboard.json vs contact-sheet.html). Surface-to-QA mapping may require a known table.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-regression-duration-route",
       "axis": "proof method",
       "mutation": "Add a regression duration tracker (bun creator:regression-duration) that records per-check timing baselines from the regression orchestrator output, compares against stored baselines, and flags any check that regresses beyond a threshold (e.g., 2x baseline) — catching slow performance regressions in Darwin checks before they accumulate.",
@@ -46,10 +31,25 @@
         "minimal_core": 8
       },
       "risk": "Baseline file must be committed to track history. First run always creates baseline (never fails). Timing variance from CI/OS makes thresholds tricky — may need running-average approach. Check count changes (new checks added) require baseline reset — auto-detect and warn.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-prompt-dna-qa-route",
+      "axis": "proof method",
+      "mutation": "Generate QA evidence for the prompt DNA adapter surface (creator-prompt-dna-adapter.html). Currently the only retained surface without a .artifacts/creator-prompt-dna-adapter-qa.md file — exposed by the new creator:post-check-coverage audit. Generate real browser DOM evidence matching the standardized vision QA template pattern used across all other surfaces.",
+      "phenotype": ".artifacts/creator-prompt-dna-adapter-qa.md with real browser_console DOM evidence, creator:prompt-dna-check updated to generate QA artifact, post-check-coverage gap closed.",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 7,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Prompt DNA adapter is an image/video model adapter — visual phenotypes are prompt strings, not rendered media. QA evidence must document the adapter contract, canvas compliance, and boundary safety rather than visual output. Provider vision API may be unavailable (DOM fallback). Must not commit raw generated media.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-post-check-coverage-route",
+  "winner": "creator-regression-duration-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -188,9 +188,15 @@
       "selection": "retained",
       "retained_as": "Example surface check coverage audit (discovers all examples/creator-*.html surfaces, maps to expected check scripts, validates existence in package.json — 11/11 surfaces covered, 0 orphans)",
       "proof": ["bun creator:example-check-coverage", "bun creator:regression (wired after workflow-gate-health)"]
+    },
+    {
+      "id": "creator-post-check-coverage-route",
+      "selection": "retained",
+      "retained_as": "Post-check QA evidence coverage audit (10/10 expected surfaces with QA, 1 known gap: prompt-dna-adapter)",
+      "proof": ["bun creator:post-check-coverage", "bun creator:regression (wired after example-check-coverage)"]
     }
   ],
-  "retention": "Promoted creator-example-check-coverage-route from candidates[] selected winner to retained_routes[] (shipped: 11/11 surfaces covered, known mapping table for 3 non-standard exceptions, auto-derivation for standard surfaces, wired into regression orchestrator after workflow-gate-health). Selected creator-post-check-coverage-route as next winner. Added creator-regression-duration-route as fresh candidate (maintaining 3 active mutations: regression-noise, post-check-coverage, regression-duration).",
+  "retention": "Promoted creator-post-check-coverage-route from candidates[] selected winner to retained_routes[] (shipped: 10/11 surfaces audited, 9/10 expected QA files present, 1 known gap: prompt-dna-adapter). Wired into regression orchestrator after example-check-coverage. Updated example-check-coverage infraSkip set to prevent false orphan. Selected creator-regression-duration-route as next winner. Added creator-prompt-dna-qa-route as fresh candidate (directly addresses the gap found).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -201,6 +207,7 @@
     "bun creator:orphan-script",
     "bun creator:workflow-gate-health",
     "bun creator:example-check-coverage",
+    "bun creator:post-check-coverage",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",
