@@ -1,8 +1,23 @@
 {
-  "observation": "Completed ink-token-alignment-route slice (PR #73): aligned --ink in pdf-zine and frontier-capsule to #15120e consensus. measure:check + print:render + creator:pdf-zine-check all PASS. Fixed ledger drift: removed creator-paper-token-alignment-route from active candidates (already in retained_routes). Confirmed 4 active candidates maintained. Promoted paper route to retained_routes in prior step. Selected creator-ink-token-alignment-route as winner. This is the semantic baseline for creator-surface-consistency-phase-a. No drift in retained_routes[], candidates[], CREATOR_EVOLUTION_ENGINE.md, WORKFLOW_INDEX.md after fix.",
+  "observation": "Promoted creator-ink-token-alignment-route to retained_routes (completed in PR #73 baseline). Selected creator-surface-health-extension-route as new winner for next aesthetic coherence slice. Added new candidate creator-line-token-alignment-route to maintain 4 active. Ledger hygiene pass. MCP connected. Running as cron Darwin slice for creator-surface-consistency-route NorthStar.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
+    {
+      "id": "creator-surface-health-extension-route",
+      "axis": "proof method",
+      "mutation": "Extend creator-surface-health to cover family-dna.html and verify all 12 surfaces in WORKFLOW_INDEX parity.",
+      "phenotype": "scripts/creator-surface-health.ts with SURFACE_CHECK_MAP extension",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 6,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Low: extends existing pattern proven in PR #73.",
+      "selection": "selected"
+    },
     {
       "id": "creator-regression-noise-route",
       "axis": "proof method",
@@ -34,37 +49,22 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-ink-token-alignment-route",
+      "id": "creator-token-family-cohesion-audit-route",
       "axis": "visual grammar",
-      "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
-      "phenotype": "Updated :root --ink values on pdf-zine + frontier-capsule with measure+print verification + updated QA evidence.",
+      "mutation": "Add machine check that audits token family cohesion across all 11 surfaces (paper/ink/line/muted clusters) and reports per-family divergence count + consensus values. Phenotype: scripts/creator-token-family-cohesion-audit.ts + updated family-dna.html reference.",
+      "phenotype": "scripts/creator-token-family-cohesion-audit.ts",
       "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 8,
-        "artifact_proof": 8,
+        "creator_utility": 8,
+        "memory_retention": 7,
+        "artifact_proof": 9,
         "boundary_safety": 10,
         "minimal_core": 7
       },
-      "risk": "pdf-zine --ink:#16130e is very close to consensus #15120e — almost certainly copy-paste drift. frontier-capsule --ink:#161411 is 2 hex digits off. Visual delta is minimal; risk is whether the ledger churn is worth the precision at this level of convergence.",
-      "selection": "selected"
-    },
-    {
-      "id": "creator-surface-health-extension-route",
-      "axis": "proof method",
-      "mutation": "Extend creator-surface-health to cover family-dna.html and verify all 12 surfaces in WORKFLOW_INDEX parity.",
-      "phenotype": "scripts/creator-surface-health.ts with SURFACE_CHECK_MAP extension",
-      "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 6,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Low: extends existing pattern proven in PR #73.",
+      "risk": "Extends existing surface-health pattern; low risk as it is diagnostic only.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-ink-token-alignment-route",
+  "winner": "creator-surface-health-extension-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -407,6 +407,16 @@
         "bun creator:pdf-zine-check",
         "bun measure:check -- examples/creator-pdf-zine.html",
         "bun print:render -- examples/creator-pdf-zine.html /tmp/dash-pdf-zine.pdf --canvas=1684x1191"
+      ]
+    },
+    {
+      "id": "creator-ink-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper family --ink token consensus alignment",
+      "proof": [
+        "bun creator:pdf-zine-check",
+        "bun measure:check -- examples/creator-pdf-zine.html",
+        "bun creator:mutation-check"
       ]
     }
   ],
