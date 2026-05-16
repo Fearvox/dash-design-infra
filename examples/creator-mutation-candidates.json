@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-family-dna-artifact-route (this PR): created examples/creator-family-dna.html — a fixed-canvas 1684x1191 HTML reference showing 3 visual families (warm-paper, dark-industrial, creative-hybrid) with rendered token swatches, consensus values, and a capsule grammar card defining DASH visual DNA principles. Added scripts/creator-family-dna-check.ts (20/20 PASS), wired into regression orchestrator and multi-surface-proof (12/12). All gates MAXXED (316/316). Promoted family-dna to retained_routes. Selected creator-surface-convergence-route. Added creator-touchdesigner-token-layer-route as replacement 5th candidate.",
+  "observation": "Shipped creator-surface-convergence-route (this PR): extended scripts/creator-surface-consistency.ts with value-level convergence tracking — per-diverged-token distinct value count (e.g., --line has 10 distinct values across 11 surfaces), convergence delta computation from prior run, and machine-readable JSON report (examples/creator-surface-convergence.json). First run establishes baseline: 14 diverged tokens, 0 shared. Regression: 27/31 PASS (4 pre-existing failures unchanged). Promoted convergence-route to retained_routes. Selected creator-touchdesigner-token-layer-route. Added creator-line-token-alignment-route as replacement candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -34,21 +34,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-surface-convergence-route",
-      "axis": "proof method",
-      "mutation": "Extend creator:surface-consistency to report value-level convergence metrics per diverged token (distinct value count, convergence delta since last run) so autonomous Darwin runs can track whether each alignment slice reduces drift or stalls.",
-      "phenotype": "scripts/creator-surface-consistency.ts with value-convergence reporting — per-token distinct value count, convergence trend, and surface-alignment delta. Updated regression gate.",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 7,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "Must not inflate the consistency check runtime. Value-level metrics should be additive to existing token-name divergence report, not a replacement.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-touchdesigner-token-layer-route",
       "axis": "surface",
       "mutation": "Give creator-touchdesigner-tox.html a :root CSS custom property token layer — currently the only surface with 12 hardcoded color values and zero CSS custom properties. Extract the existing hardcoded values (--bg→#050914, --paper→#f8f1df, --signal→#66e3ff, --accent→#ffb86b, --line→rgba(102,227,255,0.26) etc.), declare them in a :root block, and replace inline hex values with var() references. Verify measure+print still pass.",
@@ -61,10 +46,25 @@
         "minimal_core": 7
       },
       "risk": "Must not alter the visual appearance of the surface. TouchDesigner surface uses minified CSS; the replacement must preserve exact visual output. Verify with browser_vision + measure:check.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-line-token-alignment-route",
+      "axis": "visual grammar",
+      "mutation": "Align the --line token across surfaces toward warm-paper family consensus. Current state: 10 distinct values across 11 surfaces — the worst token drift. Warm-paper consensus is rgba(21,18,14,0.18). Dark-industrial consensus is rgba(244,234,214,0.12). creative-hybrid lacks consensus. Align warm-paper family (6 surfaces) to that consensus first, handle dark-industrial and creative-hybrid as separate families.",
+      "phenotype": "Updated :root --line values on warm-paper surfaces (motion-storyboard, p5-sketch, pdf-zine, poster-surface, prompt-dna, social-card) with measure+print verification + updated QA evidence.",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "p5-sketch uses #35584c (hex, not rgba) — likely intentional for creative contrast. Must not force-alignment on surfaces where deviation serves a creative role. Convergence report provides exact per-token distinct value tracking to measure delta.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-surface-convergence-route",
+  "winner": "creator-touchdesigner-token-layer-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -347,9 +347,19 @@
         "bun creator:multi-surface-proof (12/12 measure + print PASS)",
         "bun hackathon:score (316/316 MAXXED)"
       ]
+    },
+    {
+      "id": "creator-surface-convergence-route",
+      "selection": "retained",
+      "retained_as": "Value-level convergence tracking for surface-consistency — per-diverged-token distinct value count, convergence delta from prior run, machine-readable JSON baseline (examples/creator-surface-convergence.json)",
+      "proof": [
+        "bun creator:surface-consistency (14 diverged tokens tracked, 12 surfaces audited, JSON baseline written)",
+        "bun creator:regression (27/31 PASS, 4 pre-existing failures unchanged)",
+        "bun creator:mutation-check (PASS)"
+      ]
     }
   ],
-  "retention": "Promoted creator-family-dna-artifact-route to retained_routes. Deselected family-dna from candidates. Selected surface-convergence-route. Added touchdesigner-token-layer-route as replacement 5th candidate.",
+  "retention": "Promoted creator-surface-convergence-route to retained_routes. Deselected surface-convergence from candidates. Selected creator-touchdesigner-token-layer-route. Added creator-line-token-alignment-route as replacement 4th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",

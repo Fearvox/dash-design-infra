@@ -14,7 +14,7 @@
  * Exit 1: critical gap (surface has no CSS layer at all)
  */
 
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const EXAMPLES_DIR = join(new URL(".", import.meta.url).pathname, "..", "examples");
@@ -320,6 +320,142 @@ for (const group of semanticGroups) {
       }
     }
   }
+}
+console.log();
+
+// --- Convergence Tracking ---
+
+console.log("═".repeat(72));
+console.log("VALUE-LEVEL CONVERGENCE");
+console.log("═".repeat(72));
+console.log();
+
+console.log(`Per-diverged-token distinct value counts:`);
+interface TokenConvergence {
+  token: string;
+  distinct_values: number;
+  values: { value: string; surfaces: string[] }[];
+}
+const convergenceDetails: TokenConvergence[] = [];
+
+for (const d of divergedTokens.sort((a, b) => a.token.localeCompare(b.token))) {
+  const distinctMap = new Map<string, string[]>();
+  for (const v of d.values) {
+    if (!distinctMap.has(v.value)) distinctMap.set(v.value, []);
+    distinctMap.get(v.value)!.push(v.file);
+  }
+  const valueEntries: { value: string; surfaces: string[] }[] = [];
+  for (const [value, files] of distinctMap) {
+    valueEntries.push({ value, surfaces: files.sort() });
+  }
+  valueEntries.sort((a, b) => b.surfaces.length - a.surfaces.length);
+
+  convergenceDetails.push({ token: d.token, distinct_values: valueEntries.length, values: valueEntries });
+
+  const plural = valueEntries.length > 1 ? "s" : "";
+  console.log(`  ${d.token}: ${valueEntries.length} distinct value${plural} across ${d.values.length} surfaces`);
+  for (const ve of valueEntries) {
+    console.log(`    "${ve.value}" → ${ve.surfaces.join(", ")}`);
+  }
+}
+console.log();
+
+// --- Convergence Delta (from prior run) ---
+
+const CONVERGENCE_PATH = join(EXAMPLES_DIR, "..", "examples", "creator-surface-convergence.json");
+let priorDivergedCount = divergedTokens.length;
+let priorTimestamp = "";
+let totalDivergedDelta = 0;
+let perTokenDelta: { token: string; prior_distinct: number; current_distinct: number; delta: number }[] = [];
+
+if (existsSync(CONVERGENCE_PATH)) {
+  try {
+    const priorRaw = readFileSync(CONVERGENCE_PATH, "utf-8");
+    const prior = JSON.parse(priorRaw);
+    priorDivergedCount = prior.diverged_tokens ?? divergedTokens.length;
+    priorTimestamp = prior.timestamp ?? "";
+    totalDivergedDelta = divergedTokens.length - priorDivergedCount;
+
+    // Per-token delta: compare current distinct value count against prior
+    const priorMap = new Map<string, number>();
+    if (Array.isArray(prior.diverged_details)) {
+      for (const pd of prior.diverged_details) {
+        priorMap.set(pd.token, pd.distinct_values ?? 1);
+      }
+    }
+
+    for (const cd of convergenceDetails) {
+      const priorDistinct = priorMap.get(cd.token);
+      if (priorDistinct !== undefined) {
+        perTokenDelta.push({
+          token: cd.token,
+          prior_distinct: priorDistinct,
+          current_distinct: cd.distinct_values,
+          delta: cd.distinct_values - priorDistinct,
+        });
+      } else {
+        perTokenDelta.push({
+          token: cd.token,
+          prior_distinct: -1,
+          current_distinct: cd.distinct_values,
+          delta: -1, // new diverged token
+        });
+      }
+    }
+
+    console.log(`Prior run: ${priorTimestamp}`);
+    console.log(`Prior diverged count: ${priorDivergedCount}  →  Current: ${divergedTokens.length}  (delta: ${totalDivergedDelta >= 0 ? "+" : ""}${totalDivergedDelta})`);
+    console.log();
+
+    if (perTokenDelta.length > 0) {
+      console.log("Per-token convergence deltas:");
+      for (const d of perTokenDelta.sort((a, b) => a.delta - b.delta)) {
+        const icon = d.delta < 0 ? "✓ converging" : d.delta > 0 ? "✗ diverging" : "— stalled";
+        const priorInfo = d.prior_distinct >= 0 ? `${d.prior_distinct}→${d.current_distinct}` : "new";
+        console.log(`  ${d.token}: ${priorInfo} distinct values ${icon}`);
+      }
+      console.log();
+    }
+
+    const trend = totalDivergedDelta < 0 ? "converging" : totalDivergedDelta > 0 ? "diverging" : "stall";
+    console.log(`Overall trend: ${trend.toUpperCase()}`);
+    console.log();
+  } catch {
+    console.log("(prior convergence data corrupt or unreadable — treating as baseline)");
+    console.log();
+  }
+} else {
+  console.log("First run — no prior convergence data (baseline established)");
+  console.log();
+}
+
+// --- Write Convergence JSON ---
+
+const convergenceReport = {
+  timestamp: new Date().toISOString(),
+  total_surfaces: surfaces.length + noTokenLayer.length,
+  with_token_layer: surfaces.length,
+  without_token_layer: noTokenLayer.length,
+  shared_tokens: sharedTokens.length,
+  diverged_tokens: divergedTokens.length,
+  unique_tokens: uniqueTokens.length,
+  families: families.size,
+  diverged_details: convergenceDetails,
+  convergence_delta: {
+    prior_diverged_count: priorDivergedCount,
+    current_diverged_count: divergedTokens.length,
+    delta: totalDivergedDelta,
+    trend: totalDivergedDelta < 0 ? "converging" : totalDivergedDelta > 0 ? "diverging" : "stall",
+    prior_timestamp: priorTimestamp || null,
+    per_token_deltas: perTokenDelta,
+  },
+};
+
+try {
+  writeFileSync(CONVERGENCE_PATH, JSON.stringify(convergenceReport, null, 2), "utf-8");
+  console.log(`Convergence report written: ${CONVERGENCE_PATH}`);
+} catch (e) {
+  console.log(`Could not write convergence report: ${e}`);
 }
 console.log();
 
