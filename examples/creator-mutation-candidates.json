@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-muted-token-alignment-route (PR #71): aligned --muted token across warm-paper family toward #6f6659 consensus — pdf-zine (#6f6558→#6f6659), poster-surface (#6f675b→#6f6659), prompt-dna (#625a50→#6f6659), frontier-capsule (#746d63→#6f6659). --muted converges 10→6 distinct values. 7 surfaces now use consensus. p5-sketch creative intent preserved. All gates MAXXED (316/316 hackathon, 11/11 cache-integrity, 4/4 surface checks). Promoted to retained_routes. Selected creator-paper-token-alignment-route. Added creator-ink-token-alignment-route as new 4th candidate.",
+  "observation": "Darwin slice: completed --ink/#15120e alignment on frontier-capsule & pdf-zine (warm-paper family cohesion); extended surface-health mapping to include family-dna.html (12/12 PASS). Updated convergence tracking. Cleaned ledger duplicates. Selected naming-consensus-route for next naming drift fix. All gates green except known timing/self-ref (regression-duration, workflow-gate-health). MAXXED hackathon:score 316/316. NorthStar consistency advanced.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -19,53 +19,49 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-surface-dark-mode-route",
-      "axis": "surface",
-      "mutation": "Dark mode toggle for creator surfaces. DESELECTED 2026-05-16: all surfaces already dark industrial-brutalist palette.",
-      "phenotype": "Global dark mode CSS + toggle button",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 4,
-        "artifact_proof": 5,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Deselected 2026-05-16: all 11 surfaces already use dark industrial-brutalist palette.",
-      "selection": "candidate"
-    },
-    {
-      "id": "creator-paper-token-alignment-route",
+      "id": "creator-naming-consensus-route",
       "axis": "visual grammar",
-      "mutation": "Align the --paper token across warm-paper family toward #f2eadb consensus. Current state: 7 distinct values across 10 surfaces. Warm-paper consensus #f2eadb is shared by motion-storyboard (aligned in PR #64), prompt-dna, and family-dna. Drifted surfaces include pdf-zine (#f4ead8), poster-surface (#f1eadc), social-card (#f3eadb), p5-sketch (#f6f0e5). All are within visual range — the --paper migration is about tightening the family texture to the exact consensus hex.",
-      "phenotype": "Updated :root --paper values on warm-paper surfaces with measure+print verification + updated QA evidence.",
+      "mutation": "Introduce consensus token naming from @dash/tokens (e.g. standardize background to --paper or --bg consistently across families, line to --line) with audit script to flag naming drift.",
+      "phenotype": "Updated surface-consistency check with naming consensus scoring + example alignment on 1-2 surfaces.",
       "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 8,
-        "artifact_proof": 8,
+        "creator_utility": 8,
+        "memory_retention": 7,
+        "artifact_proof": 9,
         "boundary_safety": 10,
-        "minimal_core": 7
+        "minimal_core": 8
       },
-      "risk": "All warm-paper --paper values are already in the #f2-#f6 range — visual shift will be subtle. The risk is NOT breaking anything; it is whether the delta is worth the ledger churn at this precision. Surface-consistency convergence report must confirm --paper distinct count reduces measurably.",
+      "risk": "Naming changes risk visual regression if not verified with browser QA and measure/print. Start with audit-only.",
       "selection": "selected"
     },
     {
-      "id": "creator-ink-token-alignment-route",
+      "id": "creator-visual-grammar-extraction-route",
       "axis": "visual grammar",
-      "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
-      "phenotype": "Updated :root --ink values on pdf-zine + frontier-capsule with measure+print verification + updated QA evidence.",
+      "mutation": "Extract 3 reusable grammar primitives (warm-paper panel, industrial scanline keyframes, zine grid) from family-dna.html and wire into @dash/tokens or a new shared CSS module with 2-surface proof.",
+      "phenotype": "Updated family-dna artifact + token import in 2 surfaces",
       "fitness": {
-        "creator_utility": 6,
+        "creator_utility": 9,
         "memory_retention": 8,
-        "artifact_proof": 8,
+        "artifact_proof": 9,
         "boundary_safety": 10,
-        "minimal_core": 7
+        "minimal_core": 9
       },
-      "risk": "pdf-zine --ink:#16130e is very close to consensus #15120e — almost certainly copy-paste drift. frontier-capsule --ink:#161411 is 2 hex digits off. Visual delta is minimal; risk is whether the ledger churn is worth the precision at this level of convergence.",
+      "risk": "Must keep per-surface creative roles; extraction must not break measure/print or browser QA.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-paper-token-alignment-route",
+  "winner": "creator-naming-consensus-route",
   "retained_routes": [
+    {
+      "id": "creator-ink-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper family --ink token alignment to #15120e consensus",
+      "proof": [
+        "bun creator:surface-consistency",
+        "bun creator:cache-integrity",
+        "bun creator:multi-surface-proof",
+        "bun creator:regression"
+      ]
+    },
     {
       "id": "poster-surface-route",
       "selection": "retained",
@@ -397,6 +393,28 @@
         "bun creator:surface-consistency (--muted: 10→6 distinct ✓)",
         "bun creator:cache-integrity (11/11 valid)",
         "bun hackathon:score (316/316 MAXXED)"
+      ]
+    },
+    {
+      "id": "creator-paper-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper family --paper token consensus alignment to #f2eadb",
+      "proof": [
+        "bun creator:mutation-check",
+        "bun creator:multi-surface-proof",
+        "bun creator:cache-integrity",
+        "bun creator:regression",
+        "bun creator:playwright-health-check",
+        "browser QA on updated surfaces with exact 1684x1191 viewport"
+      ]
+    },
+    {
+      "id": "creator-surface-health-extension-route",
+      "selection": "retained",
+      "retained_as": "full 12-surface mapping in SURFACE_CHECK_MAP",
+      "proof": [
+        "bun creator:surface-health",
+        "bun creator:regression"
       ]
     }
   ],
