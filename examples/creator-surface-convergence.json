@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-16T02:46:38.006Z",
+  "timestamp": "2026-05-16T07:18:53.671Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -201,11 +201,14 @@
     },
     {
       "token": "--line",
-      "distinct_values": 11,
+      "distinct_values": 8,
       "values": [
         {
-          "value": "rgba(21, 18, 14, 0.18)",
+          "value": "rgba(21,18,14,0.18)",
           "surfaces": [
+            "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
+            "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
             "creator-social-card.html"
           ]
@@ -235,27 +238,9 @@
           ]
         },
         {
-          "value": "rgba(21,18,14,0.18)",
-          "surfaces": [
-            "creator-motion-storyboard.html"
-          ]
-        },
-        {
           "value": "#35584c",
           "surfaces": [
             "creator-p5-sketch.html"
-          ]
-        },
-        {
-          "value": "rgba(22, 19, 14, 0.18)",
-          "surfaces": [
-            "creator-pdf-zine.html"
-          ]
-        },
-        {
-          "value": "rgba(21, 18, 14, .16)",
-          "surfaces": [
-            "creator-poster-surface.html"
           ]
         },
         {
@@ -274,13 +259,17 @@
     },
     {
       "token": "--muted",
-      "distinct_values": 10,
+      "distinct_values": 6,
       "values": [
         {
           "value": "#6f6659",
           "surfaces": [
             "creator-family-dna.html",
+            "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
             "creator-social-card.html"
           ]
         },
@@ -288,12 +277,6 @@
           "value": "#94a69f",
           "surfaces": [
             "creator-browser-demo.html"
-          ]
-        },
-        {
-          "value": "#746d63",
-          "surfaces": [
-            "creator-frontier-capsule.html"
           ]
         },
         {
@@ -306,24 +289,6 @@
           "value": "#6f6a5f",
           "surfaces": [
             "creator-p5-sketch.html"
-          ]
-        },
-        {
-          "value": "#6f6558",
-          "surfaces": [
-            "creator-pdf-zine.html"
-          ]
-        },
-        {
-          "value": "#6f675b",
-          "surfaces": [
-            "creator-poster-surface.html"
-          ]
-        },
-        {
-          "value": "#625a50",
-          "surfaces": [
-            "creator-prompt-dna-adapter.html"
           ]
         },
         {
@@ -560,7 +525,7 @@
     "current_diverged_count": 15,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-16T02:46:37.482Z",
+    "prior_timestamp": "2026-05-16T07:18:51.023Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -600,14 +565,14 @@
       },
       {
         "token": "--line",
-        "prior_distinct": 11,
-        "current_distinct": 11,
+        "prior_distinct": 8,
+        "current_distinct": 8,
         "delta": 0
       },
       {
         "token": "--muted",
-        "prior_distinct": 10,
-        "current_distinct": 10,
+        "prior_distinct": 6,
+        "current_distinct": 6,
         "delta": 0
       },
       {
