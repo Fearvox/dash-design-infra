@@ -28,6 +28,7 @@ const SURFACES: Surface[] = [
   { name: 'touchdesigner-tox', file: 'examples/creator-touchdesigner-tox.html', canvas: '1684x1191' },
   { name: 'browser-demo', file: 'examples/creator-browser-demo.html', canvas: '1684x1191' },
   { name: 'frontier-capsule', file: 'examples/creator-frontier-capsule.html', canvas: '1684x1191' },
+  { name: 'family-dna', file: 'examples/creator-family-dna.html', canvas: '1684x1191' },
 ];
 
 interface ProofResult {

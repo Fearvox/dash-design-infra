@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-token-alignment-route (PR #64): aligned 7 CSS custom properties on creator-motion-storyboard.html to warm-paper family consensus (--paper, --ink, --muted, --line, --blue, --amber, --green). All gates MAXXED (316/316 hackathon, 11/11 measure+print, typecheck, security, docs). Promoted token-alignment to retained_routes. Selected creator-family-dna-artifact-route. Added creator-surface-convergence-route as replacement 4th candidate.",
+  "observation": "Shipped creator-family-dna-artifact-route (this PR): created examples/creator-family-dna.html — a fixed-canvas 1684x1191 HTML reference showing 3 visual families (warm-paper, dark-industrial, creative-hybrid) with rendered token swatches, consensus values, and a capsule grammar card defining DASH visual DNA principles. Added scripts/creator-family-dna-check.ts (20/20 PASS), wired into regression orchestrator and multi-surface-proof (12/12). All gates MAXXED (316/316). Promoted family-dna to retained_routes. Selected creator-surface-convergence-route. Added creator-touchdesigner-token-layer-route as replacement 5th candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -34,21 +34,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-family-dna-artifact-route",
-      "axis": "capsule schema",
-      "mutation": "Create a public-safe visual reference (contact sheet or family DNA card) that documents what DASH industrial-brutalist + editorial warmth + zine-like economy means in concrete CSS token terms, usable by both human creators and agent checks as a shared visual grammar reference.",
-      "phenotype": "examples/creator-family-dna.html — a fixed-canvas HTML reference showing the shared token palette (with actual rendered swatches), the 3 visual families and their tokens, and a capsule grammar card. Measure + print gate pass. Creator:family-dna-check validates the reference is parseable and complete.",
-      "fitness": {
-        "creator_utility": 8,
-        "memory_retention": 8,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Must not become a static gallery — it must be queryable by subsequent machine checks. The family DNA reference should be the target that creator:surface-consistency measures drift against.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-surface-convergence-route",
       "axis": "proof method",
       "mutation": "Extend creator:surface-consistency to report value-level convergence metrics per diverged token (distinct value count, convergence delta since last run) so autonomous Darwin runs can track whether each alignment slice reduces drift or stalls.",
@@ -61,10 +46,25 @@
         "minimal_core": 7
       },
       "risk": "Must not inflate the consistency check runtime. Value-level metrics should be additive to existing token-name divergence report, not a replacement.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-touchdesigner-token-layer-route",
+      "axis": "surface",
+      "mutation": "Give creator-touchdesigner-tox.html a :root CSS custom property token layer — currently the only surface with 12 hardcoded color values and zero CSS custom properties. Extract the existing hardcoded values (--bg→#050914, --paper→#f8f1df, --signal→#66e3ff, --accent→#ffb86b, --line→rgba(102,227,255,0.26) etc.), declare them in a :root block, and replace inline hex values with var() references. Verify measure+print still pass.",
+      "phenotype": "examples/creator-touchdesigner-tox.html with :root CSS custom property layer + var() references replacing 12 hardcoded values + updated QA evidence (.artifacts/creator-touchdesigner-tox-qa.md)",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 6,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "Must not alter the visual appearance of the surface. TouchDesigner surface uses minified CSS; the replacement must preserve exact visual output. Verify with browser_vision + measure:check.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-family-dna-artifact-route",
+  "winner": "creator-surface-convergence-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -337,9 +337,19 @@
         "bun creator:multi-surface-proof (11/11 measure + 11/11 print PASS)",
         "bun hackathon:score (316/316 MAXXED)"
       ]
+    },
+    {
+      "id": "creator-family-dna-artifact-route",
+      "selection": "retained",
+      "retained_as": "Visual grammar family DNA reference — fixed-canvas 1684x1191 HTML showing 3 visual families (warm-paper, dark-industrial, creative-hybrid) with token swatches, consensus values, and capsule grammar card",
+      "proof": [
+        "bun creator:family-dna-check (20/20 PASS)",
+        "bun creator:multi-surface-proof (12/12 measure + print PASS)",
+        "bun hackathon:score (316/316 MAXXED)"
+      ]
     }
   ],
-  "retention": "Promoted creator-token-alignment-route to retained_routes (PR #64). Deselected token-alignment from candidates. Selected family-dna-artifact. Added surface-convergence as replacement 4th candidate.",
+  "retention": "Promoted creator-family-dna-artifact-route to retained_routes. Deselected family-dna from candidates. Selected surface-convergence-route. Added touchdesigner-token-layer-route as replacement 5th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
@@ -355,6 +365,7 @@
     "bun creator:measure-print-cache",
     "bun creator:cache-integrity",
     "bun creator:surface-consistency",
+    "bun creator:family-dna-check",
     "bun creator:cron-slice-health",
     "bun creator:poster-check",
     "bun creator:prompt-dna-check",

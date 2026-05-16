@@ -81,6 +81,7 @@
     "creator:measure-print-cache": "bun scripts/creator-measure-print-cache.ts",
     "creator:cache-integrity": "bun scripts/creator-cache-integrity.ts",
     "creator:surface-consistency": "bun scripts/creator-surface-consistency.ts",
+    "creator:family-dna-check": "bun scripts/creator-family-dna-check.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
     "daemon:start": "bun run --filter=@dash/daemon start",
     "daemon:dev": "bun run --filter=@dash/daemon dev"
