@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-surface-convergence-route (this PR): extended scripts/creator-surface-consistency.ts with value-level convergence tracking — per-diverged-token distinct value count (e.g., --line has 10 distinct values across 11 surfaces), convergence delta computation from prior run, and machine-readable JSON report (examples/creator-surface-convergence.json). First run establishes baseline: 14 diverged tokens, 0 shared. Regression: 27/31 PASS (4 pre-existing failures unchanged). Promoted convergence-route to retained_routes. Selected creator-touchdesigner-token-layer-route. Added creator-line-token-alignment-route as replacement candidate.",
+  "observation": "Shipped creator-touchdesigner-token-layer-route (PR #68): added :root CSS token layer to creator-touchdesigner-tox.html — 18 CSS custom properties replacing 25 hardcoded hex/rgba values, 29 var() references, visual output preserved identically. 0/12 surfaces without token layer (was 1/12). All gates pass. Promoted to retained_routes. Selected creator-line-token-alignment-route. Added creator-muted-token-alignment-route as replacement candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -34,21 +34,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-touchdesigner-token-layer-route",
-      "axis": "surface",
-      "mutation": "Give creator-touchdesigner-tox.html a :root CSS custom property token layer — currently the only surface with 12 hardcoded color values and zero CSS custom properties. Extract the existing hardcoded values (--bg→#050914, --paper→#f8f1df, --signal→#66e3ff, --accent→#ffb86b, --line→rgba(102,227,255,0.26) etc.), declare them in a :root block, and replace inline hex values with var() references. Verify measure+print still pass.",
-      "phenotype": "examples/creator-touchdesigner-tox.html with :root CSS custom property layer + var() references replacing 12 hardcoded values + updated QA evidence (.artifacts/creator-touchdesigner-tox-qa.md)",
-      "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 6,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "Must not alter the visual appearance of the surface. TouchDesigner surface uses minified CSS; the replacement must preserve exact visual output. Verify with browser_vision + measure:check.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-line-token-alignment-route",
       "axis": "visual grammar",
       "mutation": "Align the --line token across surfaces toward warm-paper family consensus. Current state: 10 distinct values across 11 surfaces — the worst token drift. Warm-paper consensus is rgba(21,18,14,0.18). Dark-industrial consensus is rgba(244,234,214,0.12). creative-hybrid lacks consensus. Align warm-paper family (6 surfaces) to that consensus first, handle dark-industrial and creative-hybrid as separate families.",
@@ -61,10 +46,25 @@
         "minimal_core": 7
       },
       "risk": "p5-sketch uses #35584c (hex, not rgba) — likely intentional for creative contrast. Must not force-alignment on surfaces where deviation serves a creative role. Convergence report provides exact per-token distinct value tracking to measure delta.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-muted-token-alignment-route",
+      "axis": "visual grammar",
+      "mutation": "Align the --muted token across warm-paper family toward #6f6659 consensus. Current state: 10 distinct values across 12 surfaces (was 9 before touchdesigner added --muted:#7ea0ac). Warm-paper consensus is #6f6659 (shared by family-dna, motion-storyboard, social-card). Dark-industrial: #94a69f (browser-demo), #7a7164 (remotion-scene). creative-hybrid: #8b9ab1 (manim), #7ea0ac (touchdesigner). Align warm-paper surfaces first (6 surfaces), respecting creative intent divergence (p5-sketch uses #6f6a5f — 1-hex-digit drift).",
+      "phenotype": "Updated :root --muted values on warm-paper surfaces with measure+print verification + updated QA evidence.",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "p5-sketch --muted:#6f6a5f is only 1 hex digit away from consensus #6f6659 — likely copy-paste drift, not creative intent. pdf-zine --muted:#6f6558 is 2 digits away. Verify browser appearance does not shift on warm-paper family before merging.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-touchdesigner-token-layer-route",
+  "winner": "creator-line-token-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -357,9 +357,22 @@
         "bun creator:regression (27/31 PASS, 4 pre-existing failures unchanged)",
         "bun creator:mutation-check (PASS)"
       ]
+    },
+    {
+      "id": "creator-touchdesigner-token-layer-route",
+      "selection": "retained",
+      "retained_as": "CSS :root token layer: 18 properties replacing 25 hardcoded values, 29 var() refs, 0/12 surfaces without token layer — closes the last surface gap",
+      "proof": [
+        "bun creator:touchdesigner-tox-check (PASS)",
+        "bun measure:check -- examples/creator-touchdesigner-tox.html (1684×1191 fits)",
+        "bun creator:surface-consistency (0/12 without token layer, was 1/12)",
+        "bun creator:multi-surface-proof (11/11 measure + print PASS)",
+        "bun creator:cache-integrity (11/11 valid)",
+        "Browser DOM: 18 tokens, 29 var() refs, 0 console errors, colors match original"
+      ]
     }
   ],
-  "retention": "Promoted creator-surface-convergence-route to retained_routes. Deselected surface-convergence from candidates. Selected creator-touchdesigner-token-layer-route. Added creator-line-token-alignment-route as replacement 4th candidate.",
+  "retention": "Promoted creator-touchdesigner-token-layer-route to retained_routes (PR #68). Deselected from candidates. Selected creator-line-token-alignment-route. Added creator-muted-token-alignment-route as replacement 4th candidate.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
