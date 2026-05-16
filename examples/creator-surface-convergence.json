@@ -1,0 +1,595 @@
+{
+  "timestamp": "2026-05-16T00:30:53.951Z",
+  "total_surfaces": 12,
+  "with_token_layer": 11,
+  "without_token_layer": 1,
+  "shared_tokens": 0,
+  "diverged_tokens": 14,
+  "unique_tokens": 19,
+  "families": 4,
+  "diverged_details": [
+    {
+      "token": "--accent",
+      "distinct_values": 3,
+      "values": [
+        {
+          "value": "#ffb86b",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-remotion-scene.html"
+          ]
+        },
+        {
+          "value": "#ff9f6e",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "#1d4ed8",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--amber",
+      "distinct_values": 5,
+      "values": [
+        {
+          "value": "#c47a1f",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-poster-surface.html"
+          ]
+        },
+        {
+          "value": "#d4a373",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#bf7419",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        },
+        {
+          "value": "#b86b17",
+          "surfaces": [
+            "creator-prompt-dna-adapter.html"
+          ]
+        },
+        {
+          "value": "#c57a1d",
+          "surfaces": [
+            "creator-social-card.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--bg",
+      "distinct_values": 3,
+      "values": [
+        {
+          "value": "#0b1114",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "#f3efe7",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        },
+        {
+          "value": "#111318",
+          "surfaces": [
+            "creator-remotion-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--blue",
+      "distinct_values": 3,
+      "values": [
+        {
+          "value": "#1d4ed8",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
+          ]
+        },
+        {
+          "value": "#8db4ff",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#1f55d4",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--green",
+      "distinct_values": 3,
+      "values": [
+        {
+          "value": "#2f6f4e",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
+          ]
+        },
+        {
+          "value": "#9bd6ad",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#10291f",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--ink",
+      "distinct_values": 6,
+      "values": [
+        {
+          "value": "#15120e",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
+          ]
+        },
+        {
+          "value": "#111318",
+          "surfaces": [
+            "creator-browser-demo.html",
+            "creator-remotion-scene.html"
+          ]
+        },
+        {
+          "value": "#161411",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        },
+        {
+          "value": "#111827",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#171713",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        },
+        {
+          "value": "#16130e",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--line",
+      "distinct_values": 10,
+      "values": [
+        {
+          "value": "rgba(21, 18, 14, 0.18)",
+          "surfaces": [
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
+          ]
+        },
+        {
+          "value": "#294148",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "rgba(244, 234, 214, 0.12)",
+          "surfaces": [
+            "creator-family-dna.html"
+          ]
+        },
+        {
+          "value": "rgba(22, 20, 17, 0.14)",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        },
+        {
+          "value": "rgba(248, 241, 223, 0.2)",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "rgba(21,18,14,0.18)",
+          "surfaces": [
+            "creator-motion-storyboard.html"
+          ]
+        },
+        {
+          "value": "#35584c",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        },
+        {
+          "value": "rgba(22, 19, 14, 0.18)",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        },
+        {
+          "value": "rgba(21, 18, 14, .16)",
+          "surfaces": [
+            "creator-poster-surface.html"
+          ]
+        },
+        {
+          "value": "#394150",
+          "surfaces": [
+            "creator-remotion-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--muted",
+      "distinct_values": 9,
+      "values": [
+        {
+          "value": "#6f6659",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-social-card.html"
+          ]
+        },
+        {
+          "value": "#94a69f",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "#746d63",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        },
+        {
+          "value": "#8b9ab1",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#6f6a5f",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        },
+        {
+          "value": "#6f6558",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        },
+        {
+          "value": "#6f675b",
+          "surfaces": [
+            "creator-poster-surface.html"
+          ]
+        },
+        {
+          "value": "#625a50",
+          "surfaces": [
+            "creator-prompt-dna-adapter.html"
+          ]
+        },
+        {
+          "value": "#7a7164",
+          "surfaces": [
+            "creator-remotion-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--night",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#070b0d",
+          "surfaces": [
+            "creator-family-dna.html"
+          ]
+        },
+        {
+          "value": "#0f172a",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--night-soft",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#0d1418",
+          "surfaces": [
+            "creator-family-dna.html"
+          ]
+        },
+        {
+          "value": "#172033",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--panel",
+      "distinct_values": 6,
+      "values": [
+        {
+          "value": "rgba(244,234,214,.08)",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "rgba(244, 234, 214, 0.06)",
+          "surfaces": [
+            "creator-family-dna.html"
+          ]
+        },
+        {
+          "value": "#fffaf0",
+          "surfaces": [
+            "creator-frontier-capsule.html"
+          ]
+        },
+        {
+          "value": "#fff9eb",
+          "surfaces": [
+            "creator-motion-storyboard.html"
+          ]
+        },
+        {
+          "value": "#fff9ed",
+          "surfaces": [
+            "creator-prompt-dna-adapter.html"
+          ]
+        },
+        {
+          "value": "#f5eddc",
+          "surfaces": [
+            "creator-remotion-scene.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--paper",
+      "distinct_values": 7,
+      "values": [
+        {
+          "value": "#f2eadb",
+          "surfaces": [
+            "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-prompt-dna-adapter.html"
+          ]
+        },
+        {
+          "value": "#f4ead6",
+          "surfaces": [
+            "creator-browser-demo.html"
+          ]
+        },
+        {
+          "value": "#f8f1df",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#f6f0e5",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        },
+        {
+          "value": "#f4ead8",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        },
+        {
+          "value": "#f1eadc",
+          "surfaces": [
+            "creator-poster-surface.html"
+          ]
+        },
+        {
+          "value": "#f3eadb",
+          "surfaces": [
+            "creator-social-card.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--paper-hot",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#fff9eb",
+          "surfaces": [
+            "creator-pdf-zine.html"
+          ]
+        },
+        {
+          "value": "#fff8ea",
+          "surfaces": [
+            "creator-social-card.html"
+          ]
+        }
+      ]
+    },
+    {
+      "token": "--signal",
+      "distinct_values": 3,
+      "values": [
+        {
+          "value": "#7ef0c1",
+          "surfaces": [
+            "creator-browser-demo.html",
+            "creator-family-dna.html"
+          ]
+        },
+        {
+          "value": "#f0ee9b",
+          "surfaces": [
+            "creator-p5-sketch.html"
+          ]
+        },
+        {
+          "value": "#8cb8ff",
+          "surfaces": [
+            "creator-remotion-scene.html"
+          ]
+        }
+      ]
+    }
+  ],
+  "convergence_delta": {
+    "prior_diverged_count": 14,
+    "current_diverged_count": 14,
+    "delta": 0,
+    "trend": "stall",
+    "prior_timestamp": "2026-05-16T00:30:53.464Z",
+    "per_token_deltas": [
+      {
+        "token": "--accent",
+        "prior_distinct": 3,
+        "current_distinct": 3,
+        "delta": 0
+      },
+      {
+        "token": "--amber",
+        "prior_distinct": 5,
+        "current_distinct": 5,
+        "delta": 0
+      },
+      {
+        "token": "--bg",
+        "prior_distinct": 3,
+        "current_distinct": 3,
+        "delta": 0
+      },
+      {
+        "token": "--blue",
+        "prior_distinct": 3,
+        "current_distinct": 3,
+        "delta": 0
+      },
+      {
+        "token": "--green",
+        "prior_distinct": 3,
+        "current_distinct": 3,
+        "delta": 0
+      },
+      {
+        "token": "--ink",
+        "prior_distinct": 6,
+        "current_distinct": 6,
+        "delta": 0
+      },
+      {
+        "token": "--line",
+        "prior_distinct": 10,
+        "current_distinct": 10,
+        "delta": 0
+      },
+      {
+        "token": "--muted",
+        "prior_distinct": 9,
+        "current_distinct": 9,
+        "delta": 0
+      },
+      {
+        "token": "--night",
+        "prior_distinct": 2,
+        "current_distinct": 2,
+        "delta": 0
+      },
+      {
+        "token": "--night-soft",
+        "prior_distinct": 2,
+        "current_distinct": 2,
+        "delta": 0
+      },
+      {
+        "token": "--panel",
+        "prior_distinct": 6,
+        "current_distinct": 6,
+        "delta": 0
+      },
+      {
+        "token": "--paper",
+        "prior_distinct": 7,
+        "current_distinct": 7,
+        "delta": 0
+      },
+      {
+        "token": "--paper-hot",
+        "prior_distinct": 2,
+        "current_distinct": 2,
+        "delta": 0
+      },
+      {
+        "token": "--signal",
+        "prior_distinct": 3,
+        "current_distinct": 3,
+        "delta": 0
+      }
+    ]
+  }
+}
