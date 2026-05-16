@@ -1,5 +1,5 @@
 {
-  "observation": "Shipped creator-paper-token-alignment-route (this slice): aligned --paper token to #f2eadb consensus across warm-paper family (pdf-zine #f4ead8→#f2eadb, poster-surface #f1eadc→#f2eadb, social-card #f3eadb→#f2eadb). p5-sketch and others preserved for creative intent. Cache refreshed, stale entries cleaned, full regression + multi-surface-proof + playwright-health + docs-parity all MAXXED (316/316). Browser QA with exact-canvas DOM verification confirmed no overflow, industrial-brutalist fit, paper texture consistency. Promoted paper route to retained_routes. Selected creator-ink-token-alignment-route. Added creator-convergence-tracking-v2 as new candidate for measurable aesthetic delta.",
+  "observation": "Darwin slice: completed --ink/#15120e alignment on frontier-capsule & pdf-zine (warm-paper family cohesion); extended surface-health mapping to include family-dna.html (12/12 PASS). Updated convergence tracking. Cleaned ledger duplicates. Selected naming-consensus-route for next naming drift fix. All gates green except known timing/self-ref (regression-duration, workflow-gate-health). MAXXED hackathon:score 316/316. NorthStar consistency advanced.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -19,53 +19,49 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-ink-token-alignment-route",
+      "id": "creator-naming-consensus-route",
       "axis": "visual grammar",
-      "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
-      "phenotype": "Updated :root --ink values on pdf-zine + frontier-capsule with measure+print verification + updated QA evidence.",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 8,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "pdf-zine --ink:#16130e is very close to consensus #15120e — almost certainly copy-paste drift. frontier-capsule --ink:#161411 is 2 hex digits off. Visual delta is minimal; risk is whether the ledger churn is worth the precision at this level of convergence.",
-      "selection": "selected"
-    },
-    {
-      "id": "creator-convergence-tracking-v2-route",
-      "axis": "proof method",
-      "mutation": "Extend convergence tracking to include per-surface visual family classification and grammar extraction score, with trend icons and delta report for NorthStar aesthetic coherence.",
-      "phenotype": "Updated convergence report JSON + machine check that feeds directly into next token alignment slice.",
+      "mutation": "Introduce consensus token naming from @dash/tokens (e.g. standardize background to --paper or --bg consistently across families, line to --line) with audit script to flag naming drift.",
+      "phenotype": "Updated surface-consistency check with naming consensus scoring + example alignment on 1-2 surfaces.",
       "fitness": {
         "creator_utility": 8,
-        "memory_retention": 9,
+        "memory_retention": 7,
         "artifact_proof": 9,
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Must not add dashboard bloat; report must be machine-readable for selection pressure.",
-      "selection": "candidate"
+      "risk": "Naming changes risk visual regression if not verified with browser QA and measure/print. Start with audit-only.",
+      "selection": "selected"
     },
     {
-      "id": "creator-regression-noise-route",
-      "axis": "proof method",
-      "mutation": "Add regression noise filtering to suppress known lint noise.",
-      "phenotype": "scripts/creator-regression-filter.ts",
+      "id": "creator-visual-grammar-extraction-route",
+      "axis": "visual grammar",
+      "mutation": "Extract 3 reusable grammar primitives (warm-paper panel, industrial scanline keyframes, zine grid) from family-dna.html and wire into @dash/tokens or a new shared CSS module with 2-surface proof.",
+      "phenotype": "Updated family-dna artifact + token import in 2 surfaces",
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 6,
+        "creator_utility": 9,
+        "memory_retention": 8,
+        "artifact_proof": 9,
         "boundary_safety": 10,
-        "minimal_core": 8
+        "minimal_core": 9
       },
-      "risk": "Currently not needed as regression is clean.",
+      "risk": "Must keep per-surface creative roles; extraction must not break measure/print or browser QA.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-ink-token-alignment-route",
+  "winner": "creator-naming-consensus-route",
   "retained_routes": [
+    {
+      "id": "creator-ink-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper family --ink token alignment to #15120e consensus",
+      "proof": [
+        "bun creator:surface-consistency",
+        "bun creator:cache-integrity",
+        "bun creator:multi-surface-proof",
+        "bun creator:regression"
+      ]
+    },
     {
       "id": "poster-surface-route",
       "selection": "retained",
@@ -410,6 +406,15 @@
         "bun creator:regression",
         "bun creator:playwright-health-check",
         "browser QA on updated surfaces with exact 1684x1191 viewport"
+      ]
+    },
+    {
+      "id": "creator-surface-health-extension-route",
+      "selection": "retained",
+      "retained_as": "full 12-surface mapping in SURFACE_CHECK_MAP",
+      "proof": [
+        "bun creator:surface-health",
+        "bun creator:regression"
       ]
     }
   ],
