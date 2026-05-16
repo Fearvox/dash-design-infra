@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-16T00:30:53.951Z",
+  "timestamp": "2026-05-16T02:46:38.006Z",
   "total_surfaces": 12,
-  "with_token_layer": 11,
-  "without_token_layer": 1,
+  "with_token_layer": 12,
+  "without_token_layer": 0,
   "shared_tokens": 0,
-  "diverged_tokens": 14,
-  "unique_tokens": 19,
+  "diverged_tokens": 15,
+  "unique_tokens": 27,
   "families": 4,
   "diverged_details": [
     {
@@ -16,7 +16,8 @@
           "value": "#ffb86b",
           "surfaces": [
             "creator-family-dna.html",
-            "creator-remotion-scene.html"
+            "creator-remotion-scene.html",
+            "creator-touchdesigner-tox.html"
           ]
         },
         {
@@ -200,7 +201,7 @@
     },
     {
       "token": "--line",
-      "distinct_values": 10,
+      "distinct_values": 11,
       "values": [
         {
           "value": "rgba(21, 18, 14, 0.18)",
@@ -262,12 +263,18 @@
           "surfaces": [
             "creator-remotion-scene.html"
           ]
+        },
+        {
+          "value": "rgba(102,227,255,.26)",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     },
     {
       "token": "--muted",
-      "distinct_values": 9,
+      "distinct_values": 10,
       "values": [
         {
           "value": "#6f6659",
@@ -324,12 +331,18 @@
           "surfaces": [
             "creator-remotion-scene.html"
           ]
+        },
+        {
+          "value": "#7ea0ac",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     },
     {
       "token": "--night",
-      "distinct_values": 2,
+      "distinct_values": 3,
       "values": [
         {
           "value": "#070b0d",
@@ -342,12 +355,18 @@
           "surfaces": [
             "creator-manim-scene.html"
           ]
+        },
+        {
+          "value": "#050914",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     },
     {
       "token": "--night-soft",
-      "distinct_values": 2,
+      "distinct_values": 3,
       "values": [
         {
           "value": "#0d1418",
@@ -360,12 +379,18 @@
           "surfaces": [
             "creator-manim-scene.html"
           ]
+        },
+        {
+          "value": "#0d1728",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     },
     {
       "token": "--panel",
-      "distinct_values": 6,
+      "distinct_values": 7,
       "values": [
         {
           "value": "rgba(244,234,214,.08)",
@@ -402,6 +427,12 @@
           "surfaces": [
             "creator-remotion-scene.html"
           ]
+        },
+        {
+          "value": "rgba(8,17,31,.74)",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     },
@@ -418,15 +449,16 @@
           ]
         },
         {
-          "value": "#f4ead6",
+          "value": "#f8f1df",
           "surfaces": [
-            "creator-browser-demo.html"
+            "creator-manim-scene.html",
+            "creator-touchdesigner-tox.html"
           ]
         },
         {
-          "value": "#f8f1df",
+          "value": "#f4ead6",
           "surfaces": [
-            "creator-manim-scene.html"
+            "creator-browser-demo.html"
           ]
         },
         {
@@ -456,6 +488,24 @@
       ]
     },
     {
+      "token": "--paper-dim",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#e7dbc4",
+          "surfaces": [
+            "creator-manim-scene.html"
+          ]
+        },
+        {
+          "value": "#d7e7ea",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
+        }
+      ]
+    },
+    {
       "token": "--paper-hot",
       "distinct_values": 2,
       "values": [
@@ -475,7 +525,7 @@
     },
     {
       "token": "--signal",
-      "distinct_values": 3,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#7ef0c1",
@@ -495,16 +545,22 @@
           "surfaces": [
             "creator-remotion-scene.html"
           ]
+        },
+        {
+          "value": "#66e3ff",
+          "surfaces": [
+            "creator-touchdesigner-tox.html"
+          ]
         }
       ]
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 14,
-    "current_diverged_count": 14,
+    "prior_diverged_count": 15,
+    "current_diverged_count": 15,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-16T00:30:53.464Z",
+    "prior_timestamp": "2026-05-16T02:46:37.482Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -544,38 +600,44 @@
       },
       {
         "token": "--line",
+        "prior_distinct": 11,
+        "current_distinct": 11,
+        "delta": 0
+      },
+      {
+        "token": "--muted",
         "prior_distinct": 10,
         "current_distinct": 10,
         "delta": 0
       },
       {
-        "token": "--muted",
-        "prior_distinct": 9,
-        "current_distinct": 9,
-        "delta": 0
-      },
-      {
         "token": "--night",
-        "prior_distinct": 2,
-        "current_distinct": 2,
+        "prior_distinct": 3,
+        "current_distinct": 3,
         "delta": 0
       },
       {
         "token": "--night-soft",
-        "prior_distinct": 2,
-        "current_distinct": 2,
+        "prior_distinct": 3,
+        "current_distinct": 3,
         "delta": 0
       },
       {
         "token": "--panel",
-        "prior_distinct": 6,
-        "current_distinct": 6,
+        "prior_distinct": 7,
+        "current_distinct": 7,
         "delta": 0
       },
       {
         "token": "--paper",
         "prior_distinct": 7,
         "current_distinct": 7,
+        "delta": 0
+      },
+      {
+        "token": "--paper-dim",
+        "prior_distinct": 2,
+        "current_distinct": 2,
         "delta": 0
       },
       {
@@ -586,8 +648,8 @@
       },
       {
         "token": "--signal",
-        "prior_distinct": 3,
-        "current_distinct": 3,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       }
     ]
