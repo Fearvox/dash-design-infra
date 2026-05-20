@@ -1,5 +1,5 @@
 {
-  "observation": "Completed ink-token-alignment-route slice (PR #73): aligned --ink in pdf-zine and frontier-capsule to #15120e consensus. measure:check + print:render + creator:pdf-zine-check all PASS. Fixed ledger drift: removed creator-paper-token-alignment-route from active candidates (already in retained_routes). Confirmed 4 active candidates maintained. Promoted paper route to retained_routes in prior step. Selected creator-ink-token-alignment-route as winner. This is the semantic baseline for creator-surface-consistency-phase-a. No drift in retained_routes[], candidates[], CREATOR_EVOLUTION_ENGINE.md, WORKFLOW_INDEX.md after fix.",
+  "observation": "2026-05-20T15:00:00Z: --ink alignment complete (PR #75). 7 surfaces --ink:#15120e. creator-line-token-alignment already retained. --accent is next candidate (3 values, warm-amber divergence). Surface-health extension valid. Regression-noise selected. Dark-mode premise confirmed stale (surfaces already dark).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,36 +16,6 @@
         "minimal_core": 8
       },
       "risk": "Blocked: regression is currently clean, no noise to filter. May become relevant if bun-types updates introduce new pre-existing lint noise.",
-      "selection": "candidate"
-    },
-    {
-      "id": "creator-surface-dark-mode-route",
-      "axis": "surface",
-      "mutation": "Dark mode toggle for creator surfaces. DESELECTED 2026-05-16: all surfaces already dark industrial-brutalist palette.",
-      "phenotype": "Global dark mode CSS + toggle button",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 4,
-        "artifact_proof": 5,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Deselected 2026-05-16: all 11 surfaces already use dark industrial-brutalist palette.",
-      "selection": "candidate"
-    },
-    {
-      "id": "creator-ink-token-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
-      "phenotype": "Updated :root --ink values on pdf-zine + frontier-capsule with measure+print verification + updated QA evidence.",
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 8,
-        "artifact_proof": 8,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "pdf-zine --ink:#16130e is very close to consensus #15120e — almost certainly copy-paste drift. frontier-capsule --ink:#161411 is 2 hex digits off. Visual delta is minimal; risk is whether the ledger churn is worth the precision at this level of convergence.",
       "selection": "selected"
     },
     {
@@ -62,9 +32,24 @@
       },
       "risk": "Low: extends existing pattern proven in PR #73.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-accent-token-alignment-route",
+      "axis": "visual grammar",
+      "mutation": "Align --accent token across warm-paper family. Current: 3 distinct values: #ffb86b (family-dna, remotion-scene, touchdesigner-tox), #ff9f6e (browser-demo), #1d4ed8 (frontier-capsule — intentional cool-blue signal). warm-paper surfaces (family-dna, pdf-zine, poster, social-card, etc.) should align to #ffb86e or similar warm-amber accent. browser-demo can keep its distinct identity; frontier-capsule is intentional.",
+      "phenotype": "Updated :root --accent values with measure+print verification.",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "frontier-capsule uses --accent:#1d4ed8 intentionally as a cool-blue signal accent — not a drift. Only surfaces that should converge are the warm-paper family sharing the amber/orange accent palette.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-ink-token-alignment-route",
+  "winner": "creator-regression-noise-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -407,6 +392,30 @@
         "bun creator:pdf-zine-check",
         "bun measure:check -- examples/creator-pdf-zine.html",
         "bun print:render -- examples/creator-pdf-zine.html /tmp/dash-pdf-zine.pdf --canvas=1684x1191"
+      ]
+    },
+    {
+      "id": "creator-ink-token-alignment-route",
+      "axis": "visual grammar",
+      "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
+      "phenotype": "Updated :root --ink values on pdf-zine + frontier-capsule with measure+print verification + updated QA evidence.",
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "pdf-zine --ink:#16130e is very close to consensus #15120e — almost certainly copy-paste drift. frontier-capsule --ink:#161411 is 2 hex digits off. Visual delta is minimal; risk is whether the ledger churn is worth the precision at this level of convergence.",
+      "selection": "retained",
+      "retained_as": "--ink token alignment across warm-paper family: 7 surfaces (family-dna, frontier-capsule, motion-storyboard, pdf-zine, poster-surface, prompt-dna, social-card) aligned to #15120e consensus. Dark-industrial (browser-demo, remotion-scene) retain #111318; creative-hybrid (p5-sketch, manim) retain intentional divergence.",
+      "proof": [
+        "bun creator:multi-surface-proof (12/12 PASS)",
+        "bun creator:surface-health (12/12 PASS — family-dna MISSING fixed)",
+        "bun creator:cache-integrity (11/11 valid)",
+        "bun creator:regression (31/31 PASS)",
+        "bun docs:links (clean)",
+        "PR #75 merged (2026-05-20T14:53:51Z)"
       ]
     }
   ],
