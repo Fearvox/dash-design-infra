@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-16T17:44:52.195Z",
+  "timestamp": "2026-05-20T19:59:18.958Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -36,13 +36,14 @@
     },
     {
       "token": "--amber",
-      "distinct_values": 5,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#c47a1f",
           "surfaces": [
             "creator-family-dna.html",
             "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
             "creator-poster-surface.html"
           ]
         },
@@ -50,12 +51,6 @@
           "value": "#d4a373",
           "surfaces": [
             "creator-manim-scene.html"
-          ]
-        },
-        {
-          "value": "#bf7419",
-          "surfaces": [
-            "creator-pdf-zine.html"
           ]
         },
         {
@@ -98,13 +93,14 @@
     },
     {
       "token": "--blue",
-      "distinct_values": 3,
+      "distinct_values": 2,
       "values": [
         {
           "value": "#1d4ed8",
           "surfaces": [
             "creator-family-dna.html",
             "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
             "creator-social-card.html"
@@ -114,12 +110,6 @@
           "value": "#8db4ff",
           "surfaces": [
             "creator-manim-scene.html"
-          ]
-        },
-        {
-          "value": "#1f55d4",
-          "surfaces": [
-            "creator-pdf-zine.html"
           ]
         }
       ]
@@ -154,13 +144,15 @@
     },
     {
       "token": "--ink",
-      "distinct_values": 6,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#15120e",
           "surfaces": [
             "creator-family-dna.html",
+            "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
             "creator-social-card.html"
@@ -174,12 +166,6 @@
           ]
         },
         {
-          "value": "#161411",
-          "surfaces": [
-            "creator-frontier-capsule.html"
-          ]
-        },
-        {
           "value": "#111827",
           "surfaces": [
             "creator-manim-scene.html"
@@ -189,12 +175,6 @@
           "value": "#171713",
           "surfaces": [
             "creator-p5-sketch.html"
-          ]
-        },
-        {
-          "value": "#16130e",
-          "surfaces": [
-            "creator-pdf-zine.html"
           ]
         }
       ]
@@ -403,13 +383,14 @@
     },
     {
       "token": "--paper",
-      "distinct_values": 7,
+      "distinct_values": 6,
       "values": [
         {
           "value": "#f2eadb",
           "surfaces": [
             "creator-family-dna.html",
             "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
             "creator-prompt-dna-adapter.html"
           ]
         },
@@ -430,12 +411,6 @@
           "value": "#f6f0e5",
           "surfaces": [
             "creator-p5-sketch.html"
-          ]
-        },
-        {
-          "value": "#f4ead8",
-          "surfaces": [
-            "creator-pdf-zine.html"
           ]
         },
         {
@@ -525,7 +500,7 @@
     "current_diverged_count": 15,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-16T17:44:51.513Z",
+    "prior_timestamp": "2026-05-20T19:59:18.589Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -535,8 +510,8 @@
       },
       {
         "token": "--amber",
-        "prior_distinct": 5,
-        "current_distinct": 5,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       },
       {
@@ -547,8 +522,8 @@
       },
       {
         "token": "--blue",
-        "prior_distinct": 3,
-        "current_distinct": 3,
+        "prior_distinct": 2,
+        "current_distinct": 2,
         "delta": 0
       },
       {
@@ -559,8 +534,8 @@
       },
       {
         "token": "--ink",
-        "prior_distinct": 6,
-        "current_distinct": 6,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       },
       {
@@ -595,8 +570,8 @@
       },
       {
         "token": "--paper",
-        "prior_distinct": 7,
-        "current_distinct": 7,
+        "prior_distinct": 6,
+        "current_distinct": 6,
         "delta": 0
       },
       {
