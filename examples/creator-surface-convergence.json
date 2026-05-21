@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-21T14:06:42.718Z",
+  "timestamp": "2026-05-22T01:15:28.592Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
-  "shared_tokens": 1,
-  "diverged_tokens": 14,
+  "shared_tokens": 2,
+  "diverged_tokens": 13,
   "unique_tokens": 27,
   "families": 4,
   "diverged_details": [
@@ -353,7 +353,7 @@
     },
     {
       "token": "--paper",
-      "distinct_values": 6,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#f2eadb",
@@ -361,7 +361,9 @@
             "creator-family-dna.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
-            "creator-prompt-dna-adapter.html"
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
           ]
         },
         {
@@ -382,18 +384,6 @@
           "surfaces": [
             "creator-p5-sketch.html"
           ]
-        },
-        {
-          "value": "#f1eadc",
-          "surfaces": [
-            "creator-poster-surface.html"
-          ]
-        },
-        {
-          "value": "#f3eadb",
-          "surfaces": [
-            "creator-social-card.html"
-          ]
         }
       ]
     },
@@ -411,24 +401,6 @@
           "value": "#d7e7ea",
           "surfaces": [
             "creator-touchdesigner-tox.html"
-          ]
-        }
-      ]
-    },
-    {
-      "token": "--paper-hot",
-      "distinct_values": 2,
-      "values": [
-        {
-          "value": "#fff9eb",
-          "surfaces": [
-            "creator-pdf-zine.html"
-          ]
-        },
-        {
-          "value": "#fff8ea",
-          "surfaces": [
-            "creator-social-card.html"
           ]
         }
       ]
@@ -466,11 +438,11 @@
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 14,
-    "current_diverged_count": 14,
+    "prior_diverged_count": 13,
+    "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-21T14:04:37.212Z",
+    "prior_timestamp": "2026-05-22T01:15:16.596Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -534,18 +506,12 @@
       },
       {
         "token": "--paper",
-        "prior_distinct": 6,
-        "current_distinct": 6,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       },
       {
         "token": "--paper-dim",
-        "prior_distinct": 2,
-        "current_distinct": 2,
-        "delta": 0
-      },
-      {
-        "token": "--paper-hot",
         "prior_distinct": 2,
         "current_distinct": 2,
         "delta": 0
