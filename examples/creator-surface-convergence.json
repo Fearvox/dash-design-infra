@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T05:33:28.239Z",
+  "timestamp": "2026-05-21T08:36:20.360Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -493,7 +493,7 @@
     "current_diverged_count": 15,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-21T05:33:27.784Z",
+    "prior_timestamp": "2026-05-21T08:35:15.862Z",
     "per_token_deltas": [
       {
         "token": "--accent",
