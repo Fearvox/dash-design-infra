@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-21T00:30:00Z: --signal token alignment blocked by stale premise (warm-paper surfaces do not use --signal). Switching to --panel token alignment. Current: 7 distinct values across warm-paper surfaces (motion-storyboard: #fff9eb, prompt-dna: #fff9ed, pdf-zine: absent, poster: absent, social-card: absent). Family-dna uses rgba(244,234,214,0.06).",
+  "observation": "2026-05-21T08:38:00Z: creator-panel-token-alignment-route shipped in PR #80. 3 warm-paper surfaces (pdf-zine, poster, social-card) gained var(--panel) usage — surfaces defined --panel in :root but never used it in body CSS. --panel now used across 6 warm-paper surfaces. --panel distinct values unchanged (same consensus rgba(244,234,214,0.06) across warm-paper). Selection pressure shifts to --signal token alignment.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 5
       },
       "risk": "STALE PREMISE: warm-paper surfaces (motion-storyboard, pdf-zine, poster, prompt-dna, social-card) do not use --signal at all — they use --blue and --accent. No warm-paper convergence possible.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-blue-token-alignment-route",
@@ -34,21 +34,6 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-panel-token-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align --panel token across warm-paper family. Current: 7 distinct values across surfaces. Warm-paper surfaces use different solid light values: motion-storyboard (#fff9eb), prompt-dna (#fff9ed). Consider aligning to consensus rgba(244,234,214,0.06) from family-dna or a solid warm-paper equivalent. Dark-industrial and creative-hybrid retain intentional divergence.",
-      "phenotype": "Updated :root --panel values with measure+print verification.",
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 6,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "panel token serves different purposes across families (warm-paper: off-white tint, dark-industrial: dark panel overlay). Only align within warm-paper family.",
-      "selection": "selected"
-    },
-    {
       "id": "creator-line-alpha-alignment-route",
       "axis": "visual grammar",
       "mutation": "Align --line alpha value across warm-paper family. Current: 8 distinct rgba values with different alpha channels (0.18, 0.14, 0.12, 0.20). Most warm-paper surfaces use rgba(21,18,14,0.18). Normalize line alpha to 0.18 across warm-paper family, preserve p5-sketch #35584c as intentional creative divergence.",
@@ -64,7 +49,7 @@
       "selection": "candidate"
     }
   ],
-  "winner": "creator-panel-token-alignment-route",
+  "winner": "creator-signal-token-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -463,6 +448,20 @@
         "bun creator:prompt-dna-check (PASS)",
         "bun creator:surface-consistency (--accent: 3→2 distinct, warm-paper converges)",
         "bun creator:cache-integrity (11/11 valid)"
+      ]
+    },
+    {
+      "id": "creator-panel-token-alignment-route",
+      "axis": "visual grammar",
+      "retained": "2026-05-21T08:40:55.738Z",
+      "selection": "retained",
+      "retained_as": "panel-token-alignment across warm-paper family: 3 surfaces (pdf-zine, poster, social-card) gained var(--panel) usage. --panel now used consistently across 6 warm-paper surfaces with rgba(244,234,214,0.06) consensus.",
+      "proof": [
+        "bun creator:pdf-zine-check",
+        "bun creator:poster-check",
+        "bun creator:social-card-check",
+        "bun creator:multi-surface-proof",
+        "bun creator:cache-integrity"
       ]
     }
   ],
