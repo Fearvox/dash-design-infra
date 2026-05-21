@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-05-21T05:33:28.932Z",
-  "totalMs": 7830,
+  "timestamp": "2026-05-21T08:35:16.574Z",
+  "totalMs": 7878,
   "passed": 28,
   "failed": 3,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1122
+      "durationMs": 820
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 736
+      "durationMs": 730
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 906
+      "durationMs": 1386
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:surface-health",
@@ -30,15 +30,15 @@
     },
     {
       "name": "creator:script-health",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:orphan-script",
       "durationMs": 18
     },
     {
+      "name": "creator:orphan-script",
+      "durationMs": 19
+    },
+    {
       "name": "creator:workflow-gate-health",
-      "durationMs": 3920
+      "durationMs": 3775
     },
     {
       "name": "creator:example-check-coverage",
@@ -50,7 +50,7 @@
     },
     {
       "name": "creator:regression-duration",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:measure-print-cache",
@@ -70,11 +70,11 @@
     },
     {
       "name": "creator:capsule-check",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:evolution-check",
-      "durationMs": 18
+      "durationMs": 20
     },
     {
       "name": "creator:mutation-check",
@@ -82,11 +82,11 @@
     },
     {
       "name": "creator:poster-check",
-      "durationMs": 18
+      "durationMs": 19
     },
     {
       "name": "creator:prompt-dna-check",
-      "durationMs": 20
+      "durationMs": 19
     },
     {
       "name": "creator:motion-storyboard-check",
@@ -94,7 +94,7 @@
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:pdf-zine-check",
@@ -102,7 +102,7 @@
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 21
+      "durationMs": 22
     },
     {
       "name": "creator:remotion-scene-check",
@@ -118,7 +118,7 @@
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:skill-package-check",
@@ -126,7 +126,7 @@
     },
     {
       "name": "hackathon:score",
-      "durationMs": 407
+      "durationMs": 419
     }
   ]
 }

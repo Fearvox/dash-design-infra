@@ -117,7 +117,7 @@
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 32px;
-        background: rgba(255, 249, 235, .72);
+        background: var(--panel);
         padding: 30px;
         display: grid;
         grid-template-rows: auto 1fr auto;
@@ -128,7 +128,7 @@
         grid-row: span 2;
         background:
           radial-gradient(circle at 12% 12%, rgba(31, 85, 212, .15), transparent 26%),
-          rgba(255, 249, 235, .82);
+          var(--panel-hot, var(--panel));
       }
 
       .panel.dark {
