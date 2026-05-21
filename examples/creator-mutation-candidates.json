@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-21: creator-blue-token-alignment-route shipped. manim-scene --blue #8db4ff → #1d4ed8, --blue converges 2→1 across warm-paper family. Signal-token-alignment deselected (stale premise: --signal has 4 distinct values across 4 families, no consensus without breaking creative-hybrid). Line-alpha-alignment promoted to selected, paper-token-gap added as 2nd candidate. --blue converged, --green next candidate.",
+  "observation": "2026-05-21: creator-line-alpha-alignment-route DESELECTED (stale premise — warm-paper --line already converged, 5 surfaces share rgba(21,18,14,0.18)). creator-paper-token-gap-route SELECTED and PHENOTYPE SHIPPED: poster-surface (#f1eadc->#f2eadb) and social-card (#f3eadb->#f2eadb) aligned. --paper warm-paper consensus now 6 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna, poster, social-card). p5-sketch + browser-demo retain creative-hybrid divergence.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -15,14 +15,14 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Dark-industrial (browser-demo, remotion-scene) and creative-hybrid (p5-sketch, touchdesigner-tox) may intentionally diverge. Warm-paper surfaces only.",
-      "selection": "selected"
+      "risk": "STALE PREMISE: warm-paper surfaces (motion-storyboard, pdf-zine, poster, prompt-dna, social-card) already share rgba(21,18,14,0.18). 7 remaining surfaces intentionally diverge by family. No warm-paper --line gap remains.",
+      "selection": "candidate"
     },
     {
       "id": "creator-paper-token-gap-route",
       "axis": "visual grammar",
       "mutation": "Align --paper token across warm-paper family. Consensus #f2eadb shared by 4 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna). Diverged: poster #f1eadc, social-card #f3eadb, browser-demo #f4ead6, p5-sketch #f6f0e5. p5-sketch and browser-demo are creative-hybrid — intentional divergence. poster and social-card are 1-hex-digit drift.",
-      "phenotype": "Diagnostic for --paper family convergence.",
+      "phenotype": "Updated :root --paper values on poster-surface + social-card to #f2eadb with measure+print verification.",
       "fitness": {
         "creator_utility": 5,
         "memory_retention": 7,
@@ -30,8 +30,8 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "p5-sketch and browser-demo are creative-hybrid — intentional divergence.",
-      "selection": "candidate"
+      "risk": "p5-sketch #f6f0e5 and browser-demo #f4ead6 are creative-hybrid — intentional divergence.",
+      "selection": "selected"
     },
     {
       "id": "creator-signal-token-alignment-route",
@@ -47,9 +47,24 @@
       },
       "risk": "Stale premise — signal is family identifier, not convergence target. Deselect.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-panel-alpha-explore-route",
+      "axis": "visual grammar",
+      "mutation": "Explore --panel alpha consistency across warm-paper family. Consensus rgba(244,234,214,0.06) shared by 5 warm-paper surfaces. Social-card uses --paper-hot:#fff8ea slightly differently from --paper:#f2eadb — explore whether --paper-hot needs normalization alongside --paper alignment.",
+      "phenotype": "Diagnostic for --panel family convergence + --paper-hot normalization.",
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "Minor — panel is already near-consensus. Assess whether the gain is worth the churn.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-line-alpha-alignment-route",
+  "winner": "creator-paper-token-gap-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
