@@ -1,162 +1,162 @@
 {
-  "lastUpdated": "2026-05-21T08:35:15.803Z",
-  "totalRunMs": 7830,
+  "lastUpdated": "2026-05-21T14:04:37.125Z",
+  "totalRunMs": 7878,
   "checkCount": 31,
   "checks": {
     "creator:playwright-health-check": {
-      "baselineMs": 1438,
-      "count": 34,
-      "totalMs": 48886
+      "baselineMs": 1404,
+      "count": 36,
+      "totalMs": 50526
     },
     "creator:darwin-autonomy-check": {
-      "baselineMs": 828,
-      "count": 34,
-      "totalMs": 28168
+      "baselineMs": 823,
+      "count": 36,
+      "totalMs": 29628
     },
     "creator:cron-slice-health": {
-      "baselineMs": 3380,
-      "count": 34,
-      "totalMs": 114925
+      "baselineMs": 3269,
+      "count": 36,
+      "totalMs": 117697
     },
     "creator:docs-surface-parity": {
-      "baselineMs": 73,
-      "count": 34,
-      "totalMs": 2476
+      "baselineMs": 70,
+      "count": 36,
+      "totalMs": 2516
     },
     "creator:agent-context-health": {
       "baselineMs": 26,
-      "count": 34,
-      "totalMs": 893
+      "count": 36,
+      "totalMs": 933
     },
     "creator:surface-health": {
-      "baselineMs": 311,
-      "count": 34,
-      "totalMs": 10588
+      "baselineMs": 309,
+      "count": 36,
+      "totalMs": 11116
     },
     "creator:script-health": {
-      "baselineMs": 21,
-      "count": 34,
-      "totalMs": 701
+      "baselineMs": 20,
+      "count": 36,
+      "totalMs": 737
     },
     "creator:orphan-script": {
       "baselineMs": 20,
-      "count": 34,
-      "totalMs": 683
+      "count": 36,
+      "totalMs": 721
     },
     "creator:workflow-gate-health": {
-      "baselineMs": 8269,
-      "count": 34,
-      "totalMs": 281151
+      "baselineMs": 8019,
+      "count": 36,
+      "totalMs": 288701
     },
     "creator:example-check-coverage": {
       "baselineMs": 19,
-      "count": 34,
-      "totalMs": 636
+      "count": 36,
+      "totalMs": 674
     },
     "creator:post-check-coverage": {
-      "baselineMs": 24,
-      "count": 34,
-      "totalMs": 808
+      "baselineMs": 23,
+      "count": 36,
+      "totalMs": 844
     },
     "creator:regression-duration": {
       "baselineMs": 18,
-      "count": 34,
-      "totalMs": 616
+      "count": 36,
+      "totalMs": 652
     },
     "creator:capsule-check": {
       "baselineMs": 18,
-      "count": 34,
-      "totalMs": 623
+      "count": 36,
+      "totalMs": 659
     },
     "creator:evolution-check": {
       "baselineMs": 18,
-      "count": 34,
-      "totalMs": 603
+      "count": 36,
+      "totalMs": 643
     },
     "creator:mutation-check": {
       "baselineMs": 18,
-      "count": 34,
-      "totalMs": 614
+      "count": 36,
+      "totalMs": 650
     },
     "creator:poster-check": {
       "baselineMs": 18,
-      "count": 34,
-      "totalMs": 597
+      "count": 36,
+      "totalMs": 635
     },
     "creator:prompt-dna-check": {
       "baselineMs": 19,
-      "count": 34,
-      "totalMs": 659
+      "count": 36,
+      "totalMs": 697
     },
     "creator:motion-storyboard-check": {
       "baselineMs": 20,
-      "count": 34,
-      "totalMs": 680
+      "count": 36,
+      "totalMs": 720
     },
     "creator:social-card-check": {
       "baselineMs": 22,
-      "count": 34,
-      "totalMs": 738
+      "count": 36,
+      "totalMs": 778
     },
     "creator:pdf-zine-check": {
       "baselineMs": 20,
-      "count": 34,
-      "totalMs": 693
+      "count": 36,
+      "totalMs": 731
     },
     "creator:p5-sketch-check": {
       "baselineMs": 22,
-      "count": 34,
-      "totalMs": 752
+      "count": 36,
+      "totalMs": 796
     },
     "creator:remotion-scene-check": {
       "baselineMs": 19,
-      "count": 34,
-      "totalMs": 662
+      "count": 36,
+      "totalMs": 700
     },
     "creator:manim-scene-check": {
       "baselineMs": 20,
-      "count": 34,
-      "totalMs": 682
+      "count": 36,
+      "totalMs": 722
     },
     "creator:touchdesigner-tox-check": {
       "baselineMs": 19,
-      "count": 34,
-      "totalMs": 652
+      "count": 36,
+      "totalMs": 690
     },
     "creator:browser-demo-check": {
       "baselineMs": 22,
-      "count": 34,
-      "totalMs": 741
+      "count": 36,
+      "totalMs": 781
     },
     "creator:skill-package-check": {
-      "baselineMs": 28,
-      "count": 34,
-      "totalMs": 941
+      "baselineMs": 27,
+      "count": 36,
+      "totalMs": 977
     },
     "hackathon:score": {
-      "baselineMs": 434,
-      "count": 34,
-      "totalMs": 14741
+      "baselineMs": 433,
+      "count": 36,
+      "totalMs": 15579
     },
     "creator:measure-print-cache": {
       "baselineMs": 19,
-      "count": 26,
-      "totalMs": 494
+      "count": 28,
+      "totalMs": 532
     },
     "creator:cache-integrity": {
       "baselineMs": 20,
-      "count": 26,
-      "totalMs": 511
+      "count": 28,
+      "totalMs": 549
     },
     "creator:surface-consistency": {
       "baselineMs": 23,
-      "count": 26,
-      "totalMs": 595
+      "count": 28,
+      "totalMs": 639
     },
     "creator:family-dna-check": {
       "baselineMs": 18,
-      "count": 26,
-      "totalMs": 478
+      "count": 28,
+      "totalMs": 516
     }
   }
 }

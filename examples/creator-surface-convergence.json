@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-21T08:36:20.360Z",
+  "timestamp": "2026-05-21T14:06:42.718Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
-  "shared_tokens": 0,
-  "diverged_tokens": 15,
+  "shared_tokens": 1,
+  "diverged_tokens": 14,
   "unique_tokens": 27,
   "families": 4,
   "diverged_details": [
@@ -82,29 +82,6 @@
           "value": "#111318",
           "surfaces": [
             "creator-remotion-scene.html"
-          ]
-        }
-      ]
-    },
-    {
-      "token": "--blue",
-      "distinct_values": 2,
-      "values": [
-        {
-          "value": "#1d4ed8",
-          "surfaces": [
-            "creator-family-dna.html",
-            "creator-motion-storyboard.html",
-            "creator-pdf-zine.html",
-            "creator-poster-surface.html",
-            "creator-prompt-dna-adapter.html",
-            "creator-social-card.html"
-          ]
-        },
-        {
-          "value": "#8db4ff",
-          "surfaces": [
-            "creator-manim-scene.html"
           ]
         }
       ]
@@ -489,11 +466,11 @@
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 15,
-    "current_diverged_count": 15,
+    "prior_diverged_count": 14,
+    "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-21T08:35:15.862Z",
+    "prior_timestamp": "2026-05-21T14:04:37.212Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -511,12 +488,6 @@
         "token": "--bg",
         "prior_distinct": 3,
         "current_distinct": 3,
-        "delta": 0
-      },
-      {
-        "token": "--blue",
-        "prior_distinct": 2,
-        "current_distinct": 2,
         "delta": 0
       },
       {

@@ -1,55 +1,55 @@
 {
-  "observation": "2026-05-21T08:38:00Z: creator-panel-token-alignment-route shipped in PR #80. 3 warm-paper surfaces (pdf-zine, poster, social-card) gained var(--panel) usage — surfaces defined --panel in :root but never used it in body CSS. --panel now used across 6 warm-paper surfaces. --panel distinct values unchanged (same consensus rgba(244,234,214,0.06) across warm-paper). Selection pressure shifts to --signal token alignment.",
+  "observation": "2026-05-21: creator-blue-token-alignment-route shipped. manim-scene --blue #8db4ff → #1d4ed8, --blue converges 2→1 across warm-paper family. Signal-token-alignment deselected (stale premise: --signal has 4 distinct values across 4 families, no consensus without breaking creative-hybrid). Line-alpha-alignment promoted to selected, paper-token-gap added as 2nd candidate. --blue converged, --green next candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
     {
-      "id": "creator-signal-token-alignment-route",
+      "id": "creator-line-alpha-alignment-route",
       "axis": "visual grammar",
-      "mutation": "Align --signal token across surfaces. Current: 4 distinct values: #7ef0c1 (browser-demo, family-dna), #f0ee9b (p5-sketch), #8cb8ff (remotion-scene), #66e3ff (touchdesigner-tox). Warm-paper family surfaces use #7ef0c1. Consider aligning remotion-scene #8cb8ff to #7ef0c1 or documenting intentional divergence.",
-      "phenotype": "Updated :root --signal values with measure+print verification.",
+      "mutation": "Align --line token alpha across warm-paper family. Consensus rgba(21,18,14,0.18) shared by 6 surfaces (motion-storyboard, pdf-zine, poster, prompt-dna, social-card, frontier-capsule). Diverged: browser-demo (#294148), remotion-scene (#394150), p5-sketch (#35584c), manim-scene (rgba 0.2), touchdesigner-tox (rgba 0.26), family-dna (rgba 0.12). Warm-paper consensus already established; extend to all warm-paper surfaces.",
+      "phenotype": "Diagnostic + optional surface edits for --line alpha convergence.",
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
+        "creator_utility": 5,
+        "memory_retention": 6,
         "artifact_proof": 6,
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "STALE PREMISE: warm-paper surfaces (motion-storyboard, pdf-zine, poster, prompt-dna, social-card) do not use --signal at all — they use --blue and --accent. No warm-paper convergence possible.",
+      "risk": "Dark-industrial (browser-demo, remotion-scene) and creative-hybrid (p5-sketch, touchdesigner-tox) may intentionally diverge. Warm-paper surfaces only.",
       "selection": "selected"
     },
     {
-      "id": "creator-blue-token-alignment-route",
+      "id": "creator-paper-token-gap-route",
       "axis": "visual grammar",
-      "mutation": "Align --blue token. Current: 2 values: #1d4ed8 (family-dna, motion-storyboard, pdf-zine, poster, prompt-dna, social-card), #8db4ff (manim-scene). Manim-scene blue #8db4ff is intentional creative-hybrid divergence. No action needed for warm-paper convergence.",
-      "phenotype": "Diagnostic only — no surface edits needed.",
+      "mutation": "Align --paper token across warm-paper family. Consensus #f2eadb shared by 4 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna). Diverged: poster #f1eadc, social-card #f3eadb, browser-demo #f4ead6, p5-sketch #f6f0e5. p5-sketch and browser-demo are creative-hybrid — intentional divergence. poster and social-card are 1-hex-digit drift.",
+      "phenotype": "Diagnostic for --paper family convergence.",
       "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
-        "artifact_proof": 5,
+        "creator_utility": 5,
+        "memory_retention": 7,
+        "artifact_proof": 6,
         "boundary_safety": 10,
-        "minimal_core": 7
+        "minimal_core": 6
       },
-      "risk": "No drift in warm-paper family for --blue. Manim intentional. Deselect with reason.",
+      "risk": "p5-sketch and browser-demo are creative-hybrid — intentional divergence.",
       "selection": "candidate"
     },
     {
-      "id": "creator-line-alpha-alignment-route",
+      "id": "creator-signal-token-alignment-route",
       "axis": "visual grammar",
-      "mutation": "Align --line alpha value across warm-paper family. Current: 8 distinct rgba values with different alpha channels (0.18, 0.14, 0.12, 0.20). Most warm-paper surfaces use rgba(21,18,14,0.18). Normalize line alpha to 0.18 across warm-paper family, preserve p5-sketch #35584c as intentional creative divergence.",
-      "phenotype": "Updated :root --line values with measure+print verification.",
+      "mutation": "Align --signal token across warm-paper family. Consensus #7ef0c1 shared by 2 surfaces (browser-demo, family-dna). Currently 4 distinct values across 4 families — no single warm-paper consensus is achievable without breaking creative-hybrid surfaces. Premise invalid: signal is family identifier, not alignment target.",
+      "phenotype": "Deselected — stale premise. signal has 4 distinct values across 4 families; no consensus exists or is achievable without breaking creative-hybrid intent.",
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 6,
+        "creator_utility": 1,
+        "memory_retention": 3,
+        "artifact_proof": 2,
         "boundary_safety": 10,
-        "minimal_core": 5
+        "minimal_core": 4
       },
-      "risk": "Only align within warm-paper family. Dark-industrial and creative-hybrid retain intentional divergence.",
+      "risk": "Stale premise — signal is family identifier, not convergence target. Deselect.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-signal-token-alignment-route",
+  "winner": "creator-line-alpha-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -462,6 +462,16 @@
         "bun creator:social-card-check",
         "bun creator:multi-surface-proof",
         "bun creator:cache-integrity"
+      ]
+    },
+    {
+      "id": "creator-blue-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "CSS --blue token alignment across warm-paper family (manim-scene #8db4ff → #1d4ed8)",
+      "proof": [
+        "bun creator:manim-scene-check",
+        "bun measure:check -- examples/creator-manim-scene.html",
+        "bun creator:surface-consistency (--blue removed from diverged list)"
       ]
     }
   ],
