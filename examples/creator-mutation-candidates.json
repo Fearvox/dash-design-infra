@@ -1,23 +1,8 @@
 {
-  "observation": "2026-05-20T22:00:00Z: --amber alignment PR #78 created. --amber converges 4→3 distinct values (social-card, prompt-dna → #c47a1f). Manim #d4a373 intentional creative-hybrid divergence. Touchdesigner-tox and p5-sketch absent intentionally. Regression-noise selected but blocked (regression clean, no noise to filter). Surface-health extension already shipped PR #73. accent-token next candidate.",
+  "observation": "2026-05-20T22:45:00Z: --accent token alignment complete. 8 warm-paper + creative-hybrid surfaces now use #ffb86b. browser-demo (#ff9f6e) and frontier-capsule (#1d4ed8) intentional divergence preserved. --accent converges 3→2 distinct values across retained surfaces. All surface checks pass (5/5 warm-paper, 1/1 family-dna). signal-token next candidate.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-accent-token-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align --accent token across warm-paper family. Current: 3 distinct values: #ffb86b (family-dna, remotion-scene, touchdesigner-tox), #ff9f6e (browser-demo), #1d4ed8 (frontier-capsule — intentional cool-blue signal). warm-paper surfaces (family-dna, pdf-zine, poster, social-card, etc.) should align to #ffb86e or similar warm-amber accent. browser-demo can keep its distinct identity; frontier-capsule is intentional.",
-      "phenotype": "Updated :root --accent values with measure+print verification.",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 7,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "frontier-capsule uses --accent:#1d4ed8 intentionally as a cool-blue signal accent — not a drift. Only surfaces that should converge are the warm-paper family sharing the amber/orange accent palette.",
-      "selection": "selected"
-    },
     {
       "id": "creator-signal-token-alignment-route",
       "axis": "visual grammar",
@@ -31,7 +16,7 @@
         "minimal_core": 5
       },
       "risk": "remotion-scene signal blue #8cb8ff may be intentional to distinguish timeline-code adapter from warm-paper surfaces. Only align if intentional divergence is not needed.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-blue-token-alignment-route",
@@ -47,9 +32,24 @@
       },
       "risk": "No drift in warm-paper family for --blue. Manim intentional. Deselect with reason.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-panel-token-alignment-route",
+      "axis": "visual grammar",
+      "mutation": "Align --panel token across warm-paper family. Current: 7 distinct values across surfaces. Warm-paper surfaces use different solid light values: motion-storyboard (#fff9eb), prompt-dna (#fff9ed). Consider aligning to consensus rgba(244,234,214,0.06) from family-dna or a solid warm-paper equivalent. Dark-industrial and creative-hybrid retain intentional divergence.",
+      "phenotype": "Updated :root --panel values with measure+print verification.",
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 6,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "panel token serves different purposes across families (warm-paper: off-white tint, dark-industrial: dark panel overlay). Only align within warm-paper family.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-accent-token-alignment-route",
+  "winner": "creator-signal-token-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -435,9 +435,23 @@
         "bun creator:surface-health (12/12 PASS)",
         "bun creator:regression (wired)"
       ]
+    },
+    {
+      "id": "creator-accent-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "--accent token alignment: 8 warm-paper + creative-hybrid surfaces to #ffb86b consensus. browser-demo #ff9f6e and frontier-capsule #1d4ed8 intentional. --accent: 3→2 distinct values.",
+      "proof": [
+        "bun creator:poster-check (PASS)",
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:prompt-dna-check (PASS)",
+        "bun creator:surface-consistency (--accent: 3→2 distinct, warm-paper converges)",
+        "bun creator:cache-integrity (11/11 valid)"
+      ]
     }
   ],
-  "retention": "Promoted creator-muted-token-alignment-route to retained_routes (PR #71). Deselected from candidates. Selected creator-paper-token-alignment-route. Added creator-ink-token-alignment-route as replacement 4th candidate.",
+  "retention": "Promoted creator-accent-token-alignment-route to retained_routes (PR #79). Selected creator-signal-token-alignment-route as new winner. --accent: 3→2 distinct values (warm-paper family).",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",

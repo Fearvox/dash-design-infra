@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20T19:56:44.620Z",
+  "timestamp": "2026-05-21T00:21:49.184Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -16,7 +16,12 @@
           "value": "#ffb86b",
           "surfaces": [
             "creator-family-dna.html",
+            "creator-motion-storyboard.html",
+            "creator-pdf-zine.html",
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
             "creator-remotion-scene.html",
+            "creator-social-card.html",
             "creator-touchdesigner-tox.html"
           ]
         },
@@ -36,7 +41,7 @@
     },
     {
       "token": "--amber",
-      "distinct_values": 4,
+      "distinct_values": 2,
       "values": [
         {
           "value": "#c47a1f",
@@ -44,25 +49,15 @@
             "creator-family-dna.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
-            "creator-poster-surface.html"
+            "creator-poster-surface.html",
+            "creator-prompt-dna-adapter.html",
+            "creator-social-card.html"
           ]
         },
         {
           "value": "#d4a373",
           "surfaces": [
             "creator-manim-scene.html"
-          ]
-        },
-        {
-          "value": "#b86b17",
-          "surfaces": [
-            "creator-prompt-dna-adapter.html"
-          ]
-        },
-        {
-          "value": "#c57a1d",
-          "surfaces": [
-            "creator-social-card.html"
           ]
         }
       ]
@@ -500,18 +495,18 @@
     "current_diverged_count": 15,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-20T19:53:50.710Z",
+    "prior_timestamp": "2026-05-20T19:56:44.620Z",
     "per_token_deltas": [
+      {
+        "token": "--amber",
+        "prior_distinct": 4,
+        "current_distinct": 2,
+        "delta": -2
+      },
       {
         "token": "--accent",
         "prior_distinct": 3,
         "current_distinct": 3,
-        "delta": 0
-      },
-      {
-        "token": "--amber",
-        "prior_distinct": 4,
-        "current_distinct": 4,
         "delta": 0
       },
       {
