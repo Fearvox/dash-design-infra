@@ -3,8 +3,8 @@
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
-  "shared_tokens": 1,
-  "diverged_tokens": 14,
+  "shared_tokens": 2,
+  "diverged_tokens": 13,
   "unique_tokens": 27,
   "families": 4,
   "diverged_details": [
@@ -406,24 +406,6 @@
       ]
     },
     {
-      "token": "--paper-hot",
-      "distinct_values": 2,
-      "values": [
-        {
-          "value": "#fff9eb",
-          "surfaces": [
-            "creator-pdf-zine.html"
-          ]
-        },
-        {
-          "value": "#fff8ea",
-          "surfaces": [
-            "creator-social-card.html"
-          ]
-        }
-      ]
-    },
-    {
       "token": "--signal",
       "distinct_values": 4,
       "values": [
@@ -456,8 +438,8 @@
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 14,
-    "current_diverged_count": 14,
+    "prior_diverged_count": 13,
+    "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
     "prior_timestamp": "2026-05-21T22:48:53.186Z",
@@ -530,12 +512,6 @@
       },
       {
         "token": "--paper-dim",
-        "prior_distinct": 2,
-        "current_distinct": 2,
-        "delta": 0
-      },
-      {
-        "token": "--paper-hot",
         "prior_distinct": 2,
         "current_distinct": 2,
         "delta": 0
