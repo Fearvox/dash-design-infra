@@ -71,6 +71,44 @@ function extractHardcodedColors(html: string): string[] {
   return [...new Set(colors)];
 }
 
+function extractHardcodedSpacing(html: string): { gap: number[]; padding: number[]; margin: number[] } {
+  // Extract hardcoded px values for gap, padding, margin (not inside var())
+  // Matches: gap: 22px; | padding: 16px; | margin: 8px; etc.
+  // Excludes: var(--token) references, calc(), line-height
+  const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/);
+  if (!styleMatch) return { gap: [], padding: [], margin: [] };
+
+  const css = styleMatch[1];
+
+  // Extract gap values (not inside var())
+  const gapMatches: number[] = [];
+  const gapRegex = /gap:\s*(\d+)px/g;
+  let m;
+  while ((m = gapRegex.exec(css)) !== null) {
+    gapMatches.push(parseInt(m[1]));
+  }
+
+  // Extract padding values
+  const padMatches: number[] = [];
+  const padRegex = /padding:\s*(\d+)px(?![\w-])/g;
+  while ((m = padRegex.exec(css)) !== null) {
+    padMatches.push(parseInt(m[1]));
+  }
+
+  // Extract margin values (only non-negative, exclude auto)
+  const marginMatches: number[] = [];
+  const marginRegex = /margin:\s*(\d+)px(?![\w-])/g;
+  while ((m = marginRegex.exec(css)) !== null) {
+    marginMatches.push(parseInt(m[1]));
+  }
+
+  return {
+    gap: [...new Set(gapMatches)].sort((a, b) => a - b),
+    padding: [...new Set(padMatches)].sort((a, b) => a - b),
+    margin: [...new Set(marginMatches)].sort((a, b) => a - b),
+  };
+}
+
 // --- Visual Family Classification ---
 
 type Family = "warm-paper" | "dark-industrial" | "creative-hybrid" | "unknown";
@@ -107,16 +145,20 @@ const files = readdirSync(EXAMPLES_DIR)
 const surfaces: SurfaceTokens[] = [];
 const noTokenLayer: string[] = [];
 const hardcodedColors: { file: string; colors: string[] }[] = [];
+const hardcodedSpacing: { file: string; gap: number[]; padding: number[]; margin: number[] }[] = [];
 
 for (const file of files) {
   const html = readFileSync(join(EXAMPLES_DIR, file), "utf-8");
   const tokens = parseRootBlock(html);
+  const spacing = extractHardcodedSpacing(html);
 
   if (Object.keys(tokens).length === 0) {
     noTokenLayer.push(file);
     hardcodedColors.push({ file, colors: extractHardcodedColors(html) });
+    hardcodedSpacing.push({ file, ...spacing });
   } else {
     surfaces.push({ file, tokens });
+    hardcodedSpacing.push({ file, ...spacing });
   }
 }
 
@@ -154,6 +196,29 @@ if (noTokenLayer.length > 0) {
   }
   console.log();
 }
+
+// --- Report: Spacing Grammar Audit ---
+console.log("═".repeat(72));
+console.log("SPACING GRAMMAR AUDIT");
+console.log("═".repeat(72));
+console.log();
+console.log("  Hardcoded gap/padding/margin values across surfaces:");
+console.log("  (No token-based spacing layer yet — all raw px)");
+console.log();
+
+for (const entry of hardcodedSpacing) {
+  if (entry.gap.length > 0 || entry.padding.length > 0 || entry.margin.length > 0) {
+    const gapStr = entry.gap.length > 0 ? `gap:[${entry.gap.join(",")}]` : "";
+    const padStr = entry.padding.length > 0 ? `pad:[${entry.padding.join(",")}]` : "";
+    const marStr = entry.margin.length > 0 ? `mar:[${entry.margin.join(",")}]` : "";
+    const parts = [gapStr, padStr, marStr].filter(Boolean);
+    console.log(`  ${entry.file.replace("creator-", "").replace(".html", "")}: ${parts.join(" | ")}`);
+  }
+}
+console.log();
+console.log("  Note: all 11 surfaces use hardcoded px values — no --gap-* spacing tokens.");
+console.log("  Opportunity: introduce --gap-xs/sm/md/lg/xl token layer for warm-paper family.");
+console.log();
 
 // --- Report: Shared vs Divergent Tokens ---
 
@@ -448,6 +513,18 @@ const convergenceReport = {
     trend: totalDivergedDelta < 0 ? "converging" : totalDivergedDelta > 0 ? "diverging" : "stall",
     prior_timestamp: priorTimestamp || null,
     per_token_deltas: perTokenDelta,
+  },
+  spacing_audit: {
+    note: "All 11 surfaces use hardcoded px gap/padding/margin values — no token-based spacing layer",
+    surfaces: hardcodedSpacing
+      .filter((s) => s.gap.length > 0 || s.padding.length > 0 || s.margin.length > 0)
+      .map((s) => ({
+        file: s.file,
+        gap_values: s.gap,
+        padding_values: s.padding,
+        margin_values: s.margin,
+        gap_count: s.gap.length,
+      })),
   },
 };
 

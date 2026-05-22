@@ -1,25 +1,8 @@
 {
-  "observation": "2026-05-22: creator-green-token-alignment-route SHIPPED — manim-scene --green #9bd6ad → #2f6f4e. --green: 2 distinct values (warm-paper #2f6f4e vs p5-sketch #10291f). creator-paper-var-usage-route BLOCKED (stale premise). Next: spacing grammar or font stack audit.",
+  "observation": "2026-05-22: creator-green-token-alignment-route PROMOTED (shipped in PR #90, --green: 2→1 warm-paper). Spacing grammar audit selected as next winner. Diagnostic phenotype confirms all 11 surfaces use hardcoded px gap values — no spacing token layer yet.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-green-token-alignment-route",
-      "observation": "--green diverges: p5-sketch #10291f, family-dna #2f6f4e, manim-scene #9bd6ad. warm-paper surfaces consistently use #2f6f4e. Explore whether manim-scene should align to warm-paper consensus.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "axis": "visual grammar",
-      "mutation": "Explore --green token convergence. Surface grep for --green across all 11 surfaces. Identify consensus value and surfaces that diverge. Verify manim-scene --green (#9bd6ad) should align to #2f6f4e or preserve creative divergence.",
-      "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
-      "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
-      "selection": "selected"
-    },
     {
       "id": "creator-spacing-grammar-audit-route",
       "observation": "Creator surfaces use different CSS grid/spacing patterns. warm-paper surfaces use 14px, 18px, 28px gap values while family-dna uses 44px grid. Convergence opportunity: normalize spacing scale across warm-paper family.",
@@ -35,7 +18,7 @@
       "mutation": "Audit spacing token usage across warm-paper family. Extract CSS gap, padding, margin values from pdf-zine, poster, social-card, motion-storyboard. Identify hardcoded px values where CSS custom properties would improve consistency. Produce spacing scale recommendation.",
       "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
       "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-font-stack-audit-route",
@@ -53,9 +36,26 @@
       "selection": "candidate",
       "mutation": "Audit font-family usage across warm-paper surfaces. Identify hardcoded vs var() usage. Produce font grammar recommendation.",
       "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
+    },
+    {
+      "id": "creator-bg-token-explore-route",
+      "observation": "--bg diverges across warm-paper family: #f4ead6 (browser-demo), #f6f0e5 (p5-sketch), #f8f1df (manim-scene, touchdesigner-tox). warm-paper surfaces typically share #f2eadb via --paper. Explore whether --bg should converge on warm-paper surfaces or remain surface-specific.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "axis": "visual grammar",
+      "mutation": "Surface grep for --bg across all 11 surfaces. Check whether warm-paper family surfaces have --bg or rely on --paper for background. Identify if --bg divergence is intentional family signature or addressable drift.",
+      "phenotype": "Surface inspection across 11 creator HTML artifacts. No surface edits.",
+      "risk": "Low risk: read-only diagnostic, no destructive changes.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-green-token-alignment-route",
+  "winner": "creator-spacing-grammar-audit-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -507,6 +507,15 @@
       "proof": [
         "bun creator:pdf-zine-check",
         "bun measure:check -- examples/creator-pdf-zine.html"
+      ]
+    },
+    {
+      "id": "creator-green-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper --green token alignment on manim-scene",
+      "proof": [
+        "bun creator:manim-check",
+        "bun creator:surface-consistency (--green: 2→1 across warm-paper family)"
       ]
     }
   ],
