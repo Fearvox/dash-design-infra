@@ -1,40 +1,8 @@
 {
-  "observation": "2026-05-22: creator-bg-token-alignment-route DIAGNOSTIC — --bg is dark-industrial family signature (2 surfaces only). 0 warm-paper surfaces define --bg. No alignment target. Deselected. New: creator-paper-var-usage-route — poster-surface and frontier-capsule define --paper but body hardcodes literal #f2eadb instead of var(--paper). Next: convert to var().",
+  "observation": "2026-05-22: creator-green-token-alignment-route SHIPPED — manim-scene --green #9bd6ad → #2f6f4e. --green: 2 distinct values (warm-paper #2f6f4e vs p5-sketch #10291f). creator-paper-var-usage-route BLOCKED (stale premise). Next: spacing grammar or font stack audit.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
-  "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
+  "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-signal-token-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align --signal token across warm-paper family. Consensus #7ef0c1 shared by 2 surfaces (browser-demo, family-dna). Currently 4 distinct values across 4 families — no single warm-paper consensus is achievable without breaking creative-hybrid surfaces. Premise invalid: signal is family identifier, not alignment target.",
-      "phenotype": "Deselected — stale premise. signal has 4 distinct values across 4 families; no consensus exists or is achievable without breaking creative-hybrid intent.",
-      "fitness": {
-        "creator_utility": 1,
-        "memory_retention": 3,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 4
-      },
-      "risk": "STALE PREMISE: --signal is dark-industrial + creative-hybrid family signature (4 distinct values across 4 families). 0 warm-paper surfaces define --signal in :root. Warm-paper uses --paper, --ink, --accent. No surface edits possible without destroying family grammar.",
-      "selection": "candidate"
-    },
-    {
-      "id": "creator-bg-token-alignment-route",
-      "observation": "warm-paper family uses --paper for background, dark-industrial uses --bg, creative-hybrid mixed. 0 of 6 warm-paper surfaces define --bg in :root. Explore whether --bg should become warm-paper shared token.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 4,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "axis": "visual grammar",
-      "mutation": "Explore --bg token usage across warm-paper surfaces. Surface grep for --bg in :root across pdf-zine, poster, social-card, motion-storyboard, prompt-dna. Verify whether warm-paper family would benefit from shared --bg or uses --paper intentionally.",
-      "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
-      "risk": "STALE PREMISE: --bg is dark-industrial family signature (browser-demo #0b1114, remotion-scene #111318). 0 warm-paper surfaces define --bg. No alignment target. Deselect.",
-      "selection": "candidate"
-    },
     {
       "id": "creator-green-token-alignment-route",
       "observation": "--green diverges: p5-sketch #10291f, family-dna #2f6f4e, manim-scene #9bd6ad. warm-paper surfaces consistently use #2f6f4e. Explore whether manim-scene should align to warm-paper consensus.",
@@ -50,7 +18,7 @@
       "mutation": "Explore --green token convergence. Surface grep for --green across all 11 surfaces. Identify consensus value and surfaces that diverge. Verify manim-scene --green (#9bd6ad) should align to #2f6f4e or preserve creative divergence.",
       "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
       "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
-      "selection": "candidate"
+      "selection": "selected"
     },
     {
       "id": "creator-spacing-grammar-audit-route",
@@ -70,24 +38,24 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-paper-var-usage-route",
+      "id": "creator-font-stack-audit-route",
       "axis": "visual grammar",
-      "observation": "poster-surface and frontier-capsule define --paper in :root (#f2eadb) but body CSS uses hardcoded literal values instead of var(--paper). Weakens family grammar. 0 visual change — only var() usage gap.",
+      "observation": "warm-paper surfaces use different font stacks (system-ui, Inter, Georgia). Explore whether font-family normalization improves family cohesion.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 4,
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 3,
         "boundary_safety": 10,
-        "minimal_core": 9
+        "minimal_core": 6
       },
-      "mutation": "Convert hardcoded background values in poster-surface and frontier-capsule body CSS to var(--paper). Verify --paper consensus #f2eadb is used. Measure + print still pass.",
-      "phenotype": "Surface inspection: check body CSS for hardcoded #f2eadb values in poster and frontier-capsule. Replace with var(--paper) where applicable. No visual change — structural alignment only.",
-      "risk": "Low risk: only poster + frontier-capsule affected, var() replacement preserves visual output, no color change.",
-      "selection": "selected"
+      "risk": "Low risk: read-only diagnostic",
+      "selection": "candidate",
+      "mutation": "Audit font-family usage across warm-paper surfaces. Identify hardcoded vs var() usage. Produce font grammar recommendation.",
+      "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
     }
   ],
-  "winner": "creator-paper-var-usage-route",
+  "winner": "creator-green-token-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
