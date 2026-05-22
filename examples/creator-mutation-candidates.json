@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-21: panel-alpha-explore DIAGNOSTIC RUN: warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna) already share --panel consensus rgba(244,234,214,0.06). 0 warm-paper divergence remains. Remaining 5 distinct values belong to dark-industrial (browser-demo rgba(244,234,214,.08), remotion-scene #f5eddc, touchdesigner-tox rgba(8,17,31,.74)) and creative-hybrid (p5-sketch + manim-scene: no --panel token). --paper: 6→4 distinct values ✓ converging (warm-paper consensus #f2eadb taking hold). panel-alpha: 6→6 STALLED. Next: explore paper-hot normalization (social-card #fff8ea vs pdf-zine #fff9eb) or close candidate as fully explored.",
+  "observation": "2026-05-22: creator-bg-token-alignment-route DIAGNOSTIC — --bg is dark-industrial family signature (2 surfaces only). 0 warm-paper surfaces define --bg. No alignment target. Deselected. New: creator-paper-var-usage-route — poster-surface and frontier-capsule define --paper but body hardcodes literal #f2eadb instead of var(--paper). Next: convert to var().",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -32,8 +32,8 @@
       "axis": "visual grammar",
       "mutation": "Explore --bg token usage across warm-paper surfaces. Surface grep for --bg in :root across pdf-zine, poster, social-card, motion-storyboard, prompt-dna. Verify whether warm-paper family would benefit from shared --bg or uses --paper intentionally.",
       "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
-      "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
-      "selection": "selected"
+      "risk": "STALE PREMISE: --bg is dark-industrial family signature (browser-demo #0b1114, remotion-scene #111318). 0 warm-paper surfaces define --bg. No alignment target. Deselect.",
+      "selection": "candidate"
     },
     {
       "id": "creator-green-token-alignment-route",
@@ -68,9 +68,26 @@
       "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
       "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
       "selection": "candidate"
+    },
+    {
+      "id": "creator-paper-var-usage-route",
+      "axis": "visual grammar",
+      "observation": "poster-surface and frontier-capsule define --paper in :root (#f2eadb) but body CSS uses hardcoded literal values instead of var(--paper). Weakens family grammar. 0 visual change — only var() usage gap.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "mutation": "Convert hardcoded background values in poster-surface and frontier-capsule body CSS to var(--paper). Verify --paper consensus #f2eadb is used. Measure + print still pass.",
+      "phenotype": "Surface inspection: check body CSS for hardcoded #f2eadb values in poster and frontier-capsule. Replace with var(--paper) where applicable. No visual change — structural alignment only.",
+      "risk": "Low risk: only poster + frontier-capsule affected, var() replacement preserves visual output, no color change.",
+      "selection": "selected"
     }
   ],
-  "winner": "creator-bg-token-alignment-route",
+  "winner": "creator-paper-var-usage-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
