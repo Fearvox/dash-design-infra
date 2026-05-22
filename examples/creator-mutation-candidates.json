@@ -1,46 +1,8 @@
 {
-  "observation": "2026-05-22: panel-alpha-explore DIAGNOSTIC COMPLETE. warm-paper --panel already converged (rgba(244,234,214,0.06) on 6 surfaces: family-dna, motion-storyboard, pdf-zine, poster-surface, prompt-dna, social-card). 0 warm-paper divergence. Remaining 6 distinct --panel values belong to dark-industrial (browser-demo rgba(244,234,214,.08), remotion-scene #f5eddc, touchdesigner-tox rgba(8,17,31,.74)) and frontier-capsule (#fffaf0) — intentional family divergence. panel-alpha route closed as fully explored. Next: paper-hot normalization (social-card #fff8ea vs pdf-zine #fff9eb — 1-hex drift) or --bg token exploration.",
   "observation": "2026-05-21: panel-alpha-explore DIAGNOSTIC RUN: warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna) already share --panel consensus rgba(244,234,214,0.06). 0 warm-paper divergence remains. Remaining 5 distinct values belong to dark-industrial (browser-demo rgba(244,234,214,.08), remotion-scene #f5eddc, touchdesigner-tox rgba(8,17,31,.74)) and creative-hybrid (p5-sketch + manim-scene: no --panel token). --paper: 6→4 distinct values ✓ converging (warm-paper consensus #f2eadb taking hold). panel-alpha: 6→6 STALLED. Next: explore paper-hot normalization (social-card #fff8ea vs pdf-zine #fff9eb) or close candidate as fully explored.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence (all gates green) to aesthetic coherence (shared visual DNA recognizable across surfaces) — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-panel-alpha-explore-route",
-      "axis": "visual grammar",
-      "mutation": "Explore --panel alpha consistency across warm-paper family. Consensus rgba(244,234,214,0.06) shared by 6 warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna). Diverged: browser-demo rgba(244,234,214,.08), remotion-scene #f5eddc, touchdesigner-tox rgba(8,17,31,.74), p5-sketch + manim-scene missing --panel entirely. Explore whether the warm-paper consensus should extend or whether creative-hybrid families should remain intentional divergence.",
-      "phenotype": "Diagnostic COMPLETE: warm-paper --panel rgba(244,234,214,0.06) consensus confirmed across 6 surfaces. 0 warm-paper divergence. 5 non-warm-paper values are intentional family divergence.",
-      "phenotype": "Diagnostic for --panel family convergence + divergence categorization.",
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 4,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Stale premise resolved — warm-paper already converged. No surface edits needed; diagnostic completed.",
-      "selection": "candidate"
-    },
-    {
-      "id": "creator-paper-token-gap-route",
-      "axis": "visual grammar",
-      "mutation": "Align --paper token across warm-paper family. Consensus #f2eadb shared by 4 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna). Diverged: poster #f1eadc, social-card #f3eadb, browser-demo #f4ead6, p5-sketch #f6f0e5. p5-sketch and browser-demo are creative-hybrid — intentional divergence. poster and social-card are 1-hex-digit drift.",
-      "phenotype": "Phenotype SHIPPED + MERGED: poster-surface (#f1eadc->#f2eadb) + social-card (#f3eadb->#f2eadb) aligned to warm-paper consensus. Retained via this merge.",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 7,
-        "artifact_proof": 6,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "p5-sketch #f6f0e5 and browser-demo #f4ead6 are creative-hybrid — intentional divergence.",
-      "selection": "retained",
-      "retained_as": "warm-paper family --paper token consensus #f2eadb across 6 surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna)",
-      "proof": [
-        "bun creator:poster-check (PASS)",
-        "bun creator:social-card-check (PASS)",
-        "bun creator:surface-consistency (--paper: 6→4 distinct values)"
-      ]
-    },
     {
       "id": "creator-signal-token-alignment-route",
       "axis": "visual grammar",
@@ -53,26 +15,62 @@
         "boundary_safety": 10,
         "minimal_core": 4
       },
-      "risk": "Stale premise — signal is family identifier, not convergence target. Deselect.",
+      "risk": "STALE PREMISE: --signal is dark-industrial + creative-hybrid family signature (4 distinct values across 4 families). 0 warm-paper surfaces define --signal in :root. Warm-paper uses --paper, --ink, --accent. No surface edits possible without destroying family grammar.",
       "selection": "candidate"
     },
     {
-      "id": "creator-paper-hot-alignment-route",
-      "axis": "visual grammar",
-      "mutation": "Align --paper-hot token across warm-paper family. social-card uses #fff8ea, pdf-zine uses #fff9eb — 1-hex-digit drift. Both are near-white warm tints used for highlight/hover states. Consensus #fff8ea or #fff9eb should apply to both. frontier-capsule and browser-demo use different --bg values (intentional). This is a micro-alignment within warm-paper family.",
-      "phenotype": "Diagnostic + potential alignment of --paper-hot token.",
+      "id": "creator-bg-token-alignment-route",
+      "observation": "warm-paper family uses --paper for background, dark-industrial uses --bg, creative-hybrid mixed. 0 of 6 warm-paper surfaces define --bg in :root. Explore whether --bg should become warm-paper shared token.",
+      "candidates": [],
       "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
+        "creator_utility": 5,
+        "memory_retention": 6,
         "artifact_proof": 4,
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Micro-alignment (1 hex digit). May not move overall convergence score significantly but tightens warm-paper grammar. Both surfaces currently use --paper-hot.",
+      "axis": "visual grammar",
+      "mutation": "Explore --bg token usage across warm-paper surfaces. Surface grep for --bg in :root across pdf-zine, poster, social-card, motion-storyboard, prompt-dna. Verify whether warm-paper family would benefit from shared --bg or uses --paper intentionally.",
+      "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
+      "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
       "selection": "selected"
+    },
+    {
+      "id": "creator-green-token-alignment-route",
+      "observation": "--green diverges: p5-sketch #10291f, family-dna #2f6f4e, manim-scene #9bd6ad. warm-paper surfaces consistently use #2f6f4e. Explore whether manim-scene should align to warm-paper consensus.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 6,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "axis": "visual grammar",
+      "mutation": "Explore --green token convergence. Surface grep for --green across all 11 surfaces. Identify consensus value and surfaces that diverge. Verify manim-scene --green (#9bd6ad) should align to #2f6f4e or preserve creative divergence.",
+      "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
+      "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
+      "selection": "candidate"
+    },
+    {
+      "id": "creator-spacing-grammar-audit-route",
+      "observation": "Creator surfaces use different CSS grid/spacing patterns. warm-paper surfaces use 14px, 18px, 28px gap values while family-dna uses 44px grid. Convergence opportunity: normalize spacing scale across warm-paper family.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 7,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "axis": "visual grammar",
+      "mutation": "Audit spacing token usage across warm-paper family. Extract CSS gap, padding, margin values from pdf-zine, poster, social-card, motion-storyboard. Identify hardcoded px values where CSS custom properties would improve consistency. Produce spacing scale recommendation.",
+      "phenotype": "Surface inspection + token extraction across 11 creator HTML artifacts. Real browser measurement, fixed-canvas verification, DOM evidence. No raw media, no external calls.",
+      "risk": "Low risk: read-only surface inspection, no destructive changes, no credential exposure.",
+      "selection": "candidate"
     }
   ],
-  "winner": "creator-paper-hot-alignment-route",
+  "winner": "creator-bg-token-alignment-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -408,16 +406,6 @@
       ]
     },
     {
-      "id": "creator-paper-token-alignment-route",
-      "selection": "retained",
-      "retained_as": "warm-paper family --paper token consensus #f2eadb",
-      "proof": [
-        "bun creator:pdf-zine-check",
-        "bun measure:check -- examples/creator-pdf-zine.html",
-        "bun print:render -- examples/creator-pdf-zine.html /tmp/dash-pdf-zine.pdf --canvas=1684x1191"
-      ]
-    },
-    {
       "id": "creator-ink-token-alignment-route",
       "axis": "visual grammar",
       "mutation": "Align the --ink token across warm-paper family toward #15120e consensus. Current state: 6 distinct values across 11 surfaces. Warm-paper consensus #15120e is shared by family-dna, motion-storyboard, poster-surface, prompt-dna, social-card (5 surfaces). pdf-zine uses #16130e (2-hex-digit drift). p5-sketch uses #171713 (intentional creative-hybrid divergence). frontier-capsule uses #161411. Dark-industrial uses #111318 (browser-demo, remotion-scene). creative-hybrid uses #111827 (manim).",
@@ -507,6 +495,33 @@
         "bun creator:poster-check (PASS)",
         "bun creator:surface-consistency (--amber: 4→3 distinct values)",
         "bun creator:cache-integrity (11/11 valid)"
+      ]
+    },
+    {
+      "selection": "retained",
+      "id": "creator-paper-hot-alignment-route",
+      "retained_as": "creator-paper-hot-alignment-route: warm-paper --paper-hot micro-alignment across social-card + pdf-zine, #fff9eb→#fff8ea consensus, 2→1 distinct values, all gates MAXXED (PR #85)",
+      "proof": [
+        "bun creator:mutation-check",
+        "bun creator:docs-surface-parity"
+      ]
+    },
+    {
+      "selection": "retained",
+      "id": "creator-panel-alpha-explore-route",
+      "retained_as": "creator-panel-alpha-explore-route: diagnostic reveal — warm-paper --panel already converged at rgba(244,234,214,0.06), 0 warm-paper divergence, no surface edits needed (PR #84)",
+      "proof": [
+        "bun creator:mutation-check",
+        "bun creator:docs-surface-parity"
+      ]
+    },
+    {
+      "selection": "retained",
+      "id": "creator-paper-token-alignment-route",
+      "retained_as": "creator-paper-token-alignment-route: warm-paper --paper token consensus #f2eadb across 4 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna), drifted surfaces aligned (PR #73)",
+      "proof": [
+        "bun creator:pdf-zine-check",
+        "bun measure:check -- examples/creator-pdf-zine.html"
       ]
     }
   ],
