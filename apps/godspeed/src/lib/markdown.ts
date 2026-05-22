@@ -22,12 +22,23 @@ export async function parseMarkdown<TMeta = Record<string, unknown>>(
   source: string,
 ): Promise<ParsedDoc<TMeta>> {
   const parsed = matter(source);
-  const html = await marked.parse(parsed.content);
+  let html = await marked.parse(parsed.content);
+  html = enhanceImages(html);
   return {
     meta: parsed.data as TMeta,
     html,
     raw: parsed.content,
   };
+}
+
+/** Adds loading="lazy" + decoding="async" to every <img> the markdown produces. */
+function enhanceImages(html: string): string {
+  return html.replace(/<img\b((?:[^>]|"[^"]*"|'[^']*')*)>/g, (_full, attrs: string) => {
+    let next = attrs;
+    if (!/\bloading=/i.test(next)) next += ' loading="lazy"';
+    if (!/\bdecoding=/i.test(next)) next += ' decoding="async"';
+    return `<img${next}>`;
+  });
 }
 
 /** Excerpt the first paragraph of a parsed body, plain text, capped to ~180 chars. */

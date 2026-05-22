@@ -76,6 +76,13 @@ img {
   display: block;
 }
 
+.gs-content img,
+article img {
+  width: 100%;
+  border-radius: var(--gs-radius-md);
+  margin: var(--gs-3) 0;
+}
+
 /* nav */
 
 nav.gs-nav {
@@ -177,7 +184,19 @@ main {
 
 .gs-hero h1 {
   font-size: var(--gs-size-display);
-  margin-bottom: var(--gs-2);
+  margin-bottom: var(--gs-1);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.gs-hero h1 .gs-wordmark-coffee {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.62em;
+  color: var(--gs-ink-muted);
+  letter-spacing: 0;
+  margin-top: -0.15em;
 }
 
 .gs-hero .gs-tagline {
@@ -198,6 +217,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 8px 32px -12px oklch(0.42 0.13 28 / 0.35);
+  animation: gs-breathe 7s var(--gs-ease) infinite;
+}
+
+@keyframes gs-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 32px -12px oklch(0.42 0.13 28 / 0.35); }
+  50%      { transform: scale(1.018); box-shadow: 0 14px 44px -12px oklch(0.42 0.13 28 / 0.45); }
 }
 
 .gs-hero .gs-logo-mark img {
@@ -258,6 +284,66 @@ main {
 
 .gs-hours-table li:last-child {
   border-bottom: none;
+}
+
+/* photos */
+
+.gs-photo-wide {
+  max-width: var(--gs-wide-max);
+  margin: var(--gs-6) auto var(--gs-4);
+  padding: 0 var(--gs-4);
+}
+
+.gs-photo-wide img {
+  width: 100%;
+  max-height: 720px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--gs-radius-md);
+  display: block;
+}
+
+.gs-photo-wide figcaption,
+.gs-photo-strip figcaption {
+  font-family: var(--gs-font-ui);
+  font-size: var(--gs-size-label);
+  color: var(--gs-ink-muted);
+  text-align: center;
+  margin-top: var(--gs-1);
+  text-transform: lowercase;
+}
+
+.gs-photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gs-3);
+  max-width: var(--gs-wide-max);
+  margin: var(--gs-6) auto;
+  padding: 0 var(--gs-4);
+}
+
+.gs-photo-strip figure {
+  margin: 0;
+}
+
+.gs-photo-strip img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--gs-radius-md);
+  display: block;
+  transition: transform var(--gs-dur-base) var(--gs-ease);
+}
+
+.gs-photo-strip figure:hover img {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .gs-photo-strip {
+    grid-template-columns: 1fr;
+    gap: var(--gs-2);
+  }
 }
 
 /* journal cards */

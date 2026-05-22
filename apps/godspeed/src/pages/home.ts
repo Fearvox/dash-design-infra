@@ -33,7 +33,7 @@ ${nav("/")}
     <div class="gs-logo-mark">
       <img src="/logo.jpg" alt="godspeed coffee logo — two cream-colored geese on a brick-red background, one holding a clothespin, one holding a steaming espresso cup" loading="eager" width="180" height="180">
     </div>
-    <h1>${SITE.name}</h1>
+    <h1>godspeed<span class="gs-wordmark-coffee">coffee</span></h1>
     <p class="gs-tagline">${SITE.tagline}</p>
     <div>${hoursPill(hours)}</div>
   </section>
@@ -41,6 +41,11 @@ ${nav("/")}
   <article class="gs-content">
     ${bodyMarkdownHtml}
   </article>
+
+  <figure class="gs-photo-wide">
+    <img src="/photos/exterior-sign.jpg" alt="the godspeed sign — wordmark in stacked rounded type with two cream birds, mounted on the brick exterior" loading="lazy" width="640" height="800">
+    <figcaption>the sign on saluda ave</figcaption>
+  </figure>
 
   <section class="gs-info-grid">
     <div class="gs-block">
@@ -63,6 +68,21 @@ ${nav("/")}
         }).join("")}
       </ul>
     </div>
+  </section>
+
+  <section class="gs-photo-strip">
+    <figure>
+      <img src="/photos/the-nectar-matcha.jpg" alt="the nectar with matcha — purple powder being sifted over an iced drink with frothy crema" loading="lazy" width="640" height="800">
+      <figcaption>the nectar, matcha edition</figcaption>
+    </figure>
+    <figure>
+      <img src="/photos/espresso-machine.jpg" alt="the slayer espresso machine on the bar, glasses lined on top, warm grid lighting overhead" loading="lazy" width="640" height="800">
+      <figcaption>the slayer</figcaption>
+    </figure>
+    <figure>
+      <img src="/photos/interior-fresh.jpg" alt="a smiling face latte-art reveal in dark espresso crema" loading="lazy" width="640" height="800">
+      <figcaption>some mornings the espresso smiles back</figcaption>
+    </figure>
   </section>
 
   ${recentPosts.length > 0 ? `

@@ -15,6 +15,10 @@ we ran godspeed as a pop-up for a long time before we had a roof. a lot of farme
 
 we got a real place in **early 2026**, on saluda ave, with help from [@sparrowconstruction](https://www.instagram.com/sparrowconstruction/) who did the build-out. week one was a blur. month one was magic. you should have seen it.
 
+![the godspeed interior on week one — terrazzo floor, plants, warm pendant lights, long wooden bar with a black hood overhead](/photos/interior-week1.jpg)
+
+![the slayer espresso machine, glasses lined on top, the grid of warm overhead lights reflecting](/photos/espresso-machine.jpg)
+
 ## what's on the menu
 
 - **the nectar** — our house drink. coffee, milk, and a secret ingredient. you can have it iced. you can have it with matcha. you can have it however you want, honestly.
@@ -26,6 +30,8 @@ we got a real place in **early 2026**, on saluda ave, with help from [@sparrowco
 placeholder section — Roger to share team names + roles + a casual photo. we'll write proper bios when we have them.
 
 ## come by
+
+![the godspeed sign on saluda ave — wordmark in stacked rounded type with the two cream birds, mounted on brick](/photos/exterior-sign.jpg)
 
 - 747 saluda ave, columbia, sc 29205
 - wed–fri 8a–3p · sat–sun 9a–4p
