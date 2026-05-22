@@ -1,0 +1,18 @@
+{
+  "timezone": "America/New_York",
+  "schedule": {
+    "sunday":    { "open": "09:00", "close": "16:00" },
+    "monday":    null,
+    "tuesday":   null,
+    "wednesday": { "open": "08:00", "close": "15:00" },
+    "thursday":  { "open": "08:00", "close": "15:00" },
+    "friday":    { "open": "08:00", "close": "15:00" },
+    "saturday":  { "open": "09:00", "close": "16:00" }
+  },
+  "holidays": {
+    "2026-07-04": null,
+    "2026-11-26": null,
+    "2026-12-25": null,
+    "2027-01-01": null
+  }
+}
