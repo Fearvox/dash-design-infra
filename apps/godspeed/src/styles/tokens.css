@@ -1,0 +1,73 @@
+/* godspeed.coffee — design tokens
+ * extracted from the IG @godspeedcola logo + brand voice.
+ * palette anchors:
+ *   - brick: the deep red of the logo background
+ *   - cream: the figure color of the two birds
+ *   - paper: the warm off-white the site sits on (matches @dash/tokens paper-base)
+ *   - ink:   editorial dark, not pure black
+ */
+
+:root {
+  /* color */
+  --gs-brick:        oklch(0.42 0.13 28);
+  --gs-brick-deep:   oklch(0.34 0.13 28);
+  --gs-brick-soft:   oklch(0.55 0.10 28);
+  --gs-cream:        oklch(0.86 0.05 78);
+  --gs-cream-warm:   oklch(0.82 0.06 75);
+  --gs-paper:        oklch(0.96 0.012 85);
+  --gs-paper-card:   oklch(0.94 0.014 83);
+  --gs-ink:          oklch(0.22 0.02 60);
+  --gs-ink-muted:    oklch(0.45 0.02 65);
+  --gs-rule:         oklch(0.88 0.02 75);
+
+  /* type */
+  --gs-font-display: "Source Serif 4", "Source Serif Pro", Charter, Georgia, serif;
+  --gs-font-body:    "Source Serif 4", "Source Serif Pro", Charter, Georgia, serif;
+  --gs-font-ui:      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --gs-size-display: clamp(48px, 7vw, 96px);
+  --gs-size-h1:      clamp(36px, 5vw, 56px);
+  --gs-size-h2:      clamp(28px, 3.5vw, 40px);
+  --gs-size-h3:      clamp(20px, 2vw, 26px);
+  --gs-size-body:    18px;
+  --gs-size-small:   15px;
+  --gs-size-label:   13px;
+
+  --gs-lh-tight:     1.1;
+  --gs-lh-snug:      1.3;
+  --gs-lh-body:      1.6;
+
+  /* spacing — 8px baseline */
+  --gs-1:  8px;
+  --gs-2:  16px;
+  --gs-3:  24px;
+  --gs-4:  32px;
+  --gs-5:  48px;
+  --gs-6:  64px;
+  --gs-8:  96px;
+  --gs-10: 128px;
+
+  /* layout */
+  --gs-content-max: 720px;
+  --gs-wide-max:    1100px;
+  --gs-hero-max:    1280px;
+
+  /* radii / borders */
+  --gs-radius-sm: 4px;
+  --gs-radius-md: 8px;
+  --gs-radius-pill: 999px;
+
+  --gs-border-1: 1px solid var(--gs-rule);
+
+  /* motion */
+  --gs-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --gs-dur-fast: 180ms;
+  --gs-dur-base: 320ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* opt out of dark mode for V1 — Godspeed's identity is warm + light.
+     * keeping this block as a marker for future dark theme work. */
+  }
+}
