@@ -43,7 +43,10 @@ ${nav("/")}
   </article>
 
   <figure class="gs-photo-wide">
-    <img src="/photos/exterior-sign.jpg" alt="the godspeed sign — wordmark in stacked rounded type with two cream birds, mounted on the brick exterior" loading="lazy" width="640" height="800">
+    <picture>
+      <source srcset="/photos/exterior-sign.webp" type="image/webp">
+      <img src="/photos/exterior-sign.jpg" alt="the godspeed sign — wordmark in stacked rounded type with two cream birds, mounted on the brick exterior" loading="lazy" decoding="async" width="640" height="800">
+    </picture>
     <figcaption>the sign on saluda ave</figcaption>
   </figure>
 
@@ -71,18 +74,9 @@ ${nav("/")}
   </section>
 
   <section class="gs-photo-strip">
-    <figure>
-      <img src="/photos/the-nectar-matcha.jpg" alt="the nectar with matcha — purple powder being sifted over an iced drink with frothy crema" loading="lazy" width="640" height="800">
-      <figcaption>the nectar, matcha edition</figcaption>
-    </figure>
-    <figure>
-      <img src="/photos/espresso-machine.jpg" alt="the slayer espresso machine on the bar, glasses lined on top, warm grid lighting overhead" loading="lazy" width="640" height="800">
-      <figcaption>the slayer</figcaption>
-    </figure>
-    <figure>
-      <img src="/photos/interior-fresh.jpg" alt="a smiling face latte-art reveal in dark espresso crema" loading="lazy" width="640" height="800">
-      <figcaption>some mornings the espresso smiles back</figcaption>
-    </figure>
+    ${photoStripCard("the-nectar-matcha", "the nectar with matcha — purple powder being sifted over an iced drink with frothy crema", "the nectar, matcha edition")}
+    ${photoStripCard("espresso-machine", "the slayer espresso machine on the bar, glasses lined on top, warm grid lighting overhead", "the slayer")}
+    ${photoStripCard("interior-fresh", "a smiling face latte-art reveal in dark espresso crema", "some mornings the espresso smiles back")}
   </section>
 
   ${recentPosts.length > 0 ? `
@@ -98,10 +92,11 @@ ${nav("/")}
   <section class="gs-newsletter">
     <h2>the journal — straight to your inbox</h2>
     <p>monthly-ish notes on what's pouring, what's baking, and what's happening in the shop. no spam, just letters.</p>
-    <form action="https://buttondown.com/api/emails/embed-subscribe/godspeed" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/godspeed', 'popupwindow')">
-      <input type="email" name="email" placeholder="you@example.com" required aria-label="email address">
+    <form class="gs-newsletter-form" data-newsletter>
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="email address" autocomplete="email">
       <button type="submit">subscribe</button>
     </form>
+    <p class="gs-newsletter-fineprint" data-newsletter-help>opens your email so you can send your address to <a href="mailto:hello@godspeed.coffee">hello@godspeed.coffee</a>.</p>
   </section>
 </main>
 ${footer()}
@@ -115,4 +110,14 @@ function journalCard(p: JournalIndexEntry): string {
     <h3>${p.title}</h3>
     <p class="gs-excerpt">${p.excerpt}</p>
   </a>`;
+}
+
+function photoStripCard(slug: string, alt: string, caption: string): string {
+  return `<figure>
+    <picture>
+      <source srcset="/photos/${slug}.webp" type="image/webp">
+      <img src="/photos/${slug}.jpg" alt="${alt}" loading="lazy" decoding="async" width="640" height="800">
+    </picture>
+    <figcaption>${caption}</figcaption>
+  </figure>`;
 }

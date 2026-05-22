@@ -1,0 +1,14 @@
+{
+  "name": "godspeed coffee",
+  "short_name": "godspeed",
+  "description": "godspeed coffee — coffee, lil treats, and slow afternoons on Saluda Ave in Columbia, SC.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f1e9",
+  "theme_color": "#a8311e",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
+  ]
+}

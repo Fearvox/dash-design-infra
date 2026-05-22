@@ -18,8 +18,23 @@ export function hoursPill(hours: HoursConfig, now: Date = new Date()): string {
 `;
 }
 
-/** Inline JS that runs in the browser and refreshes pill labels every 60s. */
+/** Inline JS that runs in the browser and refreshes pill labels every 60s.
+ * Also handles graceful newsletter form submission via mailto: until Buttondown is wired. */
 export const HOURS_PILL_CLIENT_JS = /* js */ `
+(function () {
+  // Newsletter form → mailto: graceful fallback
+  document.querySelectorAll("form[data-newsletter]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = form.querySelector("input[type=email]");
+      var email = input ? input.value.trim() : "";
+      if (!email) return;
+      var subject = encodeURIComponent("add me to the godspeed journal");
+      var body = encodeURIComponent("hi godspeed,\\n\\nplease add this email to the journal newsletter:\\n" + email + "\\n\\nthanks");
+      window.location.href = "mailto:hello@godspeed.coffee?subject=" + subject + "&body=" + body;
+    });
+  });
+})();
 (function () {
   function hmMin(s){var p=s.split(":");return parseInt(p[0],10)*60+parseInt(p[1],10)}
   function pretty(hm){var m=hmMin(hm),h=Math.floor(m/60),mm=m%60,ap=h<12?"a":"p",h12=h%12===0?12:h%12;return mm===0?h12+ap:h12+":"+String(mm).padStart(2,"0")+ap}

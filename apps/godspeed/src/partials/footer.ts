@@ -15,7 +15,7 @@ export function footer(): string {
     <li><a href="${SITE.social.yelp}" rel="noopener" target="_blank">yelp</a></li>
     <li><a href="/journal/feed.xml">rss</a></li>
   </ul>
-  <p style="margin-top: var(--gs-2); font-size: var(--gs-size-label); opacity: 0.7;">
+  <p class="gs-footer-fineprint">
     © ${year} godspeed coffee · built with care
   </p>
 </footer>

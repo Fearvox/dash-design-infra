@@ -41,10 +41,11 @@ ${nav("/journal")}
 
   <section class="gs-newsletter">
     <h2>get the journal in your inbox</h2>
-    <form action="https://buttondown.com/api/emails/embed-subscribe/godspeed" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/godspeed', 'popupwindow')">
-      <input type="email" name="email" placeholder="you@example.com" required aria-label="email address">
+    <form class="gs-newsletter-form" data-newsletter>
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="email address" autocomplete="email">
       <button type="submit">subscribe</button>
     </form>
+    <p class="gs-newsletter-fineprint" data-newsletter-help>opens your email so you can send your address to <a href="mailto:hello@godspeed.coffee">hello@godspeed.coffee</a>.</p>
   </section>
 </main>
 ${footer()}

@@ -48,3 +48,7 @@ coverage
 GSD-PLAN.md
 SHARED_TASK_NOTES.md
 .vercel
+
+# goalv3-cc per-goal state (local artifact, not source)
+.goal/
+.playwright-mcp/

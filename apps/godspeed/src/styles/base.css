@@ -447,6 +447,23 @@ main {
   background: var(--gs-cream-warm);
 }
 
+.gs-newsletter .gs-newsletter-fineprint {
+  font-family: var(--gs-font-ui);
+  font-size: var(--gs-size-label);
+  color: var(--gs-cream-warm);
+  margin-top: var(--gs-2);
+  text-align: center;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gs-newsletter .gs-newsletter-fineprint a {
+  color: var(--gs-cream);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
 /* footer */
 
 footer.gs-footer {
@@ -470,6 +487,13 @@ footer.gs-footer ul {
 
 footer.gs-footer a {
   text-transform: lowercase;
+}
+
+footer.gs-footer .gs-footer-fineprint {
+  margin-top: var(--gs-2);
+  font-size: var(--gs-size-label);
+  /* explicit color meets WCAG AA 4.5:1 against --gs-paper (no opacity tricks) */
+  color: oklch(0.52 0.02 65);
 }
 
 /* responsive */

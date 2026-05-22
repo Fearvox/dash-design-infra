@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <title>Godspeed Coffee</title>
+  <desc>Two long-necked birds — one holding a clothespin, one holding an espresso cup — on a brick-red circle. Brand mark for Godspeed Coffee, Columbia SC.</desc>
+
+  <circle cx="160" cy="160" r="160" fill="#a8311e"/>
+
+  <!-- LEFT BIRD body -->
+  <path fill="#e8d7b8" d="M 160 268 C 156 276 148 284 134 287 C 112 292 82 278 68 256 C 54 234 58 206 78 192 C 92 182 110 182 124 190 C 134 196 140 206 140 218 C 140 228 136 238 132 246 C 140 244 150 248 156 256 C 158 260 160 264 160 268 Z"/>
+  <!-- LEFT BIRD neck S-curve -->
+  <path fill="#e8d7b8" d="M 130 215 C 126 204 122 192 114 182 C 106 172 96 164 88 154 C 80 144 76 132 80 120 C 84 110 94 104 104 106 C 114 108 120 118 118 128 C 116 136 110 142 108 150 C 106 158 110 166 118 170 C 126 174 136 172 140 164 C 144 156 140 146 137 139 C 134 132 132 124 136 116 C 140 108 150 104 158 108 L 155 114 C 149 111 143 114 142 120 C 141 126 144 133 147 140 C 150 147 152 155 148 163 C 144 171 136 175 127 174 C 118 173 111 167 110 158 C 109 150 113 142 117 134 C 121 126 126 119 124 111 C 122 103 113 98 104 100 C 94 102 86 110 85 120 C 84 130 88 140 94 150 C 100 160 110 168 118 178 C 126 188 132 200 134 212 L 130 215 Z"/>
+  <!-- LEFT BIRD head -->
+  <ellipse cx="122" cy="100" rx="14" ry="11" fill="#e8d7b8" transform="rotate(-15,122,100)"/>
+  <!-- LEFT BIRD beak upper -->
+  <path fill="#e8d7b8" d="M 130 96 C 136 91 146 88 152 90 C 150 94 140 95 134 98 Z"/>
+  <!-- LEFT BIRD beak lower -->
+  <path fill="#e8d7b8" d="M 130 101 C 136 103 146 103 152 103 C 150 107 140 107 134 104 Z"/>
+  <!-- Clothespin prongs -->
+  <rect x="150" y="85" width="5" height="18" rx="2" fill="#e8d7b8" transform="rotate(-10,152,94)"/>
+  <rect x="156" y="85" width="5" height="18" rx="2" fill="#e8d7b8" transform="rotate(10,158,94)"/>
+  <path stroke="#a8311e" stroke-width="1.5" fill="none" d="M 152 97 C 155 94 158 97 158 97"/>
+  <!-- Left eye -->
+  <circle cx="116" cy="97" r="3" fill="#a8311e"/>
+
+  <!-- RIGHT BIRD body -->
+  <path fill="#e8d7b8" d="M 162 262 C 166 272 174 282 188 287 C 210 294 242 280 254 256 C 266 232 260 204 240 190 C 226 180 208 180 194 188 C 183 195 178 205 178 218 C 178 228 182 238 186 246 C 178 244 168 248 164 256 C 162 259 162 261 162 262 Z"/>
+  <!-- RIGHT BIRD neck S-curve -->
+  <path fill="#e8d7b8" d="M 188 213 C 192 202 196 190 204 180 C 212 170 222 162 230 152 C 238 142 242 130 238 118 C 234 108 224 102 214 104 C 204 106 198 116 200 126 C 202 136 208 142 210 150 C 212 158 208 166 200 170 C 192 174 182 172 178 164 C 174 156 178 146 181 138 C 184 130 186 122 182 114 C 178 106 168 102 160 106 L 163 112 C 169 109 175 112 176 118 C 177 124 174 131 171 138 C 168 145 166 153 170 161 C 174 169 182 175 191 174 C 200 173 207 167 208 158 C 209 150 205 142 201 134 C 197 126 194 118 196 110 C 198 102 207 97 216 100 C 225 103 231 112 230 122 C 229 132 223 140 217 148 C 211 156 203 162 196 172 C 189 182 185 194 186 207 L 188 213 Z"/>
+  <!-- RIGHT BIRD head -->
+  <ellipse cx="198" cy="100" rx="14" ry="11" fill="#e8d7b8" transform="rotate(15,198,100)"/>
+  <!-- RIGHT BIRD beak upper -->
+  <path fill="#e8d7b8" d="M 188 96 C 182 91 172 88 166 90 C 168 94 178 95 184 98 Z"/>
+  <!-- RIGHT BIRD beak lower -->
+  <path fill="#e8d7b8" d="M 188 101 C 182 103 172 103 166 103 C 168 107 178 107 184 104 Z"/>
+  <!-- Right eye -->
+  <circle cx="204" cy="97" r="3" fill="#a8311e"/>
+
+  <!-- Espresso cup -->
+  <path fill="#e8d7b8" d="M 158 90 L 148 90 L 150 104 L 160 104 Z"/>
+  <path fill="none" stroke="#e8d7b8" stroke-width="3" stroke-linecap="round" d="M 160 93 C 165 93 165 101 160 101"/>
+  <ellipse cx="154" cy="105" rx="7" ry="2.5" fill="#e8d7b8"/>
+
+  <!-- Steam wisps -->
+  <path fill="none" stroke="#e8d7b8" stroke-width="3" stroke-linecap="round" d="M 152 88 C 150 82 154 77 152 71 C 150 65 146 61 148 55"/>
+  <path fill="none" stroke="#e8d7b8" stroke-width="2.5" stroke-linecap="round" d="M 158 87 C 160 81 156 76 158 70 C 160 64 164 61 162 55"/>
+
+</svg>
