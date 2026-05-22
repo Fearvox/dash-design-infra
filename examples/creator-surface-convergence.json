@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T22:48:53.752Z",
+  "timestamp": "2026-05-22T17:21:12.208Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -88,22 +88,17 @@
     },
     {
       "token": "--green",
-      "distinct_values": 3,
+      "distinct_values": 2,
       "values": [
         {
           "value": "#2f6f4e",
           "surfaces": [
             "creator-family-dna.html",
+            "creator-manim-scene.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
             "creator-prompt-dna-adapter.html",
             "creator-social-card.html"
-          ]
-        },
-        {
-          "value": "#9bd6ad",
-          "surfaces": [
-            "creator-manim-scene.html"
           ]
         },
         {
@@ -442,7 +437,7 @@
     "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-21T22:48:53.186Z",
+    "prior_timestamp": "2026-05-22T17:18:27.366Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -464,8 +459,8 @@
       },
       {
         "token": "--green",
-        "prior_distinct": 3,
-        "current_distinct": 3,
+        "prior_distinct": 2,
+        "current_distinct": 2,
         "delta": 0
       },
       {
@@ -521,6 +516,262 @@
         "prior_distinct": 4,
         "current_distinct": 4,
         "delta": 0
+      }
+    ]
+  },
+  "spacing_audit": {
+    "note": "All 11 surfaces use hardcoded px gap/padding/margin values — no token-based spacing layer",
+    "surfaces": [
+      {
+        "file": "creator-browser-demo.html",
+        "gap_values": [
+          6,
+          12,
+          14,
+          18,
+          32
+        ],
+        "padding_values": [
+          8,
+          20,
+          24,
+          26,
+          48
+        ],
+        "margin_values": [
+          12
+        ],
+        "gap_count": 5
+      },
+      {
+        "file": "creator-family-dna.html",
+        "gap_values": [
+          6,
+          8,
+          12,
+          16
+        ],
+        "padding_values": [
+          3,
+          5,
+          10,
+          12,
+          20,
+          44
+        ],
+        "margin_values": [
+          6
+        ],
+        "gap_count": 4
+      },
+      {
+        "file": "creator-frontier-capsule.html",
+        "gap_values": [
+          10,
+          12,
+          14,
+          24,
+          40
+        ],
+        "padding_values": [
+          8,
+          9,
+          10,
+          11,
+          17,
+          21,
+          22,
+          28,
+          30,
+          52
+        ],
+        "margin_values": [
+          28
+        ],
+        "gap_count": 5
+      },
+      {
+        "file": "creator-manim-scene.html",
+        "gap_values": [
+          14,
+          18,
+          34,
+          54
+        ],
+        "padding_values": [
+          22,
+          24,
+          30,
+          74
+        ],
+        "margin_values": [
+          16,
+          38
+        ],
+        "gap_count": 4
+      },
+      {
+        "file": "creator-motion-storyboard.html",
+        "gap_values": [
+          7,
+          14,
+          22,
+          24,
+          30
+        ],
+        "padding_values": [
+          6,
+          10,
+          16,
+          18,
+          20,
+          40,
+          52
+        ],
+        "margin_values": [
+          7,
+          24
+        ],
+        "gap_count": 5
+      },
+      {
+        "file": "creator-p5-sketch.html",
+        "gap_values": [
+          5,
+          8,
+          10,
+          18,
+          34
+        ],
+        "padding_values": [
+          7,
+          10,
+          18,
+          30,
+          34,
+          64
+        ],
+        "margin_values": [
+          28
+        ],
+        "gap_count": 5
+      },
+      {
+        "file": "creator-pdf-zine.html",
+        "gap_values": [
+          8,
+          10,
+          12,
+          22
+        ],
+        "padding_values": [
+          8,
+          14,
+          30,
+          70
+        ],
+        "margin_values": [
+          18
+        ],
+        "gap_count": 4
+      },
+      {
+        "file": "creator-poster-surface.html",
+        "gap_values": [
+          10,
+          16,
+          64
+        ],
+        "padding_values": [
+          24,
+          30,
+          44,
+          58
+        ],
+        "margin_values": [],
+        "gap_count": 3
+      },
+      {
+        "file": "creator-prompt-dna-adapter.html",
+        "gap_values": [
+          14,
+          24,
+          30,
+          42
+        ],
+        "padding_values": [
+          20,
+          24,
+          44,
+          56
+        ],
+        "margin_values": [
+          32
+        ],
+        "gap_count": 4
+      },
+      {
+        "file": "creator-remotion-scene.html",
+        "gap_values": [
+          12,
+          14,
+          22,
+          28,
+          42
+        ],
+        "padding_values": [
+          20,
+          23,
+          24,
+          28,
+          30,
+          62
+        ],
+        "margin_values": [
+          20,
+          36
+        ],
+        "gap_count": 5
+      },
+      {
+        "file": "creator-social-card.html",
+        "gap_values": [
+          4,
+          12,
+          38
+        ],
+        "padding_values": [
+          16,
+          22,
+          44
+        ],
+        "margin_values": [
+          24
+        ],
+        "gap_count": 3
+      },
+      {
+        "file": "creator-touchdesigner-tox.html",
+        "gap_values": [
+          14,
+          16,
+          22,
+          42
+        ],
+        "padding_values": [
+          10,
+          16,
+          18,
+          26,
+          30,
+          42,
+          58
+        ],
+        "margin_values": [
+          13,
+          18
+        ],
+        "gap_count": 4
       }
     ]
   }
