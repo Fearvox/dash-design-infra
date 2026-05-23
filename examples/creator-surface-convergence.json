@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-22T17:21:12.208Z",
+  "timestamp": "2026-05-23T02:28:19.944Z",
   "total_surfaces": 12,
   "with_token_layer": 12,
   "without_token_layer": 0,
@@ -437,7 +437,7 @@
     "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-22T17:18:27.366Z",
+    "prior_timestamp": "2026-05-23T02:28:19.442Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -594,7 +594,7 @@
         "file": "creator-manim-scene.html",
         "gap_values": [
           14,
-          18,
+          16,
           34,
           54
         ],
@@ -671,7 +671,7 @@
           70
         ],
         "margin_values": [
-          18
+          16
         ],
         "gap_count": 4
       },
