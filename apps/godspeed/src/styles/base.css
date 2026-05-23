@@ -195,7 +195,9 @@ main {
   font-weight: 400;
   font-size: 0.62em;
   color: var(--gs-ink-muted);
-  letter-spacing: 0;
+  /* compensate italic slant — italic glyphs concentrate mass left-of-vertical, so a small
+   * positive tracking nudges the optical center of "coffee" to align with "godspeed". */
+  letter-spacing: 0.02em;
   margin-top: -0.15em;
 }
 
@@ -205,6 +207,10 @@ main {
   font-size: var(--gs-size-h3);
   color: var(--gs-ink-muted);
   margin-bottom: var(--gs-4);
+  /* paragraphs inherit the global p{max-width:720px}; without margin auto the box
+   * sits left-flush within the centered .gs-hero. Re-center the constrained box. */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gs-hero .gs-logo-mark {
@@ -404,6 +410,13 @@ main {
   color: var(--gs-cream);
 }
 
+.gs-newsletter p {
+  /* same fix as .gs-hero .gs-tagline — re-center the global p{max-width:720px} box */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 560px;
+}
+
 .gs-newsletter form {
   display: flex;
   gap: var(--gs-1);
@@ -498,11 +511,15 @@ footer.gs-footer .gs-footer-fineprint {
 
 /* responsive */
 
-@media (max-width: 768px) {
+/* tablet+ stays two-column for the info grid; phones collapse */
+@media (max-width: 640px) {
   .gs-info-grid {
     grid-template-columns: 1fr;
     gap: var(--gs-3);
   }
+}
+
+@media (max-width: 768px) {
   .gs-hero {
     padding: var(--gs-6) var(--gs-3) var(--gs-5);
   }
