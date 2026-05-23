@@ -34,8 +34,8 @@
       "axis": "visual grammar",
       "mutation": "Diagnostic phenotype for --bg family signature. Surface grep across all 11 surfaces confirms: 0 warm-paper surfaces define --bg. --bg is dark-industrial family token. No surface edits possible or needed. Creator-bg-token-diagnostic.html documents findings.",
       "phenotype": "creator-bg-token-diagnostic.html — fixed-canvas diagnostic phenotype with --bg presence table across all 11 surfaces.",
-      "risk": "Low risk: diagnostic confirmed stale premise. No surface edits.",
-      "selection": "selected"
+      "risk": "Mutation already shipped in PR #95. Diagnostic phenotype confirmed --bg is dark-industrial family signature, not warm-paper drift. No surface edits possible.",
+      "selection": "candidate"
     },
     {
       "id": "creator-spacing-token-layer-route",
@@ -52,10 +52,10 @@
       "mutation": "Add --space-4: 16px to :root token layer across warm-paper surfaces. Use var(--space-4) for all 18px gap/padding values replaced in this slice. Establish spacing token grammar for future alignment.",
       "phenotype": "Updated :root token blocks on manim-scene, poster-surface, pdf-zine, frontier-capsule with --space-4: 16px. No body CSS changes.",
       "risk": "Low risk: adds token definition, no body usage changes. Future slices reference --space-4 for spacing alignment.",
-      "selection": "candidate"
+      "selection": "selected"
     }
   ],
-  "winner": "creator-bg-token-explore-route",
+  "winner": "creator-spacing-token-layer-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
