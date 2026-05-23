@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Low risk: read-only diagnostic",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Audit font-family usage across warm-paper surfaces. Identify hardcoded vs var() usage. Produce font grammar recommendation.",
       "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
     },
@@ -34,28 +34,27 @@
       "axis": "visual grammar",
       "mutation": "Diagnostic phenotype for --bg family signature. Surface grep across all 11 surfaces confirms: 0 warm-paper surfaces define --bg. --bg is dark-industrial family token. No surface edits possible or needed. Creator-bg-token-diagnostic.html documents findings.",
       "phenotype": "creator-bg-token-diagnostic.html — fixed-canvas diagnostic phenotype with --bg presence table across all 11 surfaces.",
-      "risk": "Mutation already shipped in PR #95. Diagnostic phenotype confirmed --bg is dark-industrial family signature, not warm-paper drift. No surface edits possible.",
+      "risk": "Shipped in PR #95. Diagnostic confirmed --bg is dark-industrial family signature.",
       "selection": "candidate"
     },
     {
-      "id": "creator-spacing-token-layer-route",
+      "id": "creator-font-family-normalize-route",
+      "observation": "family-dna.html uses Inter font in font-family stack, all other warm-paper surfaces use system-ui. Inter is not part of the shared visual grammar.",
+      "mutation": "Audit and normalize font-family across warm-paper surfaces. Remove Inter from family-dna, establish consensus stack.",
       "axis": "visual grammar",
-      "observation": "All 11 surfaces use hardcoded px spacing values — zero --space CSS token usage. Diagnostic (PR #92) confirmed 33% @dash/tokens scale compliance. Next step: introduce --space-4 token layer for warm-paper family.",
-      "candidates": [],
       "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 7,
-        "artifact_proof": 5,
-        "boundary_safety": 9,
-        "minimal_core": 7
+        "creator_utility": 5,
+        "memory_retention": 5,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 6
       },
-      "mutation": "Add --space-4: 16px to :root token layer across warm-paper surfaces. Use var(--space-4) for all 18px gap/padding values replaced in this slice. Establish spacing token grammar for future alignment.",
-      "phenotype": "Updated :root token blocks on manim-scene, poster-surface, pdf-zine, frontier-capsule with --space-4: 16px. No body CSS changes.",
-      "risk": "Low risk: adds token definition, no body usage changes. Future slices reference --space-4 for spacing alignment.",
-      "selection": "selected"
+      "selection": "candidate",
+      "phenotype": "Normalized font-family stack across warm-paper family.",
+      "risk": "family-dna uses Inter for display purposes — confirm visual intent before removing."
     }
   ],
-  "winner": "creator-spacing-token-layer-route",
+  "winner": "creator-font-stack-audit-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -548,6 +547,24 @@
       "proof": [
         "bun creator:surface-consistency (spacing audit PASS)",
         "bun creator:docs-surface-parity (spacing route present in doc)"
+      ]
+    },
+    {
+      "id": "creator-spacing-token-layer-route",
+      "selection": "retained",
+      "retained_as": "Spacing token layer: adds --space-4:16px to :root across warm-paper family, replaces hardcoded 18px spacing with var(--space-4). First concrete spacing grammar layer for DASH visual family.",
+      "proof": [
+        "bun creator:multi-surface-proof (11/11 measure+print PASS)",
+        "bun creator:cache-integrity (10/10 valid)"
+      ]
+    },
+    {
+      "id": "creator-spacing-grammar-complete-route",
+      "selection": "retained",
+      "retained_as": "Spacing grammar completion: extends --space-4:16px to all remaining 18px instances. Closes partial spacing-token-layer (PR #96). Border-radius and custom property --h values are non-spacing visual properties.",
+      "proof": [
+        "bun creator:multi-surface-proof (11/11 measure+print PASS)",
+        "bun creator:cache-integrity (10/10 valid)"
       ]
     }
   ],
