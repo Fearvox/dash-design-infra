@@ -1,25 +1,8 @@
 {
-  "observation": "2026-05-22: creator-spacing-grammar-audit-route DIAGNOSTIC PHENOTYPE SHIPPED. 12 surfaces audited: 46/139 gap/padding values on @dash/tokens scale (33% avg compliance). 18px is the most common off-scale value (8 surfaces); 34px second (4 surfaces). No surface currently uses --space CSS tokens. Diagnostic confirms spacing token alignment is a viable next mutation — 18px→16px is highest signal, lowest visual risk (near-identical delta, 8 surfaces affected). Winner: spacing-grammar-audit (diagnostic shipped, no surface edits needed). Next: 18px→16px spacing alignment mutation on warm-paper surfaces.",
+  "observation": "2026-05-22: creator-18px-spacing-alignment-route SHIPPED (PR #93). 18px gap/padding → 16px across 4 surfaces (manim, frontier-capsule, poster, pdf-zine). 11/11 measure+print PASS. Next: explore --bg token convergence + introduce --space-4 token layer.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-18px-spacing-alignment-route",
-      "observation": "18px is the most prevalent off-scale spacing value (8 surfaces: browser-demo, p5-sketch, manim-scene, touchdesigner-tox, remotion-scene, frontier-capsule, motion-storyboard). 18px is 2px above 16px scale value — visually near-identical, very low risk. Warm-paper surfaces (browser-demo, p5-sketch, manim-scene, touchdesigner-tox, remotion-scene, frontier-capsule) collectively span all three visual families. Alignment opportunity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 7,
-        "artifact_proof": 5,
-        "boundary_safety": 9,
-        "minimal_core": 8
-      },
-      "axis": "visual grammar",
-      "mutation": "Align 18px gap/padding values to 16px (nearest @dash/tokens scale value) across browser-demo, p5-sketch, manim-scene, touchdesigner-tox, remotion-scene, frontier-capsule. Verify measure+print pass after changes. This is the highest-signal spacing alignment opportunity: 8 surfaces, near-zero visual delta.",
-      "phenotype": "Surface inspection + targeted CSS replacement: gap: 18px → var(--space-4), padding: 18px → var(--space-4) across 6 surfaces. Verify fixed-canvas 1684x1191 compliance, measure:check pass, cache-integrity clean.",
-      "risk": "18px→16px is a 2px reduction. For gap values in flex/grid layouts this is near-imperceptible. Risk is very low. This is a warm-paper family tightening, not a creative-hybrid rewrite.",
-      "selection": "selected"
-    },
     {
       "id": "creator-font-stack-audit-route",
       "axis": "visual grammar",
@@ -52,10 +35,27 @@
       "mutation": "Surface grep for --bg across all 11 surfaces. Check whether warm-paper family surfaces have --bg or rely on --paper for background. Identify if --bg divergence is intentional family signature or addressable drift.",
       "phenotype": "Surface inspection across 11 creator HTML artifacts. No surface edits.",
       "risk": "Low risk: read-only diagnostic, no destructive changes.",
+      "selection": "selected"
+    },
+    {
+      "id": "creator-spacing-token-layer-route",
+      "axis": "visual grammar",
+      "observation": "All 11 surfaces use hardcoded px spacing values — zero --space CSS token usage. Diagnostic (PR #92) confirmed 33% @dash/tokens scale compliance. Next step: introduce --space-4 token layer for warm-paper family.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 7,
+        "artifact_proof": 5,
+        "boundary_safety": 9,
+        "minimal_core": 7
+      },
+      "mutation": "Add --space-4: 16px to :root token layer across warm-paper surfaces. Use var(--space-4) for all 18px gap/padding values replaced in this slice. Establish spacing token grammar for future alignment.",
+      "phenotype": "Updated :root token blocks on manim-scene, poster-surface, pdf-zine, frontier-capsule with --space-4: 16px. No body CSS changes.",
+      "risk": "Low risk: adds token definition, no body usage changes. Future slices reference --space-4 for spacing alignment.",
       "selection": "candidate"
     }
   ],
-  "winner": "creator-18px-spacing-alignment-route",
+  "winner": "creator-bg-token-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -516,6 +516,19 @@
       "proof": [
         "bun creator:manim-check",
         "bun creator:surface-consistency (--green: 2→1 across warm-paper family)"
+      ]
+    },
+    {
+      "id": "creator-18px-spacing-alignment-route",
+      "selection": "retained",
+      "retained_as": "18px→16px spacing alignment across 4 warm-paper surfaces (manim-scene, frontier-capsule, poster-surface, pdf-zine). gap:18px and margin:18px replaced with 16px — nearest @dash/tokens scale value, near-zero visual delta. --space token layer not yet introduced.",
+      "proof": [
+        "bun creator:manim-scene-check (PASS)",
+        "bun creator:poster-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:capsule-check (PASS)",
+        "bun creator:multi-surface-proof (11/11 measure + 11/11 print PASS)",
+        "bun creator:cache-integrity (11/11 valid)"
       ]
     }
   ],
