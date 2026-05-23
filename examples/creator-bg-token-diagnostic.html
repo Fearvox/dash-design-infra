@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>creator-bg-token-diagnostic — DASH Visual Grammar</title>
+  <style>
+    :root {
+      --night: #0f172a;
+      --paper: #f2eadb;
+      --ink: #15120e;
+      --accent: #ffb86b;
+      --signal: #7ef0c1;
+      --muted: #6f6659;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--night);
+      color: var(--paper);
+      padding: 48px;
+      min-height: 100vh;
+    }
+    .page { max-width: 900px; margin: 0 auto; }
+    .header { margin-bottom: 48px; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    h1 { font-size: 28px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .subtitle { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 600px; }
+    .verdict {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .verdict-diagnostic { background: rgba(126,240,193,0.15); color: var(--signal); border: 1px solid rgba(126,240,193,0.3); }
+    .verdict-text { font-size: 15px; font-weight: 400; text-transform: none; letter-spacing: 0; margin: 16px 0 32px; color: var(--muted); }
+    .surface-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+    .surface-table th {
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(126,240,193,0.2);
+      padding: 8px 12px;
+    }
+    .surface-table td {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: top;
+    }
+    .surface-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .token-val { font-family: monospace; font-size: 12px; color: var(--accent); }
+    .family-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .family-warm { background: rgba(244,234,214,0.15); color: #d4c9b0; }
+    .family-dark { background: rgba(126,240,193,0.15); color: var(--signal); }
+    .family-hybrid { background: rgba(212,163,115,0.15); color: #d4a373; }
+    .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .finding {
+      padding: 16px 20px;
+      border-radius: 4px;
+      border-left: 3px solid;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .finding-info { background: rgba(126,240,193,0.08); border-color: var(--signal); }
+    .finding-warn { background: rgba(255,184,107,0.08); border-color: var(--accent); }
+    .finding h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .finding-info h3 { color: var(--signal); }
+    .finding-warn h3 { color: var(--accent); }
+    code { font-family: monospace; font-size: 0.9em; background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px; }
+    .grammar-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 24px; margin-top: 32px; }
+    .grammar-card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; color: var(--muted); }
+    .grammar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grammar-item h4 { font-size: 13px; color: var(--paper); margin-bottom: 6px; }
+    .grammar-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="eyebrow">creator-surface-consistency · visual grammar diagnostic</div>
+      <h1>--bg token family signature audit</h1>
+      <div class="verdict verdict-diagnostic">Diagnostic phenotype · PR #95</div>
+      <p class="verdict-text">--bg is a dark-industrial family token. Warm-paper surfaces use --paper for background texture. No --bg convergence opportunity exists across families.</p>
+    </div>
+
+    <div class="finding finding-info">
+      <h3>Finding — --bg is NOT a warm-paper token</h3>
+      <p>The candidate observation proposed "--bg should converge on warm-paper surfaces." Surface inspection reveals: <strong>zero warm-paper surfaces define or use --bg</strong>. Warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna) use <code>--paper</code> as the background token. The --bg divergence described in the observation is <strong>family signature, not addressable drift</strong>.</p>
+    </div>
+
+    <table class="surface-table" aria-label="--bg token presence across creator surfaces">
+      <thead>
+        <tr>
+          <th>surface</th>
+          <th>family</th>
+          <th>--bg in :root</th>
+          <th>--bg body usage</th>
+          <th>--paper in :root</th>
+          <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>browser-demo</td>
+          <td><span class="family-tag family-dark">dark-industrial</span></td>
+          <td class="token-val">#0b1114</td>
+          <td>var(--bg)</td>
+          <td class="token-val">#f4ead6</td>
+          <td>Exemplar dark-industrial --bg</td>
+        </tr>
+        <tr>
+          <td>remotion-scene</td>
+          <td><span class="family-tag family-dark">dark-industrial</span></td>
+          <td class="token-val">#111318</td>
+          <td>var(--bg)</td>
+          <td>—</td>
+          <td>Dark-industrial, --bg variant (2-hex drift)</td>
+        </tr>
+        <tr>
+          <td>frontier-capsule</td>
+          <td><span class="family-tag family-hybrid">creative-hybrid</span></td>
+          <td class="token-val">#f3efe7</td>
+          <td>—</td>
+          <td>—</td>
+          <td>Uses --bg as off-white paper ground, not dark</td>
+        </tr>
+        <tr>
+          <td>poster-surface</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper uses --paper for background</td>
+        </tr>
+        <tr>
+          <td>pdf-zine</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper uses --paper for background</td>
+        </tr>
+        <tr>
+          <td>social-card</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper uses --paper for background</td>
+        </tr>
+        <tr>
+          <td>motion-storyboard</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper uses --paper for background</td>
+        </tr>
+        <tr>
+          <td>prompt-dna</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper uses --paper for background</td>
+        </tr>
+        <tr>
+          <td>family-dna</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f2eadb</td>
+          <td>Warm-paper reference artifact</td>
+        </tr>
+        <tr>
+          <td>p5-sketch</td>
+          <td><span class="family-tag family-hybrid">creative-hybrid</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f6f0e5</td>
+          <td>Creative-hybrid uses dark body (#221f18) for contrast</td>
+        </tr>
+        <tr>
+          <td>manim-scene</td>
+          <td><span class="family-tag family-hybrid">creative-hybrid</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f8f1df</td>
+          <td>Creative-hybrid uses --paper for text color on dark</td>
+        </tr>
+        <tr>
+          <td>touchdesigner-tox</td>
+          <td><span class="family-tag family-hybrid">creative-hybrid</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="token-val">#f8f1df</td>
+          <td>Token layer added in PR #68</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="finding finding-info">
+      <h3>Family signature vs. drift</h3>
+      <p><strong>Family signature:</strong> same token name means different things in different families. <code>--bg</code> means deep near-black monitoring ground in dark-industrial, and off-white paper in creative-hybrid (frontier-capsule). Converging these would destroy creative intent.</p>
+      <p style="margin-top:8px;"><strong>Addressable drift:</strong> same token name means the same visual purpose across surfaces in the same family, but values have slightly diverged. Warm-paper --paper (#f2eadb consensus) is addressable drift — all 6 warm-paper surfaces use --paper for the same role.</p>
+    </div>
+
+    <div class="grammar-card">
+      <h2>creator-surface-consistency NorthStar alignment</h2>
+      <div class="grammar-grid">
+        <div class="grammar-item">
+          <h4>1. Diagnostic closes a stale candidate</h4>
+          <p>creator-bg-token-explore-route had stale premise: --bg does not exist on warm-paper surfaces. Diagnostic confirms 0-addressable-drift across warm-paper family for --bg. Ledger updated, next candidate promoted.</p>
+        </div>
+        <div class="grammar-item">
+          <h4>2. Family signature confirmed</h4>
+          <p>--bg is the dark-industrial background token. Warm-paper uses --paper. creative-hybrid uses either --night or --paper depending on surface role. No cross-family --bg convergence possible.</p>
+        </div>
+        <div class="grammar-item">
+          <h4>3. Next alignment opportunity</h4>
+          <p>Remaining warm-paper convergence candidates: --space-4 token layer introduction (spacing grammar audit PR #92 confirmed 33% @dash/tokens scale compliance), font-stack audit (creator-font-stack-audit-route).</p>
+        </div>
+        <div class="grammar-item">
+          <h4>4. Deselected route disposition</h4>
+          <p>creator-bg-token-explore-route deselected. Premise was wrong: warm-paper surfaces do not use --bg. Risk: "family signature, not addressable drift." No surface edits needed — diagnostic is the phenotype.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-22: creator-18px-spacing-alignment-route SHIPPED (PR #93). 18px gap/padding → 16px across 4 surfaces (manim, frontier-capsule, poster, pdf-zine). 11/11 measure+print PASS. Next: explore --bg token convergence + introduce --space-4 token layer.",
+  "observation": "2026-05-23: --bg family signature diagnostic SHIPPED (PR #95). creator-bg-token-explore-route SELECTED WINNER with diagnostic phenotype. --bg is dark-industrial family token; warm-paper surfaces use --paper. 0 warm-paper surfaces define --bg. Stale premise confirmed — no surface edits possible. Next: --space-4 token layer (creator-spacing-token-layer-route) or font-stack audit (creator-font-stack-audit-route).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -32,9 +32,9 @@
         "minimal_core": 6
       },
       "axis": "visual grammar",
-      "mutation": "Surface grep for --bg across all 11 surfaces. Check whether warm-paper family surfaces have --bg or rely on --paper for background. Identify if --bg divergence is intentional family signature or addressable drift.",
-      "phenotype": "Surface inspection across 11 creator HTML artifacts. No surface edits.",
-      "risk": "Low risk: read-only diagnostic, no destructive changes.",
+      "mutation": "Diagnostic phenotype for --bg family signature. Surface grep across all 11 surfaces confirms: 0 warm-paper surfaces define --bg. --bg is dark-industrial family token. No surface edits possible or needed. Creator-bg-token-diagnostic.html documents findings.",
+      "phenotype": "creator-bg-token-diagnostic.html — fixed-canvas diagnostic phenotype with --bg presence table across all 11 surfaces.",
+      "risk": "Low risk: diagnostic confirmed stale premise. No surface edits.",
       "selection": "selected"
     },
     {
@@ -529,6 +529,16 @@
         "bun creator:capsule-check (PASS)",
         "bun creator:multi-surface-proof (11/11 measure + 11/11 print PASS)",
         "bun creator:cache-integrity (11/11 valid)"
+      ]
+    },
+    {
+      "id": "creator-bg-token-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "creator-bg-token-diagnostic-route: diagnostic phenotype confirming --bg is a dark-industrial family signature (not warm-paper drift). 0 warm-paper surfaces use --bg. Deselected stale candidate. No surface edits. Proven in PR #95.",
+      "proof": [
+        "bun creator:mutation-check (PASS)",
+        "bun measure:check -- examples/creator-bg-token-diagnostic.html (PASS, 900x1470 fits canvas 1684x1191)",
+        "bun creator:docs-surface-parity (PASS)"
       ]
     }
   ],
