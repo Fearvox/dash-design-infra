@@ -540,6 +540,15 @@
         "bun measure:check -- examples/creator-bg-token-diagnostic.html (PASS, 900x1470 fits canvas 1684x1191)",
         "bun creator:docs-surface-parity (PASS)"
       ]
+    },
+    {
+      "id": "creator-spacing-grammar-audit-route",
+      "selection": "retained",
+      "retained_as": "creator-spacing-grammar-audit-route: spacing grammar diagnostic — reveals all 11 surfaces use hardcoded px, zero spacing tokens. warm-paper surfaces show 3-5 distinct gap values. No surface edits. spacing_audit data added to creator-surface-convergence.json. Next: --space-4 token layer.",
+      "proof": [
+        "bun creator:surface-consistency (spacing audit PASS)",
+        "bun creator:docs-surface-parity (spacing route present in doc)"
+      ]
     }
   ],
   "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
