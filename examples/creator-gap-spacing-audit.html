@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684,height=1191">
+<title>creator-gap-spacing-audit</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: ui-sans-serif, system-ui, sans-serif; background: #f2eadb; color: #15120e; }
+  .page { width: 1684px; height: 1191px; overflow: hidden; padding: 58px 64px; position: relative; }
+  h1 { font-size: 42px; margin-bottom: 8px; letter-spacing: -0.04em; }
+  .subtitle { font-size: 18px; color: #6f6659; margin-bottom: 28px; line-height: 1.3; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { text-align: left; padding: 8px 12px; border-bottom: 2px solid #15120e; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; color: #6f6659; }
+  td { padding: 7px 12px; border-bottom: 1px solid rgba(21,18,14,0.18); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(244,234,214,0.5); }
+  .surface { font-weight: 700; }
+  .family-warm { background: rgba(196,122,31,0.08); }
+  .family-dark { background: rgba(11,17,20,0.04); }
+  .family-creative { background: rgba(47,111,78,0.06); }
+  .score { font-family: ui-monospace, monospace; font-size: 13px; }
+  .score-hi { color: #2f6f4e; font-weight: 700; }
+.subtitle { font-size: 20px; color: #6f6659; margin-bottom: 36px; line-height: 1.35; }
+  .findings { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .finding { background: rgba(21,18,14,0.06); border: 1px solid rgba(21,18,14,0.18); border-radius: 8px; padding: 14px 18px; }
+  .finding h2 { font-size: 15px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
+  .finding li { margin: 4px 0; line-height: 1.4; font-size: 13px; }
+  .meta { margin-top: 30px; padding-top: 16px; border-top: 1px solid rgba(21,18,14,0.18); font-size: 12px; color: #6f6659; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Gap / Spacing Grammar Audit</h1>
+  <p class="subtitle">Hardcoded px gap values across 12 creator surfaces. No --space-* token family exists — gap values are individually tuned. The question: should gap/padding/margin use a shared spacing vocabulary?</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>:root has --space-4</th>
+        <th>body uses var(--space-4)</th>
+        <th>Hardcoded gap values (px)</th>
+        <th>Has 16px hardcoded</th>
+        <th>Spacing Viability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="family-warm">
+        <td class="surface">creator-poster-surface.html</td>
+        <td>warm-paper</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td class="score">64, 10, 16, 16</td>
+        <td class="score score-hi">YES (×2)</td>
+        <td>gap: 16px could use var(--space-4)</td>
+      </tr>
+      <tr class="family-warm">
+        <td class="surface">creator-pdf-zine.html</td>
+        <td>warm-paper</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td class="score">22, 8, 12, 10</td>
+        <td class="score score-lo">NO</td>
+        <td>No 16px gaps; values intentionally varied</td>
+      </tr>
+      <tr class="family-warm">
+        <td class="surface">creator-social-card.html</td>
+        <td>warm-paper</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td class="score">38, 12, 4</td>
+        <td class="score score-lo">NO</td>
+        <td>No 16px gaps; tight zine spacing</td>
+      </tr>
+      <tr class="family-warm">
+        <td class="surface">creator-motion-storyboard.html</td>
+        <td>warm-paper</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td class="score">22, 30, 24, 14, 7</td>
+        <td class="score score-lo">NO</td>
+        <td>14px close to --space-4; 7/22/24/30 vary by intent</td>
+      </tr>
+      <tr class="family-warm">
+        <td class="surface">creator-prompt-dna-adapter.html</td>
+        <td>warm-paper</td>
+        <td>YES</td>
+        <td>NO</td>
+        <td class="score">30, 42, 14, 14, 24</td>
+        <td class="score score-lo">NO</td>
+        <td>14px close; 30/42/24 are layout decisions</td>
+      </tr>
+      <tr class="family-warm">
+        <td class="surface">creator-family-dna.html</td>
+        <td>warm-paper</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">16, 8, 6, 12</td>
+        <td class="score score-hi">YES (×1)</td>
+        <td>gap: 16px — missing --space-4 in :root</td>
+      </tr>
+      <tr>
+        <td class="surface">creator-frontier-capsule.html</td>
+        <td>frontier</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">14, 10, 40, 24, 24, 12, 14, 12, 14</td>
+        <td class="score score-lo">NO</td>
+        <td>14px appears ×3; missing --space-4 in :root</td>
+      </tr>
+      <tr class="family-dark">
+        <td class="surface">creator-browser-demo.html</td>
+        <td>dark-industrial</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">18, 32, 18, 14, 6, 12, 18</td>
+        <td class="score score-lo">NO</td>
+        <td>Dark family — separate spacing contract</td>
+      </tr>
+      <tr class="family-creative">
+        <td class="surface">creator-p5-sketch.html</td>
+        <td>creative-hybrid</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">34, 8, 10, 18, 10, 10, 5</td>
+        <td class="score score-lo">NO</td>
+        <td>Creative palette — no token layer</td>
+      </tr>
+      <tr class="family-dark">
+        <td class="surface">creator-remotion-scene.html</td>
+        <td>dark-industrial</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">28, 42, 14, 12, 22</td>
+        <td class="score score-lo">NO</td>
+        <td>Dark family; 14px close to --space-4</td>
+      </tr>
+      <tr class="family-creative">
+        <td class="surface">creator-manim-scene.html</td>
+        <td>creative-hybrid</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">34, 54, 34, 14, 14, 16</td>
+        <td class="score score-hi">YES (×1)</td>
+        <td>16px gap present; creative-hybrid intent</td>
+      </tr>
+      <tr class="family-dark">
+        <td class="surface">creator-touchdesigner-tox.html</td>
+        <td>dark-industrial</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td class="score">42, 14, 16, 22</td>
+        <td class="score score-hi">YES (×1)</td>
+        <td>16px gap present; dark family spacing</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="findings">
+    <div class="finding">
+      <h2>Finding — --space-4 token adoption gap</h2>
+      <p>5 warm-paper surfaces have --space-4 in :root but zero body CSS usage. 6 surfaces (family-dna, frontier-capsule, and all dark/creative families) lack --space-4 entirely.</p>
+      <ul>
+        <li>poster-surface has hardcoded gap: 16px (×2) that should use var(--space-4)</li>
+        <li>family-dna and frontier-capsule missing --space-4 in :root entirely</li>
+        <li>All 5 warm-paper surfaces with --space-4 in :root have no body usage — the token is declared but unused</li>
+      </ul>
+    </div>
+    <div class="finding">
+      <h2>Finding — No shared spacing token vocabulary</h2>
+      <p>Gap values range from 4px to 64px across 12 surfaces with no --space-* family layer. This is normal for zine-like layout economy — each gap is a deliberate spacing decision, not drift.</p>
+      <ul>
+        <li>No unified --space-* token layer exists across surfaces</li>
+        <li>16px gaps are the clearest alignment opportunity (poster ×2, family-dna ×1, manim ×1, touchdesigner ×1)</li>
+        <li>For warm-paper surfaces with --space-4 in :root but no body usage: body adoption is the actual next step, not adding more --space-* tokens</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span>Diagnostic: creator-spacing-grammar-audit</span>
+    <span>NorthStar: creator-surface-consistency-route</span>
+    <span>2026-05-24</span>
+  </div>
+</div>
+</body>
+</html>
