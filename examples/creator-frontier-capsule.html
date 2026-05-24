@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Creator Frontier Capsule</title>
     <style>
-      :root {
+      :root { 
         --bg: #f3efe7;
         --ink: #15120e;
         --muted: #6f6659;
@@ -20,7 +20,8 @@
         --orange: #ea580c;
         --red: #dc2626;
         --radius: 30px;
-      }
+      
+  --space-4: 16px; }
 
       * { box-sizing: border-box; }
 
@@ -100,7 +101,7 @@
 
       .chips { display: flex; gap: 10px; }
       .chip {
-        padding: 11px 16px;
+        padding: 11px var(--space-4);
         border: 1px solid var(--line);
         border-radius: 999px;
         background: rgba(255,255,255,.42);
@@ -116,7 +117,7 @@
       }
 
       .left {
-        padding-top: 16px;
+        padding-top: var(--space-4);
       }
 
       .eyebrow {
@@ -327,7 +328,7 @@
       }
 
       .route-card h3 {
-        margin: 0 0 16px;
+        margin: 0 0 var(--space-4);
         font-size: 15px;
         letter-spacing: .15em;
         text-transform: uppercase;
