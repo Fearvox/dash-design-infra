@@ -1,0 +1,14 @@
+{
+  "name": "@dash/evermind-workshop",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "description": "EverMind × Beta Fund · 5/30 Hackathon Workshop Deck — single-page HTML deck with EverMind brand visuals on dash-design-infra engineering base.",
+  "type": "module",
+  "scripts": {
+    "build": "bun run src/build.ts",
+    "dev": "bun --hot run src/build.ts --watch && bun serve dist/",
+    "serve": "cd dist && bun serve",
+    "typecheck": "tsc --noEmit"
+  }
+}
