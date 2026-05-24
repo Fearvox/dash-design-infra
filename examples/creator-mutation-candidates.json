@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-24: type-size audit diagnostic + --space-4 token extension. creator-type-stack-normalize-route was SELECTED WINNER — diagnostic revealed h1 font-size: 10 distinct values across 11 surfaces (no shared token). --space-4 missing from family-dna and frontier-capsule. Extended --space-4 to both. --space-4: 11/11 surfaces now have spacing token layer. creator-spacing-grammar-continue-route selected as next winner — border-radius hardcoded values audit (4px-40px range, no --radius-* token layer).",
+  "observation": "After --space-4:16px extension (11/11 surfaces), warm-paper surfaces still had hardcoded gap:16px and margin:16px. Audit found: poster-surface 3 replacements (margin-bottom + 2× gap:16px), pdf-zine 1 replacement (margin:16px). All measure+print PASS. Remaining warm-paper surfaces (social-card, motion-storyboard) use 16px for padding which is intentional layout padding.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic only: no implementable edits found. h1 tokenization requires design decision; --space-4 extension is additive but low urgency.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype: type size audit across 11 surfaces revealed h1 font-size 10 distinct values (no shared token). --space-4 token missing from family-dna and frontier-capsule. Extended --space-4 to both surfaces. All 11 surfaces now have --space-4 token layer.",
       "phenotype": "creator-type-size-audit.html diagnostic phenotype; --space-4 extended to family-dna + frontier-capsule."
     },
@@ -38,24 +38,24 @@
       "phenotype": "Diagnostic audit across 11 creator HTML artifacts. No changes."
     },
     {
-      "id": "creator-spacing-grammar-continue-route",
+      "id": "creator-spacing-remaining-audit-route",
+      "selection": "candidate",
       "axis": "visual grammar",
-      "observation": "After --space-4:16px extension (11/11 surfaces now have it), the next spacing opportunity is checking whether any warm-paper surfaces still use hardcoded px values for gap/padding that could use --space-4 instead of var(). Current state: pdf-zine has --space-4 in :root but does not use var(--space-4) in body.",
-      "candidates": [],
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 3,
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
         "boundary_safety": 10,
-        "minimal_core": 7
+        "minimal_core": 6
       },
-      "risk": "Low risk: additive extension only",
-      "selection": "selected",
-      "mutation": "Audit warm-paper surfaces for hardcoded px gap/padding that could use var(--space-4). Focus on pdf-zine which has --space-4 in :root but does not use it in body. Identify which hardcoded values are close to --space-4:16px and could be replaced.",
-      "phenotype": "Diagnostic audit. No guaranteed surface edits."
+      "mutation": "Audit remaining warm-paper surfaces (social-card, motion-storyboard) for hardcoded 16px padding values that are not gap/padding in flex/grid contexts. padding:16px on layout containers vs content-padding distinction.",
+      "observation": "social-card and motion-storyboard both have padding:16px on wrapper elements. These are content padding not layout gap — context matters. Audit whether these are intentional zine-like padding or misaligned spacing.",
+      "candidates": [],
+      "phenotype": "Diagnostic phenotype: audit social-card and motion-storyboard padding:16px usage for var(--space-4) alignment potential.",
+      "risk": "padding:16px may be intentional content padding vs layout gap — distinguish before replacing. Do not replace non-gap/padding 16px values."
     }
   ],
-  "winner": "creator-spacing-grammar-continue-route",
+  "winner": "creator-type-stack-normalize-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -609,6 +609,18 @@
       "proof": [
         "bun creator:surface-consistency (border-radius audit PASS)",
         "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-spacing-grammar-continue-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper surfaces audit: replaced hardcoded gap:16px + margin:16px with var(--space-4) on poster-surface (×3) and pdf-zine (×1). All measure+print PASS.",
+      "proof": [
+        "bun measure:check -- examples/creator-poster-surface.html (1684×1191 PASS)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684×1191 PASS)",
+        "bun print:render -- ... /tmp/poster-test.pdf (1 page PASS)",
+        "bun print:render -- ... /tmp/pdfzine-test.pdf (1 page PASS)",
+        "bun creator:measure-print-cache -- --no-cache (11/11 PASS)"
       ]
     }
   ],
