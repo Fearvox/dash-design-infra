@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684,height=1191">
+<title>Border-Radius Token Audit — Creator Surfaces</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f2eadb;
+    --night: #0b1114;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --signal: #7ef0c1;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+  }
+  body {
+    width: 1684px;
+    height: 1191px;
+    background: var(--paper);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  h1 {
+    grid-column: 1 / -1;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.04;
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+  }
+  .surface-group {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+    overflow: hidden;
+  }
+  .surface-group h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 4px 6px;
+    background: rgba(244,234,214,0.3);
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+  }
+  td {
+    padding: 4px 6px;
+    border-bottom: 1px solid rgba(21,18,14,0.06);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  .family-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .family-warm { background: #6f6659; }
+  .family-dark { background: #0b1114; color: #7ef0c1; }
+  .family-creative { background: #2f6f4e; color: white; }
+  .token-cell {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .size-cell {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .converged { color: #2f6f4e; }
+  .diverged { color: #c47a1f; }
+  .cat-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .cat-near-circle { background: #0b1114; color: #7ef0c1; }
+  .cat-circular { background: #111318; color: #8cb8ff; }
+  .cat-subtle { background: rgba(21,18,14,0.12); color: var(--ink); }
+  .cat-medium { background: rgba(21,18,14,0.06); color: var(--ink); }
+  .cat-large { background: rgba(21,18,14,0.18); color: var(--ink); }
+  .gap-info {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+  .gap-box {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+  }
+  .gap-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .gap-box p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .gap-box code {
+    background: rgba(21,18,14,0.06);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+  .verdict {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 10px 14px;
+    background: rgba(21,18,14,0.04);
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+  .verdict-badge {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body class="page">
+<h1>Border-Radius Token Audit — 12 Creator Surfaces</h1>
+
+<div class="surface-group">
+  <h2>Category A — Near-Circle / Pill (999px+)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>Values</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>pdf-zine</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">999px</td>
+        <td class="token-cell">circle/avatar</td>
+      </tr>
+      <tr>
+        <td>p5-sketch</td>
+        <td><span class="family-tag family-creative">creative-hybrid</span></td>
+        <td class="size-cell">999px</td>
+        <td class="token-cell">circle/avatar</td>
+      </tr>
+      <tr>
+        <td>touchdesigner-tox</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">999px</td>
+        <td class="token-cell">circle/avatar</td>
+      </tr>
+      <tr>
+        <td>browser-demo</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">9999px</td>
+        <td class="token-cell">pill/button</td>
+      </tr>
+      <tr>
+        <td>frontier-capsule</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">999px, 999px</td>
+        <td class="token-cell">circle/avatar</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="surface-group">
+  <h2>Category B — Circular (50%)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>Count</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>poster-surface</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">1×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>pdf-zine</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">1×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>social-card</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">2×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>motion-storyboard</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">1×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>p5-sketch</td>
+        <td><span class="family-tag family-creative">creative-hybrid</span></td>
+        <td class="size-cell">1×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>manim-scene</td>
+        <td><span class="family-tag family-creative">creative-hybrid</span></td>
+        <td class="size-cell">2×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+      <tr>
+        <td>frontier-capsule</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">1×</td>
+        <td class="token-cell">avatar/image</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="surface-group">
+  <h2>Category C — Subtle (1–8px)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>Values</th>
+        <th>Consensus candidate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>family-dna</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">3px, 6px, 8px</td>
+        <td class="token-cell converged">✓ 8px shared</td>
+      </tr>
+      <tr>
+        <td>motion-storyboard</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">8px (4×)</td>
+        <td class="token-cell converged">✓ 8px shared</td>
+      </tr>
+      <tr>
+        <td>prompt-dna-adapter</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">8px (2×)</td>
+        <td class="token-cell converged">✓ 8px shared</td>
+      </tr>
+      <tr>
+        <td>pdf-zine</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">8px</td>
+        <td class="token-cell converged">✓ 8px shared</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="gap-info">
+  <div class="gap-box">
+    <h3>Finding 1: border-radius is format-dependent, not addressable drift</h3>
+    <p>Across 12 surfaces, border-radius serves distinct creative purposes:</p>
+    <ul style="font-size:12px;line-height:1.8;color:var(--muted);margin-left:16px">
+      <li><strong>999–9999px near-circle</strong>: avatar circles, pill badges — format signature across all families</li>
+      <li><strong>50% circular</strong>: avatar images — 7/12 surfaces (all families); cannot normalize without breaking image rendering</li>
+      <li><strong>8px subtle</strong>: 4 surfaces share this value — the only plausible token candidate (family-dna, motion-storyboard, prompt-dna-adapter, pdf-zine)</li>
+      <li><strong>22–44px large</strong>: panel/card borders — 8/12 surfaces use different values; no family consensus</li>
+    </ul>
+    <p>No --radius-* token layer exists in any surface. Introducing one would require deciding which creative formats to homogenize — a design decision, not a mechanical normalization.</p>
+  </div>
+  <div class="gap-box">
+    <h3>Finding 2: 8px is the only intra-family convergence point</h3>
+    <p>Warm-paper surfaces: family-dna (3,6,8px), motion-storyboard (8px×4), prompt-dna (8px×2), pdf-zine (8px) all use 8px for card/panel rounding. This is the closest thing to a shared radius token — but it is not yet defined as <code>--radius-card</code> in any :root block.</p>
+    <p>Opportunity (low priority): define <code>--radius-card: 8px</code> in warm-paper :root blocks and replace hardcoded 8px values. Would require confirming all four uses are visually equivalent before replacing.</p>
+    <p>Verdict: border-radius tokenization is viable only for the subtle 8px category on warm-paper family. All other categories are format-locked and will not converge. Recommend closure as diagnostic — no surface edits.</p>
+  </div>
+</div>
+
+<div class="verdict">
+  <span class="verdict-badge">DIAGNOSTIC</span>
+  No implementable surface edits. border-radius tokenization is not viable: 999-9999px near-circle and 50% circular are format-locked per surface role. 8px is the only convergent value (4 warm-paper surfaces) but introducing --radius-card requires design decision. Recommend: close as resolved diagnostic, move to next token axis.
+</div>
+</body>
+</html>

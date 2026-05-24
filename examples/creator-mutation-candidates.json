@@ -17,25 +17,8 @@
       },
       "risk": "Diagnostic only: no implementable edits found. h1 tokenization requires design decision; --space-4 extension is additive but low urgency.",
       "selection": "selected",
-      "mutation": "Diagnostic phenotype: type size audit across 11 surfaces revealed h1 font-size 10 distinct values (no shared token). --space-4 token missing from family-dna and frontier-capsule. Extended --space-4 to both surfaces. All 11 surfaces now have --space-4 token layer.",
-      "phenotype": "creator-type-size-audit.html diagnostic phenotype; --space-4 extended to family-dna + frontier-capsule."
-    },
-    {
-      "id": "creator-radius-token-audit-route",
-      "axis": "visual grammar",
-      "observation": "All 11 surfaces use hardcoded border-radius px values. No --radius-* token exists anywhere. Values range from 3px (family-dna) to 9999px (pill shapes). This is the last major spacing category without token vocabulary. Unlike --space-4, border-radius has creative format dependency (avatars need pill, cards need subtle radius, badges need small) — cannot converge without design decision.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "Low risk: diagnostic audit only, no surface edits planned",
-      "selection": "candidate",
-      "mutation": "Audit border-radius usage across all 11 surfaces. Produce recommendation for whether a --radius-* token layer is viable (format-dependent creative constraint vs. addressable drift). No surface edits.",
-      "phenotype": "Diagnostic audit across 11 creator HTML artifacts. No changes."
+      "mutation": "Diagnostic phenotype: type size audit (h1 10 distinct values, no shared token) + border-radius audit (format-locked, 8px only convergent). Type size tokenization requires design decision. --space-4 extended to family-dna + frontier-capsule. border-radius tokenization NOT viable (999px+ near-circle and 50% circular are format-locked). radius-token-audit.html produced.",
+      "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
     },
     {
       "id": "creator-spacing-remaining-audit-route",
@@ -53,6 +36,23 @@
       "candidates": [],
       "phenotype": "Diagnostic phenotype: audit social-card and motion-storyboard padding:16px usage for var(--space-4) alignment potential.",
       "risk": "padding:16px may be intentional content padding vs layout gap — distinguish before replacing. Do not replace non-gap/padding 16px values."
+    },
+    {
+      "id": "creator-line-panel-token-explore-route",
+      "axis": "visual grammar",
+      "observation": "convergence.json shows --line has 8 distinct values (rgba(21,18,14,0.18) is warm-paper consensus on 6 surfaces). --panel has 6 values but warm-paper surfaces converged at rgba(244,234,214,0.06). Next opportunity: explore whether --line-panel equivalent token can unify line/panel usage or whether they are intentionally separate roles.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Diagnostic only: --line and --panel serve different visual roles (line vs. panel tint) — may be intentional separation, not addressable drift.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype: explore whether --line and --panel can share a unified tint token or must remain separate visual grammar roles. convergence.json shows --line rgba(21,18,14,0.18) on 6 warm-paper surfaces, --panel rgba(244,234,214,0.06) on 6 warm-paper surfaces.",
+      "phenotype": "Diagnostic phenotype exploring line/panel token relationship. No surface edits planned."
     }
   ],
   "winner": "creator-type-stack-normalize-route",
@@ -612,15 +612,13 @@
       ]
     },
     {
-      "id": "creator-spacing-grammar-continue-route",
+      "id": "creator-radius-token-audit-route",
       "selection": "retained",
-      "retained_as": "Warm-paper surfaces audit: replaced hardcoded gap:16px + margin:16px with var(--space-4) on poster-surface (×3) and pdf-zine (×1). All measure+print PASS.",
+      "retained_as": "Border-radius token audit across 12 creator surfaces — format-locked values (999px+, 50%), 8px subtle convergence only, no --radius-* token layer viable (PR #104)",
       "proof": [
-        "bun measure:check -- examples/creator-poster-surface.html (1684×1191 PASS)",
-        "bun measure:check -- examples/creator-pdf-zine.html (1684×1191 PASS)",
-        "bun print:render -- ... /tmp/poster-test.pdf (1 page PASS)",
-        "bun print:render -- ... /tmp/pdfzine-test.pdf (1 page PASS)",
-        "bun creator:measure-print-cache -- --no-cache (11/11 PASS)"
+        "bun creator:mutation-check (PASS)",
+        "bun measure:check -- examples/creator-radius-token-audit.html (1684×1191 fits)",
+        "bun creator:docs-surface-parity (PASS)"
       ]
     }
   ],
