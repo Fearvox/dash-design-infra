@@ -10,7 +10,7 @@
   html, body { width: 1684px; height: 1191px; margin: 0; overflow: hidden; }
 }
 
-:root {
+:root { 
   --night: #070b0d;
   --night-soft: #0d1418;
   --paper: #f2eadb;
@@ -24,7 +24,8 @@
   --green: #2f6f4e;
   --panel: rgba(244, 234, 214, 0.06);
   --panel-hot: rgba(244, 234, 214, 0.10);
-}
+
+  --space-4: 16px; }
 
 * { box-sizing: border-box; }
 
@@ -100,7 +101,7 @@ h1 em {
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 10px 16px;
+  padding: 10px var(--space-4);
   background: var(--panel);
 }
 
@@ -113,7 +114,7 @@ h1 em {
 .families {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: var(--space-4);
   margin-bottom: 20px;
 }
 
@@ -137,14 +138,14 @@ h1 em {
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .family-card .desc {
   font-size: 13px;
   line-height: 1.45;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
   padding-bottom: 12px;
   border-bottom: 1px solid var(--line);
 }
@@ -335,7 +336,7 @@ h1 em {
 
 .proof-tile {
   flex: 1;
-  padding: 12px 16px;
+  padding: 12px var(--space-4);
   border-right: 1px solid var(--line);
   font-size: 11px;
   line-height: 1.35;
@@ -359,7 +360,7 @@ h1 em {
 /* Consistency callout */
 .consistency-callout {
   margin-top: 12px;
-  padding: 12px 16px;
+  padding: 12px var(--space-4);
   border-left: 3px solid var(--accent);
   background: rgba(255, 184, 107, 0.06);
   border-radius: 0 8px 8px 0;

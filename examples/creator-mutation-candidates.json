@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-24: type-size audit DIAGNOSTIC SHIPPED + space-4 extension SHIPPED. --space-4 now in all 11 surfaces :root (was 5/6 warm-paper only, now 11/11). type-size audit diagnostic confirmed: h1 font-size has 10 distinct values, no shared token; font-family serif/sans is family signature; border-radius has 0 shared tokens, --radius-* layer not recommended without creator confusion.",
+  "observation": "2026-05-24: type-size audit diagnostic + --space-4 token extension. creator-type-stack-normalize-route was SELECTED WINNER — diagnostic revealed h1 font-size: 10 distinct values across 11 surfaces (no shared token). --space-4 missing from family-dna and frontier-capsule. Extended --space-4 to both. --space-4: 11/11 surfaces now have spacing token layer. creator-spacing-grammar-continue-route selected as next winner — border-radius hardcoded values audit (4px-40px range, no --radius-* token layer).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,9 +16,9 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic only: no implementable edits found. h1 tokenization requires design decision; --space-4 extension is additive but low urgency.",
-      "selection": "selected",
-      "mutation": "DIAGNOSTIC phenotype: type size audit across 11 surfaces. Findings: (1) h1 font-size 10 distinct values, no token — tokenization needs design decision; (2) --space-4 in 5/6 warm-paper, 0/5 non-warm-paper — extension opportunity but low urgency; (3) font-family serif/sans split is family signature, not drift; (4) border-radius 0 shared tokens, --radius-* layer not recommended. No surface edits. creator-type-size-audit.html documents findings.",
-      "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype: type size audit across 11 surfaces revealed h1 font-size 10 distinct values (no shared token). --space-4 token missing from family-dna and frontier-capsule. Extended --space-4 to both surfaces. All 11 surfaces now have --space-4 token layer.",
+      "phenotype": "creator-type-size-audit.html diagnostic phenotype; --space-4 extended to family-dna + frontier-capsule."
     },
     {
       "id": "creator-radius-token-audit-route",
@@ -50,12 +50,12 @@
         "minimal_core": 7
       },
       "risk": "Low risk: additive extension only",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Audit warm-paper surfaces for hardcoded px gap/padding that could use var(--space-4). Focus on pdf-zine which has --space-4 in :root but does not use it in body. Identify which hardcoded values are close to --space-4:16px and could be replaced.",
       "phenotype": "Diagnostic audit. No guaranteed surface edits."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-spacing-grammar-continue-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
