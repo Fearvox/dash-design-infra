@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EverMind × Beta Fund · Workshop · 5/30 Hackathon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ══════════════════════════════════════════════════════════════
+     Tokens — DASH v3.0 brand + surface + EverMind co-brand layer
+     ══════════════════════════════════════════════════════════════ */
+  :root {
+    /* —— Surface (oklch, perceptually anchored) —— */
+    --bg:            oklch(0.17 0.04 160);   /* deep forest, slightly darker than palm-shadow for stage */
+    --bg-elev:       oklch(0.23 0.05 160);   /* cards */
+    --bg-elev-2:     oklch(0.27 0.05 160);   /* hovered/elevated cards */
+    --bg-code:       oklch(0.13 0.03 160);   /* code surfaces, deepest */
+    --bg-page-warm:  oklch(0.96 0.01 85);    /* cream paper (alt mode reserve) */
+
+    /* —— Ink / text on dark surface —— */
+    --ink-primary:   oklch(0.96 0.01 85);    /* cream — headings */
+    --ink-secondary: oklch(0.86 0.02 78);    /* warm sand — body */
+    --ink-muted:     oklch(0.66 0.015 75);   /* sage-warm — captions */
+    --ink-faint:     oklch(0.50 0.02 75);    /* footnote */
+
+    /* —— Borders / rules —— */
+    --rule:          oklch(0.40 0.04 160 / 0.5);
+    --rule-soft:     oklch(0.40 0.04 160 / 0.25);
+    --rule-strong:   oklch(0.55 0.05 160 / 0.7);
+
+    /* —— Accents (EverMind canonical brand layer — sampled from live evermind.ai) —— */
+    --everm-gold:      #e39b00;              /* EverMind burnt gold — primary CTA / mark */
+    --everm-gold-soft: #e39b0026;            /* ~15% — glow / button bg */
+    --everm-gold-line: #e39b00;              /* 100% — underline */
+    --everm-gold-warm: #f7cb72;              /* warm gold highlight — sparingly */
+    --everm-cream:     #f2f1e9;              /* EverMind canonical cream paper */
+    --everm-cream-2:   #fdfaf3;              /* paper highlight */
+    --everm-blue:      #0099ff;              /* electric blue — action / link */
+    --everm-blue-soft: #0099ff26;            /* electric blue bg tint */
+    --everm-teal:      #385558;              /* deep teal — serious stamp */
+    --everm-taupe:     #706959;              /* warm taupe — body text on cream */
+    --everm-ink:       #1c1b1b;              /* near-black ink for cream surface */
+
+    /* —— Accents (DASH causal-anchor system, borrowed) —— */
+    --sun-gold:      oklch(0.82 0.12 85);    /* DASH gold-underline (verifiable claims only) */
+    --palm:          oklch(0.45 0.08 160);   /* surface accent, NOT logo deep green */
+    --neon:          #F0EE9B;                /* DASH neon yellow — used SPARINGLY for mark accent only */
+
+    /* —— Type — V4 scale (P5↑ / MT↓), 14px anchor —— */
+    --size-micro:    9px;
+    --size-meta:    11px;
+    --size-body:    14px;
+    --size-lead:    21px;
+    --size-deck:    32px;
+    --size-display: 47px;
+    --size-hero:    72px;     /* extra hero step for cover only */
+
+    --lh-micro:     16px;
+    --lh-meta:      16px;
+    --lh-body:      24px;
+    --lh-lead:      32px;
+    --lh-deck:      40px;
+    --lh-display:   56px;
+    --lh-hero:      80px;
+
+    /* —— Space (8px baseline) —— */
+    --s1:  4px;   --s2:  8px;   --s3: 12px;   --s4: 16px;   --s5: 20px;
+    --s6: 24px;   --s7: 32px;   --s8: 48px;   --s9: 64px;   --s10:80px;
+
+    /* —— Font stacks (EverMind brand × DASH v3.0) —— */
+    --font-sans:  "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Geist", system-ui, -apple-system, "PingFang SC", sans-serif;
+    --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-mono:  "Fragment Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    /* —— Tracking —— */
+    --track-tight:   -0.02em;
+    --track-normal:  0em;
+    --track-wide:    0.04em;
+    --track-kicker:  0.12em;
+
+    --radius-sm: 6px;
+    --radius:   12px;
+    --radius-lg: 16px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     LIGHT THEME — DASH cover-page.html × EverMind cream
+     Activate via ?theme=light URL param or .theme-light on body
+     ══════════════════════════════════════════════════════════════ */
+  body.theme-light {
+    --bg:            #f2f1e9;                   /* EverMind canonical cream */
+    --bg-elev:       #ECE9DD;
+    --bg-elev-2:     #E4E0D2;
+    --bg-code:       oklch(0.18 0.04 160);      /* keep code blocks dark for contrast */
+    --ink-primary:   #1a1a18;                   /* DASH ink */
+    --ink-secondary: #45413b;
+    --ink-muted:     #7f8882;                   /* DASH muted sage */
+    --ink-faint:     #a8a59b;
+    --rule:          oklch(0.85 0.02 80);
+    --rule-soft:     oklch(0.85 0.02 80 / 0.5);
+    --rule-strong:   oklch(0.70 0.03 80);
+    --everm-gold-soft: #e39b0018;
+  }
+  body.theme-light::before {
+    background-image:
+      radial-gradient(circle at 18% 22%, oklch(0.92 0.03 80 / 0.7), transparent 55%),
+      radial-gradient(circle at 82% 78%, oklch(0.93 0.03 75 / 0.6), transparent 55%);
+  }
+  body.theme-light::after {
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0px, transparent 3px,
+                                oklch(0.55 0.04 80 / 0.025) 3px, oklch(0.55 0.04 80 / 0.025) 4px);
+  }
+  /* On light bg, button stays gold-on-ink for max contrast */
+  body.theme-light .btn-primary { color: #fff; background: #e39b00; }
+  body.theme-light .btn-primary:hover { background: #b87a00; }
+  /* Code blocks keep dark — invert their text */
+  body.theme-light .code, body.theme-light .terminal {
+    background: oklch(0.18 0.04 160);
+    border-color: oklch(0.30 0.04 160);
+  }
+  body.theme-light .code-head, body.theme-light .terminal-head {
+    background: oklch(0.22 0.04 160);
+    border-color: oklch(0.30 0.04 160);
+    color: oklch(0.66 0.015 75);
+  }
+  body.theme-light .code-body pre, body.theme-light .terminal-body { color: oklch(0.96 0.01 85); }
+  body.theme-light .code-body pre .v, body.theme-light .code-body pre code { color: oklch(0.96 0.01 85); }
+  body.theme-light .copy-btn { background: oklch(0.22 0.04 160); border-color: oklch(0.30 0.04 160); }
+  body.theme-light .term-cmd { color: oklch(0.96 0.01 85); }
+  body.theme-light .term-out { color: oklch(0.86 0.02 78); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Reset + base
+     ══════════════════════════════════════════════════════════════ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink-primary);
+    font-family: var(--font-sans);
+    font-size: var(--size-body);
+    line-height: var(--lh-body);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* paper texture — VERY subtle */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 18% 22%, oklch(0.30 0.06 160 / 0.5), transparent 55%),
+      radial-gradient(circle at 82% 78%, oklch(0.30 0.06 160 / 0.4), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0px, transparent 3px,
+                                oklch(0.55 0.04 160 / 0.018) 3px, oklch(0.55 0.04 160 / 0.018) 4px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Type ladder
+     ══════════════════════════════════════════════════════════════ */
+  h1.display { font-size: var(--size-display); line-height: var(--lh-display); font-weight: 700; letter-spacing: var(--track-tight); }
+  h1.hero    { font-size: var(--size-hero);    line-height: var(--lh-hero);    font-weight: 700; letter-spacing: var(--track-tight); }
+  h2.deck    { font-size: var(--size-deck);    line-height: var(--lh-deck);    font-weight: 600; letter-spacing: var(--track-tight); }
+  h3.lead    { font-size: var(--size-lead);    line-height: var(--lh-lead);    font-weight: 600; letter-spacing: -0.01em; }
+  .body      { font-size: var(--size-body);    line-height: var(--lh-body);    color: var(--ink-secondary); }
+  .meta      { font-size: var(--size-meta);    line-height: var(--lh-meta);    letter-spacing: var(--track-kicker); text-transform: uppercase; color: var(--ink-muted); font-weight: 500; }
+  .micro     { font-size: var(--size-micro);   line-height: var(--lh-micro);   color: var(--ink-faint); }
+
+  code, .mono { font-family: var(--font-mono); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Gold-underline causal anchor (DASH § 3.2 system, EverMind-tinted)
+     Use class .u on spans that are real/verifiable claims.
+     ══════════════════════════════════════════════════════════════ */
+  .u {
+    position: relative;
+    color: var(--ink-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .u::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 3px;
+    background: var(--everm-gold-line);
+    opacity: 0.85;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Deck container + slides
+     NOTE: use ID selector so the rule never collides with h2.deck or any
+     other element that happens to carry the class "deck".
+     ══════════════════════════════════════════════════════════════ */
+  #deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 56px 88px 96px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 24px;
+    align-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(14px);
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .slide.exit-up {
+    transform: translateY(-14px);
+  }
+  /* hide native scrollbar */
+  .slide::-webkit-scrollbar { width: 4px; }
+  .slide::-webkit-scrollbar-thumb { background: var(--rule-soft); border-radius: 2px; }
+
+  /* ══════════════════════════════════════════════════════════════
+     Slide chrome — stamp + kicker
+     ══════════════════════════════════════════════════════════════ */
+  .stamp {
+    position: fixed;
+    top: 28px;
+    left: 88px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 50;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .stamp .evermind-wordmark {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--everm-gold);
+    line-height: 1;
+  }
+
+  .stamp-meta {
+    position: fixed;
+    top: 28px;
+    right: 88px;
+    z-index: 50;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .stamp-meta .run-id { color: var(--everm-gold); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Eyebrow / kicker (per-slide)
+     ══════════════════════════════════════════════════════════════ */
+  .eyebrow {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+    color: var(--everm-gold);
+    margin-bottom: var(--s5);
+  }
+  .eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--everm-gold);
+    box-shadow: 0 0 12px var(--everm-gold-soft);
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     SLIDE 1: Cover (hero composition, Ruder tri-beat 1-4/5-6/7-8)
+     ══════════════════════════════════════════════════════════════ */
+  .cover {
+    align-content: center;
+  }
+  .cover-hero {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+  }
+  .cover-mark {
+    grid-column: 6 / span 3;
+    grid-row: 1;
+    place-self: center end;
+    color: var(--everm-gold);
+    width: 100%;
+    max-width: 380px;
+    text-align: right;
+  }
+  .cover-mark .evermind-cover-wordmark {
+    font-family: var(--font-serif);
+    font-size: 88px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    color: var(--everm-gold);
+    display: inline-block;
+  }
+
+  /* breathing animation on cover mark only */
+  .cover-mark { animation: breathe 6s ease-in-out infinite; }
+  @keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.92; transform: scale(1.015); }
+  }
+
+  .cover-hero .eyebrow { margin-bottom: var(--s6); }
+  .cover-hero h1 {
+    font-size: var(--size-hero);
+    line-height: var(--lh-hero);
+    font-weight: 700;
+    letter-spacing: var(--track-tight);
+    margin-bottom: var(--s5);
+    max-width: 18ch;
+  }
+  .cover-hero p {
+    font-size: var(--size-lead);
+    line-height: var(--lh-lead);
+    color: var(--ink-secondary);
+    max-width: 32ch;
+    margin-bottom: var(--s8);
+  }
+
+  .cover-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+    margin-bottom: var(--s6);
+  }
+  .badge {
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-secondary);
+    letter-spacing: 0.06em;
+  }
+  .badge.gold {
+    border-color: var(--everm-gold);
+    color: var(--everm-gold);
+  }
+  .badge.solid {
+    background: var(--everm-gold);
+    color: oklch(0.18 0.04 160);
+    border-color: transparent;
+    font-weight: 600;
+  }
+
+  .nav-hint {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-faint);
+  }
+  .nav-hint kbd {
+    display: inline-block;
+    padding: 2px 7px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-secondary);
+    margin: 0 2px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Standard slide — header + content
+     ══════════════════════════════════════════════════════════════ */
+  .slide-head {
+    grid-column: 1 / -1;
+    margin-bottom: var(--s7);
+  }
+  .slide-head h2 {
+    margin-top: var(--s3);
+    max-width: 26ch;
+  }
+  .slide-head .lead {
+    font-size: var(--size-lead);
+    line-height: var(--lh-lead);
+    color: var(--ink-secondary);
+    max-width: 56ch;
+    margin-top: var(--s3);
+    font-weight: 400;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Roadmap (4 steps)
+     ══════════════════════════════════════════════════════════════ */
+  .roadmap {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s4);
+    margin-top: var(--s5);
+  }
+  .roadmap-card {
+    position: relative;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: var(--s6) var(--s5);
+    transition: all 0.3s;
+  }
+  .roadmap-card:hover {
+    border-color: var(--everm-gold);
+    background: var(--bg-elev-2);
+    transform: translateY(-2px);
+  }
+  .roadmap-card .num {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--everm-gold);
+    letter-spacing: var(--track-wide);
+    margin-bottom: var(--s4);
+    display: block;
+  }
+  .roadmap-card .title {
+    font-size: var(--size-lead);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink-primary);
+    margin-bottom: var(--s2);
+    letter-spacing: -0.01em;
+  }
+  .roadmap-card .desc {
+    font-size: var(--size-body);
+    line-height: var(--lh-body);
+    color: var(--ink-secondary);
+  }
+  .roadmap-card .eta {
+    margin-top: var(--s4);
+    padding-top: var(--s3);
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Two-column step grid (left explainer + right mock/code)
+     ══════════════════════════════════════════════════════════════ */
+  .twocol {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--s8);
+    align-items: start;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: var(--s4) 0;
+  }
+  .checklist li {
+    position: relative;
+    padding: var(--s3) 0 var(--s3) 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink-primary);
+    font-size: var(--size-body);
+    line-height: var(--lh-body);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--everm-gold);
+    border-radius: 50%;
+  }
+  .checklist li::after {
+    content: '✓';
+    position: absolute;
+    left: 4.5px;
+    top: 12px;
+    color: var(--everm-gold);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .checklist li strong {
+    color: var(--ink-primary);
+    font-weight: 600;
+  }
+  .checklist li small {
+    display: block;
+    color: var(--ink-muted);
+    font-size: 13px;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .checklist li code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--everm-gold);
+    background: oklch(0.25 0.05 160 / 0.6);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Mock browser
+     ══════════════════════════════════════════════════════════════ */
+  .browser {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px oklch(0.05 0 0 / 0.5);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--bg-elev-2);
+    border-bottom: 1px solid var(--rule);
+  }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .browser-url {
+    flex: 1;
+    margin-left: 16px;
+    padding: 5px 12px;
+    background: oklch(0.13 0.03 160);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-secondary);
+  }
+  .browser-body {
+    padding: var(--s7) var(--s6);
+    position: relative;
+    min-height: 280px;
+  }
+
+  .input-row { margin-bottom: var(--s4); }
+  .input-label {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .input-field {
+    width: 100%;
+    padding: 10px 12px;
+    background: oklch(0.13 0.03 160);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    color: var(--ink-primary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .btn-primary {
+    padding: 10px 18px;
+    background: var(--everm-gold);
+    color: oklch(0.18 0.04 160);
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    background: oklch(0.85 0.18 85);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--everm-gold);
+    border: 1px solid var(--everm-gold);
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--everm-gold-soft); }
+
+  /* Hotspot pulse indicator */
+  .hotspot {
+    position: absolute;
+    width: 28px; height: 28px;
+    border: 2px solid var(--everm-gold);
+    border-radius: 50%;
+    background: var(--everm-gold-soft);
+    pointer-events: none;
+  }
+  .hotspot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid var(--everm-gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { opacity: 1; transform: scale(0.8); }
+    100% { opacity: 0; transform: scale(1.7); }
+  }
+  .hotspot-tip {
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    padding: 5px 10px;
+    background: var(--everm-gold);
+    color: oklch(0.18 0.04 160);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Code block (DASH-style with EverMind tinted accents)
+     ══════════════════════════════════════════════════════════════ */
+  .code {
+    background: var(--bg-code);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: var(--s4) 0;
+  }
+  .code-head {
+    padding: 8px 16px;
+    background: var(--bg-elev-2);
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .code-tabs { display: flex; gap: 4px; }
+  .code-tab {
+    background: transparent;
+    border: none;
+    padding: 5px 12px;
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: var(--track-wide);
+    transition: all 0.15s;
+  }
+  .code-tab:hover { color: var(--ink-secondary); }
+  .code-tab.active {
+    color: var(--everm-gold);
+    background: var(--everm-gold-soft);
+  }
+  .code-body {
+    position: relative;
+  }
+  .code-body pre {
+    margin: 0;
+    padding: 20px 24px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-primary);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-body pre[hidden] { display: none; }
+  .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+  }
+  .copy-btn:hover { color: var(--everm-gold); border-color: var(--everm-gold); }
+  .copy-btn.copied { color: var(--everm-gold); border-color: var(--everm-gold); }
+
+  /* syntax */
+  .k { color: oklch(0.78 0.14 320); }  /* keyword - violet */
+  .s { color: var(--everm-gold); }      /* string - EverMind gold */
+  .c { color: var(--ink-faint); font-style: italic; }  /* comment */
+  .n { color: oklch(0.85 0.14 75); }    /* number/highlight - amber */
+  .f { color: oklch(0.78 0.12 220); }   /* function - sky */
+  .v { color: var(--ink-primary); }     /* var */
+
+  /* Terminal */
+  .terminal {
+    background: var(--bg-code);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: var(--s4) 0;
+  }
+  .terminal-head {
+    padding: 8px 14px;
+    background: var(--bg-elev-2);
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .terminal-body {
+    padding: 18px 22px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-primary);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .term-prompt { color: var(--everm-gold); }
+  .term-cmd { color: var(--ink-primary); }
+  .term-out { color: var(--ink-secondary); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Callouts
+     ══════════════════════════════════════════════════════════════ */
+  .callout {
+    margin: var(--s4) 0;
+    padding: var(--s4) var(--s5);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--everm-gold);
+    background: var(--everm-gold-soft);
+    color: var(--ink-primary);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .callout strong { color: var(--everm-gold); }
+  .callout.danger {
+    border-left-color: #FB7185;
+    background: oklch(0.45 0.15 25 / 0.15);
+  }
+  .callout.danger strong { color: #FB9090; }
+  .callout.success {
+    border-left-color: var(--sun-gold);
+    background: oklch(0.78 0.12 85 / 0.12);
+  }
+  .callout.success strong { color: var(--sun-gold); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Big stats
+     ══════════════════════════════════════════════════════════════ */
+  .big-stat {
+    display: flex;
+    gap: var(--s9);
+    flex-wrap: wrap;
+    margin-top: var(--s7);
+  }
+  .big-stat-item .num {
+    font-family: var(--font-serif);
+    font-size: 88px;
+    font-weight: 500;
+    letter-spacing: var(--track-tight);
+    line-height: 0.95;
+    color: var(--everm-gold);
+  }
+  .big-stat-item .lbl {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    margin-top: var(--s2);
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Use case grid
+     ══════════════════════════════════════════════════════════════ */
+  .usecase-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s3);
+    margin-top: var(--s4);
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: var(--s2);
+  }
+  .usecase-grid::-webkit-scrollbar { width: 6px; }
+  .usecase-grid::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+  .uc-card {
+    padding: var(--s4);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .uc-card:hover {
+    border-color: var(--everm-gold);
+    background: var(--bg-elev-2);
+  }
+  .uc-card.expanded {
+    grid-column: span 2;
+    border-color: var(--everm-gold);
+    background: var(--bg-elev-2);
+  }
+  .uc-icon {
+    font-size: 22px;
+    margin-bottom: var(--s2);
+    line-height: 1;
+  }
+  .uc-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .uc-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+  }
+  .uc-detail {
+    margin-top: var(--s3);
+    padding-top: var(--s3);
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    display: none;
+  }
+  .uc-card.expanded .uc-detail { display: block; }
+
+  /* ══════════════════════════════════════════════════════════════
+     Tips
+     ══════════════════════════════════════════════════════════════ */
+  .tips-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s3);
+    margin-top: var(--s5);
+  }
+  .tip {
+    display: flex;
+    gap: var(--s4);
+    padding: var(--s5);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .tip-num {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--everm-gold);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 44px;
+  }
+  .tip h4 {
+    font-size: 17px;
+    color: var(--ink-primary);
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .tip p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+  .tip.span2 { grid-column: span 2; }
+
+  /* ══════════════════════════════════════════════════════════════
+     Timeline (agenda)
+     ══════════════════════════════════════════════════════════════ */
+  .timeline {
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: var(--s6);
+  }
+  .timeline h3 {
+    font-size: var(--size-lead);
+    color: var(--everm-gold);
+    margin-bottom: var(--s4);
+    font-weight: 600;
+  }
+  .timeline-row {
+    display: flex;
+    gap: var(--s4);
+    padding: var(--s3) 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 14px;
+  }
+  .timeline-row:last-child { border-bottom: none; }
+  .timeline-row .time {
+    font-family: var(--font-mono);
+    color: var(--ink-secondary);
+    width: 70px;
+    flex-shrink: 0;
+  }
+  .timeline-row.hot .time { color: var(--everm-gold); font-weight: 600; }
+
+  /* ══════════════════════════════════════════════════════════════
+     Prizes
+     ══════════════════════════════════════════════════════════════ */
+  .prize-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s5);
+    margin-top: var(--s5);
+  }
+  .prize {
+    padding: var(--s6);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+  .prize::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--sun-gold);
+  }
+  .prize.fellowship {
+    border-color: var(--everm-gold);
+    background: linear-gradient(180deg, var(--bg-elev), oklch(0.30 0.06 90 / 0.15));
+  }
+  .prize.fellowship::before { background: var(--everm-gold); height: 4px; }
+  .prize .badge-when {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--sun-gold);
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+    margin-bottom: var(--s3);
+  }
+  .prize.fellowship .badge-when { color: var(--everm-gold); }
+  .prize h3 {
+    font-size: var(--size-lead);
+    color: var(--ink-primary);
+    margin-bottom: var(--s4);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .prize .amounts {
+    font-family: var(--font-mono);
+    line-height: 2;
+    color: var(--ink-secondary);
+    font-size: 14px;
+  }
+  .prize .blurb {
+    font-size: 13px;
+    color: var(--ink-secondary);
+    margin-top: var(--s4);
+    line-height: 1.55;
+  }
+  .prize strong { color: var(--everm-gold); font-size: 18px; }
+
+  /* ══════════════════════════════════════════════════════════════
+     Help cards
+     ══════════════════════════════════════════════════════════════ */
+  .help-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s4);
+    margin-top: var(--s5);
+  }
+  .help-card {
+    padding: var(--s6);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .help-card .ic {
+    font-size: 30px;
+    margin-bottom: var(--s3);
+    line-height: 1;
+  }
+  .help-card h3 {
+    font-size: 17px;
+    color: var(--ink-primary);
+    margin-bottom: var(--s3);
+    font-weight: 600;
+  }
+  .help-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+    margin-bottom: 6px;
+  }
+  .help-card .url {
+    margin-top: var(--s3);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--everm-gold);
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Final / closing slide
+     ══════════════════════════════════════════════════════════════ */
+  .closing {
+    align-content: center;
+    text-align: left;
+  }
+  .closing-hero {
+    grid-column: 1 / span 5;
+  }
+  .closing-hero h1 {
+    font-family: var(--font-serif);
+    font-size: 96px;
+    font-weight: 500;
+    line-height: 1.0;
+    color: var(--everm-gold);
+    margin-bottom: var(--s5);
+    letter-spacing: -0.02em;
+  }
+  .closing-hero p {
+    font-size: var(--size-lead);
+    line-height: var(--lh-lead);
+    color: var(--ink-secondary);
+    max-width: 32ch;
+  }
+  .closing-side {
+    grid-column: 6 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s3);
+  }
+  .qr-card {
+    padding: var(--s4);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+  }
+  .qr-box {
+    width: 64px;
+    height: 64px;
+    background: var(--ink-primary);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: oklch(0.18 0.04 160);
+  }
+  .qr-svg {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px oklch(0 0 0 / 0.35);
+  }
+  .qr-info .lbl {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .qr-info .url {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--everm-gold);
+    word-break: break-all;
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     EverMind org homage strip (closing slide footer)
+     References: EverMind-AI GitHub org five-badge row + EverCore benchmark stamp
+     ══════════════════════════════════════════════════════════════ */
+  .everm-pillars {
+    margin-top: var(--s7);
+    padding-top: var(--s5);
+    border-top: 1px solid var(--rule-soft);
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: var(--s7);
+    row-gap: var(--s4);
+    align-items: end;
+    max-width: 60ch;
+  }
+  .everm-stamp {
+    font-family: var(--font-serif);
+    line-height: 1;
+  }
+  .everm-stamp .stamp-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .everm-stamp .stamp-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s4);
+  }
+  .everm-stamp .stamp-num {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--everm-gold);
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    letter-spacing: -0.01em;
+  }
+  .everm-stamp .stamp-key {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+  }
+  .everm-stamp .stamp-sep {
+    color: var(--ink-faint);
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .everm-pillars-3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--track-kicker);
+    text-transform: uppercase;
+  }
+  .everm-pillars-3 .pillar-eyebrow {
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .everm-pillars-3 .pillar-list {
+    display: flex;
+    gap: var(--s3);
+    color: var(--ink-secondary);
+    flex-wrap: wrap;
+  }
+  .everm-pillars-3 .pillar-list span:not(:last-child)::after {
+    content: " · ";
+    color: var(--everm-gold);
+    margin-left: var(--s2);
+  }
+
+  .everm-badges {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+    margin-top: var(--s2);
+  }
+  .everm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: var(--track-wide);
+    color: var(--ink-secondary);
+    text-transform: uppercase;
+    transition: border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  .everm-badge:hover {
+    border-color: var(--everm-gold);
+    color: var(--ink-primary);
+    transform: translateY(-1px);
+  }
+  .everm-badge .bdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .everm-badge.b-x       .bdot { background: #ffffff; }
+  .everm-badge.b-hf      .bdot { background: #f5c842; }
+  .everm-badge.b-discord .bdot { background: #404eed; }
+  .everm-badge.b-wechat  .bdot { background: #07c160; }
+  .everm-badge.b-github  .bdot { background: var(--everm-blue); }
+
+  body.theme-light .everm-pillars { border-top-color: oklch(0.85 0.02 80); }
+  body.theme-light .everm-badge {
+    background: var(--everm-cream-2);
+    border-color: oklch(0.85 0.02 80);
+    color: var(--everm-taupe);
+  }
+  body.theme-light .everm-badge:hover {
+    color: var(--everm-ink);
+    border-color: var(--everm-gold);
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     Nav + progress
+     ══════════════════════════════════════════════════════════════ */
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--everm-gold);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 200;
+    box-shadow: 0 0 12px var(--everm-gold-soft);
+  }
+
+  .nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 88px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(180deg, transparent, var(--bg) 70%);
+  }
+  .nav-counter {
+    font-family: var(--font-mono);
+    font-size: var(--size-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--track-wide);
+  }
+  .nav-counter .cur { color: var(--everm-gold); font-weight: 600; }
+  .nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--bg-elev);
+    border: 1px solid var(--rule);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  .nav-btn:hover {
+    border-color: var(--everm-gold);
+    color: var(--everm-gold);
+    background: var(--bg-elev-2);
+  }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 88px;
+    left: 50%;
+    transform: translateX(-50%) translateY(14px);
+    padding: 10px 18px;
+    background: var(--everm-gold);
+    color: oklch(0.18 0.04 160);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: var(--font-mono);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 300;
+    box-shadow: 0 10px 30px oklch(0 0 0 / 0.4);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ══════════════════════════════════════════════════════════════
+     Responsive
+     ══════════════════════════════════════════════════════════════ */
+  @media (max-width: 1100px) {
+    .slide { padding: 56px 36px 90px; }
+    .stamp { left: 36px; }
+    .stamp-meta { right: 36px; }
+    .nav { padding: 16px 36px; }
+    .cover-hero h1 { font-size: 52px; line-height: 1.05; }
+    .closing-hero h1 { font-size: 64px; }
+    .roadmap { grid-template-columns: 1fr 1fr; }
+    .usecase-grid { grid-template-columns: 1fr 1fr; }
+    .prize-grid { grid-template-columns: 1fr; }
+    .twocol { grid-template-columns: 1fr; gap: var(--s6); }
+    .cover-hero, .cover-mark, .closing-hero, .closing-side {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress" id="progress"></div>
+
+<!-- Fixed stamp (top-left): EverMind × DASH co-brand -->
+<div class="stamp" id="stamp">
+  <span class="evermind-wordmark">EverMind</span>
+  <span style="color: var(--ink-faint);">Workshop · 05.30.26</span>
+</div>
+<div class="stamp-meta">
+  <span>Hackathon</span>
+  <span class="run-id">R-W-30</span>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied ✓</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DECK
+     ══════════════════════════════════════════════════════════════ -->
+<div class="deck" id="deck">
+
+  <!-- ============ SLIDE 1: COVER ============ -->
+  <section class="slide cover active" data-slide="1">
+    <div class="cover-hero">
+      <div class="eyebrow">Workshop · 10:30 — 11:10 AM · 40 min · Keep in Mind · Evolve over Time</div>
+      <h1>40 minutes.<br>Ship memory<br>into your agent.</h1>
+      <p>Welcome to the Beta Fund × EverMind <span class="u">One Person Company</span> Hackathon. This workshop skips the story — it's pure flow: from zero to <span class="u">EverOS</span>, all the way to a working demo.</p>
+
+      <div class="cover-badges">
+        <span class="badge solid">5/30 · Sunnyvale</span>
+        <span class="badge">Solo / Small team</span>
+        <span class="badge gold">$25K + Beta Fellowship</span>
+        <span class="badge">4 Tracks</span>
+      </div>
+
+      <p class="nav-hint">Press <kbd>→</kbd> for step one · <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> exit</p>
+    </div>
+
+    <div class="cover-mark">
+      <span class="evermind-cover-wordmark">EverMind</span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2: ROADMAP ============ -->
+  <section class="slide" data-slide="2">
+    <div class="slide-head">
+      <div class="eyebrow">Today's Path · Your 4 steps</div>
+      <h2 class="deck">Today you only do 4 things.</h2>
+      <p class="lead">No ML degree, no GPU. A browser, an editor, and a cup of coffee.</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="roadmap-card">
+        <span class="num">01 / ACCOUNT</span>
+        <div class="title">Sign up for EverMind Cloud</div>
+        <p class="desc">Create an account — hackathon credit is auto-granted.</p>
+        <div class="eta">~ 3 min</div>
+      </div>
+      <div class="roadmap-card">
+        <span class="num">02 / API KEY</span>
+        <div class="title">Generate your developer key</div>
+        <p class="desc">Local and SDK calls both run on this key.</p>
+        <div class="eta">~ 2 min</div>
+      </div>
+      <div class="roadmap-card">
+        <span class="num">03 / HELLO</span>
+        <div class="title">Make your first API call</div>
+        <p class="desc">Pick curl, Python, or Node — see a response and you're through.</p>
+        <div class="eta">~ 5 min</div>
+      </div>
+      <div class="roadmap-card">
+        <span class="num">04 / EVEROS</span>
+        <div class="title">Stand on 20+ templates</div>
+        <p class="desc">Fork a ready use case → change 30% → submit.</p>
+        <div class="eta">~ 30 min</div>
+      </div>
+    </div>
+
+    <div style="grid-column: 1 / -1; margin-top: var(--s7);">
+      <div class="callout success">
+        <strong>Core principle:</strong> Today isn't about writing from scratch — it's about finding the closest template and making it 30% yours.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 3: STEP 1 INTRO ============ -->
+  <section class="slide" data-slide="3">
+    <div class="slide-head">
+      <div class="eyebrow">Step 01 · Account</div>
+      <h2 class="deck">Sign up for EverMind Cloud.</h2>
+      <p class="lead">EverMind is your runtime and AI capability source for today. Sign up and your hackathon credit drops automatically — enough to last the whole day.</p>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <h3 class="lead">What you'll get</h3>
+        <ul class="checklist">
+          <li><strong><span class="u">$50 hackathon credit</span></strong>
+            <small>Enough to run every demo and retry 5+ times on errors</small>
+          </li>
+          <li><strong>Access to mainline LLM + agent orchestration APIs</strong>
+            <small>reasoning / tools / memory — the full set</small>
+          </li>
+          <li><strong>Private fork access to the EverOS template library</strong>
+            <small>20+ use cases, clone and go</small>
+          </li>
+          <li><strong>Access to the Discord <code>#hackathon-may30</code> channel</strong>
+            <small>Stuck? @ a mentor here</small>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <div class="browser-url">https://everos.evermind.ai/</div>
+          </div>
+          <div class="browser-body">
+            <h3 style="margin-bottom: 20px; font-family: var(--font-serif); font-size: 26px; color: var(--ink-primary);">Create your account</h3>
+            <div class="input-row">
+              <div class="input-label">Email</div>
+              <input class="input-field" placeholder="you@example.com" readonly>
+            </div>
+            <div class="input-row">
+              <div class="input-label">Or sign up with</div>
+              <button class="btn-ghost" style="margin-right: 8px;">GitHub</button>
+              <button class="btn-ghost">Google</button>
+            </div>
+            <button class="btn-primary" style="margin-top: 16px;">Continue →</button>
+            <div class="hotspot" style="bottom: 38px; left: 28px;">
+              <div class="hotspot-tip">Click here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 4: STEP 1 DETAIL ============ -->
+  <section class="slide" data-slide="4">
+    <div class="slide-head">
+      <div class="eyebrow">Step 01 · Detail</div>
+      <h2 class="deck">3 key moves during sign-up.</h2>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <ul class="checklist">
+          <li><strong>Sign in with GitHub</strong>
+            <small>Fastest path — auto-links your commit history, no re-login when forking templates</small>
+          </li>
+          <li><strong>Enter invite code <code>HACK0530</code></strong>
+            <small>This code triggers credit issuance — without it, you only get the $5 default trial</small>
+          </li>
+          <li><strong>Skip the onboarding survey</strong>
+            <small>Top right corner — "Skip for now". No time during the workshop; fill it out later this week.</small>
+          </li>
+          <li><strong>Check your credit balance in the dashboard</strong>
+            <small>Top right should show <span class="u">$50.00</span>. If you don't see it, @ a mentor immediately.</small>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <div class="browser-url">https://everos.evermind.ai/dashboard</div>
+          </div>
+          <div class="browser-body">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+              <h3 style="font-family: var(--font-serif); font-size: 24px; color: var(--ink-primary);">Welcome back</h3>
+              <div style="padding: 6px 14px; background: var(--everm-gold-soft); color: var(--everm-gold); border-radius: 999px; font-family: var(--font-mono); font-size: 13px; font-weight: 600;">$50.00 credit</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div style="padding: 14px; background: oklch(0.13 0.03 160); border: 1px solid var(--rule); border-radius: 8px;">
+                <div style="font-size: 11px; color: var(--ink-faint); font-family: var(--font-mono); letter-spacing: 0.08em;">API CALLS</div>
+                <div style="font-size: 22px; font-weight: 700; margin-top: 4px; font-family: var(--font-serif);">0</div>
+              </div>
+              <div style="padding: 14px; background: oklch(0.13 0.03 160); border: 1px solid var(--rule); border-radius: 8px;">
+                <div style="font-size: 11px; color: var(--ink-faint); font-family: var(--font-mono); letter-spacing: 0.08em;">PROJECTS</div>
+                <div style="font-size: 22px; font-weight: 700; margin-top: 4px; font-family: var(--font-serif);">0</div>
+              </div>
+            </div>
+            <button class="btn-primary" style="margin-top: 18px;">→ Get API Key</button>
+            <div class="hotspot" style="bottom: 38px; left: 28px;">
+              <div class="hotspot-tip">Next step here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="grid-column: 1 / -1; margin-top: var(--s5);">
+      <div class="callout">
+        <strong>Common gotcha:</strong> If GitHub login lands on a blank page, it's almost always third-party cookies blocked by your browser — switch to Chrome incognito or register with email instead.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 5: STEP 2 INTRO ============ -->
+  <section class="slide" data-slide="5">
+    <div class="slide-head">
+      <div class="eyebrow">Step 02 · API Key</div>
+      <h2 class="deck">Grab your developer key.</h2>
+      <p class="lead">The API Key is the one credential your code and SDK use to talk to EverMind. 30 seconds in the console — this key opens every door that follows.</p>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <h3 class="lead">The path</h3>
+        <ul class="checklist">
+          <li>Dashboard → click your avatar (top right) → <strong>Developer</strong></li>
+          <li>Left sidebar → <strong>API Keys</strong></li>
+          <li>Top right → <strong>Create new key</strong></li>
+          <li>Name it <code>hackathon-may30</code></li>
+          <li><strong><span class="u">Copy it immediately</span></strong> — once you leave the page, you'll never see it again</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <div class="browser-url">https://everos.evermind.ai/settings/api-keys</div>
+          </div>
+          <div class="browser-body">
+            <h3 style="margin-bottom: 18px; font-family: var(--font-serif); font-size: 24px; color: var(--ink-primary);">API Keys</h3>
+            <div style="padding: 14px; background: oklch(0.13 0.03 160); border: 1px solid var(--rule); border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 600; color: var(--ink-primary);">hackathon-may30</div>
+                  <div style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); margin-top: 6px;">sk-em-•••••••••••••••••••••a7f3</div>
+                </div>
+                <button class="btn-ghost" style="padding: 5px 12px; font-size: 12px;">Copy</button>
+              </div>
+            </div>
+            <div style="margin-top: 12px; padding: 10px 14px; background: oklch(0.78 0.12 85 / 0.12); border-left: 2px solid var(--sun-gold); border-radius: 4px; font-size: 12px; color: var(--ink-secondary);">
+              ⚠ This key is shown only once. After closing this page, the full value can never be viewed again.
+            </div>
+            <div class="hotspot" style="top: 88px; right: 28px;">
+              <div class="hotspot-tip">Click to copy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 6: STEP 2 SAFETY ============ -->
+  <section class="slide" data-slide="6">
+    <div class="slide-head">
+      <div class="eyebrow">Step 02 · Safety First</div>
+      <h2 class="deck">Put the API Key in the right place.</h2>
+      <p class="lead">This is the single most common way hackathon teams crash — key gets committed to a public GitHub repo, a bot scrapes it, credit zeroes out overnight.</p>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <h3 class="lead" style="color: var(--sun-gold);">✓ The right way</h3>
+        <ul class="checklist">
+          <li>Put it in a <code>.env</code> file at your project root
+            <small>Format: EVERMIND_API_KEY=sk-em-xxxx</small>
+          </li>
+          <li>Add <code>.env</code> as the first line of <code>.gitignore</code></li>
+          <li>Read it in code via <code>os.getenv("EVERMIND_API_KEY")</code></li>
+          <li>Redact or use placeholders before sharing code screenshots</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="code">
+          <div class="code-head">.env</div>
+          <div class="code-body">
+            <button class="copy-btn" data-copy="EVERMIND_API_KEY=sk-em-your-real-key-here&#10;EVERMIND_PROJECT=hackathon-may30">Copy</button>
+            <pre><span class="k">EVERMIND_API_KEY</span>=<span class="s">sk-em-your-real-key-here</span>
+<span class="k">EVERMIND_PROJECT</span>=<span class="s">hackathon-may30</span></pre>
+          </div>
+        </div>
+
+        <div class="code">
+          <div class="code-head">.gitignore</div>
+          <div class="code-body">
+            <button class="copy-btn" data-copy=".env&#10;.env.local&#10;node_modules&#10;__pycache__/">Copy</button>
+            <pre><span class="v">.env</span>
+<span class="v">.env.local</span>
+<span class="v">node_modules</span>
+<span class="v">__pycache__/</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="grid-column: 1 / -1; margin-top: var(--s5);">
+      <div class="callout danger">
+        <strong>True story:</strong> Last hackathon, one team pushed their key to a public repo. GitHub's secret scanner caught it and revoked the key within 30 seconds — they had to re-issue it 3 times. <strong>Always run <code>git status</code> before every commit.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 7: STEP 3 - CODE ============ -->
+  <section class="slide" data-slide="7">
+    <div class="slide-head">
+      <div class="eyebrow">Step 03 · Store your first memory</div>
+      <h2 class="deck">Two APIs. Just these two.</h2>
+      <p class="lead">EverOS makes "memory" into CRUD — <code>POST /memories</code> to store · <code>GET /memories/search</code> to query. 99% of what you'll use the whole hackathon is these two endpoints.</p>
+    </div>
+
+    <div style="grid-column: 1 / -1;">
+      <div class="code">
+        <div class="code-head">
+          <div class="code-tabs" id="step3-tabs">
+            <button class="code-tab active" data-tab="py">Python</button>
+            <button class="code-tab" data-tab="curl">curl</button>
+            <button class="code-tab" data-tab="node">Node.js</button>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: var(--size-meta); color: var(--ink-faint); letter-spacing: var(--track-wide);">POST /api/v1/memories  ·  GET /api/v1/memories/search</span>
+        </div>
+        <div class="code-body">
+          <button class="copy-btn" id="step3-copy" data-copy="">Copy</button>
+
+<pre data-content="py"><span class="c"># Real EverOS API · from github.com/EverMind-AI/EverOS README</span>
+<span class="k">import</span> requests
+
+API_BASE = <span class="s">"http://localhost:1995/api/v1"</span>  <span class="c"># OSS local — for Cloud, swap in the endpoint from everos.evermind.ai</span>
+
+<span class="c"># 1) Store a memory</span>
+requests.<span class="f">post</span>(<span class="s">f"{API_BASE}/memories"</span>, json={
+    <span class="s">"message_id"</span>: <span class="s">"msg_001"</span>,
+    <span class="s">"create_time"</span>: <span class="s">"2026-05-30T11:15:00+00:00"</span>,
+    <span class="s">"sender"</span>: <span class="s">"user_001"</span>,
+    <span class="s">"content"</span>: <span class="s">"I love playing soccer on weekends"</span>,
+})
+
+<span class="c"># 2) Search it back with natural language</span>
+res = requests.<span class="f">get</span>(<span class="s">f"{API_BASE}/memories/search"</span>, json={
+    <span class="s">"query"</span>: <span class="s">"What sports does the user like?"</span>,
+    <span class="s">"user_id"</span>: <span class="s">"user_001"</span>,
+    <span class="s">"memory_types"</span>: [<span class="s">"episodic_memory"</span>],
+    <span class="s">"retrieve_method"</span>: <span class="s">"hybrid"</span>,
+})
+
+<span class="f">print</span>(res.<span class="f">json</span>()[<span class="s">"result"</span>][<span class="s">"memories"</span>])</pre>
+
+<pre data-content="curl" hidden><span class="c"># Real EverOS API · run this after the OSS deploy; for Cloud, use the URL from everos.evermind.ai</span>
+<span class="c"># 1) Store a memory</span>
+<span class="f">curl</span> -X POST http://localhost:1995/api/v1/memories \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "message_id": "msg_001",
+    "create_time": "2026-05-30T11:15:00+00:00",
+    "sender": "user_001",
+    "content": "I love playing soccer on weekends"
+  }'</span>
+
+<span class="c"># 2) Search with natural language</span>
+<span class="f">curl</span> http://localhost:1995/api/v1/memories/search \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "query": "What sports does the user like?",
+    "user_id": "user_001",
+    "memory_types": ["episodic_memory"],
+    "retrieve_method": "hybrid"
+  }'</span></pre>
+
+<pre data-content="node" hidden><span class="c">// Real EverOS API · Node 18+ has fetch built in</span>
+<span class="k">const</span> API_BASE = <span class="s">"http://localhost:1995/api/v1"</span>;
+
+<span class="c">// 1) Store a memory</span>
+<span class="k">await</span> <span class="f">fetch</span>(<span class="s">`${API_BASE}/memories`</span>, {
+  method: <span class="s">"POST"</span>,
+  headers: { <span class="s">"Content-Type"</span>: <span class="s">"application/json"</span> },
+  body: <span class="v">JSON</span>.<span class="f">stringify</span>({
+    message_id: <span class="s">"msg_001"</span>,
+    create_time: <span class="s">"2026-05-30T11:15:00+00:00"</span>,
+    sender: <span class="s">"user_001"</span>,
+    content: <span class="s">"I love playing soccer on weekends"</span>,
+  }),
+});
+
+<span class="c">// 2) Search</span>
+<span class="k">const</span> res = <span class="k">await</span> <span class="f">fetch</span>(<span class="s">`${API_BASE}/memories/search`</span>, {
+  method: <span class="s">"GET"</span>,
+  headers: { <span class="s">"Content-Type"</span>: <span class="s">"application/json"</span> },
+  body: <span class="v">JSON</span>.<span class="f">stringify</span>({
+    query: <span class="s">"What sports does the user like?"</span>,
+    user_id: <span class="s">"user_001"</span>,
+    memory_types: [<span class="s">"episodic_memory"</span>],
+    retrieve_method: <span class="s">"hybrid"</span>,
+  }),
+});
+
+console.<span class="f">log</span>(<span class="k">await</span> res.<span class="f">json</span>());</pre>
+        </div>
+      </div>
+
+      <div class="callout success" style="margin-top: var(--s5);">
+        <strong>Success = POST returns 200 + search returns a non-empty memories array.</strong> If you don't see it, first <code>curl http://localhost:1995/health</code> to confirm the server is up — if it's not, go back to Step 2 and check docker compose / uv run python src/run.py.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 8: STEP 3 - OUTPUT ============ -->
+  <section class="slide" data-slide="8">
+    <div class="slide-head">
+      <div class="eyebrow">Step 03 · What you should see</div>
+      <h2 class="deck">This is what a working memory looks like.</h2>
+      <p class="lead">EverOS isn't chat completion — it extracts raw content into structured memory with <span class="u">episodic / semantic / timestamps</span>. Below is the real shape of a search response.</p>
+    </div>
+
+    <div style="grid-column: 1 / -1;">
+      <div class="terminal">
+        <div class="terminal-head">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+          <span>~/hackathon-may30 — bash · POST + GET roundtrip</span>
+        </div>
+<pre class="terminal-body"><span class="term-prompt">$</span> <span class="term-cmd">curl -X POST http://localhost:1995/api/v1/memories \</span>
+<span class="term-prompt">  </span><span class="term-cmd">-d '{"message_id":"msg_001","sender":"user_001",</span>
+<span class="term-prompt">  </span><span class="term-cmd">    "content":"I love playing soccer on weekends",</span>
+<span class="term-prompt">  </span><span class="term-cmd">    "create_time":"2026-05-30T11:15:00+00:00"}'</span>
+
+<span class="term-out">{"status":"ok","memory_id":"mem_8f3a..."}</span>
+
+<span class="term-prompt">$</span> <span class="term-cmd">curl http://localhost:1995/api/v1/memories/search \</span>
+<span class="term-prompt">  </span><span class="term-cmd">-d '{"query":"What sports does the user like?",</span>
+<span class="term-prompt">  </span><span class="term-cmd">    "user_id":"user_001","retrieve_method":"hybrid"}'</span>
+
+<span class="term-out">{
+  "result": {
+    "memories": [
+      {
+        "memory_id": "mem_8f3a...",
+        "type": "episodic_memory",
+        "content": "I love playing soccer on weekends",
+        "score": 0.91,
+        "create_time": "2026-05-30T11:15:00+00:00"
+      }
+    ]
+  }
+}</span></pre>
+      </div>
+
+      <div class="twocol" style="margin-top: var(--s6);">
+        <div>
+          <h3 class="lead" style="color: var(--sun-gold);">✓ Seeing this means</h3>
+          <ul class="checklist" style="margin-top: var(--s3);">
+            <li>Docker stack is up (Mongo / Elasticsearch / Milvus / Redis — all 4 services healthy)</li>
+            <li>LLM_API_KEY + VECTORIZE_API_KEY are both wired up</li>
+            <li>You're clear to start stacking use cases — see Step 04</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="lead" style="color: #FB9090;">✗ If you don't see it</h3>
+          <ul class="checklist" style="margin-top: var(--s3);">
+            <li><code>Connection refused</code> → server isn't running. Run <code>uv run python src/run.py</code>
+              <small>Or confirm all 4 docker compose services are healthy</small>
+            </li>
+            <li><code>500 + vectorize error</code> → VECTORIZE_API_KEY not set or wrong provider</li>
+            <li>Empty memories array in the response → wait 5 seconds and search again; extraction has async lag</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 9: STEP 4 INTRO ============ -->
+  <section class="slide" data-slide="9">
+    <div class="slide-head">
+      <div class="eyebrow">Step 04 · EverOS · The Memory OS for Agentic AI</div>
+      <h2 class="deck">Stand on the shoulders of a SOTA memory stack.</h2>
+      <p class="lead">EverOS isn't a wrapper — it's the <span class="u">memory OS</span> itself. Apache 2.0, Docker up, 4 infra services auto-wired (MongoDB · Elasticsearch · Milvus · Redis). Fork a real demo today, change 30%, and that's your product.</p>
+    </div>
+
+    <div style="grid-column: 1 / -1;">
+      <div class="big-stat">
+        <div class="big-stat-item">
+          <div class="num">3.4<span style="font-size: 0.5em;">k</span></div>
+          <div class="lbl">GitHub Stars</div>
+        </div>
+        <div class="big-stat-item">
+          <div class="num">359</div>
+          <div class="lbl">Forks</div>
+        </div>
+        <div class="big-stat-item">
+          <div class="num">5</div>
+          <div class="lbl">Live Demos</div>
+        </div>
+        <div class="big-stat-item">
+          <div class="num">Apache<span style="font-size: 0.4em;"> 2.0</span></div>
+          <div class="lbl">License</div>
+        </div>
+      </div>
+
+      <!-- Benchmark proof strip — gold-underline causal-anchor system (DASH § 3.2) -->
+      <div style="margin-top: var(--s6); padding: var(--s5) var(--s6); background: oklch(0.22 0.05 160 / 0.6); border: 1px solid var(--rule); border-radius: var(--radius); display: flex; gap: var(--s8); flex-wrap: wrap; align-items: baseline;">
+        <div style="font-family: var(--font-mono); font-size: var(--size-meta); color: var(--ink-muted); letter-spacing: var(--track-kicker); text-transform: uppercase;">SOTA, open-source verifiable ↓</div>
+        <div><span class="u" style="font-family: var(--font-serif); font-size: 28px; font-weight: 500;">93.05%</span> <span style="font-size: 13px; color: var(--ink-muted); margin-left: 4px;">LoCoMo</span></div>
+        <div><span class="u" style="font-family: var(--font-serif); font-size: 28px; font-weight: 500;">83.00%</span> <span style="font-size: 13px; color: var(--ink-muted); margin-left: 4px;">LongMemEval</span></div>
+        <div><span class="u" style="font-family: var(--font-serif); font-size: 28px; font-weight: 500;">93.04%</span> <span style="font-size: 13px; color: var(--ink-muted); margin-left: 4px;">HaluMem</span></div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); margin-left: auto;">evermind.ai/blogs/everos-hits-sota-performance-on-locomo</div>
+      </div>
+
+      <div class="code" style="margin-top: var(--s6);">
+        <div class="code-head">terminal · the real 6-step quick-start (from the GitHub README)</div>
+        <div class="code-body">
+          <button class="copy-btn" data-copy="git clone https://github.com/EverMind-AI/EverOS.git&#10;cd EverOS&#10;docker compose up -d&#10;curl -LsSf https://astral.sh/uv/install.sh | sh && uv sync&#10;cp env.template .env  # fill in LLM_API_KEY + VECTORIZE_API_KEY&#10;uv run python src/run.py&#10;curl http://localhost:1995/health">Copy</button>
+<pre><span class="term-prompt">$</span> <span class="f">git clone</span> https://github.com/EverMind-AI/EverOS.git
+<span class="term-prompt">$</span> <span class="f">cd</span> EverOS
+<span class="term-prompt">$</span> <span class="f">docker compose</span> up -d         <span class="c"># spins up Mongo + ES + Milvus + Redis</span>
+<span class="term-prompt">$</span> <span class="f">curl</span> -LsSf https://astral.sh/uv/install.sh | sh && uv sync
+<span class="term-prompt">$</span> <span class="f">cp</span> env.template .env       <span class="c"># fill in LLM_API_KEY + VECTORIZE_API_KEY</span>
+<span class="term-prompt">$</span> <span class="f">uv run</span> python src/run.py    <span class="c"># server starts on :1995</span>
+<span class="term-prompt">$</span> <span class="f">curl</span> http://localhost:1995/health
+<span class="term-out">→ {"status": "healthy", ...}</span></pre>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: var(--s4);">
+        <strong>Cloud path (zero Docker):</strong> 6 steps feel like too many? Sign up at <code>everos.evermind.ai</code> — Cloud hands you a pre-wired endpoint + API key, and you skip straight past Steps 1–6 into the API.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 10: USE CASE GRID ============ -->
+  <section class="slide" data-slide="10">
+    <div class="slide-head">
+      <div class="eyebrow">Step 04 · Browse the library · Click a card to expand</div>
+      <h2 class="deck">Pick the one closest to your product.</h2>
+    </div>
+
+    <div class="usecase-grid" id="ucg">
+      <!-- 6 real demos from github.com/EverMind-AI/EverOS README -->
+      <div class="uc-card"><div class="uc-icon">🦞</div><div class="uc-name">OpenClaw Agent Memory</div><div class="uc-tag">Real demo · agent_memory branch</div><div class="uc-detail">"Claw is putting the pieces of his memory together." A 24/7 agent + continuously-learning memory that travels with you everywhere. branch <code>agent_memory</code> + <code>everos-openclaw-plugin</code>.</div></div>
+      <div class="uc-card"><div class="uc-icon">🎭</div><div class="uc-name">Live2D + TEN Framework</div><div class="uc-tag">Real demo · voice-assistant</div><div class="uc-detail">Give anime characters long-term memory and real-time conversation. TEN Framework integration — full example at ten-framework/voice-assistant-with-EverOS.</div></div>
+      <div class="uc-card"><div class="uc-icon">🖥️</div><div class="uc-name">Computer-Use Screenshot</div><div class="uc-tag">Real demo · live URL</div><div class="uc-detail">Screenshot → analyze → all into memory. Live demo: screenshot-analysis-vercel.vercel.app. To reshape it into your own "screen-activity agent," you only need to swap the prompts.</div></div>
+      <div class="uc-card"><div class="uc-icon">🐉</div><div class="uc-name">Game of Thrones Memories</div><div class="uc-tag">Real demo · interactive Q&A</div><div class="uc-detail">Feed the entire Game of Thrones into EverOS, then run Q&A — character relationships, timelines, and event causality are all retained. code: EverMind-AI/evermem_got_demo.</div></div>
+      <div class="uc-card"><div class="uc-icon">🤖</div><div class="uc-name">Claude Code Plugin</div><div class="uc-tag">Real demo · persistent across sessions</div><div class="uc-detail">Claude Code auto-saves and recalls coding context across sessions. code: EverMind-AI/evermem-claude-code. Fastest hackathon angle — you're already using CC.</div></div>
+      <div class="uc-card"><div class="uc-icon">🕸️</div><div class="uc-name">Memory Graph Viz</div><div class="uc-tag">Real demo · frontend WIP</div><div class="uc-detail">Render stored entities and relationships as a graph. Live: main.d2j21qxnymu6wl.amplifyapp.com/graph.html. Backend isn't wired yet — perfect for a wrapper or visual innovation play.</div></div>
+
+      <!-- 4 spark ideas mapped to hackathon tracks (grounded in EverOS capabilities) -->
+      <div class="uc-card"><div class="uc-icon">🎯</div><div class="uc-name">CRM with Real Memory</div><div class="uc-tag">GTM track · spark</div><div class="uc-detail">Every customer conversation goes into episodic memory; group memory is shared across sales reps. Next follow-up, the agent already knows where you left off.</div></div>
+      <div class="uc-card"><div class="uc-icon">⚡</div><div class="uc-name">Personal AI Companion</div><div class="uc-tag">MVP track · spark</div><div class="uc-detail">A simplified take on the upcoming EverMe concept — a chat agent that remembers your preferences, birthday, friends, and taste across sessions. Built on user_memory + episodic_memory.</div></div>
+      <div class="uc-card"><div class="uc-icon">🧠</div><div class="uc-name">Multi-Agent Group Memory</div><div class="uc-tag">Infra track · spark</div><div class="uc-detail">Multiple agents share group memory; the lead agent sees every Skill its sub-agents have learned (EverOS auto-extracts Cases → Skills).</div></div>
+      <div class="uc-card"><div class="uc-icon">🎮</div><div class="uc-name">Wearable / Voice Memory</div><div class="uc-tag">Wild track · spark</div><div class="uc-detail">Hardware / voice fragments → structured by EverOS → context anticipation (an EverMind-flagged scenario on the official site). Same category as AI Pin / Friend pendant.</div></div>
+    </div>
+
+    <p style="grid-column: 1 / -1; margin-top: var(--s4);" class="meta">↑ Click any card to expand · The first 6 are real, live demos in github.com/EverMind-AI/EverOS; the last 4 are sparks mapped to the hackathon tracks</p>
+  </section>
+
+  <!-- ============ SLIDE 11: FORK FLOW ============ -->
+  <section class="slide" data-slide="11">
+    <div class="slide-head">
+      <div class="eyebrow">Step 04 · Fork → Modify → Ship</div>
+      <h2 class="deck">From demo to your product.</h2>
+      <p class="lead">EverOS ships runnable entry points like <code style="font-family: var(--font-mono); color: var(--everm-gold);">demo/simple_demo.py</code> and <code style="font-family: var(--font-mono); color: var(--everm-gold);">demo/chat_with_memory.py</code>. Pick the demo closest to your product, swap the prompts / sender / content, and you'll have a working version in 3 hours.</p>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <ul class="checklist">
+          <li><strong>1. Fork the repo on GitHub</strong>
+            <small>github.com/EverMind-AI/EverOS → top-right Fork → your account</small>
+          </li>
+          <li><strong>2. Get the local server running</strong>
+            <small>Step 04's 6-step quick-start · health endpoint returns healthy</small>
+          </li>
+          <li><strong>3. Run a demo to verify</strong>
+            <small>uv run python src/bootstrap.py demo/simple_demo.py · watch a complete store-and-recall memory cycle</small>
+          </li>
+          <li><strong>4. Modify the demo → your product</strong>
+            <small>Swap prompts · swap sender/user_id structure · plug in your frontend or data source</small>
+          </li>
+          <li><strong>5. Record a <span class="u">2:30 demo video</span></strong>
+            <small>Submit before 4pm · 2 slides + working product video (must show a working memory cycle)</small>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="code">
+          <div class="code-head">terminal · run a demo end-to-end</div>
+          <div class="code-body">
+            <button class="copy-btn" data-copy="# Terminal 1: start the server&#10;uv run python src/run.py&#10;&#10;# Terminal 2: run a demo&#10;uv run python src/bootstrap.py demo/simple_demo.py&#10;&#10;# Next level: chat_with_memory&#10;uv run python src/bootstrap.py demo/chat_with_memory.py">Copy</button>
+<pre><span class="c"># Terminal 1 · start the server</span>
+<span class="term-prompt">$</span> <span class="f">uv run</span> python src/run.py
+
+<span class="c"># Terminal 2 · run simple_demo</span>
+<span class="term-prompt">$</span> <span class="f">uv run</span> python src/bootstrap.py demo/simple_demo.py
+
+<span class="c"># Next level · interactive chat with memory</span>
+<span class="term-prompt">$</span> <span class="f">uv run</span> python src/bootstrap.py demo/chat_with_memory.py</pre>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <strong>Codespaces lifeline:</strong> Docker not cooperating? In the README, click "Open in GitHub Codespaces" (pick 4-core or higher) — Mongo/ES/Milvus/Redis all spin up automatically.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 12: TIPS ============ -->
+  <section class="slide" data-slide="12">
+    <div class="slide-head">
+      <div class="eyebrow">Day Tips · Battle-tested</div>
+      <h2 class="deck">5 lessons last year's teams paid in blood for.</h2>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip">
+        <div class="tip-num">1</div>
+        <div>
+          <h4>Demo first, features later</h4>
+          <p>By 11:30 you must have the ugliest possible version that runs. Reject every "just one more feature" temptation until you can demo.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">2</div>
+        <div>
+          <h4>Record the demo — don't go live</h4>
+          <p>A 2:30 video can be cut and re-shot. Going live in front of judges on venue Wi-Fi = disaster. Finish recording before 3pm so you have time to edit.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">3</div>
+        <div>
+          <h4>Team–problem fit beats technical flash</h4>
+          <p>"Why you're the one to build this" on slide 1 moves judges more than "which model we used."</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">4</div>
+        <div>
+          <h4>Social Media King is real cash</h4>
+          <p>Post on X / Jike / Xiaohongshu as you build, with #onepersoncompany and @evermind. <span class="u">7 days later</span> the cash actually lands.</p>
+        </div>
+      </div>
+      <div class="tip span2">
+        <div class="tip-num">5</div>
+        <div>
+          <h4>Stuck? @ a mentor immediately — don't suffer silently</h4>
+          <p>Mentors are on Discord <code style="font-family: var(--font-mono); color: var(--everm-gold);">#hackathon-may30</code> and on-site. Every mentor wants you to ship — asking for help isn't embarrassing, not shipping is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 13: SUBMIT + AGENDA ============ -->
+  <section class="slide" data-slide="13">
+    <div class="slide-head">
+      <div class="eyebrow">Submission · 4:00 PM deadline</div>
+      <h2 class="deck">You need these 3 things at submission.</h2>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <ul class="checklist">
+          <li><strong>Slide 1 · Team Introduction</strong>
+            <small>Name / school or company / relevant experience / team–problem fit</small>
+          </li>
+          <li><strong>Slide 2 · Product Overview</strong>
+            <small>One-sentence pitch / the problem you're solving / the solution you built</small>
+          </li>
+          <li><strong>Slide 3 · Demo Video</strong>
+            <small>2 minutes max · must show a working product · no mockups</small>
+          </li>
+          <li><strong>GitHub repo link</strong>
+            <small>Must be public (or add the hackathon org as a collaborator)</small>
+          </li>
+          <li><strong>Live URL (if you have one)</strong>
+            <small>A link judges can try themselves is a massive scoring boost</small>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="timeline">
+          <h3>📅 Day timeline</h3>
+          <div class="timeline-row"><span class="time">09:30</span><span>Check-in & breakfast / team formation</span></div>
+          <div class="timeline-row hot"><span class="time">10:30</span><span>Opening + Workshop (you are here)</span></div>
+          <div class="timeline-row"><span class="time">11:10</span><span>Start building</span></div>
+          <div class="timeline-row"><span class="time">12:00</span><span>Lunch (keep building)</span></div>
+          <div class="timeline-row hot"><span class="time">16:00</span><span><strong>Submission deadline</strong></span></div>
+          <div class="timeline-row"><span class="time">16:00</span><span>Demo round (3 min per team)</span></div>
+          <div class="timeline-row hot"><span class="time">17:00</span><span><strong>Awards + closing</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="grid-column: 1 / -1; margin-top: var(--s6);">
+      <div class="callout">
+        <strong>The submission link</strong> drops in the Discord <code>#hackathon-may30</code> channel at 3:00 PM sharp — bookmark the channel and turn on notifications.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 14: PRIZES ============ -->
+  <section class="slide" data-slide="14">
+    <div class="slide-head">
+      <div class="eyebrow">Prizes · What you can take home today</div>
+      <h2 class="deck">Three prize tiers — every detail matters.</h2>
+    </div>
+
+    <div class="prize-grid">
+      <div class="prize">
+        <div class="badge-when">Awarded on-site</div>
+        <h3>🏆 Audience Favorite</h3>
+        <div class="amounts">
+          🥇 $600<br>
+          🥈 $500<br>
+          🥉 $400<br>
+          4️⃣ $300<br>
+          5️⃣ $200
+        </div>
+        <p class="blurb">Decided by audience vote · cash paid out at 5pm.</p>
+      </div>
+
+      <div class="prize">
+        <div class="badge-when">Paid 7 days later</div>
+        <h3>📱 Social Media King</h3>
+        <div class="amounts">
+          🥇 $500<br>
+          🥈 $300<br>
+          🥉 $200
+        </div>
+        <p class="blurb">Judged on the real reach of your demo / build log on social platforms over 7 days. Prizes paid via Discord.</p>
+      </div>
+
+      <div class="prize fellowship">
+        <div class="badge-when">Grand prize</div>
+        <h3>⚡ Beta Fellowship</h3>
+        <p class="blurb" style="margin-top: 0;">Direct admission to the Beta University 8-week accelerator — no standard application required.</p>
+        <p class="blurb">On project completion, Beta Fund invests <strong>$25,000</strong>.</p>
+      </div>
+    </div>
+
+    <div style="grid-column: 1 / -1; margin-top: var(--s6);">
+      <div class="callout success">
+        <strong>Strategy tip:</strong> The three prizes reward different things — Audience Favorite is about live demo charisma, Social Media King is about your build-in-public skill, Beta Fellowship is about long-term investability. <strong>None of them conflict — you can compete for all three at once.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 15: HELP ============ -->
+  <section class="slide" data-slide="15">
+    <div class="slide-head">
+      <div class="eyebrow">Need Help? · Where to go when you're stuck</div>
+      <h2 class="deck">Real humans are waiting at every one of these.</h2>
+    </div>
+
+    <div class="help-grid">
+      <div class="help-card">
+        <div class="ic">💬</div>
+        <h3>Discord — two of them</h3>
+        <p><strong>Hackathon Discord</strong> (your home today)<br><span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">team-formation · tech-support · submissions</span></p>
+        <div class="url">discord.gg/cswGFwFumn</div>
+        <p style="margin-top: var(--s3);"><strong>EverMind Discord</strong> (official EverOS · long-term)<br><span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Biweekly AMA · talk directly with maintainers</span></p>
+        <div class="url">discord.gg/gYep5nQRZJ</div>
+      </div>
+
+      <div class="help-card">
+        <div class="ic">👥</div>
+        <h3>On-site Mentor Desk</h3>
+        <p>📍 South side of the Workshop area</p>
+        <p>👋 Anyone wearing a <span style="color: var(--everm-gold); font-weight: 600;">gold badge</span> is a mentor</p>
+        <p>⏰ On-site all day, 09:30 — 16:00</p>
+        <p style="font-size: 13px; color: var(--ink-faint); margin-top: var(--s3);">On average, each mentor unblocks one team in 15 minutes.</p>
+      </div>
+
+      <div class="help-card">
+        <div class="ic">📖</div>
+        <h3>Docs & code</h3>
+        <p><code style="font-family: var(--font-mono); color: var(--everm-gold); font-size: 13px;">docs.evermind.ai/introduction</code><br>API reference + both Cloud and Open Source paths</p>
+        <p style="margin-top: var(--s2);"><code style="font-family: var(--font-mono); color: var(--everm-gold); font-size: 13px;">github.com/EverMind-AI/EverOS</code><br>3.4k stars · Apache 2.0 · every demo</p>
+        <p style="margin-top: var(--s2);"><code style="font-family: var(--font-mono); color: var(--everm-gold); font-size: 13px;">deepwiki.com/EverMind-AI/EverOS</code><br>AI Q&A, multilingual, covers setup → advanced</p>
+      </div>
+
+      <div class="help-card">
+        <div class="ic">🆘</div>
+        <h3>People</h3>
+        <p><strong>EverOS Maintainer</strong>:<br>X <span style="font-family: var(--font-mono); color: var(--everm-gold);">@elliotchen200</span> · GitHub <span style="font-family: var(--font-mono); color: var(--everm-gold);">@cyfyifanchen</span></p>
+        <p style="margin-top: var(--s3);"><strong>Reddit</strong>: r/EverMindAI</p>
+        <p style="margin-top: var(--s3);"><strong>Email</strong>: contact@evermind.ai</p>
+        <p style="font-size: 13px; color: var(--ink-faint); margin-top: var(--s3);">Biweekly Discord AMA — talk to a maintainer directly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 16: CLOSING ============ -->
+  <section class="slide closing" data-slide="16">
+    <div class="closing-hero">
+      <div class="eyebrow">Let's ship · build starts at 11:10</div>
+      <h1>Keep<br>in Mind.<br>Evolve<br>over Time.</h1>
+      <p>You only have today. Don't aim for perfect — aim for "ready to show a judge." Memory is your unfair advantage.</p>
+
+      <div class="everm-pillars">
+        <div class="everm-stamp">
+          <div class="stamp-eyebrow">EverCore · SOTA benchmarks</div>
+          <div class="stamp-row">
+            <span class="stamp-num">93.05<span style="font-size:18px; color:var(--ink-muted);">%</span></span>
+            <span class="stamp-key">LoCoMo</span>
+            <span class="stamp-sep">·</span>
+            <span class="stamp-num">83.00<span style="font-size:18px; color:var(--ink-muted);">%</span></span>
+            <span class="stamp-key">LongMemEval</span>
+          </div>
+        </div>
+
+        <div class="everm-pillars-3">
+          <div class="pillar-eyebrow">EverOS · three pillars</div>
+          <div class="pillar-list">
+            <span>Use Cases</span><span>Methods</span><span>Benchmarks</span>
+          </div>
+        </div>
+
+        <div class="everm-badges" aria-label="EverMind ecosystem links">
+          <a class="everm-badge b-x" href="https://x.com/evermind" target="_blank" rel="noopener"><span class="bdot"></span>X · @evermind</a>
+          <a class="everm-badge b-hf" href="https://huggingface.co/EverMind-AI" target="_blank" rel="noopener"><span class="bdot"></span>HF · EverMind-AI</a>
+          <a class="everm-badge b-discord" href="https://discord.gg/gYep5nQRZJ" target="_blank" rel="noopener"><span class="bdot"></span>Discord · EverMind</a>
+          <a class="everm-badge b-wechat" href="https://github.com/EverMind-AI/EverOS/discussions/67" target="_blank" rel="noopener"><span class="bdot"></span>WeCom · Community</a>
+          <a class="everm-badge b-github" href="https://github.com/EverMind-AI" target="_blank" rel="noopener"><span class="bdot"></span>GitHub · EverMind-AI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-side">
+      <div class="qr-card">
+        <svg class="qr-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="QR: luma.com/h7h9r7bw"><rect width="80" height="80" rx="8" fill="#f2f1e9"/><rect x="0.5" y="0.5" width="79" height="79" rx="7.5" fill="none" stroke="#e39b00" stroke-width="0.5" opacity="0.5"/><g transform="translate(12 12) scale(1.6)" fill="#1a1a18"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM9,1H10V2H9zM12,1H13V2H12zM15,1H16V2H15zM16,1H17V2H16zM20,1H21V2H20zM21,1H22V2H21zM23,1H24V2H23zM25,1H26V2H25zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM11,2H12V3H11zM13,2H14V3H13zM15,2H16V3H15zM16,2H17V3H16zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM22,2H23V3H22zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM10,3H11V4H10zM13,3H14V4H13zM15,3H16V4H15zM16,3H17V4H16zM17,3H18V4H17zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM11,4H12V5H11zM13,4H14V5H13zM15,4H16V5H15zM17,4H18V5H17zM19,4H20V5H19zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM9,5H10V6H9zM15,5H16V6H15zM17,5H18V6H17zM19,5H20V6H19zM22,5H23V6H22zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM10,6H11V7H10zM11,6H12V7H11zM12,6H13V7H12zM14,6H15V7H14zM22,6H23V7H22zM24,6H25V7H24zM25,6H26V7H25zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM9,8H10V9H9zM11,8H12V9H11zM14,8H15V9H14zM15,8H16V9H15zM18,8H19V9H18zM19,8H20V9H19zM20,8H21V9H20zM21,8H22V9H21zM24,8H25V9H24zM6,9H7V10H6zM7,9H8V10H7zM10,9H11V10H10zM11,9H12V10H11zM12,9H13V10H12zM14,9H15V10H14zM15,9H16V10H15zM17,9H18V10H17zM19,9H20V10H19zM23,9H24V10H23zM24,9H25V10H24zM25,9H26V10H25zM27,9H28V10H27zM29,9H30V10H29zM31,9H32V10H31zM33,9H34V10H33zM1,10H2V11H1zM3,10H4V11H3zM5,10H6V11H5zM6,10H7V11H6zM9,10H10V11H9zM10,10H11V11H10zM13,10H14V11H13zM15,10H16V11H15zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM24,10H25V11H24zM26,10H27V11H26zM28,10H29V11H28zM29,10H30V11H29zM32,10H33V11H32zM1,11H2V12H1zM2,11H3V12H2zM3,11H4V12H3zM4,11H5V12H4zM7,11H8V12H7zM9,11H10V12H9zM11,11H12V12H11zM13,11H14V12H13zM15,11H16V12H15zM16,11H17V12H16zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM22,11H23V12H22zM28,11H29V12H28zM31,11H32V12H31zM32,11H33V12H32zM1,12H2V13H1zM2,12H3V13H2zM3,12H4V13H3zM5,12H6V13H5zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM10,12H11V13H10zM12,12H13V13H12zM16,12H17V13H16zM19,12H20V13H19zM23,12H24V13H23zM24,12H25V13H24zM26,12H27V13H26zM28,12H29V13H28zM31,12H32V13H31zM1,13H2V14H1zM3,13H4V14H3zM6,13H7V14H6zM7,13H8V14H7zM9,13H10V14H9zM10,13H11V14H10zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM17,13H18V14H17zM19,13H20V14H19zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM29,13H30V14H29zM1,14H2V15H1zM2,14H3V15H2zM3,14H4V15H3zM4,14H5V15H4zM6,14H7V15H6zM8,14H9V15H8zM10,14H11V15H10zM11,14H12V15H11zM16,14H17V15H16zM17,14H18V15H17zM18,14H19V15H18zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM27,14H28V15H27zM31,14H32V15H31zM33,14H34V15H33zM1,15H2V16H1zM2,15H3V16H2zM3,15H4V16H3zM5,15H6V16H5zM7,15H8V16H7zM9,15H10V16H9zM11,15H12V16H11zM13,15H14V16H13zM19,15H20V16H19zM23,15H24V16H23zM27,15H28V16H27zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM3,16H4V17H3zM4,16H5V17H4zM5,16H6V17H5zM8,16H9V17H8zM9,16H10V17H9zM10,16H11V17H10zM13,16H14V17H13zM15,16H16V17H15zM18,16H19V17H18zM19,16H20V17H19zM21,16H22V17H21zM24,16H25V17H24zM25,16H26V17H25zM26,16H27V17H26zM27,16H28V17H27zM29,16H30V17H29zM31,16H32V17H31zM32,16H33V17H32zM33,16H34V17H33zM2,17H3V18H2zM3,17H4V18H3zM4,17H5V18H4zM7,17H8V18H7zM8,17H9V18H8zM9,17H10V18H9zM14,17H15V18H14zM17,17H18V18H17zM19,17H20V18H19zM26,17H27V18H26zM29,17H30V18H29zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM1,18H2V19H1zM5,18H6V19H5zM9,18H10V19H9zM10,18H11V19H10zM11,18H12V19H11zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM20,18H21V19H20zM21,18H22V19H21zM22,18H23V19H22zM24,18H25V19H24zM25,18H26V19H25zM26,18H27V19H26zM27,18H28V19H27zM6,19H7V20H6zM7,19H8V20H7zM8,19H9V20H8zM12,19H13V20H12zM13,19H14V20H13zM14,19H15V20H14zM16,19H17V20H16zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM21,19H22V20H21zM22,19H23V20H22zM24,19H25V20H24zM28,19H29V20H28zM29,19H30V20H29zM30,19H31V20H30zM31,19H32V20H31zM2,20H3V21H2zM4,20H5V21H4zM5,20H6V21H5zM8,20H9V21H8zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM20,20H21V21H20zM23,20H24V21H23zM24,20H25V21H24zM25,20H26V21H25zM27,20H28V21H27zM29,20H30V21H29zM30,20H31V21H30zM31,20H32V21H31zM33,20H34V21H33zM2,21H3V22H2zM7,21H8V22H7zM8,21H9V22H8zM10,21H11V22H10zM11,21H12V22H11zM15,21H16V22H15zM16,21H17V22H16zM26,21H27V22H26zM27,21H28V22H27zM28,21H29V22H28zM29,21H30V22H29zM30,21H31V22H30zM32,21H33V22H32zM33,21H34V22H33zM1,22H2V23H1zM3,22H4V23H3zM6,22H7V23H6zM9,22H10V23H9zM12,22H13V23H12zM13,22H14V23H13zM14,22H15V23H14zM15,22H16V23H15zM16,22H17V23H16zM17,22H18V23H17zM19,22H20V23H19zM23,22H24V23H23zM25,22H26V23H25zM27,22H28V23H27zM28,22H29V23H28zM29,22H30V23H29zM30,22H31V23H30zM31,22H32V23H31zM1,23H2V24H1zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM8,23H9V24H8zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM17,23H18V24H17zM18,23H19V24H18zM21,23H22V24H21zM23,23H24V24H23zM30,23H31V24H30zM31,23H32V24H31zM32,23H33V24H32zM1,24H2V25H1zM3,24H4V25H3zM4,24H5V25H4zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM11,24H12V25H11zM14,24H15V25H14zM16,24H17V25H16zM20,24H21V25H20zM21,24H22V25H21zM23,24H24V25H23zM25,24H26V25H25zM28,24H29V25H28zM29,24H30V25H29zM30,24H31V25H30zM31,24H32V25H31zM32,24H33V25H32zM33,24H34V25H33zM1,25H2V26H1zM2,25H3V26H2zM4,25H5V26H4zM7,25H8V26H7zM8,25H9V26H8zM12,25H13V26H12zM13,25H14V26H13zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM19,25H20V26H19zM20,25H21V26H20zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM9,26H10V27H9zM11,26H12V27H11zM13,26H14V27H13zM17,26H18V27H17zM21,26H22V27H21zM22,26H23V27H22zM24,26H25V27H24zM25,26H26V27H25zM29,26H30V27H29zM30,26H31V27H30zM31,26H32V27H31zM33,26H34V27H33zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM13,27H14V28H13zM14,27H15V28H14zM15,27H16V28H15zM17,27H18V28H17zM19,27H20V28H19zM23,27H24V28H23zM24,27H25V28H24zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM30,27H31V28H30zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM9,28H10V29H9zM14,28H15V29H14zM15,28H16V29H15zM16,28H17V29H16zM21,28H22V29H21zM22,28H23V29H22zM23,28H24V29H23zM25,28H26V29H25zM29,28H30V29H29zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM10,29H11V30H10zM11,29H12V30H11zM14,29H15V30H14zM15,29H16V30H15zM22,29H23V30H22zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM32,29H33V30H32zM33,29H34V30H33zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM10,30H11V31H10zM13,30H14V31H13zM16,30H17V31H16zM17,30H18V31H17zM18,30H19V31H18zM20,30H21V31H20zM21,30H22V31H21zM22,30H23V31H22zM26,30H27V31H26zM28,30H29V31H28zM29,30H30V31H29zM30,30H31V31H30zM32,30H33V31H32zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM10,31H11V32H10zM11,31H12V32H11zM12,31H13V32H12zM13,31H14V32H13zM14,31H15V32H14zM16,31H17V32H16zM17,31H18V32H17zM21,31H22V32H21zM22,31H23V32H22zM24,31H25V32H24zM25,31H26V32H25zM29,31H30V32H29zM30,31H31V32H30zM32,31H33V32H32zM33,31H34V32H33zM1,32H2V33H1zM7,32H8V33H7zM10,32H11V33H10zM13,32H14V33H13zM14,32H15V33H14zM15,32H16V33H15zM17,32H18V33H17zM26,32H27V33H26zM27,32H28V33H27zM30,32H31V33H30zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM11,33H12V34H11zM13,33H14V34H13zM18,33H19V34H18zM19,33H20V34H19zM20,33H21V34H20zM21,33H22V34H21zM22,33H23V34H22zM24,33H25V34H24zM25,33H26V34H25zM27,33H28V34H27zM31,33H32V34H31zM32,33H33V34H32z"/></g><rect x="32" y="33" width="16" height="14" rx="2" fill="#f2f1e9"/><g transform="translate(40 40)" stroke="#e39b00" stroke-width="0.9" fill="none"><ellipse cx="-3.5" cy="0" rx="3.2" ry="4.5"/><ellipse cx="3.5" cy="0" rx="3.2" ry="4.5"/></g></svg>
+        <div class="qr-info">
+          <div class="lbl">Event · Luma</div>
+          <div class="url">luma.com/h7h9r7bw</div>
+        </div>
+      </div>
+      <div class="qr-card">
+        <svg class="qr-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="QR: discord.gg/cswGFwFumn"><rect width="80" height="80" rx="8" fill="#f2f1e9"/><rect x="0.5" y="0.5" width="79" height="79" rx="7.5" fill="none" stroke="#e39b00" stroke-width="0.5" opacity="0.5"/><g transform="translate(12 12) scale(1.6)" fill="#1a1a18"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM10,1H11V2H10zM12,1H13V2H12zM14,1H15V2H14zM19,1H20V2H19zM20,1H21V2H20zM22,1H23V2H22zM23,1H24V2H23zM25,1H26V2H25zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM10,2H11V3H10zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM21,2H22V3H21zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM11,3H12V4H11zM12,3H13V4H12zM14,3H15V4H14zM16,3H17V4H16zM19,3H20V4H19zM20,3H21V4H20zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM9,4H10V5H9zM13,4H14V5H13zM14,4H15V5H14zM17,4H18V5H17zM19,4H20V5H19zM20,4H21V5H20zM22,4H23V5H22zM23,4H24V5H23zM24,4H25V5H24zM25,4H26V5H25zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM11,5H12V6H11zM12,5H13V6H12zM13,5H14V6H13zM14,5H15V6H14zM18,5H19V6H18zM20,5H21V6H20zM22,5H23V6H22zM24,5H25V6H24zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM10,6H11V7H10zM12,6H13V7H12zM15,6H16V7H15zM17,6H18V7H17zM20,6H21V7H20zM21,6H22V7H21zM22,6H23V7H22zM25,6H26V7H25zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM10,8H11V9H10zM13,8H14V9H13zM15,8H16V9H15zM19,8H20V9H19zM20,8H21V9H20zM21,8H22V9H21zM24,8H25V9H24zM4,9H5V10H4zM5,9H6V10H5zM7,9H8V10H7zM8,9H9V10H8zM12,9H13V10H12zM13,9H14V10H13zM14,9H15V10H14zM16,9H17V10H16zM24,9H25V10H24zM25,9H26V10H25zM30,9H31V10H30zM31,9H32V10H31zM1,10H2V11H1zM2,10H3V11H2zM5,10H6V11H5zM6,10H7V11H6zM9,10H10V11H9zM10,10H11V11H10zM11,10H12V11H11zM12,10H13V11H12zM15,10H16V11H15zM19,10H20V11H19zM21,10H22V11H21zM26,10H27V11H26zM28,10H29V11H28zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM5,11H6V12H5zM7,11H8V12H7zM12,11H13V12H12zM14,11H15V12H14zM15,11H16V12H15zM17,11H18V12H17zM19,11H20V12H19zM22,11H23V12H22zM24,11H25V12H24zM27,11H28V12H27zM28,11H29V12H28zM32,11H33V12H32zM33,11H34V12H33zM1,12H2V13H1zM3,12H4V13H3zM6,12H7V13H6zM10,12H11V13H10zM11,12H12V13H11zM12,12H13V13H12zM14,12H15V13H14zM16,12H17V13H16zM19,12H20V13H19zM26,12H27V13H26zM27,12H28V13H27zM28,12H29V13H28zM29,12H30V13H29zM30,12H31V13H30zM31,12H32V13H31zM4,13H5V14H4zM5,13H6V14H5zM7,13H8V14H7zM8,13H9V14H8zM9,13H10V14H9zM11,13H12V14H11zM13,13H14V14H13zM14,13H15V14H14zM15,13H16V14H15zM17,13H18V14H17zM18,13H19V14H18zM21,13H22V14H21zM22,13H23V14H22zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM27,13H28V14H27zM28,13H29V14H28zM29,13H30V14H29zM30,13H31V14H30zM33,13H34V14H33zM2,14H3V15H2zM6,14H7V15H6zM11,14H12V15H11zM15,14H16V15H15zM16,14H17V15H16zM17,14H18V15H17zM18,14H19V15H18zM19,14H20V15H19zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM26,14H27V15H26zM30,14H31V15H30zM31,14H32V15H31zM32,14H33V15H32zM1,15H2V16H1zM2,15H3V16H2zM3,15H4V16H3zM5,15H6V16H5zM7,15H8V16H7zM8,15H9V16H8zM12,15H13V16H12zM17,15H18V16H17zM19,15H20V16H19zM20,15H21V16H20zM21,15H22V16H21zM25,15H26V16H25zM26,15H27V16H26zM28,15H29V16H28zM30,15H31V16H30zM31,15H32V16H31zM1,16H2V17H1zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM6,16H7V17H6zM9,16H10V17H9zM12,16H13V17H12zM14,16H15V17H14zM15,16H16V17H15zM17,16H18V17H17zM18,16H19V17H18zM21,16H22V17H21zM24,16H25V17H24zM25,16H26V17H25zM26,16H27V17H26zM28,16H29V17H28zM30,16H31V17H30zM31,16H32V17H31zM32,16H33V17H32zM33,16H34V17H33zM1,17H2V18H1zM2,17H3V18H2zM4,17H5V18H4zM6,17H7V18H6zM7,17H8V18H7zM8,17H9V18H8zM9,17H10V18H9zM10,17H11V18H10zM11,17H12V18H11zM12,17H13V18H12zM14,17H15V18H14zM17,17H18V18H17zM19,17H20V18H19zM24,17H25V18H24zM26,17H27V18H26zM27,17H28V18H27zM29,17H30V18H29zM30,17H31V18H30zM32,17H33V18H32zM1,18H2V19H1zM3,18H4V19H3zM4,18H5V19H4zM10,18H11V19H10zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM22,18H23V19H22zM23,18H24V19H23zM25,18H26V19H25zM26,18H27V19H26zM27,18H28V19H27zM28,18H29V19H28zM29,18H30V19H29zM30,18H31V19H30zM32,18H33V19H32zM33,18H34V19H33zM1,19H2V20H1zM3,19H4V20H3zM5,19H6V20H5zM7,19H8V20H7zM8,19H9V20H8zM10,19H11V20H10zM12,19H13V20H12zM15,19H16V20H15zM16,19H17V20H16zM21,19H22V20H21zM24,19H25V20H24zM30,19H31V20H30zM31,19H32V20H31zM33,19H34V20H33zM1,20H2V21H1zM2,20H3V21H2zM5,20H6V21H5zM6,20H7V21H6zM8,20H9V21H8zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM20,20H21V21H20zM24,20H25V21H24zM25,20H26V21H25zM26,20H27V21H26zM30,20H31V21H30zM31,20H32V21H31zM32,20H33V21H32zM2,21H3V22H2zM4,21H5V22H4zM6,21H7V22H6zM7,21H8V22H7zM8,21H9V22H8zM9,21H10V22H9zM15,21H16V22H15zM16,21H17V22H16zM20,21H21V22H20zM27,21H28V22H27zM28,21H29V22H28zM30,21H31V22H30zM1,22H2V23H1zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM12,22H13V23H12zM16,22H17V23H16zM17,22H18V23H17zM19,22H20V23H19zM23,22H24V23H23zM25,22H26V23H25zM27,22H28V23H27zM28,22H29V23H28zM29,22H30V23H29zM1,23H2V24H1zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM8,23H9V24H8zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM18,23H19V24H18zM23,23H24V24H23zM24,23H25V24H24zM27,23H28V24H27zM29,23H30V24H29zM31,23H32V24H31zM32,23H33V24H32zM33,23H34V24H33zM1,24H2V25H1zM3,24H4V25H3zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM12,24H13V25H12zM13,24H14V25H13zM15,24H16V25H15zM17,24H18V25H17zM20,24H21V25H20zM24,24H25V25H24zM25,24H26V25H25zM29,24H30V25H29zM31,24H32V25H31zM32,24H33V25H32zM33,24H34V25H33zM1,25H2V26H1zM2,25H3V26H2zM4,25H5V26H4zM5,25H6V26H5zM7,25H8V26H7zM13,25H14V26H13zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM19,25H20V26H19zM20,25H21V26H20zM22,25H23V26H22zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM33,25H34V26H33zM9,26H10V27H9zM10,26H11V27H10zM11,26H12V27H11zM13,26H14V27H13zM15,26H16V27H15zM16,26H17V27H16zM22,26H23V27H22zM25,26H26V27H25zM29,26H30V27H29zM30,26H31V27H30zM32,26H33V27H32zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM9,27H10V28H9zM11,27H12V28H11zM12,27H13V28H12zM15,27H16V28H15zM17,27H18V28H17zM18,27H19V28H18zM20,27H21V28H20zM21,27H22V28H21zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM30,27H31V28H30zM1,28H2V29H1zM7,28H8V29H7zM10,28H11V29H10zM11,28H12V29H11zM12,28H13V29H12zM13,28H14V29H13zM15,28H16V29H15zM16,28H17V29H16zM17,28H18V29H17zM20,28H21V29H20zM22,28H23V29H22zM23,28H24V29H23zM24,28H25V29H24zM25,28H26V29H25zM29,28H30V29H29zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM9,29H10V30H9zM10,29H11V30H10zM18,29H19V30H18zM21,29H22V30H21zM22,29H23V30H22zM23,29H24V30H23zM24,29H25V30H24zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM32,29H33V30H32zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM9,30H10V31H9zM10,30H11V31H10zM14,30H15V31H14zM16,30H17V31H16zM17,30H18V31H17zM19,30H20V31H19zM22,30H23V31H22zM23,30H24V31H23zM26,30H27V31H26zM28,30H29V31H28zM32,30H33V31H32zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM10,31H11V32H10zM12,31H13V32H12zM15,31H16V32H15zM16,31H17V32H16zM18,31H19V32H18zM19,31H20V32H19zM21,31H22V32H21zM23,31H24V32H23zM25,31H26V32H25zM29,31H30V32H29zM31,31H32V32H31zM32,31H33V32H32zM33,31H34V32H33zM1,32H2V33H1zM7,32H8V33H7zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM20,32H21V33H20zM21,32H22V33H21zM22,32H23V33H22zM24,32H25V33H24zM30,32H31V33H30zM31,32H32V33H31zM32,32H33V33H32zM33,32H34V33H33zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM10,33H11V34H10zM11,33H12V34H11zM12,33H13V34H12zM13,33H14V34H13zM14,33H15V34H14zM19,33H20V34H19zM21,33H22V34H21zM22,33H23V34H22zM24,33H25V34H24zM25,33H26V34H25zM27,33H28V34H27zM29,33H30V34H29z"/></g><rect x="32" y="33" width="16" height="14" rx="2" fill="#f2f1e9"/><g transform="translate(40 40)" stroke="#e39b00" stroke-width="0.9" fill="none"><ellipse cx="-3.5" cy="0" rx="3.2" ry="4.5"/><ellipse cx="3.5" cy="0" rx="3.2" ry="4.5"/></g></svg>
+        <div class="qr-info">
+          <div class="lbl">Hackathon Discord</div>
+          <div class="url">discord.gg/cswGFwFumn</div>
+        </div>
+      </div>
+      <div class="qr-card">
+        <svg class="qr-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="QR: github.com/EverMind-AI/EverOS"><rect width="80" height="80" rx="8" fill="#f2f1e9"/><rect x="0.5" y="0.5" width="79" height="79" rx="7.5" fill="none" stroke="#e39b00" stroke-width="0.5" opacity="0.5"/><g transform="translate(12 12) scale(1.4359)" fill="#1a1a18"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM11,1H12V2H11zM12,1H13V2H12zM17,1H18V2H17zM18,1H19V2H18zM19,1H20V2H19zM21,1H22V2H21zM22,1H23V2H22zM23,1H24V2H23zM26,1H27V2H26zM27,1H28V2H27zM28,1H29V2H28zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM34,1H35V2H34zM35,1H36V2H35zM36,1H37V2H36zM37,1H38V2H37zM1,2H2V3H1zM7,2H8V3H7zM9,2H10V3H9zM10,2H11V3H10zM12,2H13V3H12zM13,2H14V3H13zM14,2H15V3H14zM15,2H16V3H15zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM27,2H28V3H27zM29,2H30V3H29zM31,2H32V3H31zM37,2H38V3H37zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM11,3H12V4H11zM16,3H17V4H16zM17,3H18V4H17zM18,3H19V4H18zM21,3H22V4H21zM27,3H28V4H27zM28,3H29V4H28zM31,3H32V4H31zM33,3H34V4H33zM34,3H35V4H34zM35,3H36V4H35zM37,3H38V4H37zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM13,4H14V5H13zM15,4H16V5H15zM16,4H17V5H16zM19,4H20V5H19zM22,4H23V5H22zM27,4H28V5H27zM29,4H30V5H29zM31,4H32V5H31zM33,4H34V5H33zM34,4H35V5H34zM35,4H36V5H35zM37,4H38V5H37zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM10,5H11V6H10zM13,5H14V6H13zM14,5H15V6H14zM15,5H16V6H15zM19,5H20V6H19zM22,5H23V6H22zM23,5H24V6H23zM25,5H26V6H25zM26,5H27V6H26zM27,5H28V6H27zM28,5H29V6H28zM31,5H32V6H31zM33,5H34V6H33zM34,5H35V6H34zM35,5H36V6H35zM37,5H38V6H37zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM11,6H12V7H11zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM20,6H21V7H20zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM26,6H27V7H26zM27,6H28V7H27zM29,6H30V7H29zM31,6H32V7H31zM37,6H38V7H37zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM29,7H30V8H29zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM34,7H35V8H34zM35,7H36V8H35zM36,7H37V8H36zM37,7H38V8H37zM9,8H10V9H9zM11,8H12V9H11zM17,8H18V9H17zM18,8H19V9H18zM23,8H24V9H23zM25,8H26V9H25zM27,8H28V9H27zM5,9H6V10H5zM6,9H7V10H6zM7,9H8V10H7zM8,9H9V10H8zM10,9H11V10H10zM11,9H12V10H11zM14,9H15V10H14zM18,9H19V10H18zM21,9H22V10H21zM22,9H23V10H22zM23,9H24V10H23zM24,9H25V10H24zM25,9H26V10H25zM26,9H27V10H26zM27,9H28V10H27zM28,9H29V10H28zM31,9H32V10H31zM32,9H33V10H32zM36,9H37V10H36zM3,10H4V11H3zM4,10H5V11H4zM5,10H6V11H5zM6,10H7V11H6zM9,10H10V11H9zM10,10H11V11H10zM11,10H12V11H11zM12,10H13V11H12zM14,10H15V11H14zM15,10H16V11H15zM16,10H17V11H16zM17,10H18V11H17zM20,10H21V11H20zM21,10H22V11H21zM22,10H23V11H22zM24,10H25V11H24zM25,10H26V11H25zM29,10H30V11H29zM31,10H32V11H31zM32,10H33V11H32zM33,10H34V11H33zM34,10H35V11H34zM36,10H37V11H36zM1,11H2V12H1zM2,11H3V12H2zM3,11H4V12H3zM7,11H8V12H7zM13,11H14V12H13zM16,11H17V12H16zM24,11H25V12H24zM25,11H26V12H25zM26,11H27V12H26zM27,11H28V12H27zM29,11H30V12H29zM30,11H31V12H30zM32,11H33V12H32zM33,11H34V12H33zM35,11H36V12H35zM1,12H2V13H1zM2,12H3V13H2zM3,12H4V13H3zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM11,12H12V13H11zM15,12H16V13H15zM16,12H17V13H16zM19,12H20V13H19zM20,12H21V13H20zM21,12H22V13H21zM23,12H24V13H23zM25,12H26V13H25zM27,12H28V13H27zM30,12H31V13H30zM35,12H36V13H35zM1,13H2V14H1zM2,13H3V14H2zM3,13H4V14H3zM5,13H6V14H5zM7,13H8V14H7zM9,13H10V14H9zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM18,13H19V14H18zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM24,13H25V14H24zM28,13H29V14H28zM30,13H31V14H30zM31,13H32V14H31zM32,13H33V14H32zM34,13H35V14H34zM35,13H36V14H35zM36,13H37V14H36zM37,13H38V14H37zM3,14H4V15H3zM5,14H6V15H5zM6,14H7V15H6zM9,14H10V15H9zM10,14H11V15H10zM13,14H14V15H13zM23,14H24V15H23zM24,14H25V15H24zM25,14H26V15H25zM27,14H28V15H27zM29,14H30V15H29zM30,14H31V15H30zM33,14H34V15H33zM35,14H36V15H35zM2,15H3V16H2zM5,15H6V16H5zM7,15H8V16H7zM9,15H10V16H9zM11,15H12V16H11zM12,15H13V16H12zM13,15H14V16H13zM16,15H17V16H16zM19,15H20V16H19zM22,15H23V16H22zM23,15H24V16H23zM24,15H25V16H24zM26,15H27V16H26zM27,15H28V16H27zM28,15H29V16H28zM31,15H32V16H31zM32,15H33V16H32zM34,15H35V16H34zM35,15H36V16H35zM3,16H4V17H3zM4,16H5V17H4zM8,16H9V17H8zM12,16H13V17H12zM13,16H14V17H13zM20,16H21V17H20zM22,16H23V17H22zM27,16H28V17H27zM28,16H29V17H28zM30,16H31V17H30zM31,16H32V17H31zM33,16H34V17H33zM35,16H36V17H35zM36,16H37V17H36zM2,17H3V18H2zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM8,17H9V18H8zM10,17H11V18H10zM12,17H13V18H12zM13,17H14V18H13zM14,17H15V18H14zM15,17H16V18H15zM16,17H17V18H16zM17,17H18V18H17zM19,17H20V18H19zM21,17H22V18H21zM22,17H23V18H22zM23,17H24V18H23zM24,17H25V18H24zM26,17H27V18H26zM28,17H29V18H28zM30,17H31V18H30zM31,17H32V18H31zM32,17H33V18H32zM34,17H35V18H34zM35,17H36V18H35zM36,17H37V18H36zM37,17H38V18H37zM1,18H2V19H1zM4,18H5V19H4zM8,18H9V19H8zM9,18H10V19H9zM12,18H13V19H12zM16,18H17V19H16zM18,18H19V19H18zM19,18H20V19H19zM20,18H21V19H20zM21,18H22V19H21zM23,18H24V19H23zM24,18H25V19H24zM27,18H28V19H27zM28,18H29V19H28zM29,18H30V19H29zM32,18H33V19H32zM33,18H34V19H33zM35,18H36V19H35zM1,19H2V20H1zM2,19H3V20H2zM5,19H6V20H5zM6,19H7V20H6zM7,19H8V20H7zM8,19H9V20H8zM10,19H11V20H10zM11,19H12V20H11zM14,19H15V20H14zM17,19H18V20H17zM19,19H20V20H19zM20,19H21V20H20zM21,19H22V20H21zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM28,19H29V20H28zM31,19H32V20H31zM33,19H34V20H33zM34,19H35V20H34zM35,19H36V20H35zM1,20H2V21H1zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM9,20H10V21H9zM12,20H13V21H12zM13,20H14V21H13zM16,20H17V21H16zM17,20H18V21H17zM19,20H20V21H19zM20,20H21V21H20zM21,20H22V21H21zM23,20H24V21H23zM24,20H25V21H24zM25,20H26V21H25zM27,20H28V21H27zM30,20H31V21H30zM31,20H32V21H31zM35,20H36V21H35zM5,21H6V22H5zM7,21H8V22H7zM14,21H15V22H14zM15,21H16V22H15zM16,21H17V22H16zM24,21H25V22H24zM25,21H26V22H25zM27,21H28V22H27zM28,21H29V22H28zM30,21H31V22H30zM31,21H32V22H31zM34,21H35V22H34zM35,21H36V22H35zM36,21H37V22H36zM37,21H38V22H37zM2,22H3V23H2zM4,22H5V23H4zM8,22H9V23H8zM14,22H15V23H14zM17,22H18V23H17zM18,22H19V23H18zM19,22H20V23H19zM22,22H23V23H22zM23,22H24V23H23zM25,22H26V23H25zM27,22H28V23H27zM28,22H29V23H28zM33,22H34V23H33zM1,23H2V24H1zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM8,23H9V24H8zM9,23H10V24H9zM10,23H11V24H10zM14,23H15V24H14zM17,23H18V24H17zM20,23H21V24H20zM23,23H24V24H23zM26,23H27V24H26zM27,23H28V24H27zM28,23H29V24H28zM29,23H30V24H29zM31,23H32V24H31zM34,23H35V24H34zM1,24H2V25H1zM2,24H3V25H2zM3,24H4V25H3zM6,24H7V25H6zM9,24H10V25H9zM10,24H11V25H10zM11,24H12V25H11zM12,24H13V25H12zM13,24H14V25H13zM14,24H15V25H14zM16,24H17V25H16zM18,24H19V25H18zM23,24H24V25H23zM25,24H26V25H25zM26,24H27V25H26zM29,24H30V25H29zM30,24H31V25H30zM31,24H32V25H31zM32,24H33V25H32zM35,24H36V25H35zM36,24H37V25H36zM37,24H38V25H37zM4,25H5V26H4zM6,25H7V26H6zM7,25H8V26H7zM8,25H9V26H8zM9,25H10V26H9zM10,25H11V26H10zM11,25H12V26H11zM14,25H15V26H14zM17,25H18V26H17zM20,25H21V26H20zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM33,25H34V26H33zM36,25H37V26H36zM37,25H38V26H37zM1,26H2V27H1zM4,26H5V27H4zM5,26H6V27H5zM10,26H11V27H10zM15,26H16V27H15zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM20,26H21V27H20zM23,26H24V27H23zM26,26H27V27H26zM27,26H28V27H27zM31,26H32V27H31zM33,26H34V27H33zM4,27H5V28H4zM5,27H6V28H5zM7,27H8V28H7zM10,27H11V28H10zM11,27H12V28H11zM12,27H13V28H12zM16,27H17V28H16zM18,27H19V28H18zM21,27H22V28H21zM22,27H23V28H22zM26,27H27V28H26zM27,27H28V28H27zM28,27H29V28H28zM30,27H31V28H30zM32,27H33V28H32zM33,27H34V28H33zM34,27H35V28H34zM3,28H4V29H3zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM14,28H15V29H14zM15,28H16V29H15zM16,28H17V29H16zM17,28H18V29H17zM18,28H19V29H18zM20,28H21V29H20zM23,28H24V29H23zM25,28H26V29H25zM27,28H28V29H27zM28,28H29V29H28zM29,28H30V29H29zM31,28H32V29H31zM32,28H33V29H32zM33,28H34V29H33zM35,28H36V29H35zM36,28H37V29H36zM37,28H38V29H37zM1,29H2V30H1zM2,29H3V30H2zM5,29H6V30H5zM6,29H7V30H6zM7,29H8V30H7zM9,29H10V30H9zM13,29H14V30H13zM14,29H15V30H14zM16,29H17V30H16zM17,29H18V30H17zM21,29H22V30H21zM22,29H23V30H22zM23,29H24V30H23zM24,29H25V30H24zM29,29H30V30H29zM30,29H31V30H30zM31,29H32V30H31zM32,29H33V30H32zM33,29H34V30H33zM36,29H37V30H36zM37,29H38V30H37zM9,30H10V31H9zM10,30H11V31H10zM12,30H13V31H12zM13,30H14V31H13zM14,30H15V31H14zM15,30H16V31H15zM17,30H18V31H17zM20,30H21V31H20zM22,30H23V31H22zM23,30H24V31H23zM24,30H25V31H24zM26,30H27V31H26zM27,30H28V31H27zM29,30H30V31H29zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM1,31H2V32H1zM2,31H3V32H2zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM6,31H7V32H6zM7,31H8V32H7zM9,31H10V32H9zM10,31H11V32H10zM11,31H12V32H11zM13,31H14V32H13zM18,31H19V32H18zM19,31H20V32H19zM21,31H22V32H21zM23,31H24V32H23zM24,31H25V32H24zM25,31H26V32H25zM27,31H28V32H27zM29,31H30V32H29zM31,31H32V32H31zM33,31H34V32H33zM34,31H35V32H34zM35,31H36V32H35zM1,32H2V33H1zM7,32H8V33H7zM9,32H10V33H9zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM27,32H28V33H27zM28,32H29V33H28zM29,32H30V33H29zM33,32H34V33H33zM35,32H36V33H35zM1,33H2V34H1zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM7,33H8V34H7zM9,33H10V34H9zM10,33H11V34H10zM11,33H12V34H11zM12,33H13V34H12zM13,33H14V34H13zM14,33H15V34H14zM17,33H18V34H17zM18,33H19V34H18zM19,33H20V34H19zM21,33H22V34H21zM29,33H30V34H29zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM33,33H34V34H33zM34,33H35V34H34zM35,33H36V34H35zM1,34H2V35H1zM3,34H4V35H3zM4,34H5V35H4zM5,34H6V35H5zM7,34H8V35H7zM10,34H11V35H10zM16,34H17V35H16zM18,34H19V35H18zM19,34H20V35H19zM20,34H21V35H20zM21,34H22V35H21zM22,34H23V35H22zM25,34H26V35H25zM31,34H32V35H31zM32,34H33V35H32zM34,34H35V35H34zM1,35H2V36H1zM3,35H4V36H3zM4,35H5V36H4zM5,35H6V36H5zM7,35H8V36H7zM10,35H11V36H10zM11,35H12V36H11zM13,35H14V36H13zM14,35H15V36H14zM16,35H17V36H16zM18,35H19V36H18zM20,35H21V36H20zM22,35H23V36H22zM24,35H25V36H24zM25,35H26V36H25zM26,35H27V36H26zM27,35H28V36H27zM29,35H30V36H29zM31,35H32V36H31zM32,35H33V36H32zM35,35H36V36H35zM36,35H37V36H36zM1,36H2V37H1zM7,36H8V37H7zM10,36H11V37H10zM11,36H12V37H11zM13,36H14V37H13zM15,36H16V37H15zM16,36H17V37H16zM17,36H18V37H17zM22,36H23V37H22zM24,36H25V37H24zM27,36H28V37H27zM28,36H29V37H28zM30,36H31V37H30zM32,36H33V37H32zM35,36H36V37H35zM36,36H37V37H36zM1,37H2V38H1zM2,37H3V38H2zM3,37H4V38H3zM4,37H5V38H4zM5,37H6V38H5zM6,37H7V38H6zM7,37H8V38H7zM11,37H12V38H11zM12,37H13V38H12zM13,37H14V38H13zM16,37H17V38H16zM17,37H18V38H17zM21,37H22V38H21zM25,37H26V38H25zM26,37H27V38H26zM28,37H29V38H28zM30,37H31V38H30zM35,37H36V38H35zM36,37H37V38H36zM37,37H38V38H37z"/></g><rect x="32" y="33" width="16" height="14" rx="2" fill="#f2f1e9"/><g transform="translate(40 40)" stroke="#e39b00" stroke-width="0.9" fill="none"><ellipse cx="-3.5" cy="0" rx="3.2" ry="4.5"/><ellipse cx="3.5" cy="0" rx="3.2" ry="4.5"/></g></svg>
+        <div class="qr-info">
+          <div class="lbl">EverOS Repo</div>
+          <div class="url">github.com/EverMind-AI/EverOS</div>
+        </div>
+      </div>
+      <div class="qr-card">
+        <svg class="qr-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="QR: everos.evermind.ai"><rect width="80" height="80" rx="8" fill="#f2f1e9"/><rect x="0.5" y="0.5" width="79" height="79" rx="7.5" fill="none" stroke="#e39b00" stroke-width="0.5" opacity="0.5"/><g transform="translate(12 12) scale(1.6)" fill="#1a1a18"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM9,1H10V2H9zM10,1H11V2H10zM12,1H13V2H12zM14,1H15V2H14zM17,1H18V2H17zM20,1H21V2H20zM21,1H22V2H21zM23,1H24V2H23zM25,1H26V2H25zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM10,2H11V3H10zM12,2H13V3H12zM14,2H15V3H14zM16,2H17V3H16zM17,2H18V3H17zM19,2H20V3H19zM20,2H21V3H20zM22,2H23V3H22zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM13,3H14V4H13zM14,3H15V4H14zM16,3H17V4H16zM17,3H18V4H17zM19,3H20V4H19zM22,3H23V4H22zM24,3H25V4H24zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM11,4H12V5H11zM16,4H17V5H16zM18,4H19V5H18zM19,4H20V5H19zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM9,5H10V6H9zM10,5H11V6H10zM14,5H15V6H14zM18,5H19V6H18zM20,5H21V6H20zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM10,6H11V7H10zM12,6H13V7H12zM15,6H16V7H15zM16,6H17V7H16zM17,6H18V7H17zM18,6H19V7H18zM19,6H20V7H19zM20,6H21V7H20zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM25,6H26V7H25zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM9,8H10V9H9zM12,8H13V9H12zM13,8H14V9H13zM14,8H15V9H14zM15,8H16V9H15zM16,8H17V9H16zM17,8H18V9H17zM18,8H19V9H18zM21,8H22V9H21zM24,8H25V9H24zM6,9H7V10H6zM7,9H8V10H7zM10,9H11V10H10zM12,9H13V10H12zM14,9H15V10H14zM19,9H20V10H19zM21,9H22V10H21zM23,9H24V10H23zM24,9H25V10H24zM25,9H26V10H25zM27,9H28V10H27zM29,9H30V10H29zM31,9H32V10H31zM33,9H34V10H33zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM6,10H7V11H6zM9,10H10V11H9zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM21,10H22V11H21zM23,10H24V11H23zM24,10H25V11H24zM25,10H26V11H25zM26,10H27V11H26zM28,10H29V11H28zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM32,10H33V11H32zM2,11H3V12H2zM3,11H4V12H3zM4,11H5V12H4zM5,11H6V12H5zM7,11H8V12H7zM12,11H13V12H12zM14,11H15V12H14zM15,11H16V12H15zM17,11H18V12H17zM18,11H19V12H18zM19,11H20V12H19zM20,11H21V12H20zM22,11H23V12H22zM25,11H26V12H25zM28,11H29V12H28zM30,11H31V12H30zM31,11H32V12H31zM32,11H33V12H32zM2,12H3V13H2zM3,12H4V13H3zM4,12H5V13H4zM5,12H6V13H5zM6,12H7V13H6zM10,12H11V13H10zM13,12H14V13H13zM14,12H15V13H14zM15,12H16V13H15zM16,12H17V13H16zM18,12H19V13H18zM20,12H21V13H20zM21,12H22V13H21zM23,12H24V13H23zM27,12H28V13H27zM28,12H29V13H28zM30,12H31V13H30zM31,12H32V13H31zM32,12H33V13H32zM1,13H2V14H1zM4,13H5V14H4zM7,13H8V14H7zM10,13H11V14H10zM12,13H13V14H12zM13,13H14V14H13zM18,13H19V14H18zM21,13H22V14H21zM22,13H23V14H22zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM27,13H28V14H27zM29,13H30V14H29zM33,13H34V14H33zM3,14H4V15H3zM4,14H5V15H4zM5,14H6V15H5zM10,14H11V15H10zM11,14H12V15H11zM12,14H13V15H12zM13,14H14V15H13zM17,14H18V15H17zM21,14H22V15H21zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM25,14H26V15H25zM27,14H28V15H27zM30,14H31V15H30zM33,14H34V15H33zM1,15H2V16H1zM3,15H4V16H3zM5,15H6V16H5zM7,15H8V16H7zM8,15H9V16H8zM9,15H10V16H9zM15,15H16V16H15zM16,15H17V16H16zM19,15H20V16H19zM23,15H24V16H23zM27,15H28V16H27zM30,15H31V16H30zM32,15H33V16H32zM1,16H2V17H1zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM6,16H7V17H6zM10,16H11V17H10zM12,16H13V17H12zM16,16H17V17H16zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM21,16H22V17H21zM24,16H25V17H24zM25,16H26V17H25zM26,16H27V17H26zM27,16H28V17H27zM29,16H30V17H29zM31,16H32V17H31zM32,16H33V17H32zM1,17H2V18H1zM2,17H3V18H2zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM10,17H11V18H10zM11,17H12V18H11zM13,17H14V18H13zM15,17H16V18H15zM18,17H19V18H18zM21,17H22V18H21zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM31,17H32V18H31zM33,17H34V18H33zM1,18H2V19H1zM3,18H4V19H3zM8,18H9V19H8zM12,18H13V19H12zM13,18H14V19H13zM14,18H15V19H14zM15,18H16V19H15zM19,18H20V19H19zM21,18H22V19H21zM24,18H25V19H24zM25,18H26V19H25zM27,18H28V19H27zM28,18H29V19H28zM33,18H34V19H33zM3,19H4V20H3zM4,19H5V20H4zM7,19H8V20H7zM9,19H10V20H9zM10,19H11V20H10zM11,19H12V20H11zM16,19H17V20H16zM18,19H19V20H18zM22,19H23V20H22zM24,19H25V20H24zM29,19H30V20H29zM30,19H31V20H30zM31,19H32V20H31zM32,19H33V20H32zM33,19H34V20H33zM2,20H3V21H2zM3,20H4V21H3zM6,20H7V21H6zM10,20H11V21H10zM13,20H14V21H13zM17,20H18V21H17zM18,20H19V21H18zM23,20H24V21H23zM24,20H25V21H24zM25,20H26V21H25zM27,20H28V21H27zM28,20H29V21H28zM29,20H30V21H29zM30,20H31V21H30zM31,20H32V21H31zM32,20H33V21H32zM4,21H5V22H4zM7,21H8V22H7zM8,21H9V22H8zM11,21H12V22H11zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM20,21H21V22H20zM23,21H24V22H23zM26,21H27V22H26zM27,21H28V22H27zM29,21H30V22H29zM30,21H31V22H30zM33,21H34V22H33zM1,22H2V23H1zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM8,22H9V23H8zM12,22H13V23H12zM15,22H16V23H15zM16,22H17V23H16zM18,22H19V23H18zM21,22H22V23H21zM25,22H26V23H25zM27,22H28V23H27zM28,22H29V23H28zM29,22H30V23H29zM30,22H31V23H30zM31,22H32V23H31zM1,23H2V24H1zM7,23H8V24H7zM9,23H10V24H9zM10,23H11V24H10zM11,23H12V24H11zM12,23H13V24H12zM17,23H18V24H17zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM32,23H33V24H32zM1,24H2V25H1zM6,24H7V25H6zM15,24H16V25H15zM17,24H18V25H17zM19,24H20V25H19zM23,24H24V25H23zM25,24H26V25H25zM28,24H29V25H28zM30,24H31V25H30zM31,24H32V25H31zM33,24H34V25H33zM1,25H2V26H1zM2,25H3V26H2zM3,25H4V26H3zM6,25H7V26H6zM7,25H8V26H7zM8,25H9V26H8zM9,25H10V26H9zM10,25H11V26H10zM14,25H15V26H14zM16,25H17V26H16zM18,25H19V26H18zM19,25H20V26H19zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM33,25H34V26H33zM9,26H10V27H9zM10,26H11V27H10zM13,26H14V27H13zM14,26H15V27H14zM15,26H16V27H15zM16,26H17V27H16zM18,26H19V27H18zM19,26H20V27H19zM20,26H21V27H20zM21,26H22V27H21zM22,26H23V27H22zM25,26H26V27H25zM29,26H30V27H29zM31,26H32V27H31zM33,26H34V27H33zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM10,27H11V28H10zM11,27H12V28H11zM14,27H15V28H14zM17,27H18V28H17zM18,27H19V28H18zM21,27H22V28H21zM23,27H24V28H23zM24,27H25V28H24zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM9,28H10V29H9zM10,28H11V29H10zM16,28H17V29H16zM19,28H20V29H19zM20,28H21V29H20zM22,28H23V29H22zM23,28H24V29H23zM24,28H25V29H24zM25,28H26V29H25zM29,28H30V29H29zM30,28H31V29H30zM31,28H32V29H31zM32,28H33V29H32zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM10,29H11V30H10zM11,29H12V30H11zM16,29H17V30H16zM17,29H18V30H17zM19,29H20V30H19zM22,29H23V30H22zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM32,29H33V30H32zM33,29H34V30H33zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM15,30H16V31H15zM16,30H17V31H16zM17,30H18V31H17zM20,30H21V31H20zM21,30H22V31H21zM22,30H23V31H22zM26,30H27V31H26zM28,30H29V31H28zM29,30H30V31H29zM30,30H31V31H30zM32,30H33V31H32zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM11,31H12V32H11zM13,31H14V32H13zM15,31H16V32H15zM17,31H18V32H17zM18,31H19V32H18zM29,31H30V32H29zM30,31H31V32H30zM32,31H33V32H32zM33,31H34V32H33zM1,32H2V33H1zM7,32H8V33H7zM10,32H11V33H10zM12,32H13V33H12zM13,32H14V33H13zM16,32H17V33H16zM18,32H19V33H18zM19,32H20V33H19zM23,32H24V33H23zM24,32H25V33H24zM26,32H27V33H26zM27,32H28V33H27zM30,32H31V33H30zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM10,33H11V34H10zM13,33H14V34H13zM15,33H16V34H15zM16,33H17V34H16zM17,33H18V34H17zM20,33H21V34H20zM21,33H22V34H21zM23,33H24V34H23zM24,33H25V34H24zM25,33H26V34H25zM26,33H27V34H26zM27,33H28V34H27zM31,33H32V34H31zM32,33H33V34H32z"/></g><rect x="32" y="33" width="16" height="14" rx="2" fill="#f2f1e9"/><g transform="translate(40 40)" stroke="#e39b00" stroke-width="0.9" fill="none"><ellipse cx="-3.5" cy="0" rx="3.2" ry="4.5"/><ellipse cx="3.5" cy="0" rx="3.2" ry="4.5"/></g></svg>
+        <div class="qr-info">
+          <div class="lbl">EverOS Cloud</div>
+          <div class="url">everos.evermind.ai</div>
+        </div>
+      </div>
+
+      <p class="micro" style="margin-top: var(--s4); text-align: right; color: var(--ink-faint);">
+        Workshop ends · Build time starts · See you at 4 PM demo round.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Nav -->
+<div class="nav">
+  <p class="nav-counter">
+    <span class="cur" id="cur">1</span> <span style="color: var(--ink-faint);">/</span> <span id="total">16</span>
+  </p>
+  <div class="nav-btns">
+    <button class="nav-btn" id="prev" aria-label="Previous">←</button>
+    <button class="nav-btn" id="next" aria-label="Next">→</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Apply light theme if ?theme=light in URL
+  const params = new URLSearchParams(location.search);
+  if (params.get('theme') === 'light') {
+    document.body.classList.add('theme-light');
+  }
+
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 1;
+
+  const progressEl = document.getElementById('progress');
+  const curEl = document.getElementById('cur');
+  const totalEl = document.getElementById('total');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const toast = document.getElementById('toast');
+
+  totalEl.textContent = total;
+
+  function go(n) {
+    if (n < 1) n = 1;
+    if (n > total) n = total;
+    if (n === current) return;
+    const oldSlide = document.querySelector('.slide[data-slide="' + current + '"]');
+    const newSlide = document.querySelector('.slide[data-slide="' + n + '"]');
+    if (oldSlide) {
+      oldSlide.classList.add('exit-up');
+      oldSlide.classList.remove('active');
+      setTimeout(() => oldSlide.classList.remove('exit-up'), 500);
+    }
+    if (newSlide) newSlide.classList.add('active');
+    current = n;
+    curEl.textContent = n;
+    progressEl.style.width = (n / total * 100) + '%';
+    prevBtn.disabled = (n === 1);
+    nextBtn.disabled = (n === total);
+  }
+
+  progressEl.style.width = (1 / total * 100) + '%';
+  prevBtn.disabled = true;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      go(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      go(current - 1);
+    } else if (e.key === 'Home') {
+      go(1);
+    } else if (e.key === 'End') {
+      go(total);
+    } else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => go(current - 1));
+  nextBtn.addEventListener('click', () => go(current + 1));
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const text = btn.dataset.copy || btn.previousElementSibling?.innerText || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('copied');
+        const orig = btn.textContent;
+        btn.textContent = '✓';
+        toast.classList.add('show');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = orig;
+          toast.classList.remove('show');
+        }, 1500);
+      } catch (err) {
+        btn.textContent = '!';
+      }
+    });
+  });
+
+  // Code tabs
+  document.querySelectorAll('.code-tabs').forEach(tabBar => {
+    const tabs = tabBar.querySelectorAll('.code-tab');
+    const head = tabBar.closest('.code-head');
+    const body = head.nextElementSibling;
+    const panes = body.querySelectorAll('pre[data-content]');
+    const copyBtn = body.querySelector('.copy-btn');
+
+    function activate(name) {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      panes.forEach(p => p.hidden = (p.dataset.content !== name));
+      if (copyBtn) {
+        const activePane = body.querySelector('pre[data-content="' + name + '"]');
+        if (activePane) copyBtn.dataset.copy = activePane.innerText;
+      }
+    }
+
+    const initial = tabBar.querySelector('.code-tab.active')?.dataset.tab;
+    if (initial) activate(initial);
+
+    tabs.forEach(t => {
+      t.addEventListener('click', (e) => {
+        e.stopPropagation();
+        activate(t.dataset.tab);
+      });
+    });
+  });
+
+  // Use case cards expand
+  document.querySelectorAll('.uc-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasExpanded = card.classList.contains('expanded');
+      document.querySelectorAll('.uc-card.expanded').forEach(c => c.classList.remove('expanded'));
+      if (!wasExpanded) card.classList.add('expanded');
+    });
+  });
+})();
+</script>
+</body>
+</html>
