@@ -576,15 +576,6 @@
       ]
     },
     {
-      "id": "creator-spacing-grammar-audit-route",
-      "selection": "retained",
-      "retained_as": "creator-spacing-grammar-audit-route: spacing grammar diagnostic — reveals all 11 surfaces use hardcoded px, zero spacing tokens. warm-paper surfaces show 3-5 distinct gap values. No surface edits. spacing_audit data added to creator-surface-convergence.json. Next: --space-4 token layer.",
-      "proof": [
-        "bun creator:surface-consistency (spacing audit PASS)",
-        "bun creator:docs-surface-parity (spacing route present in doc)"
-      ]
-    },
-    {
       "id": "creator-spacing-token-layer-route",
       "selection": "retained",
       "retained_as": "Spacing token layer: adds --space-4:16px to :root across warm-paper family, replaces hardcoded 18px spacing with var(--space-4). First concrete spacing grammar layer for DASH visual family.",
@@ -617,7 +608,7 @@
       ]
     },
     {
-      "id": "creator-spacing-grammar-continue-route",
+      "id": "creator-spacing-grammar-audit-route",
       "selection": "retained",
       "retained_as": "Gap/spacing grammar diagnostic across 12 surfaces — 5 warm-paper surfaces have --space-4 in :root but zero body usage; 16px hardcoded gaps identified in poster, family-dna, manim, touchdesigner; gap values 4px-64px confirmed as deliberate layout decisions (PR #102)",
       "proof": [
@@ -625,6 +616,26 @@
         "bun print:render -- examples/creator-gap-spacing-audit.html (1 page, 761ms)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (informational only — diagnostic artifact not in main artifact list)"
+      ]
+    },
+    {
+      "id": "creator-type-size-audit-route",
+      "selection": "retained",
+      "retained_as": "Type size diagnostic across all 11 surfaces — h1 font-size 10 distinct values, no shared token. --space-4 missing from family-dna and frontier-capsule. Extends --space-4 to both. All 11 surfaces now have --space-4 token layer. (PR #100)",
+      "proof": [
+        "bun measure:check -- examples/creator-type-size-audit.html",
+        "bun creator:surface-consistency (--space-4 added to family-dna and frontier-capsule)",
+        "bun creator:regression (11/11 surfaces now have --space-4 token layer)"
+      ]
+    },
+    {
+      "id": "creator-space4-extension-route",
+      "selection": "retained",
+      "retained_as": "--space-4:16px token extension to all 11 surfaces (PR #101); extends --space-4:16px from family-dna and frontier-capsule :root declarations to all 11 surfaces, adding missing --space-4:16px; to :root in frontier-capsule. All 11 surfaces now have spacing token layer. Closes the last --space-4 gap in warm-paper surfaces.",
+      "proof": [
+        "bun creator:surface-consistency (11/11 surfaces now have --space-4)",
+        "bun creator:multi-surface-proof (11/11 measure + print PASS)",
+        "bun creator:cache-integrity (11/11 valid)"
       ]
     }
   ],
