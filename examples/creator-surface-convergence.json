@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-05-24T06:22:38.415Z",
-  "total_surfaces": 13,
+  "timestamp": "2026-05-24T14:58:01.795Z",
+  "total_surfaces": 14,
   "with_token_layer": 13,
-  "without_token_layer": 0,
+  "without_token_layer": 1,
   "shared_tokens": 3,
   "diverged_tokens": 13,
   "unique_tokens": 27,
@@ -443,7 +443,7 @@
     "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-23T02:28:19.944Z",
+    "prior_timestamp": "2026-05-24T14:58:01.334Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -614,6 +614,22 @@
           28
         ],
         "gap_count": 5
+      },
+      {
+        "file": "creator-gap-spacing-audit.html",
+        "gap_values": [
+          20
+        ],
+        "padding_values": [
+          7,
+          8,
+          14,
+          58
+        ],
+        "margin_values": [
+          4
+        ],
+        "gap_count": 1
       },
       {
         "file": "creator-manim-scene.html",
