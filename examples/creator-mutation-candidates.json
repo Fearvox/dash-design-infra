@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-23: --bg family signature diagnostic SHIPPED (PR #95). creator-bg-token-explore-route SELECTED WINNER with diagnostic phenotype. --bg is dark-industrial family token; warm-paper surfaces use --paper. 0 warm-paper surfaces define --bg. Stale premise confirmed — no surface edits possible. Next: --space-4 token layer (creator-spacing-token-layer-route) or font-stack audit (creator-font-stack-audit-route).",
+  "observation": "2026-05-23: font-stack audit SHIPPED. creator-font-stack-audit-route was SELECTED WINNER — diagnostic revealed 5 surfaces using Inter in font stacks (browser-demo, family-dna, p5-sketch, remotion-scene, touchdesigner-tox). creator-font-family-normalize-route implemented: removed Inter from all 5 surfaces, replacing with ui-sans-serif...system-ui stack consensus. All measure:check PASS (5/5). cache-integrity PASS (11/11). mutation-check PASS. font-stack convergence toward shared visual grammar achieved.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -15,9 +15,9 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Low risk: read-only diagnostic",
-      "selection": "selected",
-      "mutation": "Audit font-family usage across warm-paper surfaces. Identify hardcoded vs var() usage. Produce font grammar recommendation.",
+      "risk": "Stale premise: surfaces with Inter confirmed and fixed. Deselected after surface edits.",
+      "selection": "candidate",
+      "mutation": "Diagnostic audit of font-family usage across warm-paper surfaces. Revealed 5 surfaces using Inter (browser-demo, family-dna, p5-sketch, remotion-scene, touchdesigner-tox). Implemented font normalization: removed Inter, aligned to ui-sans-serif...system-ui consensus. All measure:check PASS, cache-integrity PASS.",
       "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
     },
     {
@@ -38,23 +38,41 @@
       "selection": "candidate"
     },
     {
-      "id": "creator-font-family-normalize-route",
-      "observation": "family-dna.html uses Inter font in font-family stack, all other warm-paper surfaces use system-ui. Inter is not part of the shared visual grammar.",
-      "mutation": "Audit and normalize font-family across warm-paper surfaces. Remove Inter from family-dna, establish consensus stack.",
+      "id": "creator-type-stack-normalize-route",
       "axis": "visual grammar",
+      "observation": "After font-stack normalization, warm-paper surfaces use consistent ui-sans-serif sans stack. --space-4:16px now in use. Remaining opportunity: type size normalization across h1/h2/h3 spans (78px, 44px, 39px, 29px across surfaces with no shared token).",
+      "candidates": [],
       "fitness": {
-        "creator_utility": 5,
+        "creator_utility": 4,
         "memory_retention": 5,
-        "artifact_proof": 4,
+        "artifact_proof": 3,
         "boundary_safety": 10,
         "minimal_core": 6
       },
+      "risk": "Low risk: diagnostic observation, no surface edits planned",
+      "selection": "selected",
+      "mutation": "Audit h1/h2/h3 type size usage across warm-paper surfaces. Identify size clusters and whether type-size token normalization is feasible without breaking creative intent.",
+      "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
+    },
+    {
+      "id": "creator-spacing-grammar-continuation-route",
+      "axis": "visual grammar",
+      "observation": "After --space-4:16px token layer (PR #96), all 11 surfaces use hardcoded px for border-radius (4px, 8px, 14px, 16px, 20px, 22px, 24px, 26px, 28px, 30px, 34px, 36px, 40px variations). No --radius-* token layer exists yet.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "Low risk: read-only diagnostic",
       "selection": "candidate",
-      "phenotype": "Normalized font-family stack across warm-paper family.",
-      "risk": "family-dna uses Inter for display purposes — confirm visual intent before removing."
+      "mutation": "Audit border-radius hardcoded values across all 11 surfaces. Produce radius grammar recommendation for future --radius-* token layer.",
+      "phenotype": "Diagnostic audit across 11 creator HTML artifacts. No changes."
     }
   ],
-  "winner": "creator-font-stack-audit-route",
+  "winner": "creator-type-stack-normalize-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -565,6 +583,20 @@
       "proof": [
         "bun creator:multi-surface-proof (11/11 measure+print PASS)",
         "bun creator:cache-integrity (10/10 valid)"
+      ]
+    },
+    {
+      "id": "creator-font-family-normalize-route",
+      "selection": "retained",
+      "retained_as": "Font stack normalization — removes Inter from 5 surfaces (browser-demo, family-dna, p5-sketch, remotion-scene, touchdesigner-tox), aligns to ui-sans-serif...system-ui consensus. All measure:check PASS (5/5), cache-integrity PASS (11/11).",
+      "proof": [
+        "bun measure:check -- examples/creator-family-dna.html",
+        "bun measure:check -- examples/creator-browser-demo.html",
+        "bun measure:check -- examples/creator-p5-sketch.html",
+        "bun measure:check -- examples/creator-remotion-scene.html",
+        "bun measure:check -- examples/creator-touchdesigner-tox.html",
+        "bun creator:cache-integrity (11/11 valid)",
+        "bun creator:mutation-check (PASS)"
       ]
     }
   ],
