@@ -1,5 +1,5 @@
 {
-  "observation": "2026-05-23: font-stack audit SHIPPED. creator-font-stack-audit-route was SELECTED WINNER — diagnostic revealed 5 surfaces using Inter in font stacks (browser-demo, family-dna, p5-sketch, remotion-scene, touchdesigner-tox). creator-font-family-normalize-route implemented: removed Inter from all 5 surfaces, replacing with ui-sans-serif...system-ui stack consensus. All measure:check PASS (5/5). cache-integrity PASS (11/11). mutation-check PASS. font-stack convergence toward shared visual grammar achieved.",
+  "observation": "2026-05-24: gap/spacing grammar audit diagnostic COMPLETED. creator-spacing-grammar-continue-route was SELECTED WINNER — diagnostic confirmed: (1) 5 warm-paper surfaces have --space-4 in :root but zero body CSS usage, (2) 6 surfaces lack --space-4 entirely, (3) 16px hardcoded gaps found in poster ×2, family-dna ×1, manim ×1, touchdesigner ×1 — clearest alignment opportunity, (4) gap values 4px-64px range — each is deliberate zine-like layout decision, not addressable drift. creator-gap-spacing-audit.html diagnostic phenotype shipped. Next candidate: body adoption of existing --space-4 in warm-paper surfaces.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -50,7 +50,7 @@
         "minimal_core": 6
       },
       "risk": "Low risk: diagnostic observation, no surface edits planned",
-      "selection": "selected",
+      "selection": "candidate",
       "mutation": "Audit h1/h2/h3 type size usage across warm-paper surfaces. Identify size clusters and whether type-size token normalization is feasible without breaking creative intent.",
       "phenotype": "Surface inspection across 11 creator HTML artifacts. No changes."
     },
@@ -70,9 +70,26 @@
       "selection": "candidate",
       "mutation": "Audit border-radius hardcoded values across all 11 surfaces. Produce radius grammar recommendation for future --radius-* token layer.",
       "phenotype": "Diagnostic audit across 11 creator HTML artifacts. No changes."
+    },
+    {
+      "id": "creator-space4-body-adoption-route",
+      "axis": "visual grammar",
+      "observation": "5 warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) have --space-4: 16px in :root but zero body CSS usage. The token is declared but unused — body adoption is the logical next step for spacing grammar coherence.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Low risk: adding var(--space-4) usage to existing token declarations. Need to verify body CSS gap: 16px occurrences that match --space-4 exactly before replacing.",
+      "selection": "selected",
+      "mutation": "Audit body CSS in warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) for gap: 16px or padding: 16px occurrences. Replace hardcoded 16px with var(--space-4) where the CSS context is gap or padding (not margin or other properties). Verify: measure:check passes, print:render 1 page.",
+      "phenotype": "Updated body CSS for surfaces with hardcoded 16px that matches var(--space-4). Diagnostic only if no exact matches found."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-space4-body-adoption-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -597,6 +614,17 @@
         "bun measure:check -- examples/creator-touchdesigner-tox.html",
         "bun creator:cache-integrity (11/11 valid)",
         "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-spacing-grammar-continue-route",
+      "selection": "retained",
+      "retained_as": "Gap/spacing grammar diagnostic across 12 surfaces — 5 warm-paper surfaces have --space-4 in :root but zero body usage; 16px hardcoded gaps identified in poster, family-dna, manim, touchdesigner; gap values 4px-64px confirmed as deliberate layout decisions (PR #102)",
+      "proof": [
+        "bun measure:check -- examples/creator-gap-spacing-audit.html (PASS, 1684×1191 fits)",
+        "bun print:render -- examples/creator-gap-spacing-audit.html (1 page, 761ms)",
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (informational only — diagnostic artifact not in main artifact list)"
       ]
     }
   ],
