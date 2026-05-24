@@ -1,132 +1,132 @@
 {
-  "timestamp": "2026-05-23T02:28:20.678Z",
-  "totalMs": 9004,
-  "passed": 27,
-  "failed": 4,
+  "timestamp": "2026-05-24T10:38:29.002Z",
+  "totalMs": 14448,
+  "passed": 25,
+  "failed": 6,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1245
+      "durationMs": 1367
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 868
+      "durationMs": 1274
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1257
+      "durationMs": 1330
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 21
+      "durationMs": 35
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 18
+      "durationMs": 24
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 244
+      "durationMs": 316
     },
     {
       "name": "creator:script-health",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:orphan-script",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:workflow-gate-health",
-      "durationMs": 4472
-    },
-    {
-      "name": "creator:example-check-coverage",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:post-check-coverage",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:regression-duration",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:measure-print-cache",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:cache-integrity",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:surface-consistency",
       "durationMs": 21
     },
     {
-      "name": "creator:family-dna-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:capsule-check",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:evolution-check",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:mutation-check",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:poster-check",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:prompt-dna-check",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:motion-storyboard-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:social-card-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:pdf-zine-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:p5-sketch-check",
+      "name": "creator:orphan-script",
       "durationMs": 20
     },
     {
+      "name": "creator:workflow-gate-health",
+      "durationMs": 8837
+    },
+    {
+      "name": "creator:example-check-coverage",
+      "durationMs": 22
+    },
+    {
+      "name": "creator:post-check-coverage",
+      "durationMs": 22
+    },
+    {
+      "name": "creator:regression-duration",
+      "durationMs": 23
+    },
+    {
+      "name": "creator:measure-print-cache",
+      "durationMs": 23
+    },
+    {
+      "name": "creator:cache-integrity",
+      "durationMs": 23
+    },
+    {
+      "name": "creator:surface-consistency",
+      "durationMs": 26
+    },
+    {
+      "name": "creator:family-dna-check",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:capsule-check",
+      "durationMs": 23
+    },
+    {
+      "name": "creator:evolution-check",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:mutation-check",
+      "durationMs": 22
+    },
+    {
+      "name": "creator:poster-check",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:prompt-dna-check",
+      "durationMs": 25
+    },
+    {
+      "name": "creator:motion-storyboard-check",
+      "durationMs": 27
+    },
+    {
+      "name": "creator:social-card-check",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:pdf-zine-check",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:p5-sketch-check",
+      "durationMs": 27
+    },
+    {
       "name": "creator:remotion-scene-check",
-      "durationMs": 19
+      "durationMs": 22
     },
     {
       "name": "creator:manim-scene-check",
-      "durationMs": 19
+      "durationMs": 21
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 18
+      "durationMs": 22
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 18
+      "durationMs": 22
     },
     {
       "name": "creator:skill-package-check",
-      "durationMs": 17
+      "durationMs": 20
     },
     {
       "name": "hackathon:score",
-      "durationMs": 464
+      "durationMs": 749
     }
   ]
 }

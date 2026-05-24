@@ -29,6 +29,8 @@ const SURFACE_CHECK_MAP: Record<string, string> = {
   'creator-touchdesigner-tox':  'creator:touchdesigner-tox-check',
   'creator-browser-demo':       'creator:browser-demo-check',
   'creator-frontier-capsule':   'creator:capsule-check',
+  'creator-type-size-audit':    'creator:surface-consistency',
+  'creator-bg-token-diagnostic': 'creator:surface-consistency',
   'creator-family-dna':         'creator:family-dna-check',
 };
 

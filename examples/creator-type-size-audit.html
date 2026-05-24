@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684,height=1191">
+<title>Type Size Audit — Creator Surfaces</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f2eadb;
+    --night: #0b1114;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --signal: #7ef0c1;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+  }
+  body {
+    width: 1684px;
+    height: 1191px;
+    background: var(--paper);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  h1 {
+    grid-column: 1 / -1;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.04;
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+  }
+  .surface-group {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+    overflow: hidden;
+  }
+  .surface-group h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 4px 6px;
+    background: rgba(244,234,214,0.3);
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+  }
+  td {
+    padding: 4px 6px;
+    border-bottom: 1px solid rgba(21,18,14,0.06);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  .family-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .family-warm { background: #6f6659; }
+  .family-dark { background: #0b1114; color: #7ef0c1; }
+  .family-creative { background: #2f6f4e; color: white; }
+  .token-cell {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .size-cell {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .converged { color: #2f6f4e; }
+  .diverged { color: #c47a1f; }
+  .gap-info {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+  .gap-box {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+  }
+  .gap-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .gap-box p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .gap-box code {
+    background: rgba(21,18,14,0.06);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+  .verdict {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 10px 14px;
+    background: rgba(21,18,14,0.04);
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+  .verdict-badge {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body class="page">
+<h1>Type Size Audit — 11 Creator Surfaces</h1>
+
+<div class="surface-group">
+  <h2>Warm-Paper Family (6 surfaces)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>h1 font-size</th>
+        <th>h2 font-size</th>
+        <th>Body font stack</th>
+        <th>Token layer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>poster-surface</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">132px</td>
+        <td class="size-cell diverged">—</td>
+        <td class="token-cell">ui-serif...serif</td>
+        <td class="token-cell converged">✓ --space-4</td>
+      </tr>
+      <tr>
+        <td>pdf-zine</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">76px</td>
+        <td class="size-cell">44px</td>
+        <td class="token-cell">inherit (h1 serif)</td>
+        <td class="token-cell converged">✓ --space-4</td>
+      </tr>
+      <tr>
+        <td>social-card</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">78px</td>
+        <td class="size-cell diverged">—</td>
+        <td class="token-cell">ui-serif...serif</td>
+        <td class="token-cell converged">✓ --space-4</td>
+      </tr>
+      <tr>
+        <td>motion-storyboard</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">84px</td>
+        <td class="size-cell">28px</td>
+        <td class="token-cell">ui-serif...serif</td>
+        <td class="token-cell converged">✓ --space-4</td>
+      </tr>
+      <tr>
+        <td>prompt-dna</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">104px</td>
+        <td class="size-cell diverged">—</td>
+        <td class="token-cell">ui-serif...serif</td>
+        <td class="token-cell converged">✓ --space-4</td>
+      </tr>
+      <tr>
+        <td>family-dna</td>
+        <td><span class="family-tag family-warm">warm-paper</span></td>
+        <td class="size-cell">44px</td>
+        <td class="size-cell">20px</td>
+        <td class="token-cell">inherit (h1 serif)</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="surface-group">
+  <h2>Dark-Industrial + Creative-Hybrid</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Surface</th>
+        <th>Family</th>
+        <th>h1 font-size</th>
+        <th>h2 font-size</th>
+        <th>Body font stack</th>
+        <th>Token layer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>browser-demo</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">72px</td>
+        <td class="size-cell diverged">19px</td>
+        <td class="token-cell">ui-sans-serif...</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+      <tr>
+        <td>remotion-scene</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">84px</td>
+        <td class="size-cell">39px</td>
+        <td class="token-cell">ui-sans-serif...</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+      <tr>
+        <td>p5-sketch</td>
+        <td><span class="family-tag family-creative">creative-hybrid</span></td>
+        <td class="size-cell">78px</td>
+        <td class="size-cell">13px</td>
+        <td class="token-cell">ui-sans-serif...</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+      <tr>
+        <td>manim-scene</td>
+        <td><span class="family-tag family-creative">creative-hybrid</span></td>
+        <td class="size-cell">88px</td>
+        <td class="size-cell">40px</td>
+        <td class="token-cell">ui-serif...serif</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+      <tr>
+        <td>touchdesigner-tox</td>
+        <td><span class="family-tag family-dark">dark-industrial</span></td>
+        <td class="size-cell">76px</td>
+        <td class="size-cell">31px</td>
+        <td class="token-cell">ui-sans-serif...</td>
+        <td class="token-cell diverged">✗ no --space-4</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="gap-info">
+  <div class="gap-box">
+    <h3>Finding 1: h1 font-size — no shared token</h3>
+    <p>11 surfaces produce 10 distinct h1 sizes: 132, 76, 78, 84, 104, 44, 72, 78, 84, 88, 76. The range (44px–132px) spans editorial poster scale down to compact card scale. No surface uses a CSS custom property for type scale — all are hardcoded px in element rules.</p>
+    <p>Family grouping: warm-paper h1: 132, 76, 78, 84, 104, 44. dark-industrial: 72, 84, 76. creative-hybrid: 78, 88. No intra-family consensus.</p>
+    <p>Verdict: Type size tokenization (e.g. <code>--type-h1: 84px</code>) is possible but would require explicit design decision about what scale the DASH family actually targets — not just an arithmetic mean. A single consensus value would homogenize surfaces that have intentional size variation for their format (poster vs. social card vs. zine).</p>
+  </div>
+  <div class="gap-box">
+    <h3>Finding 2: --space-4 participation — 6/11 surfaces have it</h3>
+    <p>Warm-paper: poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna (5/6) have <code>--space-4: 16px</code> in :root and use <code>var(--space-4)</code> in body CSS. family-dna has <code>--space-4</code> but does not use <code>var(--space-4)</code> in body.</p>
+    <p>Non-warm-paper: browser-demo, p5-sketch, remotion-scene, manim-scene, touchdesigner-tox — 0/5 have <code>--space-4</code> in :root.</p>
+    <p>Opportunity: Add <code>--space-4: 16px</code> to the :root token layer of non-warm-paper surfaces as a shared spacing primitive, without changing any body px values. This would give all 11 surfaces the same spacing vocabulary to reference.</p>
+  </div>
+  <div class="gap-box">
+    <h3>Finding 3: Font stack family DNA</h3>
+    <p>Serif stack (<code>ui-serif, Georgia, Cambria, "Times New Roman", serif</code>): warm-paper surfaces (poster, social-card, motion-storyboard, prompt-dna, manim-scene). Sans stack (<code>ui-sans-serif, system-ui...</code>): dark-industrial surfaces (browser-demo, p5-sketch, remotion-scene, touchdesigner-tox). This is a family signature, not addressable drift — keep as-is.</p>
+    <p>The serif/sans split communicates the editorial warmth vs. industrial constraint contrast that defines the DASH visual grammar. Overriding it would flatten the family hierarchy.</p>
+  </div>
+  <div class="gap-box">
+    <h3>Finding 4: Border-radius — 0 surfaces share a token</h3>
+    <p>All 11 surfaces use hardcoded border-radius px values (4px–999px). No --radius-* token layer exists. Unique values range from 3 to 9999 (pill/circle shapes). Pattern: no convergence even within families.</p>
+    <p>Recommended: do not introduce a --radius-* token layer unless a specific visual inconsistency causes creator confusion. The 9999px pill shape is format-dependent (avatars, badges) and cannot be normalized.</p>
+  </div>
+</div>
+
+<div class="verdict">
+  <span class="verdict-badge">DIAGNOSTIC</span>
+  No implementable surface edits found. h1 font-size tokenization requires an explicit design decision (what scale does DASH family target?) before any alignment. --space-4 extension opportunity is additive but low urgency (no broken visual grammar). font-family family signatures are intentional and must be preserved. Next recommended: extend --space-4 to non-warm-paper :root blocks as shared spacing vocabulary.
+</div>
+</body>
+</html>
