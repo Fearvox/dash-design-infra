@@ -1,5 +1,5 @@
 {
-  "observation": "After --amber alignment, manim-scene #d4a373 -> #c47a1f. warm-paper surfaces now converged at #c47a1f across 7 surfaces. --amber: 2->1 distinct values. Next opportunity: --muted audit (6 distinct values across warm-paper family: #6f6659 consensus, manim-scene #8b9ab1 is the lone outlier).",
+  "observation": "After --line alignment on family-dna (rgba(244,234,214,0.12) → rgba(21,18,14,0.18)), warm-paper family --line converges from 8→7 distinct values. family-dna is now at warm-paper consensus. Remaining --line drift: dark-industrial surfaces (browser-demo #294148, remotion-scene #394150), creative-hybrid (p5-sketch #35584c, manim-scene rgba(248,241,223,0.2)), touchdesigner-tox (rgba(102,227,255,.26)) — all intentional family divergence. Winner: creator-family-dna-line-align-route.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -619,6 +619,16 @@
         "bun creator:mutation-check (PASS)",
         "bun measure:check -- examples/creator-radius-token-audit.html (1684×1191 fits)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-family-dna-line-align-route",
+      "selection": "retained",
+      "retained_as": "warm-paper --line consensus alignment on family-dna: rgba(244,234,214,0.12) → rgba(21,18,14,0.18). family-dna 9 border:var(--line) usages now match warm-paper ink-based line color. --line converges from 8→7 distinct values (family-dna moves from unique value to consensus). All surface and regression gates pass.",
+      "proof": [
+        "bun measure:check -- examples/creator-family-dna.html",
+        "bun creator:family-dna-check (20/20 PASS)",
+        "bun creator:cache-integrity (14/14 VALID)"
       ]
     }
   ],
