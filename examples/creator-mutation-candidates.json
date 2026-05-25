@@ -1,5 +1,5 @@
 {
-  "observation": "After --space-4:16px extension (11/11 surfaces), warm-paper surfaces still had hardcoded gap:16px and margin:16px. Audit found: poster-surface 3 replacements (margin-bottom + 2× gap:16px), pdf-zine 1 replacement (margin:16px). All measure+print PASS. Remaining warm-paper surfaces (social-card, motion-storyboard) use 16px for padding which is intentional layout padding.",
+  "observation": "After --amber alignment, manim-scene #d4a373 -> #c47a1f. warm-paper surfaces now converged at #c47a1f across 7 surfaces. --amber: 2->1 distinct values. Next opportunity: --muted audit (6 distinct values across warm-paper family: #6f6659 consensus, manim-scene #8b9ab1 is the lone outlier).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
