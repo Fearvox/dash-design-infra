@@ -37,6 +37,9 @@ const SURFACES: Surface[] = [
   { name: 'touchdesigner-tox', file: 'examples/creator-touchdesigner-tox.html', canvas: '1684x1191' },
   { name: 'browser-demo', file: 'examples/creator-browser-demo.html', canvas: '1684x1191' },
   { name: 'frontier-capsule', file: 'examples/creator-frontier-capsule.html', canvas: '1684x1191' },
+  { name: 'type-size-audit', file: 'examples/creator-type-size-audit.html', canvas: '1684x1191' },
+  { name: 'bg-token-diagnostic', file: 'examples/creator-bg-token-diagnostic.html', canvas: '1684x1191' },
+  { name: 'radius-token-audit', file: 'examples/creator-radius-token-audit.html', canvas: '1684x1191' },
 ];
 
 interface CacheEntry {
