@@ -6,7 +6,7 @@
     {
       "id": "creator-type-stack-normalize-route",
       "axis": "visual grammar",
-      "observation": "After font-stack normalization, warm-paper surfaces use consistent ui-sans-serif sans stack. --space-4:16px now in use. Remaining opportunity: type size normalization across h1/h2/h3 spans (78px, 44px, 39px, 29px across surfaces with no shared token).",
+      "observation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) shipped in prior slices. Spacing alignment shipped PR #109. Type size tokenization requires design decision — deferred.",
       "candidates": [],
       "fitness": {
         "creator_utility": 4,
@@ -15,27 +15,10 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Diagnostic only: no implementable edits found. h1 tokenization requires design decision; --space-4 extension is additive but low urgency.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotype: type size audit (h1 10 distinct values, no shared token) + border-radius audit (format-locked, 8px only convergent). Type size tokenization requires design decision. --space-4 extended to family-dna + frontier-capsule. border-radius tokenization NOT viable (999px+ near-circle and 50% circular are format-locked). radius-token-audit.html produced.",
-      "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
-    },
-    {
-      "id": "creator-spacing-remaining-audit-route",
+      "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
       "selection": "candidate",
-      "axis": "visual grammar",
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "mutation": "Audit remaining warm-paper surfaces (social-card, motion-storyboard) for hardcoded 16px padding values that are not gap/padding in flex/grid contexts. padding:16px on layout containers vs content-padding distinction.",
-      "observation": "social-card and motion-storyboard both have padding:16px on wrapper elements. These are content padding not layout gap — context matters. Audit whether these are intentional zine-like padding or misaligned spacing.",
-      "candidates": [],
-      "phenotype": "Diagnostic phenotype: audit social-card and motion-storyboard padding:16px usage for var(--space-4) alignment potential.",
-      "risk": "padding:16px may be intentional content padding vs layout gap — distinguish before replacing. Do not replace non-gap/padding 16px values."
+      "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
+      "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
     },
     {
       "id": "creator-line-panel-token-explore-route",
@@ -50,12 +33,29 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic only: --line and --panel serve different visual roles (line vs. panel tint) — may be intentional separation, not addressable drift.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype: explore whether --line and --panel can share a unified tint token or must remain separate visual grammar roles. convergence.json shows --line rgba(21,18,14,0.18) on 6 warm-paper surfaces, --panel rgba(244,234,214,0.06) on 6 warm-paper surfaces.",
       "phenotype": "Diagnostic phenotype exploring line/panel token relationship. No surface edits planned."
+    },
+    {
+      "id": "creator-muted-surface-explore-route",
+      "axis": "visual grammar",
+      "observation": "convergence.json shows --muted has 6 distinct values (warm-paper consensus #6f6659 on 10 surfaces). Single-value outliers: browser-demo #94a69f, manim-scene #8b9ab1, p5-sketch #6f6a5f, remotion-scene #7a7164, touchdesigner-tox #7ea0ac. All are dark-industrial or creative-hybrid intentional divergence. Warm-paper surfaces already converged.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "Warm-paper surfaces already at consensus — --muted divergence is family signature in dark-industrial and creative-hybrid surfaces.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype: audit --muted family signature across dark-industrial and creative-hybrid surfaces vs warm-paper consensus. Confirm intent vs drift.",
+      "phenotype": "Diagnostic phenotype exploring --muted family convergence pattern."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-line-panel-token-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -629,6 +629,17 @@
         "bun measure:check -- examples/creator-family-dna.html",
         "bun creator:family-dna-check (20/20 PASS)",
         "bun creator:cache-integrity (14/14 VALID)"
+      ]
+    },
+    {
+      "id": "creator-spacing-remaining-audit-route",
+      "selection": "retained",
+      "retained_as": "spacing grammar audit + padding:16px to var(--space-4) alignment across social-card and motion-storyboard (PR #109)",
+      "proof": [
+        "bun creator:social-card-check (PASS)",
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "PR #109 merged"
       ]
     }
   ],
