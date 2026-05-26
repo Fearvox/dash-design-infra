@@ -1,5 +1,5 @@
 {
-  "observation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) shipped prior slices. --ink family signature confirmed (warm-paper converged on #15120e, dark-industrial #111318 family signature, creative-hybrid intentional). Type size tokenization requires design decision — deferred. Next: explore font-stack reference hygiene across surfaces.",
+  "observation": "Diagnostic phenotypes shipped prior slices. --ink family signature confirmed (warm-paper #15120e, dark-industrial #111318). touchdesigner-tox and manim-scene both lacked --ink in :root — now added with family-appropriate values. Surface health SURFACE_CHECK_MAP extended to 17 surfaces. Example-check-coverage updated for diagnostic surfaces. Cache cleanup complete.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -352,14 +352,15 @@
     {
       "id": "creator-touchdesigner-token-layer-route",
       "selection": "retained",
-      "retained_as": "CSS :root token layer: 18 properties replacing 25 hardcoded values, 29 var() refs, 0/12 surfaces without token layer — closes the last surface gap",
+      "retained_as": "TouchDesigner CSS token layer (PR #68) + --ink layer addition: touchdesigner-tox gained --ink:#111318, manim-scene gained --ink:#111827 — dark-industrial family signature #111318, creative-hybrid intentional divergence #111827. All 11 retained surfaces now have complete :root token layers.",
       "proof": [
-        "bun creator:touchdesigner-tox-check (PASS)",
-        "bun measure:check -- examples/creator-touchdesigner-tox.html (1684×1191 fits)",
-        "bun creator:surface-consistency (0/12 without token layer, was 1/12)",
-        "bun creator:multi-surface-proof (11/11 measure + print PASS)",
-        "bun creator:cache-integrity (11/11 valid)",
-        "Browser DOM: 18 tokens, 29 var() refs, 0 console errors, colors match original"
+        "bun measure:check -- examples/creator-touchdesigner-tox.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-manim-scene.html (1684x1191 PASS)",
+        "bun print:render -- examples/creator-touchdesigner-tox.html /tmp/td-tox-test.pdf (1 page, 812ms PASS)",
+        "bun print:render -- examples/creator-manim-scene.html /tmp/manim-test.pdf (1 page, 968ms PASS)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:surface-health (17/17 PASS)",
+        "bun creator:regression (28/31 PASS)"
       ]
     },
     {
