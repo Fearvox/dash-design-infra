@@ -1,5 +1,5 @@
 {
-  "observation": "Font grammar audit diagnostic (2026-05-26): 0/12 surfaces define --font-serif or --font-sans in :root. ui-serif used as bare identifier (no CSS definition) by 7 warm-paper surfaces. 4 surfaces use Georgia directly. ui-serif/Georgia-direct split is token naming inconsistency, not addressable drift. Serif/sans heading split = family signature. creator-font-grammar-audit.html phenotype documents findings.",
+  "observation": "Font grammar audit diagnostic (2026-05-26) confirmed: 0/12 surfaces define --font-serif in :root. ui-serif bare identifier used by 7 warm-paper surfaces. This slice adds --font-serif token to :root across 5 warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna-adapter) and replaces all hardcoded ui-serif,Georgia,... stacks with var(--font-serif). Eliminates naming inconsistency for warm-paper serif heading stack.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
-      "selection": "selected",
+      "selection": "candidate",
       "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
       "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
     },
@@ -50,12 +50,12 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. Family signature confirmed. No surface edits possible.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirms --ink family signature. Add to CREATOR_EVOLUTION_ENGINE.md retained mutations. Promote to retained_routes. Next candidate: type-stack-normalize-route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -681,6 +681,25 @@
         "bun measure:check -- examples/creator-font-grammar-audit.html (1684x1191 PASS)",
         "bun print:render -- examples/creator-font-grammar-audit.html (1 page, 735ms PASS)",
         "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-font-serif-token-layer-route",
+      "selection": "retained",
+      "retained_as": "CSS --font-serif token layer across warm-paper family: adds --font-serif:ui-serif,Georgia,Cambria,\"Times New Roman\",serif to :root of 5 warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna-adapter), replaces all hardcoded ui-serif,Georgia stacks with var(--font-serif). Eliminates naming inconsistency: bare ui-serif identifier now defined as a CSS token.",
+      "proof": [
+        "bun creator:poster-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun creator:prompt-dna-check (PASS)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-social-card.html (1200x630 PASS)",
+        "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-prompt-dna-adapter.html (1684x1191 PASS)",
+        "bun creator:measure-print-cache -- --no-cache (14/14 PASS)",
+        "bun creator:cache-integrity (14/14 valid after cache refresh)"
       ]
     }
   ],
