@@ -49,13 +49,30 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Diagnostic complete. Family signature confirmed. No surface edits possible.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirms --ink family signature. Add to CREATOR_EVOLUTION_ENGINE.md retained mutations. Promote to retained_routes. Next candidate: type-stack-normalize-route.",
+      "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
+    },
+    {
+      "id": "creator-font-serif-whitespace-align",
+      "axis": "visual grammar",
+      "observation": "surface-consistency shows --font-serif has 2 distinct values: ui-serif, Georgia,... (space after comma) vs ui-serif,Georgia,... (no space). All 5 warm-paper surfaces define --font-serif in :root. motion-storyboard is the outlier (no space after commas). Alignment: add space after commas in motion-storyboard :root --font-serif to match the consensus form.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Whitespace-only change. Near-zero visual risk. Alignment is cosmetic normalization.",
+      "selection": "selected",
+      "mutation": "Normalize --font-serif whitespace in motion-storyboard :root. Replace ui-serif,Georgia,Cambria,\"Times New Roman\",serif with ui-serif, Georgia, Cambria, \"Times New Roman\", serif to match the consensus form across 4 other warm-paper surfaces. No body CSS changes, no visual delta.",
+      "phenotype": "creator-motion-storyboard.html :root --font-serif whitespace aligned."
     }
   ],
-  "winner": "creator-ink-family-doc-route",
+  "winner": "creator-font-serif-whitespace-align",
   "retained_routes": [
     {
       "id": "poster-surface-route",
