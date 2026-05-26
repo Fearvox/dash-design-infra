@@ -18,6 +18,7 @@
         --accent: #ffb86b;
         --panel: rgba(244,234,214,0.06);
         --space-4: 16px;
+        --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
       }
 
       * { box-sizing: border-box; }
@@ -89,7 +90,7 @@
         place-items: center;
         background: var(--ink);
         color: #f8ecd5;
-        font-family: ui-serif, Georgia, serif;
+        font-family: var(--font-serif);
         font-size: 38px;
         box-shadow: 0 18px 40px rgba(21,18,14,.20);
       }
@@ -103,7 +104,7 @@
 
       h1 {
         margin: 0;
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-family: var(--font-serif);
         font-size: 132px;
         line-height: .88;
         letter-spacing: -.075em;
@@ -208,7 +209,7 @@
         position: relative;
         z-index: 1;
         margin: 0;
-        font-family: ui-serif, Georgia, serif;
+        font-family: var(--font-serif);
         font-size: 27px;
         line-height: 1.08;
         letter-spacing: -.035em;

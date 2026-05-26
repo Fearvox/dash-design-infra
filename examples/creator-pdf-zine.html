@@ -19,6 +19,7 @@
         --rose: #8d3f32;
         --panel: rgba(244,234,214,0.06);
         --space-4: 16px;
+        --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
       }
 
       * { box-sizing: border-box; }
@@ -144,7 +145,7 @@
       .panel.dark .tag { border-color: rgba(248, 236, 213, .24); }
 
       .num {
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-family: var(--font-serif);
         color: var(--blue);
         font-size: 82px;
         line-height: .78;
@@ -163,7 +164,7 @@
 
       h1, h2 {
         margin: 0;
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+        font-family: var(--font-serif);
         letter-spacing: -.045em;
         font-weight: 520;
       }
@@ -257,7 +258,7 @@
         text-align: center;
         background: var(--green);
         color: #f8ecd5;
-        font-family: ui-serif, Georgia, serif;
+        font-family: var(--font-serif);
         font-size: 19px;
         line-height: .95;
         transform: rotate(8deg);
@@ -290,7 +291,7 @@
 
       .index-card span {
         display: block;
-        font-family: ui-serif, Georgia, serif;
+        font-family: var(--font-serif);
         font-size: 20px;
         line-height: 1;
       }
