@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DASH — Font Grammar Audit</title>
+  <style>
+    @page { size: 1684px 1191px; margin: 0; }
+    body { margin: 0; background: #f4f0e9; font-family: ui-sans-serif, system-ui, sans-serif; }
+    .page { width: 1684px; height: 1191px; position: relative; overflow: hidden; }
+    .header { position: absolute; top: 56px; left: 56px; right: 56px; }
+    .header h1 { margin: 0 0 8px; font-size: 56px; font-weight: 520; letter-spacing: -0.03em; color: #15120e; font-family: Georgia, serif; }
+    .header p { margin: 0; font-size: 18px; color: #6f6659; }
+    .meta { position: absolute; top: 56px; right: 56px; text-align: right; font-size: 13px; color: #6f6659; }
+    .meta span { display: block; }
+    .grid { position: absolute; top: 180px; left: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; right: 56px; }
+    .card { background: rgba(244,234,214,0.06); border: 1px solid rgba(21,18,14,0.12); border-radius: 3px; padding: 20px 24px; }
+    .card h3 { margin: 0 0 14px; font-size: 14px; font-weight: 520; color: #15120e; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+    .card .value { font-size: 22px; font-family: Georgia, serif; color: #15120e; margin: 0 0 16px; }
+    .card .desc { font-size: 13px; color: #6f6659; line-height: 1.4; margin: 0; }
+    .row { margin-top: 16px; }
+    .row table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .row th { text-align: left; padding: 4px 8px; border-bottom: 1px solid rgba(21,18,14,0.12); color: #6f6659; font-weight: 520; letter-spacing: 0.03em; text-transform: uppercase; }
+    .row td { padding: 4px 8px; border-bottom: 1px solid rgba(21,18,14,0.06); font-family: ui-monospace, SFMono-Regular, monospace; color: #15120e; }
+    .row td:first-child { color: #6f6659; }
+    .badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 520; }
+    .badge-yes { background: rgba(47,111,78,0.12); color: #2f6f4e; }
+    .badge-no { background: rgba(21,18,14,0.08); color: #6f6659; }
+    .badge-partial { background: rgba(196,122,31,0.12); color: #9d6a1e; }
+    .findings { position: absolute; bottom: 56px; left: 56px; right: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .finding { background: rgba(244,234,214,0.06); border-left: 3px solid #15120e; padding: 16px 20px; }
+    .finding h4 { margin: 0 0 8px; font-size: 13px; font-weight: 520; color: #15120e; text-transform: uppercase; letter-spacing: 0.04em; }
+    .finding p { margin: 0; font-size: 13px; color: #6f6659; line-height: 1.4; }
+    .verdict { position: absolute; bottom: 56px; right: 56px; text-align: right; }
+    .verdict .score { font-size: 48px; font-family: Georgia, serif; color: #15120e; font-weight: 520; line-height: 1; }
+    .verdict .label { font-size: 12px; color: #6f6659; text-transform: uppercase; letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>Font Grammar Audit</h1>
+    <p>DASH creator-surface heading font-stack analysis across 12 surfaces</p>
+  </div>
+  <div class="meta">
+    <span>2026-05-26</span>
+    <span>creator-surface-consistency</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Heading Font Tokens</h3>
+      <div class="value">0 / 12</div>
+      <p class="desc">Surfaces define --font-serif or --font-sans in :root</p>
+    </div>
+    <div class="card">
+      <h3>Token Naming</h3>
+      <div class="value">Inconsistent</div>
+      <p class="desc">6 surfaces use ui-serif as identifier, 4 use Georgia directly</p>
+    </div>
+    <div class="card">
+      <h3>Georgia Usage</h3>
+      <div class="value">10 / 12</div>
+      <p class="desc">Surfaces with Georgia serif in heading stack</p>
+    </div>
+    <div class="card">
+      <h3>Family Split</h3>
+      <div class="value">Confirmed</div>
+      <p class="desc">Serif headings vs sans-serif body = intentional DASH family signature</p>
+    </div>
+    <div class="card">
+      <h3>ui-serif Token</h3>
+      <div class="value">6 surfaces</div>
+      <p class="desc">frontier-capsule, manim-scene, motion-storyboard, pdf-zine, poster-surface, prompt-dna-adapter, social-card</p>
+    </div>
+    <div class="card">
+      <h3>Georgia Direct</h3>
+      <div class="value">4 surfaces</div>
+      <p class="desc">browser-demo, family-dna, p5-sketch, remotion-scene — no ui-serif identifier</p>
+    </div>
+  </div>
+  <div class="row" style="position:absolute;top:480px;left:56px;right:56px;">
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Heading Font Pattern</th>
+        <th>ui-serif Token</th>
+        <th>Georgia Used</th>
+        <th>Font Token in :root</th>
+        <th>Family</th>
+      </tr>
+      <tr>
+        <td>frontier-capsule</td>
+        <td>ui-serif, Georgia, Cambria, serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>manim-scene</td>
+        <td>ui-serif, Georgia, serif; ui-monospace</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>creative-hybrid</td>
+      </tr>
+      <tr>
+        <td>motion-storyboard</td>
+        <td>ui-serif, Georgia, Cambria, serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>pdf-zine</td>
+        <td>ui-serif, Georgia, Cambria, serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>poster-surface</td>
+        <td>ui-serif, Georgia, Cambria, serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>prompt-dna-adapter</td>
+        <td>ui-serif, Georgia, Cambria, serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>social-card</td>
+        <td>ui-serif, Georgia, Cambria, serif; ui-sans-serif</td>
+        <td><span class="badge badge-yes">YES</span></td>
+        <td>via ui-serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>browser-demo</td>
+        <td>Georgia, "Times New Roman", serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>Direct</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>dark-industrial</td>
+      </tr>
+      <tr>
+        <td>family-dna</td>
+        <td>Georgia, "Times New Roman", serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>Direct</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>warm-paper</td>
+      </tr>
+      <tr>
+        <td>p5-sketch</td>
+        <td>Georgia, "Times New Roman", serif; ui-monospace</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>Direct</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>creative-hybrid</td>
+      </tr>
+      <tr>
+        <td>remotion-scene</td>
+        <td>Georgia, "Times New Roman", serif</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>Direct</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>dark-industrial</td>
+      </tr>
+      <tr>
+        <td>touchdesigner-tox</td>
+        <td>No heading font rules</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>None</td>
+        <td><span class="badge badge-no">NO</span></td>
+        <td>dark-industrial</td>
+      </tr>
+    </table>
+  </div>
+  <div class="findings">
+    <div class="finding">
+      <h4>Finding 1 — ui-serif is not a system font</h4>
+      <p>"ui-serif" is a bare token identifier with no CSS definition. It falls through to the Georgia/Cambria fallbacks that follow it. The naming implies a system-level token but it is surface-local shorthand. Affects 7 surfaces: frontier-capsule, manim-scene, motion-storyboard, pdf-zine, poster-surface, prompt-dna-adapter, social-card.</p>
+    </div>
+    <div class="finding">
+      <h4>Finding 2 — 4 surfaces use Georgia directly without ui-serif</h4>
+      <p>browser-demo, family-dna, p5-sketch, remotion-scene use "Georgia, Times New Roman, serif" without the ui-serif wrapper. This is functionally equivalent but not token-consistent. family-dna is the visual grammar reference surface and does not use ui-serif — a potential inconsistency in the reference artifact itself.</p>
+    </div>
+  </div>
+  <div class="verdict">
+    <div class="score">0/12</div>
+    <div class="label">font tokens in :root</div>
+  </div>
+</div>
+</body>
+</html>

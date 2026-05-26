@@ -1,5 +1,5 @@
 {
-  "observation": "Diagnostic phenotypes shipped prior slices. --ink family signature confirmed (warm-paper #15120e, dark-industrial #111318). touchdesigner-tox and manim-scene both lacked --ink in :root — now added with family-appropriate values. Surface health SURFACE_CHECK_MAP extended to 17 surfaces. Example-check-coverage updated for diagnostic surfaces. Cache cleanup complete.",
+  "observation": "Font grammar audit diagnostic (2026-05-26): 0/12 surfaces define --font-serif or --font-sans in :root. ui-serif used as bare identifier (no CSS definition) by 7 warm-paper surfaces. 4 surfaces use Georgia directly. ui-serif/Georgia-direct split is token naming inconsistency, not addressable drift. Serif/sans heading split = family signature. creator-font-grammar-audit.html phenotype documents findings.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -671,6 +671,16 @@
         "bun print:render -- examples/creator-ink-family-diagnostic.html (3 pages, 754ms)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (informational: diagnostic HTML not in WORKFLOW_INDEX — intentional for diagnostic phenotypes)"
+      ]
+    },
+    {
+      "id": "creator-font-grammar-audit-route",
+      "selection": "retained",
+      "retained_as": "Font grammar audit diagnostic: 0/12 surfaces define --font-serif or --font-sans in :root. ui-serif used as identifier by 7 surfaces but has no CSS definition. Georgia-direct vs ui-serif-wrapper is 4 vs 7 split — not addressable drift but token naming inconsistency. Serif/sans split is family signature.",
+      "proof": [
+        "bun measure:check -- examples/creator-font-grammar-audit.html (1684x1191 PASS)",
+        "bun print:render -- examples/creator-font-grammar-audit.html (1 page, 735ms PASS)",
+        "bun creator:mutation-check (PASS)"
       ]
     }
   ],
