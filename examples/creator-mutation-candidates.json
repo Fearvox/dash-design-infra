@@ -1,5 +1,5 @@
 {
-  "observation": "After --line alignment on family-dna (rgba(244,234,214,0.12) → rgba(21,18,14,0.18)), warm-paper family --line converges from 8→7 distinct values. family-dna is now at warm-paper consensus. Remaining --line drift: dark-industrial surfaces (browser-demo #294148, remotion-scene #394150), creative-hybrid (p5-sketch #35584c, manim-scene rgba(248,241,223,0.2)), touchdesigner-tox (rgba(102,227,255,.26)) — all intentional family divergence. Winner: creator-family-dna-line-align-route.",
+  "observation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) shipped prior slices. --ink family signature confirmed (warm-paper converged on #15120e, dark-industrial #111318 family signature, creative-hybrid intentional). Type size tokenization requires design decision — deferred. Next: explore font-stack reference hygiene across surfaces.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,26 +16,9 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
       "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
-    },
-    {
-      "id": "creator-ink-token-family-explore-route",
-      "axis": "visual grammar",
-      "observation": "--ink has 4 distinct values across surfaces: #15120e (warm-paper consensus, 10 surfaces), #111318 (dark-industrial, 2), #111827 (manim-scene), #171713 (p5-sketch). Warm-paper family converged. Explore whether dark-industrial ink values can converge toward a single --ink value without breaking family signature.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Dark-industrial surfaces may use #111318 intentionally for industrial depth — audit intent before replacing.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotype: audit --ink family signature across dark-industrial vs warm-paper consensus. Confirm whether #111318 on browser-demo and remotion-scene is intentional divergence or addressable drift.",
-      "phenotype": "Diagnostic phenotype exploring --ink family convergence pattern."
     },
     {
       "id": "creator-type-stack-normalize-v2",
@@ -53,9 +36,26 @@
       "selection": "candidate",
       "mutation": "Verify font-stack fallback hygiene: ensure all surfaces use consistent var(--font-sans) reference or agreed system-ui fallback without private per-surface overrides.",
       "phenotype": "Diagnostic phenotype for font-stack consistency check."
+    },
+    {
+      "id": "creator-ink-family-doc-route",
+      "axis": "visual grammar",
+      "observation": "Diagnostic confirmed --ink is a family signature: warm-paper #15120e on 9 surfaces, dark-industrial #111318 on 2 surfaces, creative-hybrid intentionally diverged. No addressable drift. Family signature confirmed — deselect candidate.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 4,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Diagnostic complete. Family signature confirmed. No surface edits possible.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirms --ink family signature. Add to CREATOR_EVOLUTION_ENGINE.md retained mutations. Promote to retained_routes. Next candidate: type-stack-normalize-route.",
+      "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     }
   ],
-  "winner": "creator-ink-token-family-explore-route",
+  "winner": "creator-type-stack-normalize-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -659,6 +659,17 @@
       "proof": [
         "bun measure:check -- examples/creator-muted-surface-diagnostic.html",
         "bun print:render -- examples/creator-muted-surface-diagnostic.html /tmp/creator-muted-surface-diagnostic.pdf --canvas=1684x1191"
+      ]
+    },
+    {
+      "id": "creator-ink-token-family-explore-route",
+      "selection": "retained",
+      "retained_as": "creator-ink-token-family-explore-route: --ink family signature diagnostic. Warm-paper #15120e on 9 surfaces, dark-industrial #111318 on 2 surfaces, creative-hybrid intentionally diverged. Zero warm-paper addressable drift. No surface edits needed. Family signature confirmed.",
+      "proof": [
+        "bun measure:check -- examples/creator-ink-family-diagnostic.html (1684x1191 fits)",
+        "bun print:render -- examples/creator-ink-family-diagnostic.html (3 pages, 754ms)",
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (informational: diagnostic HTML not in WORKFLOW_INDEX — intentional for diagnostic phenotypes)"
       ]
     }
   ],
