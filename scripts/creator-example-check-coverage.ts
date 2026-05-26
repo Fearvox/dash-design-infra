@@ -23,6 +23,12 @@ const KNOWN_MAPPINGS: Record<string, string> = {
   'creator-poster-surface': 'creator:poster-check',
   'creator-prompt-dna-adapter': 'creator:prompt-dna-check',
   'creator-frontier-capsule': 'creator:capsule-check',
+  'creator-muted-surface-diagnostic': 'creator:surface-consistency',
+  'creator-type-size-audit': 'creator:surface-consistency',
+  'creator-bg-token-diagnostic': 'creator:surface-consistency',
+  'creator-ink-family-diagnostic': 'creator:surface-consistency',
+  'creator-radius-token-audit': 'creator:surface-consistency',
+  'creator-family-dna': 'creator:family-dna-check',
 };
 
 function fail(message: string): never {
@@ -110,6 +116,8 @@ const infraSkip = new Set([
   'creator:playwright-health-check', 'creator:agent-context-health',
   'creator:contact-sheet-check', 'creator:skill-package-check',
   'creator:example-check-coverage', 'creator:post-check-coverage',
+  'creator:regression-duration', 'creator:measure-print-cache',
+  'creator:cache-integrity', 'creator:surface-consistency',
 ]);
 
 const expectedScripts = new Set(mappings.map((m) => m.expectedScript));
