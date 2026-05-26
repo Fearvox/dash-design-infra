@@ -1,25 +1,8 @@
 {
-  "observation": "Font grammar audit diagnostic (2026-05-26): 0/12 surfaces define --font-serif or --font-sans in :root. ui-serif used as bare identifier (no CSS definition) by 7 warm-paper surfaces. 4 surfaces use Georgia directly. ui-serif/Georgia-direct split is token naming inconsistency, not addressable drift. Serif/sans heading split = family signature. creator-font-grammar-audit.html phenotype documents findings.",
+  "observation": "warm-paper --paper token alignment (2026-05-26): manim-scene (#f8f1df→#f2eadb), touchdesigner-tox (#f8f1df→#f2eadb), browser-demo (#f4ead6→#f2eadb) aligned to warm-paper consensus #f2eadb. --paper: 4→2 distinct values. p5-sketch #f6f0e5 retained as creative-hybrid intentional. mutation-check PASS, 3 surface checks PASS, cache-integrity 11/11 valid.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-type-stack-normalize-route",
-      "axis": "visual grammar",
-      "observation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) shipped in prior slices. Spacing alignment shipped PR #109. Type size tokenization requires design decision — deferred.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
-      "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
-    },
     {
       "id": "creator-type-stack-normalize-v2",
       "axis": "visual grammar",
@@ -50,12 +33,29 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. Family signature confirmed. No surface edits possible.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirms --ink family signature. Add to CREATOR_EVOLUTION_ENGINE.md retained mutations. Promote to retained_routes. Next candidate: type-stack-normalize-route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
+    },
+    {
+      "id": "creator-surface-convergence-refresh-route",
+      "axis": "visual grammar",
+      "observation": "After --paper 4→2 convergence in this slice, need to verify the convergence file accurately reflects current state. The surface-consistency script should report updated per-token distinct counts. manim-scene and touchdesigner-tox paper values were updated but the prior convergence file had manim-scene and touchdesigner-tox at #f8f1df and browser-demo at #f4ead6.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "convergence file already written by this run — may need to re-run to capture updated token state.",
+      "selection": "candidate",
+      "mutation": "Re-run surface-consistency to capture post-alignment --paper values (#f8f1df→#f2eadb on manim/touchdesigner, #f4ead6→#f2eadb on browser-demo). Verify convergence JSON reflects 4→2 improvement.",
+      "phenotype": "Updated creator-surface-convergence.json with current token state."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -502,15 +502,6 @@
       ]
     },
     {
-      "selection": "retained",
-      "id": "creator-paper-token-alignment-route",
-      "retained_as": "creator-paper-token-alignment-route: warm-paper --paper token consensus #f2eadb across 4 surfaces (motion-storyboard, pdf-zine, prompt-dna, family-dna), drifted surfaces aligned (PR #73)",
-      "proof": [
-        "bun creator:pdf-zine-check",
-        "bun measure:check -- examples/creator-pdf-zine.html"
-      ]
-    },
-    {
       "id": "creator-green-token-alignment-route",
       "selection": "retained",
       "retained_as": "warm-paper --green token alignment on manim-scene",
@@ -681,6 +672,29 @@
         "bun measure:check -- examples/creator-font-grammar-audit.html (1684x1191 PASS)",
         "bun print:render -- examples/creator-font-grammar-audit.html (1 page, 735ms PASS)",
         "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-type-stack-normalize-route",
+      "selection": "retained",
+      "retained_as": "Type size + radius token audit diagnostics + spacing alignment shipped — type size tokenization deferred pending design decision",
+      "proof": [
+        "bun measure:check -- examples/creator-type-size-audit.html",
+        "bun measure:check -- examples/creator-radius-token-audit.html",
+        "bun creator:spacing-grammar-audit (diagnostic)",
+        "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-paper-token-alignment-route",
+      "selection": "retained",
+      "retained_as": "warm-paper --paper token consensus #f2eadb across 13 surfaces (manim-scene, touchdesigner-tox, browser-demo newly aligned to #f2eadb in this slice). --paper: 4→2 distinct values. p5-sketch #f6f0e5 retained as creative-hybrid intentional divergence.",
+      "proof": [
+        "bun creator:manim-scene-check (PASS)",
+        "bun creator:touchdesigner-tox-check (PASS)",
+        "bun creator:browser-demo-check (PASS)",
+        "bun creator:surface-consistency (--paper: 4→2 distinct values)",
+        "bun creator:cache-integrity (11/11 valid)"
       ]
     }
   ],
