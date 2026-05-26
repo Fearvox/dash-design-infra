@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>creator-muted-surface-diagnostic — DASH Visual Grammar Audit</title>
+  <style>
+    :root {
+      --paper: #f2eadb;
+      --ink: #15120e;
+      --bg: #0b1114;
+      --muted: #6f6659;
+      --space-4: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    .page { display: block; max-width: 1684px; min-height: 1191px; overflow: hidden; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--paper);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: var(--space-4);
+    }
+    .probe {
+      border: 1px solid rgba(21,18,14,0.18);
+      padding: calc(var(--space-4) * 1.5);
+      margin-bottom: var(--space-4);
+      max-width: 1200px;
+    }
+    h1 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,234,219,0.4);
+      margin-bottom: var(--space-4);
+      border-bottom: 1px solid rgba(21,18,14,0.18);
+      padding-bottom: var(--space-4);
+    }
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(242,234,219,0.35);
+      margin: calc(var(--space-4) * 2) 0 var(--space-4);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th {
+      text-align: left;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(242,234,219,0.3);
+      border-bottom: 1px solid rgba(21,18,14,0.18);
+      padding: var(--space-4) var(--space-4) var(--space-4) 0;
+    }
+    td {
+      padding: 10px var(--space-4) 10px 0;
+      border-bottom: 1px solid rgba(21,18,14,0.1);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    .swatch {
+      display: inline-block;
+      width: 32px;
+      height: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .hex {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      color: rgba(242,234,219,0.5);
+      font-size: 11px;
+    }
+    .family-badge {
+      display: inline-block;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border: 1px solid;
+    }
+    .warm-paper .family-badge { border-color: rgba(196,122,31,0.4); color: #c47a1f; }
+    .dark-industrial .family-badge { border-color: rgba(142,184,255,0.4); color: #8cb8ff; }
+    .creative-hybrid .family-badge { border-color: rgba(155,214,173,0.4); color: #9bd6ad; }
+    .consensus-row td { background: rgba(196,122,31,0.04); }
+    .verdict {
+      background: rgba(21,18,14,0.3);
+      padding: var(--space-4);
+      margin-top: calc(var(--space-4) * 2);
+      max-width: 1200px;
+    }
+    .verdict-line {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: rgba(242,234,219,0.6);
+      line-height: 2;
+    }
+    .verdict-line strong { color: rgba(242,234,219,0.85); }
+    .convergence-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(21,18,14,0.18);
+      margin-top: var(--space-4);
+      max-width: 1200px;
+    }
+    .stat-block {
+      background: var(--bg);
+      padding: var(--space-4);
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+    }
+    .stat-label {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,234,219,0.3);
+      margin-top: 4px;
+    }
+    .finding {
+      font-size: 11px;
+      color: rgba(242,234,219,0.55);
+      line-height: 1.8;
+      margin-top: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+  <div class="page"></div>
+  <div class="probe">
+    <h1>DASH Visual Grammar Audit — --muted Token Diagnostic</h1>
+    <div class="convergence-summary">
+      <div class="stat-block">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Distinct Values</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">10</div>
+        <div class="stat-label">Warm-Paper Surfaces at Consensus</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Outlier Surfaces (Family Signature)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">family</div>
+        <div class="stat-label">Signature Type</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Consensus — Warm-Paper Family</div>
+  <div class="probe">
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Consensus Value</th>
+          <th>Surfaces</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="consensus-row">
+          <td><span class="swatch" style="background:#6f6659;"></span>--muted</td>
+          <td><span class="hex">#6f6659</span></td>
+          <td>family-dna, frontier-capsule, motion-storyboard, pdf-zine, poster-surface, prompt-dna-adapter, social-card, creator-bg-token-diagnostic.html, creator-radius-token-audit.html, creator-type-size-audit.html</td>
+          <td>10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">Outliers — Family Signature (Not Addressable Drift)</div>
+  <div class="probe">
+    <table>
+      <thead>
+        <tr>
+          <th>Family</th>
+          <th>Surface</th>
+          <th>Value</th>
+          <th>Visual Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="dark-industrial">
+          <td><span class="family-badge">dark-industrial</span></td>
+          <td>creator-browser-demo.html</td>
+          <td><span class="swatch" style="background:#94a69f;"></span><span class="hex">#94a69f</span></td>
+          <td>Muted teal-grey — industrial monitoring, matrix data feel</td>
+        </tr>
+        <tr class="dark-industrial">
+          <td><span class="family-badge">dark-industrial</span></td>
+          <td>creator-remotion-scene.html</td>
+          <td><span class="swatch" style="background:#7a7164;"></span><span class="hex">#7a7164</span></td>
+          <td>Warm grey-brown — timeline/sequence neutral tone</td>
+        </tr>
+        <tr class="dark-industrial">
+          <td><span class="family-badge">dark-industrial</span></td>
+          <td>creator-touchdesigner-tox.html</td>
+          <td><span class="swatch" style="background:#7ea0ac;"></span><span class="hex">#7ea0ac</span></td>
+          <td>Muted cyan-grey — node/network, twozero live-viz</td>
+        </tr>
+        <tr class="creative-hybrid">
+          <td><span class="family-badge">creative-hybrid</span></td>
+          <td>creator-manim-scene.html</td>
+          <td><span class="swatch" style="background:#8b9ab1;"></span><span class="hex">#8b9ab1</span></td>
+          <td>Cool blue-grey — explainer, mathematical clarity</td>
+        </tr>
+        <tr class="creative-hybrid">
+          <td><span class="family-badge">creative-hybrid</span></td>
+          <td>creator-p5-sketch.html</td>
+          <td><span class="swatch" style="background:#6f6a5f;"></span><span class="hex">#6f6a5f</span></td>
+          <td>Dark warm grey — generative code, creative-hybrid palette</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-line"><strong>Finding:</strong> --muted family signature confirmed, not addressable drift.</div>
+    <div class="verdict-line"><strong>Warm-paper consensus:</strong> #6f6659 on 10 surfaces — fully converged within family.</div>
+    <div class="verdict-line"><strong>Outliers:</strong> 5 surfaces — each uses a distinct --muted value that maps to its visual family role (industrial monitoring, timeline, live-viz, explainer, generative code).</div>
+    <div class="verdict-line"><strong>Action:</strong> No surface edits. --muted convergence is complete for warm-paper family. Dark-industrial and creative-hybrid divergence is intentional family grammar.</div>
+    <div class="finding">Next token for convergence: --ink (4 distinct values, warm-paper consensus #15120e on 10 surfaces, dark-industrial outliers browser-demo + remotion-scene #111318, manim-scene #111827, p5-sketch #171713 — all family signatures).</div>
+  </div>
+</body>
+</html>

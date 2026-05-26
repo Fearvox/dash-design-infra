@@ -21,23 +21,6 @@
       "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
     },
     {
-      "id": "creator-muted-surface-explore-route",
-      "axis": "visual grammar",
-      "observation": "convergence.json shows --muted has 6 distinct values (warm-paper consensus #6f6659 on 10 surfaces). Single-value outliers: browser-demo #94a69f, manim-scene #8b9ab1, p5-sketch #6f6a5f, remotion-scene #7a7164, touchdesigner-tox #7ea0ac. All are dark-industrial or creative-hybrid intentional divergence. Warm-paper surfaces already converged.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Warm-paper surfaces already at consensus — --muted divergence is family signature in dark-industrial and creative-hybrid surfaces.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotype: audit --muted family signature across dark-industrial and creative-hybrid surfaces vs warm-paper consensus. Confirm intent vs drift.",
-      "phenotype": "Diagnostic phenotype exploring --muted family convergence pattern."
-    },
-    {
       "id": "creator-ink-token-family-explore-route",
       "axis": "visual grammar",
       "observation": "--ink has 4 distinct values across surfaces: #15120e (warm-paper consensus, 10 surfaces), #111318 (dark-industrial, 2), #111827 (manim-scene), #171713 (p5-sketch). Warm-paper family converged. Explore whether dark-industrial ink values can converge toward a single --ink value without breaking family signature.",
@@ -50,12 +33,29 @@
         "minimal_core": 6
       },
       "risk": "Dark-industrial surfaces may use #111318 intentionally for industrial depth — audit intent before replacing.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype: audit --ink family signature across dark-industrial vs warm-paper consensus. Confirm whether #111318 on browser-demo and remotion-scene is intentional divergence or addressable drift.",
       "phenotype": "Diagnostic phenotype exploring --ink family convergence pattern."
+    },
+    {
+      "id": "creator-type-stack-normalize-v2",
+      "axis": "visual grammar",
+      "observation": "Type stack audit from prior slices: ui-sans-serif system-ui consensus across all 11 surfaces after PR #98. Remaining opportunity: verify all surfaces correctly reference var(--font-sans) if defined, or use the agreed fallback stack. Diagnostic needed.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "Type stack changes may affect visual hierarchy across surfaces.",
+      "selection": "candidate",
+      "mutation": "Verify font-stack fallback hygiene: ensure all surfaces use consistent var(--font-sans) reference or agreed system-ui fallback without private per-surface overrides.",
+      "phenotype": "Diagnostic phenotype for font-stack consistency check."
     }
   ],
-  "winner": "creator-muted-surface-explore-route",
+  "winner": "creator-ink-token-family-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -650,6 +650,15 @@
         "Surface inspection: poster, pdf-zine, social-card, motion-storyboard, family-dna all at warm-paper consensus",
         "Dark-industrial surfaces use --line as family signature (browser-demo #294148, remotion-scene #394150, touchdesigner-tox rgba(102,227,255,.26))",
         "creator:mutation-check PASS (3 candidates, 1 selected)"
+      ]
+    },
+    {
+      "id": "creator-muted-surface-explore-route",
+      "selection": "retained",
+      "retained_as": "Visual grammar --muted family signature diagnostic",
+      "proof": [
+        "bun measure:check -- examples/creator-muted-surface-diagnostic.html",
+        "bun print:render -- examples/creator-muted-surface-diagnostic.html /tmp/creator-muted-surface-diagnostic.pdf --canvas=1684x1191"
       ]
     }
   ],
