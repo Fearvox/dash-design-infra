@@ -33,6 +33,8 @@ const SURFACE_CHECK_MAP: Record<string, string> = {
   'creator-bg-token-diagnostic': 'creator:surface-consistency',
   'creator-radius-token-audit':  'creator:surface-consistency',
   'creator-family-dna':         'creator:family-dna-check',
+  'creator-muted-surface-diagnostic': 'creator:surface-consistency',
+  'creator-ink-family-diagnostic': 'creator:surface-consistency',
 };
 
 interface SurfaceResult {
