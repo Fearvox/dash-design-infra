@@ -1,25 +1,8 @@
 {
-  "observation": "Font-serif whitespace normalized across warm-paper family (PR #121). --font-serif consensus form: ui-serif, Georgia, Cambria, \"Times New Roman\", serif. motion-storyboard aligned. Next: font-sans whitespace audit.",
+  "observation": "Warm-paper surfaces now gain --font-sans token layer. All 5 warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) define both --font-serif and --font-sans in :root with var() references in body CSS. ui-sans-serif bare identifier now defined as CSS token. Font grammar normalization complete for warm-paper family.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-type-stack-normalize-route",
-      "axis": "visual grammar",
-      "observation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) shipped in prior slices. Spacing alignment shipped PR #109. Type size tokenization requires design decision — deferred.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
-      "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
-    },
     {
       "id": "creator-type-stack-normalize-v2",
       "axis": "visual grammar",
@@ -53,9 +36,43 @@
       "selection": "candidate",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
+    },
+    {
+      "id": "creator-surface-convergence-next-route",
+      "axis": "visual grammar",
+      "observation": "Warm-paper font grammar now complete (--font-serif + --font-sans token layers). Next convergence opportunity: spacing-4 participation audit across warm-paper surfaces. All 11 surfaces share --space-4:16px in :root per prior slice (PR #96). Remaining gap: body CSS usage of var(--space-4) vs hardcoded px.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 6,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Spacing convergence already largely complete per prior slices.",
+      "selection": "selected",
+      "mutation": "Audit body CSS usage of --space-4 across all 11 surfaces. Identify surfaces that define --space-4 in :root but still use hardcoded px values for common spacing patterns (gap, padding, margin). No surface edits unless a specific pattern repeats across 3+ surfaces.",
+      "phenotype": "Diagnostic phenotype documents --space-4 :root definition vs body CSS usage gaps."
+    },
+    {
+      "id": "creator-font-sans-sans-serif-complete-route",
+      "axis": "visual grammar",
+      "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 5,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "Non-warm-paper surfaces have intentional family grammar divergence (Georgia-direct, creative-hybrid). Token layer extension may homogenize.",
+      "selection": "candidate",
+      "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
+      "phenotype": "Option A or B with creator verdict."
     }
   ],
-  "winner": "creator-type-stack-normalize-route",
+  "winner": "creator-surface-convergence-next-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -711,6 +728,32 @@
         "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)",
         "bun creator:cache-integrity (14/14 valid)",
         "PR #121 merged"
+      ]
+    },
+    {
+      "id": "creator-type-stack-normalize-route",
+      "selection": "retained",
+      "retained_as": "creator-type-stack-normalize-route: diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization deferred pending design decision. Token stack normalization deferred to font-sans token layer approach.",
+      "proof": [
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (informational warnings only)",
+        "bun measure:check -- examples/creator-type-size-audit.html (1684x1191 fits)",
+        "bun print:render -- examples/creator-type-size-audit.html (2 pages)"
+      ]
+    },
+    {
+      "id": "creator-font-sans-token-layer-route",
+      "selection": "retained",
+      "retained_as": "CSS --font-sans token layer across 5 warm-paper surfaces: adds --font-sans:ui-sans-serif,system-ui,... to :root, replaces hardcoded stack with var(--font-sans). All measure+print 5/5 PASS, 14/14 cache-integrity valid, 18/18 surface-health PASS.",
+      "proof": [
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-social-card.html (1200x630 PASS)",
+        "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-prompt-dna-adapter.html (1684x1191 PASS)",
+        "bun creator:surface-health (18/18 PASS)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:mutation-check (PASS)"
       ]
     }
   ],
