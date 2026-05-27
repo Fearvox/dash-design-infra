@@ -1,5 +1,5 @@
 {
-  "observation": "Warm-paper surfaces --space-4 body CSS usage verified: all 5 warm-paper surfaces already use var(--space-4) where 16px is applicable (poster 4, pdf-zine 1, social-card 3, motion-storyboard 2, prompt-dna 2). Zero hardcoded 16px gap/padding/margin found in warm-paper family. Non-warm-paper surfaces (manim 4, touchdesigner 3, remotion 2) use intentional hardcoded px for layout context. --space-4 token layer participation complete. font-serif/whitespace/sans token layers also complete. Font grammar normalization done. Stalled convergence: all 12 tokens show 0 delta. Diagnostic confirms: spacing grammar opportunity exhausted for warm-paper family.",
+  "observation": "Warm-paper surfaces verified: --font-sans token layer complete on 5/5 warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna-adapter). motion-storyboard had :root --font-sans self-reference var(--font-sans) (circular) while body used hardcoded ui-sans-serif,system-ui,... — fixed by setting --font-sans to proper stack and body to var(--font-sans). --font-serif whitespace normalized (PR #121). All 5 warm-paper surfaces use consistent --font-sans and --font-serif token values and body references. Non-warm-paper surfaces retain intentional family grammar divergence.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -17,8 +17,8 @@
       },
       "risk": "Type stack changes may affect visual hierarchy across surfaces.",
       "selection": "selected",
-      "mutation": "Verify font-stack fallback hygiene: ensure all surfaces use consistent var(--font-sans) reference or agreed system-ui fallback without private per-surface overrides.",
-      "phenotype": "Diagnostic phenotype for font-stack consistency check."
+      "mutation": "Verify and fix --font-sans token layer + body font-family reference consistency across warm-paper surfaces. motion-storyboard had :root --font-sans:var(--font-sans) (circular) + body:ui-sans-serif,system-ui,... (hardcoded). Fixed to --font-sans:ui-sans-serif,system-ui,... + body:var(--font-sans). Completes --font-sans token layer for motion-storyboard (last warm-paper surface without proper token).",
+      "phenotype": "creator-motion-storyboard.html — --font-sans token fixed (var(--font-sans) in body now resolves), measure+print PASS, motion-storyboard-check PASS."
     },
     {
       "id": "creator-ink-family-doc-route",
