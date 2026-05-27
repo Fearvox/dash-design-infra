@@ -1,5 +1,5 @@
 {
-  "observation": "Warm-paper surfaces now gain --font-sans token layer. All 5 warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) define both --font-serif and --font-sans in :root with var() references in body CSS. ui-sans-serif bare identifier now defined as CSS token. Font grammar normalization complete for warm-paper family.",
+  "observation": "Warm-paper surfaces --space-4 body CSS usage verified: all 5 warm-paper surfaces already use var(--space-4) where 16px is applicable (poster 4, pdf-zine 1, social-card 3, motion-storyboard 2, prompt-dna 2). Zero hardcoded 16px gap/padding/margin found in warm-paper family. Non-warm-paper surfaces (manim 4, touchdesigner 3, remotion 2) use intentional hardcoded px for layout context. --space-4 token layer participation complete. font-serif/whitespace/sans token layers also complete. Font grammar normalization done. Stalled convergence: all 12 tokens show 0 delta. Diagnostic confirms: spacing grammar opportunity exhausted for warm-paper family.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 5
       },
       "risk": "Type stack changes may affect visual hierarchy across surfaces.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Verify font-stack fallback hygiene: ensure all surfaces use consistent var(--font-sans) reference or agreed system-ui fallback without private per-surface overrides.",
       "phenotype": "Diagnostic phenotype for font-stack consistency check."
     },
@@ -38,23 +38,6 @@
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
     {
-      "id": "creator-surface-convergence-next-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper font grammar now complete (--font-serif + --font-sans token layers). Next convergence opportunity: spacing-4 participation audit across warm-paper surfaces. All 11 surfaces share --space-4:16px in :root per prior slice (PR #96). Remaining gap: body CSS usage of var(--space-4) vs hardcoded px.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Spacing convergence already largely complete per prior slices.",
-      "selection": "selected",
-      "mutation": "Audit body CSS usage of --space-4 across all 11 surfaces. Identify surfaces that define --space-4 in :root but still use hardcoded px values for common spacing patterns (gap, padding, margin). No surface edits unless a specific pattern repeats across 3+ surfaces.",
-      "phenotype": "Diagnostic phenotype documents --space-4 :root definition vs body CSS usage gaps."
-    },
-    {
       "id": "creator-font-sans-sans-serif-complete-route",
       "axis": "visual grammar",
       "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
@@ -72,7 +55,7 @@
       "phenotype": "Option A or B with creator verdict."
     }
   ],
-  "winner": "creator-surface-convergence-next-route",
+  "winner": "creator-type-stack-normalize-v2",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -753,6 +736,16 @@
         "bun measure:check -- examples/creator-prompt-dna-adapter.html (1684x1191 PASS)",
         "bun creator:surface-health (18/18 PASS)",
         "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-surface-convergence-next-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper --space-4 body CSS audit diagnostic: confirms var(--space-4) usage already complete across warm-paper family (0 hardcoded 16px gap/padding/margin). Token layer participation verified on all 11 surfaces. All 12 convergence tokens stalled (0 delta). Spacing grammar opportunity exhausted for warm-paper family.",
+      "proof": [
+        "bun creator:surface-consistency (12/12 tokens stalled, 0 delta)",
+        "node -e spacing audit (0 hardcoded 16px in warm-paper body CSS)",
         "bun creator:mutation-check (PASS)"
       ]
     }

@@ -1,32 +1,32 @@
 {
-  "timestamp": "2026-05-26T21:28:32.339Z",
-  "totalMs": 14458,
+  "timestamp": "2026-05-27T20:17:47.262Z",
+  "totalMs": 9841,
   "passed": 27,
   "failed": 4,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1263
+      "durationMs": 1321
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 701
+      "durationMs": 848
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1243
+      "durationMs": 965
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 35
+      "durationMs": 34
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 19
+      "durationMs": 76
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 403
+      "durationMs": 572
     },
     {
       "name": "creator:script-health",
@@ -38,15 +38,15 @@
     },
     {
       "name": "creator:workflow-gate-health",
-      "durationMs": 9946
+      "durationMs": 4717
     },
     {
       "name": "creator:example-check-coverage",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:post-check-coverage",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:regression-duration",
@@ -58,43 +58,43 @@
     },
     {
       "name": "creator:cache-integrity",
-      "durationMs": 21
+      "durationMs": 19
     },
     {
       "name": "creator:surface-consistency",
-      "durationMs": 23
+      "durationMs": 22
     },
     {
       "name": "creator:family-dna-check",
-      "durationMs": 18
+      "durationMs": 19
     },
     {
       "name": "creator:capsule-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:evolution-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:mutation-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:poster-check",
       "durationMs": 17
     },
     {
-      "name": "creator:prompt-dna-check",
+      "name": "creator:evolution-check",
+      "durationMs": 17
+    },
+    {
+      "name": "creator:mutation-check",
+      "durationMs": 17
+    },
+    {
+      "name": "creator:poster-check",
       "durationMs": 18
     },
     {
-      "name": "creator:motion-storyboard-check",
+      "name": "creator:prompt-dna-check",
       "durationMs": 19
     },
     {
+      "name": "creator:motion-storyboard-check",
+      "durationMs": 18
+    },
+    {
       "name": "creator:social-card-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:pdf-zine-check",
@@ -102,7 +102,7 @@
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 21
+      "durationMs": 22
     },
     {
       "name": "creator:remotion-scene-check",
@@ -114,11 +114,11 @@
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:skill-package-check",
@@ -126,7 +126,7 @@
     },
     {
       "name": "hackathon:score",
-      "durationMs": 417
+      "durationMs": 885
     }
   ]
 }
