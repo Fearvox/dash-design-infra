@@ -703,7 +703,7 @@
       ]
     },
     {
-      "id": "creator-font-serif-whitespace-align",
+      "id": "creator-font-serif-whitespace-normalize-route",
       "selection": "retained",
       "retained_as": "font-serif whitespace normalization: motion-storyboard --font-serif aligned to warm-paper consensus form (space after colon). All 5 warm-paper surfaces now share identical --font-serif value. Whitespace-only cosmetic normalization, near-zero visual risk.",
       "proof": [
