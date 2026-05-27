@@ -1,5 +1,5 @@
 {
-  "observation": "Font grammar audit diagnostic (2026-05-26) confirmed: 0/12 surfaces define --font-serif in :root. ui-serif bare identifier used by 7 warm-paper surfaces. This slice adds --font-serif token to :root across 5 warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna-adapter) and replaces all hardcoded ui-serif,Georgia,... stacks with var(--font-serif). Eliminates naming inconsistency for warm-paper serif heading stack.",
+  "observation": "Font-serif whitespace normalized across warm-paper family (PR #121). --font-serif consensus form: ui-serif, Georgia, Cambria, \"Times New Roman\", serif. motion-storyboard aligned. Next: font-sans whitespace audit.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic phenotypes delivered. Spacing alignment shipped PR #109. Type size tokenization deferred pending design decision.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotypes (type-size-audit.html, radius-token-audit.html) + partial spacing alignment (PR #109). Type size tokenization requires design decision.",
       "phenotype": "creator-type-size-audit.html + creator-radius-token-audit.html diagnostic phenotypes; --space-4 extended to family-dna + frontier-capsule."
     },
@@ -53,26 +53,9 @@
       "selection": "candidate",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
-    },
-    {
-      "id": "creator-font-serif-whitespace-align",
-      "axis": "visual grammar",
-      "observation": "surface-consistency shows --font-serif has 2 distinct values: ui-serif, Georgia,... (space after comma) vs ui-serif,Georgia,... (no space). All 5 warm-paper surfaces define --font-serif in :root. motion-storyboard is the outlier (no space after commas). Alignment: add space after commas in motion-storyboard :root --font-serif to match the consensus form.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 5,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Whitespace-only change. Near-zero visual risk. Alignment is cosmetic normalization.",
-      "selection": "selected",
-      "mutation": "Normalize --font-serif whitespace in motion-storyboard :root. Replace ui-serif,Georgia,Cambria,\"Times New Roman\",serif with ui-serif, Georgia, Cambria, \"Times New Roman\", serif to match the consensus form across 4 other warm-paper surfaces. No body CSS changes, no visual delta.",
-      "phenotype": "creator-motion-storyboard.html :root --font-serif whitespace aligned."
     }
   ],
-  "winner": "creator-font-serif-whitespace-align",
+  "winner": "creator-type-stack-normalize-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -717,6 +700,17 @@
         "bun measure:check -- examples/creator-prompt-dna-adapter.html (1684x1191 PASS)",
         "bun creator:measure-print-cache -- --no-cache (14/14 PASS)",
         "bun creator:cache-integrity (14/14 valid after cache refresh)"
+      ]
+    },
+    {
+      "id": "creator-font-serif-whitespace-align",
+      "selection": "retained",
+      "retained_as": "font-serif whitespace normalization: motion-storyboard --font-serif aligned to warm-paper consensus form (space after colon). All 5 warm-paper surfaces now share identical --font-serif value. Whitespace-only cosmetic normalization, near-zero visual risk.",
+      "proof": [
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "PR #121 merged"
       ]
     }
   ],
