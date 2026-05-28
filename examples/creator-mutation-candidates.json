@@ -772,6 +772,18 @@
         "bun creator:pdf-zine-check (PASS)",
         "bun creator:prompt-dna-check (PASS)"
       ]
+    },
+    {
+      "id": "creator-font-sans-circular-fix-comprehensive-route",
+      "selection": "retained",
+      "retained_as": "CSS --font-sans circular reference fix across 4 remaining warm-paper surfaces; fixes poster-surface, social-card, pdf-zine, prompt-dna-adapter :root --font-sans:var(--font-sans) → proper --font-sans:ui-sans-serif,system-ui,...; also fixes social-card .stamp span hardcoded font-family → var(--font-sans). All 5 warm-paper surfaces now have correct --font-sans token layer.",
+      "proof": [
+        "bun creator:poster-check",
+        "bun creator:social-card-check",
+        "bun creator:pdf-zine-check",
+        "bun creator:prompt-dna-check",
+        "bun measure:check -- examples/creator-poster-surface.html"
+      ]
     }
   ],
   "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
