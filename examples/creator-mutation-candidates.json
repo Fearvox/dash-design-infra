@@ -1,25 +1,8 @@
 {
-  "observation": "Warm-paper surfaces verified: --font-sans token layer complete on 5/5 warm-paper surfaces (poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna-adapter). motion-storyboard had :root --font-sans self-reference var(--font-sans) (circular) while body used hardcoded ui-sans-serif,system-ui,... — fixed by setting --font-sans to proper stack and body to var(--font-sans). --font-serif whitespace normalized (PR #121). All 5 warm-paper surfaces use consistent --font-sans and --font-serif token values and body references. Non-warm-paper surfaces retain intentional family grammar divergence.",
+  "observation": "Warm-paper --font-sans token layer: all 5 surfaces had :root --font-sans:var(--font-sans) circular references. motion-storyboard fixed in prior slice (PR #125). This slice fixes the same circular pattern on poster-surface, social-card, pdf-zine, prompt-dna-adapter (4 surfaces). All 5 warm-paper surfaces now have proper --font-sans:ui-sans-serif,system-ui,... in :root and var(--font-sans) in body CSS. social-card .stamp span hardcoded font-family also converted to var(--font-sans). --font-serif whitespace normalized (PR #121). --font-sans token layer now complete and correct across all warm-paper surfaces.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-type-stack-normalize-v2",
-      "axis": "visual grammar",
-      "observation": "Type stack audit from prior slices: ui-sans-serif system-ui consensus across all 11 surfaces after PR #98. Remaining opportunity: verify all surfaces correctly reference var(--font-sans) if defined, or use the agreed fallback stack. Diagnostic needed.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 4,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Type stack changes may affect visual hierarchy across surfaces.",
-      "selection": "selected",
-      "mutation": "Verify and fix --font-sans token layer + body font-family reference consistency across warm-paper surfaces. motion-storyboard had :root --font-sans:var(--font-sans) (circular) + body:ui-sans-serif,system-ui,... (hardcoded). Fixed to --font-sans:ui-sans-serif,system-ui,... + body:var(--font-sans). Completes --font-sans token layer for motion-storyboard (last warm-paper surface without proper token).",
-      "phenotype": "creator-motion-storyboard.html — --font-sans token fixed (var(--font-sans) in body now resolves), measure+print PASS, motion-storyboard-check PASS."
-    },
     {
       "id": "creator-ink-family-doc-route",
       "axis": "visual grammar",
@@ -53,9 +36,26 @@
       "selection": "candidate",
       "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
       "phenotype": "Option A or B with creator verdict."
+    },
+    {
+      "id": "creator-font-sans-non-warm-paper-extend-route",
+      "axis": "visual grammar",
+      "observation": "Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene, manim-scene, touchdesigner-tox) use hardcoded ui-sans-serif,system-ui,... in body but have no :root --font-sans definition. These are family signatures for dark-industrial and creative-hybrid. Token layer extension possible but may homogenize. Recommend: deselect as intentional family grammar divergence, no addressable drift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 5,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "Non-warm-paper surfaces have intentional family grammar divergence. Token extension may homogenize creative roles.",
+      "selection": "selected",
+      "mutation": "Diagnostic: confirm non-warm-paper surfaces use hardcoded font stacks as intentional family grammar (Georgia-direct, dark-industrial). No surface edits needed — warm-paper family grammar complete.",
+      "phenotype": "Diagnostic phenotype confirming non-warm-paper family grammar divergence for --font-sans token."
     }
   ],
-  "winner": "creator-type-stack-normalize-v2",
+  "winner": "creator-font-sans-non-warm-paper-extend-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -747,6 +747,30 @@
         "bun creator:surface-consistency (12/12 tokens stalled, 0 delta)",
         "node -e spacing audit (0 hardcoded 16px in warm-paper body CSS)",
         "bun creator:mutation-check (PASS)"
+      ]
+    },
+    {
+      "id": "creator-font-sans-circular-fix-route",
+      "selection": "retained",
+      "retained_as": "warm-paper --font-sans circular reference fix across 5 surfaces",
+      "proof": [
+        "bun creator:poster-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:prompt-dna-check (PASS)",
+        "bun creator:cache-integrity (14/14 valid)"
+      ]
+    },
+    {
+      "id": "creator-type-stack-normalize-v2",
+      "selection": "retained",
+      "retained_as": "warm-paper --font-sans token layer consistency fix",
+      "proof": [
+        "bun creator:motion-storyboard-check (PASS)",
+        "bun creator:poster-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:prompt-dna-check (PASS)"
       ]
     }
   ],
