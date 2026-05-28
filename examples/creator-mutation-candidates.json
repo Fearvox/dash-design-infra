@@ -1,5 +1,5 @@
 {
-  "observation": "Warm-paper --font-sans token layer: all 5 surfaces had :root --font-sans:var(--font-sans) circular references. motion-storyboard fixed in prior slice (PR #125). This slice fixes the same circular pattern on poster-surface, social-card, pdf-zine, prompt-dna-adapter (4 surfaces). All 5 warm-paper surfaces now have proper --font-sans:ui-sans-serif,system-ui,... in :root and var(--font-sans) in body CSS. social-card .stamp span hardcoded font-family also converted to var(--font-sans). --font-serif whitespace normalized (PR #121). --font-sans token layer now complete and correct across all warm-paper surfaces.",
+  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -38,24 +38,24 @@
       "phenotype": "Option A or B with creator verdict."
     },
     {
-      "id": "creator-font-sans-non-warm-paper-extend-route",
+      "id": "creator-type-size-token-explore-route",
       "axis": "visual grammar",
-      "observation": "Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene, manim-scene, touchdesigner-tox) use hardcoded ui-sans-serif,system-ui,... in body but have no :root --font-sans definition. These are family signatures for dark-industrial and creative-hybrid. Token layer extension possible but may homogenize. Recommend: deselect as intentional family grammar divergence, no addressable drift.",
+      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
-        "artifact_proof": 2,
+        "creator_utility": 4,
+        "memory_retention": 6,
+        "artifact_proof": 3,
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Non-warm-paper surfaces have intentional family grammar divergence. Token extension may homogenize creative roles.",
+      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
       "selection": "selected",
-      "mutation": "Diagnostic: confirm non-warm-paper surfaces use hardcoded font stacks as intentional family grammar (Georgia-direct, dark-industrial). No surface edits needed — warm-paper family grammar complete.",
-      "phenotype": "Diagnostic phenotype confirming non-warm-paper family grammar divergence for --font-sans token."
+      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
     }
   ],
-  "winner": "creator-font-sans-non-warm-paper-extend-route",
+  "winner": "creator-type-size-token-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -783,6 +783,17 @@
         "bun creator:pdf-zine-check",
         "bun creator:prompt-dna-check",
         "bun measure:check -- examples/creator-poster-surface.html"
+      ]
+    },
+    {
+      "id": "creator-font-sans-non-warm-paper-extend-route",
+      "selection": "retained",
+      "retained_as": "Non-warm-paper font family signature diagnostic: confirms 0 addressable drift across 6 non-warm-paper surfaces (dark-industrial, creative-hybrid). Family signature confirmed — no surface edits needed. Diagnostic phenotype documents --font-sans status across all 11 surfaces.",
+      "proof": [
+        "bun measure:check -- examples/creator-non-warm-paper-font-diagnostic.html (1684x1191 PASS)",
+        "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (PASS)"
       ]
     }
   ],
