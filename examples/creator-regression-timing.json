@@ -1,48 +1,48 @@
 {
-  "timestamp": "2026-05-27T20:17:47.262Z",
-  "totalMs": 9841,
-  "passed": 27,
-  "failed": 4,
+  "timestamp": "2026-05-28T00:34:32.714Z",
+  "totalMs": 8448,
+  "passed": 26,
+  "failed": 5,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1321
+      "durationMs": 1193
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 848
+      "durationMs": 1057
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 965
+      "durationMs": 926
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 34
+      "durationMs": 45
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 76
+      "durationMs": 73
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 572
+      "durationMs": 400
     },
     {
       "name": "creator:script-health",
-      "durationMs": 18
+      "durationMs": 19
     },
     {
       "name": "creator:orphan-script",
-      "durationMs": 18
+      "durationMs": 19
     },
     {
       "name": "creator:workflow-gate-health",
-      "durationMs": 4717
+      "durationMs": 3929
     },
     {
       "name": "creator:example-check-coverage",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:post-check-coverage",
@@ -54,19 +54,19 @@
     },
     {
       "name": "creator:measure-print-cache",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:cache-integrity",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:surface-consistency",
-      "durationMs": 22
+      "durationMs": 23
     },
     {
       "name": "creator:family-dna-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:capsule-check",
@@ -78,7 +78,7 @@
     },
     {
       "name": "creator:mutation-check",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:poster-check",
@@ -86,7 +86,7 @@
     },
     {
       "name": "creator:prompt-dna-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:motion-storyboard-check",
@@ -102,7 +102,7 @@
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 22
+      "durationMs": 21
     },
     {
       "name": "creator:remotion-scene-check",
@@ -118,7 +118,7 @@
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 18
+      "durationMs": 19
     },
     {
       "name": "creator:skill-package-check",
@@ -126,7 +126,7 @@
     },
     {
       "name": "hackathon:score",
-      "durationMs": 885
+      "durationMs": 401
     }
   ]
 }
