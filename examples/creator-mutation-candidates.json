@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Type size audit diagnostic (2026-05-28): 0/12 surfaces define --text-* tokens in :root. All type sizes hardcoded per-surface (6-11 distinct px values each). ~68 total unique px values across all surfaces. warm-paper surfaces share editorial zine role hierarchy: body 10-14px, display 40-132px — this is a family signature, not addressable drift. Tokenization requires explicit designer input on type scale roles and warm-paper consensus values. No surface edits until designer provides type scale consensus.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -51,8 +51,8 @@
       },
       "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
       "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
-      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+      "mutation": "Diagnostic phenotype: creator-type-size-token-audit.html confirms 0/12 surfaces define --text-* tokens. warm-paper type size role hierarchy (body 10-14px, display 40-132px) is family signature, not drift. No surface edits until designer provides type scale consensus.",
+      "phenotype": "examples/creator-type-size-token-audit.html"
     }
   ],
   "winner": "creator-type-size-token-explore-route",
