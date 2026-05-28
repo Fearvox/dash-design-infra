@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Type size token diagnostic confirmed (2026-05-28): 0/12 surfaces define --text-* tokens in :root. ~68 unique px values, 6-11 per surface. Warm-paper family signature (body 10-14px, display 40-132px) — same role hierarchy, different values. Tokenization requires explicit design decision, not mechanical fix. Diagnostic phenotype (creator-type-size-token-audit.html) confirms: no surface edits possible without design input. Winner stays selected — awaiting design decision on warm-paper type scale.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -51,7 +51,7 @@
       },
       "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
       "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "mutation": "Diagnostic phenotype (creator-type-size-token-audit.html): confirms 0/12 surfaces define --text-* tokens in :root. ~68 unique px values across surfaces. Warm-paper family signature confirmed — same role hierarchy (body/meta/display), different values per creative role. Tokenization blocked by missing design decision. Promote diagnostic to retained_routes, retain this candidate as pending design input.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
     }
   ],
@@ -794,6 +794,15 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-type-size-token-audit-route",
+      "selection": "retained",
+      "retained_as": "Type size token audit diagnostic phenotype — confirms 0/12 surfaces define --text-* tokens, ~68 unique px values, warm-paper family signature (not addressable drift), tokenization blocked by missing design decision (creator-type-size-token-audit.html)",
+      "proof": [
+        "bun measure:check -- examples/creator-type-size-token-audit.html (1684x1191 PASS)",
+        "bun creator:mutation-check (PASS)"
       ]
     }
   ],
