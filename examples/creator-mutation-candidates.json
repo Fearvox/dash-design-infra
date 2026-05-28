@@ -795,6 +795,15 @@
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
       ]
+    },
+    {
+      "id": "creator-type-size-token-audit-route",
+      "selection": "retained",
+      "retained_as": "Type size token audit diagnostic: 0/12 surfaces define --text-* tokens in :root. ~68 unique px values across surfaces. warm-paper surfaces share editorial zine role hierarchy (body 10-14px, display 40-132px) — family signature, not addressable drift. Tokenization requires explicit design decision before alignment. Fixed canvas fits.",
+      "proof": [
+        "bun measure:check -- examples/creator-type-size-token-audit.html --canvas=1684x1191",
+        "bun print:render -- examples/creator-type-size-token-audit.html /tmp/dash-type-size-token-audit.pdf --canvas=1684x1191"
+      ]
     }
   ],
   "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
