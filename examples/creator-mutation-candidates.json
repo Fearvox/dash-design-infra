@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Soft-blue var alignment shipped on poster-surface .memory-rail. memory-01 now uses var(--soft-blue) instead of inline rgba(29,78,216,.10). Grammar-consistent with var(--tone, var(--soft-blue)) fallback chain. Cache-integrity 14/14 VALID. Next: accent family signature diagnostic (4 distinct --accent values across 4 families).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
@@ -38,24 +38,41 @@
       "phenotype": "Option A or B with creator verdict."
     },
     {
-      "id": "creator-type-size-token-explore-route",
+      "id": "creator-accent-family-signature-route",
       "axis": "visual grammar",
-      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
+      "observation": "Diagnostic confirmed --accent is a family signature: 4 distinct hues across 3 families, warm-paper #ffb86b on 9 surfaces, zero addressable drift within families. manim-scene uses --amber (#c47a1f), p5-sketch absent. No surface edits — deselected as stale candidate.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
-      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+      "risk": "Diagnostic phenotype confirms family signature. No surface edits possible. Deselected.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype confirmed: --accent is a family signature. No surface edits. Deselected stale candidate. Next candidate promoted.",
+      "phenotype": "creator-accent-family-signature-diagnostic.html — fixed-canvas 1684x1191 diagnostic showing --accent values and family classifications."
+    },
+    {
+      "id": "creator-surface-token-gap-audit-route",
+      "axis": "visual grammar",
+      "observation": "Aesthetic coherence requires knowing which tokens HAVE converged and which are still diverging. The surface-convergence.json shows 13 diverged tokens. Need systematic audit of which warm-paper tokens have achieved consensus vs. which still have addressable drift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "May overlap with existing diagnostic surfaces. Need deduplication against current diagnostic set.",
+      "selection": "candidate",
+      "mutation": "Surface grep across 11 production surfaces for each warm-paper token (--ink, --line, --muted, --accent, --paper, --amber, --soft-blue, --space-4) to classify: converged at consensus, diverged within family, or family signature. Produce a token-gap summary artifact showing which tokens are safe to align vs. which are intentional family signatures.",
+      "phenotype": "Token gap summary table in creator-surface-convergence.json format, plus an optional creator-token-gap-summary.html diagnostic."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -434,20 +451,6 @@
       ]
     },
     {
-      "id": "creator-accent-token-alignment-route",
-      "selection": "retained",
-      "retained_as": "--accent token alignment: 8 warm-paper + creative-hybrid surfaces to #ffb86b consensus. browser-demo #ff9f6e and frontier-capsule #1d4ed8 intentional. --accent: 3→2 distinct values.",
-      "proof": [
-        "bun creator:poster-check (PASS)",
-        "bun creator:motion-storyboard-check (PASS)",
-        "bun creator:social-card-check (PASS)",
-        "bun creator:pdf-zine-check (PASS)",
-        "bun creator:prompt-dna-check (PASS)",
-        "bun creator:surface-consistency (--accent: 3→2 distinct, warm-paper converges)",
-        "bun creator:cache-integrity (11/11 valid)"
-      ]
-    },
-    {
       "id": "creator-panel-token-alignment-route",
       "axis": "visual grammar",
       "retained": "2026-05-21T08:40:55.738Z",
@@ -794,6 +797,16 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-soft-blue-var-align-route",
+      "selection": "retained",
+      "retained_as": "poster-surface soft-blue token grammar alignment",
+      "proof": [
+        "bun creator:poster-check",
+        "bun measure:check -- examples/creator-poster-surface.html",
+        "bun creator:cache-check"
       ]
     }
   ],

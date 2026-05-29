@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1684, height=1191">
+  <title>--accent family signature diagnostic</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f4f0e6;
+      --text: #1a1714;
+      --rule: rgba(21,18,14,0.18);
+      --muted: #6f6659;
+      --accent-sample: #ffb86b;
+    }
+    body {
+      background: var(--bg);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      width: 1684px;
+      height: 1191px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+    }
+    .page { display: contents; }
+    .sidebar {
+      background: #1a1714;
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,234,214,0.5);
+    }
+    .sidebar h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f2eadb;
+      line-height: 1.3;
+    }
+    .sidebar p {
+      font-size: 13px;
+      color: rgba(244,234,214,0.6);
+      line-height: 1.6;
+    }
+    .verdict {
+      margin-top: auto;
+      padding: 16px;
+      background: rgba(255,184,107,0.12);
+      border-left: 3px solid var(--accent-sample);
+      border-radius: 2px;
+    }
+    .verdict-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(244,234,214,0.4);
+      margin-bottom: 6px;
+    }
+    .verdict-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffb86b;
+      line-height: 1.4;
+    }
+    .main {
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 8px;
+    }
+    .family-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cluster-header {
+      display: grid;
+      grid-template-columns: 140px 1fr 120px;
+      gap: 12px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cluster-header span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .surface-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 120px;
+      gap: 12px;
+      align-items: center;
+      padding: 7px 0;
+    }
+    .surface-name {
+      font-size: 12px;
+      color: var(--text);
+      font-family: ui-monospace, monospace;
+    }
+    .surface-name.retention { color: #7a6a52; font-style: italic; }
+    .swatch-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .hex-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+    }
+    .usage-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      text-align: center;
+    }
+    .tag-amber { background: rgba(255,184,107,0.15); color: #a06820; }
+    .tag-orange { background: rgba(255,159,110,0.15); color: #a04820; }
+    .tag-blue { background: rgba(29,78,216,0.1); color: #1d4ed8; }
+    .tag-missing { background: rgba(111,102,89,0.12); color: #6f6659; }
+    .tag-none { background: rgba(111,102,89,0.08); color: #9a8f7e; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .summary-card {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .summary-card .card-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      font-family: ui-monospace, monospace;
+    }
+    .summary-card .card-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .summary-card .card-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .axis-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 14px 16px;
+      background: rgba(21,18,14,0.03);
+      border-left: 3px solid var(--rule);
+      border-radius: 2px;
+    }
+    .axis-note strong { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-title">Token Diagnostic</div>
+        <h1>--accent</h1>
+        <p>Family signature vs. addressable drift across 13 surfaces (11 production + 2 diagnostic)</p>
+      </div>
+      <div class="verdict">
+        <div class="verdict-label">Verdict</div>
+        <div class="verdict-text">FAMILY SIGNATURE — 4 distinct hues across 3 families. Warm-paper consensus #ffb86b. No addressable drift within families.</div>
+      </div>
+      <div>
+        <div class="sidebar-title">Families</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:14px;height:14px;background:#ffb86b;border-radius:2px;"></div>
+            <span style="font-size:12px;color:rgba(244,234,214,0.6);">warm-paper (9)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:14px;height:14px;background:#ff9f6e;border-radius:2px;"></div>
+            <span style="font-size:12px;color:rgba(244,234,214,0.6);">dark-industrial (1)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:14px;height:14px;background:#1d4ed8;border-radius:2px;"></div>
+            <span style="font-size:12px;color:rgba(244,234,214,0.6);">creative-hybrid (1)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:14px;height:14px;background:#c47a1f;border-radius:2px;"></div>
+            <span style="font-size:12px;color:rgba(244,234,214,0.6);">amber override (2)</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="card-value">4</div>
+          <div class="card-label">Distinct hues</div>
+          <div class="card-sub">0 consensus across families</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-value">9/11</div>
+          <div class="card-label">Warm-paper converged</div>
+          <div class="card-sub">All at #ffb86b amber-gold</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-value">0</div>
+          <div class="card-label">Addressable drift</div>
+          <div class="card-sub">No misaligned within families</div>
+        </div>
+        <div class="summary-card">
+          <div class="card-value">2</div>
+          <div class="card-label">Missing token</div>
+          <div class="card-sub">p5-sketch, manim-scene</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Surface Inventory — --accent token</div>
+        <div class="family-cluster">
+          <div class="cluster-header">
+            <span>Surface</span>
+            <span>Value / Usage</span>
+            <span>Role</span>
+          </div>
+
+          <!-- warm-paper family -->
+          <div class="surface-row">
+            <span class="surface-name">family-dna</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">motion-storyboard</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">pdf-zine</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">poster-surface</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">prompt-dna-adapter</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">remotion-scene</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">social-card</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">touchdesigner-tox</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">amber-gold</span>
+          </div>
+
+          <!-- dark-industrial family -->
+          <div class="surface-row">
+            <span class="surface-name">browser-demo</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ff9f6e;"></div>
+              <span class="hex-label">#ff9f6e</span>
+            </div>
+            <span class="usage-tag tag-orange">orange-red</span>
+          </div>
+
+          <!-- creative-hybrid family -->
+          <div class="surface-row">
+            <span class="surface-name">frontier-capsule</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#1d4ed8;"></div>
+              <span class="hex-label">#1d4ed8</span>
+            </div>
+            <span class="usage-tag tag-blue">signal blue</span>
+          </div>
+
+          <!-- missing --accent token -->
+          <div class="surface-row">
+            <span class="surface-name">manim-scene</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#c47a1f;"></div>
+              <span class="hex-label">uses --amber</span>
+            </div>
+            <span class="usage-tag tag-missing">--amber override</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name">p5-sketch</span>
+            <div class="swatch-row">
+              <span class="hex-label" style="color:#9a8f7e;">no accent token</span>
+            </div>
+            <span class="usage-tag tag-none">absent</span>
+          </div>
+
+          <!-- diagnostic surfaces -->
+          <div class="surface-row">
+            <span class="surface-name retention">radius-token-audit</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">warm-paper</span>
+          </div>
+          <div class="surface-row">
+            <span class="surface-name retention">type-size-audit</span>
+            <div class="swatch-row">
+              <div class="swatch" style="background:#ffb86b;"></div>
+              <span class="hex-label">#ffb86b</span>
+            </div>
+            <span class="usage-tag tag-amber">warm-paper</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="axis-note">
+        <strong>Two axes of divergence:</strong> hue (amber vs. orange vs. blue) and lightness/saturation.
+        The warm-paper family has <strong>zero internal drift</strong> — all 9 surfaces carry the same #ffb86b amber-gold.
+        The other families intentionally use different hues to communicate different creative characters.
+        --accent is a <strong>family signature</strong>: same token, different visual purpose per family.
+        manim-scene and p5-sketch have no --accent — they use --amber or no accent at all.
+      </div>
+    </main>
+  </div>
+</body>
+</html>
