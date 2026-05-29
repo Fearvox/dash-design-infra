@@ -40,7 +40,7 @@
     {
       "id": "creator-type-size-token-explore-route",
       "axis": "visual grammar",
-      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
+      "observation": "Font-sans token layer completion: family-dna.html (PR #138) gained --font-sans token + var() body usage — last warm-paper-adjacent surface to complete tokenized font-sans. family-dna is creative-hybrid family-dna artifact (sister to the 5 warm-paper surfaces with --font-sans). Font-sans token layer now complete across 6 warm-paper-adjacent surfaces. Type size tokenization still deferred (design decision required for h1 values).",
       "candidates": [],
       "fitness": {
         "creator_utility": 4,
@@ -794,6 +794,17 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-family-dna-font-sans-token-layer-route",
+      "selection": "retained",
+      "retained_as": "family-dna.html --font-sans token layer: --font-sans:ui-sans-serif,... in :root, body uses var(--font-sans). Completes tokenized font-sans across 6 warm-paper-adjacent surfaces (motion-storyboard, pdf-zine, poster-surface, prompt-dna, social-card, family-dna). All 6 surfaces now share tokenized font-sans grammar.",
+      "proof": [
+        "bun creator:family-dna-check (20/20 PASS)",
+        "bun creator:multi-surface-proof (18/18 measure+print PASS)",
+        "bun creator:measure-print-cache -- --no-cache (14/14 fresh PASS)",
+        "PR #138 merged"
       ]
     }
   ],
