@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
@@ -40,7 +40,7 @@
     {
       "id": "creator-accent-family-signature-route",
       "axis": "visual grammar",
-      "observation": "4 distinct --accent values across 4 families: browser-demo #7ef0c1, p5-sketch #f0ee9b, manim-scene #d4a373→#c47a1f, touchdesigner-tox #66e3ff. Two axes of divergence (hue + lightness). Warm-paper surfaces (poster, pdf-zine, social-card) carry similar amber-to-gold range. --accent may be a family signature or addressable drift without consensus.",
+      "observation": "Diagnostic confirmed --accent is a family signature: 4 distinct hues across 3 families, warm-paper #ffb86b on 9 surfaces, zero addressable drift within families. manim-scene uses --amber (#c47a1f), p5-sketch absent. No surface edits — deselected as stale candidate.",
       "candidates": [],
       "fitness": {
         "creator_utility": 3,
@@ -49,13 +49,30 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Family signature vs. addressable drift — needs surface grep to determine.",
-      "selection": "selected",
-      "mutation": "Diagnostic phenotype: surface grep across all 11 surfaces for --accent token usage and values. Classify per visual family (warm-paper, dark-industrial, creative-hybrid). Determine if --accent is family signature (different hue for different creative characters) or addressable drift (diverged from consensus value within same family).",
+      "risk": "Diagnostic phenotype confirms family signature. No surface edits possible. Deselected.",
+      "selection": "candidate",
+      "mutation": "Diagnostic phenotype confirmed: --accent is a family signature. No surface edits. Deselected stale candidate. Next candidate promoted.",
       "phenotype": "creator-accent-family-signature-diagnostic.html — fixed-canvas 1684x1191 diagnostic showing --accent values and family classifications."
+    },
+    {
+      "id": "creator-surface-token-gap-audit-route",
+      "axis": "visual grammar",
+      "observation": "Aesthetic coherence requires knowing which tokens HAVE converged and which are still diverging. The surface-convergence.json shows 13 diverged tokens. Need systematic audit of which warm-paper tokens have achieved consensus vs. which still have addressable drift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "May overlap with existing diagnostic surfaces. Need deduplication against current diagnostic set.",
+      "selection": "candidate",
+      "mutation": "Surface grep across 11 production surfaces for each warm-paper token (--ink, --line, --muted, --accent, --paper, --amber, --soft-blue, --space-4) to classify: converged at consensus, diverged within family, or family signature. Produce a token-gap summary artifact showing which tokens are safe to align vs. which are intentional family signatures.",
+      "phenotype": "Token gap summary table in creator-surface-convergence.json format, plus an optional creator-token-gap-summary.html diagnostic."
     }
   ],
-  "winner": "creator-accent-family-signature-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -431,20 +448,6 @@
       "proof": [
         "bun creator:surface-health (12/12 PASS)",
         "bun creator:regression (wired)"
-      ]
-    },
-    {
-      "id": "creator-accent-token-alignment-route",
-      "selection": "retained",
-      "retained_as": "--accent token alignment: 8 warm-paper + creative-hybrid surfaces to #ffb86b consensus. browser-demo #ff9f6e and frontier-capsule #1d4ed8 intentional. --accent: 3→2 distinct values.",
-      "proof": [
-        "bun creator:poster-check (PASS)",
-        "bun creator:motion-storyboard-check (PASS)",
-        "bun creator:social-card-check (PASS)",
-        "bun creator:pdf-zine-check (PASS)",
-        "bun creator:prompt-dna-check (PASS)",
-        "bun creator:surface-consistency (--accent: 3→2 distinct, warm-paper converges)",
-        "bun creator:cache-integrity (11/11 valid)"
       ]
     },
     {
