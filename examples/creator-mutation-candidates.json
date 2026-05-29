@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Slice 2026-05-29: p5-sketch --green #10291f → #2f6f4e warm-paper consensus. Type-size-token-explore-route deselected as design-decision-blocked diagnostic. p5-green-align promoted to retained_routes.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
@@ -49,13 +49,13 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "risk": "Diagnostic already shipped in prior slices (type-size-audit.html on origin/main). Design-decision-blocked: tokenization requires creator input, not mechanical alignment.",
+      "selection": "candidate",
+      "mutation": "Diagnostic shipped. Deselected — type size tokenization requires explicit design decision on consensus values.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -794,6 +794,15 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-p5-green-align-route",
+      "selection": "retained",
+      "retained_as": "p5-sketch warm-paper --green alignment",
+      "proof": [
+        "bun measure:check -- examples/creator-p5-sketch.html → PASS 1684x1191",
+        "bun print:render -- examples/creator-p5-sketch.html → ok 1 page in 902ms"
       ]
     }
   ],
