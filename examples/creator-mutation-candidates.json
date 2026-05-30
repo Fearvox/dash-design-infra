@@ -1,61 +1,61 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "warm-paper --text-sm and --text-xs starter token layers added to 6 surfaces. shared tokens: 6→8. Type-size vocabulary now has sm+xs pair.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
     {
-      "id": "creator-ink-family-doc-route",
+      "id": "creator-text-xs-token-route",
       "axis": "visual grammar",
-      "observation": "Diagnostic confirmed --ink is a family signature: warm-paper #15120e on 9 surfaces, dark-industrial #111318 on 2 surfaces, creative-hybrid intentionally diverged. No addressable drift. Family signature confirmed — deselect candidate.",
+      "observation": "Warm-paper surfaces (6 surfaces) have --text-sm:12px from prior slice. 5/6 surfaces use 10px as eyebrow/micro text. --text-xs:10px completes sm/xs vocabulary pair.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 4,
+        "creator_utility": 6,
+        "memory_retention": 7,
+        "artifact_proof": 8,
         "boundary_safety": 10,
-        "minimal_core": 6
+        "minimal_core": 7
       },
-      "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
-      "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
-      "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
+      "risk": "No body CSS changes — pure :root vocabulary. Minimal visual risk.",
+      "selection": "selected",
+      "mutation": "Warm-paper --text-xs:10px added to 6 surfaces :root. Token value grounded in 10px usage consensus.",
+      "phenotype": "6 surfaces gained --text-xs:10px. shared tokens: 7→8."
     },
     {
-      "id": "creator-font-sans-sans-serif-complete-route",
+      "id": "creator-surface-consistency-extend-route",
       "axis": "visual grammar",
-      "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
+      "observation": "Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene, manim-scene, touchdesigner-tox) lack type-size tokens. Some may benefit from sm/xs vocabulary.",
       "candidates": [],
       "fitness": {
         "creator_utility": 3,
+        "memory_retention": 4,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 3
+      },
+      "risk": "Creative-hybrid surfaces may not need warm-paper type vocabulary.",
+      "selection": "candidate",
+      "mutation": "Extend --text-sm/--text-xs to non-warm-paper surfaces or preserve as family signature.",
+      "phenotype": "Option A: extend tokens, Option B: preserve family divergence."
+    },
+    {
+      "id": "creator-type-size-family-grammar-route",
+      "axis": "visual grammar",
+      "observation": "Type-size tokens (--text-sm, --text-xs) are now in warm-paper vocabulary. Non-warm-paper surfaces have 10+ distinct h1 values and 0 type-size tokens — this is a family signature, not addressable drift. No surface edits.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 2,
         "memory_retention": 5,
         "artifact_proof": 2,
         "boundary_safety": 10,
-        "minimal_core": 5
+        "minimal_core": 2
       },
-      "risk": "Non-warm-paper surfaces have intentional family grammar divergence (Georgia-direct, creative-hybrid). Token layer extension may homogenize.",
+      "risk": "Diagnostic only. No surface edits possible for family signature.",
       "selection": "candidate",
-      "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
-      "phenotype": "Option A or B with creator verdict."
-    },
-    {
-      "id": "creator-type-size-token-explore-route",
-      "axis": "visual grammar",
-      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
-      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+      "mutation": "Diagnostic phenotype confirming type-size is warm-paper vocabulary only. Non-warm-paper surfaces intentionally diverge.",
+      "phenotype": "Diagnostic artifact documenting type-size family grammar."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-text-xs-token-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
