@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-05-28T00:35:24.292Z",
-  "total_surfaces": 18,
-  "with_token_layer": 18,
+  "timestamp": "2026-05-31T00:46:23.481Z",
+  "total_surfaces": 19,
+  "with_token_layer": 19,
   "without_token_layer": 0,
   "shared_tokens": 6,
-  "diverged_tokens": 12,
-  "unique_tokens": 29,
+  "diverged_tokens": 13,
+  "unique_tokens": 31,
   "families": 4,
   "diverged_details": [
     {
       "token": "--accent",
-      "distinct_values": 3,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#ffb86b",
@@ -40,6 +40,12 @@
           "surfaces": [
             "creator-frontier-capsule.html"
           ]
+        },
+        {
+          "value": "#7ef0c1",
+          "surfaces": [
+            "creator-non-warm-paper-font-diagnostic.html"
+          ]
         }
       ]
     },
@@ -51,7 +57,8 @@
           "value": "#0b1114",
           "surfaces": [
             "creator-browser-demo.html",
-            "creator-muted-surface-diagnostic.html"
+            "creator-muted-surface-diagnostic.html",
+            "creator-non-warm-paper-font-diagnostic.html"
           ]
         },
         {
@@ -455,19 +462,37 @@
           ]
         }
       ]
+    },
+    {
+      "token": "--text",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#1a1714",
+          "surfaces": [
+            "creator-ink-family-diagnostic.html"
+          ]
+        },
+        {
+          "value": "#e8e4dc",
+          "surfaces": [
+            "creator-non-warm-paper-font-diagnostic.html"
+          ]
+        }
+      ]
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 12,
-    "current_diverged_count": 12,
+    "prior_diverged_count": 13,
+    "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-28T00:34:32.038Z",
+    "prior_timestamp": "2026-05-31T00:46:23.320Z",
     "per_token_deltas": [
       {
         "token": "--accent",
-        "prior_distinct": 3,
-        "current_distinct": 3,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       },
       {
@@ -534,6 +559,12 @@
         "token": "--signal",
         "prior_distinct": 4,
         "current_distinct": 4,
+        "delta": 0
+      },
+      {
+        "token": "--text",
+        "prior_distinct": 2,
+        "current_distinct": 2,
         "delta": 0
       }
     ]
@@ -711,6 +742,24 @@
         ],
         "margin_values": [],
         "gap_count": 1
+      },
+      {
+        "file": "creator-non-warm-paper-font-diagnostic.html",
+        "gap_values": [
+          10,
+          16
+        ],
+        "padding_values": [
+          2,
+          4,
+          6,
+          7,
+          14,
+          16,
+          28
+        ],
+        "margin_values": [],
+        "gap_count": 2
       },
       {
         "file": "creator-p5-sketch.html",

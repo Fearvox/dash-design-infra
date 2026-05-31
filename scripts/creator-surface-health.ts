@@ -36,6 +36,7 @@ const SURFACE_CHECK_MAP: Record<string, string> = {
   'creator-muted-surface-diagnostic': 'creator:surface-consistency',
   'creator-ink-family-diagnostic': 'creator:surface-consistency',
   'creator-font-grammar-audit':  'creator:surface-consistency',
+  'creator-non-warm-paper-font-diagnostic': 'creator:surface-consistency',
 };
 
 interface SurfaceResult {
