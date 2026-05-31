@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "warm-paper --text-sm and --text-xs starter token layers now retained. shared tokens: 8. NorthStar: creator-surface-consistency — visual grammar audit next.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -50,12 +50,29 @@
         "minimal_core": 5
       },
       "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
+      "selection": "candidate",
       "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+    },
+    {
+      "id": "creator-surface-consistency-check-extend-route",
+      "axis": "visual grammar",
+      "observation": "creator:surface-consistency is the primary diagnostic for NorthStar creator-surface-consistency. It reports naming drift and value drift but does not emit structured per-surface JSON for autonomous tracking. Extending with convergence delta tracking + surface-level pass/fail per token would strengthen the machine-check.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 2,
+        "boundary_safety": 10,
+        "minimal_core": 5
+      },
+      "risk": "May be addressed by existing surface-convergence.json tracking.",
+      "selection": "selected",
+      "mutation": "Extend surface-consistency with structured per-surface token convergence report (shared/diverged/unique counts per surface) + baseline delta tracking.",
+      "phenotype": "Structured JSON output per surface, not just global summary."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-surface-consistency-check-extend-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -794,6 +811,32 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-text-sm-token-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper --text-sm:12px token layer: 6 surfaces gained --text-sm:12px in :root. Token value grounded in existing 12px usage consensus. No body CSS changes. shared tokens: 6→7. Completes type-size starter vocabulary pair.",
+      "proof": [
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (PASS after this slice)",
+        "bun creator:regression (16/16 checks PASS)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-social-card.html (1200x630 PASS)"
+      ]
+    },
+    {
+      "id": "creator-text-xs-token-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper --text-xs:10px token layer: 6 surfaces gained --text-xs:10px in :root. Token value grounded in existing 10px usage consensus (eyebrow/micro/caption text). No body CSS changes. shared tokens: 7→8. Completes type-size sm/xs vocabulary pair.",
+      "proof": [
+        "bun creator:mutation-check (PASS)",
+        "bun creator:docs-surface-parity (PASS after this slice)",
+        "bun creator:regression (16/16 checks PASS)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-p5-sketch.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)"
       ]
     }
   ],
