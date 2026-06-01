@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Type size token stale premise confirmed: 0/19 surfaces define --text-sm/--text-xs/--text-md/--text-lg in :root. --text on 2 surfaces is COLOR token, not size. --space-4 (16px) is the only spacing token shared across all surfaces. Shared roster: --amber, --blue, --font-sans, --font-serif, --paper-hot, --space-4 (6 tokens). Diverged: 13 tokens including --accent (4 values), --night (4 values), --panel (6 values), --muted (6 values). Next: explore --night family signature (4 distinct values across 7 surfaces, may be warm-paper addressable drift).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
@@ -49,13 +49,47 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "risk": "Diagnostic complete. Zero type size tokens defined in any surface :root. Premise confirmed stale — no addressable gap. No surface edits possible without design decision.",
+      "selection": "candidate",
+      "mutation": "Diagnostic: grep confirms 0/19 surfaces define --text-sm, --text-xs, --text-md, or --text-lg tokens in :root. No addressable type size token drift exists. The 2 surfaces with --text tokens (ink-family-diagnostic: --text:#1a1714, non-warm-paper-font-diagnostic: --text:#e8e4dc) use --text as a color token, not a size token. Premise wrong: no type size tokenization opportunity. Diagnostic phenotype confirms zero shared type size vocabulary across creator surfaces. Tokenization requires explicit design decision before alignment.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+    },
+    {
+      "id": "creator-night-token-family-sig-route",
+      "axis": "visual grammar",
+      "observation": "--night has 4 distinct values across 7 surfaces: #0b1114 (font-grammar-audit, radius-token-audit, type-size-audit), #0f172a (bg-token-diagnostic, manim-scene), #070b0d (family-dna), #050914 (touchdesigner-tox). warm-paper surfaces appear in both clusters. This may be a family signature or addressable drift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Diagnostic complete. --night is a family signature for dark-industrial/creative-hybrid families. 0 warm-paper addressable drift. Deselected.",
+      "selection": "candidate",
+      "mutation": "Diagnostic: --night is NOT a warm-paper addressable gap. Surface grep: 0/6 warm-paper surfaces define --night (family-dna is the only warm-paper surface using it, with #070b0d). 7 surfaces define --night: 4 dark-industrial/creative-hybrid surfaces at #0b1114, 2 creative-hybrid at #0f172a, 1 creative-hybrid at #070b0d. This is a family signature across dark-industrial/creative-hybrid families. No warm-paper addressable drift. Premise confirmed stale.",
+      "phenotype": "Diagnostic phenotype confirming --night family signature status across creator surfaces."
+    },
+    {
+      "id": "creator-panel-token-family-sig-confirm-route",
+      "axis": "visual grammar",
+      "observation": "--panel has 6 distinct values across 13 surfaces. warm-paper surfaces use rgba(244,234,214,0.06) (8 surfaces). Non-warm-paper surfaces use distinct family-specific values. This may already be fully converged for warm-paper family — panel-alpha stale premise was already confirmed. Verify current state.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 3,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Diagnostic complete. warm-paper --panel converged. No edits possible. Deselected.",
+      "selection": "candidate",
+      "mutation": "Diagnostic: warm-paper --panel is FULLY CONVERGED. All 6 warm-paper surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna) use rgba(244,234,214,0.06). Surface-consistency confirmed 0 warm-paper divergence. Panel-alpha stale premise (confirmed in prior slice). No surface edits needed. Deselected.",
+      "phenotype": "Diagnostic phenotype confirming --panel warm-paper consensus current state."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -805,6 +839,36 @@
         "bun creator:mutation-check — PASS, 3 candidates, 1 selected winner"
       ],
       "phenotype": "scripts/creator-surface-consistency.ts extended with PER-SURFACE TOKEN COHESION SUMMARY table (19 surfaces, shared/diverged/unique/total per surface) + SHARED TOKEN ROSTER (6 shared tokens with values and surface counts)"
+    },
+    {
+      "id": "creator-type-size-token-stale-premise-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "Type size token stale premise diagnostic — zero type size tokens defined across all creator surfaces",
+      "proof": [
+        "grep -l \"--text-sm\\|--text-xs\\|--text-md\\|--text-lg\" examples/creator-*.html — 0 matches (no type size tokens in any surface)",
+        "node surface-consistency.ts — confirms 0 shared type size token vocabulary, 13 diverged tokens, 6 shared tokens"
+      ],
+      "phenotype": "Diagnostic phenotype: type size token audit confirms 0/19 surfaces define --text-sm/--text-xs/--text-md/--text-lg in :root. --text on 2 surfaces (ink-family-diagnostic, non-warm-paper-font-diagnostic) is a COLOR token (#1a1714, #e8e4dc), not a size token. Type size tokenization requires explicit design decision before alignment. This closes creator-type-size-token-explore-route as a diagnostic-only winner."
+    },
+    {
+      "id": "creator-night-token-family-sig-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "--night family signature diagnostic — dark-industrial/creative-hybrid token, NOT warm-paper addressable drift",
+      "proof": [
+        "grep --night examples/creator-*.html | wc -l — 7 surfaces define --night, 0 are warm-paper surfaces",
+        "warm-paper surface grep: poster-surface, pdf-zine, social-card, motion-storyboard, prompt-dna — 0 define --night"
+      ],
+      "phenotype": "Diagnostic: --night is a family signature for dark-industrial/creative-hybrid families (7 surfaces, 4 distinct values). 0 warm-paper addressable drift. No surface edits."
+    },
+    {
+      "id": "creator-panel-warm-paper-converged-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "--panel warm-paper consensus confirmed — all 6 warm-paper surfaces at rgba(244,234,214,0.06), 0 divergence",
+      "proof": [
+        "node scripts/creator-surface-consistency.ts — --panel: 6 distinct values, warm-paper consensus rgba(244,234,214,0.06) across 6 surfaces",
+        "warm-paper --panel grep: poster, pdf-zine, social-card, motion-storyboard, prompt-dna, family-dna — all rgba(244,234,214,0.06)"
+      ],
+      "phenotype": "Diagnostic: --panel warm-paper family fully converged at rgba(244,234,214,0.06). 0 warm-paper divergence. Panel-alpha stale premise confirmed twice."
     }
   ],
   "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
