@@ -795,6 +795,16 @@
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
       ]
+    },
+    {
+      "id": "creator-surface-consistency-extend-route",
+      "selection": "retained",
+      "retained_as": "Per-surface cohesion table + shared token roster in creator:surface-consistency",
+      "proof": [
+        "bun creator:surface-consistency — PASS, new cohesion table + shared roster visible",
+        "bun creator:mutation-check — PASS, 3 candidates, 1 selected winner"
+      ],
+      "phenotype": "scripts/creator-surface-consistency.ts extended with PER-SURFACE TOKEN COHESION SUMMARY table (19 surfaces, shared/diverged/unique/total per surface) + SHARED TOKEN ROSTER (6 shared tokens with values and surface counts)"
     }
   ],
   "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
