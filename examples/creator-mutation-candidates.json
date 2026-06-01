@@ -36,6 +36,23 @@
       "selection": "candidate",
       "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+    },
+    {
+      "id": "creator-family-dna-var-space4-usage-route",
+      "axis": "visual grammar",
+      "observation": "family-dna.html uses --space-4:16px in :root but has 0 var(--space-4) usages in body CSS. 5/5 warm-paper surfaces use var(--space-4) in body. family-dna is the outlier with hardcoded spacing values (20px, 18px, 34px gap) where other warm-paper surfaces use var(--space-4).",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 7,
+        "artifact_proof": 7,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "family-dna is a reference artifact, not a production surface. Its spacing patterns serve visual display, not content layout. Introducing var(--space-4) may improve grammar consistency but risks visual change if hardcoded values are deliberate.",
+      "selection": "candidate",
+      "mutation": "Audit family-dna body CSS for gap/padding/margin values that could use var(--space-4). Replace 20px gaps with var(--space-4) where semantically appropriate. Verify measure:check and print:render still pass.",
+      "phenotype": "Diagnostic: scan family-dna body CSS for gap/padding/margin px values, identify which 20px values could become var(--space-4)."
     }
   ],
   "winner": "creator-ink-family-doc-route",
