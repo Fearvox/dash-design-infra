@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Diagnostic confirmed --ink is family signature. Font-token-layer completes family-dna participation in warm-paper token grammar. Spacing grammar audit next.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -15,27 +15,10 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
-      "selection": "candidate",
+      "risk": "Diagnostic complete. --ink is family signature. No surface edits needed. Candidate closed.",
+      "selection": "selected",
       "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
-    },
-    {
-      "id": "creator-font-sans-sans-serif-complete-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Non-warm-paper surfaces have intentional family grammar divergence (Georgia-direct, creative-hybrid). Token layer extension may homogenize.",
-      "selection": "candidate",
-      "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
-      "phenotype": "Option A or B with creator verdict."
     },
     {
       "id": "creator-type-size-token-explore-route",
@@ -49,13 +32,13 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
+      "risk": "Diagnostic complete. No surface edits possible. Candidate closed.",
+      "selection": "candidate",
       "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-ink-family-doc-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -794,6 +777,28 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-family-dna-font-token-layer-route",
+      "axis": "visual grammar",
+      "mutation": "Add --font-serif and --font-sans tokens to family-dna :root, replace 4 hardcoded font-family values with var() references. Completes warm-paper font grammar token participation for the 6th warm-paper surface.",
+      "phenotype": "examples/creator-family-dna.html with --font-serif + --font-sans token layer. 4/4 var() references replacing hardcoded stacks.",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Low risk: cosmetic token refactor, identical visual output, only 1 surface affected.",
+      "selection": "retained",
+      "retained_as": "family-dna --font-serif + --font-sans token layer: adds token layer to last warm-paper surface without it, completes warm-paper font grammar participation (6/6 surfaces). 4 var() references replace hardcoded Georgia/ui-sans-serif stacks.",
+      "proof": [
+        "bun measure:check -- examples/creator-family-dna.html (1684x1191 PASS)",
+        "bun print:render -- examples/creator-family-dna.html (1 page, 913ms PASS)",
+        "bun creator:family-dna-check (20/20 PASS)",
+        "bun creator:mutation-check (PASS)"
       ]
     }
   ],
