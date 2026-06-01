@@ -174,7 +174,7 @@ for (const s of surfaces) {
   const count = Object.keys(s.tokens).length;
   console.log(`  ${s.file}`);
   console.log(`    Family: ${family}  ·  ${count} CSS custom properties`);
-  
+
   const keys = Object.keys(s.tokens).sort();
   for (const k of keys.slice(0, 4)) {
     console.log(`      ${k}: ${s.tokens[k]}`);
@@ -184,6 +184,8 @@ for (const s of surfaces) {
   }
   console.log();
 }
+
+// --- Report: Spacing Grammar Audit ---
 
 if (noTokenLayer.length > 0) {
   console.log("═".repeat(72));
@@ -254,12 +256,57 @@ for (const [token, entries] of tokenMap) {
   }
 }
 
-console.log(`Shared tokens (same name, same value in 2+ surfaces): ${sharedTokens.length}`);
+// --- Report: Per-Surface Token Cohesion Summary ---
+
+console.log("═".repeat(72));
+console.log("PER-SURFACE TOKEN COHESION SUMMARY");
+console.log("═".repeat(72));
+console.log();
+console.log("  surface                           family         shared  diverged  unique  total");
+console.log("  ─────────────────────────────────  ─────────────  ──────  ────────  ──────  ─────");
+
+const surfaceCohesion: { file: string; family: string; shared: number; diverged: number; unique: number; total: number }[] = [];
+
+for (const s of surfaces) {
+  const family = classify(s.tokens);
+  const surfaceShared = sharedTokens.filter(t => t in s.tokens).length;
+  const surfaceDiverged = divergedTokens
+    .filter(d => d.token in s.tokens)
+    .map(d => d.token).length;
+  const surfaceUnique = uniqueTokens
+    .filter(u => u.file === s.file)
+    .length;
+  const total = surfaceShared + surfaceDiverged + surfaceUnique;
+
+  surfaceCohesion.push({ file: s.file, family, shared: surfaceShared, diverged: surfaceDiverged, unique: surfaceUnique, total });
+
+  const shortFamily = family === "warm-paper" ? "warm-paper      " :
+                      family === "dark-industrial" ? "dark-industrial" :
+                      family === "creative-hybrid" ? "creative-hybrid" : "unknown         ";
+  const shortFile = s.file.replace("creator-", "").replace(".html", "").padEnd(30);
+  console.log(`  ${shortFile}  ${shortFamily}  ${String(surfaceShared).padStart(6)}  ${String(surfaceDiverged).padStart(8)}  ${String(surfaceUnique).padStart(6)}  ${String(total).padStart(5)}`);
+}
+
+console.log("  Families: (family cohesion section below)");
+console.log("  Shared tokens = identical value across 2+ surfaces");
+console.log("  Diverged tokens = same name, different value across surfaces");
+console.log("  Unique tokens = surface-specific, only one surface uses it");
+console.log();
+
+// --- Shared Token Roster ---
+
+console.log("═".repeat(72));
+console.log("SHARED TOKEN ROSTER (identity across 2+ surfaces)");
+console.log("═".repeat(72));
+console.log();
+console.log("  These " + sharedTokens.length + " tokens have identical values across the surface population.");
+console.log("  They form the core grammar that any new surface should inherit.");
+console.log();
 for (const t of sharedTokens.sort()) {
   const entries = tokenMap.get(t)!;
   const value = entries[0].value;
-  const files = entries.map((e) => e.file).join(", ");
-  console.log(`  ${t}: ${value} → ${files}`);
+  const surfaceCount = entries.length;
+  console.log(`  ${t.padEnd(20)} ${value.padEnd(30)} (${surfaceCount} surfaces)`);
 }
 console.log();
 
