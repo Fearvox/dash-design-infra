@@ -425,6 +425,75 @@ for (const d of divergedTokens.sort((a, b) => a.token.localeCompare(b.token))) {
 }
 console.log();
 
+// --- Mechanical Drift Detector ---
+
+/**
+ * Mechanical drift = same semantic value, different formatting.
+ * Detects whitespace (`, ` vs `,`), leading zero (`0.06` vs `.06`),
+ * and case differences. Zero visual risk to align.
+ */
+function normalizeForComparison(value: string): string {
+  return value.replace(/\s+/g, "").replace(/0\./g, ".").toLowerCase();
+}
+
+interface MechanicalDrift {
+  token: string;
+  consensus: string;
+  consensus_count: number;
+  drifted: { file: string; value: string; normalized_match: string }[];
+}
+
+const mechanicalDrifts: MechanicalDrift[] = [];
+
+for (const cd of convergenceDetails) {
+  if (cd.values.length < 2) continue;
+  // Find majority consensus (highest surface count)
+  const consensus = cd.values[0];
+  const consensusNorm = normalizeForComparison(consensus.value);
+  if (consensus.surfaces.length < 2) continue; // not a real consensus
+
+  const drifted = cd.values
+    .slice(1)
+    .filter((ve) => normalizeForComparison(ve.value) === consensusNorm)
+    .flatMap((ve) =>
+      ve.surfaces.map((file) => ({
+        file,
+        value: ve.value,
+        normalized_match: ve.value,
+      }))
+    );
+
+  if (drifted.length > 0) {
+    mechanicalDrifts.push({
+      token: cd.token,
+      consensus: consensus.value,
+      consensus_count: consensus.surfaces.length,
+      drifted,
+    });
+  }
+}
+
+console.log("═".repeat(72));
+console.log("MECHANICAL DRIFT (same semantic value, different formatting)");
+console.log("═".repeat(72));
+console.log();
+console.log("  Zero-risk alignment: whitespace/leading-zero/case differences in token values");
+console.log("  that are functionally identical to the majority consensus.");
+console.log();
+
+if (mechanicalDrifts.length === 0) {
+  console.log("  No mechanical drift detected — all diverged tokens have real value differences.");
+} else {
+  console.log(`  Found ${mechanicalDrifts.length} token${mechanicalDrifts.length === 1 ? "" : "s"} with mechanical drift:`);
+  for (const md of mechanicalDrifts) {
+    console.log(`    ${md.token} (consensus: "${md.consensus}" on ${md.consensus_count} surfaces):`);
+    for (const d of md.drifted) {
+      console.log(`      ${d.file}: "${d.value}" → align to "${md.consensus}"`);
+    }
+  }
+}
+console.log();
+
 // --- Convergence Delta (from prior run) ---
 
 const CONVERGENCE_PATH = join(EXAMPLES_DIR, "..", "examples", "creator-surface-convergence.json");
@@ -525,6 +594,16 @@ const convergenceReport = {
         margin_values: s.margin,
         gap_count: s.gap.length,
       })),
+  },
+  mechanical_drift: {
+    note: "Same semantic value, different formatting (whitespace/leading-zero/case). Zero visual risk to align.",
+    count: mechanicalDrifts.length,
+    details: mechanicalDrifts.map((md) => ({
+      token: md.token,
+      consensus: md.consensus,
+      consensus_count: md.consensus_count,
+      drifted: md.drifted.map((d) => ({ file: d.file, value: d.value })),
+    })),
   },
 };
 

@@ -49,13 +49,30 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
-      "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "risk": "Stale: PRs #141 + #142 already shipped --text-sm and --text-xs across 6 warm-paper surfaces (2026-05-30). Type-size tokenization is no longer deferred — vocabulary pair is in place. Type-size-grammar-route is the next legitimate step (extends starter vocabulary or aligns to existing values), not exploration of whether to tokenize. Closed by PR #142 (proven in PRs #141, #142, #143).",
+      "selection": "candidate",
+      "mutation": "Deselected — shipped in PRs #141 (--text-sm) and #142 (--text-xs).",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+    },
+    {
+      "id": "creator-line-color-explore-route",
+      "axis": "visual grammar",
+      "observation": "Convergence data shows --line has 7 distinct values, 15 surfaces. Warm-paper consensus rgba(21,18,14,0.18) is shared by 9 surfaces. frontier-capsule rgba(22, 20, 17, 0.14) is near-consensus but with real RGB+alpha differences. manim rgba(248, 241, 223, 0.2) is light/creative-hybrid. Creative signatures: p5-sketch #35584c, browser-demo #294148, remotion-scene #394150, touchdesigner-tox rgba(102,227,255,.26). frontier-capsule near-consensus is the next addressable drift candidate — 0.04 alpha reduction + slight RGB shift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 4,
+        "boundary_safety": 8,
+        "minimal_core": 5
+      },
+      "risk": "frontier-capsule rgba(22, 20, 17, 0.14) is a different visual effect than warm-paper rgba(21,18,14,0.18) — slightly lighter and lower-contrast. May be intentional design. Verify visual delta is negligible before aligning.",
+      "selection": "selected",
+      "mutation": "Inspect frontier-capsule --line usage in body CSS to determine if rgba(22, 20, 17, 0.14) is intentional or near-consensus drift. If near-consensus, propose alignment.",
+      "phenotype": "Diagnostic — confirms or refutes frontier-capsule --line alignment opportunity."
     }
   ],
-  "winner": "creator-type-size-token-explore-route",
+  "winner": "creator-line-color-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -805,9 +822,21 @@
         "bun creator:mutation-check (PASS)",
         "browser_console: scrollW=1684, scrollH=1361, tables=3, rows=15, errors=0"
       ]
+    },
+    {
+      "id": "creator-mechanical-drift-detector-route",
+      "selection": "retained",
+      "retained_as": "Mechanical drift detector in creator:surface-consistency — finds whitespace/leading-zero/case drift in token values that are functionally identical to majority consensus. Zero visual risk to align. Wired into surface-consistency check (runs as part of creator:regression).",
+      "proof": [
+        "bun creator:surface-consistency (MECHANICAL DRIFT section visible, family-dna no longer flagged)",
+        "bun creator:family-dna-check (20/20 PASS)",
+        "bun creator:cache-integrity (14 valid, 0 stale)",
+        "bun measure:check -- examples/creator-family-dna.html (1684x1191 PASS)",
+        "bun creator:mutation-check (PASS — 4 candidates, 1 selected)"
+      ]
     }
   ],
-  "retention": "2026-05-21: paper-token-gap phenotype shipped + merged (poster #f1eadc->#f2eadb, social-card #f3eadb->#f2eadb, warm-paper --paper consensus 6 surfaces). line-alpha deselected (stale premise: warm-paper already converged). panel-alpha-explore selected as new winner. panel-alpha already in retained_routes (creator-panel-token-alignment-route).",
+  "retention": "2026-06-02: Mechanical drift detector shipped — family-dna --panel whitespace drift fixed (rgba(244, 234, 214, 0.06) → rgba(244,234,214,0.06)). creator-type-size-token-explore-route deselected (stale: --text-sm/--text-xs shipped in PRs #141, #142). MECHANICAL DRIFT section added to creator:surface-consistency output. --panel diverged: 6→5. Next: surface remaining stalled tokens via detector, or pursue visual grammar extension.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
