@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Spacing grammar audit closed as stale premise. creator-type-size-token-explore-route is next selected winner — type size starter vocabulary exploration (non-binding, design-decision-requiring).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -15,9 +15,9 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Diagnostic complete. No surface edits possible for family signature. Deselected.",
+      "risk": "Diagnostic complete. No surface edits needed. Stale candidate closed. Type-size token explore next.",
       "selection": "candidate",
-      "mutation": "Diagnostic phenotype (creator-ink-family-diagnostic.html) confirmed --ink family signature. Deselected stale candidate. Next: font-serif-whitespace-align route.",
+      "mutation": "Diagnostic: family-dna spacing grammar audit confirms --space-4 token usage correct (6 var(--space-4) usages). Hardcoded 20px card padding is intentional design vocabulary, not grammar drift. creator-family-dna-var-space4-usage-route premise stale — no addressable drift. Next implementable: creator-type-size-token-explore-route (type size starter vocabulary).",
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
     {
@@ -794,6 +794,16 @@
         "bun print:render -- examples/creator-non-warm-paper-font-diagnostic.html (1 page, 815ms PASS)",
         "bun creator:mutation-check (PASS)",
         "bun creator:docs-surface-parity (PASS)"
+      ]
+    },
+    {
+      "id": "creator-family-dna-spacing-grammar-audit-route",
+      "selection": "retained",
+      "retained_as": "Spacing grammar diagnostic — family-dna has 6 var(--space-4) usages, 20px card padding is intentional design, no addressable drift",
+      "proof": [
+        "bun measure:check -- examples/creator-family-dna-spacing-grammar-audit.html (1684x1361 fits)",
+        "bun creator:mutation-check (PASS)",
+        "browser_console: scrollW=1684, scrollH=1361, tables=3, rows=15, errors=0"
       ]
     }
   ],
