@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684, initial-scale=1">
+<title>family-dna spacing grammar audit — diagnostic</title>
+<style>
+  :root {
+    --night: #070b0d;
+    --paper: #f2eadb;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --accent: #ffb86b;
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px; }
+  body {
+    background: var(--night);
+    background-image:
+      radial-gradient(circle at 88% 8%, rgba(126,240,193,0.12), transparent 30%),
+      radial-gradient(circle at 6% 94%, rgba(255,184,107,0.10), transparent 36%),
+      var(--night);
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    margin: 0; }
+  .page {
+    width: 1684px;
+    min-height: 1191px;
+    background: var(--paper);
+    position: relative; }
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--space-4) calc(var(--space-4) * 2); }
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 520; }
+  header .meta {
+    margin-top: 4px;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted); }
+  main { padding: var(--space-4) calc(var(--space-4) * 2); }
+  h2 {
+    font-size: 16px;
+    font-weight: 520;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: var(--space-4); }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase; }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(21,18,14,0.12);
+    vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(21,18,14,0.04); }
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .05em;
+    text-transform: uppercase; }
+  .tag-ok { background: rgba(47,111,78,0.18); color: #2f6f4e; }
+  .tag-stale { background: rgba(196,122,31,0.18); color: #7a4a0a; }
+  .tag-gap { background: rgba(29,78,216,0.12); color: #1d4ed8; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(21,18,14,0.08);
+    padding: 1px 5px;
+    border-radius: 2px; }
+  .finding { margin-bottom: var(--space-4); }
+  .finding p { margin: 0 0 4px; font-size: 13px; color: var(--ink); }
+  footer {
+    padding: var(--space-4);
+    border-top: 1px solid rgba(21,18,14,0.12);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: var(--space-4); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>family-dna spacing grammar audit — diagnostic</h1>
+    <div class="meta">creator-surface-consistency-route — spacing grammar axis — 2026-06-02</div>
+  </header>
+  <main>
+
+  <div class="finding">
+    <h2>Finding 1 — Stale observation: family-dna "0 var(--space-4) usages"</h2>
+    <p>The ledger candidate <code>creator-family-dna-var-space4-usage-route</code> observation states:
+    "family-dna.html uses --space-4:16px in :root but has <strong>0 var(--space-4) usages</strong> in body CSS."</p>
+    <p>Surface audit shows the observation is <strong>factually wrong</strong>:</p>
+    <table>
+      <tr><th>File</th><th>var(--space-4) body usages</th><th>Hardcoded 20px padding/margin</th><th>Verdict</th></tr>
+      <tr>
+        <td>creator-family-dna.html</td>
+        <td><span class="tag tag-ok">6 usages</span> (body, h1 em, .family-card, .count, .rule-row, .grammar)</td>
+        <td>4 hardcoded 20px values in .family-card (padding) and .grammar (padding). Semantic role: card inner padding. Replacing with var(--space-4) reduces 20px→16px — visual change to card spacing.</td>
+        <td><span class="tag tag-ok">Observation stale</span></td>
+      </tr>
+      <tr>
+        <td>creator-poster-surface.html</td>
+        <td>4 usages</td>
+        <td>0 hardcoded spacing</td>
+        <td><span class="tag tag-ok">Warm-paper consensus user</span></td>
+      </tr>
+      <tr>
+        <td>creator-social-card.html</td>
+        <td>3 usages</td>
+        <td>2 hardcoded 22px (platform convention)</td>
+        <td><span class="tag tag-ok">Token user</span></td>
+      </tr>
+      <tr>
+        <td>creator-motion-storyboard.html</td>
+        <td>2 usages</td>
+        <td>gap:22px, margin-bottom/padding:20px</td>
+        <td><span class="tag tag-ok">Token user</span></td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: family-dna does <em>not</em> have "0 var(--space-4) usages" — it has 6. The candidate observation was derived from a pre-instrumented audit and became stale after prior slice added var(--space-4) token references.</p>
+  </div>
+
+  <div class="finding">
+    <h2>Finding 2 — Hardcoded 20px in family-dna are intentional card padding</h2>
+    <p>The 4 hardcoded 20px values in family-dna serve as card/section inner padding (`.family-card`, `.grammar`):
+    <ul>
+      <li><code>L124: padding: 20px</code> — .family-card card inner padding</li>
+      <li><code>L250: padding: 20px 24px</code> — .grammar card inner padding</li>
+      <li><code>L118: margin-bottom: 20px</code> — section gap between card rows</li>
+    </ul>
+    </p>
+    <p>Replacing <code>padding: 20px</code> with <code>padding: var(--space-4)</code> reduces inner padding from 20px→16px (a 20% reduction). This is a <em>design decision</em>, not a grammar fix — the current 20px is the deliberate warm-paper card spacing value, distinct from the 16px base spacing unit. The 24px horizontal padding in .grammar is intentionally wider than 16px to give section headings room.</p>
+    <p><strong>Conclusion</strong>: No addressable grammar drift. family-dna is not an outlier — it uses var(--space-4) correctly for base grid gaps (L120: <code>gap: var(--space-4)</code>) and uses specific 20px card-padding values as intentional design vocabulary.</p>
+  </div>
+
+  <div class="finding">
+    <h2>Finding 3 — family-dna spacing pattern across warm-paper surfaces</h2>
+    <table>
+      <tr><th>Surface</th><th>Hardcoded spacing role</th><th>Token usage pattern</th></tr>
+      <tr><td>creator-family-dna</td><td>20px card padding, 18px radius</td><td>6x var(--space-4) for grid gaps + base unit</td></tr>
+      <tr><td>creator-poster-surface</td><td>0 hardcoded spacing</td><td>4x var(--space-4) for grid gaps + base unit</td></tr>
+      <tr><td>creator-social-card</td><td>22px (platform convention, not 16/20)</td><td>3x var(--space-4) for base unit</td></tr>
+      <tr><td>creator-motion-storyboard</td><td>22px gaps, 20px margins</td><td>2x var(--space-4) for base unit</td></tr>
+      <tr><td>creator-pdf-zine</td><td>22px (feature width)</td><td>var(--space-4) for section margins</td></tr>
+    </table>
+    <p><strong>Conclusion</strong>: Warm-paper surfaces that use hardcoded spacing values are not exhibiting drift — they are making deliberate design choices (card padding, platform conventions, section widths) that are outside the token layer's scope. No addressable spacing drift detected.</p>
+  </div>
+
+  <div class="finding">
+    <h2>Finding 4 — WORKFLOW_INDEX row count drift (informational)</h2>
+    <p>The <code>creator:docs-surface-parity</code> reports <code>17 creator table rows but 18 surface HTML files</code>. This is a pre-existing parity gap from prior sessions — 2 diagnostic surfaces (radius-token-audit, muted-surface-diagnostic) are in SURFACES/multi-surface-proof but missing from WORKFLOW_INDEX. Not addressed in this diagnostic slice (separate parity concern from spacing grammar).</p>
+    <p>This informational gap does not affect the 11 retained production surfaces.</p>
+  </div>
+
+  <div class="finding">
+    <h2>Diagnostic Summary</h2>
+    <table>
+      <tr><th>Claim in ledger</th><th>Reality</th><th>Classification</th></tr>
+      <tr><td>"family-dna has 0 var(--space-4) usages"</td><td>family-dna has 6 var(--space-4) usages</td><td><span class="tag tag-stale">Stale premise — factually wrong</span></td></tr>
+      <tr><td>"family-dna is the outlier with hardcoded 20px where others use var(--space-4)"</td><td>family-dna uses var(--space-4) for base grid gaps; 20px is intentional card/section padding (design decision)</td><td><span class="tag tag-stale">Stale premise — conflates base unit with card padding</span></td></tr>
+      <tr><td>Spacing drift addressable by replacing 20px with var(--space-4)</td><td>20px→16px changes card visual; this is a design choice, not grammar drift</td><td><span class="tag tag-stale">No addressable drift</span></td></tr>
+    </table>
+    <p><strong>Action</strong>: Candidate <code>creator-family-dna-var-space4-usage-route</code> has a stale premise. No surface edits needed. Candidate should be closed as diagnostic-confirmed-stale. The next implementable candidate is <code>creator-type-size-token-explore-route</code> (type size starter vocabulary exploration).</p>
+  </div>
+
+  </main>
+  <footer>
+    Diagnostic phenotype for creator-surface-consistency-route — spacing grammar axis — 2026-06-02 — creator-family-dna-var-space4-usage-route stale premise confirmed
+  </footer>
+</div>
+</body>
+</html>
