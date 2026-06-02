@@ -1,132 +1,132 @@
 {
-  "timestamp": "2026-05-28T00:34:32.714Z",
-  "totalMs": 8448,
-  "passed": 26,
-  "failed": 5,
+  "timestamp": "2026-06-02T01:20:22.064Z",
+  "totalMs": 8534,
+  "passed": 25,
+  "failed": 6,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1193
+      "durationMs": 1127
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 1057
+      "durationMs": 577
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 926
+      "durationMs": 1308
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 45
+      "durationMs": 40
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 73
-    },
-    {
-      "name": "creator:surface-health",
-      "durationMs": 400
-    },
-    {
-      "name": "creator:script-health",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:orphan-script",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:workflow-gate-health",
-      "durationMs": 3929
-    },
-    {
-      "name": "creator:example-check-coverage",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:post-check-coverage",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:regression-duration",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:measure-print-cache",
-      "durationMs": 20
-    },
-    {
-      "name": "creator:cache-integrity",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:surface-consistency",
       "durationMs": 23
     },
     {
+      "name": "creator:surface-health",
+      "durationMs": 373
+    },
+    {
+      "name": "creator:script-health",
+      "durationMs": 16
+    },
+    {
+      "name": "creator:orphan-script",
+      "durationMs": 15
+    },
+    {
+      "name": "creator:workflow-gate-health",
+      "durationMs": 4342
+    },
+    {
+      "name": "creator:example-check-coverage",
+      "durationMs": 15
+    },
+    {
+      "name": "creator:post-check-coverage",
+      "durationMs": 15
+    },
+    {
+      "name": "creator:regression-duration",
+      "durationMs": 15
+    },
+    {
+      "name": "creator:measure-print-cache",
+      "durationMs": 17
+    },
+    {
+      "name": "creator:cache-integrity",
+      "durationMs": 16
+    },
+    {
+      "name": "creator:surface-consistency",
+      "durationMs": 20
+    },
+    {
       "name": "creator:family-dna-check",
-      "durationMs": 18
+      "durationMs": 16
     },
     {
       "name": "creator:capsule-check",
-      "durationMs": 17
+      "durationMs": 16
     },
     {
       "name": "creator:evolution-check",
-      "durationMs": 17
+      "durationMs": 15
     },
     {
       "name": "creator:mutation-check",
-      "durationMs": 18
+      "durationMs": 15
     },
     {
       "name": "creator:poster-check",
-      "durationMs": 18
+      "durationMs": 15
     },
     {
       "name": "creator:prompt-dna-check",
-      "durationMs": 18
+      "durationMs": 15
     },
     {
       "name": "creator:motion-storyboard-check",
-      "durationMs": 18
+      "durationMs": 16
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:pdf-zine-check",
-      "durationMs": 18
+      "durationMs": 16
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 21
+      "durationMs": 19
     },
     {
       "name": "creator:remotion-scene-check",
-      "durationMs": 19
+      "durationMs": 17
     },
     {
       "name": "creator:manim-scene-check",
-      "durationMs": 19
+      "durationMs": 16
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 19
+      "durationMs": 16
     },
     {
       "name": "creator:skill-package-check",
-      "durationMs": 18
+      "durationMs": 15
     },
     {
       "name": "hackathon:score",
-      "durationMs": 401
+      "durationMs": 372
     }
   ]
 }

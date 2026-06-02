@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684,height=1191">
+<title>Warm-Paper Family Grammar Audit — accent/line/panel</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f2eadb;
+    --night: #0b1114;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --signal: #7ef0c1;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+  }
+  body {
+    width: 1684px;
+    height: 1191px;
+    background: var(--paper);
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  .page { width: 1684px; height: 1191px; }
+  h1 {
+    grid-column: 1 / -1;
+    font-family: ui-serif, Georgia, serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.04;
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+  }
+  .section {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+  }
+  .section h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th, td {
+    text-align: left;
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  tr:last-child td { border-bottom: none; }
+  .family-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .family-warm { background: rgba(255,184,107,0.15); color: #b35a00; }
+  .family-frontier { background: rgba(29,78,216,0.10); color: #1d4ed8; }
+  .converged { background: rgba(47,111,78,0.12); color: #2f6f4e; }
+  .diverged { background: rgba(191,58,0,0.10); color: #b33a00; }
+  .surface-name { font-weight: 600; }
+  .token-value { font-family: ui-monospace, monospace; font-size: 11px; color: var(--muted); }
+  .verdict {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4);
+  }
+  .verdict-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: var(--space-4);
+    text-align: center;
+  }
+  .verdict-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .verdict-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .verdict-card .sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  footer {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    padding-top: 4px;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body class="page">
+  <h1>Warm-Paper Family Grammar Audit — accent / line / panel</h1>
+
+  <div class="section">
+    <h2>--accent token</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>Family</th>
+          <th>Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="surface-name">poster-surface</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">#ffb86b</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">pdf-zine</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">#ffb86b</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">social-card</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">#ffb86b</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">motion-storyboard</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">#ffb86b</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">prompt-dna-adapter</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">#ffb86b</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">frontier-capsule</td>
+          <td><span class="family-tag family-frontier">frontier-capsule</span></td>
+          <td class="token-value">#1d4ed8</td>
+          <td><span class="diverged">✗ diverged</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>--line token</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>Family</th>
+          <th>Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="surface-name">poster-surface</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(21,18,14,0.18)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">pdf-zine</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(21,18,14,0.18)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">social-card</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(21,18,14,0.18)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">motion-storyboard</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(21,18,14,0.18)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">prompt-dna-adapter</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(21,18,14,0.18)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">frontier-capsule</td>
+          <td><span class="family-tag family-frontier">frontier-capsule</span></td>
+          <td class="token-value">rgba(22,20,17,0.14)</td>
+          <td><span class="diverged">✗ diverged</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>--panel token</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>Family</th>
+          <th>Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="surface-name">poster-surface</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(244,234,214,0.06)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">pdf-zine</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(244,234,214,0.06)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">social-card</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(244,234,214,0.06)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">motion-storyboard</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(244,234,214,0.06)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">prompt-dna-adapter</td>
+          <td><span class="family-tag family-warm">warm-paper</span></td>
+          <td class="token-value">rgba(244,234,214,0.06)</td>
+          <td><span class="converged">✓ converged</span></td>
+        </tr>
+        <tr>
+          <td class="surface-name">frontier-capsule</td>
+          <td><span class="family-tag family-frontier">frontier-capsule</span></td>
+          <td class="token-value">#fffaf0</td>
+          <td><span class="diverged">✗ diverged</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>frontier-capsule — body usage</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>:root value</th>
+          <th>Body var() usages</th>
+          <th>Creative context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token-value">--accent</td>
+          <td>#1d4ed8</td>
+          <td>6 usages</td>
+          <td>conic-gradient cones, CTA labels, section headings</td>
+        </tr>
+        <tr>
+          <td class="token-value">--line</td>
+          <td>rgba(22,20,17,0.14)</td>
+          <td>5 usages</td>
+          <td>grid borders, card separators, rule lines</td>
+        </tr>
+        <tr>
+          <td class="token-value">--panel</td>
+          <td>#fffaf0</td>
+          <td>3 usages</td>
+          <td>memory rail panel, capsule panels</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-card">
+      <div class="label">Warm-Paper Converged</div>
+      <div class="value">5/6</div>
+      <div class="sub">surfaces share consensus value</div>
+    </div>
+    <div class="verdict-card">
+      <div class="label">Frontier Divergences</div>
+      <div class="value">3/3</div>
+      <div class="sub">accent, line, panel all diverge</div>
+    </div>
+    <div class="verdict-card">
+      <div class="label">Family Signature?</div>
+      <div class="value">?</div>
+      <div class="sub">frontier-capsule is frontier-adjacent warm-paper — these may be addressable drift</div>
+    </div>
+  </div>
+
+  <footer>
+    Diagnostic — creator-family-grammar-audit · 1684×1191 · DASH industrial-brutalist · warm-paper family
+  </footer>
+</body>
+</html>

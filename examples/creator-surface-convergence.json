@@ -1,22 +1,23 @@
 {
-  "timestamp": "2026-05-28T00:35:24.292Z",
-  "total_surfaces": 18,
-  "with_token_layer": 18,
+  "timestamp": "2026-06-02T01:21:00.788Z",
+  "total_surfaces": 20,
+  "with_token_layer": 20,
   "without_token_layer": 0,
   "shared_tokens": 6,
-  "diverged_tokens": 12,
-  "unique_tokens": 29,
+  "diverged_tokens": 13,
+  "unique_tokens": 31,
   "families": 4,
   "diverged_details": [
     {
       "token": "--accent",
-      "distinct_values": 3,
+      "distinct_values": 4,
       "values": [
         {
           "value": "#ffb86b",
           "surfaces": [
             "creator-bg-token-diagnostic.html",
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
@@ -40,6 +41,12 @@
           "surfaces": [
             "creator-frontier-capsule.html"
           ]
+        },
+        {
+          "value": "#7ef0c1",
+          "surfaces": [
+            "creator-non-warm-paper-font-diagnostic.html"
+          ]
         }
       ]
     },
@@ -51,7 +58,8 @@
           "value": "#0b1114",
           "surfaces": [
             "creator-browser-demo.html",
-            "creator-muted-surface-diagnostic.html"
+            "creator-muted-surface-diagnostic.html",
+            "creator-non-warm-paper-font-diagnostic.html"
           ]
         },
         {
@@ -113,6 +121,7 @@
           "surfaces": [
             "creator-bg-token-diagnostic.html",
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
@@ -155,6 +164,7 @@
           "value": "rgba(21,18,14,0.18)",
           "surfaces": [
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
@@ -212,6 +222,7 @@
           "surfaces": [
             "creator-bg-token-diagnostic.html",
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-frontier-capsule.html",
             "creator-ink-family-diagnostic.html",
@@ -264,6 +275,7 @@
         {
           "value": "#0b1114",
           "surfaces": [
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-radius-token-audit.html",
             "creator-type-size-audit.html"
@@ -321,6 +333,7 @@
         {
           "value": "rgba(244,234,214,0.06)",
           "surfaces": [
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
@@ -372,6 +385,7 @@
           "surfaces": [
             "creator-bg-token-diagnostic.html",
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-muted-surface-diagnostic.html",
@@ -432,6 +446,7 @@
             "creator-bg-token-diagnostic.html",
             "creator-browser-demo.html",
             "creator-family-dna.html",
+            "creator-family-grammar-audit.html",
             "creator-radius-token-audit.html",
             "creator-type-size-audit.html"
           ]
@@ -455,19 +470,37 @@
           ]
         }
       ]
+    },
+    {
+      "token": "--text",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "#1a1714",
+          "surfaces": [
+            "creator-ink-family-diagnostic.html"
+          ]
+        },
+        {
+          "value": "#e8e4dc",
+          "surfaces": [
+            "creator-non-warm-paper-font-diagnostic.html"
+          ]
+        }
+      ]
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 12,
-    "current_diverged_count": 12,
+    "prior_diverged_count": 13,
+    "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-05-28T00:34:32.038Z",
+    "prior_timestamp": "2026-06-02T01:21:00.768Z",
     "per_token_deltas": [
       {
         "token": "--accent",
-        "prior_distinct": 3,
-        "current_distinct": 3,
+        "prior_distinct": 4,
+        "current_distinct": 4,
         "delta": 0
       },
       {
@@ -535,6 +568,12 @@
         "prior_distinct": 4,
         "current_distinct": 4,
         "delta": 0
+      },
+      {
+        "token": "--text",
+        "prior_distinct": 2,
+        "current_distinct": 2,
+        "delta": 0
       }
     ]
   },
@@ -600,6 +639,16 @@
           6
         ],
         "gap_count": 3
+      },
+      {
+        "file": "creator-family-grammar-audit.html",
+        "gap_values": [],
+        "padding_values": [
+          1,
+          5
+        ],
+        "margin_values": [],
+        "gap_count": 0
       },
       {
         "file": "creator-font-grammar-audit.html",
@@ -711,6 +760,24 @@
         ],
         "margin_values": [],
         "gap_count": 1
+      },
+      {
+        "file": "creator-non-warm-paper-font-diagnostic.html",
+        "gap_values": [
+          10,
+          16
+        ],
+        "padding_values": [
+          2,
+          4,
+          6,
+          7,
+          14,
+          16,
+          28
+        ],
+        "margin_values": [],
+        "gap_count": 2
       },
       {
         "file": "creator-p5-sketch.html",

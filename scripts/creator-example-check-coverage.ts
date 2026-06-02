@@ -29,6 +29,7 @@ const KNOWN_MAPPINGS: Record<string, string> = {
   'creator-ink-family-diagnostic': 'creator:surface-consistency',
   'creator-radius-token-audit': 'creator:surface-consistency',
   'creator-font-grammar-audit': 'creator:surface-consistency',
+  'creator-family-grammar-audit': 'creator:surface-consistency',
   'creator-family-dna': 'creator:family-dna-check',
 };
 

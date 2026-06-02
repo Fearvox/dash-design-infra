@@ -1,5 +1,5 @@
 {
-  "observation": "Non-warm-paper font family signature diagnostic: confirms 6 non-warm-paper surfaces intentionally diverge from warm-paper --font-sans token grammar. Surface grep: 0/6 define --font-sans in :root, all 6 use identical hardcoded ui-sans-serif,system-ui,... stack. Dark-industrial + creative-hybrid families use hardcoded stacks as intentional family grammar. No surface edits needed. Warm-paper --font-sans token layer complete. Next: type size token exploration (starter vocabulary proposal for warm-paper family).",
+  "observation": "Diagnostic: warm-paper family fully converged on accent/line/panel (5/6 surfaces). frontier-capsule diverges intentionally (blue accent, warm cream panel). No addressable drift — frontier-capsule creative signature. Type-size audit (PR #100) confirmed 0/6 warm-paper surfaces define --text-sm. Proposed: --text-sm starter vocabulary as non-binding hint. frontier-capsule is creative-hybrid not pure warm-paper — same token family but distinct creative role.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -51,8 +51,25 @@
       },
       "risk": "Type size is deeply contextual —强迫 uniform sizes may break per-surface creative roles. Propose a non-binding starter vocabulary only.",
       "selection": "selected",
-      "mutation": "Diagnostic: audit whether warm-paper surfaces already share any type size tokens (e.g., --text-sm defined in :root). If 0 warm-paper surfaces define type size tokens, propose --text-sm:--text-xs starter vocabulary as non-binding grammar extension. Observe adoption before mandating.",
+      "mutation": "Diagnostic result: warm-paper family fully converged on accent/line/panel (5/6 surfaces = poster,pdf-zine,social-card,motion-storyboard,prompt-dna). frontier-capsule diverges on all 3 (accent=#1d4ed8, line=rgba(22,20,17,0.14), panel=#fffaf0) — intentional creative signature. No addressable drift. Type-size audit (PR #100): 0/6 warm-paper surfaces define --text-sm. Next candidate: --text-sm starter vocabulary (non-binding).",
       "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
+    },
+    {
+      "id": "creator-text-sm-starter-route",
+      "axis": "visual grammar",
+      "observation": "Type-size audit diagnostic (PR #100) confirmed 0/6 warm-paper surfaces define --text-sm. Consensus proposal: --text-sm:13px (meta/caption size), --text-xs:11px (smallest label). Warm-paper surfaces use hardcoded px values with no token. A non-binding starter vocabulary would provide grammar consistency without mandating adoption.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 3,
+        "boundary_safety": 9,
+        "minimal_core": 6
+      },
+      "risk": "Non-binding — surfaces can opt in voluntarily. No enforcement trap. Design decision: values are starter-suggestion, not mandate.",
+      "selection": "candidate",
+      "mutation": "Add --text-sm:13px and --text-xs:11px to :root on all 6 warm-paper surfaces. These are non-binding starter vocabulary. Surface creators can override or ignore. Purpose: provide named token reference for common meta/caption sizes to reduce hardcoded px proliferation.",
+      "phenotype": "creator-type-size-audit.html (existing, PR #100) — shows all hardcoded px values across 6 surfaces. New diagnostic not needed: existing audit is sufficient proof of gap."
     }
   ],
   "winner": "creator-type-size-token-explore-route",
@@ -805,6 +822,16 @@
         "bun creator:multi-surface-proof (18/18 measure+print PASS)",
         "bun creator:measure-print-cache -- --no-cache (14/14 fresh PASS)",
         "PR #138 merged"
+      ]
+    },
+    {
+      "id": "creator-family-grammar-audit-route",
+      "selection": "retained",
+      "retained_as": "warm-paper family grammar audit diagnostic — accent/line/panel across 6 surfaces",
+      "proof": [
+        "bun measure:check -- examples/creator-family-grammar-audit.html",
+        "bun print:render -- examples/creator-family-grammar-audit.html /tmp/family-grammar-audit.pdf --canvas=1684x1191",
+        "creator-family-grammar-audit.html browser DOM verification: innerWidth=1280, scrollWidth=1684, scrollHeight=1191, 0 console errors"
       ]
     }
   ],
