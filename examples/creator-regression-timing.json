@@ -1,52 +1,52 @@
 {
-  "timestamp": "2026-06-02T18:57:14.911Z",
-  "totalMs": 9825,
+  "timestamp": "2026-06-02T21:10:28.275Z",
+  "totalMs": 11354,
   "passed": 28,
   "failed": 3,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1323
+      "durationMs": 1148
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 717
+      "durationMs": 1022
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1336
+      "durationMs": 1891
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 46
+      "durationMs": 38
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 27
+      "durationMs": 29
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 498
+      "durationMs": 525
     },
     {
       "name": "creator:script-health",
-      "durationMs": 20
+      "durationMs": 21
     },
     {
       "name": "creator:orphan-script",
-      "durationMs": 20
+      "durationMs": 22
     },
     {
       "name": "creator:workflow-gate-health",
-      "durationMs": 4965
+      "durationMs": 5740
     },
     {
       "name": "creator:example-check-coverage",
-      "durationMs": 20
+      "durationMs": 21
     },
     {
       "name": "creator:post-check-coverage",
-      "durationMs": 20
+      "durationMs": 21
     },
     {
       "name": "creator:regression-duration",
@@ -54,15 +54,15 @@
     },
     {
       "name": "creator:measure-print-cache",
-      "durationMs": 20
-    },
-    {
-      "name": "creator:cache-integrity",
       "durationMs": 21
     },
     {
+      "name": "creator:cache-integrity",
+      "durationMs": 22
+    },
+    {
       "name": "creator:surface-consistency",
-      "durationMs": 24
+      "durationMs": 26
     },
     {
       "name": "creator:family-dna-check",
@@ -70,43 +70,43 @@
     },
     {
       "name": "creator:capsule-check",
-      "durationMs": 18
+      "durationMs": 20
     },
     {
       "name": "creator:evolution-check",
-      "durationMs": 18
+      "durationMs": 20
     },
     {
       "name": "creator:mutation-check",
-      "durationMs": 18
+      "durationMs": 20
     },
     {
       "name": "creator:poster-check",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:prompt-dna-check",
-      "durationMs": 19
+      "durationMs": 20
     },
     {
       "name": "creator:motion-storyboard-check",
-      "durationMs": 19
+      "durationMs": 21
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 19
+      "durationMs": 21
     },
     {
       "name": "creator:pdf-zine-check",
-      "durationMs": 20
+      "durationMs": 21
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 22
+      "durationMs": 24
     },
     {
       "name": "creator:remotion-scene-check",
-      "durationMs": 20
+      "durationMs": 22
     },
     {
       "name": "creator:manim-scene-check",
@@ -114,19 +114,19 @@
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 20
+      "durationMs": 22
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 20
+      "durationMs": 22
     },
     {
       "name": "creator:skill-package-check",
-      "durationMs": 23
+      "durationMs": 20
     },
     {
       "name": "hackathon:score",
-      "durationMs": 449
+      "durationMs": 471
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-02T18:57:27.476Z",
+  "timestamp": "2026-06-02T21:10:58.415Z",
   "total_surfaces": 20,
   "with_token_layer": 20,
   "without_token_layer": 0,
@@ -327,12 +327,13 @@
     },
     {
       "token": "--panel",
-      "distinct_values": 6,
+      "distinct_values": 5,
       "values": [
         {
           "value": "rgba(244,234,214,0.06)",
           "surfaces": [
             "creator-family-dna-spacing-grammar-audit.html",
+            "creator-family-dna.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
@@ -347,12 +348,6 @@
           "value": "rgba(244,234,214,.08)",
           "surfaces": [
             "creator-browser-demo.html"
-          ]
-        },
-        {
-          "value": "rgba(244, 234, 214, 0.06)",
-          "surfaces": [
-            "creator-family-dna.html"
           ]
         },
         {
@@ -493,7 +488,7 @@
     "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-02T18:57:27.266Z",
+    "prior_timestamp": "2026-06-02T21:10:58.184Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -545,8 +540,8 @@
       },
       {
         "token": "--panel",
-        "prior_distinct": 6,
-        "current_distinct": 6,
+        "prior_distinct": 5,
+        "current_distinct": 5,
         "delta": 0
       },
       {
@@ -942,5 +937,10 @@
         "gap_count": 1
       }
     ]
+  },
+  "mechanical_drift": {
+    "note": "Same semantic value, different formatting (whitespace/leading-zero/case). Zero visual risk to align.",
+    "count": 0,
+    "details": []
   }
 }
