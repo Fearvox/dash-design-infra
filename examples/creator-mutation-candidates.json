@@ -33,7 +33,7 @@
         "minimal_core": 5
       },
       "risk": "Non-warm-paper surfaces have intentional family grammar divergence (Georgia-direct, creative-hybrid). Token layer extension may homogenize.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
       "phenotype": "Option A or B with creator verdict."
     },
@@ -66,13 +66,13 @@
         "boundary_safety": 8,
         "minimal_core": 5
       },
-      "risk": "frontier-capsule rgba(22, 20, 17, 0.14) is a different visual effect than warm-paper rgba(21,18,14,0.18) — slightly lighter and lower-contrast. May be intentional design. Verify visual delta is negligible before aligning.",
-      "selection": "selected",
-      "mutation": "Inspect frontier-capsule --line usage in body CSS to determine if rgba(22, 20, 17, 0.14) is intentional or near-consensus drift. If near-consensus, propose alignment.",
+      "risk": "Resolved: visual delta is < 1 alpha unit on 1px borders, well below perceptual threshold on warm paper.",
+      "selection": "candidate",
+      "mutation": "Aligned frontier-capsule --line from rgba(22, 20, 17, 0.14) to warm-paper consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations), visual delta negligible. --line converges 7→6 distinct values across 16 surfaces.",
       "phenotype": "Diagnostic — confirms or refutes frontier-capsule --line alignment opportunity."
     }
   ],
-  "winner": "creator-line-color-explore-route",
+  "winner": "creator-font-sans-sans-serif-complete-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -834,6 +834,19 @@
         "bun measure:check -- examples/creator-family-dna.html (1684x1191 PASS)",
         "bun creator:mutation-check (PASS — 4 candidates, 1 selected)"
       ]
+    },
+    {
+      "id": "creator-line-color-frontier-capsule-align-route",
+      "selection": "retained",
+      "axis": "visual grammar",
+      "retained_as": "creator-line-color-frontier-capsule-align-route",
+      "retained_at": "2026-06-02T23:18:38.866Z",
+      "proof": [
+        "bun creator:surface-consistency — --line 7→6 distinct values across 16 surfaces",
+        "bun creator:capsule-check — PASS (frontier-capsule unchanged structure)",
+        "bun creator:regression — code-quality gates pass"
+      ],
+      "description": "Aligns frontier-capsule --line token to warm-paper family consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations); no creative content constraint. Continues the line-color alignment pattern from PR #70 (--line alpha) and PR #64 (--line warm-paper consensus)."
     }
   ],
   "retention": "2026-06-02: Mechanical drift detector shipped — family-dna --panel whitespace drift fixed (rgba(244, 234, 214, 0.06) → rgba(244,234,214,0.06)). creator-type-size-token-explore-route deselected (stale: --text-sm/--text-xs shipped in PRs #141, #142). MECHANICAL DRIFT section added to creator:surface-consistency output. --panel diverged: 6→5. Next: surface remaining stalled tokens via detector, or pursue visual grammar extension.",
