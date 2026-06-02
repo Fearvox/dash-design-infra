@@ -1,32 +1,32 @@
 {
-  "timestamp": "2026-06-02T21:10:28.275Z",
-  "totalMs": 11354,
+  "timestamp": "2026-06-02T23:21:10.362Z",
+  "totalMs": 8978,
   "passed": 28,
   "failed": 3,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1148
+      "durationMs": 845
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 1022
+      "durationMs": 549
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1891
+      "durationMs": 1258
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 38
+      "durationMs": 43
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 29
+      "durationMs": 22
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 525
+      "durationMs": 473
     },
     {
       "name": "creator:script-health",
@@ -34,11 +34,11 @@
     },
     {
       "name": "creator:orphan-script",
-      "durationMs": 22
+      "durationMs": 20
     },
     {
       "name": "creator:workflow-gate-health",
-      "durationMs": 5740
+      "durationMs": 4836
     },
     {
       "name": "creator:example-check-coverage",
@@ -46,7 +46,7 @@
     },
     {
       "name": "creator:post-check-coverage",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:regression-duration",
@@ -58,19 +58,19 @@
     },
     {
       "name": "creator:cache-integrity",
-      "durationMs": 22
+      "durationMs": 20
     },
     {
       "name": "creator:surface-consistency",
-      "durationMs": 26
+      "durationMs": 25
     },
     {
       "name": "creator:family-dna-check",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:capsule-check",
-      "durationMs": 20
+      "durationMs": 19
     },
     {
       "name": "creator:evolution-check",
@@ -78,7 +78,7 @@
     },
     {
       "name": "creator:mutation-check",
-      "durationMs": 20
+      "durationMs": 19
     },
     {
       "name": "creator:poster-check",
@@ -86,19 +86,19 @@
     },
     {
       "name": "creator:prompt-dna-check",
-      "durationMs": 20
+      "durationMs": 21
     },
     {
       "name": "creator:motion-storyboard-check",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:pdf-zine-check",
-      "durationMs": 21
+      "durationMs": 20
     },
     {
       "name": "creator:p5-sketch-check",
@@ -106,7 +106,7 @@
     },
     {
       "name": "creator:remotion-scene-check",
-      "durationMs": 22
+      "durationMs": 21
     },
     {
       "name": "creator:manim-scene-check",
@@ -114,11 +114,11 @@
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 22
+      "durationMs": 21
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 22
+      "durationMs": 21
     },
     {
       "name": "creator:skill-package-check",
@@ -126,7 +126,7 @@
     },
     {
       "name": "hackathon:score",
-      "durationMs": 471
+      "durationMs": 475
     }
   ]
 }

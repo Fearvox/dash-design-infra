@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-02T21:10:58.415Z",
+  "timestamp": "2026-06-02T23:21:09.577Z",
   "total_surfaces": 20,
   "with_token_layer": 20,
   "without_token_layer": 0,
@@ -158,13 +158,14 @@
     },
     {
       "token": "--line",
-      "distinct_values": 7,
+      "distinct_values": 6,
       "values": [
         {
           "value": "rgba(21,18,14,0.18)",
           "surfaces": [
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
+            "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
@@ -178,12 +179,6 @@
           "value": "#294148",
           "surfaces": [
             "creator-browser-demo.html"
-          ]
-        },
-        {
-          "value": "rgba(22, 20, 17, 0.14)",
-          "surfaces": [
-            "creator-frontier-capsule.html"
           ]
         },
         {
@@ -488,7 +483,7 @@
     "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-02T21:10:58.184Z",
+    "prior_timestamp": "2026-06-02T23:21:09.130Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -516,8 +511,8 @@
       },
       {
         "token": "--line",
-        "prior_distinct": 7,
-        "current_distinct": 7,
+        "prior_distinct": 6,
+        "current_distinct": 6,
         "delta": 0
       },
       {
