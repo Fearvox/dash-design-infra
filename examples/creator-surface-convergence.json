@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-05T17:14:55.015Z",
+  "timestamp": "2026-06-05T23:55:26.156Z",
   "total_surfaces": 21,
   "with_token_layer": 21,
   "without_token_layer": 0,
@@ -508,7 +508,7 @@
     "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-05T17:14:54.804Z",
+    "prior_timestamp": "2026-06-05T23:55:25.741Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -761,7 +761,7 @@
           10,
           20,
           40,
-          52
+          56
         ],
         "margin_values": [
           7,
@@ -848,7 +848,7 @@
           24,
           30,
           44,
-          58
+          56
         ],
         "margin_values": [],
         "gap_count": 2
