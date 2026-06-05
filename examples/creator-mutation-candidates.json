@@ -1,5 +1,5 @@
 {
-  "observation": "Spacing grammar audit closed as stale premise. creator-type-size-token-explore-route is next selected winner — type size starter vocabulary exploration (non-binding, design-decision-requiring).",
+  "observation": "creator-font-sans-sans-serif-complete-route selected as winner for warm-paper font grammar completion (PR #151, 2026-06-03). Page geometry pattern audit now selected — 6 warm-paper surfaces show 3 role-distinguished patterns (page padding, inner container, page::before frame). Range 44-70px.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -32,8 +32,8 @@
         "boundary_safety": 10,
         "minimal_core": 5
       },
-      "risk": "Non-warm-paper surfaces have intentional family grammar divergence (Georgia-direct, creative-hybrid). Token layer extension may homogenize.",
-      "selection": "selected",
+      "risk": "Closed by PR #151: warm-paper font token layer complete (--font-serif + --font-sans on 6 surfaces). Non-warm-paper half is family signature (PR #129). Candidate closed — slice shipped.",
+      "selection": "candidate",
       "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
       "phenotype": "Option A or B with creator verdict."
     },
@@ -70,9 +70,26 @@
       "selection": "candidate",
       "mutation": "Aligned frontier-capsule --line from rgba(22, 20, 17, 0.14) to warm-paper consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations), visual delta negligible. --line converges 7→6 distinct values across 16 surfaces.",
       "phenotype": "Diagnostic — confirms or refutes frontier-capsule --line alignment opportunity."
+    },
+    {
+      "id": "creator-warm-paper-page-geometry-route",
+      "axis": "visual grammar",
+      "observation": "Warm-paper family .page padding: family-dna 44px 52px 32px, motion-storyboard 52px, poster 58px, prompt-dna 56px. Range 44-58px. pdf-zine uses .sheet:70px + .page::before inset:56px. social-card uses .shell:44px 54px. Three different but visually compatible patterns (page padding / inner container / page::before frame) — may be intentional art-direction vs arbitrary drift. Audit confirmed via diagnostic phenotype (2026-06-05).",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Partially addressable: motion-storyboard 52px → 56px (4px drift) is the only fully alignable pair. Other patterns (page::before frame, asymmetric padding) are family signature. --pad-page / --pad-shell / --pad-frame token layer requires creator/design verdict on uniform vs rhythm-varying approach.",
+      "selection": "selected",
+      "mutation": "Diagnostic slice complete (2026-06-05): creator-warm-paper-page-geometry-diagnostic.html documents 3 role-distinguished patterns, identifies 1 addressable 4px drift (motion-storyboard 52px vs prompt-dna 56px anchor), and proposes 3 token candidates blocked on design verdict. No surface edits — diagnostic phenotype is the output.",
+      "phenotype": "examples/creator-warm-paper-page-geometry-diagnostic.html — fixed-canvas diagnostic with 5 findings tables, 4 visual sketches (viz-frames), summary tiles showing outer 44-70px range, inner 40-70px range, closest pair 52/56. Passes measure:check (1684x2805 fits) and print:render (3 pages)."
     }
   ],
-  "winner": "creator-font-sans-sans-serif-complete-route",
+  "winner": "creator-warm-paper-page-geometry-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -847,6 +864,18 @@
         "bun creator:regression — code-quality gates pass"
       ],
       "description": "Aligns frontier-capsule --line token to warm-paper family consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations); no creative content constraint. Continues the line-color alignment pattern from PR #70 (--line alpha) and PR #64 (--line warm-paper consensus)."
+    },
+    {
+      "id": "creator-warm-paper-page-geometry-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "Page geometry audit diagnostic — 6 warm-paper surfaces show 3 role-distinguished patterns (page padding, inner container, page::before frame). Outer padding 44-70px range; inner 40-70px. Closest pair: motion-storyboard 52px / prompt-dna 56px (4px drift). Token candidates --pad-page, --pad-shell, --pad-frame identified but blocked on design verdict. No surface edits needed — diagnostic is the slice output.",
+      "proof": [
+        "bun measure:check -- examples/creator-warm-paper-page-geometry-diagnostic.html (1684x2805 fits)",
+        "bun print:render -- examples/creator-warm-paper-page-geometry-diagnostic.html /tmp/dash-creator-warm-paper-page-geometry-diagnostic.pdf --canvas=1684x1191 (3 pages)",
+        "bun creator:multi-surface-proof (21/21 measure+print PASS)",
+        "bun creator:mutation-check (PASS — 5 candidates, 1 selected)",
+        "browser_console: scrollW=1684, scrollH=2805, tables=6, rows=23, errors=0, viz-frames=4"
+      ]
     }
   ],
   "retention": "2026-06-02: Mechanical drift detector shipped — family-dna --panel whitespace drift fixed (rgba(244, 234, 214, 0.06) → rgba(244,234,214,0.06)). creator-type-size-token-explore-route deselected (stale: --text-sm/--text-xs shipped in PRs #141, #142). MECHANICAL DRIFT section added to creator:surface-consistency output. --panel diverged: 6→5. Next: surface remaining stalled tokens via detector, or pursue visual grammar extension.",

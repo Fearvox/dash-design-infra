@@ -37,6 +37,7 @@ const SURFACES: Surface[] = [
   { name: 'font-grammar-audit', file: 'examples/creator-font-grammar-audit.html', canvas: '1684x1191' },
   { name: 'non-warm-paper-font-diagnostic', file: 'examples/creator-non-warm-paper-font-diagnostic.html', canvas: '1684x1191' },
   { name: 'family-dna-spacing-grammar-audit', file: 'examples/creator-family-dna-spacing-grammar-audit.html', canvas: '1684x1191' },
+  { name: 'warm-paper-page-geometry-diagnostic', file: 'examples/creator-warm-paper-page-geometry-diagnostic.html', canvas: '1684x1191' },
 ];
 
 interface ProofResult {

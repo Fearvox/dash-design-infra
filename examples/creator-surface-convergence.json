@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-06-02T23:21:09.577Z",
-  "total_surfaces": 20,
-  "with_token_layer": 20,
+  "timestamp": "2026-06-05T17:14:55.015Z",
+  "total_surfaces": 21,
+  "with_token_layer": 21,
   "without_token_layer": 0,
   "shared_tokens": 6,
-  "diverged_tokens": 13,
+  "diverged_tokens": 14,
   "unique_tokens": 31,
   "families": 4,
   "diverged_details": [
@@ -27,7 +27,8 @@
             "creator-remotion-scene.html",
             "creator-social-card.html",
             "creator-touchdesigner-tox.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -131,7 +132,8 @@
             "creator-prompt-dna-adapter.html",
             "creator-radius-token-audit.html",
             "creator-social-card.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -172,7 +174,8 @@
             "creator-prompt-dna-adapter.html",
             "creator-radius-token-audit.html",
             "creator-social-card.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -227,7 +230,8 @@
             "creator-prompt-dna-adapter.html",
             "creator-radius-token-audit.html",
             "creator-social-card.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -267,6 +271,14 @@
       "distinct_values": 4,
       "values": [
         {
+          "value": "#070b0d",
+          "surfaces": [
+            "creator-family-dna-spacing-grammar-audit.html",
+            "creator-family-dna.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
+          ]
+        },
+        {
           "value": "#0b1114",
           "surfaces": [
             "creator-font-grammar-audit.html",
@@ -279,13 +291,6 @@
           "surfaces": [
             "creator-bg-token-diagnostic.html",
             "creator-manim-scene.html"
-          ]
-        },
-        {
-          "value": "#070b0d",
-          "surfaces": [
-            "creator-family-dna-spacing-grammar-audit.html",
-            "creator-family-dna.html"
           ]
         },
         {
@@ -336,7 +341,8 @@
             "creator-prompt-dna-adapter.html",
             "creator-radius-token-audit.html",
             "creator-social-card.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -383,7 +389,8 @@
             "creator-prompt-dna-adapter.html",
             "creator-radius-token-audit.html",
             "creator-social-card.html",
-            "creator-type-size-audit.html"
+            "creator-type-size-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
@@ -460,6 +467,24 @@
       ]
     },
     {
+      "token": "--soft-blue",
+      "distinct_values": 2,
+      "values": [
+        {
+          "value": "rgba(29, 78, 216, .10)",
+          "surfaces": [
+            "creator-poster-surface.html"
+          ]
+        },
+        {
+          "value": "#1d4ed8",
+          "surfaces": [
+            "creator-warm-paper-page-geometry-diagnostic.html"
+          ]
+        }
+      ]
+    },
+    {
       "token": "--text",
       "distinct_values": 2,
       "values": [
@@ -479,11 +504,11 @@
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 13,
-    "current_diverged_count": 13,
+    "prior_diverged_count": 14,
+    "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-02T23:21:09.130Z",
+    "prior_timestamp": "2026-06-05T17:14:54.804Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -555,6 +580,12 @@
         "token": "--signal",
         "prior_distinct": 4,
         "current_distinct": 4,
+        "delta": 0
+      },
+      {
+        "token": "--soft-blue",
+        "prior_distinct": 2,
+        "current_distinct": 2,
         "delta": 0
       },
       {
@@ -930,6 +961,22 @@
         ],
         "margin_values": [],
         "gap_count": 1
+      },
+      {
+        "file": "creator-warm-paper-page-geometry-diagnostic.html",
+        "gap_values": [
+          6,
+          18
+        ],
+        "padding_values": [
+          1,
+          2,
+          3,
+          10,
+          12
+        ],
+        "margin_values": [],
+        "gap_count": 2
       }
     ]
   },

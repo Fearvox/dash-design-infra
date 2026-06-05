@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684, initial-scale=1">
+<title>warm-paper page geometry diagnostic — DASH surface-consistency</title>
+<style>
+  @page { size: 1684px 1191px; margin: 0; }
+  :root {
+    --night: #070b0d;
+    --paper: #f2eadb;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+    --soft-blue: #1d4ed8;
+    --soft-blue-tint: rgba(29,78,216,.10);
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  body {
+    background: var(--night);
+    background-image:
+      radial-gradient(circle at 88% 8%, rgba(126,240,193,0.10), transparent 30%),
+      radial-gradient(circle at 6% 94%, rgba(255,184,107,0.10), transparent 36%),
+      var(--night);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+  }
+  .page {
+    width: 1684px;
+    min-height: 1191px;
+    background: var(--paper);
+    background-image:
+      linear-gradient(90deg, rgba(20,17,13,0.045) 1px, transparent 1px),
+      linear-gradient(rgba(20,17,13,0.035) 1px, transparent 1px);
+    background-size: 52px 52px, 52px 52px;
+    position: relative;
+  }
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-bottom: 4px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  header h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+  header .meta {
+    margin-top: 8px;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--font-sans);
+  }
+  header .meta b { color: var(--paper); }
+  main {
+    padding: calc(var(--space-4) * 2) calc(var(--space-4) * 2);
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 520;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--soft-blue);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+  p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    max-width: 1100px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-sans);
+  }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+  tr:nth-child(even) td { background: rgba(21,18,14,0.04); }
+  td.num { font-variant-numeric: tabular-nums; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(21,18,14,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .tag-pattern { background: var(--soft-blue-tint); color: var(--soft-blue); border: 1px solid rgba(29,78,216,0.24); }
+  .tag-drift { background: rgba(196,122,31,0.18); color: #7a4a0a; }
+  .tag-sig { background: rgba(126,240,193,0.18); color: #0a5f3f; }
+  .tag-mix { background: rgba(29,78,216,0.12); color: var(--soft-blue); }
+  .finding {
+    margin-bottom: calc(var(--space-4) * 2);
+    padding: var(--space-4);
+    background: var(--panel);
+    border-left: 3px solid var(--accent);
+  }
+  .finding p:last-child { margin-bottom: 0; }
+  .finding strong { color: var(--ink); }
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 12px var(--space-4);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend .tag { background: transparent; }
+  .viz {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .viz-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: var(--space-4);
+  }
+  .viz-card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .viz-frame {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .viz-frame .pad {
+    position: absolute;
+    background: rgba(255,184,107,0.28);
+    border: 1px dashed var(--accent);
+  }
+  .viz-frame .content {
+    position: absolute;
+    background: rgba(29,78,216,0.10);
+    border: 1px dashed var(--soft-blue);
+  }
+  .viz-frame .frame-inset {
+    position: absolute;
+    border: 1px dashed rgba(31,85,212,0.45);
+    background: transparent;
+  }
+  .viz-frame .label {
+    position: absolute;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 9px;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 1px 4px;
+    border: 1px solid var(--line);
+  }
+  .summary-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .summary-tile {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-4);
+  }
+  .summary-tile .label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .summary-tile .value {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .summary-tile .value small {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .summary-tile .detail {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  footer {
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    letter-spacing: .04em;
+  }
+  footer b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>warm-paper <em>page geometry</em> diagnostic</h1>
+    <div class="meta">
+      <b>creator-surface-consistency-route</b> &middot; page-geometry axis &middot;
+      6 surfaces audited &middot; 2026-06-05
+    </div>
+  </header>
+  <main>
+
+  <div class="legend">
+    <span><span class="tag tag-pattern">Pattern A</span> page padding (5 surfaces)</span>
+    <span><span class="tag tag-pattern">Pattern B</span> inner container (3 surfaces)</span>
+    <span><span class="tag tag-pattern">Pattern C</span> page::before frame (1 surface)</span>
+    <span><span class="tag tag-sig">Family signature</span> intentional, not drift</span>
+    <span><span class="tag tag-drift">Drift</span> addressable, alignable</span>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-tile">
+      <div class="label">Outer range (page padding)</div>
+      <div class="value">44&ndash;70<small>px</small></div>
+      <div class="detail">Range across 6 surfaces. 26px spread.</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Inner range (shell/sheet)</div>
+      <div class="value">40&ndash;70<small>px</small></div>
+      <div class="detail">Range across 3 surfaces with inner pattern.</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Closest pair</div>
+      <div class="value">52 / 56<small>px</small></div>
+      <div class="detail">motion-storyboard / prompt-dna. 4px delta.</div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F1</span> Page geometry pattern inventory</h2>
+    <p>Six warm-paper surfaces were audited for how they distribute padding between the fixed 1684&times;1191 canvas and the inner content. Three distinct patterns emerged &mdash; not arbitrary drift, but role-distinguished layout strategies:</p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Outer (page / shell)</th>
+        <th>Inner (shell / sheet / capsule)</th>
+        <th>Pattern</th>
+      </tr>
+      <tr>
+        <td><code>creator-family-dna.html</code></td>
+        <td class="num"><code>.page</code> padding: 44px 52px 32px</td>
+        <td class="num">&mdash;</td>
+        <td><span class="tag tag-pattern">A: direct page padding</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-poster-surface.html</code></td>
+        <td class="num"><code>.page</code> padding: 58px</td>
+        <td class="num"><code>.poster</code> padding: 44px</td>
+        <td><span class="tag tag-mix">A+B: page + poster subframe</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-motion-storyboard.html</code></td>
+        <td class="num"><code>.page</code> padding: 52px</td>
+        <td class="num"><code>.shell</code> padding: 40px</td>
+        <td><span class="tag tag-mix">A+B: page + shell</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-prompt-dna-adapter.html</code></td>
+        <td class="num"><code>.page</code> padding: 56px</td>
+        <td class="num"><code>.capsule-shell</code> padding: 44px</td>
+        <td><span class="tag tag-mix">A+B: page + capsule-shell</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-social-card.html</code></td>
+        <td class="num"><code>.shell</code> padding: 44px 54px</td>
+        <td class="num">&mdash;</td>
+        <td><span class="tag tag-pattern">A: shell padding (1200&times;630 canvas)</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-pdf-zine.html</code></td>
+        <td class="num"><code>.sheet</code> padding: 70px</td>
+        <td class="num"><code>.page::before</code> inset: 56px (frame)</td>
+        <td><span class="tag tag-pattern">B+C: sheet + dashed frame</span></td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: page-geometry is not arbitrary drift. The three patterns correspond to <em>three roles</em>: (A) layout canvas = the page itself is the visible card, (B) inner container = the page is a transparent background and the content frame lives inside, (C) frame inset = the page receives a decorative dashed border frame, separate from the content well.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F2</span> Visual sketches of the three patterns</h2>
+    <p>Each pattern produces a visibly different inner-content area on the 1684&times;1191 canvas. The visualization below is a top-down view of where the orange-tinted padding sits and where the blue-tinted content well lives:</p>
+    <div class="viz">
+      <div class="viz-card">
+        <h3>Pattern A &mdash; page padding (family-dna, social-card)</h3>
+        <div class="viz-frame">
+          <div class="pad" style="inset: 0;"></div>
+          <div class="content" style="inset: 44px 52px 32px 52px;"></div>
+          <div class="label" style="top: 6px; left: 6px;">.page padding</div>
+          <div class="label" style="bottom: 6px; right: 6px;">content</div>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin: 0;">The page <em>is</em> the visible card. The orange-tinted border is the paper margin.</p>
+      </div>
+      <div class="viz-card">
+        <h3>Pattern B &mdash; inner container (motion-storyboard, prompt-dna, poster)</h3>
+        <div class="viz-frame">
+          <div class="pad" style="inset: 0;"></div>
+          <div class="content" style="inset: 56px;"></div>
+          <div class="label" style="top: 6px; left: 6px;">.page</div>
+          <div class="label" style="bottom: 6px; right: 6px;">.shell</div>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin: 0;">The page is the canvas. An inner container (shell/sheet/poster) sits inside, defining the content well.</p>
+      </div>
+    </div>
+    <div class="viz">
+      <div class="viz-card">
+        <h3>Pattern C &mdash; frame inset (pdf-zine only)</h3>
+        <div class="viz-frame">
+          <div class="frame-inset" style="inset: 56px;"></div>
+          <div class="content" style="inset: 70px;"></div>
+          <div class="label" style="top: 12px; left: 12px;">.page::before inset:56px (frame)</div>
+          <div class="label" style="bottom: 12px; right: 12px;">.sheet padding:70px</div>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin: 0;">The dashed frame at 56px is decorative chrome. The 70px sheet padding is the real content well.</p>
+      </div>
+      <div class="viz-card">
+        <h3>Composite &mdash; what the agent should check for</h3>
+        <p style="font-size: 13px; color: var(--ink); margin-bottom: 8px;">A new warm-paper surface must choose <em>one</em> of the three patterns and stick to it. The decision tree:</p>
+        <ol style="font-size: 12px; color: var(--ink); font-family: var(--font-sans); padding-left: 18px;">
+          <li>Is the page itself the visible card? &rarr; <b>Pattern A</b> (page padding 44&ndash;58px).</li>
+          <li>Is the page a transparent canvas with a content card inside? &rarr; <b>Pattern B</b> (page padding 52&ndash;58px, inner padding 40&ndash;44px).</li>
+          <li>Does the page need a decorative frame + content well? &rarr; <b>Pattern C</b> (frame inset 56px, sheet padding 70px).</li>
+        </ol>
+        <p style="font-size: 11px; color: var(--muted); margin: 8px 0 0;">Mixed patterns (e.g. poster-surface uses A and B together) are allowed when the surface has a subframe inside a padded page &mdash; the subframe is a 2nd-level container, not a separate pattern.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F3</span> Closest-pair analysis (the only plausible drift)</h2>
+    <p>Within Pattern A, the closest pair is <code>motion-storyboard</code> (52px) and <code>prompt-dna-adapter</code> (56px) &mdash; a 4px delta. <code>family-dna</code> uses 52px horizontal but asymmetric vertical (44px 32px) for the &ldquo;title-then-card&rdquo; rhythm. <code>poster-surface</code> at 58px is 2px above motion-storyboard. <code>social-card</code> at 44&times;54 lives on a different canvas (1200&times;630) and uses asymmetric 44&times;54.</p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Pattern A value</th>
+        <th>Distance from 56px</th>
+        <th>Class</th>
+      </tr>
+      <tr>
+        <td><code>creator-family-dna.html</code></td>
+        <td class="num">44px 52px 32px (asymmetric)</td>
+        <td class="num">&minus; 4px (horiz), &minus; 24px (vert-top)</td>
+        <td><span class="tag tag-sig">Family signature</span> (asymmetric for title block)</td>
+      </tr>
+      <tr>
+        <td><code>creator-motion-storyboard.html</code></td>
+        <td class="num">52px</td>
+        <td class="num">&minus; 4px</td>
+        <td><span class="tag tag-drift">Addressable drift</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-prompt-dna-adapter.html</code></td>
+        <td class="num">56px</td>
+        <td class="num">0 (anchor)</td>
+        <td><span class="tag tag-sig">Anchor value</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-poster-surface.html</code></td>
+        <td class="num">58px</td>
+        <td class="num">+ 2px</td>
+        <td><span class="tag tag-drift">Addressable drift</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-social-card.html</code></td>
+        <td class="num">44px 54px (1200&times;630 canvas)</td>
+        <td class="num">different canvas</td>
+        <td><span class="tag tag-sig">Family signature</span> (canvas differs)</td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: the only &lt;10px drift pair is motion-storyboard (52px) vs prompt-dna (56px). A future <code>--pad-page: 56px</code> token would align motion-storyboard to the prompt-dna anchor with a +4px visual delta. This is <em>addressable</em> but is a design call (motion-storyboard already has 6 internal <code>grid-template-rows: 66px minmax(0,1fr) 38px</code> sized to 52px, so the inner layout would need recalibration).</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F4</span> Token layer opportunity (design-decision-blocked)</h2>
+    <p>Based on F1-F3, three token candidates could be proposed:</p>
+    <ol style="font-size: 13px; line-height: 1.6; color: var(--ink); font-family: var(--font-sans); padding-left: 24px; margin-bottom: var(--space-4);">
+      <li><code>--pad-page: 56px</code> &mdash; align page padding across all Pattern A surfaces. Visual delta: motion-storyboard +4px, poster-surface &minus;2px. <em>Closes 1&ndash;2 px drift pairs.</em></li>
+      <li><code>--pad-shell: 44px</code> &mdash; align inner container padding across all Pattern B surfaces. Visual delta: motion-storyboard &minus;4px, poster-surface 0, prompt-dna 0. <em>Closes inner drift.</em></li>
+      <li><code>--pad-frame: 56px</code> &mdash; align frame inset for any future Pattern C surface. Currently only pdf-zine uses this. <em>No addressable drift &mdash; only 1 surface uses it.</em></li>
+    </ol>
+    <p><strong>Decision blocker</strong>: introducing <code>--pad-page</code> / <code>--pad-shell</code> requires a creator/design verdict on whether the 44&ndash;58px range is the warm-paper family&rsquo;s &ldquo;page padding rhythm&rdquo; (intentional spread) or arbitrary drift (should be uniform). The visible difference between 52px and 56px is &lt; 1% of canvas width on a 1684px-wide page &mdash; the visual change is real but subtle.</p>
+    <p><strong>Recommendation</strong>: hold the token proposal until the creator issues a design call. The current state is a valid family signature (rhythm via subtle variation) just as much as a candidate for unification.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F5</span> Diagnostic summary</h2>
+    <table>
+      <tr>
+        <th>Claim</th>
+        <th>Reality</th>
+        <th>Classification</th>
+      </tr>
+      <tr>
+        <td>&ldquo;Page padding 44&ndash;58px range is arbitrary drift across warm-paper family.&rdquo;</td>
+        <td>Three role-distinguished patterns (page-padded, inner-container, frame-inset). Within Pattern A, 2px and 4px deltas exist; across patterns, ranges are intentional role-based.</td>
+        <td><span class="tag tag-sig">Family signature with sub-cluster drift</span></td>
+      </tr>
+      <tr>
+        <td>&ldquo;Tokenizing page padding is mechanical and safe.&rdquo;</td>
+        <td>Each pattern has its own token candidate (<code>--pad-page</code>, <code>--pad-shell</code>, <code>--pad-frame</code>). 2 of 3 patterns have only 1 surface &mdash; tokenization premature. Pattern A has 5 surfaces and a 14px spread, anchorable at 56px.</td>
+        <td><span class="tag tag-drift">Partially addressable &mdash; design call needed</span></td>
+      </tr>
+      <tr>
+        <td>&ldquo;No token layer exists for page geometry.&rdquo;</td>
+        <td>Confirmed: 0/6 warm-paper surfaces define <code>--pad-*</code> in <code>:root</code>. The warm-paper family relies on hardcoded page geometry values.</td>
+        <td><span class="tag tag-drift">Addressable gap &mdash; no implementation yet</span></td>
+      </tr>
+    </table>
+    <p><strong>Action</strong>: <code>creator-warm-paper-page-geometry-route</code> has <em>partially</em> addressable drift (Pattern A 2px-4px pairs) but the fix requires a creator/design call on whether the warm-paper family&rsquo;s page padding should be uniform (token + 56px) or rhythm-varying (signature + 3-patterns). The diagnostic phenotype is the slice&rsquo;s output. Next implementable candidate: <code>creator-line-color-explore-route</code> (visual delta &lt; 1 alpha unit, fully alignable) or <code>creator-warm-paper-page-geometry-align-route</code> (pending design verdict).</p>
+  </div>
+
+  </main>
+  <footer>
+    Diagnostic phenotype for <b>creator-surface-consistency-route</b> &middot; page-geometry axis &middot; 2026-06-05 &middot; 6 warm-paper surfaces audited &middot; 3 role-distinguished patterns identified &middot; 2 addressable 4px deltas &middot; design call required
+  </footer>
+</div>
+</body>
+</html>
