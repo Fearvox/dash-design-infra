@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-06-05T17:14:55.015Z",
-  "total_surfaces": 21,
-  "with_token_layer": 21,
+  "timestamp": "2026-06-05T21:40:52.720Z",
+  "total_surfaces": 22,
+  "with_token_layer": 22,
   "without_token_layer": 0,
-  "shared_tokens": 6,
+  "shared_tokens": 7,
   "diverged_tokens": 14,
-  "unique_tokens": 31,
+  "unique_tokens": 30,
   "families": 4,
   "diverged_details": [
     {
@@ -16,6 +16,7 @@
           "value": "#ffb86b",
           "surfaces": [
             "creator-bg-token-diagnostic.html",
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
@@ -90,6 +91,7 @@
         {
           "value": "#2f6f4e",
           "surfaces": [
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
             "creator-manim-scene.html",
@@ -121,6 +123,7 @@
           "value": "#15120e",
           "surfaces": [
             "creator-bg-token-diagnostic.html",
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
@@ -165,6 +168,7 @@
         {
           "value": "rgba(21,18,14,0.18)",
           "surfaces": [
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
             "creator-frontier-capsule.html",
@@ -218,6 +222,7 @@
           "value": "#6f6659",
           "surfaces": [
             "creator-bg-token-diagnostic.html",
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
@@ -273,6 +278,7 @@
         {
           "value": "#070b0d",
           "surfaces": [
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-warm-paper-page-geometry-diagnostic.html"
@@ -332,6 +338,7 @@
         {
           "value": "rgba(244,234,214,0.06)",
           "surfaces": [
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
@@ -379,6 +386,7 @@
           "value": "#f2eadb",
           "surfaces": [
             "creator-bg-token-diagnostic.html",
+            "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
@@ -471,15 +479,16 @@
       "distinct_values": 2,
       "values": [
         {
-          "value": "rgba(29, 78, 216, .10)",
+          "value": "#1d4ed8",
           "surfaces": [
-            "creator-poster-surface.html"
+            "creator-cross-family-grammar-audit.html",
+            "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
         {
-          "value": "#1d4ed8",
+          "value": "rgba(29, 78, 216, .10)",
           "surfaces": [
-            "creator-warm-paper-page-geometry-diagnostic.html"
+            "creator-poster-surface.html"
           ]
         }
       ]
@@ -508,7 +517,7 @@
     "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-05T17:14:54.804Z",
+    "prior_timestamp": "2026-06-05T21:40:52.654Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -638,6 +647,22 @@
           12
         ],
         "gap_count": 5
+      },
+      {
+        "file": "creator-cross-family-grammar-audit.html",
+        "gap_values": [
+          6,
+          18
+        ],
+        "padding_values": [
+          1,
+          2,
+          3,
+          10,
+          12
+        ],
+        "margin_values": [],
+        "gap_count": 2
       },
       {
         "file": "creator-family-dna-spacing-grammar-audit.html",

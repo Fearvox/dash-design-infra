@@ -1,76 +1,8 @@
 {
-  "observation": "creator-font-sans-sans-serif-complete-route selected as winner for warm-paper font grammar completion (PR #151, 2026-06-03). Page geometry pattern audit now selected — 6 warm-paper surfaces show 3 role-distinguished patterns (page padding, inner container, page::before frame). Range 44-70px.",
+  "observation": "Cross-family grammar audit shipped (PR #153, 2026-06-05): 14 diverged tokens classified across 4 visual families. 13 are family signatures, family-converged, or surface-only creative content. The 1 addressable drift (--green on diagnostic) is diagnostic-only. Zero addressable drift on functional warm-paper surfaces. 5 stale candidates closed. Warm-paper family is visually coherent. Next legitimate move: creator-spacing-grammar-layer-route (the convergence file already exposes the per-surface spacing inventory).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
-    {
-      "id": "creator-ink-family-doc-route",
-      "axis": "visual grammar",
-      "observation": "Diagnostic confirmed --ink is a family signature: warm-paper #15120e on 9 surfaces, dark-industrial #111318 on 2 surfaces, creative-hybrid intentionally diverged. No addressable drift. Family signature confirmed — deselect candidate.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 5,
-        "artifact_proof": 4,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Diagnostic complete. No surface edits needed. Stale candidate closed. Type-size token explore next.",
-      "selection": "candidate",
-      "mutation": "Diagnostic: family-dna spacing grammar audit confirms --space-4 token usage correct (6 var(--space-4) usages). Hardcoded 20px card padding is intentional design vocabulary, not grammar drift. creator-family-dna-var-space4-usage-route premise stale — no addressable drift. Next implementable: creator-type-size-token-explore-route (type size starter vocabulary).",
-      "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
-    },
-    {
-      "id": "creator-font-sans-sans-serif-complete-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Closed by PR #151: warm-paper font token layer complete (--font-serif + --font-sans on 6 surfaces). Non-warm-paper half is family signature (PR #129). Candidate closed — slice shipped.",
-      "selection": "candidate",
-      "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
-      "phenotype": "Option A or B with creator verdict."
-    },
-    {
-      "id": "creator-type-size-token-explore-route",
-      "axis": "visual grammar",
-      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Stale: PRs #141 + #142 already shipped --text-sm and --text-xs across 6 warm-paper surfaces (2026-05-30). Type-size tokenization is no longer deferred — vocabulary pair is in place. Type-size-grammar-route is the next legitimate step (extends starter vocabulary or aligns to existing values), not exploration of whether to tokenize. Closed by PR #142 (proven in PRs #141, #142, #143).",
-      "selection": "candidate",
-      "mutation": "Deselected — shipped in PRs #141 (--text-sm) and #142 (--text-xs).",
-      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
-    },
-    {
-      "id": "creator-line-color-explore-route",
-      "axis": "visual grammar",
-      "observation": "Convergence data shows --line has 7 distinct values, 15 surfaces. Warm-paper consensus rgba(21,18,14,0.18) is shared by 9 surfaces. frontier-capsule rgba(22, 20, 17, 0.14) is near-consensus but with real RGB+alpha differences. manim rgba(248, 241, 223, 0.2) is light/creative-hybrid. Creative signatures: p5-sketch #35584c, browser-demo #294148, remotion-scene #394150, touchdesigner-tox rgba(102,227,255,.26). frontier-capsule near-consensus is the next addressable drift candidate — 0.04 alpha reduction + slight RGB shift.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 4,
-        "boundary_safety": 8,
-        "minimal_core": 5
-      },
-      "risk": "Resolved: visual delta is < 1 alpha unit on 1px borders, well below perceptual threshold on warm paper.",
-      "selection": "candidate",
-      "mutation": "Aligned frontier-capsule --line from rgba(22, 20, 17, 0.14) to warm-paper consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations), visual delta negligible. --line converges 7→6 distinct values across 16 surfaces.",
-      "phenotype": "Diagnostic — confirms or refutes frontier-capsule --line alignment opportunity."
-    },
     {
       "id": "creator-warm-paper-page-geometry-route",
       "axis": "visual grammar",
@@ -83,13 +15,64 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Partially addressable: motion-storyboard 52px → 56px (4px drift) is the only fully alignable pair. Other patterns (page::before frame, asymmetric padding) are family signature. --pad-page / --pad-shell / --pad-frame token layer requires creator/design verdict on uniform vs rhythm-varying approach.",
-      "selection": "selected",
-      "mutation": "Diagnostic slice complete (2026-06-05): creator-warm-paper-page-geometry-diagnostic.html documents 3 role-distinguished patterns, identifies 1 addressable 4px drift (motion-storyboard 52px vs prompt-dna 56px anchor), and proposes 3 token candidates blocked on design verdict. No surface edits — diagnostic phenotype is the output.",
+      "risk": "Diagnostic complete (2026-06-05). Page-geometry is family signature with sub-cluster drift. Token layer requires creator/design verdict. No surface edits. Cross-family audit (PR #153) supersedes this as the binding evidence.",
+      "selection": "candidate",
+      "mutation": "Diagnostic shipped (PR #152): 3 role-distinguished patterns documented, 1 addressable 4px drift (motion-storyboard 52px → prompt-dna 56px). Design call required.",
       "phenotype": "examples/creator-warm-paper-page-geometry-diagnostic.html — fixed-canvas diagnostic with 5 findings tables, 4 visual sketches (viz-frames), summary tiles showing outer 44-70px range, inner 40-70px range, closest pair 52/56. Passes measure:check (1684x2805 fits) and print:render (3 pages)."
+    },
+    {
+      "id": "creator-spacing-grammar-layer-route",
+      "axis": "visual grammar",
+      "observation": "Cross-family audit (2026-06-05) confirms all color tokens converged for warm-paper family. Spacing is the next unaddressed layer: convergence file exposes 11 surfaces with hardcoded px gap/padding/margin. spacing_audit field in creator-surface-convergence.json has the full per-surface inventory. Script creator:surface-consistency already detects mechanical_drift (whitespace/leading-zero/case) as zero-risk. A real spacing token layer (--gap-xs/sm/md/lg/xl) would be the next major move.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 5,
+        "artifact_proof": 5,
+        "boundary_safety": 7,
+        "minimal_core": 4
+      },
+      "risk": "Requires design call on token names + values (xs=8px, sm=12px, md=20px, lg=32px, xl=56px?). Spacing is a designer concern; tokenization can be mechanical once values are set.",
+      "selection": "candidate",
+      "mutation": "Introduce --gap-xs:8px, --gap-sm:12px, --gap-md:20px, --gap-lg:32px, --gap-xl:56px token layer to warm-paper family. Update family-dna, motion-storyboard, poster-surface, prompt-dna-adapter, pdf-zine, social-card to use the tokens. Measure + print must still pass.",
+      "phenotype": "Diagnostic first: creator-spacing-grammar-audit.html with the per-surface spacing inventory + token candidate visualization + measured visual deltas. Diagnostic establishes the design call input."
+    },
+    {
+      "id": "creator-cross-family-grammar-audit-route",
+      "axis": "visual grammar",
+      "observation": "Cross-family audit (2026-06-05): 14 diverged tokens across 21 surfaces classified. 13 are family signatures, family-converged, or surface-only creative content. The 1 addressable drift (--green on ink-family-diagnostic) is diagnostic-only. Zero addressable drift on functional warm-paper surfaces. The warm-paper family is visually coherent.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 8,
+        "artifact_proof": 7,
+        "boundary_safety": 9,
+        "minimal_core": 6
+      },
+      "risk": "Diagnostic complete (2026-06-05). Closes 5 stale candidates. Sets up spacing-grammar-layer as next legitimate move.",
+      "selection": "selected",
+      "mutation": "Diagnostic shipped (PR #153): creator-cross-family-grammar-audit.html. 14 diverged tokens classified, 4 visual families documented, 5 stale candidates closed. No surface edits — diagnostic is the slice output.",
+      "phenotype": "Diagnostic — confirms zero addressable drift on functional warm-paper surfaces, identifies the spacing grammar layer as the next legitimate move."
+    },
+    {
+      "id": "creator-mechanical-drift-cleanup-route",
+      "axis": "visual grammar",
+      "observation": "Cross-family audit (2026-06-05) confirms 14 diverged tokens are family signatures or converged. The convergence file already detects mechanical_drift (whitespace/leading-zero/case formatting differences with same semantic value) as a separate field with zero visual risk. This is the lowest-risk next cleanup: align all 11 warm-paper surfaces on canonical formatting.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 4,
+        "artifact_proof": 6,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "risk": "Lowest-risk slice: mechanical drift is zero visual change. Surface edits are pure formatting normalization. Alignable without design call.",
+      "selection": "candidate",
+      "mutation": "Align all mechanical_drift entries from creator-surface-convergence.json across warm-paper family. Whitespace/leading-zero/case normalization. Zero visual delta. Measure + print must still pass.",
+      "phenotype": "Diagnostic: mechanical-drift-audit.html lists each drift pair (consensus vs drifted) and the per-surface fix. Audit establishes the cleanup scope before surface edits."
     }
   ],
-  "winner": "creator-warm-paper-page-geometry-route",
+  "winner": "creator-cross-family-grammar-audit-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
