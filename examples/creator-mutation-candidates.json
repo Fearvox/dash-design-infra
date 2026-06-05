@@ -21,57 +21,6 @@
       "phenotype": "creator-ink-family-diagnostic.html — fixed-canvas diagnostic showing --ink values across all 13 surfaces, family classification, 0 warm-paper addressable drift."
     },
     {
-      "id": "creator-font-sans-sans-serif-complete-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper surfaces now have --font-serif (PR #116) and --font-sans token layers. Non-warm-paper surfaces (browser-demo, family-dna, p5-sketch, remotion-scene) may also benefit from tokenized font references for consistency. No addressable drift — extension opportunity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 3,
-        "memory_retention": 5,
-        "artifact_proof": 2,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Closed by PR #151: warm-paper font token layer complete (--font-serif + --font-sans on 6 surfaces). Non-warm-paper half is family signature (PR #129). Candidate closed — slice shipped.",
-      "selection": "candidate",
-      "mutation": "Option A: extend --font-sans to 4 remaining non-warm-paper surfaces that use ui-sans-serif in body (no :root def). Option B: deselect as intentional family signature — warm-paper completed, others intentionally diverge. Propose for choice before implementing.",
-      "phenotype": "Option A or B with creator verdict."
-    },
-    {
-      "id": "creator-type-size-token-explore-route",
-      "axis": "visual grammar",
-      "observation": "Type size tokenization deferred in prior slices (type-size-audit diagnostic: h1 has 10 distinct values, no shared token). The deferral note says \"tokenization requires explicit design decision before alignment.\" A next slice could propose a constrained type-size token set (e.g., --text-sm, --text-md, --text-lg) as a starter vocabulary and see if warm-paper surfaces adopt it without forcing uniformity.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 4,
-        "memory_retention": 6,
-        "artifact_proof": 3,
-        "boundary_safety": 10,
-        "minimal_core": 5
-      },
-      "risk": "Stale: PRs #141 + #142 already shipped --text-sm and --text-xs across 6 warm-paper surfaces (2026-05-30). Type-size tokenization is no longer deferred — vocabulary pair is in place. Type-size-grammar-route is the next legitimate step (extends starter vocabulary or aligns to existing values), not exploration of whether to tokenize. Closed by PR #142 (proven in PRs #141, #142, #143).",
-      "selection": "candidate",
-      "mutation": "Deselected — shipped in PRs #141 (--text-sm) and #142 (--text-xs).",
-      "phenotype": "Diagnostic phenotype confirming type size token status across warm-paper family."
-    },
-    {
-      "id": "creator-line-color-explore-route",
-      "axis": "visual grammar",
-      "observation": "Convergence data shows --line has 7 distinct values, 15 surfaces. Warm-paper consensus rgba(21,18,14,0.18) is shared by 9 surfaces. frontier-capsule rgba(22, 20, 17, 0.14) is near-consensus but with real RGB+alpha differences. manim rgba(248, 241, 223, 0.2) is light/creative-hybrid. Creative signatures: p5-sketch #35584c, browser-demo #294148, remotion-scene #394150, touchdesigner-tox rgba(102,227,255,.26). frontier-capsule near-consensus is the next addressable drift candidate — 0.04 alpha reduction + slight RGB shift.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 4,
-        "boundary_safety": 8,
-        "minimal_core": 5
-      },
-      "risk": "Resolved: visual delta is < 1 alpha unit on 1px borders, well below perceptual threshold on warm paper.",
-      "selection": "candidate",
-      "mutation": "Aligned frontier-capsule --line from rgba(22, 20, 17, 0.14) to warm-paper consensus rgba(21,18,14,0.18). UI-chrome use only (4 border declarations), visual delta negligible. --line converges 7→6 distinct values across 16 surfaces.",
-      "phenotype": "Diagnostic — confirms or refutes frontier-capsule --line alignment opportunity."
-    },
-    {
       "id": "creator-warm-paper-page-geometry-route",
       "axis": "visual grammar",
       "observation": "Warm-paper family .page padding: family-dna 44px 52px 32px, motion-storyboard 52px, poster 58px, prompt-dna 56px. Range 44-58px. pdf-zine uses .sheet:70px + .page::before inset:56px. social-card uses .shell:44px 54px. Three different but visually compatible patterns (page padding / inner container / page::before frame) — may be intentional art-direction vs arbitrary drift. Audit confirmed via diagnostic phenotype (2026-06-05).",
@@ -83,13 +32,30 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Partially addressable: motion-storyboard 52px → 56px (4px drift) is the only fully alignable pair. Other patterns (page::before frame, asymmetric padding) are family signature. --pad-page / --pad-shell / --pad-frame token layer requires creator/design verdict on uniform vs rhythm-varying approach.",
-      "selection": "selected",
-      "mutation": "Diagnostic slice complete (2026-06-05): creator-warm-paper-page-geometry-diagnostic.html documents 3 role-distinguished patterns, identifies 1 addressable 4px drift (motion-storyboard 52px vs prompt-dna 56px anchor), and proposes 3 token candidates blocked on design verdict. No surface edits — diagnostic phenotype is the output.",
+      "risk": "Closed by PR #152. Diagnostic output: 3 role-distinguished patterns, 1 addressable 4px drift, 1 addressable 2px drift. Next: align motion-storyboard 52px and poster 58px to prompt-dna 56px (smallest concrete page-geometry mutation).",
+      "selection": "candidate",
+      "mutation": "Diagnostic slice complete (PR #152, 2026-06-05). creator-warm-paper-page-geometry-diagnostic.html documents 3 role-distinguished patterns (page padding / inner container / page::before frame), identifies 1 addressable 4px drift (motion-storyboard 52px vs prompt-dna 56px anchor) and 1 addressable 2px drift (poster 58px). Pattern C (page::before frame) and family-dna asymmetric padding are family signatures. Token layer --pad-page/--pad-shell/--pad-frame requires creator/design verdict. Closed — diagnostic phenotype is the slice output.",
       "phenotype": "examples/creator-warm-paper-page-geometry-diagnostic.html — fixed-canvas diagnostic with 5 findings tables, 4 visual sketches (viz-frames), summary tiles showing outer 44-70px range, inner 40-70px range, closest pair 52/56. Passes measure:check (1684x2805 fits) and print:render (3 pages)."
+    },
+    {
+      "id": "creator-warm-paper-page-geometry-align-route",
+      "axis": "visual grammar",
+      "observation": "PR #152 diagnostic identified the only fully addressable page-geometry drift in the warm-paper family: motion-storyboard .page padding:52px and poster-surface .page padding:58px both drift from the prompt-dna anchor 56px. Pattern A surfaces: family-dna 44/52/32 (asymmetric, family signature), motion-storyboard 52, poster 58, prompt-dna 56. Range 52-58px across Pattern A. Pattern B (inner .shell) and Pattern C (page::before) confirmed as family signature — not in scope. Visual delta: 4px and 2px on a 1684x1191 canvas at fixed positions, well below perceptual threshold (1px on 1000px canvas ≈ 0.1% scale).",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Narrow: only 2 surface edits (motion-storyboard 52→56, poster 58→56). family-dna 44/52/32 intentionally preserved (asymmetric family signature). No token layer introduced — pure value alignment to existing warm-paper anchor. If creator/design wants a --pad-page token layer in the future, the values are now aligned to make the token a no-op. measure:check + print:render must still pass for both surfaces.",
+      "selection": "selected",
+      "mutation": "Align motion-storyboard .page padding from 52px to 56px. Align poster-surface .page padding from 58px to 56px. Both match prompt-dna anchor (the largest warm-paper family Pattern A surface). All 4 Pattern A surfaces (motion-storyboard, poster, prompt-dna, family-dna) preserve their distinct padding values but 2 of them converge to the same 56px as the family anchor. family-dna asymmetric 44/52/32 preserved as family signature. No new token layer, no structural CSS changes.",
+      "phenotype": "2 surface edits (motion-storyboard.html, poster-surface.html) + .artifacts evidence note. measure:check PASS for both, print:render PASS, surface-consistency reports --pad-page-like drift reduced from 3→1 distinct value, convergence.json --line/--pad-page family updated."
     }
   ],
-  "winner": "creator-warm-paper-page-geometry-route",
+  "winner": "creator-warm-paper-page-geometry-align-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
