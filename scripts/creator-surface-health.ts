@@ -38,6 +38,7 @@ const SURFACE_CHECK_MAP: Record<string, string> = {
   'creator-font-grammar-audit':  'creator:surface-consistency',
   'creator-non-warm-paper-font-diagnostic': 'creator:surface-consistency',
   'creator-family-dna-spacing-grammar-audit': 'creator:surface-consistency',
+  'creator-warm-paper-page-geometry-diagnostic': 'creator:surface-consistency',
 };
 
 interface SurfaceResult {
