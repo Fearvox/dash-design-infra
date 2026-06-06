@@ -3,7 +3,7 @@
  * Creator Regression Orchestrator
  *
  * Runs every surface check + mutation-check + capsule-check +
- * evolution-check + hackathon:score in one pass. Now 27 checks
+ * evolution-check + hackathon:score in one pass. Now 28 checks
  * including pre-flight gate chain.
  * Reports per-surface PASS/FAIL with timing.
  * Aggregate verdict: all surfaces must pass.
@@ -36,6 +36,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:pad-page-token-check', command: 'bun', args: ['run', 'creator:pad-page-token-check'] },
   { name: 'creator:page-grid-check', command: 'bun', args: ['run', 'creator:page-grid-check'] },
   { name: 'creator:family-dna-check', command: 'bun', args: ['run', 'creator:family-dna-check'] },
+  { name: 'creator:cross-family-grammar-audit-check', command: 'bun', args: ['run', 'creator:cross-family-grammar-audit-check'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },
   { name: 'creator:mutation-check', command: 'bun', args: ['run', 'creator:mutation-check'] },
