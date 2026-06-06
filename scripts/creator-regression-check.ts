@@ -33,6 +33,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:measure-print-cache', command: 'bun', args: ['run', 'creator:measure-print-cache'] },
   { name: 'creator:cache-integrity', command: 'bun', args: ['run', 'creator:cache-integrity'] },
   { name: 'creator:surface-consistency', command: 'bun', args: ['run', 'creator:surface-consistency'] },
+  { name: 'creator:pad-page-token-check', command: 'bun', args: ['run', 'creator:pad-page-token-check'] },
   { name: 'creator:family-dna-check', command: 'bun', args: ['run', 'creator:family-dna-check'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },
   { name: 'creator:evolution-check', command: 'bun', args: ['run', 'creator:evolution-check'] },

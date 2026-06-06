@@ -1,5 +1,5 @@
 {
-  "observation": "creator-cross-family-grammar-audit-route shipped (PR cross-family-grammar-audit-clean-20260605) — 14 diverged tokens across 22 surfaces classified into 4 visual families. Warm-paper family confirmed aesthetically coherent, zero addressable drift on functional surfaces. Next: spacing grammar tokenization (creator-spacing-grammar-layer-route) — convergence file already exposes per-surface hardcoded spacing inventory. Introduce --pad-page (56px), --pad-shell (40px), --pad-frame (20px) tokens across 6 warm-paper surfaces.",
+  "observation": "Slice 2026-06-06: --pad-page token layer shipped across 4 warm-paper surfaces (3 Pattern A consumers + 1 reference). Pattern A drift now machine-verifiable. Next: Pattern B --pad-shell exploration — 4px drift between motion-storyboard (40px) and poster/prompt-dna (44px). Diagnostic surface inspection required before any tokenization.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -21,23 +21,6 @@
       "phenotype": "1 orchestrator edit (scripts/creator-regression-check.ts) + 1 verification pass. creator:regression output line for cross-family-grammar-audit-check. regression count increases by 1."
     },
     {
-      "id": "creator-spacing-grammar-layer-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper family .page padding: family-dna 44px 52px 32px, motion-storyboard 52px, poster 58px, prompt-dna 56px. Range 44-58px. pdf-zine uses .sheet:70px + .page::before inset:56px. social-card uses .shell:44px 54px. Three different but visually compatible patterns (page padding / inner container / page::before frame) — may be intentional art-direction vs arbitrary drift. Audit confirmed via diagnostic phenotype (2026-06-05).",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 6,
-        "memory_retention": 7,
-        "artifact_proof": 6,
-        "boundary_safety": 10,
-        "minimal_core": 7
-      },
-      "risk": "Awaits creator/design verdict: uniform (token + 56px) vs rhythm-varying (signature + 3-patterns). 6 surface edits, scope larger than prior tokens. If creator wants to preserve family-dna asymmetric 44×52×32, --pad-page needs a family-dna override.",
-      "selection": "selected",
-      "mutation": "Tokenize the warm-paper family spacing grammar: introduce --pad-page (page padding 56px), --pad-shell (inner container 40px), --pad-frame (page::before frame 20px) tokens. Convergence file already exposes per-surface hardcoded spacing inventory. Replace hardcoded values across 6 warm-paper surfaces (motion-storyboard, poster, prompt-dna, family-dna, social-card, pdf-zine) with var(--pad-*). Verify measure + print pass for all edited surfaces.",
-      "phenotype": "6 surface edits + @dash/tokens extension + .artifacts evidence note. measure:check + print:render PASS for all 6 edited surfaces. surface-consistency reports --pad-* drift reduced."
-    },
-    {
       "id": "creator-warm-paper-page-geometry-diagnostic-extension-route",
       "selection": "candidate",
       "axis": "visual grammar",
@@ -51,9 +34,26 @@
         "minimal_core": 6
       },
       "risk": "Diagnostic only — no surface edits. Spacing inventory may shift when new surfaces are added. Family-dna's 3-padding-asymmetric pattern (44/52/32) remains intact."
+    },
+    {
+      "id": "creator-pad-shell-pattern-b-explore-route",
+      "axis": "visual grammar",
+      "observation": "Warm-paper Pattern B inner container padding: motion-storyboard 40px, poster 44px, prompt-dna 44px. Range 40-44px, 4px drift. Pattern C (pdf-zine) uses page::before inset 56px + .sheet 70px. --pad-shell token candidate = 44px (2/3 Pattern B surfaces agree). motion-storyboard 40px is the outlier. Diagnostic needed to determine if 40px is a family signature (motion-storyboard already has 6 internal grid-template-rows sized to 40px) or addressable drift.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "risk": "Awaits surface inspection: motion-storyboard grid-template-rows 66px minmax(0,1fr) 38px sized to 40px padding — bumping to 44px shrinks inner 1fr by 8px. May be intentional layout design. Pattern C (pdf-zine only) token premature per cross-family audit.",
+      "selection": "selected",
+      "mutation": "Diagnostic surface inspection + grid-layout audit. If motion-storyboard 40px is intentional, retain current 4px drift. If addressable, propose --pad-shell: 44px token with motion-storyboard as documented exception.",
+      "phenotype": "Diagnostic only (no surface edits) or --pad-shell: 44px token + motion-storyboard override."
     }
   ],
-  "winner": "creator-spacing-grammar-layer-route",
+  "winner": "creator-pad-shell-pattern-b-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -865,6 +865,20 @@
         "creator:surface-health 22/22 PASS",
         "creator:example-check-coverage 22/22 PASS",
         "creator:docs-surface-parity 0 actionable gaps (post-promotion)"
+      ]
+    },
+    {
+      "id": "creator-spacing-grammar-layer-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper Pattern A page padding tokenization: --pad-page: 56px token declared on 4 warm-paper surfaces; var(--pad-page) consumed on .page by 3 Pattern A consumers (motion-storyboard, poster-surface, prompt-dna-adapter). Machine check creator:pad-page-token-check wired into regression orchestrator. Catches hardcoded 56px regression.",
+      "proof": [
+        "bun creator:pad-page-token-check (verifies 4 surfaces, 7 checks)",
+        "bun measure:check -- examples/creator-motion-storyboard.html examples/creator-poster-surface.html examples/creator-prompt-dna-adapter.html",
+        "bun print:render -- examples/creator-motion-storyboard.html /tmp/dash-pad-motion-storyboard.pdf --canvas=1684x1191",
+        "bun print:render -- examples/creator-poster-surface.html /tmp/dash-pad-poster.pdf --canvas=1684x1191",
+        "bun print:render -- examples/creator-prompt-dna-adapter.html /tmp/dash-pad-prompt-dna.pdf --canvas=1684x1191",
+        "bun creator:regression (passes creator:pad-page-token-check after surface-consistency)",
+        "bun creator:multi-surface-proof (22/22 measure+print pass)"
       ]
     }
   ],
