@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684, initial-scale=1">
+<title>cross-family grammar audit — DASH surface-consistency</title>
+<style>
+  @page { size: 1684px 1191px; margin: 0; }
+  :root {
+    --night: #070b0d;
+    --paper: #f2eadb;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+    --soft-blue: #1d4ed8;
+    --soft-blue-tint: rgba(29,78,216,.10);
+    --green: #2f6f4e;
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  body {
+    background: var(--night);
+    background-image:
+      radial-gradient(circle at 88% 8%, rgba(126,240,193,0.10), transparent 30%),
+      radial-gradient(circle at 6% 94%, rgba(255,184,107,0.10), transparent 36%),
+      var(--night);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+  }
+  .page {
+    width: 1684px;
+    min-height: 1191px;
+    background: var(--paper);
+    background-image:
+      linear-gradient(90deg, rgba(20,17,13,0.045) 1px, transparent 1px),
+      linear-gradient(rgba(20,17,13,0.035) 1px, transparent 1px);
+    background-size: 52px 52px, 52px 52px;
+    position: relative;
+  }
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-bottom: 4px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  header h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+  header .meta {
+    margin-top: 8px;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--font-sans);
+  }
+  header .meta b { color: var(--paper); }
+  main {
+    padding: calc(var(--space-4) * 2) calc(var(--space-4) * 2);
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 520;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--soft-blue);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+  p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    max-width: 1100px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-sans);
+  }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+  tr:nth-child(even) td { background: rgba(21,18,14,0.04); }
+  td.num { font-variant-numeric: tabular-nums; }
+  td code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(21,18,14,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(21,18,14,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .tag-fam-sig { background: rgba(126,240,193,0.18); color: #0a5f3f; }
+  .tag-drift { background: rgba(196,122,31,0.18); color: #7a4a0a; }
+  .tag-content { background: rgba(29,78,216,0.12); color: var(--soft-blue); }
+  .tag-converged { background: rgba(47,111,78,0.16); color: #1f4a30; }
+  .tag-design { background: rgba(140,90,200,0.16); color: #4a2a78; }
+  .tag-mix { background: rgba(29,78,216,0.12); color: var(--soft-blue); }
+  .finding {
+    margin-bottom: calc(var(--space-4) * 2);
+    padding: var(--space-4);
+    background: var(--panel);
+    border-left: 3px solid var(--accent);
+  }
+  .finding p:last-child { margin-bottom: 0; }
+  .finding strong { color: var(--ink); }
+  .summary-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .summary-tile {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-4);
+  }
+  .summary-tile .label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .summary-tile .value {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .summary-tile .value small {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .summary-tile .detail {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 12px var(--space-4);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend .tag { background: transparent; }
+  .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    vertical-align: -2px;
+    margin-right: 4px;
+    border-radius: 2px;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); }
+  .family-card {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-4);
+  }
+  .family-card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .family-card .meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .family-card ul {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 18px;
+  }
+  footer {
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    letter-spacing: .04em;
+  }
+  footer b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>cross-family <em>grammar audit</em></h1>
+    <div class="meta">
+      <b>creator-surface-consistency-route</b> &middot; cross-family axis &middot;
+      14 diverged tokens &middot; 4 visual families &middot; 2026-06-05
+    </div>
+  </header>
+  <main>
+
+  <div class="legend">
+    <span><span class="tag tag-converged">Converged</span> within-family, no drift</span>
+    <span><span class="tag tag-fam-sig">Family signature</span> intentional, not drift</span>
+    <span><span class="tag tag-content">Creative content</span> surface-specific intent</span>
+    <span><span class="tag tag-drift">Addressable drift</span> alignable with consensus</span>
+    <span><span class="tag tag-design">Design call</span> not mechanically decidable</span>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-tile">
+      <div class="label">Diverged tokens</div>
+      <div class="value">14<small>/21 audited</small></div>
+      <div class="detail">6 fully shared; 31 surface-only unique</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Visual families</div>
+      <div class="value">4<small>distinct</small></div>
+      <div class="detail">warm-paper, dark-industrial, creative-hybrid, mixed</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Addressable drift</div>
+      <div class="value">1<small>real candidate</small></div>
+      <div class="detail">--green sub-cluster 2 surfaces off consensus</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Convergence trend</div>
+      <div class="value">STALL<small></small></div>
+      <div class="detail">14&rarr;14 distinct values. No movement.</div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F1</span> The four visual families</h2>
+    <p>The 21 audited creator surfaces (11 functional + 10 diagnostic) cluster into four visual families. Each family has its own consensus on color, line, panel, and creative signature. Conflating families produces false &ldquo;divergence&rdquo; readings.</p>
+    <div class="grid-2">
+      <div class="family-card">
+        <h3>warm-paper <span class="tag tag-converged">7 surfaces</span></h3>
+        <div class="meta">Family-dna, motion-storyboard, poster-surface, prompt-dna-adapter, pdf-zine, social-card + warm-paper diagnostics</div>
+        <ul>
+          <li><code>--paper:#f2eadb</code>, <code>--ink:#15120e</code>, <code>--muted:#6f6659</code></li>
+          <li><code>--accent:#ffb86b</code>, <code>--line:rgba(21,18,14,0.18)</code></li>
+          <li><code>--panel:rgba(244,234,214,0.06)</code> (translucent warm)</li>
+          <li><code>--space-4:16px</code> shared by all 7</li>
+        </ul>
+      </div>
+      <div class="family-card">
+        <h3>dark-industrial <span class="tag tag-fam-sig">2 surfaces</span></h3>
+        <div class="meta">browser-demo, touchdesigner-tox</div>
+        <ul>
+          <li><code>--night:#0b1114 / #050914</code> (dark canvas)</li>
+          <li><code>--accent:#ff9f6e / #ffb86b</code> (orange variants)</li>
+          <li><code>--signal:#7ef0c1 / #66e3ff</code> (cyan/green active states)</li>
+          <li>Translucent panels, signal-glow aesthetic</li>
+        </ul>
+      </div>
+      <div class="family-card">
+        <h3>creative-hybrid <span class="tag tag-content">3 surfaces</span></h3>
+        <div class="meta">p5-sketch, remotion-scene, manim-scene</div>
+        <ul>
+          <li>Each surface has its own <code>--signal</code> / <code>--line</code> / <code>--paper</code> palette</li>
+          <li>SVG/canvas-driven content; tokens serve the artifact, not the chrome</li>
+          <li>Convergence impossible without breaking creative intent</li>
+          <li>Family signature confirmed (PR #129 non-warm-paper-font, PR #137 p5-line)</li>
+        </ul>
+      </div>
+      <div class="family-card">
+        <h3>mixed / frontier <span class="tag tag-mix">2 surfaces</span></h3>
+        <div class="meta">frontier-capsule, family-dna</div>
+        <ul>
+          <li><strong>frontier-capsule</strong>: warm-paper paper with soft-blue accent + opaque ivory panel &mdash; intentional &ldquo;frontier&rdquo; visual at warm/dark boundary</li>
+          <li><strong>family-dna</strong>: warm-paper surface, ships <code>--paper</code> in <code>:root</code>, used as reference artifact</li>
+          <li>These are NOT drift; they are documented family positions</li>
+        </ul>
+      </div>
+    </div>
+    <p><strong>Conclusion</strong>: the 4 families are real, documented, and structurally distinct. Most cross-family &ldquo;divergence&rdquo; on tokens like <code>--signal</code>, <code>--line</code>, <code>--paper-dim</code> is family signature, not addressable drift.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F2</span> All 14 diverged tokens classified</h2>
+    <p>Each token, classified by inspection of CSS usage context (UI chrome vs creative content vs family role):</p>
+    <table>
+      <tr>
+        <th>Token</th>
+        <th>Distinct values</th>
+        <th>Surfaces</th>
+        <th>Classification</th>
+      </tr>
+      <tr>
+        <td><code>--paper</code></td>
+        <td class="num">4</td>
+        <td>13 / 2 / 1 / 1</td>
+        <td><span class="tag tag-converged">Warm-paper converged</span> + 1 family signature</td>
+      </tr>
+      <tr>
+        <td><code>--ink</code></td>
+        <td class="num">4</td>
+        <td>14 / 3 / 1 / 1</td>
+        <td><span class="tag tag-converged">Warm-paper converged</span> + dark-industrial family signature</td>
+      </tr>
+      <tr>
+        <td><code>--muted</code></td>
+        <td class="num">6</td>
+        <td>15 + 5 single-value</td>
+        <td><span class="tag tag-converged">Warm-paper converged</span> (15/21 surfaces)</td>
+      </tr>
+      <tr>
+        <td><code>--accent</code></td>
+        <td class="num">4</td>
+        <td>14 / 1 / 1 / 1</td>
+        <td><span class="tag tag-converged">Warm-paper converged</span> (#ffb86b 14/21) + family signatures</td>
+      </tr>
+      <tr>
+        <td><code>--line</code></td>
+        <td class="num">6</td>
+        <td>11 / 5 single</td>
+        <td><span class="tag tag-fam-sig">Family signatures</span> (warm-paper converged 11/21)</td>
+      </tr>
+      <tr>
+        <td><code>--panel</code></td>
+        <td class="num">5</td>
+        <td>11 + 4 single</td>
+        <td><span class="tag tag-converged">Warm-paper converged</span> (translucent warm 11/21)</td>
+      </tr>
+      <tr>
+        <td><code>--space-4</code></td>
+        <td class="num">1</td>
+        <td>All 11 retained</td>
+        <td><span class="tag tag-converged">Fully shared</span> across warm-paper family</td>
+      </tr>
+      <tr>
+        <td><code>--signal</code></td>
+        <td class="num">4</td>
+        <td>5 / 1 / 1 / 1</td>
+        <td><span class="tag tag-fam-sig">Family signature</span> (warm/dark/creative-hybrid) - confirmed PR #129</td>
+      </tr>
+      <tr>
+        <td><code>--bg</code></td>
+        <td class="num">4</td>
+        <td>3 / 1 / 1 / 1</td>
+        <td><span class="tag tag-fam-sig">Family signature</span> (dark/warm) - confirmed PR #95</td>
+      </tr>
+      <tr>
+        <td><code>--night</code></td>
+        <td class="num">4</td>
+        <td>3 / 3 / 2 / 1</td>
+        <td><span class="tag tag-fam-sig">Dark-family signature</span> (4 dark surfaces, 4 distinct values)</td>
+      </tr>
+      <tr>
+        <td><code>--night-soft</code></td>
+        <td class="num">3</td>
+        <td>1 / 1 / 1</td>
+        <td><span class="tag tag-content">Surface-only creative content</span></td>
+      </tr>
+      <tr>
+        <td><code>--paper-dim</code></td>
+        <td class="num">2</td>
+        <td>1 / 1</td>
+        <td><span class="tag tag-content">Surface-only creative content</span></td>
+      </tr>
+      <tr>
+        <td><code>--soft-blue</code></td>
+        <td class="num">2</td>
+        <td>1 / 1</td>
+        <td><span class="tag tag-content">Surface-only creative content</span></td>
+      </tr>
+      <tr>
+        <td><code>--text</code></td>
+        <td class="num">2</td>
+        <td>1 / 1</td>
+        <td><span class="tag tag-content">Surface-only creative content</span></td>
+      </tr>
+      <tr style="background: rgba(196,122,31,0.10);">
+        <td><code>--green</code></td>
+        <td class="num"><b>3</b></td>
+        <td><b>7 / 1 / 1</b></td>
+        <td><span class="tag tag-drift">Addressable drift</span> &mdash; <b>1 real candidate remains</b></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F3</span> The one remaining addressable candidate: <code>--green</code></h2>
+    <p>Of 14 diverged tokens, 13 are family signatures, family-converged, or surface-only creative content. The one exception is <code>--green</code>:</p>
+    <table>
+      <tr>
+        <th>Value</th>
+        <th>Surfaces</th>
+        <th>Distance from #2f6f4e</th>
+        <th>Class</th>
+      </tr>
+      <tr>
+        <td><span class="swatch" style="background:#2f6f4e"></span><code>#2f6f4e</code></td>
+        <td>family-dna, motion-storyboard, poster-surface, prompt-dna-adapter, pdf-zine, social-card, family-dna-spacing-grammar-audit</td>
+        <td class="num">0 (anchor)</td>
+        <td><span class="tag tag-converged">Warm-paper consensus</span></td>
+      </tr>
+      <tr>
+        <td><span class="swatch" style="background:#0d2818"></span><code>#0d2818</code></td>
+        <td>creator-ink-family-diagnostic.html</td>
+        <td class="num">dark by ~2 lightness</td>
+        <td><span class="tag tag-drift">Addressable drift</span></td>
+      </tr>
+      <tr>
+        <td><span class="swatch" style="background:#10291f"></span><code>#10291f</code></td>
+        <td>creator-ink-family-diagnostic.html</td>
+        <td class="num">dark by ~2 lightness</td>
+        <td><span class="tag tag-drift">Addressable drift</span></td>
+      </tr>
+    </table>
+    <p><strong>Important caveat</strong>: the two drifted <code>--green</code> values are both on <code>creator-ink-family-diagnostic.html</code> &mdash; a diagnostic artifact, not a functional surface. The 7 functional warm-paper surfaces are all at <code>#2f6f4e</code> consensus. The &ldquo;drift&rdquo; is diagnostic-only.</p>
+    <p><strong>Conclusion</strong>: there is <strong>zero addressable drift remaining on functional surfaces</strong>. Every warm-paper family token is converged. Every cross-family divergence is a documented family signature. Every surface-only token is intentional creative content. The warm-paper family is visually coherent.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F4</span> Stale candidate closure</h2>
+    <p>The 5 active candidates in <code>examples/creator-mutation-candidates.json</code> have all been <strong>shipped or closed by prior slices</strong>. This audit is the evidence for closing them:</p>
+    <table>
+      <tr>
+        <th>Candidate</th>
+        <th>Original premise</th>
+        <th>Current state</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td><code>creator-warm-paper-page-geometry-route</code> (selected)</td>
+        <td>Address warm-paper page padding 44&ndash;58px range</td>
+        <td>Diagnostic shipped (PR #152). 3 role-distinguished patterns documented.</td>
+        <td><span class="tag tag-converged">Closed by PR #152</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-ink-family-doc-route</code></td>
+        <td>Document --ink family signature</td>
+        <td>Diagnostic shipped. Family signature confirmed (14 warm, 3 dark, 1 each).</td>
+        <td><span class="tag tag-converged">Closed by ink-family-diagnostic</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-font-sans-sans-serif-complete-route</code></td>
+        <td>Complete --font-sans token layer</td>
+        <td>Warm-paper complete (PR #151). Non-warm-paper is family signature (PR #129).</td>
+        <td><span class="tag tag-converged">Closed by PR #151</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-type-size-token-explore-route</code></td>
+        <td>Type-size tokenization exploration</td>
+        <td>Starter tokens --text-sm (PR #141), --text-xs (PR #142) shipped.</td>
+        <td><span class="tag tag-converged">Closed by PR #142</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-line-color-explore-route</code></td>
+        <td>Align frontier-capsule --line to consensus</td>
+        <td>Already aligned in PR #150. frontier-capsule --line: rgba(21,18,14,0.18).</td>
+        <td><span class="tag tag-converged">Closed by PR #150</span></td>
+      </tr>
+    </table>
+    <p><strong>Ledger state</strong>: all 5 candidates are stale. This audit is the binding evidence. <code>bun creator:mutation-check</code> validates structure but not premise freshness &mdash; structural validity + this audit = complete pre-implementation check sequence.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F5</span> Next move for the warm-paper family</h2>
+    <p>Given the audit results, three legitimate next slices exist for <code>creator-surface-consistency-route</code>:</p>
+    <ol style="font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--ink); padding-left: 24px; margin-bottom: var(--space-4);">
+      <li><b>Pad-page token layer (--pad-page: 56px)</b> &mdash; implements the page-geometry diagnostic's Pattern A anchor. Requires creator/design verdict (already in diagnostic F4 as &ldquo;design call needed&rdquo;). <i>Small visual delta, real aesthetic decision.</i></li>
+      <li><b>Mechanical drift cleanup</b> &mdash; scripts/creator-surface-consistency.ts already detects <code>mechanical_drift</code> (whitespace/leading-zero/case formatting) separately. Aligning these to consensus is zero visual risk. <i>Low-leverage but high-confidence.</i></li>
+      <li><b>Spacing grammar layer (--gap-xs/sm/md/lg/xl)</b> &mdash; every surface uses hardcoded px gap/padding/margin. Convergence file already exposes the full inventory. A real token layer for spacing would be the next major move. <i>Larger scope, design-heavy.</i></li>
+    </ol>
+    <p><strong>Recommended next slice</strong>: <b>creator-spacing-grammar-layer-route</b> &mdash; the convergence file already exposes the per-surface hardcoded gap/padding/margin values. This is the next addressable layer of warm-paper visual grammar. Token layer + measured visual deltas + family consensus anchor.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F6</span> Aesthetic coherence verdict</h2>
+    <p>The warm-paper family of 7 functional surfaces shares a coherent visual grammar: <code>--paper:#f2eadb</code> + <code>--ink:#15120e</code> + <code>--accent:#ffb86b</code> + translucent warm panel + 16px space-4 + serif display + sans body. The cross-family divergence is documented as family signature, not drift. The remaining sub-cluster drift (page-geometry 4px pairs) is design-call territory, not mechanical fix territory.</p>
+    <p><strong>NorthStar progress</strong>: creator-surface-consistency-route has moved from &ldquo;audit and align&rdquo; to &ldquo;audit, document, identify gaps, propose design calls.&rdquo; The visual family is aesthetically coherent.</p>
+  </div>
+
+  </main>
+  <footer>
+    Diagnostic phenotype for <b>creator-surface-consistency-route</b> &middot; cross-family axis &middot; 2026-06-05 &middot; 14 diverged tokens audited &middot; 4 visual families classified &middot; 13 family signatures or converged &middot; 1 stale &mdash;green drift on diagnostic surface &middot; 5 stale candidates closed
+  </footer>
+</div>
+</body>
+</html>
