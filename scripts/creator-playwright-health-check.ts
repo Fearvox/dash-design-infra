@@ -11,7 +11,7 @@
  * Darwin axis: proof method (infrastructure health pre-flight)
  */
 
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 
@@ -31,7 +31,10 @@ async function main() {
   console.log('creator-playwright-health: checking Playwright Chromium binary…\n');
 
   // Phase 1: Locate the Playwright cache directory
-  const cacheDir = join(homedir(), 'Library', 'Caches', 'ms-playwright');
+  const cacheDir = process.env.PLAYWRIGHT_BROWSERS_PATH
+    || (process.platform === 'darwin'
+      ? join(homedir(), 'Library', 'Caches', 'ms-playwright')
+      : join(homedir(), '.cache', 'ms-playwright'));
   const cacheExists = existsSync(cacheDir);
 
   verdict('cache-dir', cacheExists, cacheExists ? cacheDir : `cache directory not found at ${cacheDir}`);
@@ -44,7 +47,6 @@ async function main() {
   }
 
   // Phase 2: Find the chromium_headless_shell directory
-  const { readdirSync } = await import('node:fs');
   const entries = readdirSync(cacheDir, { withFileTypes: true });
 
   const chromiumDirs = entries.filter(
@@ -65,10 +67,10 @@ async function main() {
   console.log(`  PASS\tchromium-dir\t(${chromiumDir})`);
 
   // Phase 3: Verify the headless shell binary exists
-  const isMacArm = process.arch === 'arm64' && process.platform === 'darwin';
-  const binaryName = isMacArm
-    ? join('chrome-headless-shell-mac-arm64', 'chrome-headless-shell')
-    : join('chrome-headless-shell', 'chrome-headless-shell');
+  const platformDir = process.platform === 'darwin'
+    ? (process.arch === 'arm64' ? 'chrome-headless-shell-mac-arm64' : 'chrome-headless-shell-mac-x64')
+    : 'chrome-headless-shell-linux64';
+  const binaryName = join(platformDir, 'chrome-headless-shell');
   const binaryPath = join(chromiumPath, binaryName);
   const binaryExists = existsSync(binaryPath);
 

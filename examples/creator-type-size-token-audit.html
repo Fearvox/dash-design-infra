@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1684, height=1191">
+  <title>Type size token audit — starter vocabulary</title>
+  <style>
+    @page { size: 1684px 1191px; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f4f0e6;
+      --text: #1a1714;
+      --rule: rgba(21,18,14,0.18);
+      --muted: #6f6659;
+      --paper: #f2eadb;
+    }
+    body {
+      background: var(--bg);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      width: 1684px;
+      height: 1191px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 0;
+    }
+    .page {
+      width: 1684px;
+      height: 1191px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      overflow: hidden;
+    }
+    .sidebar {
+      background: #1a1714;
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .sidebar-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244,234,214,0.45);
+    }
+    .sidebar h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f2eadb;
+      line-height: 1.3;
+    }
+    .sidebar p {
+      font-size: 12px;
+      color: rgba(244,234,214,0.58);
+      line-height: 1.6;
+    }
+    .verdict-badge {
+      display: inline-block;
+      background: rgba(244,234,214,0.12);
+      border: 1px solid rgba(244,234,214,0.2);
+      color: #f2eadb;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+    .main {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow: hidden;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .family-group { display: flex; flex-direction: column; gap: 10px; }
+    .family-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .family-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .tag-warm { background: rgba(196,122,31,0.15); color: #c47a1f; border: 1px solid rgba(196,122,31,0.25); }
+    .tag-dark { background: rgba(126,240,193,0.12); color: #7ef0c1; border: 1px solid rgba(126,240,193,0.2); }
+    .tag-creative { background: rgba(102,180,255,0.12); color: #66b3ff; border: 1px solid rgba(102,180,255,0.2); }
+    .family-name { font-size: 12px; font-weight: 600; color: var(--text); }
+    .surface-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .surface-name { width: 120px; font-weight: 500; color: var(--text); font-size: 11px; }
+    .px-values { display: flex; gap: 5px; flex-wrap: wrap; }
+    .px-chip {
+      font-size: 10px;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      background: rgba(21,18,14,0.06);
+      border: 1px solid rgba(21,18,14,0.1);
+      padding: 2px 6px;
+      border-radius: 2px;
+      color: var(--text);
+    }
+    .distinct-count { font-size: 10px; color: var(--muted); margin-left: auto; padding-right: 4px; }
+    .summary-bar {
+      display: flex;
+      gap: 16px;
+      padding: 14px 16px;
+      background: rgba(21,18,14,0.04);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      flex-wrap: wrap;
+    }
+    .summary-item { display: flex; flex-direction: column; gap: 3px; }
+    .summary-num { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1; }
+    .summary-label { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .verdict-section { display: flex; flex-direction: column; gap: 10px; }
+    .verdict-rule { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--text); line-height: 1.5; }
+    .rule-num { font-weight: 700; font-size: 11px; color: var(--muted); min-width: 18px; }
+    .token-table { display: flex; flex-direction: column; gap: 6px; }
+    .token-row { display: flex; gap: 8px; font-size: 11px; color: var(--muted); padding: 4px 0; border-bottom: 1px solid rgba(21,18,14,0.05); }
+    .token-name { font-family: ui-monospace, monospace; color: var(--text); min-width: 80px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-title">DASH Design Infra</div>
+        <h1>Type size token audit</h1>
+      </div>
+      <p>CSS font-size px values across 12 creator surfaces. The warm-paper starter vocabulary now exists on the initial surface set; remaining families stay intentionally hardcoded until a design scale exists.</p>
+      <div class="verdict-badge">Diagnostic only</div>
+    </aside>
+    <main class="main">
+      <div class="summary-bar">
+        <div class="summary-item"><span class="summary-num">6</span><span class="summary-label">surfaces with --text-sm/xs</span></div>
+        <div class="summary-item"><span class="summary-num">12</span><span class="summary-label">surfaces audited</span></div>
+        <div class="summary-item"><span class="summary-num">5–11</span><span class="summary-label">px distinct per surface</span></div>
+        <div class="summary-item"><span class="summary-num">starter</span><span class="summary-label">not full type scale</span></div>
+        <div class="summary-item"><span class="summary-num">FAMILY</span><span class="summary-label">not addressable drift</span></div>
+      </div>
+
+      <div>
+        <div class="section-label">Family breakdown — px values (distinct count)</div>
+        <div class="family-group">
+          <div class="family-header">
+            <span class="family-tag tag-warm">warm-paper</span>
+            <span class="family-name">6 surfaces — editorial zine family</span>
+          </div>
+          <div class="surface-row"><span class="surface-name">poster-surface</span><div class="px-values"><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">22</span><span class="px-chip">27</span><span class="px-chip">38</span><span class="px-chip">132</span></div><span class="distinct-count">6</span></div>
+          <div class="surface-row"><span class="surface-name">pdf-zine</span><div class="px-values"><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">18</span><span class="px-chip">19</span><span class="px-chip">20</span><span class="px-chip">22</span><span class="px-chip">44</span><span class="px-chip">76</span><span class="px-chip">82</span></div><span class="distinct-count">11</span></div>
+          <div class="surface-row"><span class="surface-name">social-card</span><div class="px-values"><span class="px-chip">10</span><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">18</span><span class="px-chip">20</span><span class="px-chip">24</span><span class="px-chip">78</span></div><span class="distinct-count">8</span></div>
+          <div class="surface-row"><span class="surface-name">motion-storyboard</span><div class="px-values"><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">21</span><span class="px-chip">24</span><span class="px-chip">28</span><span class="px-chip">38</span><span class="px-chip">84</span></div><span class="distinct-count">8</span></div>
+          <div class="surface-row"><span class="surface-name">prompt-dna-adapter</span><div class="px-values"><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">25</span><span class="px-chip">29</span><span class="px-chip">104</span></div><span class="distinct-count">6</span></div>
+          <div class="surface-row"><span class="surface-name">family-dna</span><div class="px-values"><span class="px-chip">10</span><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">15</span><span class="px-chip">20</span><span class="px-chip">44</span></div><span class="distinct-count">7</span></div>
+        </div>
+      </div>
+
+      <div class="family-group">
+        <div class="family-header">
+          <span class="family-tag tag-dark">dark-industrial</span>
+          <span class="family-name">2 surfaces — terminal/ops family</span>
+        </div>
+        <div class="surface-row"><span class="surface-name">browser-demo</span><div class="px-values"><span class="px-chip">10</span><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">19</span><span class="px-chip">72</span></div><span class="distinct-count">5</span></div>
+        <div class="surface-row"><span class="surface-name">remotion-scene</span><div class="px-values"><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">18</span><span class="px-chip">24</span><span class="px-chip">27</span><span class="px-chip">29</span><span class="px-chip">39</span><span class="px-chip">84</span></div><span class="distinct-count">10</span></div>
+      </div>
+
+      <div class="family-group">
+        <div class="family-header">
+          <span class="family-tag tag-creative">creative-hybrid</span>
+          <span class="family-name">3 surfaces — creative tool adapters</span>
+        </div>
+        <div class="surface-row"><span class="surface-name">p5-sketch</span><div class="px-values"><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">15</span><span class="px-chip">16</span><span class="px-chip">17</span><span class="px-chip">22</span><span class="px-chip">78</span></div><span class="distinct-count">7</span></div>
+        <div class="surface-row"><span class="surface-name">manim-scene</span><div class="px-values"><span class="px-chip">11</span><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">15</span><span class="px-chip">18</span><span class="px-chip">23</span><span class="px-chip">24</span><span class="px-chip">29</span><span class="px-chip">40</span><span class="px-chip">88</span></div><span class="distinct-count">10</span></div>
+        <div class="surface-row"><span class="surface-name">touchdesigner-tox</span><div class="px-values"><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">17</span><span class="px-chip">18</span><span class="px-chip">22</span><span class="px-chip">25</span><span class="px-chip">31</span><span class="px-chip">76</span></div><span class="distinct-count">8</span></div>
+        <div class="surface-row"><span class="surface-name">frontier-capsule</span><div class="px-values"><span class="px-chip">12</span><span class="px-chip">13</span><span class="px-chip">14</span><span class="px-chip">15</span><span class="px-chip">18</span><span class="px-chip">19</span><span class="px-chip">23</span><span class="px-chip">25</span><span class="px-chip">35</span><span class="px-chip">54</span><span class="px-chip">92</span></div><span class="distinct-count">11</span></div>
+      </div>
+
+      <div class="verdict-section">
+        <div class="section-label">Verdict</div>
+        <div class="verdict-rule"><span class="rule-num">1</span><span>Starter tokens exist where the PRs added them: --text-sm:12px and --text-xs:10px on the initial warm-paper/p5 surface set.</span></div>
+        <div class="verdict-rule"><span class="rule-num">2</span><span>This does not settle the full type scale. Display, h1, h2, label, and caption sizes remain contextual and should not be normalized mechanically.</span></div>
+        <div class="verdict-rule"><span class="rule-num">3</span><span>Family signature remains intact: warm-paper surfaces share an editorial zine hierarchy while dark-industrial and creative-hybrid surfaces retain their own role scales.</span></div>
+        <div class="verdict-rule"><span class="rule-num">4</span><span>Next step is design-led expansion from the starter pair, not blanket replacement of every hardcoded font-size.</span></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
