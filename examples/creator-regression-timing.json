@@ -1,64 +1,64 @@
 {
-  "timestamp": "2026-06-06T18:16:13.225Z",
-  "totalMs": 12272,
+  "timestamp": "2026-06-06T20:30:37.929Z",
+  "totalMs": 12778,
   "passed": 34,
   "failed": 2,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1160
+      "durationMs": 1289
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 813
+      "durationMs": 798
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1380
+      "durationMs": 1233
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 36
+      "durationMs": 45
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 162
+      "durationMs": 27
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 1349
+      "durationMs": 1396
     },
     {
       "name": "creator:script-health",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:orphan-script",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:workflow-gate-health",
-      "durationMs": 5691
-    },
-    {
-      "name": "creator:example-check-coverage",
-      "durationMs": 17
-    },
-    {
-      "name": "creator:post-check-coverage",
-      "durationMs": 16
-    },
-    {
-      "name": "creator:regression-duration",
-      "durationMs": 16
-    },
-    {
-      "name": "creator:measure-print-cache",
       "durationMs": 18
     },
     {
+      "name": "creator:orphan-script",
+      "durationMs": 17
+    },
+    {
+      "name": "creator:workflow-gate-health",
+      "durationMs": 6233
+    },
+    {
+      "name": "creator:example-check-coverage",
+      "durationMs": 20
+    },
+    {
+      "name": "creator:post-check-coverage",
+      "durationMs": 25
+    },
+    {
+      "name": "creator:regression-duration",
+      "durationMs": 21
+    },
+    {
+      "name": "creator:measure-print-cache",
+      "durationMs": 21
+    },
+    {
       "name": "creator:cache-integrity",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:surface-consistency",
@@ -74,31 +74,31 @@
     },
     {
       "name": "creator:paper-tint-stop-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:warm-paper-spacing-pattern-check",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:family-dna-check",
-      "durationMs": 16
-    },
-    {
-      "name": "creator:cross-family-grammar-audit-check",
-      "durationMs": 803
-    },
-    {
-      "name": "creator:capsule-check",
-      "durationMs": 19
-    },
-    {
-      "name": "creator:evolution-check",
       "durationMs": 17
     },
     {
+      "name": "creator:cross-family-grammar-audit-check",
+      "durationMs": 828
+    },
+    {
+      "name": "creator:capsule-check",
+      "durationMs": 23
+    },
+    {
+      "name": "creator:evolution-check",
+      "durationMs": 18
+    },
+    {
       "name": "creator:mutation-check",
-      "durationMs": 16
+      "durationMs": 20
     },
     {
       "name": "creator:poster-check",
@@ -114,39 +114,39 @@
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 16
-    },
-    {
-      "name": "creator:pdf-zine-check",
       "durationMs": 17
     },
     {
-      "name": "creator:p5-sketch-check",
+      "name": "creator:pdf-zine-check",
       "durationMs": 19
+    },
+    {
+      "name": "creator:p5-sketch-check",
+      "durationMs": 20
     },
     {
       "name": "creator:remotion-scene-check",
-      "durationMs": 19
+      "durationMs": 18
     },
     {
       "name": "creator:manim-scene-check",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:touchdesigner-tox-check",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:browser-demo-check",
-      "durationMs": 18
+      "durationMs": 17
     },
     {
       "name": "creator:skill-package-check",
-      "durationMs": 19
+      "durationMs": 16
     },
     {
       "name": "hackathon:score",
-      "durationMs": 396
+      "durationMs": 426
     }
   ]
 }

@@ -15,7 +15,7 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Closed by prior slice 2026-06-06: creator:cross-family-grammar-audit-check wired into creator:regression CHECKS[] (line 39). Verified 32/34 pass in full regression. Retain candidate as completed audit-integration precedent.",
+      "risk": "Closed by prior slice 2026-06-06: creator:cross-family-grammar-audit-check wired into creator:regression CHECKS[] (line 41). Verified 34/36 pass in full regression. Retain candidate as completed audit-integration precedent.",
       "selection": "candidate",
       "mutation": "Wire creator:cross-family-grammar-audit-check into the creator:regression orchestrator CHECKS[] array. Cross-family audit currently isolated — running it as part of full regression ensures future ledger additions automatically re-classify. Add to orchestrator at correct insertion point (after surface-consistency, before docs-surface-parity). Verify orchestrator output shows the new check entry.",
       "phenotype": "1 orchestrator edit (scripts/creator-regression-check.ts) + 1 verification pass. creator:regression output line for cross-family-grammar-audit-check. regression count increases by 1."
@@ -61,36 +61,25 @@
       "mutation": "Extend the warm-paper page-geometry diagnostic (PR #152) with F6 (hardcoded spacing inventory) and F7 (pattern↔token status) findings; add creator:warm-paper-spacing-pattern-check machine gate that classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame. Verifies the diagnostic HTML contains Pattern A/B/C visible labels + hardcoded spacing inventory section + per-surface consumer documentation. Catches drift if a surface changes its .page padding source. Wired into creator:regression orchestrator after creator:page-grid-check."
     },
     {
-      "id": "creator-paper-tint-stop-align-route",
-      "selection": "selected",
+      "id": "creator-page-tint-2nd-stop-align-route",
       "axis": "visual grammar",
-      "retained_as": "Warm-paper 3-stop diagonal page-tint gradient 1st stop aligned to var(--paper-hot) token. 3/3 warm-paper functional surfaces (pdf-zine, social-card, poster-surface) consume var(--paper-hot) 1st stop in their linear-gradient(135deg, ...) page-tint pattern. poster-surface --paper-2:#fff8eb renamed to --paper-hot:#fff8ea for naming consistency. creator:paper-tint-stop-check machine gate verifies 1st stop token consumption + :root --paper-hot declaration + zero residual --paper-2 references across all examples/*.html. Wired into creator:regression orchestrator after creator:page-grid-check (3/3 PASS).",
-      "phenotype": "3 surface edits (poster-surface --paper-2→--paper-hot, social-card 1st stop #fff6e7→var(--paper-hot), poster-surface 1st stop #f8f0e2→var(--paper-hot)) + 1 new check script (scripts/creator-paper-tint-stop-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry.",
+      "selection": "selected",
+      "observation": "After PR #162, 1st stops of the 3 warm-paper functional 3-stop diagonal page-tint gradients are aligned to var(--paper-hot). Remaining 2nd stop: pdf-zine + social-card consume var(--paper) (#f2eadb), poster-surface uses hardcoded #ece0cd (rgb 236,224,205 — darker, mid-stop desaturation). 3rd stops (#e4d6c2, #e6dac8, #ddd1bf) intentionally retained as per-surface warm shadow tinting (family signature per PR #162 rationale). 2nd stop alignment is the next concrete addressable token-layer extension in the page-tint gradient vocabulary — closes the last hardcoded mid-stop hex value across the 3 warm-paper functional surfaces.",
+      "candidates": [],
       "fitness": {
         "creator_utility": 7,
-        "memory_retention": 8,
+        "memory_retention": 7,
         "artifact_proof": 8,
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Visual delta: 1 hex unit (#fff6e7→#fff8ea, #f8f0e2→#fff8ea). Imperceptible at fixed-canvas scale. Pattern precedent: same justification as creator-ink-token-align-route (±1 hex unit alignment), creator-line-color-align-route (alpha 0.14→0.18), creator-page-grid-ink-align-route (rgb 22,19,14→21,18,14).",
-      "proof": [
-        "bun creator:paper-tint-stop-check (3/3 PASS)",
-        "bun creator:page-grid-check (4/4 PASS — unchanged)",
-        "bun creator:pad-page-token-check (4/4 PASS — unchanged)",
-        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 fits)",
-        "bun measure:check -- examples/creator-social-card.html (1200x630 fits)",
-        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 fits)",
-        "bun creator:cache-integrity (14/14 valid)",
-        "bun creator:poster-check (PASS)",
-        "bun creator:social-card-check (PASS)",
-        "bun creator:pdf-zine-check (PASS)",
-        "bun creator:regression (34/36 PASS — 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration)"
-      ],
-      "mutation": "Align 1st stop of warm-paper 3-stop diagonal page-tint gradient to var(--paper-hot) token across 3 functional warm-paper surfaces. social-card 1st stop: #fff6e7→var(--paper-hot). poster-surface 1st stop: #f8f0e2→var(--paper-hot). poster-surface :root --paper-2:#fff8eb renamed to --paper-hot:#fff8ea. 3rd stops (#e4d6c2, #e6dac8, #ddd1bf) intentionally retained as per-surface warm shadow tinting (family signature, same justification as grid alpha/size variation). 2nd stops (var(--paper), #ece0cd) retained as authored. New machine check: scripts/creator-paper-tint-stop-check.ts verifies 3 surfaces consume var(--paper-hot) 1st stop, declare --paper-hot in :root, and zero --paper-2 references remain in examples/*.html."
+      "risk": "Visual delta on poster-surface 2nd stop: #ece0cd (rgb 236, 224, 205) → var(--paper) #f2eadb (rgb 242, 234, 219). Delta: +6 R, +10 G, +14 B. Slight lightening + warming. Risk envelope: medium (3x PR #162's 1-unit delta, but still inside the warm-paper family palette). Pre-implementation: measure:check on poster-surface pre/post confirms no overflow + browser_qa proofshot documents visual delta is within editorial tolerance.",
+      "mutation": "Align 2nd stop of warm-paper 3-stop diagonal page-tint gradient to var(--paper) token across 3 functional warm-paper surfaces. poster-surface 2nd stop: #ece0cd (hardcoded, mid-stop desaturation) → var(--paper) consensus #f2eadb. pdf-zine + social-card already consume var(--paper) (no edit needed). Adds creator:page-tint-2nd-stop-check machine gate that verifies all 3 warm-paper 3-stop consumers use var(--paper) as 2nd stop, declare --paper in :root, and have no residual hardcoded mid-stop hex values matching the #eNdoNcN pattern in 2nd stop position. Wired into creator:regression orchestrator after creator:paper-tint-stop-check.",
+      "phenotype": "1 surface edit (poster-surface 2nd stop #ece0cd→var(--paper)) + 1 new check script (scripts/creator-page-tint-2nd-stop-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry. 2nd stop alignment completes the page-tint gradient token vocabulary: 1st stop = --paper-hot, 2nd stop = --paper, 3rd stop = per-surface warm shadow (family signature).",
+      "selection_pressure": "Continue pattern of warm-paper body-CSS rgba/hex alignment to :root token vocabulary. Page-tint gradient now has 1 token-anchored stop (--paper-hot) + 1 retained mid stop (var(--paper)) + 1 family signature (3rd). 2nd stop alignment removes the last hardcoded mid-stop in the 3-stop warm-paper page-tint pattern."
     }
   ],
-  "winner": "creator-paper-tint-stop-align-route",
+  "winner": "creator-page-tint-2nd-stop-align-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -958,9 +947,28 @@
         "bun creator:cross-family-grammar-audit-check (standalone: 1007ms, PASS)",
         "bun creator:regression (orchestrator: 32/34, cross-family-grammar-audit-check PASS)"
       ]
+    },
+    {
+      "id": "creator-paper-tint-stop-align-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper 3-stop diagonal page-tint gradient 1st stop aligned to var(--paper-hot) token. 3/3 warm-paper functional surfaces (pdf-zine, social-card, poster-surface) consume var(--paper-hot) 1st stop in their linear-gradient(135deg, ...) page-tint pattern. poster-surface --paper-2:#fff8eb renamed to --paper-hot:#fff8ea for naming consistency. creator:paper-tint-stop-check machine gate verifies 1st stop token consumption + :root --paper-hot declaration + zero residual --paper-2 references across all examples/*.html. Wired into creator:regression orchestrator after creator:page-grid-check (3/3 PASS). Third warm-paper body-CSS pattern layer after --pad-page (page padding) and --ink-rgb (page grid). --paper-hot token now reaches from :root declaration into the gradient highlight stop of every warm-paper zine/poster surface.",
+      "proof": [
+        "bun creator:paper-tint-stop-check (3/3 PASS)",
+        "bun creator:page-grid-check (4/4 PASS — unchanged)",
+        "bun creator:pad-page-token-check (4/4 PASS — unchanged)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 fits)",
+        "bun measure:check -- examples/creator-social-card.html (1200x630 fits)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 fits)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:poster-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:regression (34/36 PASS — 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration)",
+        "PR #162 merged 2026-06-06T20:22:38Z (sha 0fac44c)"
+      ]
     }
   ],
-  "retention": "2026-06-02: Mechanical drift detector shipped — family-dna --panel whitespace drift fixed (rgba(244, 234, 214, 0.06) → rgba(244,234,214,0.06)). creator-type-size-token-explore-route deselected (stale: --text-sm/--text-xs shipped in PRs #141, #142). MECHANICAL DRIFT section added to creator:surface-consistency output. --panel diverged: 6→5. Next: surface remaining stalled tokens via detector, or pursue visual grammar extension.",
+  "retention": "2026-06-06 (cron run 3): Paper-tint-stop-align promoted to retained_routes. PR #162 (0fac44c) shipped 1st stop alignment to var(--paper-hot) across 3 warm-paper functional surfaces. 3rd stops retained as per-surface warm shadow tinting (family signature, same justification as grid alpha/size variation). 2nd stops retained as authored (var(--paper) for pdf-zine + social-card; #ece0cd for poster-surface). creator:paper-tint-stop-check (3/3 PASS) wired into orchestrator after creator:page-grid-check. 36-check regression baseline: 34/36 PASS, 2 pre-existing timing failures unchanged (workflow-gate-health, regression-duration). Aesthetic-coherence phase: all 14 diverged tokens stalled (delta=0); token-alignment saturation reached. Page-tint gradient now has --paper-hot anchor in 1st stop, --paper in 2nd stop (where used), 3rd stop as family signature. Next: 2nd stop alignment to var(--paper) for poster-surface (closes the last hardcoded mid-stop in 3-stop warm-paper page-tint pattern); 3rd stop remains diagnostic-only pending creator/design call on warm-shadow tinting policy.",
   "regression": [
     "bun creator:mutation-check",
     "bun creator:playwright-health-check",
