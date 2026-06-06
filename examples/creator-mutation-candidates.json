@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-06: cross-family-grammar-audit-check wired into creator:regression orchestrator CHECKS[] (28/34 pass, 2 pre-existing fails). The check is in package.json (line 89) and scripts/creator-cross-family-grammar-audit-check.ts exists and passes standalone (1007ms) and inside the orchestrator. Insertion point: after creator:family-dna-check (line 38), before creator:capsule-check — both family-grammar audits at the same semantic level. Pre-vs-post: 31/33 → 32/34. The 2 pre-existing fails (workflow-gate-health WORKFLOW_INDEX sync, regression-duration timing manifest) are unrelated to this slice. NorthStar: cross-family grammar audit now runs as part of every regression, not as an isolated artifact. Next slice: warm-paper page-geometry diagnostic extension — document 3 distinct spacing patterns (Pattern A page padding, Pattern B inner .shell, Pattern C page::before frame) to make the warm-paper family's spacing grammar legible to future agents.",
+  "observation": "Slice 2026-06-06 (cron run 2): warm-paper 3-stop diagonal paper-tint gradient 1st stop alignment. 3 warm-paper functional surfaces (pdf-zine, social-card, poster-surface) use linear-gradient(135deg, A 0%, B NN%, C 100%) for page-tint highlight→mid→shadow. Pre-alignment: social-card 1st stop hardcoded #fff6e7, poster-surface 1st stop hardcoded #f8f0e2 + --paper-2:#fff8eb naming inconsistency. Post-alignment: both converted to var(--paper-hot) 1st stop anchor (--paper-hot consensus #fff8ea shared with pdf-zine). poster-surface --paper-2 renamed to --paper-hot for naming consistency. 3rd stops retained as per-surface warm shadow tinting (intentional family signature, same as grid alpha/size variation). 2nd stops retained: pdf-zine + social-card use var(--paper); poster-surface uses #ece0cd (intentional mid stop). New check creator:paper-tint-stop-check (3/3 PASS) wired into regression orchestrator after creator:page-grid-check. Pre-vs-post: 32/34 → 34/36 (gained 1 from new check, 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration). NorthStar: extends body-CSS pattern alignment from grid rgba (--ink anchor) to gradient stop token vocabulary (--paper-hot anchor) — proves warm-paper tint grammar can be machine-verified.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -21,38 +21,6 @@
       "phenotype": "1 orchestrator edit (scripts/creator-regression-check.ts) + 1 verification pass. creator:regression output line for cross-family-grammar-audit-check. regression count increases by 1."
     },
     {
-      "id": "creator-warm-paper-page-geometry-diagnostic-extension-route",
-      "selection": "candidate",
-      "axis": "visual grammar",
-      "mutation": "Extend the page-geometry diagnostic with a per-surface hardcoded spacing inventory (convergence file already exposes it). Document the warm-paper family's spacing grammar in 3 distinct patterns: Pattern A (page padding 56px uniform, motion-storyboard/poster/prompt-dna/family-dna), Pattern B (inner .shell 40-70px, surface-specific), Pattern C (page::before frame 20-44px, decorative). Update diagnostic HTML with spacing table.",
-      "phenotype": "1 diagnostic HTML extension (examples/creator-warm-paper-page-geometry-diagnostic.html) + 1 check script update + .artifacts evidence note.",
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 6,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Closed by slice PR #161 (warm-paper spacing grammar inventory + pattern check). Demoted to retain target winner."
-    },
-    {
-      "id": "creator-pad-shell-pattern-b-explore-route",
-      "axis": "visual grammar",
-      "observation": "Warm-paper Pattern B inner container padding: motion-storyboard 40px, poster 44px, prompt-dna 44px. Range 40-44px, 4px drift. Pattern C (pdf-zine) uses page::before inset 56px + .sheet 70px. --pad-shell token candidate = 44px (2/3 Pattern B surfaces agree). motion-storyboard 40px is the outlier. Diagnostic needed to determine if 40px is a family signature (motion-storyboard already has 6 internal grid-template-rows sized to 40px) or addressable drift.",
-      "candidates": [],
-      "fitness": {
-        "creator_utility": 5,
-        "memory_retention": 6,
-        "artifact_proof": 5,
-        "boundary_safety": 10,
-        "minimal_core": 6
-      },
-      "risk": "Diagnostic shipped (PR #161). 4px inner-shell padding delta between motion-storyboard 40px and prompt-dna 44px is content-density-tuned (chrome-to-padding ratio 0.385 vs 0.289), not addressable as token. Naming inconsistency confirmed but not addressed in this slice. Closed: surface inspection + design call needed before --pad-shell tokenization.",
-      "selection": "candidate",
-      "mutation": "Diagnostic phenotype shipped (2026-06-06): examples/creator-pad-shell-pattern-b-diagnostic.html. Surface inspection revealed 4px delta between motion-storyboard (.shell 40px) and prompt-dna (.shell 44px) is NOT proportional to chrome scale — motion-storyboard has higher chrome-to-padding ratio (0.385) than prompt-dna (0.289). The deeper finding: 4 different class names (.shell, .poster-frame, .capsule, .sheet) for the same conceptual role; only .poster-frame is renamable to .shell. --pad-shell tokenization blocked on design call (motion-storyboard 40px may be intentional tight padding for 6-frame content).",
-      "phenotype": "Diagnostic only (no surface edits) or --pad-shell: 44px token + motion-storyboard override."
-    },
-    {
       "id": "creator-page-grid-alpha-convergence-route",
       "axis": "visual grammar",
       "selection": "candidate",
@@ -69,7 +37,7 @@
     },
     {
       "id": "creator-warm-paper-spacing-grammar-extension-route",
-      "selection": "selected",
+      "selection": "candidate",
       "axis": "visual grammar",
       "retained_as": "warm-paper spacing grammar diagnostic extension + creator:warm-paper-spacing-pattern-check machine gate. F6 hardcoded spacing inventory cross-references convergence.json spacing_audit with 3 page-geometry patterns (2 A, 3 A+B, 1 B+C). F7 pattern↔token status documents --pad-page: 56px token layer saturation (3/3 Pattern A consumers + 1/1 reference on 1684x1191 canvas). New check classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame; catches drift if a surface changes its .page padding source. Wired into regression orchestrator (33/35 PASS, 2 pre-existing timing failures unchanged).",
       "phenotype": "F6 + F7 added to creator-warm-paper-page-geometry-diagnostic.html (620 lines, 30KB, 4-page print). New check script scripts/creator-warm-paper-spacing-pattern-check.ts (196 lines).",
@@ -80,7 +48,7 @@
         "boundary_safety": 10,
         "minimal_core": 8
       },
-      "risk": "Diagnostic-only. No surface edits. F6 inventory may shift if new surfaces are added. Pattern classification hardcoded in check (Pattern A/A+/B/C signatures) — if a future surface uses a new pattern vocabulary, the check may misclassify.",
+      "risk": "Closed by prior slice PR #161. Demoted to re-promote target winner.",
       "proof": [
         "bun creator:warm-paper-spacing-pattern-check (6/6 classified, 5/5 var(--pad-page) consumers documented)",
         "bun measure:check -- examples/creator-warm-paper-page-geometry-diagnostic.html (1684x4050 fits 1684x1191)",
@@ -91,9 +59,38 @@
         "PR #161 merged 2026-06-06T16:02:29Z (sha 2d49a4c9)"
       ],
       "mutation": "Extend the warm-paper page-geometry diagnostic (PR #152) with F6 (hardcoded spacing inventory) and F7 (pattern↔token status) findings; add creator:warm-paper-spacing-pattern-check machine gate that classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame. Verifies the diagnostic HTML contains Pattern A/B/C visible labels + hardcoded spacing inventory section + per-surface consumer documentation. Catches drift if a surface changes its .page padding source. Wired into creator:regression orchestrator after creator:page-grid-check."
+    },
+    {
+      "id": "creator-paper-tint-stop-align-route",
+      "selection": "selected",
+      "axis": "visual grammar",
+      "retained_as": "Warm-paper 3-stop diagonal page-tint gradient 1st stop aligned to var(--paper-hot) token. 3/3 warm-paper functional surfaces (pdf-zine, social-card, poster-surface) consume var(--paper-hot) 1st stop in their linear-gradient(135deg, ...) page-tint pattern. poster-surface --paper-2:#fff8eb renamed to --paper-hot:#fff8ea for naming consistency. creator:paper-tint-stop-check machine gate verifies 1st stop token consumption + :root --paper-hot declaration + zero residual --paper-2 references across all examples/*.html. Wired into creator:regression orchestrator after creator:page-grid-check (3/3 PASS).",
+      "phenotype": "3 surface edits (poster-surface --paper-2→--paper-hot, social-card 1st stop #fff6e7→var(--paper-hot), poster-surface 1st stop #f8f0e2→var(--paper-hot)) + 1 new check script (scripts/creator-paper-tint-stop-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry.",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 8,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Visual delta: 1 hex unit (#fff6e7→#fff8ea, #f8f0e2→#fff8ea). Imperceptible at fixed-canvas scale. Pattern precedent: same justification as creator-ink-token-align-route (±1 hex unit alignment), creator-line-color-align-route (alpha 0.14→0.18), creator-page-grid-ink-align-route (rgb 22,19,14→21,18,14).",
+      "proof": [
+        "bun creator:paper-tint-stop-check (3/3 PASS)",
+        "bun creator:page-grid-check (4/4 PASS — unchanged)",
+        "bun creator:pad-page-token-check (4/4 PASS — unchanged)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 fits)",
+        "bun measure:check -- examples/creator-social-card.html (1200x630 fits)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 fits)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:poster-check (PASS)",
+        "bun creator:social-card-check (PASS)",
+        "bun creator:pdf-zine-check (PASS)",
+        "bun creator:regression (34/36 PASS — 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration)"
+      ],
+      "mutation": "Align 1st stop of warm-paper 3-stop diagonal page-tint gradient to var(--paper-hot) token across 3 functional warm-paper surfaces. social-card 1st stop: #fff6e7→var(--paper-hot). poster-surface 1st stop: #f8f0e2→var(--paper-hot). poster-surface :root --paper-2:#fff8eb renamed to --paper-hot:#fff8ea. 3rd stops (#e4d6c2, #e6dac8, #ddd1bf) intentionally retained as per-surface warm shadow tinting (family signature, same justification as grid alpha/size variation). 2nd stops (var(--paper), #ece0cd) retained as authored. New machine check: scripts/creator-paper-tint-stop-check.ts verifies 3 surfaces consume var(--paper-hot) 1st stop, declare --paper-hot in :root, and zero --paper-2 references remain in examples/*.html."
     }
   ],
-  "winner": "creator-warm-paper-spacing-grammar-extension-route",
+  "winner": "creator-paper-tint-stop-align-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",

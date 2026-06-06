@@ -1,32 +1,32 @@
 {
-  "timestamp": "2026-06-06T15:57:53.744Z",
-  "totalMs": 11234,
-  "passed": 33,
+  "timestamp": "2026-06-06T18:16:13.225Z",
+  "totalMs": 12272,
+  "passed": 34,
   "failed": 2,
   "checks": [
     {
       "name": "creator:playwright-health-check",
-      "durationMs": 1076
+      "durationMs": 1160
     },
     {
       "name": "creator:darwin-autonomy-check",
-      "durationMs": 740
+      "durationMs": 813
     },
     {
       "name": "creator:cron-slice-health",
-      "durationMs": 1154
+      "durationMs": 1380
     },
     {
       "name": "creator:docs-surface-parity",
-      "durationMs": 41
+      "durationMs": 36
     },
     {
       "name": "creator:agent-context-health",
-      "durationMs": 26
+      "durationMs": 162
     },
     {
       "name": "creator:surface-health",
-      "durationMs": 1342
+      "durationMs": 1349
     },
     {
       "name": "creator:script-health",
@@ -34,11 +34,11 @@
     },
     {
       "name": "creator:orphan-script",
-      "durationMs": 16
+      "durationMs": 19
     },
     {
       "name": "creator:workflow-gate-health",
-      "durationMs": 5175
+      "durationMs": 5691
     },
     {
       "name": "creator:example-check-coverage",
@@ -46,35 +46,39 @@
     },
     {
       "name": "creator:post-check-coverage",
-      "durationMs": 19
+      "durationMs": 16
     },
     {
       "name": "creator:regression-duration",
-      "durationMs": 17
+      "durationMs": 16
     },
     {
       "name": "creator:measure-print-cache",
-      "durationMs": 17
+      "durationMs": 18
     },
     {
       "name": "creator:cache-integrity",
-      "durationMs": 17
+      "durationMs": 19
     },
     {
       "name": "creator:surface-consistency",
-      "durationMs": 22
+      "durationMs": 23
     },
     {
       "name": "creator:pad-page-token-check",
-      "durationMs": 16
+      "durationMs": 18
     },
     {
       "name": "creator:page-grid-check",
-      "durationMs": 17
+      "durationMs": 18
+    },
+    {
+      "name": "creator:paper-tint-stop-check",
+      "durationMs": 19
     },
     {
       "name": "creator:warm-paper-spacing-pattern-check",
-      "durationMs": 16
+      "durationMs": 17
     },
     {
       "name": "creator:family-dna-check",
@@ -82,7 +86,7 @@
     },
     {
       "name": "creator:cross-family-grammar-audit-check",
-      "durationMs": 806
+      "durationMs": 803
     },
     {
       "name": "creator:capsule-check",
@@ -94,23 +98,23 @@
     },
     {
       "name": "creator:mutation-check",
-      "durationMs": 18
-    },
-    {
-      "name": "creator:poster-check",
       "durationMs": 16
     },
     {
+      "name": "creator:poster-check",
+      "durationMs": 17
+    },
+    {
       "name": "creator:prompt-dna-check",
-      "durationMs": 19
+      "durationMs": 17
     },
     {
       "name": "creator:motion-storyboard-check",
-      "durationMs": 19
+      "durationMs": 17
     },
     {
       "name": "creator:social-card-check",
-      "durationMs": 17
+      "durationMs": 16
     },
     {
       "name": "creator:pdf-zine-check",
@@ -118,31 +122,31 @@
     },
     {
       "name": "creator:p5-sketch-check",
-      "durationMs": 21
+      "durationMs": 19
     },
     {
       "name": "creator:remotion-scene-check",
-      "durationMs": 20
+      "durationMs": 19
     },
     {
       "name": "creator:manim-scene-check",
-      "durationMs": 21
-    },
-    {
-      "name": "creator:touchdesigner-tox-check",
-      "durationMs": 20
-    },
-    {
-      "name": "creator:browser-demo-check",
-      "durationMs": 20
-    },
-    {
-      "name": "creator:skill-package-check",
       "durationMs": 18
     },
     {
+      "name": "creator:touchdesigner-tox-check",
+      "durationMs": 18
+    },
+    {
+      "name": "creator:browser-demo-check",
+      "durationMs": 18
+    },
+    {
+      "name": "creator:skill-package-check",
+      "durationMs": 19
+    },
+    {
       "name": "hackathon:score",
-      "durationMs": 404
+      "durationMs": 396
     }
   ]
 }
