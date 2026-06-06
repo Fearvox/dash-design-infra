@@ -27,6 +27,7 @@ const KNOWN_MAPPINGS: Record<string, string> = {
   'creator-type-size-audit': 'creator:surface-consistency',
   'creator-type-size-token-audit': 'creator:surface-consistency',
   'creator-bg-token-diagnostic': 'creator:surface-consistency',
+  'creator-accent-family-signature-diagnostic': 'creator:surface-consistency',
   'creator-ink-family-diagnostic': 'creator:surface-consistency',
   'creator-radius-token-audit': 'creator:surface-consistency',
   'creator-font-grammar-audit': 'creator:surface-consistency',

@@ -32,6 +32,7 @@ const SURFACE_CHECK_MAP: Record<string, string> = {
   'creator-type-size-audit':    'creator:surface-consistency',
   'creator-type-size-token-audit': 'creator:surface-consistency',
   'creator-bg-token-diagnostic': 'creator:surface-consistency',
+  'creator-accent-family-signature-diagnostic': 'creator:surface-consistency',
   'creator-radius-token-audit':  'creator:surface-consistency',
   'creator-family-dna':         'creator:family-dna-check',
   'creator-muted-surface-diagnostic': 'creator:surface-consistency',
