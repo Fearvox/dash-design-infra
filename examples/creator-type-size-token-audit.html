@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1684, height=1191">
-  <title>Type size token audit — 2026-05-28</title>
+  <title>Type size token audit — starter vocabulary</title>
   <style>
+    @page { size: 1684px 1191px; margin: 0; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #f4f0e6;
@@ -22,7 +23,13 @@
       grid-template-columns: 260px 1fr;
       gap: 0;
     }
-    .page { display: contents; }
+    .page {
+      width: 1684px;
+      height: 1191px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      overflow: hidden;
+    }
     .sidebar {
       background: #1a1714;
       padding: 36px 24px;
@@ -141,15 +148,15 @@
         <div class="sidebar-title">DASH Design Infra</div>
         <h1>Type size token audit</h1>
       </div>
-      <p>CSS font-size px values across 12 creator surfaces. No surface defines --text-* tokens in :root. Divergence is deep — not a quick fix.</p>
+      <p>CSS font-size px values across 12 creator surfaces. The warm-paper starter vocabulary now exists on the initial surface set; remaining families stay intentionally hardcoded until a design scale exists.</p>
       <div class="verdict-badge">Diagnostic only</div>
     </aside>
     <main class="main">
       <div class="summary-bar">
-        <div class="summary-item"><span class="summary-num">0</span><span class="summary-label">--text-* tokens in :root</span></div>
+        <div class="summary-item"><span class="summary-num">6</span><span class="summary-label">surfaces with --text-sm/xs</span></div>
         <div class="summary-item"><span class="summary-num">12</span><span class="summary-label">surfaces audited</span></div>
-        <div class="summary-item"><span class="summary-num">6–11</span><span class="summary-label">px distinct per surface</span></div>
-        <div class="summary-item"><span class="summary-num">~68</span><span class="summary-label">total unique px values</span></div>
+        <div class="summary-item"><span class="summary-num">5–11</span><span class="summary-label">px distinct per surface</span></div>
+        <div class="summary-item"><span class="summary-num">starter</span><span class="summary-label">not full type scale</span></div>
         <div class="summary-item"><span class="summary-num">FAMILY</span><span class="summary-label">not addressable drift</span></div>
       </div>
 
@@ -191,10 +198,10 @@
 
       <div class="verdict-section">
         <div class="section-label">Verdict</div>
-        <div class="verdict-rule"><span class="rule-num">1</span><span>No surface defines --text-sm, --text-md, --text-lg or any --text-* scale token in :root. Font-size is entirely hardcoded per-surface.</span></div>
-        <div class="verdict-rule"><span class="rule-num">2</span><span>Family signature, not addressable drift: warm-paper surfaces share a zine-editorial aesthetic (body 10-14px, display 40-132px) — same role hierarchy, different specific values. Uniformity would destroy creative intent.</span></div>
-        <div class="verdict-rule"><span class="rule-num">3</span><span>Tokenization requires explicit design decision: which roles (body, label, caption, h1, h2, display) get tokens, and what consensus values the warm-paper family agrees on. This is a design call, not a mechanical fix.</span></div>
-        <div class="verdict-rule"><span class="rule-num">4</span><span>Do NOT introduce --text-sm/md/lg without a design decision. Forced uniformity breaks creative roles. Next: designer-driven type scale for warm-paper family.</span></div>
+        <div class="verdict-rule"><span class="rule-num">1</span><span>Starter tokens exist where the PRs added them: --text-sm:12px and --text-xs:10px on the initial warm-paper/p5 surface set.</span></div>
+        <div class="verdict-rule"><span class="rule-num">2</span><span>This does not settle the full type scale. Display, h1, h2, label, and caption sizes remain contextual and should not be normalized mechanically.</span></div>
+        <div class="verdict-rule"><span class="rule-num">3</span><span>Family signature remains intact: warm-paper surfaces share an editorial zine hierarchy while dark-industrial and creative-hybrid surfaces retain their own role scales.</span></div>
+        <div class="verdict-rule"><span class="rule-num">4</span><span>Next step is design-led expansion from the starter pair, not blanket replacement of every hardcoded font-size.</span></div>
       </div>
     </main>
   </div>
