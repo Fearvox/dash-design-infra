@@ -34,6 +34,7 @@ const KNOWN_MAPPINGS: Record<string, string> = {
   'creator-family-dna-spacing-grammar-audit': 'creator:surface-consistency',
   'creator-warm-paper-page-geometry-diagnostic': 'creator:surface-consistency',
   'creator-cross-family-grammar-audit': 'creator:cross-family-grammar-audit-check',
+  'creator-pad-shell-pattern-b-diagnostic': 'creator:surface-consistency',
 };
 
 function fail(message: string): never {

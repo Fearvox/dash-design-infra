@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-06: --pad-page token layer shipped across 4 warm-paper surfaces (3 Pattern A consumers + 1 reference). Pattern A drift now machine-verifiable. Next: Pattern B --pad-shell exploration — 4px drift between motion-storyboard (40px) and poster/prompt-dna (44px). Diagnostic surface inspection required before any tokenization.",
+  "observation": "Slice 2026-06-06: Pattern B inner shell padding diagnostic shipped. 4 warm-paper surfaces use inner containers with padding 40-70px. 4px drift between motion-storyboard (40px) and prompt-dna/poster (44px) confirmed; proportionality test shows inverse ratio (motion-storyboard 0.385, prompt-dna 0.289) — drift may be content-density-tuned, not chrome-size-tuned. The addressable finding is naming inconsistency: 4 different class names (.shell, .poster-frame, .capsule, .sheet) for the same role. Only .poster-frame is renamable to .shell without changing visual behavior. --pad-shell: 44px tokenization blocked on design verdict. Next: rename .poster-frame to .shell on poster-surface as low-risk naming-unification slice (or surface mutation candidate for next iteration).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -49,7 +49,7 @@
       },
       "risk": "Awaits surface inspection: motion-storyboard grid-template-rows 66px minmax(0,1fr) 38px sized to 40px padding — bumping to 44px shrinks inner 1fr by 8px. May be intentional layout design. Pattern C (pdf-zine only) token premature per cross-family audit.",
       "selection": "selected",
-      "mutation": "Diagnostic surface inspection + grid-layout audit. If motion-storyboard 40px is intentional, retain current 4px drift. If addressable, propose --pad-shell: 44px token with motion-storyboard as documented exception.",
+      "mutation": "Diagnostic phenotype shipped (2026-06-06): examples/creator-pad-shell-pattern-b-diagnostic.html. Surface inspection revealed 4px delta between motion-storyboard (.shell 40px) and prompt-dna (.shell 44px) is NOT proportional to chrome scale — motion-storyboard has higher chrome-to-padding ratio (0.385) than prompt-dna (0.289). The deeper finding: 4 different class names (.shell, .poster-frame, .capsule, .sheet) for the same conceptual role; only .poster-frame is renamable to .shell. --pad-shell tokenization blocked on design call (motion-storyboard 40px may be intentional tight padding for 6-frame content).",
       "phenotype": "Diagnostic only (no surface edits) or --pad-shell: 44px token + motion-storyboard override."
     }
   ],
@@ -879,6 +879,20 @@
         "bun print:render -- examples/creator-prompt-dna-adapter.html /tmp/dash-pad-prompt-dna.pdf --canvas=1684x1191",
         "bun creator:regression (passes creator:pad-page-token-check after surface-consistency)",
         "bun creator:multi-surface-proof (22/22 measure+print pass)"
+      ]
+    },
+    {
+      "id": "creator-pad-shell-pattern-b-diagnostic-route",
+      "selection": "retained",
+      "retained_as": "Pattern B inner shell padding diagnostic — 4 warm-paper inner containers audited (.shell, .poster-frame, .capsule, .sheet), 4px delta between motion-storyboard 40px and prompt-dna 44px confirmed, proportionality test shows inverse chrome-to-padding ratio, naming inconsistency identified as more addressable than padding delta, --pad-shell tokenization blocked on design verdict. 7 surfaces audited; 1 addressable 4px drift; 1 renamable class name. Diagnostic phenotype is the slice output.",
+      "proof": [
+        "bun measure:check -- examples/creator-pad-shell-pattern-b-diagnostic.html returns PASS (canvas 1684x3110)",
+        "bun print:render -- examples/creator-pad-shell-pattern-b-diagnostic.html /tmp/dash-pad-shell-pattern-b-diagnostic.pdf returns 3 pages",
+        "bun creator:multi-surface-proof passes 23/23 surfaces including pad-shell-pattern-b-diagnostic",
+        "bun creator:surface-health passes 23/23 surfaces including creator-pad-shell-pattern-b-diagnostic",
+        "bun creator:example-check-coverage passes 23/23 surfaces including creator-pad-shell-pattern-b-diagnostic",
+        "browser_navigate on file:// URL renders F1-F6 findings, 0 console errors, page height 3110",
+        "browser_vision confirms industrial-brutalist fit, all 6 finding sections, visual sketch cards present, tables readable, no overflow"
       ]
     }
   ],

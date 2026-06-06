@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1684, initial-scale=1">
+<title>warm-paper Pattern B inner shell padding diagnostic — DASH surface-consistency</title>
+<style>
+  @page { size: 1684px 1191px; margin: 0; }
+  :root {
+    --night: #070b0d;
+    --paper: #f2eadb;
+    --ink: #15120e;
+    --muted: #6f6659;
+    --accent: #ffb86b;
+    --line: rgba(21,18,14,0.18);
+    --panel: rgba(244,234,214,0.06);
+    --space-4: 16px;
+    --soft-blue: #1d4ed8;
+    --soft-blue-tint: rgba(29,78,216,.10);
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  body {
+    background: var(--night);
+    background-image:
+      radial-gradient(circle at 88% 8%, rgba(126,240,193,0.10), transparent 30%),
+      radial-gradient(circle at 6% 94%, rgba(255,184,107,0.10), transparent 36%),
+      var(--night);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+  }
+  .page {
+    width: 1684px;
+    min-height: 1191px;
+    height: 3110px;
+    background: var(--paper);
+    background-image:
+      linear-gradient(90deg, rgba(20,17,13,0.045) 1px, transparent 1px),
+      linear-gradient(rgba(20,17,13,0.035) 1px, transparent 1px);
+    background-size: 52px 52px, 52px 52px;
+    position: relative;
+  }
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-bottom: 4px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  header h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+  header .meta {
+    margin-top: 8px;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--font-sans);
+  }
+  header .meta b { color: var(--paper); }
+  main {
+    padding: calc(var(--space-4) * 2) calc(var(--space-4) * 2);
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 520;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--soft-blue);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+  p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 var(--space-4);
+    max-width: 1100px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-sans);
+  }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+  tr:nth-child(even) td { background: rgba(21,18,14,0.04); }
+  td.num { font-variant-numeric: tabular-nums; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(21,18,14,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .tag-pattern { background: var(--soft-blue-tint); color: var(--soft-blue); border: 1px solid rgba(29,78,216,0.24); }
+  .tag-drift { background: rgba(196,122,31,0.18); color: #7a4a0a; }
+  .tag-sig { background: rgba(126,240,193,0.18); color: #0a5f3f; }
+  .tag-mix { background: rgba(29,78,216,0.12); color: var(--soft-blue); }
+  .tag-warn { background: rgba(180,40,40,0.18); color: #7a1f1f; }
+  .finding {
+    margin-bottom: calc(var(--space-4) * 2);
+    padding: var(--space-4);
+    background: var(--panel);
+    border-left: 3px solid var(--accent);
+  }
+  .finding p:last-child { margin-bottom: 0; }
+  .finding strong { color: var(--ink); }
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 12px var(--space-4);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend .tag { background: transparent; }
+  .viz {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .viz-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: var(--space-4);
+  }
+  .viz-card h3 {
+    margin: 0 0 10px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .viz-frame {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .viz-frame .page-pad {
+    position: absolute;
+    inset: 0;
+    background: rgba(126,240,193,0.10);
+    border: 1px dashed rgba(126,240,193,0.45);
+  }
+  .viz-frame .shell {
+    position: absolute;
+    background: rgba(255,184,107,0.20);
+    border: 1px dashed var(--accent);
+  }
+  .viz-frame .chrome {
+    position: absolute;
+    background: rgba(29,78,216,0.16);
+    border: 1px dashed var(--soft-blue);
+  }
+  .viz-frame .label {
+    position: absolute;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 9px;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 1px 4px;
+    border: 1px solid var(--line);
+  }
+  .summary-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .summary-tile {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: var(--space-4);
+  }
+  .summary-tile .label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .summary-tile .value {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .summary-tile .value small {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+  .summary-tile .detail {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  footer {
+    padding: var(--space-4) calc(var(--space-4) * 2);
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    letter-spacing: .04em;
+  }
+  footer b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>warm-paper <em>Pattern B</em> inner shell padding diagnostic</h1>
+    <div class="meta">
+      <b>creator-pad-shell-pattern-b-explore-route</b> &middot; shell-padding axis &middot;
+      7 surfaces audited &middot; 2026-06-06
+    </div>
+  </header>
+  <main>
+
+  <div class="legend">
+    <span><span class="tag tag-pattern">Pattern A</span> page padding (5 surfaces)</span>
+    <span><span class="tag tag-pattern">Pattern B</span> inner container (4 surfaces)</span>
+    <span><span class="tag tag-pattern">Pattern C</span> page::before frame (1 surface)</span>
+    <span><span class="tag tag-sig">Proportional</span> padding tracks chrome scale</span>
+    <span><span class="tag tag-drift">Drift</span> addressable, alignable</span>
+    <span><span class="tag tag-warn">Naming</span> 4 different names, 1 role</span>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-tile">
+      <div class="label">Pattern B inner padding range</div>
+      <div class="value">40&ndash;70<small>px</small></div>
+      <div class="detail">Range across 4 surfaces. 30px spread.</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Closest pair</div>
+      <div class="value">40 / 44<small>px</small></div>
+      <div class="detail">motion-storyboard / prompt-dna+poster. 4px delta.</div>
+    </div>
+    <div class="summary-tile">
+      <div class="label">Container class names</div>
+      <div class="value">4<small>names</small></div>
+      <div class="detail">.shell, .capsule-shell, .poster-frame, .sheet. Same role.</div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F1</span> Pattern B inventory: 4 inner containers, 3 padding values</h2>
+    <p>The warm-paper family uses Pattern B (page is canvas, inner container is the visible content card) on four surfaces. The inner container's CSS class name is <em>not standardized</em> &mdash; four different class names serve the same role:</p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Container class</th>
+        <th>Padding</th>
+        <th>Chrome height (top + foot)</th>
+        <th>Layout columns</th>
+        <th>Class</th>
+      </tr>
+      <tr>
+        <td><code>creator-motion-storyboard</code></td>
+        <td><code>.shell</code></td>
+        <td class="num">40px</td>
+        <td class="num">66 + 38 = 104px</td>
+        <td><code>grid-template-columns: 500px 1fr</code></td>
+        <td><span class="tag tag-drift">Drift</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-prompt-dna-adapter</code></td>
+        <td><code>.shell</code> <em>(alias <code>.capsule-shell</code> referenced in :root comment, not present in the stylesheet)</em></td>
+        <td class="num">44px</td>
+        <td class="num">96 + 56 = 152px</td>
+        <td><code>grid-template-columns: 1fr 540px</code></td>
+        <td><span class="tag tag-sig">Anchor value</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-poster-surface</code></td>
+        <td><code>.poster-frame</code></td>
+        <td class="num">44px</td>
+        <td class="num">n/a (flex layout, no chrome bars)</td>
+        <td>flex column</td>
+        <td><span class="tag tag-sig">Anchor value</span> (different role)</td>
+      </tr>
+      <tr>
+        <td><code>creator-social-card</code></td>
+        <td><code>.shell</code></td>
+        <td class="num">44px 54px (asymmetric)</td>
+        <td class="num">n/a (1200&times;630 canvas, 2-col)</td>
+        <td><code>grid-template-columns: 168px 1fr</code></td>
+        <td><span class="tag tag-sig">Family signature</span> (canvas differs)</td>
+      </tr>
+      <tr>
+        <td><code>creator-frontier-capsule</code></td>
+        <td><code>.capsule</code></td>
+        <td class="num">52px</td>
+        <td class="num">n/a (capsule, no chrome)</td>
+        <td>capsule card</td>
+        <td><span class="tag tag-sig">Capsule role</span> (different role)</td>
+      </tr>
+      <tr>
+        <td><code>creator-pdf-zine</code></td>
+        <td><code>.sheet</code></td>
+        <td class="num">70px</td>
+        <td class="num">n/a (print sheet, 6 panels)</td>
+        <td>6-panel grid</td>
+        <td><span class="tag tag-sig">Print role</span> (different role)</td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: The "4px drift" between motion-storyboard (40px) and prompt-dna/poster (44px) is real but the inner container's <em>role</em> is the same in only 2 of 4 Pattern B surfaces. Social-card uses asymmetric padding (44&times;54) for a 2-column sidebar layout; poster-surface uses <code>.poster-frame</code> instead of <code>.shell</code> with identical 44px padding. Naming inconsistency is the more addressable finding than the 4px padding delta.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F2</span> Proportionality test: does padding track chrome scale?</h2>
+    <p>Two Pattern B surfaces use <code>.shell</code> with grid rows for chrome bars (top + foot). Test: is the 4px padding delta proportional to the chrome scale?</p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Padding</th>
+        <th>Chrome (top + foot)</th>
+        <th>Padding / chrome ratio</th>
+        <th>Classification</th>
+      </tr>
+      <tr>
+        <td><code>motion-storyboard</code></td>
+        <td class="num">40px</td>
+        <td class="num">104px (66+38)</td>
+        <td class="num">0.385</td>
+        <td>Higher ratio &mdash; tighter padding relative to chrome</td>
+      </tr>
+      <tr>
+        <td><code>prompt-dna-adapter</code></td>
+        <td class="num">44px</td>
+        <td class="num">152px (96+56)</td>
+        <td class="num">0.289</td>
+        <td>Lower ratio &mdash; looser padding relative to chrome</td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: The proportionality hypothesis is <em>inverted</em>. motion-storyboard has a <em>higher</em> chrome-to-padding ratio (0.385) than prompt-dna (0.289). The 4px padding delta is not proportional to chrome scale &mdash; it is a deliberate design choice, but the rationale is not "padding matches chrome size."</p>
+    <p><strong>Alternative explanation</strong>: motion-storyboard's inner content is 6 story-frame thumbnails (small visual elements, tight inner spacing), so a tighter 40px shell padding creates more breathing room for the content grid. prompt-dna's inner content is dense prompt text + a parameter panel, so a 44px shell padding creates more white space for reading. The 4px delta <em>may</em> be intentional, tuned to content density rather than chrome size.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F3</span> Visual sketches of the four container variants</h2>
+    <p>Top-down views of each Pattern B surface's inner container, showing the relative padding (orange) and the chrome (blue):</p>
+    <div class="viz">
+      <div class="viz-card">
+        <h3>motion-storyboard &mdash; <code>.shell</code> 40px</h3>
+        <div class="viz-frame">
+          <div class="page-pad"></div>
+          <div class="shell" style="inset: 0;"></div>
+          <div class="chrome" style="top: 40px; left: 40px; right: 40px; height: 66px;"></div>
+          <div class="chrome" style="bottom: 40px; left: 40px; right: 40px; height: 38px;"></div>
+          <div class="label" style="top: 4px; left: 4px;">.shell padding:40px</div>
+          <div class="label" style="bottom: 4px; right: 4px;">chrome 104px</div>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin: 0;">Tight shell padding. Content = 6 story frames. Chrome = small top/foot bars (104px).</p>
+      </div>
+      <div class="viz-card">
+        <h3>prompt-dna-adapter &mdash; <code>.shell</code> 44px</h3>
+        <div class="viz-frame">
+          <div class="page-pad"></div>
+          <div class="shell" style="inset: 0;"></div>
+          <div class="chrome" style="top: 44px; left: 44px; right: 44px; height: 96px;"></div>
+          <div class="chrome" style="bottom: 44px; left: 44px; right: 44px; height: 56px;"></div>
+          <div class="label" style="top: 4px; left: 4px;">.shell padding:44px</div>
+          <div class="label" style="bottom: 4px; right: 4px;">chrome 152px</div>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin: 0;">Looser shell padding. Content = dense prompt + 540px parameter panel. Chrome = larger bars (152px).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F4</span> Naming inconsistency &mdash; the addressable finding</h2>
+    <p>Four CSS class names serve the same conceptual role (the inner content container in Pattern B). Token-level alignment is impossible while names differ:</p>
+    <table>
+      <tr>
+        <th>Class name</th>
+        <th>Surfaces</th>
+        <th>Same role?</th>
+        <th>Re-nameable to <code>.shell</code>?</th>
+      </tr>
+      <tr>
+        <td><code>.shell</code></td>
+        <td>motion-storyboard, prompt-dna-adapter, social-card</td>
+        <td>Yes (inner container)</td>
+        <td>n/a (already canonical)</td>
+      </tr>
+      <tr>
+        <td><code>.poster-frame</code></td>
+        <td>poster-surface</td>
+        <td>Yes (same role, decorative rounded frame)</td>
+        <td>Possible &mdash; rename to <code>.shell</code> + apply border-radius: 44px separately. Preserves the rounded aesthetic.</td>
+      </tr>
+      <tr>
+        <td><code>.capsule</code></td>
+        <td>frontier-capsule</td>
+        <td>No &mdash; the <em>capsule itself</em> is the visible card, not a content card inside a page. Different role.</td>
+        <td>Do not rename. The capsule is the page's primary visual artifact.</td>
+      </tr>
+      <tr>
+        <td><code>.sheet</code></td>
+        <td>pdf-zine</td>
+        <td>No &mdash; the sheet is a print-page artifact with 6 panels. Different role.</td>
+        <td>Do not rename. Print sheet has a fundamentally different structure.</td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: <code>.poster-frame</code> is the only <em>renamable</em> variant. Three of four names refer to genuinely different roles. Renaming <code>.poster-frame</code> to <code>.shell</code> + applying the decorative border-radius separately would unify the inner-container naming and make a future <code>--pad-shell</code> token apply uniformly.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F5</span> Token layer opportunity &mdash; design-decision-blocked</h2>
+    <p>Based on F1&ndash;F4, three token candidates could be proposed:</p>
+    <ol style="font-size: 13px; line-height: 1.6; color: var(--ink); font-family: var(--font-sans); padding-left: 24px; margin-bottom: var(--space-4);">
+      <li><code>--pad-shell: 44px</code> &mdash; align inner container padding across all Pattern B surfaces. Visual delta: motion-storyboard +4px (40&rarr;44). Closes the 4px drift pair. <em>Requires a design call on whether motion-storyboard's 40px is intentional tight padding for 6-frame content or accidental drift.</em></li>
+      <li><code>.shell</code> class unification &mdash; rename <code>.poster-frame</code> to <code>.shell</code> + apply border-radius: 44px via a <code>--shell-radius</code> companion token. Unifies the 3-surface naming. <em>Purely cosmetic, low risk.</em></li>
+      <li><code>--pad-page: 56px</code> &mdash; <em>already shipped</em> (PR #156, 2026-06-06). 4 of 4 warm-paper Pattern A consumers aligned. <em>No further work needed.</em></li>
+    </ol>
+    <p><strong>Decision blocker</strong>: introducing <code>--pad-shell</code> requires a creator/design verdict on whether motion-storyboard's 40px is "tighter padding for thumbnail-grid content" (intentional, retain) or "leftover from a pre-token layer" (drift, align). The visible difference between 40px and 44px is ~0.4% of canvas width on a 1684px-wide page &mdash; the visual change is subtle but real.</p>
+    <p><strong>Recommendation</strong>: hold <code>--pad-shell</code> tokenization. Apply only the low-risk <code>.shell</code> class-unification mutation (rename <code>.poster-frame</code> to <code>.shell</code> on poster-surface) as the next atomic slice. This unifies naming without changing padding values &mdash; a smaller, lower-risk step toward aesthetic coherence.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F6</span> Diagnostic summary</h2>
+    <table>
+      <tr>
+        <th>Claim</th>
+        <th>Reality</th>
+        <th>Classification</th>
+      </tr>
+      <tr>
+        <td>&ldquo;4px drift between motion-storyboard (40px) and prompt-dna (44px) is addressable drift.&rdquo;</td>
+        <td>Real 4px delta exists. Proportionality test: motion-storyboard has <em>higher</em> chrome-to-padding ratio (0.385) than prompt-dna (0.289) &mdash; not proportional to chrome scale. <em>May</em> be intentional tight padding for thumbnail content, not arbitrary drift.</td>
+        <td><span class="tag tag-sig">Possibly intentional</span> (design call needed)</td>
+      </tr>
+      <tr>
+        <td>&ldquo;Pattern B inner padding is uniform across 4 surfaces.&rdquo;</td>
+        <td>4 surfaces, 3 padding values (40, 44, 52, 70). Two are canvas- or role-specific (capsule 52, print sheet 70). Only 2 surfaces use <code>.shell</code> with grid chrome.</td>
+        <td><span class="tag tag-drift">Partially addressable</span> (2 surfaces, 1 design call)</td>
+      </tr>
+      <tr>
+        <td>&ldquo;Inner container class name is <code>.shell</code>.&rdquo;</td>
+        <td>Four different class names: <code>.shell</code>, <code>.poster-frame</code>, <code>.capsule</code>, <code>.sheet</code>. Three are role-specific. <code>.poster-frame</code> is the only renamable variant.</td>
+        <td><span class="tag tag-warn">Addressable naming gap</span> (poster-surface only)</td>
+      </tr>
+      <tr>
+        <td>&ldquo;Tokenizing <code>--pad-shell</code> is mechanical and safe.&rdquo;</td>
+        <td>Requires design verdict on motion-storyboard 40px intentionality. Visible delta &lt; 0.5% canvas width. Safer to defer until design call.</td>
+        <td><span class="tag tag-drift">Design-decision-blocked</span></td>
+      </tr>
+    </table>
+    <p><strong>Action</strong>: <code>creator-pad-shell-pattern-b-explore-route</code> has <em>partially</em> addressable drift. The 4px delta on motion-storyboard is the only addressable surface edit, but the 0.4% visual delta requires a creator/design call. The diagnostic phenotype is the slice&rsquo;s output. <em>Next implementable mutation</em>: rename <code>.poster-frame</code> to <code>.shell</code> on poster-surface + extract the rounded radius to a <code>--shell-radius: 44px</code> companion token. Low-risk, naming-unification only, no padding value change.</p>
+  </div>
+
+  </main>
+  <footer>
+    Diagnostic phenotype for <b>creator-pad-shell-pattern-b-explore-route</b> &middot; shell-padding axis &middot; 2026-06-06 &middot; 7 warm-paper surfaces audited &middot; 4 inner containers classified &middot; 1 addressable 4px delta &middot; 1 renamable class name &middot; design call required for tokenization
+  </footer>
+</div>
+</body>
+</html>
