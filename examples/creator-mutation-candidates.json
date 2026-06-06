@@ -22,7 +22,7 @@
     },
     {
       "id": "creator-warm-paper-page-geometry-diagnostic-extension-route",
-      "selection": "selected",
+      "selection": "candidate",
       "axis": "visual grammar",
       "mutation": "Extend the page-geometry diagnostic with a per-surface hardcoded spacing inventory (convergence file already exposes it). Document the warm-paper family's spacing grammar in 3 distinct patterns: Pattern A (page padding 56px uniform, motion-storyboard/poster/prompt-dna/family-dna), Pattern B (inner .shell 40-70px, surface-specific), Pattern C (page::before frame 20-44px, decorative). Update diagnostic HTML with spacing table.",
       "phenotype": "1 diagnostic HTML extension (examples/creator-warm-paper-page-geometry-diagnostic.html) + 1 check script update + .artifacts evidence note.",
@@ -33,7 +33,7 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Diagnostic only — no surface edits. Spacing inventory may shift when new surfaces are added. Family-dna's 3-padding-asymmetric pattern (44/52/32) remains intact."
+      "risk": "Closed by slice PR #161 (warm-paper spacing grammar inventory + pattern check). Demoted to retain target winner."
     },
     {
       "id": "creator-pad-shell-pattern-b-explore-route",
@@ -66,9 +66,33 @@
       "mutation": "Introduce --grid-ink-alpha: 0.045 token to warm-paper family, replace per-surface alpha values with var(--grid-ink-alpha). Could converge 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) to 1. Blocked on design call: alpha variation may be intentional (smaller grids denser) and forcing convergence may collapse content-density tuning.",
       "phenotype": "Diagnostic + alignment if design call approves. Likely just a diagnostic slice if alpha variation is confirmed as family signature.",
       "risk": "Premise may be stale — alpha variation may be content-density-tuned not mechanically drifted. Pre-implementation: 3-surface inspection of grid spacing 42/44/52/56 vs alpha .035/.045/.055/.06 to confirm correlation."
+    },
+    {
+      "id": "creator-warm-paper-spacing-grammar-extension-route",
+      "selection": "selected",
+      "axis": "visual grammar",
+      "retained_as": "warm-paper spacing grammar diagnostic extension + creator:warm-paper-spacing-pattern-check machine gate. F6 hardcoded spacing inventory cross-references convergence.json spacing_audit with 3 page-geometry patterns (2 A, 3 A+B, 1 B+C). F7 pattern↔token status documents --pad-page: 56px token layer saturation (3/3 Pattern A consumers + 1/1 reference on 1684x1191 canvas). New check classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame; catches drift if a surface changes its .page padding source. Wired into regression orchestrator (33/35 PASS, 2 pre-existing timing failures unchanged).",
+      "phenotype": "F6 + F7 added to creator-warm-paper-page-geometry-diagnostic.html (620 lines, 30KB, 4-page print). New check script scripts/creator-warm-paper-spacing-pattern-check.ts (196 lines).",
+      "fitness": {
+        "creator_utility": 7,
+        "memory_retention": 8,
+        "artifact_proof": 9,
+        "boundary_safety": 10,
+        "minimal_core": 8
+      },
+      "risk": "Diagnostic-only. No surface edits. F6 inventory may shift if new surfaces are added. Pattern classification hardcoded in check (Pattern A/A+/B/C signatures) — if a future surface uses a new pattern vocabulary, the check may misclassify.",
+      "proof": [
+        "bun creator:warm-paper-spacing-pattern-check (6/6 classified, 5/5 var(--pad-page) consumers documented)",
+        "bun measure:check -- examples/creator-warm-paper-page-geometry-diagnostic.html (1684x4050 fits 1684x1191)",
+        "bun print:render -- examples/creator-warm-paper-page-geometry-diagnostic.html (4 pages, 978ms)",
+        "bun creator:multi-surface-proof (26/26 measure+print PASS)",
+        "bun docs:links (clean)",
+        "bun creator:regression (33/35 PASS — 2 pre-existing timing failures unchanged from main)",
+        "PR #161 merged 2026-06-06T16:02:29Z (sha 2d49a4c9)"
+      ]
     }
   ],
-  "winner": "creator-warm-paper-page-geometry-diagnostic-extension-route",
+  "winner": "creator-warm-paper-spacing-grammar-extension-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -935,6 +959,16 @@
       "proof": [
         "bun creator:cross-family-grammar-audit-check (standalone: 1007ms, PASS)",
         "bun creator:regression (orchestrator: 32/34, cross-family-grammar-audit-check PASS)"
+      ]
+    },
+    {
+      "id": "creator-warm-paper-spacing-grammar-extension-route",
+      "selection": "retained",
+      "retained_as": "warm-paper spacing grammar diagnostic extension + creator:warm-paper-spacing-pattern-check machine gate (PR #161)",
+      "proof": [
+        "bun creator:warm-paper-spacing-pattern-check (6/6 classified)",
+        "bun creator:multi-surface-proof (26/26 measure+print PASS)",
+        "PR #161 merged 2026-06-06T16:02:29Z"
       ]
     }
   ],
