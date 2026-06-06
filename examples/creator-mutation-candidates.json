@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-06: Pattern B inner shell padding diagnostic shipped. 4 warm-paper surfaces use inner containers with padding 40-70px. 4px drift between motion-storyboard (40px) and prompt-dna/poster (44px) confirmed; proportionality test shows inverse ratio (motion-storyboard 0.385, prompt-dna 0.289) — drift may be content-density-tuned, not chrome-size-tuned. The addressable finding is naming inconsistency: 4 different class names (.shell, .poster-frame, .capsule, .sheet) for the same role. Only .poster-frame is renamable to .shell without changing visual behavior. --pad-shell: 44px tokenization blocked on design verdict. Next: rename .poster-frame to .shell on poster-surface as low-risk naming-unification slice (or surface mutation candidate for next iteration).",
+  "observation": "Slice 2026-06-06: warm-paper page-grid ink alignment shipped. 4 functional warm-paper surfaces aligned to rgba(21,18,14, alpha) for the page-background linear-gradient grid. Pre-alignment: pdf-zine rgb(22,19,14), motion-storyboard rgb(20,17,13) drifted by ±1-2 RGB units. Post-alignment: all 4 surfaces ink-aligned. creator:page-grid-check machine gate (4/4 PASS) wired into regression orchestrator after pad-page-token-check. NorthStar: extends aesthetic-coherence audit from :root tokens to body-CSS rgba patterns. Next slice: wire creator:cross-family-grammar-audit-check into regression orchestrator (currently in package.json but missing from CHECKS[]).",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -16,7 +16,7 @@
         "minimal_core": 6
       },
       "risk": "Regression orchestrator self-referential recursion risk — verify new check does not transitively call bun creator:regression. Small risk surface, well-defined edit.",
-      "selection": "candidate",
+      "selection": "selected",
       "mutation": "Wire creator:cross-family-grammar-audit-check into the creator:regression orchestrator CHECKS[] array. Cross-family audit currently isolated — running it as part of full regression ensures future ledger additions automatically re-classify. Add to orchestrator at correct insertion point (after surface-consistency, before docs-surface-parity). Verify orchestrator output shows the new check entry.",
       "phenotype": "1 orchestrator edit (scripts/creator-regression-check.ts) + 1 verification pass. creator:regression output line for cross-family-grammar-audit-check. regression count increases by 1."
     },
@@ -47,13 +47,28 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Awaits surface inspection: motion-storyboard grid-template-rows 66px minmax(0,1fr) 38px sized to 40px padding — bumping to 44px shrinks inner 1fr by 8px. May be intentional layout design. Pattern C (pdf-zine only) token premature per cross-family audit.",
-      "selection": "selected",
+      "risk": "Diagnostic shipped (PR #161). 4px inner-shell padding delta between motion-storyboard 40px and prompt-dna 44px is content-density-tuned (chrome-to-padding ratio 0.385 vs 0.289), not addressable as token. Naming inconsistency confirmed but not addressed in this slice. Closed: surface inspection + design call needed before --pad-shell tokenization.",
+      "selection": "candidate",
       "mutation": "Diagnostic phenotype shipped (2026-06-06): examples/creator-pad-shell-pattern-b-diagnostic.html. Surface inspection revealed 4px delta between motion-storyboard (.shell 40px) and prompt-dna (.shell 44px) is NOT proportional to chrome scale — motion-storyboard has higher chrome-to-padding ratio (0.385) than prompt-dna (0.289). The deeper finding: 4 different class names (.shell, .poster-frame, .capsule, .sheet) for the same conceptual role; only .poster-frame is renamable to .shell. --pad-shell tokenization blocked on design call (motion-storyboard 40px may be intentional tight padding for 6-frame content).",
       "phenotype": "Diagnostic only (no surface edits) or --pad-shell: 44px token + motion-storyboard override."
+    },
+    {
+      "id": "creator-page-grid-alpha-convergence-route",
+      "axis": "visual grammar",
+      "selection": "candidate",
+      "fitness": {
+        "creator_utility": 4,
+        "memory_retention": 5,
+        "artifact_proof": 5,
+        "boundary_safety": 10,
+        "minimal_core": 6
+      },
+      "mutation": "Introduce --grid-ink-alpha: 0.045 token to warm-paper family, replace per-surface alpha values with var(--grid-ink-alpha). Could converge 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) to 1. Blocked on design call: alpha variation may be intentional (smaller grids denser) and forcing convergence may collapse content-density tuning.",
+      "phenotype": "Diagnostic + alignment if design call approves. Likely just a diagnostic slice if alpha variation is confirmed as family signature.",
+      "risk": "Premise may be stale — alpha variation may be content-density-tuned not mechanically drifted. Pre-implementation: 3-surface inspection of grid spacing 42/44/52/56 vs alpha .035/.045/.055/.06 to confirm correlation."
     }
   ],
-  "winner": "creator-pad-shell-pattern-b-explore-route",
+  "winner": "creator-mechanical-drift-cleanup-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -893,6 +908,24 @@
         "bun creator:example-check-coverage passes 23/23 surfaces including creator-pad-shell-pattern-b-diagnostic",
         "browser_navigate on file:// URL renders F1-F6 findings, 0 console errors, page height 3110",
         "browser_vision confirms industrial-brutalist fit, all 6 finding sections, visual sketch cards present, tables readable, no overflow"
+      ]
+    },
+    {
+      "id": "creator-page-grid-ink-align-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper page-background grid ink alignment mutation; aligns 4 functional warm-paper .page surfaces (pdf-zine, social-card, motion-storyboard, prompt-dna-adapter) to use exact rgba(21,18,14, alpha) for the linear-gradient 1px grid pattern. Pre-alignment: pdf-zine used rgb(22,19,14) and motion-storyboard used rgb(20,17,13) — both off --ink by ±1-2 RGB units. Post-alignment: all 4 surfaces ink-aligned. Adds creator:page-grid-check machine gate (4/4 PASS) to prevent future off-ink regression. Per-surface grid alpha and grid size retained as content-density tuning (intentional family signature). Extends aesthetic-coherence audit from :root tokens to body-CSS rgba patterns. Zero visual risk.",
+      "proof": [
+        "bun creator:page-grid-check passes 4/4 warm-paper surfaces ink-aligned",
+        "bun creator:pdf-zine-check PASS (rgba(21,18,14, 0.045) + rgba(21,18,14, 0.035) grid)",
+        "bun creator:motion-storyboard-check PASS (rgba(21,18,14, .055) + rgba(21,18,14, .045) grid)",
+        "bun measure:check -- examples/creator-pdf-zine.html PASS (canvas 1684x1191)",
+        "bun measure:check -- examples/creator-motion-storyboard.html PASS (canvas 1684x1191)",
+        "bun creator:regression passes 31/33 (2 environmental timing regressions, not caused by this slice)",
+        "bun creator:cache-integrity passes 14/14 valid (after 9 stale cache entries cleaned)",
+        "bun creator:pad-page-token-check passes 4/4 warm-paper surfaces",
+        "bun creator:docs-surface-parity passes 0 actionable gaps (1 informational WORKFLOW_INDEX drift, pre-existing)",
+        "bun creator:surface-consistency passes 26/26 surfaces audited (11 shared, 14 diverged :root tokens — different axis)",
+        "Regression detection: temporarily reverting pdf-zine to rgba(22,19,14) fails page-grid-check with clear error message"
       ]
     }
   ],
