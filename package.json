@@ -86,6 +86,7 @@
     "creator:surface-consistency": "bun scripts/creator-surface-consistency.ts",
     "creator:pad-page-token-check": "bun scripts/creator-pad-page-token-check.ts",
     "creator:page-grid-check": "bun scripts/creator-page-grid-check.ts",
+    "creator:warm-paper-spacing-pattern-check": "bun scripts/creator-warm-paper-spacing-pattern-check.ts",
     "creator:cross-family-grammar-audit-check": "bun scripts/creator-cross-family-grammar-audit-check.ts",
     "creator:family-dna-check": "bun scripts/creator-family-dna-check.ts",
     "creator:regression": "bun scripts/creator-regression-check.ts",
