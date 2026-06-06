@@ -38,12 +38,12 @@ function resolvePublicRootLink(file: string, href: string): string | null {
   if (!href.startsWith('/')) return null;
 
   let dir = dirname(file);
-  while (dir && dir !== '.') {
+  while (dir) {
     const target = resolve(dir, 'public', href.slice(1));
     if (existsSync(target)) return target;
 
     const parent = dirname(dir);
-    if (parent === dir) break;
+    if (parent === dir || dir === '.') break;
     dir = parent;
   }
 
