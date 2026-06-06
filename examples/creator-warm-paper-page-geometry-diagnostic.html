@@ -275,7 +275,7 @@
     <h1>warm-paper <em>page geometry</em> diagnostic</h1>
     <div class="meta">
       <b>creator-surface-consistency-route</b> &middot; page-geometry axis &middot;
-      6 surfaces audited &middot; 2026-06-05
+      6 surfaces audited &middot; 3 patterns &middot; 2026-06-06 (spacing inventory extended)
     </div>
   </header>
   <main>
@@ -286,6 +286,7 @@
     <span><span class="tag tag-pattern">Pattern C</span> page::before frame (1 surface)</span>
     <span><span class="tag tag-sig">Family signature</span> intentional, not drift</span>
     <span><span class="tag tag-drift">Drift</span> addressable, alignable</span>
+    <span><span class="tag tag-pattern">var(--pad-page)</span> token consumed (3 surfaces)</span>
   </div>
 
   <div class="summary-box">
@@ -488,9 +489,131 @@
     <p><strong>Action</strong>: <code>creator-warm-paper-page-geometry-route</code> has <em>partially</em> addressable drift (Pattern A 2px-4px pairs) but the fix requires a creator/design call on whether the warm-paper family&rsquo;s page padding should be uniform (token + 56px) or rhythm-varying (signature + 3-patterns). The diagnostic phenotype is the slice&rsquo;s output. Next implementable candidate: <code>creator-line-color-explore-route</code> (visual delta &lt; 1 alpha unit, fully alignable) or <code>creator-warm-paper-page-geometry-align-route</code> (pending design verdict).</p>
   </div>
 
+  <div class="finding">
+    <h2><span class="num">F6</span> Hardcoded spacing inventory (per-surface grammar)</h2>
+    <p>The convergence file (<code>examples/creator-surface-convergence.json</code> &raquo; <code>spacing_audit</code>) already exposes every warm-paper surface&rsquo;s hardcoded gap / padding / margin values. This finding cross-references those values with the three page-geometry patterns above to document the family&rsquo;s spacing grammar in concrete numbers. <strong>Family DNA = small value vocabulary (2&ndash;6 distinct values per surface), not a token layer.</strong></p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Pattern</th>
+        <th>Gap values (px)</th>
+        <th>Padding values (px)</th>
+        <th>Margin values (px)</th>
+        <th>Grammar density</th>
+      </tr>
+      <tr>
+        <td><code>creator-family-dna.html</code></td>
+        <td><span class="tag tag-pattern">A</span> (asymmetric 44&times;52&times;32)</td>
+        <td class="num">6, 8, 12</td>
+        <td class="num">3, 5, 10, 12, 20, 44</td>
+        <td class="num">6</td>
+        <td class="num">3 gaps &middot; 6 pad &middot; 1 margin</td>
+      </tr>
+      <tr>
+        <td><code>creator-poster-surface.html</code></td>
+        <td><span class="tag tag-mix">A+B</span> (page 56 + .poster-frame 44)</td>
+        <td class="num">10, 64</td>
+        <td class="num">24, 30, 44</td>
+        <td class="num">&mdash;</td>
+        <td class="num">2 gaps &middot; 3 pad &middot; 0 margin</td>
+      </tr>
+      <tr>
+        <td><code>creator-motion-storyboard.html</code></td>
+        <td><span class="tag tag-mix">A+B</span> (page 56 + .shell 40)</td>
+        <td class="num">7, 14, 22, 24, 30</td>
+        <td class="num">6, 10, 20, 40</td>
+        <td class="num">7, 24</td>
+        <td class="num">5 gaps &middot; 4 pad &middot; 2 margin</td>
+      </tr>
+      <tr>
+        <td><code>creator-prompt-dna-adapter.html</code></td>
+        <td><span class="tag tag-mix">A+B</span> (page 56 + .capsule-shell 44)</td>
+        <td class="num">14, 24, 30, 42</td>
+        <td class="num">20, 24, 44</td>
+        <td class="num">32</td>
+        <td class="num">4 gaps &middot; 3 pad &middot; 1 margin</td>
+      </tr>
+      <tr>
+        <td><code>creator-social-card.html</code></td>
+        <td><span class="tag tag-pattern">A</span> (1200&times;630 .shell 44&times;54)</td>
+        <td class="num">4, 12, 38</td>
+        <td class="num">22, 44</td>
+        <td class="num">24</td>
+        <td class="num">3 gaps &middot; 2 pad &middot; 1 margin</td>
+      </tr>
+      <tr>
+        <td><code>creator-pdf-zine.html</code></td>
+        <td><span class="tag tag-pattern">B+C</span> (.sheet 70 + ::before 56)</td>
+        <td class="num">8, 10, 12, 22</td>
+        <td class="num">8, 14, 30, 70</td>
+        <td class="num">&mdash;</td>
+        <td class="num">4 gaps &middot; 4 pad &middot; 0 margin</td>
+      </tr>
+    </table>
+    <p><strong>Grammar observation</strong>: each warm-paper surface uses between 6 and 11 distinct spacing values total. No surface uses more than 5 distinct gap values or more than 6 distinct padding values. This is the warm-paper family DNA &mdash; a <em>compact</em> spacing vocabulary where each value earns its place, distinct from large-scale token-strict systems. The three pattern buckets (A / A+B / B+C) all converge on similar small-value profiles &mdash; the pattern is in <em>where</em> the values are placed, not in the values themselves.</p>
+  </div>
+
+  <div class="finding">
+    <h2><span class="num">F7</span> Pattern &harr; token status (consumed vs declared)</h2>
+    <p>The <code>--pad-page: 56px</code> token layer (added by the <code>creator-spacing-grammar-layer-route</code> slice, PR #96 lineage) covers 3 of the 6 warm-paper surfaces. The other 3 surfaces either declare the token as a family reference (family-dna) or do not declare it at all (social-card, pdf-zine &mdash; legacy 1200&times;630 and print-zine canvases).</p>
+    <table>
+      <tr>
+        <th>Surface</th>
+        <th>Pattern</th>
+        <th><code>--pad-page</code> declared in <code>:root</code>?</th>
+        <th><code>var(--pad-page)</code> consumed in <code>.page</code>?</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td><code>creator-family-dna.html</code></td>
+        <td><span class="tag tag-pattern">A</span> (asymmetric)</td>
+        <td class="num">yes (56px)</td>
+        <td class="num">no (intentional 44&times;52&times;32)</td>
+        <td><span class="tag tag-sig">Reference</span> (signature asymmetric padding)</td>
+      </tr>
+      <tr>
+        <td><code>creator-poster-surface.html</code></td>
+        <td><span class="tag tag-mix">A+B</span></td>
+        <td class="num">yes (56px)</td>
+        <td class="num">yes</td>
+        <td><span class="tag tag-pattern">Token consumer</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-motion-storyboard.html</code></td>
+        <td><span class="tag tag-mix">A+B</span></td>
+        <td class="num">yes (56px)</td>
+        <td class="num">yes</td>
+        <td><span class="tag tag-pattern">Token consumer</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-prompt-dna-adapter.html</code></td>
+        <td><span class="tag tag-mix">A+B</span></td>
+        <td class="num">yes (56px)</td>
+        <td class="num">yes</td>
+        <td><span class="tag tag-pattern">Token consumer</span></td>
+      </tr>
+      <tr>
+        <td><code>creator-social-card.html</code></td>
+        <td><span class="tag tag-pattern">A</span> (1200&times;630)</td>
+        <td class="num">no</td>
+        <td class="num">no (44&times;54 on .shell)</td>
+        <td><span class="tag tag-sig">Out of scope</span> (different canvas 1200&times;630)</td>
+      </tr>
+      <tr>
+        <td><code>creator-pdf-zine.html</code></td>
+        <td><span class="tag tag-pattern">B+C</span></td>
+        <td class="num">no</td>
+        <td class="num">no (.sheet 70px is the well)</td>
+        <td><span class="tag tag-sig">Out of scope</span> (Pattern C is sheet + frame, not .page-pad)</td>
+      </tr>
+    </table>
+    <p><strong>Conclusion</strong>: the <code>--pad-page</code> token layer has reached saturation on its in-scope surfaces (3/3 Pattern A-with-padPage consumers + 1/1 reference = full coverage on the 1684&times;1191 canvas). The two out-of-scope surfaces (social-card 1200&times;630, pdf-zine B+C) are <em>family signatures</em>, not addressable drift. The spacing grammar diagnostic phenotype is the slice&rsquo;s output &mdash; the per-surface classification is now machine-checkable via <code>creator:warm-paper-spacing-pattern-check</code>, which catches drift if a surface changes its <code>.page</code> padding source without updating this diagnostic.</p>
+    <p><strong>Recommended next action</strong>: with the pattern layer closed, the remaining 18px &rarr; 16px alignment opportunities are <em>intra-surface internal</em> (e.g. motion-storyboard still has <code>padding: 6px 10px 20px 40px</code> on .shell which is Pattern B inner padding, not Pattern A page padding) and should be left alone unless the family moves to a <code>--space-2 / --space-3 / --space-5 / --space-6</code> token stack. The two-pattern-axis system (page-pad 56 + inner 40&ndash;44) is the warm-paper family&rsquo;s core spacing grammar; introducing more tokens would homogenize the surfaces, not unify them.</p>
+  </div>
+
   </main>
   <footer>
-    Diagnostic phenotype for <b>creator-surface-consistency-route</b> &middot; page-geometry axis &middot; 2026-06-05 &middot; 6 warm-paper surfaces audited &middot; 3 role-distinguished patterns identified &middot; 2 addressable 4px deltas &middot; design call required
+    Diagnostic phenotype for <b>creator-surface-consistency-route</b> &middot; page-geometry axis &middot; 2026-06-06 &middot; 6 warm-paper surfaces audited &middot; 3 role-distinguished patterns &middot; hardcoded spacing inventory (F6) + pattern-token status (F7) extended &middot; machine check <code>creator:warm-paper-spacing-pattern-check</code> wired &middot; design call still required for pattern unification
   </footer>
 </div>
 </body>
