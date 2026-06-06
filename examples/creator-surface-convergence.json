@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-06-06T04:34:32.903Z",
-  "total_surfaces": 22,
-  "with_token_layer": 22,
+  "timestamp": "2026-06-06T07:02:09.170Z",
+  "total_surfaces": 23,
+  "with_token_layer": 23,
   "without_token_layer": 0,
   "shared_tokens": 8,
   "diverged_tokens": 14,
@@ -21,6 +21,7 @@
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -130,6 +131,7 @@
             "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
             "creator-muted-surface-diagnostic.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -173,6 +175,7 @@
             "creator-font-grammar-audit.html",
             "creator-frontier-capsule.html",
             "creator-motion-storyboard.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -230,6 +233,7 @@
             "creator-ink-family-diagnostic.html",
             "creator-motion-storyboard.html",
             "creator-muted-surface-diagnostic.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -281,6 +285,7 @@
             "creator-cross-family-grammar-audit.html",
             "creator-family-dna-spacing-grammar-audit.html",
             "creator-family-dna.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
@@ -343,6 +348,7 @@
             "creator-family-dna.html",
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -392,6 +398,7 @@
             "creator-font-grammar-audit.html",
             "creator-motion-storyboard.html",
             "creator-muted-surface-diagnostic.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-pdf-zine.html",
             "creator-poster-surface.html",
             "creator-prompt-dna-adapter.html",
@@ -482,6 +489,7 @@
           "value": "#1d4ed8",
           "surfaces": [
             "creator-cross-family-grammar-audit.html",
+            "creator-pad-shell-pattern-b-diagnostic.html",
             "creator-warm-paper-page-geometry-diagnostic.html"
           ]
         },
@@ -517,7 +525,7 @@
     "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-06T04:34:32.375Z",
+    "prior_timestamp": "2026-06-06T07:02:08.733Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -844,6 +852,22 @@
           28
         ],
         "gap_count": 5
+      },
+      {
+        "file": "creator-pad-shell-pattern-b-diagnostic.html",
+        "gap_values": [
+          6,
+          18
+        ],
+        "padding_values": [
+          1,
+          2,
+          3,
+          10,
+          12
+        ],
+        "margin_values": [],
+        "gap_count": 2
       },
       {
         "file": "creator-pdf-zine.html",
