@@ -25,6 +25,7 @@ const KNOWN_MAPPINGS: Record<string, string> = {
   'creator-frontier-capsule': 'creator:capsule-check',
   'creator-muted-surface-diagnostic': 'creator:surface-consistency',
   'creator-type-size-audit': 'creator:surface-consistency',
+  'creator-type-size-token-audit': 'creator:surface-consistency',
   'creator-bg-token-diagnostic': 'creator:surface-consistency',
   'creator-ink-family-diagnostic': 'creator:surface-consistency',
   'creator-radius-token-audit': 'creator:surface-consistency',
