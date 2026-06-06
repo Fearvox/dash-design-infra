@@ -89,7 +89,8 @@
         "bun docs:links (clean)",
         "bun creator:regression (33/35 PASS — 2 pre-existing timing failures unchanged from main)",
         "PR #161 merged 2026-06-06T16:02:29Z (sha 2d49a4c9)"
-      ]
+      ],
+      "mutation": "Extend the warm-paper page-geometry diagnostic (PR #152) with F6 (hardcoded spacing inventory) and F7 (pattern↔token status) findings; add creator:warm-paper-spacing-pattern-check machine gate that classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame. Verifies the diagnostic HTML contains Pattern A/B/C visible labels + hardcoded spacing inventory section + per-surface consumer documentation. Catches drift if a surface changes its .page padding source. Wired into creator:regression orchestrator after creator:page-grid-check."
     }
   ],
   "winner": "creator-warm-paper-spacing-grammar-extension-route",
@@ -959,16 +960,6 @@
       "proof": [
         "bun creator:cross-family-grammar-audit-check (standalone: 1007ms, PASS)",
         "bun creator:regression (orchestrator: 32/34, cross-family-grammar-audit-check PASS)"
-      ]
-    },
-    {
-      "id": "creator-warm-paper-spacing-grammar-extension-route",
-      "selection": "retained",
-      "retained_as": "warm-paper spacing grammar diagnostic extension + creator:warm-paper-spacing-pattern-check machine gate (PR #161)",
-      "proof": [
-        "bun creator:warm-paper-spacing-pattern-check (6/6 classified)",
-        "bun creator:multi-surface-proof (26/26 measure+print PASS)",
-        "PR #161 merged 2026-06-06T16:02:29Z"
       ]
     }
   ],
