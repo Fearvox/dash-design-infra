@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-06: warm-paper page-grid ink alignment shipped. 4 functional warm-paper surfaces aligned to rgba(21,18,14, alpha) for the page-background linear-gradient grid. Pre-alignment: pdf-zine rgb(22,19,14), motion-storyboard rgb(20,17,13) drifted by ±1-2 RGB units. Post-alignment: all 4 surfaces ink-aligned. creator:page-grid-check machine gate (4/4 PASS) wired into regression orchestrator after pad-page-token-check. NorthStar: extends aesthetic-coherence audit from :root tokens to body-CSS rgba patterns. Next slice: wire creator:cross-family-grammar-audit-check into regression orchestrator (currently in package.json but missing from CHECKS[]).",
+  "observation": "Slice 2026-06-06: cross-family-grammar-audit-check wired into creator:regression orchestrator CHECKS[] (28/34 pass, 2 pre-existing fails). The check is in package.json (line 89) and scripts/creator-cross-family-grammar-audit-check.ts exists and passes standalone (1007ms) and inside the orchestrator. Insertion point: after creator:family-dna-check (line 38), before creator:capsule-check — both family-grammar audits at the same semantic level. Pre-vs-post: 31/33 → 32/34. The 2 pre-existing fails (workflow-gate-health WORKFLOW_INDEX sync, regression-duration timing manifest) are unrelated to this slice. NorthStar: cross-family grammar audit now runs as part of every regression, not as an isolated artifact. Next slice: warm-paper page-geometry diagnostic extension — document 3 distinct spacing patterns (Pattern A page padding, Pattern B inner .shell, Pattern C page::before frame) to make the warm-paper family's spacing grammar legible to future agents.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -15,14 +15,14 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "risk": "Regression orchestrator self-referential recursion risk — verify new check does not transitively call bun creator:regression. Small risk surface, well-defined edit.",
-      "selection": "selected",
+      "risk": "Closed by prior slice 2026-06-06: creator:cross-family-grammar-audit-check wired into creator:regression CHECKS[] (line 39). Verified 32/34 pass in full regression. Retain candidate as completed audit-integration precedent.",
+      "selection": "candidate",
       "mutation": "Wire creator:cross-family-grammar-audit-check into the creator:regression orchestrator CHECKS[] array. Cross-family audit currently isolated — running it as part of full regression ensures future ledger additions automatically re-classify. Add to orchestrator at correct insertion point (after surface-consistency, before docs-surface-parity). Verify orchestrator output shows the new check entry.",
       "phenotype": "1 orchestrator edit (scripts/creator-regression-check.ts) + 1 verification pass. creator:regression output line for cross-family-grammar-audit-check. regression count increases by 1."
     },
     {
       "id": "creator-warm-paper-page-geometry-diagnostic-extension-route",
-      "selection": "candidate",
+      "selection": "selected",
       "axis": "visual grammar",
       "mutation": "Extend the page-geometry diagnostic with a per-surface hardcoded spacing inventory (convergence file already exposes it). Document the warm-paper family's spacing grammar in 3 distinct patterns: Pattern A (page padding 56px uniform, motion-storyboard/poster/prompt-dna/family-dna), Pattern B (inner .shell 40-70px, surface-specific), Pattern C (page::before frame 20-44px, decorative). Update diagnostic HTML with spacing table.",
       "phenotype": "1 diagnostic HTML extension (examples/creator-warm-paper-page-geometry-diagnostic.html) + 1 check script update + .artifacts evidence note.",
@@ -68,7 +68,7 @@
       "risk": "Premise may be stale — alpha variation may be content-density-tuned not mechanically drifted. Pre-implementation: 3-surface inspection of grid spacing 42/44/52/56 vs alpha .035/.045/.055/.06 to confirm correlation."
     }
   ],
-  "winner": "creator-mechanical-drift-cleanup-route",
+  "winner": "creator-warm-paper-page-geometry-diagnostic-extension-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -926,6 +926,15 @@
         "bun creator:docs-surface-parity passes 0 actionable gaps (1 informational WORKFLOW_INDEX drift, pre-existing)",
         "bun creator:surface-consistency passes 26/26 surfaces audited (11 shared, 14 diverged :root tokens — different axis)",
         "Regression detection: temporarily reverting pdf-zine to rgba(22,19,14) fails page-grid-check with clear error message"
+      ]
+    },
+    {
+      "id": "creator-cross-family-grammar-orchestrator-route",
+      "selection": "retained",
+      "retained_as": "cross-family grammar audit wired into regression orchestrator",
+      "proof": [
+        "bun creator:cross-family-grammar-audit-check (standalone: 1007ms, PASS)",
+        "bun creator:regression (orchestrator: 32/34, cross-family-grammar-audit-check PASS)"
       ]
     }
   ],
