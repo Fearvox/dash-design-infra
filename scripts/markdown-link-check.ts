@@ -34,6 +34,22 @@ function isExternalOrAnchor(href: string): boolean {
   );
 }
 
+function resolvePublicRootLink(file: string, href: string): string | null {
+  if (!href.startsWith('/')) return null;
+
+  let dir = dirname(file);
+  while (dir && dir !== '.') {
+    const target = resolve(dir, 'public', href.slice(1));
+    if (existsSync(target)) return target;
+
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+
+  return null;
+}
+
 const findings: Finding[] = [];
 const linkPattern = /\[[^\]]+\]\(([^)]+)\)/g;
 
@@ -56,7 +72,7 @@ for (const file of gitMarkdownFiles()) {
       const pathPart = decodeURIComponent(rawHref.split('#', 1)[0] ?? '');
       if (!pathPart) continue;
 
-      const target = resolve(dirname(file), pathPart);
+      const target = resolvePublicRootLink(file, pathPart) ?? resolve(dirname(file), pathPart);
       if (!existsSync(target)) {
         findings.push({ file, line: index + 1, href: rawHref });
       }

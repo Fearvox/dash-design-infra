@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-06T10:04:37.351Z",
+  "timestamp": "2026-06-06T10:15:10.628Z",
   "total_surfaces": 26,
   "with_token_layer": 26,
   "without_token_layer": 0,
@@ -526,7 +526,7 @@
     "current_diverged_count": 14,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-06T10:04:37.040Z",
+    "prior_timestamp": "2026-06-06T10:12:24.771Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -1007,22 +1007,23 @@
       {
         "file": "creator-touchdesigner-tox.html",
         "gap_values": [
+          12,
           14,
-          16,
-          22,
-          42
+          18,
+          34
         ],
         "padding_values": [
           10,
+          14,
           16,
           18,
-          26,
+          22,
           30,
-          42,
+          36,
           58
         ],
         "margin_values": [
-          13,
+          10,
           18
         ],
         "gap_count": 4
