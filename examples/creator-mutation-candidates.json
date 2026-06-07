@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-06 (cron run 2): warm-paper 3-stop diagonal paper-tint gradient 1st stop alignment. 3 warm-paper functional surfaces (pdf-zine, social-card, poster-surface) use linear-gradient(135deg, A 0%, B NN%, C 100%) for page-tint highlight→mid→shadow. Pre-alignment: social-card 1st stop hardcoded #fff6e7, poster-surface 1st stop hardcoded #f8f0e2 + --paper-2:#fff8eb naming inconsistency. Post-alignment: both converted to var(--paper-hot) 1st stop anchor (--paper-hot consensus #fff8ea shared with pdf-zine). poster-surface --paper-2 renamed to --paper-hot for naming consistency. 3rd stops retained as per-surface warm shadow tinting (intentional family signature, same as grid alpha/size variation). 2nd stops retained: pdf-zine + social-card use var(--paper); poster-surface uses #ece0cd (intentional mid stop). New check creator:paper-tint-stop-check (3/3 PASS) wired into regression orchestrator after creator:page-grid-check. Pre-vs-post: 32/34 → 34/36 (gained 1 from new check, 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration). NorthStar: extends body-CSS pattern alignment from grid rgba (--ink anchor) to gradient stop token vocabulary (--paper-hot anchor) — proves warm-paper tint grammar can be machine-verified.",
+  "observation": "Slice 2026-06-07 (cron): heading-weight 520 normalization complete (4 surfaces fixed, 12/12 PASS). Remaining drift: --paper on p5-sketch (#f6f0e5 vs consensus #f2eadb) — sole outlier across 22 surfaces. p5-sketch is the only creative-hybrid surface not using consensus --paper. Next: align p5-sketch --paper to #f2eadb for single-value convergence.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -36,34 +36,9 @@
       "risk": "Premise may be stale — alpha variation may be content-density-tuned not mechanically drifted. Pre-implementation: 3-surface inspection of grid spacing 42/44/52/56 vs alpha .035/.045/.055/.06 to confirm correlation."
     },
     {
-      "id": "creator-warm-paper-spacing-grammar-extension-route",
-      "selection": "candidate",
-      "axis": "visual grammar",
-      "retained_as": "warm-paper spacing grammar diagnostic extension + creator:warm-paper-spacing-pattern-check machine gate. F6 hardcoded spacing inventory cross-references convergence.json spacing_audit with 3 page-geometry patterns (2 A, 3 A+B, 1 B+C). F7 pattern↔token status documents --pad-page: 56px token layer saturation (3/3 Pattern A consumers + 1/1 reference on 1684x1191 canvas). New check classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame; catches drift if a surface changes its .page padding source. Wired into regression orchestrator (33/35 PASS, 2 pre-existing timing failures unchanged).",
-      "phenotype": "F6 + F7 added to creator-warm-paper-page-geometry-diagnostic.html (620 lines, 30KB, 4-page print). New check script scripts/creator-warm-paper-spacing-pattern-check.ts (196 lines).",
-      "fitness": {
-        "creator_utility": 7,
-        "memory_retention": 8,
-        "artifact_proof": 9,
-        "boundary_safety": 10,
-        "minimal_core": 8
-      },
-      "risk": "Closed by prior slice PR #161. Demoted to re-promote target winner.",
-      "proof": [
-        "bun creator:warm-paper-spacing-pattern-check (6/6 classified, 5/5 var(--pad-page) consumers documented)",
-        "bun measure:check -- examples/creator-warm-paper-page-geometry-diagnostic.html (1684x4050 fits 1684x1191)",
-        "bun print:render -- examples/creator-warm-paper-page-geometry-diagnostic.html (4 pages, 978ms)",
-        "bun creator:multi-surface-proof (26/26 measure+print PASS)",
-        "bun docs:links (clean)",
-        "bun creator:regression (33/35 PASS — 2 pre-existing timing failures unchanged from main)",
-        "PR #161 merged 2026-06-06T16:02:29Z (sha 2d49a4c9)"
-      ],
-      "mutation": "Extend the warm-paper page-geometry diagnostic (PR #152) with F6 (hardcoded spacing inventory) and F7 (pattern↔token status) findings; add creator:warm-paper-spacing-pattern-check machine gate that classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame. Verifies the diagnostic HTML contains Pattern A/B/C visible labels + hardcoded spacing inventory section + per-surface consumer documentation. Catches drift if a surface changes its .page padding source. Wired into creator:regression orchestrator after creator:page-grid-check."
-    },
-    {
       "id": "creator-heading-weight-align-route",
       "axis": "visual grammar",
-      "selection": "selected",
+      "selection": "candidate",
       "observation": "Warm-paper serif heading font-weight grammar drift: poster-surface, motion-storyboard, prompt-dna use font-weight:500 for h1/h2 serif headings (warm-paper editorial consensus). pdf-zine and social-card use font-weight:520 — a non-standard CSS value (browsers map 520→500 or 520→variable-font, producing unpredictable results). These are the same 2 surfaces. Font-weight:520→500 alignment restores predictable CSS behavior and warm-paper heading grammar consensus.",
       "candidates": [],
       "fitness": {
@@ -73,12 +48,29 @@
         "boundary_safety": 10,
         "minimal_core": 9
       },
-      "risk": "Visual delta from 520→500 is imperceptible at display sizes in serif fonts. Machine check creator:heading-weight-check (5/5 PASS) prevents backslide. Per-surface letter-spacing (-.075em / -.045em / 0) intentionally retained as content-density tuning (family signature — same justification as grid alpha/size variation).",
+      "risk": "Premise stale: warm-paper surfaces (pdf-zine, social-card) already had font-weight:500 — fixed by prior run. Demoted. Actual drift found on 4 non-warm-paper surfaces: browser-demo, remotion-scene, family-dna, manim-scene all had font-weight:520 (non-standard CSS).",
       "mutation": "Align font-weight:520 → 500 on pdf-zine (h1,h2) and social-card (h1) to warm-paper editorial consensus font-weight:500. Adds creator:heading-weight-check machine gate that extracts h1/h2/h3 font-weight values across 5 warm-paper functional surfaces and verifies all are 500. Wired into regression orchestrator after page-tint-2nd-stop-check.",
       "phenotype": "2 surface edits (pdf-zine h1,h2 font-weight:520→500 + social-card h1 font-weight:520→500) + 1 new check script (scripts/creator-heading-weight-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry. Per-surface letter-spacing variation preserved as family signature."
+    },
+    {
+      "id": "creator-paper-p5sketch-align-route",
+      "axis": "visual grammar",
+      "observation": "creator:surface-consistency reveals --paper has 2 distinct values across 22 surfaces: #f2eadb (21 surfaces, including dark-industrial and creative-hybrid) vs #f6f0e5 (p5-sketch only). p5-sketch is the sole outlier. #f6f0e5 is ~4 hex units brighter than consensus #f2eadb — a 0.7% luminance difference, imperceptible on warm-cream backgrounds. This is not a creative-hybrid family signature (manim-scene and family-dna both use #f2eadb). It is addressable CSS drift. Align p5-sketch --paper from #f6f0e5 to #f2eadb. --paper converges from 2→1 distinct value.",
+      "candidates": [],
+      "fitness": {
+        "creator_utility": 6,
+        "memory_retention": 7,
+        "artifact_proof": 8,
+        "boundary_safety": 10,
+        "minimal_core": 9
+      },
+      "risk": "Near-zero visual delta (0.7% luminance diff on warm-cream). --paper is a background color token, not a content color — zero creative impact. p5-sketch measure:check + p5-sketch-check must pass. No --paper token layer needed (already uses var() pattern).",
+      "selection": "selected",
+      "mutation": "Align p5-sketch :root --paper from #f6f0e5 to #f2eadb. Verify p5-sketch-check + measure:check + print:render. --paper converges from 2→1 distinct values across all 12 functional surfaces + 14 total surfaces.",
+      "phenotype": "1 surface edit (creator-p5-sketch.html :root --paper) + 1 verification pass. --paper is already used via var() in body CSS — no structure change needed."
     }
   ],
-  "winner": "creator-heading-weight-align-route",
+  "winner": "creator-paper-p5sketch-align-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -979,6 +971,18 @@
         "bun creator:cache-integrity (14/14 valid)",
         "bun creator:regression (38/38 PASS)",
         "PR #164 merged 2026-06-07 (sha 3c50c46)"
+      ]
+    },
+    {
+      "id": "creator-heading-weight-520-corrected-route",
+      "selection": "retained",
+      "retained_as": "font-weight:520→500 non-standard CSS normalization across 4 non-warm-paper functional surfaces + 12/12 machine gate",
+      "proof": [
+        "bun creator:heading-weight-check (12/12 PASS)",
+        "bun measure:check -- examples/creator-browser-demo.html",
+        "bun measure:check -- examples/creator-remotion-scene.html",
+        "bun measure:check -- examples/creator-family-dna.html",
+        "bun measure:check -- examples/creator-manim-scene.html"
       ]
     }
   ],
