@@ -88,6 +88,7 @@
     "creator:page-grid-check": "bun scripts/creator-page-grid-check.ts",
     "creator:paper-tint-stop-check": "bun scripts/creator-paper-tint-stop-check.ts",
     "creator:page-tint-2nd-stop-check": "bun scripts/creator-page-tint-2nd-stop-check.ts",
+    "creator:heading-weight-check": "bun scripts/creator-heading-weight-check.ts",
     "creator:warm-paper-spacing-pattern-check": "bun scripts/creator-warm-paper-spacing-pattern-check.ts",
     "creator:cross-family-grammar-audit-check": "bun scripts/creator-cross-family-grammar-audit-check.ts",
     "creator:family-dna-check": "bun scripts/creator-family-dna-check.ts",

@@ -38,6 +38,7 @@ const CHECKS: Array<{ name: string; command: string; args: string[] }> = [
   { name: 'creator:paper-tint-stop-check', command: 'bun', args: ['run', 'creator:paper-tint-stop-check'] },
   { name: 'creator:warm-paper-spacing-pattern-check', command: 'bun', args: ['run', 'creator:warm-paper-spacing-pattern-check'] },
   { name: 'creator:page-tint-2nd-stop-check', command: 'bun', args: ['run', 'creator:page-tint-2nd-stop-check'] },
+  { name: 'creator:heading-weight-check', command: 'bun', args: ['run', 'creator:heading-weight-check'] },
   { name: 'creator:family-dna-check', command: 'bun', args: ['run', 'creator:family-dna-check'] },
   { name: 'creator:cross-family-grammar-audit-check', command: 'bun', args: ['run', 'creator:cross-family-grammar-audit-check'] },
   { name: 'creator:capsule-check', command: 'bun', args: ['run', 'creator:capsule-check'] },

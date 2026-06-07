@@ -61,25 +61,24 @@
       "mutation": "Extend the warm-paper page-geometry diagnostic (PR #152) with F6 (hardcoded spacing inventory) and F7 (pattern↔token status) findings; add creator:warm-paper-spacing-pattern-check machine gate that classifies each warm-paper .page-bearing surface by inspecting var(--pad-page) consumption + .shell/.sheet/.poster-frame/.capsule-shell presence + .page::before inset: frame. Verifies the diagnostic HTML contains Pattern A/B/C visible labels + hardcoded spacing inventory section + per-surface consumer documentation. Catches drift if a surface changes its .page padding source. Wired into creator:regression orchestrator after creator:page-grid-check."
     },
     {
-      "id": "creator-page-tint-2nd-stop-align-route",
+      "id": "creator-heading-weight-align-route",
       "axis": "visual grammar",
       "selection": "selected",
-      "observation": "After PR #162, 1st stops of the 3 warm-paper functional 3-stop diagonal page-tint gradients are aligned to var(--paper-hot). Remaining 2nd stop: pdf-zine + social-card consume var(--paper) (#f2eadb), poster-surface uses hardcoded #ece0cd (rgb 236,224,205 — darker, mid-stop desaturation). 3rd stops (#e4d6c2, #e6dac8, #ddd1bf) intentionally retained as per-surface warm shadow tinting (family signature per PR #162 rationale). 2nd stop alignment is the next concrete addressable token-layer extension in the page-tint gradient vocabulary — closes the last hardcoded mid-stop hex value across the 3 warm-paper functional surfaces.",
+      "observation": "Warm-paper serif heading font-weight grammar drift: poster-surface, motion-storyboard, prompt-dna use font-weight:500 for h1/h2 serif headings (warm-paper editorial consensus). pdf-zine and social-card use font-weight:520 — a non-standard CSS value (browsers map 520→500 or 520→variable-font, producing unpredictable results). These are the same 2 surfaces. Font-weight:520→500 alignment restores predictable CSS behavior and warm-paper heading grammar consensus.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 7,
+        "creator_utility": 6,
         "memory_retention": 7,
         "artifact_proof": 8,
         "boundary_safety": 10,
-        "minimal_core": 8
+        "minimal_core": 9
       },
-      "risk": "Visual delta on poster-surface 2nd stop: #ece0cd (rgb 236, 224, 205) → var(--paper) #f2eadb (rgb 242, 234, 219). Delta: +6 R, +10 G, +14 B. Slight lightening + warming. Risk envelope: medium (3x PR #162's 1-unit delta, but still inside the warm-paper family palette). Pre-implementation: measure:check on poster-surface pre/post confirms no overflow + browser_qa proofshot documents visual delta is within editorial tolerance.",
-      "mutation": "Align 2nd stop of warm-paper 3-stop diagonal page-tint gradient to var(--paper) token across 3 functional warm-paper surfaces. poster-surface 2nd stop: #ece0cd (hardcoded, mid-stop desaturation) → var(--paper) consensus #f2eadb. pdf-zine + social-card already consume var(--paper) (no edit needed). Adds creator:page-tint-2nd-stop-check machine gate that verifies all 3 warm-paper 3-stop consumers use var(--paper) as 2nd stop, declare --paper in :root, and have no residual hardcoded mid-stop hex values matching the #eNdoNcN pattern in 2nd stop position. Wired into creator:regression orchestrator after creator:paper-tint-stop-check.",
-      "phenotype": "1 surface edit (poster-surface 2nd stop #ece0cd→var(--paper)) + 1 new check script (scripts/creator-page-tint-2nd-stop-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry. 2nd stop alignment completes the page-tint gradient token vocabulary: 1st stop = --paper-hot, 2nd stop = --paper, 3rd stop = per-surface warm shadow (family signature).",
-      "selection_pressure": "Continue pattern of warm-paper body-CSS rgba/hex alignment to :root token vocabulary. Page-tint gradient now has 1 token-anchored stop (--paper-hot) + 1 retained mid stop (var(--paper)) + 1 family signature (3rd). 2nd stop alignment removes the last hardcoded mid-stop in the 3-stop warm-paper page-tint pattern."
+      "risk": "Visual delta from 520→500 is imperceptible at display sizes in serif fonts. Machine check creator:heading-weight-check (5/5 PASS) prevents backslide. Per-surface letter-spacing (-.075em / -.045em / 0) intentionally retained as content-density tuning (family signature — same justification as grid alpha/size variation).",
+      "mutation": "Align font-weight:520 → 500 on pdf-zine (h1,h2) and social-card (h1) to warm-paper editorial consensus font-weight:500. Adds creator:heading-weight-check machine gate that extracts h1/h2/h3 font-weight values across 5 warm-paper functional surfaces and verifies all are 500. Wired into regression orchestrator after page-tint-2nd-stop-check.",
+      "phenotype": "2 surface edits (pdf-zine h1,h2 font-weight:520→500 + social-card h1 font-weight:520→500) + 1 new check script (scripts/creator-heading-weight-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry. Per-surface letter-spacing variation preserved as family signature."
     }
   ],
-  "winner": "creator-page-tint-2nd-stop-align-route",
+  "winner": "creator-heading-weight-align-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -965,6 +964,21 @@
         "bun creator:pdf-zine-check (PASS)",
         "bun creator:regression (34/36 PASS — 2 pre-existing fails unchanged from main: workflow-gate-health, regression-duration)",
         "PR #162 merged 2026-06-06T20:22:38Z (sha 0fac44c)"
+      ]
+    },
+    {
+      "id": "creator-page-tint-2nd-stop-align-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper 3-stop diagonal page-tint gradient 2nd stop alignment. poster-surface 2nd stop #ece0cd → var(--paper) (#f2eadb). pdf-zine + social-card already consumed var(--paper) (no edit). 3/3 warm-paper functional 3-stop surfaces now share var(--paper) 2nd stop. creator:page-tint-2nd-stop-check machine gate (3/3 PASS) wired into regression orchestrator after paper-tint-stop-check. Page-tint gradient token vocabulary now complete: 1st = --paper-hot, 2nd = --paper, 3rd = per-surface (family signature).",
+      "proof": [
+        "bun creator:page-tint-2nd-stop-check (3/3 PASS)",
+        "bun creator:paper-tint-stop-check (3/3 PASS — unchanged)",
+        "bun creator:page-grid-check (4/4 PASS — unchanged)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 fits)",
+        "bun print:render -- examples/creator-poster-surface.html /tmp/dash-poster.pdf (1 page)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:regression (38/38 PASS)",
+        "PR #164 merged 2026-06-07 (sha 3c50c46)"
       ]
     }
   ],
