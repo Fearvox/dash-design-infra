@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-07 (cron): heading-weight 520 normalization complete (4 surfaces fixed, 12/12 PASS). Remaining drift: --paper on p5-sketch (#f6f0e5 vs consensus #f2eadb) — sole outlier across 22 surfaces. p5-sketch is the only creative-hybrid surface not using consensus --paper. Next: align p5-sketch --paper to #f2eadb for single-value convergence.",
+  "observation": "Slice 2026-06-07 (cron): p5-sketch --paper aligned #f6f0e5→#f2eadb (PR #167 merged). --paper now fully converged: 12 shared tokens, 13 diverged. Remaining 13 diverged tokens are majority family signatures (dark-industrial, creative-hybrid intentional divergence). Next addressable grammar: warm-paper gap values — all 5 functional surfaces use hardcoded px gaps (3-5 distinct each). Opportunity to tokenize as --gap-sm / --gap-md after role audit.",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -53,24 +53,24 @@
       "phenotype": "2 surface edits (pdf-zine h1,h2 font-weight:520→500 + social-card h1 font-weight:520→500) + 1 new check script (scripts/creator-heading-weight-check.ts) + 1 package.json entry + 1 orchestrator CHECKS[] entry. Per-surface letter-spacing variation preserved as family signature."
     },
     {
-      "id": "creator-paper-p5sketch-align-route",
+      "id": "creator-gap-token-layer-route",
       "axis": "visual grammar",
-      "observation": "creator:surface-consistency reveals --paper has 2 distinct values across 22 surfaces: #f2eadb (21 surfaces, including dark-industrial and creative-hybrid) vs #f6f0e5 (p5-sketch only). p5-sketch is the sole outlier. #f6f0e5 is ~4 hex units brighter than consensus #f2eadb — a 0.7% luminance difference, imperceptible on warm-cream backgrounds. This is not a creative-hybrid family signature (manim-scene and family-dna both use #f2eadb). It is addressable CSS drift. Align p5-sketch --paper from #f6f0e5 to #f2eadb. --paper converges from 2→1 distinct value.",
+      "selection": "selected",
+      "observation": "creator:surface-consistency reveals all 26 surfaces use hardcoded px values for gap — zero --gap-* spacing tokens. Warm-paper functional surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) show 3-5 distinct gap values each: 8px, 10px, 14px, 18px, 22px, 34px. --space-4:16px already established as the warm-paper base spacing token. Opportunity: tokenize the 2-3 most repeated gap values (likely 8px and 10px pair) as --gap-sm and --gap-md to reduce hardcoded gap drift.",
       "candidates": [],
       "fitness": {
-        "creator_utility": 6,
+        "creator_utility": 7,
         "memory_retention": 7,
         "artifact_proof": 8,
         "boundary_safety": 10,
-        "minimal_core": 9
+        "minimal_core": 8
       },
-      "risk": "Near-zero visual delta (0.7% luminance diff on warm-cream). --paper is a background color token, not a content color — zero creative impact. p5-sketch measure:check + p5-sketch-check must pass. No --paper token layer needed (already uses var() pattern).",
-      "selection": "selected",
-      "mutation": "Align p5-sketch :root --paper from #f6f0e5 to #f2eadb. Verify p5-sketch-check + measure:check + print:render. --paper converges from 2→1 distinct values across all 12 functional surfaces + 14 total surfaces.",
-      "phenotype": "1 surface edit (creator-p5-sketch.html :root --paper) + 1 verification pass. --paper is already used via var() in body CSS — no structure change needed."
+      "risk": "Gap values may be per-surface content-density tuning — not mechanical drift. Pre-implementation: audit each surface gap usage for role (pill gaps, card gaps, section gaps, grid gaps) to determine if they serve the same semantic purpose. Tokenization without role check risks collapsing intentional spacing rhythm.",
+      "mutation": "Audit gap values across warm-paper family surfaces. Introduce --gap-sm:8px and --gap-md:10px (or the 2 most-repeated values) to :root of 5 warm-paper functional surfaces. Replace hardcoded gap px values with var(--gap-sm) and var(--gap-md). Add creator:gap-token-check machine gate. Wire into regression orchestrator.",
+      "phenotype": "5 surface :root additions + body CSS var() replacements + 1 check script + 1 package.json entry + 1 orchestrator CHECKS[] entry. Creates second spacing grammar token layer after --space-4."
     }
   ],
-  "winner": "creator-paper-p5sketch-align-route",
+  "winner": "creator-gap-token-layer-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -983,6 +983,21 @@
         "bun measure:check -- examples/creator-remotion-scene.html",
         "bun measure:check -- examples/creator-family-dna.html",
         "bun measure:check -- examples/creator-manim-scene.html"
+      ]
+    },
+    {
+      "id": "creator-paper-p5sketch-align-route",
+      "selection": "retained",
+      "retained_as": "p5-sketch --paper alignment to warm-paper consensus #f2eadb: sole outlier across 26 surfaces (#f6f0e5→#f2eadb). --paper converges from 2→1 distinct values. 0.7% luminance delta on warm-cream background, zero creative impact. Shared tokens 11→12, diverged 14→13.",
+      "proof": [
+        "bun creator:p5-sketch-check (PASS)",
+        "bun measure:check -- examples/creator-p5-sketch.html (1684x1191 PASS)",
+        "bun print:render -- examples/creator-p5-sketch.html (1 page, 906ms)",
+        "bun creator:measure-print-cache (14/14 PASS)",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun p5:motion-check (6 v2 preset contracts PASS)",
+        "bun creator:surface-consistency (--paper fully converged, shared 11→12)",
+        "PR #167 merged (squash)"
       ]
     }
   ],
