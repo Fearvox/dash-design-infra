@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-06-07T21:20:14.440Z",
+  "timestamp": "2026-06-08T01:43:07.117Z",
   "total_surfaces": 26,
   "with_token_layer": 26,
   "without_token_layer": 0,
-  "shared_tokens": 11,
-  "diverged_tokens": 14,
+  "shared_tokens": 14,
+  "diverged_tokens": 13,
   "unique_tokens": 29,
   "families": 4,
   "diverged_details": [
@@ -391,43 +391,6 @@
       ]
     },
     {
-      "token": "--paper",
-      "distinct_values": 2,
-      "values": [
-        {
-          "value": "#f2eadb",
-          "surfaces": [
-            "creator-bg-token-diagnostic.html",
-            "creator-browser-demo.html",
-            "creator-cross-family-grammar-audit.html",
-            "creator-family-dna-spacing-grammar-audit.html",
-            "creator-family-dna.html",
-            "creator-family-grammar-audit.html",
-            "creator-font-grammar-audit.html",
-            "creator-manim-scene.html",
-            "creator-motion-storyboard.html",
-            "creator-muted-surface-diagnostic.html",
-            "creator-pad-shell-pattern-b-diagnostic.html",
-            "creator-pdf-zine.html",
-            "creator-poster-surface.html",
-            "creator-prompt-dna-adapter.html",
-            "creator-radius-token-audit.html",
-            "creator-social-card.html",
-            "creator-touchdesigner-tox.html",
-            "creator-type-size-audit.html",
-            "creator-type-size-token-audit.html",
-            "creator-warm-paper-page-geometry-diagnostic.html"
-          ]
-        },
-        {
-          "value": "#f6f0e5",
-          "surfaces": [
-            "creator-p5-sketch.html"
-          ]
-        }
-      ]
-    },
-    {
       "token": "--paper-dim",
       "distinct_values": 2,
       "values": [
@@ -522,11 +485,11 @@
     }
   ],
   "convergence_delta": {
-    "prior_diverged_count": 14,
-    "current_diverged_count": 14,
+    "prior_diverged_count": 13,
+    "current_diverged_count": 13,
     "delta": 0,
     "trend": "stall",
-    "prior_timestamp": "2026-06-07T21:20:10.633Z",
+    "prior_timestamp": "2026-06-08T01:43:06.661Z",
     "per_token_deltas": [
       {
         "token": "--accent",
@@ -580,12 +543,6 @@
         "token": "--panel",
         "prior_distinct": 5,
         "current_distinct": 5,
-        "delta": 0
-      },
-      {
-        "token": "--paper",
-        "prior_distinct": 2,
-        "current_distinct": 2,
         "delta": 0
       },
       {
@@ -817,7 +774,6 @@
         "file": "creator-motion-storyboard.html",
         "gap_values": [
           7,
-          14,
           22,
           24,
           30
@@ -832,7 +788,7 @@
           7,
           24
         ],
-        "gap_count": 5
+        "gap_count": 4
       },
       {
         "file": "creator-muted-surface-diagnostic.html",
@@ -906,7 +862,6 @@
         "file": "creator-pdf-zine.html",
         "gap_values": [
           8,
-          10,
           12,
           22
         ],
@@ -917,12 +872,11 @@
           70
         ],
         "margin_values": [],
-        "gap_count": 4
+        "gap_count": 3
       },
       {
         "file": "creator-poster-surface.html",
         "gap_values": [
-          10,
           64
         ],
         "padding_values": [
@@ -931,12 +885,11 @@
           44
         ],
         "margin_values": [],
-        "gap_count": 2
+        "gap_count": 1
       },
       {
         "file": "creator-prompt-dna-adapter.html",
         "gap_values": [
-          14,
           24,
           30,
           42
@@ -949,7 +902,7 @@
         "margin_values": [
           32
         ],
-        "gap_count": 4
+        "gap_count": 3
       },
       {
         "file": "creator-radius-token-audit.html",

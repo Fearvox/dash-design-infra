@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-07 (cron): p5-sketch --paper aligned #f6f0e5→#f2eadb (PR #167 merged). --paper now fully converged: 12 shared tokens, 13 diverged. Remaining 13 diverged tokens are majority family signatures (dark-industrial, creative-hybrid intentional divergence). Next addressable grammar: warm-paper gap values — all 5 functional surfaces use hardcoded px gaps (3-5 distinct each). Opportunity to tokenize as --gap-sm / --gap-md after role audit.",
+  "observation": "Slice 2026-06-07 (cron): gap token layer shipped — --gap-sm:10px (2 surfaces: poster-surface proof-list, pdf-zine index-card) + --gap-md:14px (2 surfaces: motion-storyboard .board, prompt-dna-adapter .proof-strip/.matrix). Gap audit confirmed most values are per-surface content-density tuning, not mechanical drift. Tokenized only the 2 most-recurring values with shared semantic roles. creator:gap-token-check (13/13 PASS) wired into regression orchestrator. --paper + --paper-hot converged; 14 shared tokens, 13 diverged. Next addressable: page-grid alpha — 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) may be grid-size-correlated. Investigate before tokenizing.\n",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -23,7 +23,7 @@
     {
       "id": "creator-page-grid-alpha-convergence-route",
       "axis": "visual grammar",
-      "selection": "candidate",
+      "selection": "selected",
       "fitness": {
         "creator_utility": 4,
         "memory_retention": 5,
@@ -55,7 +55,7 @@
     {
       "id": "creator-gap-token-layer-route",
       "axis": "visual grammar",
-      "selection": "selected",
+      "selection": "retained",
       "observation": "creator:surface-consistency reveals all 26 surfaces use hardcoded px values for gap — zero --gap-* spacing tokens. Warm-paper functional surfaces (poster, pdf-zine, social-card, motion-storyboard, prompt-dna) show 3-5 distinct gap values each: 8px, 10px, 14px, 18px, 22px, 34px. --space-4:16px already established as the warm-paper base spacing token. Opportunity: tokenize the 2-3 most repeated gap values (likely 8px and 10px pair) as --gap-sm and --gap-md to reduce hardcoded gap drift.",
       "candidates": [],
       "fitness": {
@@ -70,7 +70,7 @@
       "phenotype": "5 surface :root additions + body CSS var() replacements + 1 check script + 1 package.json entry + 1 orchestrator CHECKS[] entry. Creates second spacing grammar token layer after --space-4."
     }
   ],
-  "winner": "creator-gap-token-layer-route",
+  "winner": "creator-page-grid-alpha-convergence-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
@@ -1037,5 +1037,23 @@
     "bun docs:links",
     "bun security:scan",
     "bun hackathon:score"
+  ],
+  "retained_routes_append": [
+    {
+      "id": "creator-gap-token-layer-route",
+      "selection": "retained",
+      "retained_as": "Warm-paper gap token layer: --gap-sm:10px (2 surfaces: poster-surface proof-list, pdf-zine index-card), --gap-md:14px (2 surfaces: motion-storyboard .board, prompt-dna-adapter .proof-strip/.matrix). Gap audit confirmed most values are per-surface content-density tuning — tokenized only the 2 most-recurring values with shared semantic roles. creator:gap-token-check (13/13 PASS) wired into regression orchestrator. Third warm-paper spacing grammar token layer after --space-4 and --pad-page.",
+      "proof": [
+        "bun creator:gap-token-check (13/13 PASS)",
+        "bun measure:check -- examples/creator-poster-surface.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-pdf-zine.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-motion-storyboard.html (1684x1191 PASS)",
+        "bun measure:check -- examples/creator-prompt-dna-adapter.html (1684x1191 PASS)",
+        "bun print:render -- 4/4 surfaces, 1 page each",
+        "bun creator:cache-integrity (14/14 valid)",
+        "bun creator:regression (37/39 PASS, gap-token-check PASS)",
+        "bun creator:mutation-check (PASS)"
+      ]
+    }
   ]
 }

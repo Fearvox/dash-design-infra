@@ -15,6 +15,7 @@
         --amber: #c47a1f;
         --green: #2f6f4e;
         --accent: #ffb86b;
+        --gap-md: 14px;
         --space-4: 16px;
         --pad-page: 56px;
         --text-sm: 12px;
@@ -140,7 +141,7 @@
       .proof-strip {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        gap: var(--gap-md);
       }
 
       .proof {
@@ -170,7 +171,7 @@
       .matrix {
         display: grid;
         grid-template-rows: repeat(4, 1fr);
-        gap: 14px;
+        gap: var(--gap-md);
         min-height: 0;
       }
 

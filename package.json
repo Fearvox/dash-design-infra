@@ -86,6 +86,7 @@
     "creator:surface-consistency": "bun scripts/creator-surface-consistency.ts",
     "creator:pad-page-token-check": "bun scripts/creator-pad-page-token-check.ts",
     "creator:page-grid-check": "bun scripts/creator-page-grid-check.ts",
+    "creator:gap-token-check": "bun scripts/creator-gap-token-check.ts",
     "creator:paper-tint-stop-check": "bun scripts/creator-paper-tint-stop-check.ts",
     "creator:page-tint-2nd-stop-check": "bun scripts/creator-page-tint-2nd-stop-check.ts",
     "creator:heading-weight-check": "bun scripts/creator-heading-weight-check.ts",
