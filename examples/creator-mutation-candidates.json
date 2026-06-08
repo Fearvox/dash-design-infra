@@ -1,5 +1,5 @@
 {
-  "observation": "Slice 2026-06-07 (cron): gap token layer shipped — --gap-sm:10px (2 surfaces: poster-surface proof-list, pdf-zine index-card) + --gap-md:14px (2 surfaces: motion-storyboard .board, prompt-dna-adapter .proof-strip/.matrix). Gap audit confirmed most values are per-surface content-density tuning, not mechanical drift. Tokenized only the 2 most-recurring values with shared semantic roles. creator:gap-token-check (13/13 PASS) wired into regression orchestrator. --paper + --paper-hot converged; 14 shared tokens, 13 diverged. Next addressable: page-grid alpha — 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) may be grid-size-correlated. Investigate before tokenizing.\n",
+  "observation": "Slice 2026-06-08 (cron): docs-parity fix + stale candidate deselection. Page-grid-alpha-route investigated and confirmed stale: grid alpha variation (.035/.045/.055/.06) maps to grid size (42/44/52/56px) — content-density tuning, not mechanical drift, confirmed by creator:page-grid-check. Deselected. 4 retained routes (cross-family-grammar-orchestrator, page-tint-2nd-stop-align, heading-weight-520-corrected, paper-p5sketch-align) added to CREATOR_EVOLUTION_ENGINE.md — docs-surface-parity down from 5→1 drift (WORKFLOW_INDEX table count, informational). 37/39 regression (2 pre-existing: workflow-gate-health cascade from docs-surface-parity, now resolved). Aesthetic coherence: token-alignment saturation reached — all 13 diverged tokens confirmed as family signatures. Next frontier: body-CSS hardcoded color audit (surface-consistency only checks :root tokens). 3rd stop paper-tint values (#ddd1bf/#e4d6c2/#e6dac8, max RGB spread 9) are candidate for convergence exploration.\\n",
   "population": "creator CSS token alignment and visual grammar unification across 11 surfaces toward DASH creative-engine warmth + industrial-brutalist constraint + zine-like economy",
   "selection_pressure": "move from proof coherence to aesthetic coherence — tighten shared tokens without homogenizing per-surface creative roles",
   "candidates": [
@@ -23,7 +23,7 @@
     {
       "id": "creator-page-grid-alpha-convergence-route",
       "axis": "visual grammar",
-      "selection": "selected",
+      "selection": "candidate",
       "fitness": {
         "creator_utility": 4,
         "memory_retention": 5,
@@ -31,9 +31,24 @@
         "boundary_safety": 10,
         "minimal_core": 6
       },
-      "mutation": "Introduce --grid-ink-alpha: 0.045 token to warm-paper family, replace per-surface alpha values with var(--grid-ink-alpha). Could converge 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) to 1. Blocked on design call: alpha variation may be intentional (smaller grids denser) and forcing convergence may collapse content-density tuning.",
-      "phenotype": "Diagnostic + alignment if design call approves. Likely just a diagnostic slice if alpha variation is confirmed as family signature.",
-      "risk": "Premise may be stale — alpha variation may be content-density-tuned not mechanically drifted. Pre-implementation: 3-surface inspection of grid spacing 42/44/52/56 vs alpha .035/.045/.055/.06 to confirm correlation."
+      "mutation": "Introduce --grid-ink-alpha: 0.045 token to warm-paper family, replace per-surface alpha values with var(--grid-ink-alpha). Could converge 3 distinct alpha pairs (.045/.035, .055/.045, .06/.05) to 1.",
+      "phenotype": "Diagnostic + alignment if design call approves.",
+      "risk": "CLOSED 2026-06-08: stale. Grid alpha variation confirmed as content-density tuning — page-grid-check (4/4 PASS) explicitly states 'Per-surface alpha/size variation retained as content-density tuning (intentional family signature)'. Grid 42→52→56px maps to alpha .035/.045→.055→.06. Larger grids need more visible lines. No addressable drift — deselect."
+    },
+    {
+      "id": "creator-paper-tint-3rd-stop-explore-route",
+      "axis": "visual grammar",
+      "selection": "selected",
+      "fitness": {
+        "creator_utility": 5,
+        "memory_retention": 6,
+        "artifact_proof": 6,
+        "boundary_safety": 10,
+        "minimal_core": 7
+      },
+      "mutation": "Investigate warm-paper 3-stop page-tint gradient 3rd stop convergence. Current: poster-surface #ddd1bf, pdf-zine #e4d6c2, social-card #e6dac8 — max RGB spread 9 units. Paper-tint-stop-check declares these 'intentionally retained as per-surface warm shadow tinting (family signature)'. Pre-implementation: measure visual delta (browser screenshot comparison), determine if 3rd stop variation is perceptible at fixed-canvas scale. If imperceptible, align to single warm-shadow consensus (e.g. #e1d5c3 midpoint). If perceptible and intentional, close as family signature diagnostic — no surface edits. Add machine check for 3rd stop convergence regardless of outcome.",
+      "phenotype": "Browser screenshot comparison OR diagnostic-only phenotype. If convergence: 3 surface body-CSS edits + creator:paper-tint-3rd-stop-check machine gate + orchestrator wiring. If intentional: diagnostic artifact documenting warm-shadow tuning per surface.",
+      "risk": "3rd stop variation was declared intentional in paper-tint-stop-check, but max ABS delta per RGB channel is 9 (221→230). At fixed-canvas scale the visual difference may be near-zero. Risk of perceptual alignment being over-normalization — but machine check is additive regardless of alignment decision."
     },
     {
       "id": "creator-heading-weight-align-route",
@@ -70,7 +85,7 @@
       "phenotype": "5 surface :root additions + body CSS var() replacements + 1 check script + 1 package.json entry + 1 orchestrator CHECKS[] entry. Creates second spacing grammar token layer after --space-4."
     }
   ],
-  "winner": "creator-page-grid-alpha-convergence-route",
+  "winner": "creator-paper-tint-3rd-stop-explore-route",
   "retained_routes": [
     {
       "id": "poster-surface-route",
